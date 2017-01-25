@@ -1,7 +1,8 @@
-package com.apps.twelve.floor.salon;
+package com.apps.twelve.floor.salon.di.modules;
 
 import android.app.Application;
 import android.content.Context;
+import com.apps.twelve.floor.salon.App;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;

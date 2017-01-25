@@ -1,6 +1,9 @@
 package com.apps.twelve.floor.salon;
 
 import android.app.Application;
+import com.apps.twelve.floor.salon.di.components.AppComponent;
+import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
+import com.apps.twelve.floor.salon.di.modules.AppModule;
 import timber.log.Timber;
 
 /**
