@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.mvp.presenters;
 
 import com.apps.twelve.floor.salon.App;
-import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.interfaces.IMainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainActivityView;
 import com.arellomobile.mvp.InjectViewState;

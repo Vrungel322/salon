@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.di.components;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.ui.activities.MainActivity;
-import com.arellomobile.mvp.MvpActivity;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -19,5 +18,4 @@ import javax.inject.Singleton;
   void inject(MainActivity activity);
 
   //fragments
-
 }
