@@ -21,8 +21,8 @@ import timber.log.Timber;
  */
 @Module public class RetrofitModule {
 
-  @Provides @Singleton
-  public Retrofit provideRetrofit(Converter.Factory converterFactory, OkHttpClient okClient) {
+  @Provides @Singleton Retrofit provideRetrofit(Converter.Factory converterFactory,
+      OkHttpClient okClient) {
     return new Retrofit.Builder().baseUrl(Constants.Remote.BASE_URL)
         .client(okClient)
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -30,7 +30,7 @@ import timber.log.Timber;
         .build();
   }
 
-  @Provides @Singleton public Converter.Factory provideConverterFactory(Gson gson) {
+  @Provides @Singleton Converter.Factory provideConverterFactory(Gson gson) {
     return GsonConverterFactory.create(gson);
   }
 
@@ -41,7 +41,7 @@ import timber.log.Timber;
         .create();
   }
 
-  @Provides @Singleton public OkHttpClient provideOkClient() {
+  @Provides @Singleton OkHttpClient provideOkClient() {
     HttpLoggingInterceptor interceptor =
         new HttpLoggingInterceptor(message -> Timber.tag("response").d(message));
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -8,7 +8,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainActivityView;
-import com.apps.twelve.floor.salon.ui.utils.Navigator;
+import com.apps.twelve.floor.salon.utils.Navigator;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import javax.inject.Inject;

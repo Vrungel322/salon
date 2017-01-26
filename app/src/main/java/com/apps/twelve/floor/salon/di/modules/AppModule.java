@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.di.modules;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -21,9 +20,5 @@ import javax.inject.Singleton;
 
   @Provides @Singleton Context provideAppContext() {
     return mApplication;
-  }
-
-  @Provides @Singleton SharedPreferences provideSharedPreferences(Context mContext) {
-    return mContext.getSharedPreferences("com.salon.Salon", Context.MODE_PRIVATE);
   }
 }
