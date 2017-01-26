@@ -1,7 +1,5 @@
-package com.apps.twelve.floor.salon.ui.utils;
+package com.apps.twelve.floor.salon.utils;
 
-import android.content.Context;
-import android.content.Intent;
 import javax.inject.Inject;
 
 /**
