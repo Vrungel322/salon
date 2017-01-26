@@ -11,14 +11,14 @@ import rx.subscriptions.CompositeSubscription;
  */
 public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
-  private CompositeSubscription compositeSubscription = new CompositeSubscription();
+  private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
   protected void addToUnsubscription(@NonNull Subscription subscription) {
-    compositeSubscription.add(subscription);
+    mCompositeSubscription.add(subscription);
   }
 
   @Override public void onDestroy() {
     super.onDestroy();
-    compositeSubscription.clear();
+    mCompositeSubscription.clear();
   }
 }

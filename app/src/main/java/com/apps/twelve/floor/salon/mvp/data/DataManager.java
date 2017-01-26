@@ -8,10 +8,10 @@ import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 
 public class DataManager {
 
-  private RestApi restApi;
+  private RestApi mRestApi;
 
   public DataManager(RestApi restApi) {
-    this.restApi = restApi;
+    this.mRestApi = restApi;
   }
 
   //public Observable<AccountUser> login(String login, String password) {

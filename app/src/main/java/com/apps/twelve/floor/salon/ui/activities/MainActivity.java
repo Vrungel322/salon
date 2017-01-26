@@ -17,8 +17,8 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
 
   @InjectPresenter MainActivityPresenter mainActivityPresenter;
 
-  @Inject Context context;
-  @Inject Navigator navigator;
+  @Inject Context mContext;
+  @Inject Navigator mNavigator;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,8 +31,8 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
   }
 
   @Override public void showText(String string) {
-    if (navigator != null) {
-      Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
+    if (mNavigator != null) {
+      Toast.makeText(mContext, string, Toast.LENGTH_SHORT).show();
     }
   }
 }

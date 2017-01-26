@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.di.modules;
 
 import android.app.Application;
 import android.content.Context;
+import com.apps.twelve.floor.salon.utils.RxBus;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -20,5 +21,9 @@ import javax.inject.Singleton;
 
   @Provides @Singleton Context provideAppContext() {
     return mApplication;
+  }
+
+  @Provides @Singleton public RxBus provideRxBus() {
+    return new RxBus();
   }
 }
