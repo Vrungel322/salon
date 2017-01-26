@@ -5,4 +5,9 @@ package com.apps.twelve.floor.salon;
  */
 
 public interface Constants {
+  interface Remote {
+    String DOMEN = "";
+    // TODO: do not forget to paste base url
+    String BASE_URL = "http://" + DOMEN + "/";
+  }
 }
