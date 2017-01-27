@@ -1,6 +1,6 @@
 package com.apps.twelve.floor.salon.di.modules;
 
-import com.apps.twelve.floor.salon.Constants;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
