@@ -1,23 +1,20 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainActivityView;
-import com.apps.twelve.floor.salon.utils.Navigator;
-import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.apps.twelve.floor.salon.ui.base.Navigator;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import javax.inject.Inject;
 
-public class MainActivity extends MvpAppCompatActivity implements IMainActivityView {
+public class MainActivity extends BaseActivity implements IMainActivityView {
 
   @InjectPresenter MainActivityPresenter mainActivityPresenter;
 
-  @Inject Context mContext;
   @Inject Navigator mNavigator;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class MainActivity extends MvpAppCompatActivity implements IMainActivityV
 
   @Override public void showText(String string) {
     if (mNavigator != null) {
-      Toast.makeText(mContext, string, Toast.LENGTH_SHORT).show();
+      this.showToastMessage(string);
     }
   }
 }

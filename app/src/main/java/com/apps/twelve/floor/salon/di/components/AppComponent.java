@@ -3,6 +3,8 @@ package com.apps.twelve.floor.salon.di.components;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.ui.activities.MainActivity;
+import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -17,5 +19,8 @@ import javax.inject.Singleton;
   //activities
   void inject(MainActivity activity);
 
+  void inject(BaseActivity activity);
+
   //fragments
+  void inject(BaseFragment fragment);
 }

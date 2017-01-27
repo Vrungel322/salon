@@ -26,4 +26,10 @@ public final class ViewUtil {
         (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
     imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
   }
+
+  public static void showKeyboard(Activity activity) {
+    InputMethodManager imm =
+        (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+  }
 }
