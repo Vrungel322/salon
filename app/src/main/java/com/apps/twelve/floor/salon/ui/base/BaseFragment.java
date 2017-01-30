@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.ButterKnife;
-import com.apps.twelve.floor.salon.App;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import javax.inject.Inject;
 
@@ -19,7 +18,6 @@ import javax.inject.Inject;
 
 public abstract class BaseFragment extends MvpAppCompatFragment {
 
-  @Inject Navigator mNavigator;
   @Inject Context mContext;
 
   private final int mLayoutId;
@@ -30,7 +28,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    App.getsAppComponent().inject(this);
+    inject();
   }
 
   @Nullable @Override
@@ -48,4 +46,6 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   protected void showToastMessage(@StringRes int id) {
     Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
   }
+
+  protected abstract void inject();
 }

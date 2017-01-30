@@ -1,7 +1,8 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
 import android.os.Bundle;
-import butterknife.ButterKnife;
+import android.widget.TextView;
+import butterknife.BindView;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
@@ -16,19 +17,22 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
   @InjectPresenter MainActivityPresenter mainActivityPresenter;
 
   @Inject Navigator mNavigator;
+  @BindView(R.id.tvTest) TextView tvTest;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    ButterKnife.bind(this);
-
-    App.getsAppComponent().inject(this);
+    super.onCreate(savedInstanceState);
 
     mainActivityPresenter.showTestText("Toast Test Text");
   }
 
+  @Override protected void inject() {
+    App.getsAppComponent().inject(this);
+  }
+
   @Override public void showText(String string) {
     if (mNavigator != null) {
+      tvTest.setText(string);
       this.showToastMessage(string);
     }
   }
