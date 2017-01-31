@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import com.apps.twelve.floor.salon.App;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import javax.inject.Inject;
 
@@ -14,12 +15,13 @@ import javax.inject.Inject;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
-  @Inject Context mContext;
+  @Inject protected Context mContext;
+  @Inject protected Navigator mNavigator;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     ButterKnife.bind(this);
-    inject();
+    App.getsAppComponent().inject(this);
   }
 
   protected void showToastMessage(String message) {
@@ -29,6 +31,4 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
   protected void showToastMessage(@StringRes int id) {
     Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
   }
-
-  protected abstract void inject();
 }
