@@ -30,7 +30,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    App.getsAppComponent().inject(this);
+    App.getAppComponent().inject(this);
   }
 
   @Nullable @Override

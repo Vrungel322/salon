@@ -21,7 +21,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     ButterKnife.bind(this);
-    App.getsAppComponent().inject(this);
+    App.getAppComponent().inject(this);
   }
 
   protected void showToastMessage(String message) {

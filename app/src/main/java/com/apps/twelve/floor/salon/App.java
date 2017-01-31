@@ -14,7 +14,7 @@ public class App extends Application {
 
   private static AppComponent sAppComponent;
 
-  public static AppComponent getsAppComponent() {
+  public static AppComponent getAppComponent() {
     return sAppComponent;
   }
 

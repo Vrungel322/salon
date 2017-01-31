@@ -13,6 +13,10 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
   private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
+  public BasePresenter() {
+    inject();
+  }
+
   protected void addToUnsubscription(@NonNull Subscription subscription) {
     mCompositeSubscription.add(subscription);
   }
@@ -21,4 +25,6 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
     super.onDestroy();
     mCompositeSubscription.clear();
   }
+
+  protected abstract void inject();
 }
