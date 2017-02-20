@@ -84,4 +84,3 @@ hs_err_pid*
 /captures
 **/*.iml
 app/libs/
-app/src/main/res/drawable/
