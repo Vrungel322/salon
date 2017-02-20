@@ -9,6 +9,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -81,9 +82,10 @@ import javax.inject.Singleton;
         .commit();
   }
 
-  @Override
-  public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment, Bundle args) {
-
+  @Override public void replaceFragment(@NonNull Activity activity, @IdRes int containerId,
+      @NonNull Fragment fragment) {
+    FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 
   @Override public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,
@@ -101,5 +103,9 @@ import javax.inject.Singleton;
   public void replaceFragmentAndAddToBackStack(@IdRes int containerId, @NonNull Fragment fragment,
       @NonNull String fragmentTag, Bundle args, String backstackTag) {
 
+  }
+
+  @Override public void replaceChildFragment(@IdRes int containerId, @NonNull Fragment fragment) {
+    fragment.getChildFragmentManager().beginTransaction().replace(containerId, fragment).commit();
   }
 }
