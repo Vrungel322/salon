@@ -36,7 +36,8 @@ public interface INavigator {
   void addFragmentTagAndAddToBackStack(@NonNull Activity activity, @IdRes int containerId,
       @NonNull Fragment fragment, @NonNull String fragmentTag);
 
-  void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment, Bundle args);
+  void replaceFragment(@NonNull Activity activity, @IdRes int containerId,
+      @NonNull Fragment fragment);
 
   void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,
       @NonNull String fragmentTag, Bundle args);
@@ -46,4 +47,6 @@ public interface INavigator {
 
   void replaceFragmentAndAddToBackStack(@IdRes int containerId, @NonNull Fragment fragment,
       @NonNull String fragmentTag, Bundle args, String backstackTag);
+
+  void replaceChildFragment(@IdRes int containerId, @NonNull Fragment fragment);
 }
