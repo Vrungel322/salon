@@ -14,8 +14,4 @@ import com.arellomobile.mvp.InjectViewState;
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
-
-  @Override protected void onFirstViewAttach() {
-    super.onFirstViewAttach();
-  }
 }

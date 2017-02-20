@@ -14,17 +14,21 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener, IStartActivityView {
+
+  @InjectPresenter StartActivityPresenter mStartActivityPresenter;
 
   @BindView(R.id.toolbar) Toolbar mToolbar;
   @BindView(R.id.fab) FloatingActionButton mFab;
   @BindView(R.id.nav_view) NavigationView mNavView;
   @BindView(R.id.navigation_drawer_topPart) NavigationView mNavViewTopPart;
-  @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottpmPart;
+  @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottomPart;
   @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,7 @@ public class StartActivity extends BaseActivity
 
     mNavView.setNavigationItemSelectedListener(this);
     mNavViewTopPart.setNavigationItemSelectedListener(this);
-    mNavViewBottpmPart.setNavigationItemSelectedListener(this);
+    mNavViewBottomPart.setNavigationItemSelectedListener(this);
   }
 
   @OnClick(R.id.fab) public void mFabClicked(View view) {
