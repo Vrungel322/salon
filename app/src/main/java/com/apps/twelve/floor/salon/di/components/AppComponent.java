@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.AppModule;
+import com.apps.twelve.floor.salon.mvp.presenters.FragmentMainPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
@@ -17,6 +18,8 @@ import javax.inject.Singleton;
   void inject(MainActivityPresenter presenter);
 
   void inject(StartActivityPresenter presenter);
+
+  void inject(FragmentMainPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

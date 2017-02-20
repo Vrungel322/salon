@@ -17,6 +17,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -49,6 +50,8 @@ public class StartActivity extends BaseActivity
     mNavView.setNavigationItemSelectedListener(this);
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
+
+    mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMain());
   }
 
   @OnClick(R.id.fab) public void mFabClicked(View view) {
