@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ public class FragmentMain extends BaseFragment implements IFragmentMainView {
   @InjectPresenter FragmentMainPresenter mFragmentMainPresenter;
 
   @BindView(R.id.tvTest) TextView mTvTest;
+
   public FragmentMain() {
     super(R.layout.fragment_main);
   }
@@ -33,8 +33,7 @@ public class FragmentMain extends BaseFragment implements IFragmentMainView {
     return super.onCreateView(inflater, container, savedInstanceState);
   }
 
-  @OnClick(R.id.tvTest)
-  public void tvTestClicked(){
+  @OnClick(R.id.tvTest) public void tvTestClicked() {
     showToastMessage("tvTest");
   }
 }

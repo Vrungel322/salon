@@ -9,8 +9,8 @@ import com.arellomobile.mvp.InjectViewState;
  * Created by Vrungel on 20.02.2017.
  */
 
-@InjectViewState public class FragmentMainPresenter extends BasePresenter<IFragmentMainView> implements
-    IFragmentMainPresenter {
+@InjectViewState public class FragmentMainPresenter extends BasePresenter<IFragmentMainView>
+    implements IFragmentMainPresenter {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

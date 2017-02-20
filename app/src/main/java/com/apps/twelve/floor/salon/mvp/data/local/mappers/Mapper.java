@@ -5,5 +5,5 @@ package com.apps.twelve.floor.salon.mvp.data.local.mappers;
  */
 
 public interface Mapper<A, B> {
-  B transform (A obj) throws RuntimeException;
+  B transform(A obj) throws RuntimeException;
 }

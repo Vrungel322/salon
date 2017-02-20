@@ -1,12 +1,5 @@
 package com.apps.twelve.floor.salon;
 
-import android.content.Context;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
-
 /**
  * Instrumentation test, which will execute on an Android device.
  *
