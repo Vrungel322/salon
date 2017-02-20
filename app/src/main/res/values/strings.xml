@@ -9,4 +9,9 @@
   <string name="navigation_drawer_close">Close navigation drawer</string>
 
   <string name="action_settings">Settings</string>
+
+  <string name="menu_main">Главная</string>
+  <string name="menu_booking">Записаться</string>
+  <string name="menu_my_booking">Мои записи</string>
+  <string name="menu_settings">Настройки приложения</string>
 </resources>

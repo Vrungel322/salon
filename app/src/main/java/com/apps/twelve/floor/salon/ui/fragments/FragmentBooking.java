@@ -2,12 +2,9 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IFragmentBookingView;
@@ -27,14 +24,10 @@ public class FragmentBooking extends BaseFragment implements IFragmentBookingVie
     super(R.layout.fragment_booking);
   }
 
-  @Nullable @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    return super.onCreateView(inflater, container, savedInstanceState);
-  }
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-  @OnClick(R.id.tvTest) public void tvTestClicked() {
-    showToastMessage("tvTest");
+    mTvTest.setOnClickListener(v -> showToastMessage("tvTest"));
   }
 }
 

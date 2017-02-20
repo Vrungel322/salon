@@ -21,7 +21,7 @@ import javax.inject.Singleton;
 
   private Context mContext;
 
-  @Inject public Navigator(Context context) {
+  @Inject Navigator(Context context) {
     mContext = context;
   }
 

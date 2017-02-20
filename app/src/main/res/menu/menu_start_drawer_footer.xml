@@ -3,8 +3,8 @@
   <group>
     <item
         android:id="@+id/nav_share"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/ic_action_settings"
         android:orderInCategory="300"
-        android:title="Настройки приложения"/>
+        android:title="@string/menu_settings"/>
   </group>
 </menu>
