@@ -5,6 +5,6 @@
         android:id="@+id/nav_share"
         android:icon="@drawable/ic_menu_share"
         android:orderInCategory="300"
-        android:title="Communicate"/>
+        android:title="Настройки приложения"/>
   </group>
 </menu>

@@ -31,7 +31,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         app:headerLayout="@layout/nav_header_start"
-        app:menu="@menu/activity_start_drawer" />
+        app:menu="@menu/activity_start_drawer"
+        app:itemBackground="@drawable/selector_nav_drawer"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_drawer_bottomPart"
