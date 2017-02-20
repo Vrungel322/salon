@@ -22,5 +22,6 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
 
     // TODO: 20.02.2017 check if user logged in
     startActivity(new Intent(MainActivity.this, StartActivity.class));
+    finish();
   }
 }

@@ -17,6 +17,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.apps.twelve.floor.salon.ui.fragments.FragmentBooking;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -27,7 +28,6 @@ public class StartActivity extends BaseActivity
 
   @BindView(R.id.toolbar) Toolbar mToolbar;
   @BindView(R.id.fab) FloatingActionButton mFab;
-  @BindView(R.id.nav_view) NavigationView mNavView;
   @BindView(R.id.navigation_drawer_topPart) NavigationView mNavViewTopPart;
   @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottomPart;
   @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
@@ -47,7 +47,6 @@ public class StartActivity extends BaseActivity
     mDrawerLayout.setDrawerListener(toggle);
     toggle.syncState();
 
-    mNavView.setNavigationItemSelectedListener(this);
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
 
@@ -87,9 +86,9 @@ public class StartActivity extends BaseActivity
     int id = item.getItemId();
 
     if (id == R.id.nav_camera) {
-
+      mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMain());
     } else if (id == R.id.nav_gallery) {
-
+      mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentBooking());
     } else if (id == R.id.nav_slideshow) {
 
     } else if (id == R.id.nav_manage) {
