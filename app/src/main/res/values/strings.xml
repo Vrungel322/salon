@@ -3,4 +3,10 @@
 
   <string name="dialog_action_ok">OK</string>
   <string name="dialog_error_title">Ошибка</string>
+  <string name="title_activity_start">StartActivity</string>
+
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+
+  <string name="action_settings">Settings</string>
 </resources>

@@ -19,6 +19,15 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity
+        android:name=".ui.activities.StartActivity"
+        android:label="@string/title_activity_start"
+        android:parentActivityName=".ui.activities.MainActivity"
+        android:theme="@style/AppTheme.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value="com.apps.twelve.floor.salon.ui.activities.MainActivity"/>
+    </activity>
   </application>
 
 </manifest>

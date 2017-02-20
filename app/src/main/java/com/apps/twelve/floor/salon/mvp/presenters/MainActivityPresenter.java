@@ -18,8 +18,4 @@ import com.arellomobile.mvp.InjectViewState;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
   }
-
-  @Override public void showTestText(String str) {
-    getViewState().showText(str);
-  }
 }

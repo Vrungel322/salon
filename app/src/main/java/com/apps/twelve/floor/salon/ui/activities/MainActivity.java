@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -19,13 +20,7 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
     setContentView(R.layout.activity_main);
     super.onCreate(savedInstanceState);
 
-    mainActivityPresenter.showTestText("Toast Test Text");
-  }
-
-  @Override public void showText(String string) {
-    if (mNavigator != null) {
-      tvTest.setText(string);
-      showToastMessage(string);
-    }
+    // TODO: 20.02.2017 check if user logged in
+    startActivity(new Intent(MainActivity.this, StartActivity.class));
   }
 }
