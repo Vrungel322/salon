@@ -88,7 +88,8 @@ public class StartActivity extends BaseActivity
       case R.id.nav_gallery:
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentBooking());
         break;
-      case R.id.nav_slideshow:
+      case R.id.nav_settings:
+        showToastMessage("Settings");
         break;
     }
     mDrawerLayout.closeDrawer(GravityCompat.START);
