@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.mvp.views;
 
+import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
@@ -8,5 +9,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  */
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IFragmentBookingView
-    extends IFragmentView {
+    extends MvpView {
 }
