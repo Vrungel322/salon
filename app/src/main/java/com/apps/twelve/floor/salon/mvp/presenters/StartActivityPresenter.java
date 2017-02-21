@@ -11,6 +11,12 @@ import com.arellomobile.mvp.InjectViewState;
 
 @InjectViewState public class StartActivityPresenter extends BasePresenter<IStartActivityView>
     implements IStartActivityPresenter {
+
+  @Override protected void onFirstViewAttach() {
+    super.onFirstViewAttach();
+    getViewState().addFragmentMain();
+  }
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
