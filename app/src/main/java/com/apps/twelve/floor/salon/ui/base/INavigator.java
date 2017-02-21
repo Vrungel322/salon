@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by John on 27.01.2017.
@@ -15,28 +16,28 @@ import android.support.v4.app.Fragment;
 public interface INavigator {
 
   //for activity
-  void finishActivity(@NonNull Activity activity);
+  void finishActivity(@NonNull AppCompatActivity activity);
 
-  void startActivityClearStack(@NonNull Activity activity, @NonNull Intent intent);
+  void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent);
 
-  void startActivity(@NonNull Intent intent);
+  void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent);
 
-  void startActivity(@NonNull String action);
+  void startActivity(@NonNull AppCompatActivity activity, @NonNull String action);
 
-  void startActivity(@NonNull String action, @NonNull Uri uri);
+  void startActivity(@NonNull AppCompatActivity activity, @NonNull String action, @NonNull Uri uri);
 
-  void startActivityForResult(@NonNull Activity activity, @NonNull Intent intent, int requestCode);
+  void startActivityForResult(@NonNull AppCompatActivity activity, @NonNull Intent intent, int requestCode);
 
   //for fragment
-  void addFragment(@NonNull Activity activity, @IdRes int containerId, @NonNull Fragment fragment);
+  void addFragment(@NonNull AppCompatActivity activity, @IdRes int containerId, @NonNull Fragment fragment);
 
-  void addFragmentAndAddToBackStack(@NonNull Activity activity, @IdRes int containerId,
+  void addFragmentAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
-  void addFragmentTagAndAddToBackStack(@NonNull Activity activity, @IdRes int containerId,
+  void addFragmentTagAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
       @NonNull Fragment fragment, @NonNull String fragmentTag);
 
-  void replaceFragment(@NonNull Activity activity, @IdRes int containerId,
+  void replaceFragment(@NonNull AppCompatActivity activity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
   void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,

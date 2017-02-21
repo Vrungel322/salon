@@ -1,7 +1,5 @@
 package com.apps.twelve.floor.salon.ui.base;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -19,53 +18,63 @@ import javax.inject.Singleton;
 
 @Singleton public class Navigator implements INavigator {
 
-  private Context mContext;
-
-  @Inject Navigator(Context context) {
-    mContext = context;
+  @Inject Navigator() {
   }
 
   //for activity
-  @Override public void finishActivity(@NonNull Activity activity) {
-    activity.finish();
+  @Override public void finishActivity(@NonNull AppCompatActivity appCompatActivity) {
+    appCompatActivity.finish();
+  }
+
+  @Override public void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
+      @NonNull Intent intent) {
+    appCompatActivity.startActivity(intent);
+    appCompatActivity.finishAffinity();
   }
 
   @Override
-  public void startActivityClearStack(@NonNull Activity activity, @NonNull Intent intent) {
-    activity.startActivity(intent);
-    activity.finishAffinity();
+  public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent) {
+    appCompatActivity.startActivity(intent);
   }
 
-  @Override public void startActivity(@NonNull Intent intent) {
-    mContext.startActivity(intent);
+  @Override
+  public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action) {
+    appCompatActivity.startActivity(new Intent(action));
   }
 
-  @Override public void startActivity(@NonNull String action) {
-    mContext.startActivity(new Intent(action));
+  @Override
+  public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action,
+      @NonNull Uri uri) {
+    appCompatActivity.startActivity(new Intent(action, uri));
   }
 
-  @Override public void startActivity(@NonNull String action, @NonNull Uri uri) {
-    mContext.startActivity(new Intent(action, uri));
-  }
-
-  @Override public void startActivityForResult(@NonNull Activity activity, @NonNull Intent intent,
-      int requestCode) {
-    activity.startActivityForResult(intent, requestCode);
+  @Override public void startActivityForResult(@NonNull AppCompatActivity appCompatActivity,
+      @NonNull Intent intent, int requestCode) {
+    appCompatActivity.startActivityForResult(intent, requestCode);
   }
 
   //for fragment
-  @Override public void addFragment(@NonNull Activity activity, @IdRes int containerId,
-      @NonNull Fragment fragment) {
-    ((FragmentActivity) activity).getSupportFragmentManager()
+  @Override public void addFragment(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment) {
+    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
         .beginTransaction()
         .add(containerId, fragment)
         .commit();
   }
 
+  @Override public void addFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment) {
+    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
+        .beginTransaction()
+        .addToBackStack(null)
+        .add(containerId, fragment)
+        .commit();
+  }
+
   @Override
-  public void addFragmentAndAddToBackStack(@NonNull Activity activity, @IdRes int containerId,
-      @NonNull Fragment fragment) {
-    ((FragmentActivity) activity).getSupportFragmentManager()
+  public void addFragmentTagAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
+    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
         .beginTransaction()
         .addToBackStack(null)
         .add(containerId, fragment)
@@ -73,18 +82,10 @@ import javax.inject.Singleton;
   }
 
   @Override
-  public void addFragmentTagAndAddToBackStack(@NonNull Activity activity, @IdRes int containerId,
-      @NonNull Fragment fragment, @NonNull String fragmentTag) {
-    ((FragmentActivity) activity).getSupportFragmentManager()
-        .beginTransaction()
-        .addToBackStack(null)
-        .add(containerId, fragment)
-        .commit();
-  }
-
-  @Override public void replaceFragment(@NonNull Activity activity, @IdRes int containerId,
+  public void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment) {
-    FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
+    FragmentManager fragmentManager =
+        ((FragmentActivity) appCompatActivity).getSupportFragmentManager();
     fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 
