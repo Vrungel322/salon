@@ -53,8 +53,6 @@ public class StartActivity extends BaseActivity
 
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
-
-    mNavigator.addFragment(StartActivity.this, R.id.container_main, new FragmentMain());
   }
 
   @Override public void onBackPressed() {
@@ -94,5 +92,9 @@ public class StartActivity extends BaseActivity
     }
     mDrawerLayout.closeDrawer(GravityCompat.START);
     return true;
+  }
+
+  @Override public void addFragmentMain() {
+    mNavigator.addFragment(StartActivity.this, R.id.container_main, new FragmentMain());
   }
 }
