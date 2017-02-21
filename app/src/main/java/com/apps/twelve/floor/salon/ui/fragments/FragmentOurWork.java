@@ -21,6 +21,13 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
+  public static FragmentOurWork newInstance() {
+    Bundle args = new Bundle();
+    FragmentOurWork fragment = new FragmentOurWork();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   public FragmentOurWork() {
     super(R.layout.fragment_our_work);
   }

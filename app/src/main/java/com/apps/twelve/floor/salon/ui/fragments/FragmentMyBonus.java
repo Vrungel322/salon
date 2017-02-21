@@ -20,6 +20,13 @@ public class FragmentMyBonus extends BaseFragment implements IFragmentMyBonusVie
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
+  public static FragmentMyBonus newInstance() {
+    Bundle args = new Bundle();
+    FragmentMyBonus fragment = new FragmentMyBonus();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   public FragmentMyBonus() {
     super(R.layout.fragment_my_bonus);
   }

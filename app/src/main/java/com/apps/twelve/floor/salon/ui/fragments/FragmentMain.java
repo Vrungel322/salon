@@ -20,6 +20,13 @@ public class FragmentMain extends BaseFragment implements IFragmentMainView {
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
+  public static FragmentMain newInstance() {
+    Bundle args = new Bundle();
+    FragmentMain fragment = new FragmentMain();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   public FragmentMain() {
     super(R.layout.fragment_main);
   }

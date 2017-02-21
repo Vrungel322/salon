@@ -20,6 +20,13 @@ public class FragmentContacts extends BaseFragment implements IFragmentContactsV
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
+  public static FragmentContacts newInstance() {
+    Bundle args = new Bundle();
+    FragmentContacts fragment = new FragmentContacts();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   public FragmentContacts() {
     super(R.layout.fragment_contacts);
   }

@@ -86,25 +86,31 @@ public class StartActivity extends BaseActivity
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.nav_main:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMain());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentMain.newInstance());
         break;
       case R.id.nav_booking:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentBooking());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentBooking.newInstance());
         break;
       case R.id.nav_my_book:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMyBook());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentMyBook.newInstance());
         break;
       case R.id.nav_my_bonus:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMyBonus());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentMyBonus.newInstance());
         break;
       case R.id.nav_share:
         showToastMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentOurWork());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentOurWork.newInstance());
         break;
       case R.id.nav_contacts:
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentContacts());
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
+            FragmentContacts.newInstance());
         break;
       case R.id.nav_settings:
         showToastMessage("Settings");
