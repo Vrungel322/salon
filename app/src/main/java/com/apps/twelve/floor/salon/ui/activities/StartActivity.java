@@ -82,10 +82,10 @@ public class StartActivity extends BaseActivity
 
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.nav_camera:
+      case R.id.nav_main:
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMain());
         break;
-      case R.id.nav_gallery:
+      case R.id.nav_booking:
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentBooking());
         break;
       case R.id.nav_settings:

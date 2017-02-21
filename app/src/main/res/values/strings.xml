@@ -13,5 +13,9 @@
   <string name="menu_main">Главная</string>
   <string name="menu_booking">Записаться</string>
   <string name="menu_my_booking">Мои записи</string>
+  <string name="menu_my_bonus">Мои бонусы</string>
+  <string name="menu_share">Поделиться с друзьями</string>
+  <string name="menu_our_work">Наши работы</string>
+  <string name="menu_contacts">Контакты</string>
   <string name="menu_settings">Настройки приложения</string>
 </resources>
