@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
@@ -56,7 +55,7 @@ import javax.inject.Singleton;
   //for fragment
   @Override public void addFragment(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment) {
-    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
+    appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
         .add(containerId, fragment)
         .commit();
@@ -64,7 +63,7 @@ import javax.inject.Singleton;
 
   @Override public void addFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment) {
-    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
+    appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
         .addToBackStack(null)
         .add(containerId, fragment)
@@ -74,7 +73,7 @@ import javax.inject.Singleton;
   @Override
   public void addFragmentTagAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
-    ((FragmentActivity) appCompatActivity).getSupportFragmentManager()
+    appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
         .addToBackStack(null)
         .add(containerId, fragment)
@@ -84,8 +83,7 @@ import javax.inject.Singleton;
   @Override
   public void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment) {
-    FragmentManager fragmentManager =
-        ((FragmentActivity) appCompatActivity).getSupportFragmentManager();
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 

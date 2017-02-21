@@ -21,8 +21,8 @@ public class FragmentMyBook extends BaseFragment implements IFragmentMyBookView 
   @BindView(R.id.tvTest) TextView mTvTest;
 
   public static FragmentMyBook newInstance() {
-     Bundle args = new Bundle();
-     FragmentMyBook fragment = new FragmentMyBook();
+    Bundle args = new Bundle();
+    FragmentMyBook fragment = new FragmentMyBook();
     fragment.setArguments(args);
     return fragment;
   }

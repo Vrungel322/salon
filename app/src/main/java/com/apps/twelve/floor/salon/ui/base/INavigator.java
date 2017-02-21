@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.ui.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +17,8 @@ public interface INavigator {
   //for activity
   void finishActivity(@NonNull AppCompatActivity activity);
 
-  void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent);
+  void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
+      @NonNull Intent intent);
 
   void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent);
 
@@ -26,10 +26,12 @@ public interface INavigator {
 
   void startActivity(@NonNull AppCompatActivity activity, @NonNull String action, @NonNull Uri uri);
 
-  void startActivityForResult(@NonNull AppCompatActivity activity, @NonNull Intent intent, int requestCode);
+  void startActivityForResult(@NonNull AppCompatActivity activity, @NonNull Intent intent,
+      int requestCode);
 
   //for fragment
-  void addFragment(@NonNull AppCompatActivity activity, @IdRes int containerId, @NonNull Fragment fragment);
+  void addFragment(@NonNull AppCompatActivity activity, @IdRes int containerId,
+      @NonNull Fragment fragment);
 
   void addFragmentAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
       @NonNull Fragment fragment);

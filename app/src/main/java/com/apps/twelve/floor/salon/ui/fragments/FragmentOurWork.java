@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.FragmentMyBookPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentOurWorkPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IFragmentOurWorkView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

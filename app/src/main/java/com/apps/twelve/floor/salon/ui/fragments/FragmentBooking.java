@@ -21,8 +21,8 @@ public class FragmentBooking extends BaseFragment implements IFragmentBookingVie
   @BindView(R.id.tvTest) TextView mTvTest;
 
   public static FragmentBooking newInstance() {
-     Bundle args = new Bundle();
-     FragmentBooking fragment = new FragmentBooking();
+    Bundle args = new Bundle();
+    FragmentBooking fragment = new FragmentBooking();
     fragment.setArguments(args);
     return fragment;
   }
