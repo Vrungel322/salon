@@ -5,6 +5,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.FragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMainPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMyBonusPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMyBookPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.FragmentOurWorkPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
@@ -29,6 +30,8 @@ import javax.inject.Singleton;
   void inject(FragmentMyBookPresenter presenter);
 
   void inject(FragmentMyBonusPresenter presenter);
+
+  void inject(FragmentOurWorkPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

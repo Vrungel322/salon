@@ -20,6 +20,7 @@ import com.apps.twelve.floor.salon.ui.fragments.FragmentBooking;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBonus;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBook;
+import com.apps.twelve.floor.salon.ui.fragments.FragmentOurWork;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -95,10 +96,10 @@ public class StartActivity extends BaseActivity
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMyBonus());
         break;
       case R.id.nav_share:
-        // TODO: 21.02.2017 share fragment
+        showToastMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
-        // TODO: 21.02.2017 nashi raboti fragment
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentOurWork());
         break;
       case R.id.nav_contacts:
         // TODO: 21.02.2017 contacts fragment
