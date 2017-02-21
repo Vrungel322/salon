@@ -4,4 +4,6 @@
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#FF4081</color>
   <color name="colorSelectedItemInDrawer">#fad0de</color>
+  <color name="colorItemTextInDrawer">#404141</color>
+  <color name="colorItemSeparatorInDrawer">#404141</color>
 </resources>
