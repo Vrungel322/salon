@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -106,8 +107,9 @@ public class StartActivity extends BaseActivity
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentContacts());
         break;
       case R.id.nav_settings:
-        // TODO: 21.02.2017 start new activity with settings
         showToastMessage("Settings");
+        mNavigator.startActivity(StartActivity.this,
+            new Intent(StartActivity.this, SettingsActivity.class));
         break;
     }
     mDrawerLayout.closeDrawer(GravityCompat.START);

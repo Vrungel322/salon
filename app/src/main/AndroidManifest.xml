@@ -22,11 +22,14 @@
     <activity
         android:name=".ui.activities.StartActivity"
         android:label="@string/title_activity_start"
-        android:parentActivityName=".ui.activities.MainActivity"
         android:theme="@style/AppTheme.NoActionBar">
+    </activity>
+    <activity
+        android:name=".ui.activities.SettingsActivity"
+        android:parentActivityName=".ui.activities.StartActivity">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.apps.twelve.floor.salon.ui.activities.MainActivity"/>
+          android:value="com.apps.twelve.floor.salon.ui.activities.StartActivity"/>
     </activity>
   </application>
 
