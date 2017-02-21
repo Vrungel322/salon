@@ -17,6 +17,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentBooking;
+import com.apps.twelve.floor.salon.ui.fragments.FragmentContacts;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBonus;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBook;
@@ -102,7 +103,7 @@ public class StartActivity extends BaseActivity
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentOurWork());
         break;
       case R.id.nav_contacts:
-        // TODO: 21.02.2017 contacts fragment
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentContacts());
         break;
       case R.id.nav_settings:
         // TODO: 21.02.2017 start new activity with settings
