@@ -8,6 +8,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  * Created by Vrungel on 21.02.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IFragmetMyBookView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IFragmentMyBonusView
     extends MvpView {
 }

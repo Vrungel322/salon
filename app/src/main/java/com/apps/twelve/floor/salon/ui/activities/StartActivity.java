@@ -18,6 +18,7 @@ import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentBooking;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
+import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBonus;
 import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBook;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -88,12 +89,10 @@ public class StartActivity extends BaseActivity
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentBooking());
         break;
       case R.id.nav_my_book:
-        // TODO: 21.02.2017 moi zapisi fragment
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMyBook());
-
         break;
       case R.id.nav_my_bonus:
-        // TODO: 21.02.2017 moi bonusi fragment
+        mNavigator.replaceFragment(StartActivity.this, R.id.container_main, new FragmentMyBonus());
         break;
       case R.id.nav_share:
         // TODO: 21.02.2017 share fragment
