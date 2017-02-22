@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.mvp.presenters;
 
+import android.os.Handler;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.presenters.interfaces.IMainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainActivityView;
@@ -11,7 +12,17 @@ import com.arellomobile.mvp.InjectViewState;
 @InjectViewState public class MainActivityPresenter extends BasePresenter<IMainActivityView>
     implements IMainActivityPresenter {
 
+  @Override protected void onFirstViewAttach() {
+    super.onFirstViewAttach();
+    delaySplash();
+  }
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
+  }
+
+  @Override public void delaySplash() {
+    final Handler handler = new Handler();
+    handler.postDelayed(() -> getViewState().afterSplash(), 1000);
   }
 }

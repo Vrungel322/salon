@@ -19,8 +19,9 @@ public class MainActivity extends BaseActivity implements IMainActivityView {
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_main);
     super.onCreate(savedInstanceState);
+  }
 
-    // TODO: 20.02.2017 check if user logged in
+  @Override public void afterSplash() {
     mNavigator.startActivity(MainActivity.this, new Intent(MainActivity.this, StartActivity.class));
     finish();
   }
