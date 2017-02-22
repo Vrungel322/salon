@@ -62,6 +62,9 @@ dependencies {
   //Picasso
   compile 'com.squareup.picasso:picasso:2.5.2'
 
+  //Alerter
+  compile 'com.tapadoo.android:alerter:1.0.3'
+
   //RxJava, RxAndroid
   compile 'io.reactivex:rxjava:1.2.6'
   compile 'io.reactivex:rxandroid:1.2.1'

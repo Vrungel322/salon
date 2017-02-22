@@ -3,10 +3,14 @@ package com.apps.twelve.floor.salon.ui.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.view.View;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.tapadoo.alerter.Alert;
+import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 
 /**
@@ -22,6 +26,18 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     super.onCreate(savedInstanceState);
     ButterKnife.bind(this);
     App.getAppComponent().inject(this);
+  }
+
+  protected void showAlertMessage(String message) {
+    //Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+    Alerter.create(this)
+        .setTitle("Пройти регистрацию")
+        .setText(message)
+        .setBackgroundColor(R.color.colorAccent)
+        .setOnClickListener(view -> {
+          // TODO: 22.02.2017 make registration activity
+        })
+        .show();
   }
 
   protected void showToastMessage(String message) {

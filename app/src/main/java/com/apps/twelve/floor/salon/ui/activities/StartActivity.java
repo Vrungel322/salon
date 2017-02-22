@@ -102,7 +102,7 @@ public class StartActivity extends BaseActivity
             FragmentMyBonus.newInstance());
         break;
       case R.id.nav_share:
-        showToastMessage("Talk about how to share ???");
+        showAlertMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
@@ -113,7 +113,7 @@ public class StartActivity extends BaseActivity
             FragmentContacts.newInstance());
         break;
       case R.id.nav_settings:
-        showToastMessage("Settings");
+        showAlertMessage("Settings");
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, SettingsActivity.class));
         break;
