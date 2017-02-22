@@ -65,6 +65,10 @@ dependencies {
   //Alerter
   compile 'com.tapadoo.android:alerter:1.0.3'
 
+  //shortbread
+  compile 'com.github.matthiasrobbers:shortbread:1.0.0'
+  apt 'com.github.matthiasrobbers:shortbread-compiler:1.0.0'
+
   //RxJava, RxAndroid
   compile 'io.reactivex:rxjava:1.2.6'
   compile 'io.reactivex:rxandroid:1.2.1'

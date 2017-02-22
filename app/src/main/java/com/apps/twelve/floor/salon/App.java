@@ -4,6 +4,8 @@ import android.app.Application;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
+import shortbread.Shortbread;
+import shortbread.Shortcut;
 import timber.log.Timber;
 
 /**
@@ -20,6 +22,8 @@ public class App extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
+
+    Shortbread.create(this);
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
