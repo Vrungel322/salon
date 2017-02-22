@@ -5,4 +5,5 @@ package com.apps.twelve.floor.salon.mvp.presenters.interfaces;
  */
 
 public interface IFragmentOurWorkPresenter {
+  void fetchListOfWorks();
 }
