@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.PreviewNewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentDetailNewsPresenter;
@@ -29,8 +31,8 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
     super(R.layout.fragment_detail_news);
   }
 
-  @Override public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
     this.mPreviewNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL);
   }
 }
