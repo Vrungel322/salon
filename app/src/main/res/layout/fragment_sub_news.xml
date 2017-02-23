@@ -4,12 +4,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="2dp"
+    android:clickable="true"
     android:orientation="vertical"
     >
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
+      android:background="?attr/selectableItemBackgroundBorderless"
       >
 
     <RelativeLayout
@@ -19,14 +21,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="18dp"
         >
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="start"
-          android:text="News"
-          android:textColor="@android:color/darker_gray"
-          android:textSize="30sp"
-          />
 
       <TextView
           android:id="@+id/tvAllNews"
@@ -36,19 +30,29 @@
           android:layout_alignParentRight="true"
           android:layout_centerVertical="true"
           android:layout_gravity="end"
-          android:text="All news"
+          android:text="@string/all_news"
           android:textColor="@color/colorAccent"
-          android:textSize="18sp"
+          android:textSize="16sp"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="start"
+          android:text="@string/news"
+          android:textColor="@android:color/darker_gray"
+          android:textSize="30sp"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:id="@+id/textView"
           />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivNewsPreview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="250dp"
+        android:scaleType="fitCenter"
         tools:background="@drawable/hair33"
         />
 
@@ -58,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="@string/lorem_ipsum"

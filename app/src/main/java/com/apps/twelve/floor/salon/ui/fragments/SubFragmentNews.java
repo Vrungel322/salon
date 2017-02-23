@@ -6,10 +6,12 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.PreviewNewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.SubFragmentNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubFragmentNewsView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Vrungel on 23.02.2017.
@@ -32,8 +34,15 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
     return fragment;
   }
 
-  @OnClick(R.id.tvAllNews)
-  public void tvAllNewsClicked(){
+  @Override public void updateNewsPreview(PreviewNewsEntity previewNewsEntity) {
+    Picasso.with(getContext())
+        .load(previewNewsEntity.getImageNewsPreviewURL())
+        .into(mImageViewNewsPreview);
+    mTextViewNewsShortDescription.setText(previewNewsEntity.getNewsShortDescription());
+    mTextViewNewsData.setText(previewNewsEntity.getNewsData());
+  }
+
+  @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
     // TODO: 23.02.2017 create FragmentNews
     showToastMessage("tvAllNews clicked");
   }

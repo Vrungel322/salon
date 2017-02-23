@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.mvp.data;
 
 import android.net.Uri;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.PreviewNewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,5 +30,10 @@ public class DataManager {
       subscriber.onNext(owe);
       subscriber.onCompleted();
     });
+  }
+
+  public Observable<PreviewNewsEntity> fetchNewsPreview() {
+    return Observable.just(new PreviewNewsEntity(Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
+        "Short description Short description Short description Short description", "23.02.2017"));
   }
 }
