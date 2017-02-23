@@ -57,7 +57,8 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
           showToastMessage("" + position);
           FragmentWorkDetails fragment = FragmentWorkDetails.newInstance();
           fragment.setEntity(mOurWorkAdapter.getEntity(position));
-          mNavigator.replaceFragment((StartActivity) getActivity(), R.id.container_main, fragment);
+          mNavigator.addFragmentAndAddToBackStack((StartActivity) getActivity(),
+              R.id.container_main, fragment);
         });
     mFragmentOurWorkPresenter.fetchListOfWorks();
   }
