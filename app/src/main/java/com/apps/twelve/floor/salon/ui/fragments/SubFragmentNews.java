@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -23,6 +24,8 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
   @BindView(R.id.tvNewsShortDescription) TextView mTextViewNewsShortDescription;
   @BindView(R.id.tvNewsData) TextView mTextViewNewsData;
 
+  private PreviewNewsEntity mPreviewNewsEntity;
+
   public SubFragmentNews() {
     super(R.layout.fragment_sub_news);
   }
@@ -35,6 +38,7 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
   }
 
   @Override public void updateNewsPreview(PreviewNewsEntity previewNewsEntity) {
+    mPreviewNewsEntity = previewNewsEntity;
     Picasso.with(getContext())
         .load(previewNewsEntity.getImageNewsPreviewURL())
         .into(mImageViewNewsPreview);
@@ -45,5 +49,10 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
     // TODO: 23.02.2017 create FragmentNews
     showToastMessage("tvAllNews clicked");
+  }
+
+  @OnClick({ R.id.ivNewsPreview, R.id.tvNewsShortDescription }) public void onShowDetailNews() {
+    mNavigator.replaceFragmentAndAddToBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+        FragmentNewsDetail.newInstance(mPreviewNewsEntity));
   }
 }

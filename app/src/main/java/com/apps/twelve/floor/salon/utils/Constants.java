@@ -10,4 +10,7 @@ public final class Constants {
     // TODO: do not forget to paste base url
     public static final String BASE_URL = "http://" + DOMEN + "/";
   }
+  public class FragmentsArgumentKeys{
+    public static final String NEWS_DETAIL = "NEWS_DETAIL";
+  }
 }

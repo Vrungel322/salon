@@ -87,6 +87,13 @@ import javax.inject.Singleton;
     fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 
+  @Override
+  public void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    fragmentManager.beginTransaction().replace(containerId, fragment).addToBackStack(null).commit();
+  }
+
   @Override public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
       @NonNull Fragment child) {
     parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();

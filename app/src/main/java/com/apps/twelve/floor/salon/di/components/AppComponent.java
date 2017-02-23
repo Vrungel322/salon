@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.di.components;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentContactsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.FragmentDetailNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMainPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMyBonusPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentMyBookPresenter;
@@ -38,6 +39,8 @@ import javax.inject.Singleton;
   void inject(FragmentContactsPresenter presenter);
 
   void inject(SubFragmentNewsPresenter presenter);
+
+  void inject(FragmentDetailNewsPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
