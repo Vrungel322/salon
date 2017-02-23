@@ -55,10 +55,9 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
         .setOnItemClickListener((recyclerView, position, v) -> {
           showToastMessage("" + position);
-          FragmentWorkDetails fragment = FragmentWorkDetails.newInstance();
-          fragment.setEntity(mOurWorkAdapter.getEntity(position));
           mNavigator.addFragmentAndAddToBackStack((StartActivity) getActivity(),
-              R.id.container_main, fragment);
+              R.id.container_main,
+              FragmentWorkDetails.newInstance(mOurWorkAdapter.getEntity(position)));
         });
     mFragmentOurWorkPresenter.fetchListOfWorks();
   }
