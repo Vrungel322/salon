@@ -8,7 +8,6 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
-import rx.functions.Action1;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -16,16 +15,22 @@ import rx.functions.Action1;
 
 @InjectViewState public class FragmentOurWorkPresenter extends BasePresenter<IFragmentOurWorkView>
     implements IFragmentOurWorkPresenter {
+
   @Inject DataManager mDataManager;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
+  @Override protected void onFirstViewAttach() {
+    super.onFirstViewAttach();
+    fetchListOfWorks();
+  }
+
   @Override public void fetchListOfWorks() {
     Subscription subscription = mDataManager.fetchListOfWorks()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> getViewState().updateListOfWorks(ourWorkEntities),
+        .subscribe(ourWorkEntities -> getViewState().addListOfWorks(ourWorkEntities),
             Throwable::printStackTrace);
     addToUnsubscription(subscription);
   }

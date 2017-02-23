@@ -3,13 +3,11 @@ package com.apps.twelve.floor.salon.ui.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
-import android.view.View;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.tapadoo.alerter.Alert;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 

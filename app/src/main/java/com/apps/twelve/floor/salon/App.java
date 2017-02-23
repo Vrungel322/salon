@@ -5,7 +5,6 @@ import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import shortbread.Shortbread;
-import shortbread.Shortcut;
 import timber.log.Timber;
 
 /**
