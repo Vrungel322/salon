@@ -11,6 +11,7 @@ public final class Constants {
     public static final String BASE_URL = "http://" + DOMEN + "/";
   }
   public class FragmentsArgumentKeys{
-    public static final String NEWS_DETAIL = "NEWS_DETAIL";
+    public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";
+    public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
   }
 }

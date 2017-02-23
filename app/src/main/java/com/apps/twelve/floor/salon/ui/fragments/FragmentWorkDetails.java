@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentWorkDetailsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IFragmentWorkDetailsView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -26,7 +27,7 @@ public class FragmentWorkDetails extends BaseFragment implements IFragmentWorkDe
 
   public static FragmentWorkDetails newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
-    args.putParcelable("entity", entity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
     FragmentWorkDetails fragment = new FragmentWorkDetails();
     fragment.setArguments(args);
     return fragment;
@@ -38,7 +39,7 @@ public class FragmentWorkDetails extends BaseFragment implements IFragmentWorkDe
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mEntity = getArguments().getParcelable("entity");
+    mEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
     mTvTest.setText(mEntity.getShortDescription());
   }
 

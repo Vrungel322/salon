@@ -21,7 +21,7 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
 
   public static FragmentNewsDetail newInstance(PreviewNewsEntity previewNewsEntity) {
     Bundle args = new Bundle();
-    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL, previewNewsEntity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, previewNewsEntity);
     FragmentNewsDetail fragment = new FragmentNewsDetail();
     fragment.setArguments(args);
     return fragment;
@@ -33,6 +33,6 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mPreviewNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL);
+    this.mPreviewNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
   }
 }
