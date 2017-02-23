@@ -87,9 +87,9 @@ import javax.inject.Singleton;
     fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 
-  @Override public void replaceChildFragment(@NonNull Fragment parent, @IdRes int containerId,
+  @Override public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
       @NonNull Fragment child) {
-    parent.getChildFragmentManager().beginTransaction().replace(containerId, child).commit();
+    parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
   }
 
   @Override public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,
@@ -109,7 +109,7 @@ import javax.inject.Singleton;
 
   }
 
-  @Override public void replaceChildFragment(@IdRes int containerId, @NonNull Fragment fragment) {
+  @Override public void addChildFragment(@IdRes int containerId, @NonNull Fragment fragment) {
     fragment.getChildFragmentManager().beginTransaction().replace(containerId, fragment).commit();
   }
 }

@@ -29,6 +29,6 @@ public class FragmentMain extends BaseFragment implements IFragmentMainView {
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mNavigator.replaceChildFragment(this, R.id.subFragmentContainerNews, SubFragmentNews.newInstance());
+    mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubFragmentNews.newInstance());
   }
 }
