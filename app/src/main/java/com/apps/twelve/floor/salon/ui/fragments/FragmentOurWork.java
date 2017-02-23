@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentOurWorkPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IFragmentOurWorkView;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.adapters.OurWorkAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
@@ -52,7 +53,12 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
-        .setOnItemClickListener((recyclerView, position, v) -> showToastMessage("" + position));
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          showToastMessage("" + position);
+          FragmentWorkDetails fragment = FragmentWorkDetails.newInstance();
+          fragment.setEntity(mOurWorkAdapter.getEntity(position));
+          mNavigator.replaceFragment((StartActivity) getActivity(), R.id.container_main, fragment);
+        });
     mFragmentOurWorkPresenter.fetchListOfWorks();
   }
 
