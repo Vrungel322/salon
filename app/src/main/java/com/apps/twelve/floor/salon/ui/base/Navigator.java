@@ -87,6 +87,11 @@ import javax.inject.Singleton;
     fragmentManager.beginTransaction().replace(containerId, fragment).commit();
   }
 
+  @Override public void replaceChildFragment(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child) {
+    parent.getChildFragmentManager().beginTransaction().replace(containerId, child).commit();
+  }
+
   @Override public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,
       @NonNull String fragmentTag, Bundle args) {
 
