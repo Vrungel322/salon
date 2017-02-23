@@ -46,6 +46,10 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
     return mOurWorkEntities.size();
   }
 
+  public OurWorkEntity getEntity(int position) {
+    return mOurWorkEntities.get(position);
+  }
+
   static class OurWorkViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivWorkPreview) ImageView mImageViewWorkPreview;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
