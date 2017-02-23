@@ -119,4 +119,10 @@ import javax.inject.Singleton;
   @Override public void addChildFragment(@IdRes int containerId, @NonNull Fragment fragment) {
     fragment.getChildFragmentManager().beginTransaction().replace(containerId, fragment).commit();
   }
+
+  @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
+    if (activity.getSupportFragmentManager().getBackStackEntryCount() != 0){
+      activity.getSupportFragmentManager().popBackStack();
+    }
+  }
 }

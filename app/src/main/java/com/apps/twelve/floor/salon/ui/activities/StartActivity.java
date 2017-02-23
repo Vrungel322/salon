@@ -86,18 +86,22 @@ public class StartActivity extends BaseActivity
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.nav_main:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentMain.newInstance());
         break;
       case R.id.nav_booking:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentBooking.newInstance());
         break;
       case R.id.nav_my_book:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentMyBook.newInstance());
         break;
       case R.id.nav_my_bonus:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentMyBonus.newInstance());
         break;
@@ -105,15 +109,17 @@ public class StartActivity extends BaseActivity
         showAlertMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentOurWork.newInstance());
         break;
       case R.id.nav_contacts:
+        mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
             FragmentContacts.newInstance());
         break;
       case R.id.nav_settings:
-        showAlertMessage("Settings");
+        mNavigator.clearBackStack(this);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, SettingsActivity.class));
         break;

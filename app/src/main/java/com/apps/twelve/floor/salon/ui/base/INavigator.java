@@ -58,4 +58,6 @@ public interface INavigator {
       @NonNull String fragmentTag, Bundle args, String backstackTag);
 
   void addChildFragment(@IdRes int containerId, @NonNull Fragment fragment);
+
+  void clearBackStack(@NonNull AppCompatActivity activity);
 }
