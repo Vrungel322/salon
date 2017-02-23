@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
@@ -24,7 +22,9 @@ import java.util.List;
  */
 
 public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkView {
+
   @InjectPresenter FragmentOurWorkPresenter mFragmentOurWorkPresenter;
+
   @BindView(R.id.rvOurWorks) RecyclerView mRecyclerViewOurWorks;
 
   private OurWorkAdapter mOurWorkAdapter;
@@ -40,29 +40,23 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
     super(R.layout.fragment_our_work);
   }
 
-  @Nullable @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    ((MvpAppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_our_work);
-    View view = super.onCreateView(inflater, container, savedInstanceState);
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-    mOurWorkAdapter = new OurWorkAdapter(getContext());
+    if (((MvpAppCompatActivity) getActivity()).getSupportActionBar() != null) {
+      ((MvpAppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_our_work);
+    }
+
+    mOurWorkAdapter = new OurWorkAdapter();
     mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-    ItemClickSupport.addTo(mRecyclerViewOurWorks).setOnItemClickListener((recyclerView, position, v) -> {
-      showToastMessage("" + position);
-    });
-
-    return view;
-  }
-
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
+    ItemClickSupport.addTo(mRecyclerViewOurWorks)
+        .setOnItemClickListener((recyclerView, position, v) -> showToastMessage("" + position));
     mFragmentOurWorkPresenter.fetchListOfWorks();
   }
 
-  @Override public void updateListOfWorks(List<OurWorkEntity> ourWorkEntities) {
-    mOurWorkAdapter.updateList(ourWorkEntities);
+  @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {
+    mOurWorkAdapter.addListWorkEntities(ourWorkEntities);
   }
 }

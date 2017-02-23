@@ -21,15 +21,13 @@ public class DataManager {
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return Observable.create(subscriber -> {
-      ArrayList<OurWorkEntity> owe = new ArrayList<>();
-      for (int i = 0; i < 10; i++) {
-        owe.add(new OurWorkEntity(Uri.parse("http://www.drodd.com/images15/hair16.jpg"),
-            "http://www.drodd.com/images15/hair16.jpg " + i, i));
-      }
-      subscriber.onNext(owe);
-      subscriber.onCompleted();
-    });
+    ArrayList<OurWorkEntity> owe = new ArrayList<>();
+    for (int i = 0; i < 10; i++) {
+      owe.add(new OurWorkEntity(Uri.parse(
+          "http://beauty-proceduri.ru/assets/images/gallery/srednie-svadebnie-pricheski/svadebnaya-na-srednie-volosi-53.jpg"),
+          "http://www.drodd.com/images15/hair16.jpg " + i, i));
+    }
+    return Observable.just(owe);
   }
 
   public Observable<PreviewNewsEntity> fetchNewsPreview() {

@@ -12,5 +12,5 @@ import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IFragmentOurWorkView
     extends MvpView {
-  void updateListOfWorks(List<OurWorkEntity> ourWorkEntities);
+  void addListOfWorks(List<OurWorkEntity> ourWorkEntities);
 }

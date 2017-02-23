@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.ui.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,27 +20,19 @@ import java.util.List;
 
 public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkViewHolder> {
   private ArrayList<OurWorkEntity> mOurWorkEntities = new ArrayList<>();
-  private LayoutInflater inflater;
-  private Context mContext;
 
-  public OurWorkAdapter(Context context) {
-    this.inflater = LayoutInflater.from(context);
-    this.mContext = context;
-  }
-
-  public void updateList(List<OurWorkEntity> ourWorkEntities) {
-    mOurWorkEntities.clear();
+  public void addListWorkEntities(List<OurWorkEntity> ourWorkEntities) {
     mOurWorkEntities.addAll(ourWorkEntities);
     notifyDataSetChanged();
   }
 
   @Override public OurWorkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View v = inflater.inflate(R.layout.our_work_item, parent, false);
-    return new OurWorkViewHolder(v);
+    return new OurWorkViewHolder(
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_our_work, parent, false));
   }
 
   @Override public void onBindViewHolder(OurWorkViewHolder holder, int position) {
-    Picasso.with(mContext)
+    Picasso.with(holder.mImageViewWorkPreview.getContext())
         .load(mOurWorkEntities.get(position).getImageURL())
         .into(holder.mImageViewWorkPreview);
 
