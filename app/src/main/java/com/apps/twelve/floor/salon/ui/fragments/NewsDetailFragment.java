@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -17,7 +17,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class NewsDetailFragment extends BaseFragment implements INewsDetailFragmentView {
 
-  @InjectPresenter DetailNewsFragmentPresenter mDetailNewsFragmentPresenter;
+  @InjectPresenter DetailNewsPresenter mDetailNewsFragmentPresenter;
   private NewsEntity mNewsEntity;
 
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {

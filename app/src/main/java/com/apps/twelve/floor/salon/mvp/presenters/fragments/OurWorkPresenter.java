@@ -2,7 +2,7 @@ package com.apps.twelve.floor.salon.mvp.presenters.fragments;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
-import com.apps.twelve.floor.salon.mvp.presenters.base.FragmentBasePresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.interfaces.IOurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -14,7 +14,7 @@ import rx.Subscription;
  * Created by Vrungel on 21.02.2017.
  */
 
-@InjectViewState public class OurWorkFragmentPresenter extends FragmentBasePresenter<IOurWorkFragmentView>
+@InjectViewState public class OurWorkPresenter extends BasePresenter<IOurWorkFragmentView>
     implements IOurWorkFragmentPresenter {
 
   @Inject DataManager mDataManager;

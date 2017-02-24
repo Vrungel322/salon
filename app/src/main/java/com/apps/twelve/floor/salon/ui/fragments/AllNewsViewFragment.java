@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IAllNewsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.AllNewsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmentView {
-  @InjectPresenter AllNewsFragmentPresenter mAllNewsFragmentPresenter;
+  @InjectPresenter AllNewsPresenter mAllNewsFragmentPresenter;
 
   @BindView(R.id.rvAllNews) RecyclerView mRecyclerViewAllNews;
 

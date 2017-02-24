@@ -40,6 +40,8 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
       @Nullable Bundle savedInstanceState) {
     final View fragmentView = inflater.inflate(mLayoutId, container, false);
     ButterKnife.bind(this, fragmentView);
+    AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
+    appBarLayout.setExpanded(true, false);
     return fragmentView;
   }
 

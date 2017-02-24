@@ -66,6 +66,10 @@ public class StartActivity extends BaseActivity
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(GravityCompat.START);
     } else {
+      if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
+        AppBarLayout appBarLayout = (AppBarLayout) this.findViewById(R.id.appBar);
+        appBarLayout.setExpanded(true, false);
+      }
       super.onBackPressed();
     }
   }
@@ -131,10 +135,5 @@ public class StartActivity extends BaseActivity
 
   @Override public void addFragmentMain() {
     mNavigator.addFragment(StartActivity.this, R.id.container_main, new MainFragment());
-  }
-
-  @Override public void showAppBarLayout() {
-    AppBarLayout appBarLayout = (AppBarLayout) this.findViewById(R.id.appBar);
-    appBarLayout.setExpanded(true, false);
   }
 }

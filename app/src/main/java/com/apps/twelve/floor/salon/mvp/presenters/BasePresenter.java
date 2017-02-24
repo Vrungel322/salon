@@ -1,24 +1,26 @@
-package com.apps.twelve.floor.salon.mvp.presenters.base;
+package com.apps.twelve.floor.salon.mvp.presenters;
 
 import android.support.annotation.NonNull;
+import com.apps.twelve.floor.salon.utils.RxBus;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
+import javax.inject.Inject;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by John on 24.02.2017.
+ * Created by Vrungel on 25.01.2017.
  */
+public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
-public abstract class ActivityBasePresenter<V extends MvpView> extends MvpPresenter<V> {
-
+  @Inject RxBus mRxBus;
   private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
-  public ActivityBasePresenter() {
+  public BasePresenter() {
     inject();
   }
 
-   protected void addToUnsubscription(@NonNull Subscription subscription) {
+  protected void addToUnsubscription(@NonNull Subscription subscription) {
     mCompositeSubscription.add(subscription);
   }
 

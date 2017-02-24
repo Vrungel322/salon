@@ -3,16 +3,16 @@ package com.apps.twelve.floor.salon.di.components;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBonusFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBookFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBonusPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBookPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsPresenter;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import dagger.Component;
@@ -28,25 +28,25 @@ import javax.inject.Singleton;
 
   void inject(StartActivityPresenter presenter);
 
-  void inject(MainFragmentPresenter presenter);
+  void inject(MainPresenter presenter);
 
-  void inject(BookingFragmentPresenter presenter);
+  void inject(BookingPresenter presenter);
 
-  void inject(MyBookFragmentPresenter presenter);
+  void inject(MyBookPresenter presenter);
 
-  void inject(MyBonusFragmentPresenter presenter);
+  void inject(MyBonusPresenter presenter);
 
-  void inject(OurWorkFragmentPresenter presenter);
+  void inject(OurWorkPresenter presenter);
 
-  void inject(WorkDetailsFragmentPresenter presenter);
+  void inject(WorkDetailsPresenter presenter);
 
-  void inject(ContactsFragmentPresenter presenter);
+  void inject(ContactsPresenter presenter);
 
-  void inject(SubNewsFragmentPresenter presenter);
+  void inject(SubNewsPresenter presenter);
 
-  void inject(DetailNewsFragmentPresenter presenter);
+  void inject(DetailNewsPresenter presenter);
 
-  void inject(AllNewsFragmentPresenter presenter);
+  void inject(AllNewsPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

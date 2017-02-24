@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -19,7 +19,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFragmentView {
 
-  @InjectPresenter WorkDetailsFragmentPresenter mWorkDetailsFragmentPresenter;
+  @InjectPresenter WorkDetailsPresenter mWorkDetailsFragmentPresenter;
 
   @BindView(R.id.tvTest) TextView mTvTest;
 

@@ -8,7 +8,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubNewsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentView {
-  @InjectPresenter SubNewsFragmentPresenter mSubNewsFragmentPresenter;
+  @InjectPresenter SubNewsPresenter mSubNewsFragmentPresenter;
   @BindView(R.id.ivNewsPreview) ImageView mImageViewNewsPreview;
   @BindView(R.id.tvNewsShortDescription) TextView mTextViewNewsShortDescription;
   @BindView(R.id.tvNewsData) TextView mTextViewNewsData;

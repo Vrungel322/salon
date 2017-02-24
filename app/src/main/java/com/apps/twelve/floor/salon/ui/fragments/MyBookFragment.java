@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBookFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBookPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMyBookFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -16,7 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class MyBookFragment extends BaseFragment implements IMyBookFragmentView {
-  @InjectPresenter MyBookFragmentPresenter mMyBookFragmentPresenter;
+  @InjectPresenter MyBookPresenter mMyBookFragmentPresenter;
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
