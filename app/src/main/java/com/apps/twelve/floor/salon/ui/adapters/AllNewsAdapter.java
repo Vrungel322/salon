@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsViewHolder> {
+
   private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
 
   public void addListNewsEntity(List<NewsEntity> newsEntities) {
@@ -59,7 +60,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   @Override public int getItemViewType(int position) {
-    return mNewsEntities.get(position).getIsLastNews();
+    return position == 0 ? NewsEntity.LAST_NEWS : NewsEntity.DEFAULT_NEWS;
   }
 
   static class AllNewsViewHolder extends RecyclerView.ViewHolder {

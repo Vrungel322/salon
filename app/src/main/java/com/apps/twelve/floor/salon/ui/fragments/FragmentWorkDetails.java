@@ -27,7 +27,7 @@ public class FragmentWorkDetails extends BaseFragment implements IFragmentWorkDe
 
   public static FragmentWorkDetails newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
-    args.putParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
+    args.putSerializable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
     FragmentWorkDetails fragment = new FragmentWorkDetails();
     fragment.setArguments(args);
     return fragment;
@@ -39,7 +39,8 @@ public class FragmentWorkDetails extends BaseFragment implements IFragmentWorkDe
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
+    mEntity = (OurWorkEntity) getArguments().getSerializable(
+        Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
     mTvTest.setText(mEntity.getShortDescription());
   }
 }
