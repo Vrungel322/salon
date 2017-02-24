@@ -18,6 +18,7 @@
   <string name="menu_our_work">Наши работы</string>
   <string name="menu_contacts">Контакты</string>
   <string name="menu_settings">Настройки приложения</string>
+  <string name="list_is_empty">Список пуст</string>
   <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed justo augue. Aenean eros lacus, scelerisque in nisi eget, auctor elementum erat. Suspendisse at mi mauris. In finibus vel urna sed scelerisque. Donec ut tortor rutrum, ullamcorper nunc tristique, placerat arcu. Praesent vitae diam enim. Mauris mi nunc, lacinia quis enim eu, varius auctor lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed egestas bibendum eros vel pulvinar. Sed tempor dui at posuere varius. Ut efficitur mauris vel tincidunt eleifend. Maecenas gravida nec metus et lobortis.</string>
   <string name="news">Новости</string>
   <string name="all_news">ВСЕ НОВОСТИ</string>
