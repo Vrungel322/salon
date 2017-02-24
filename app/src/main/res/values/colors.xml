@@ -7,5 +7,6 @@
   <color name="colorItemTextInDrawer">#404141</color>
   <color name="colorItemSeparatorInDrawer">#404141</color>
   <color name="colorCountPhotoOurWork">#404141</color>
+  <color name="colorListPhotoOurWorkIsEmpty">#404141</color>
   <color name="colorDescriptionOurWork">#000001</color>
 </resources>

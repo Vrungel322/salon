@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
   <android.support.v7.widget.CardView
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       card_view:cardCornerRadius="1dp"
       card_view:cardElevation="3dp"
       card_view:cardUseCompatPadding="true"
-      card_view:layout_constraintLeft_toLeftOf="parent"
-      card_view:layout_constraintRight_toRightOf="parent"
-      card_view:layout_constraintTop_toTopOf="parent"
       >
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -24,51 +21,55 @@
 
       <ImageView
           android:id="@+id/ivWorkPreview"
-          android:layout_width="0dp"
+          android:layout_width="match_parent"
           android:layout_height="150dp"
+          android:layout_alignParentTop="true"
           android:scaleType="centerCrop"
-          card_view:layout_constraintLeft_toLeftOf="parent"
-          card_view:layout_constraintRight_toRightOf="parent"
-          card_view:layout_constraintTop_toTopOf="parent"
           />
+
       <TextView
           android:id="@+id/tvShortDescription"
-          android:layout_width="0dp"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginEnd="8dp"
-          android:layout_marginLeft="8dp"
-          android:layout_marginRight="8dp"
-          android:layout_marginStart="8dp"
+          android:layout_alignLeft="@+id/linearLayout"
+          android:layout_alignStart="@+id/linearLayout"
+          android:layout_below="@+id/ivWorkPreview"
+          android:layout_marginBottom="8dp"
+          android:layout_marginTop="8dp"
           android:ellipsize="end"
           android:maxLines="3"
           android:text="TextView"
           android:textColor="@color/colorDescriptionOurWork"
-          card_view:layout_constraintLeft_toLeftOf="parent"
-          card_view:layout_constraintRight_toRightOf="parent"
-          card_view:layout_constraintTop_toBottomOf="@+id/ivWorkPreview"
           />
-      <ImageView
-          android:id="@+id/imageView4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+      <LinearLayout
+          android:id="@+id/linearLayout"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/tvShortDescription"
           android:layout_marginBottom="8dp"
-          android:layout_marginTop="8dp"
-          card_view:layout_constraintBottom_toBottomOf="parent"
-          card_view:layout_constraintLeft_toLeftOf="@+id/tvShortDescription"
-          card_view:layout_constraintTop_toBottomOf="@+id/tvShortDescription"
-          card_view:srcCompat="@drawable/ic_action_settings"
-          />
-      <TextView
-          android:id="@+id/tvNumOfImgToPreview"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
           android:layout_marginLeft="8dp"
           android:layout_marginStart="8dp"
-          android:text="TextView"
-          android:textColor="@color/colorCountPhotoOurWork"
-          card_view:layout_constraintBottom_toBottomOf="@+id/imageView4"
-          card_view:layout_constraintLeft_toRightOf="@+id/imageView4"
-          />
-    </android.support.constraint.ConstraintLayout>
+          >
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            card_view:srcCompat="@drawable/ic_action_settings"
+            />
+        <TextView
+            android:id="@+id/tvNumOfImgToPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="TextView"
+            android:textColor="@color/colorCountPhotoOurWork"
+            />
+      </LinearLayout>
+    </RelativeLayout>
   </android.support.v7.widget.CardView>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
