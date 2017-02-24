@@ -16,12 +16,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDetailView {
+
   @InjectPresenter FragmentDetailNewsPresenter mFragmentDetailNewsPresenter;
   private NewsEntity mNewsEntity;
 
   public static FragmentNewsDetail newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
-    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
+    args.putSerializable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
     FragmentNewsDetail fragment = new FragmentNewsDetail();
     fragment.setArguments(args);
     return fragment;
@@ -33,7 +34,7 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mNewsEntity =
-        getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
+    this.mNewsEntity = (NewsEntity) getArguments().getSerializable(
+        Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
   }
 }
