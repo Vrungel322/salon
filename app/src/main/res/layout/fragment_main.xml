@@ -16,13 +16,13 @@
       <FrameLayout
           android:id="@+id/subFragmentContainerBooking"
           android:layout_width="match_parent"
-          android:layout_height="300dp"
+          android:layout_height="180dp"
           />
 
       <FrameLayout
           android:id="@+id/subFragmentContainerBonus"
           android:layout_width="match_parent"
-          android:layout_height="300dp"
+          android:layout_height="180dp"
           />
 
       <FrameLayout
