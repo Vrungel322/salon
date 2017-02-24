@@ -2,9 +2,11 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
@@ -26,6 +28,7 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
   @InjectPresenter FragmentOurWorkPresenter mFragmentOurWorkPresenter;
 
   @BindView(R.id.rvOurWorks) RecyclerView mRecyclerViewOurWorks;
+  @BindView(R.id.textViewOurWorkIsEmpty) TextView mTextViewOurWorkIsEmpty;
 
   private OurWorkAdapter mOurWorkAdapter;
 
@@ -43,8 +46,9 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    if (((MvpAppCompatActivity) getActivity()).getSupportActionBar() != null) {
-      ((MvpAppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_our_work);
+    ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.menu_our_work);
     }
 
     mOurWorkAdapter = new OurWorkAdapter();
@@ -57,6 +61,11 @@ public class FragmentOurWork extends BaseFragment implements IFragmentOurWorkVie
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {
-    mOurWorkAdapter.addListWorkEntities(ourWorkEntities);
+    if (!ourWorkEntities.isEmpty()) {
+      mTextViewOurWorkIsEmpty.setVisibility(View.GONE);
+      mOurWorkAdapter.addListWorkEntities(ourWorkEntities);
+    } else {
+      mTextViewOurWorkIsEmpty.setVisibility(View.VISIBLE);
+    }
   }
 }
