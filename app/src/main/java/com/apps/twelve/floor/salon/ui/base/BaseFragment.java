@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.AppBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import javax.inject.Inject;
 
@@ -38,6 +40,8 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
       @Nullable Bundle savedInstanceState) {
     final View fragmentView = inflater.inflate(mLayoutId, container, false);
     ButterKnife.bind(this, fragmentView);
+    AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
+    appBarLayout.setExpanded(true, false);
     return fragmentView;
   }
 
