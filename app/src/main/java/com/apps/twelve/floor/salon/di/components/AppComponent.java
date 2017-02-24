@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.AppModule;
+import com.apps.twelve.floor.salon.mvp.presenters.FragmentAllNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentContactsPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentDetailNewsPresenter;
@@ -44,6 +45,8 @@ import javax.inject.Singleton;
   void inject(SubFragmentNewsPresenter presenter);
 
   void inject(FragmentDetailNewsPresenter presenter);
+
+  void inject(FragmentAllNewsPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

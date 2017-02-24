@@ -8,30 +8,36 @@ import android.os.Parcelable;
  * Created by Vrungel on 23.02.2017.
  */
 
-public class PreviewNewsEntity implements Parcelable {
+public class NewsEntity implements Parcelable {
+  public static final int LAST_NEWS = 1;
+  public static final int DEFAULT_NEWS = 0;
   private Uri mImageNewsPreviewURL;
   private String mNewsShortDescription;
   private String mNewsData;
+  private int isLastNews;
 
-  public PreviewNewsEntity(Uri imageNewsPreviewURL, String newsShortDescription, String newsData) {
+  public NewsEntity(Uri imageNewsPreviewURL, String newsShortDescription, String newsData,
+      int isLastNews) {
     mImageNewsPreviewURL = imageNewsPreviewURL;
     mNewsShortDescription = newsShortDescription;
     mNewsData = newsData;
+    this.isLastNews = isLastNews;
   }
 
-  protected PreviewNewsEntity(Parcel in) {
+  protected NewsEntity(Parcel in) {
     mImageNewsPreviewURL = in.readParcelable(Uri.class.getClassLoader());
     mNewsShortDescription = in.readString();
     mNewsData = in.readString();
+    isLastNews = in.readInt();
   }
 
-  public static final Creator<PreviewNewsEntity> CREATOR = new Creator<PreviewNewsEntity>() {
-    @Override public PreviewNewsEntity createFromParcel(Parcel in) {
-      return new PreviewNewsEntity(in);
+  public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
+    @Override public NewsEntity createFromParcel(Parcel in) {
+      return new NewsEntity(in);
     }
 
-    @Override public PreviewNewsEntity[] newArray(int size) {
-      return new PreviewNewsEntity[size];
+    @Override public NewsEntity[] newArray(int size) {
+      return new NewsEntity[size];
     }
   };
 
@@ -59,6 +65,14 @@ public class PreviewNewsEntity implements Parcelable {
     mNewsData = newsData;
   }
 
+  public int getIsLastNews() {
+    return isLastNews;
+  }
+
+  public void setIsLastNews(int isLastNews) {
+    this.isLastNews = isLastNews;
+  }
+
   @Override public int describeContents() {
     return 0;
   }
@@ -67,5 +81,6 @@ public class PreviewNewsEntity implements Parcelable {
     dest.writeParcelable(mImageNewsPreviewURL, flags);
     dest.writeString(mNewsShortDescription);
     dest.writeString(mNewsData);
+    dest.writeInt(isLastNews);
   }
 }

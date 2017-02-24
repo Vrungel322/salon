@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+  <ImageView
+      android:id="@+id/ivThumbNews"
+      android:layout_width="90dp"
+      android:layout_height="90dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="16dp"
+      android:scaleType="fitCenter"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:background="@drawable/hair33"
+      />
+  <TextView
+      android:id="@+id/tvItemNewsShortDescription"
+      android:layout_width="289dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:ellipsize="end"
+      android:maxLines="2"
+      android:text="@string/lorem_ipsum"
+      android:textSize="18sp"
+      app:layout_constraintLeft_toRightOf="@+id/ivThumbNews"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/ivThumbNews"
+      />
+  <TextView
+      android:id="@+id/tvItemNewsData"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginTop="8dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toBottomOf="@+id/ivThumbNews"
+      app:layout_constraintLeft_toLeftOf="@+id/tvItemNewsShortDescription"
+      app:layout_constraintTop_toBottomOf="@+id/tvItemNewsShortDescription"
+      />
+</android.support.constraint.ConstraintLayout>

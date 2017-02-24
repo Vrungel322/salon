@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.data.model.PreviewNewsEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.FragmentDetailNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IFragmentNewsDetailView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -17,11 +17,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDetailView {
   @InjectPresenter FragmentDetailNewsPresenter mFragmentDetailNewsPresenter;
-  private PreviewNewsEntity mPreviewNewsEntity;
+  private NewsEntity mNewsEntity;
 
-  public static FragmentNewsDetail newInstance(PreviewNewsEntity previewNewsEntity) {
+  public static FragmentNewsDetail newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
-    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, previewNewsEntity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
     FragmentNewsDetail fragment = new FragmentNewsDetail();
     fragment.setArguments(args);
     return fragment;
@@ -33,6 +33,6 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mPreviewNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
+    this.mNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
   }
 }

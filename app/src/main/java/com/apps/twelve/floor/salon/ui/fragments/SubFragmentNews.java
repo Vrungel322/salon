@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.data.model.PreviewNewsEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.SubFragmentNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubFragmentNewsView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -24,7 +24,7 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
   @BindView(R.id.tvNewsShortDescription) TextView mTextViewNewsShortDescription;
   @BindView(R.id.tvNewsData) TextView mTextViewNewsData;
 
-  private PreviewNewsEntity mPreviewNewsEntity;
+  private NewsEntity mNewsEntity;
 
   public SubFragmentNews() {
     super(R.layout.fragment_sub_news);
@@ -37,22 +37,24 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
     return fragment;
   }
 
-  @Override public void updateNewsPreview(PreviewNewsEntity previewNewsEntity) {
-    mPreviewNewsEntity = previewNewsEntity;
+  @Override public void updateNewsPreview(NewsEntity newsEntity) {
+    mNewsEntity = newsEntity;
     Picasso.with(getContext())
-        .load(previewNewsEntity.getImageNewsPreviewURL())
+        .load(newsEntity.getImageNewsPreviewURL())
         .into(mImageViewNewsPreview);
-    mTextViewNewsShortDescription.setText(previewNewsEntity.getNewsShortDescription());
-    mTextViewNewsData.setText(previewNewsEntity.getNewsData());
+    mTextViewNewsShortDescription.setText(newsEntity.getNewsShortDescription());
+    mTextViewNewsData.setText(newsEntity.getNewsData());
   }
 
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
     // TODO: 23.02.2017 create FragmentNews
     showToastMessage("tvAllNews clicked");
+    mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(),
+        R.id.container_main, FragmentAllNewsView.newInstance());
   }
 
   @OnClick({ R.id.ivNewsPreview, R.id.tvNewsShortDescription }) public void onShowDetailNews() {
     mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(),
-        R.id.container_main, FragmentNewsDetail.newInstance(mPreviewNewsEntity));
+        R.id.container_main, FragmentNewsDetail.newInstance(mNewsEntity));
   }
 }
