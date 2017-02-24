@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.ui.base;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -88,8 +87,8 @@ import javax.inject.Singleton;
   }
 
   @Override
-  public void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
-      @NonNull Fragment fragment) {
+  public void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     fragmentManager.beginTransaction().replace(containerId, fragment).addToBackStack(null).commit();
   }
@@ -99,29 +98,8 @@ import javax.inject.Singleton;
     parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
   }
 
-  @Override public void replaceFragment(@IdRes int containerId, @NonNull Fragment fragment,
-      @NonNull String fragmentTag, Bundle args) {
-
-  }
-
-  @Override
-  public void replaceFragmentAndAddToBackStack(@IdRes int containerId, @NonNull Fragment fragment,
-      Bundle args, String backstackTag) {
-
-  }
-
-  @Override
-  public void replaceFragmentAndAddToBackStack(@IdRes int containerId, @NonNull Fragment fragment,
-      @NonNull String fragmentTag, Bundle args, String backstackTag) {
-
-  }
-
-  @Override public void addChildFragment(@IdRes int containerId, @NonNull Fragment fragment) {
-    fragment.getChildFragmentManager().beginTransaction().replace(containerId, fragment).commit();
-  }
-
   @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
-    if (activity.getSupportFragmentManager().getBackStackEntryCount() != 0){
+    if (activity.getSupportFragmentManager().getBackStackEntryCount() != 0) {
       activity.getSupportFragmentManager().popBackStack();
     }
   }
