@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -14,15 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentBooking;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentContacts;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentMain;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBonus;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentMyBook;
-import com.apps.twelve.floor.salon.ui.fragments.FragmentOurWork;
+import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
+import com.apps.twelve.floor.salon.ui.fragments.ContactsFragment;
+import com.apps.twelve.floor.salon.ui.fragments.MainFragment;
+import com.apps.twelve.floor.salon.ui.fragments.MyBonusFragment;
+import com.apps.twelve.floor.salon.ui.fragments.MyBookFragment;
+import com.apps.twelve.floor.salon.ui.fragments.OurWorkFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -88,22 +89,22 @@ public class StartActivity extends BaseActivity
       case R.id.nav_main:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentMain.newInstance());
+            MainFragment.newInstance());
         break;
       case R.id.nav_booking:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentBooking.newInstance());
+            BookingFragment.newInstance());
         break;
       case R.id.nav_my_book:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentMyBook.newInstance());
+            MyBookFragment.newInstance());
         break;
       case R.id.nav_my_bonus:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentMyBonus.newInstance());
+            MyBonusFragment.newInstance());
         break;
       case R.id.nav_share:
         showAlertMessage("Talk about how to share ???");
@@ -111,12 +112,12 @@ public class StartActivity extends BaseActivity
       case R.id.nav_our_work:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentOurWork.newInstance());
+            OurWorkFragment.newInstance());
         break;
       case R.id.nav_contacts:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            FragmentContacts.newInstance());
+            ContactsFragment.newInstance());
         break;
       case R.id.nav_settings:
         mNavigator.clearBackStack(this);
@@ -129,6 +130,11 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void addFragmentMain() {
-    mNavigator.addFragment(StartActivity.this, R.id.container_main, new FragmentMain());
+    mNavigator.addFragment(StartActivity.this, R.id.container_main, new MainFragment());
+  }
+
+  @Override public void showAppBarLayout() {
+    AppBarLayout appBarLayout = (AppBarLayout) this.findViewById(R.id.appBar);
+    appBarLayout.setExpanded(true, false);
   }
 }
