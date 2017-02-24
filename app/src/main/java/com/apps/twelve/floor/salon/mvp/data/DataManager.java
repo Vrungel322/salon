@@ -31,21 +31,26 @@ public class DataManager {
           "Прически и стрижки", i));
       owe.add(new OurWorkEntity(Uri.parse(
           "http://beauty-proceduri.ru/assets/images/gallery/srednie-svadebnie-pricheski/svadebnaya-na-srednie-volosi-53.jpg"),
-          "COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford", i));
+          "COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford",
+          i));
     }
     return Observable.just(owe);
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {
-    return Observable.just(new NewsEntity(Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
-        "Short description Short description Short description Short description", "23.02.2017", NewsEntity.LAST_NEWS));
+    return Observable.just(new NewsEntity(
+        Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
+        "Short description Short description Short description Short description", "23.02.2017",
+        NewsEntity.LAST_NEWS));
   }
 
   public Observable<List<NewsEntity>> fetchAllNews() {
     ArrayList<NewsEntity> ne = new ArrayList<>();
     for (int i = 0; i < 9; i++) {
-      ne.add(new NewsEntity(Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
-          "Short description Short description Short description Short description", "23.02.2017", NewsEntity.DEFAULT_NEWS));
+      ne.add(new NewsEntity(
+          Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
+          "Short description Short description Short description Short description", "23.02.2017",
+          NewsEntity.DEFAULT_NEWS));
     }
     ne.get(0).setIsLastNews(NewsEntity.LAST_NEWS);
     return Observable.just(ne);

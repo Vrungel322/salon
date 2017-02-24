@@ -45,8 +45,7 @@ public interface INavigator {
   void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
-  void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
-      @NonNull Fragment child);
+  void addChildFragment(@NonNull Fragment parent, @IdRes int containerId, @NonNull Fragment child);
 
   void clearBackStack(@NonNull AppCompatActivity activity);
 }

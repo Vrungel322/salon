@@ -42,5 +42,4 @@ public class FragmentWorkDetails extends BaseFragment implements IFragmentWorkDe
     mEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
     mTvTest.setText(mEntity.getShortDescription());
   }
-
 }

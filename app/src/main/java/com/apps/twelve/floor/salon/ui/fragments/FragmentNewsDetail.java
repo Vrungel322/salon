@@ -33,6 +33,7 @@ public class FragmentNewsDetail extends BaseFragment implements IFragmentNewsDet
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mNewsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
+    this.mNewsEntity =
+        getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
   }
 }

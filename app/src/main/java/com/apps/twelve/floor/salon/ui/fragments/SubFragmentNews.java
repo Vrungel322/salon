@@ -49,12 +49,12 @@ public class SubFragmentNews extends BaseFragment implements ISubFragmentNewsVie
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
     // TODO: 23.02.2017 create FragmentNews
     showToastMessage("tvAllNews clicked");
-    mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(),
-        R.id.container_main, FragmentAllNewsView.newInstance());
+    mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+        FragmentAllNewsView.newInstance());
   }
 
   @OnClick({ R.id.ivNewsPreview, R.id.tvNewsShortDescription }) public void onShowDetailNews() {
-    mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(),
-        R.id.container_main, FragmentNewsDetail.newInstance(mNewsEntity));
+    mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+        FragmentNewsDetail.newInstance(mNewsEntity));
   }
 }
