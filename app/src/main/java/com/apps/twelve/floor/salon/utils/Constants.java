@@ -17,7 +17,7 @@ public final class Constants {
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
   }
 
-  public class FragmentToShow{
+  public class FragmentToShow {
     public static final String BONUS = "BONUS";
     public static final String REGISTRATION = "REGISTRATION";
   }

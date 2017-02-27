@@ -37,6 +37,8 @@ public class StartActivity extends BaseActivity
   @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottomPart;
   @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
 
+  private ActionBarDrawerToggle mToggle;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
@@ -46,16 +48,28 @@ public class StartActivity extends BaseActivity
         v -> Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
             .setAction("Action", null)
             .show());
+
+    getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+      if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
+        mToggle.setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      } else {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        mToggle.setDrawerIndicatorEnabled(true);
+      }
+    });
+
+    mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
   }
 
   private void setUpUI() {
     setSupportActionBar(mToolbar);
 
-    ActionBarDrawerToggle toggle =
+    mToggle =
         new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
             R.string.navigation_drawer_close);
-    mDrawerLayout.addDrawerListener(toggle);
-    toggle.syncState();
+    mDrawerLayout.addDrawerListener(mToggle);
+    mToggle.syncState();
 
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);

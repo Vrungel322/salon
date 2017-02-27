@@ -10,8 +10,9 @@ import com.arellomobile.mvp.InjectViewState;
  * Created by Vrungel on 27.02.2017.
  */
 
-@InjectViewState public class SubBonusRegistrationPresenter extends BasePresenter<ISubBonusRegestrationFragmentView>
-implements ISubBonusRegestrationFragmentPresenter {
+@InjectViewState public class SubBonusRegistrationPresenter
+    extends BasePresenter<ISubBonusRegestrationFragmentView>
+    implements ISubBonusRegestrationFragmentPresenter {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

@@ -10,9 +10,8 @@ import com.arellomobile.mvp.InjectViewState;
  * Created by Alexandra on 23.02.2017.
  */
 
-@InjectViewState public class WorkDetailsPresenter
-    extends BasePresenter<IWorkDetailsFragmentView> implements
-    IWorkDetailsFragmentPresenter {
+@InjectViewState public class WorkDetailsPresenter extends BasePresenter<IWorkDetailsFragmentView>
+    implements IWorkDetailsFragmentPresenter {
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);

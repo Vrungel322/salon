@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -42,8 +43,9 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    if (((MvpAppCompatActivity) getActivity()).getSupportActionBar() != null) {
-      ((MvpAppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.news);
+    ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.news);
     }
 
     mAllNewsAdapter = new AllNewsAdapter();
