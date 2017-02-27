@@ -23,7 +23,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @BindView(R.id.tvTest) TextView mTvTest;
 
-  private OurWorkEntity mEntity;
+  private OurWorkEntity mOurWorkEntity;
 
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
@@ -39,8 +39,8 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mEntity = (OurWorkEntity) getArguments().getSerializable(
+    mOurWorkEntity = (OurWorkEntity) getArguments().getSerializable(
         Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
-    mTvTest.setText(mEntity.getShortDescription());
+    mTvTest.setText(mOurWorkEntity.getShortDescription());
   }
 }

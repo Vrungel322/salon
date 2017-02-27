@@ -48,7 +48,12 @@ public class DataManager {
     for (int i = 0; i < 9; i++) {
       ne.add(new NewsEntity(
           Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
-          "Short description Short description Short description Short description", "23.02.2017"));
+          "Short description ShortShort description ShortShort description ShortShort description ShortShort description ShortShort description ShortShort description Short Short description Short description",
+          "23.02.2017"));
+      ne.add(new NewsEntity(
+          Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
+          "Short description",
+          "23.02.2017"));
     }
     return Observable.just(ne);
   }
