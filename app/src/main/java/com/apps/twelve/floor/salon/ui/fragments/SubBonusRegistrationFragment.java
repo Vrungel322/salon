@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -15,6 +15,9 @@ import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubBonusRegistrationPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubBonusRegestrationFragmentView;
+import com.apps.twelve.floor.salon.ui.activities.MainActivity;
+import com.apps.twelve.floor.salon.ui.activities.RegistrationActivity;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -28,7 +31,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
     implements ISubBonusRegestrationFragmentView {
   @BindView(R.id.ivUserAvatar) ImageView mImageViewUserAvatar;
   @BindView(R.id.ivInfo) ImageView mImageViewInfo;
-  @BindView(R.id.bRegistration) Button mButtonRegistration;
+  @BindView(R.id.bRegistration) TextView mButtonRegistration;
   @BindView(R.id.tvBonusRegistration) TextView mTextViewBonusRegistration;
   @BindView(R.id.cvBonusRegistration) CardView mCardViewBonusRegistration;
 
@@ -73,6 +76,9 @@ public class SubBonusRegistrationFragment extends BaseFragment
         .equals(Constants.FragmentToShow.BONUS)) {
       mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance());
+    } else {
+      mNavigator.startActivity(
+          (AppCompatActivity) getActivity(), new Intent(getActivity(), RegistrationActivity.class));
     }
   }
 }
