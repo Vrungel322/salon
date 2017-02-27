@@ -99,8 +99,12 @@ import javax.inject.Singleton;
   }
 
   @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
-    if (activity.getSupportFragmentManager().getBackStackEntryCount() != 0) {
+    if (!isEmptyBackStack(activity)) {
       activity.getSupportFragmentManager().popBackStack();
     }
+  }
+
+  @Override public boolean isEmptyBackStack(@NonNull AppCompatActivity activity) {
+    return activity.getSupportFragmentManager().getBackStackEntryCount() == 0;
   }
 }

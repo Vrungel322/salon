@@ -8,5 +8,9 @@
   <color name="colorItemSeparatorInDrawer">#404141</color>
   <color name="colorCountPhotoOurWork">#404141</color>
   <color name="colorListPhotoOurWorkIsEmpty">#404141</color>
+  <color name="colorNewsDate">#404141</color>
+  <color name="colorNews">#404141</color>
   <color name="colorDescriptionOurWork">#000001</color>
+  <color name="colorDescriptionNews">#000001</color>
+  <color name="colorBackgroundAllNews">#ffffff</color>
 </resources>

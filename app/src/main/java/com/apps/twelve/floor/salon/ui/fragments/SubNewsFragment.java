@@ -19,7 +19,9 @@ import com.squareup.picasso.Picasso;
  */
 
 public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentView {
+
   @InjectPresenter SubNewsPresenter mSubNewsFragmentPresenter;
+
   @BindView(R.id.ivNewsPreview) ImageView mImageViewNewsPreview;
   @BindView(R.id.tvNewsShortDescription) TextView mTextViewNewsShortDescription;
   @BindView(R.id.tvNewsData) TextView mTextViewNewsData;
@@ -53,7 +55,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
         AllNewsViewFragment.newInstance());
   }
 
-  @OnClick({ R.id.ivNewsPreview, R.id.tvNewsShortDescription }) public void onShowDetailNews() {
+  @OnClick(R.id.layoutAllNews) public void setLayoutAllNewsClicked() {
     mNavigator.addFragmentAndAddToBackStack((AppCompatActivity) getActivity(), R.id.container_main,
         NewsDetailFragment.newInstance(mNewsEntity));
   }
