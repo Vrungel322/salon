@@ -1,96 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:orientation="vertical"
-    app:cardCornerRadius="1dp"
-    app:cardElevation="3dp"
-    app:cardUseCompatPadding="true"
+    android:background="@color/colorBackgroundASubNews"
     >
-  <LinearLayout
-      android:id="@+id/layoutAllNews"
-      android:layout_width="match_parent"
+  <android.support.v7.widget.CardView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:background="?attr/selectableItemBackground"
+      android:clickable="true"
       android:orientation="vertical"
+      app:cardCornerRadius="1dp"
+      app:cardElevation="3dp"
+      app:cardUseCompatPadding="true"
       >
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layoutAllNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical"
         >
 
-      <TextView
-          android:id="@+id/tvAllNews"
-          android:layout_width="wrap_content"
+      <RelativeLayout
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignParentEnd="true"
-          android:layout_alignParentRight="true"
-          android:layout_alignParentTop="true"
-          android:layout_centerVertical="true"
-          android:background="?attr/selectableItemBackground"
-          android:padding="5dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          >
+
+        <TextView
+            android:id="@+id/tvAllNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:padding="5dp"
+            android:text="@string/all_news"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/colorNews"
+            android:layout_centerVertical="true"
+            android:text="@string/news"
+            android:textSize="30sp"
+            />
+      </RelativeLayout>
+
+      <ImageView
+          android:id="@+id/ivNewsPreview"
+          android:layout_width="match_parent"
+          android:layout_height="250dp"
           android:layout_marginTop="8dp"
-          android:text="@string/all_news"
-          android:textColor="@color/colorAccent"
-          android:textSize="16sp"
+          android:scaleType="centerCrop"
+          tools:background="@drawable/hair33"
           />
       <TextView
-          android:id="@+id/textView"
-          android:layout_width="wrap_content"
+          android:id="@+id/tvNewsShortDescription"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_alignParentTop="true"
-          android:layout_centerVertical="true"
-          android:text="@string/news"
-          android:textColor="@android:color/darker_gray"
-          android:textSize="30sp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginStart="16dp"
+          android:textColor="@color/colorDescriptionNews"
+          android:layout_marginTop="8dp"
+          android:ellipsize="end"
+          android:maxLines="2"
+          android:text="@string/lorem_ipsum"
+          android:textSize="18sp"
           />
-    </RelativeLayout>
+      <TextView
+          android:id="@+id/tvNewsData"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/colorNews"
+          android:layout_marginBottom="8dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="8dp"
+          android:text="23.02.2017"
+          />
 
-    <ImageView
-        android:id="@+id/ivNewsPreview"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        tools:background="@drawable/hair33"
-        />
-    <TextView
-        android:id="@+id/tvNewsShortDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="@string/lorem_ipsum"
-        android:textSize="18sp"
-        />
-    <TextView
-        android:id="@+id/tvNewsData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="23.02.2017"
-        />
+    </LinearLayout>
 
-  </LinearLayout>
-
-</android.support.v7.widget.CardView>
+  </android.support.v7.widget.CardView>
+</RelativeLayout>

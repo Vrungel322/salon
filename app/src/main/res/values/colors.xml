@@ -13,4 +13,7 @@
   <color name="colorDescriptionOurWork">#000001</color>
   <color name="colorDescriptionNews">#000001</color>
   <color name="colorBackgroundAllNews">#ffffff</color>
+  <color name="colorBackgroundASubNews">#ffffff</color>
+  <color name="colorBackgroundBonus">#ffffff</color>
+  <color name="colorBonus">#404141</color>
 </resources>
