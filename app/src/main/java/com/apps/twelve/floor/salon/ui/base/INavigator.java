@@ -48,4 +48,6 @@ public interface INavigator {
   void addChildFragment(@NonNull Fragment parent, @IdRes int containerId, @NonNull Fragment child);
 
   void clearBackStack(@NonNull AppCompatActivity activity);
+
+  boolean isEmptyBackStack(@NonNull AppCompatActivity activity);
 }

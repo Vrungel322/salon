@@ -66,9 +66,9 @@ public class StartActivity extends BaseActivity
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(GravityCompat.START);
     } else {
-      if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
+      if (!mNavigator.isEmptyBackStack(StartActivity.this)) {
         AppBarLayout appBarLayout = (AppBarLayout) this.findViewById(R.id.appBar);
-        appBarLayout.setExpanded(true, false);
+        appBarLayout.setExpanded(true, true);
       }
       super.onBackPressed();
     }
