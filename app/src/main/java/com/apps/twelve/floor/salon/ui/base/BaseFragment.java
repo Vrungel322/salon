@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 
 /**
@@ -43,6 +44,17 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
     AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
     appBarLayout.setExpanded(true, false);
     return fragmentView;
+  }
+
+  protected void showAlertMessage(String title, String message) {
+    //Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+    Alerter.create(getActivity())
+        .setTitle(title)
+        .setText(message)
+        .setBackgroundColor(R.color.colorAccent)
+        .setOnClickListener(view -> {
+        })
+        .show();
   }
 
   protected void showToastMessage(String message) {

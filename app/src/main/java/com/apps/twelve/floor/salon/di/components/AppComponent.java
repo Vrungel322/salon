@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBonusPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBookPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubBonusRegistrationPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsPresenter;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
@@ -47,6 +48,8 @@ import javax.inject.Singleton;
   void inject(DetailNewsPresenter presenter);
 
   void inject(AllNewsPresenter presenter);
+
+  void inject(SubBonusRegistrationPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

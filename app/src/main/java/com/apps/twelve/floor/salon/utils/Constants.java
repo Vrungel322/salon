@@ -14,5 +14,11 @@ public final class Constants {
   public class FragmentsArgumentKeys {
     public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
+    public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
+  }
+
+  public class FragmentToShow{
+    public static final String BONUS = "BONUS";
+    public static final String REGISTRATION = "REGISTRATION";
   }
 }
