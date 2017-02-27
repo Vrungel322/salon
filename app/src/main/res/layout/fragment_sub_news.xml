@@ -57,6 +57,14 @@
           />
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/ivNewsPreview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        tools:background="@drawable/hair33"
+        />
     <TextView
         android:id="@+id/tvNewsShortDescription"
         android:layout_width="match_parent"
@@ -70,15 +78,6 @@
         android:maxLines="2"
         android:text="@string/lorem_ipsum"
         android:textSize="18sp"
-        />
-
-    <ImageView
-        android:id="@+id/ivNewsPreview"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        tools:background="@drawable/hair33"
         />
     <TextView
         android:id="@+id/tvNewsData"
