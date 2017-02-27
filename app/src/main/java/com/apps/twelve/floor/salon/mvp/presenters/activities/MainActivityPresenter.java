@@ -24,6 +24,6 @@ import com.arellomobile.mvp.InjectViewState;
 
   @Override public void delaySplash() {
     final Handler handler = new Handler();
-    handler.postDelayed(() -> getViewState().afterSplash(), 1);
+    handler.postDelayed(() -> getViewState().afterSplash(), 1000);
   }
 }
