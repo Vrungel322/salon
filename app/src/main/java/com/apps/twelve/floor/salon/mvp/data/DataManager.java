@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.mvp.data;
 
 import android.net.Uri;
+import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
@@ -55,5 +56,14 @@ public class DataManager {
           "Short description", "23.02.2017"));
     }
     return Observable.just(ne);
+  }
+
+  public Observable<List<LastBookingEntity>> fetchLastBooking() {
+    ArrayList<LastBookingEntity> lbe = new ArrayList<>();
+    for (int i = 0; i < 9; i++) {
+      lbe.add(new LastBookingEntity(
+          "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
+          "Прически и стрижки " + i, "28.02.2017"));
+    } return Observable.just(lbe);
   }
 }

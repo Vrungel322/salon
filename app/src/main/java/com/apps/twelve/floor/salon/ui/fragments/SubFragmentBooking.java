@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubFragmentBookingView;
 import com.apps.twelve.floor.salon.ui.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import java.util.List;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -20,6 +22,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class SubFragmentBooking extends BaseFragment implements ISubFragmentBookingView {
   @InjectPresenter SubFragmentBookingPresenter mSubFragmentBookingPresenter;
   @BindView(R.id.rvMyLastBooking) RecyclerView mRecyclerViewMyLastBooking;
+  private MyLastBookingAdapter mMyLastBookingAdapter;
 
   public static SubFragmentBooking newInstance() {
     Bundle args = new Bundle();
@@ -34,7 +37,13 @@ public class SubFragmentBooking extends BaseFragment implements ISubFragmentBook
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    MyLastBookingAdapter myLastBookingAdapter = new MyLastBookingAdapter();
+    mMyLastBookingAdapter = new MyLastBookingAdapter();
+    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
+    //mSubFragmentBookingPresenter.fetchBookingEntities();
+  }
+
+  @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
+    mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
 }
