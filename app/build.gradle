@@ -65,6 +65,9 @@ dependencies {
   //Alerter
   compile 'com.tapadoo.android:alerter:1.0.3'
 
+  //A badge for any drawable
+  compile "berlin.volders:badger:0.2"
+
   //shortbread
   compile 'com.github.matthiasrobbers:shortbread:1.0.0'
   apt 'com.github.matthiasrobbers:shortbread-compiler:1.0.0'
