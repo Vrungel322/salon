@@ -33,5 +33,7 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
     mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubNewsFragment.newInstance());
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBonusRegistration,
         SubBonusRegistrationFragment.newInstance(Constants.FragmentToShow.REGISTRATION));
+    mNavigator.addChildFragment(this, R.id.subFragmentContainerBooking,
+        SubFragmentBooking.newInstance());
   }
 }
