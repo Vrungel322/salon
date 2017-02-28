@@ -26,4 +26,6 @@
   <string name="bonus_card">Бонусная карта</string>
   <string name="all_news">ВСЕ НОВОСТИ</string>
   <string name="bonus">Бонусы</string>
+  <string name="postpone">Перенести</string>
+  <string name="cancel">Отменить</string>
 </resources>
