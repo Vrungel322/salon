@@ -16,4 +16,6 @@
   <color name="colorBackgroundASubNews">#ffffff</color>
   <color name="colorBackgroundBonus">#ffffff</color>
   <color name="colorBonus">#404141</color>
+  <color name="colorBackgroundCountBonusMenu">#FFCA1050</color>
+  <color name="colorTextCountBonusMenu">#ffffff</color>
 </resources>
