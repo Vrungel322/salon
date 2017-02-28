@@ -60,7 +60,16 @@ import javax.inject.Singleton;
         .commit();
   }
 
-  @Override public void addFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
+  @Override
+  public void addFragmentTag(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment, @NonNull String fragmentTag) {
+    appCompatActivity.getSupportFragmentManager()
+        .beginTransaction()
+        .add(containerId, fragment, fragmentTag)
+        .commit();
+  }
+
+  @Override public void addFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
@@ -69,28 +78,54 @@ import javax.inject.Singleton;
         .commit();
   }
 
-  @Override
-  public void addFragmentTagAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
+  @Override public void addFragmentTagBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
         .addToBackStack(null)
-        .add(containerId, fragment)
+        .add(containerId, fragment, fragmentTag)
         .commit();
   }
 
   @Override
   public void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment) {
+    appCompatActivity.getSupportFragmentManager()
+        .beginTransaction()
+        .replace(containerId, fragment)
+        .commit();
+  }
+
+  @Override public void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(containerId, fragment).commit();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    if (fragmentCopy == null) {
+      fragmentManager.beginTransaction().replace(containerId, fragment, fragmentTag).commit();
+    }
   }
 
   @Override
-  public void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity appCompatActivity,
-      @IdRes int containerId, @NonNull Fragment fragment) {
+  public void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
-    fragmentManager.beginTransaction().replace(containerId, fragment).addToBackStack(null).commit();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    if (fragmentCopy == null) {
+      appCompatActivity.getSupportFragmentManager()
+          .beginTransaction()
+          .replace(containerId, fragment)
+          .addToBackStack(null)
+          .commit();
+    }
+  }
+
+  @Override public void replaceFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment) {
+    appCompatActivity.getSupportFragmentManager()
+        .beginTransaction()
+        .replace(containerId, fragment)
+        .addToBackStack(null)
+        .commit();
   }
 
   @Override public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
@@ -100,7 +135,8 @@ import javax.inject.Singleton;
 
   @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
     if (!isEmptyBackStack(activity)) {
-      activity.getSupportFragmentManager().popBackStack();
+      activity.getSupportFragmentManager()
+          .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
   }
 

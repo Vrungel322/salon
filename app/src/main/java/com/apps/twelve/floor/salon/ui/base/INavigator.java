@@ -14,39 +14,48 @@ import android.support.v7.app.AppCompatActivity;
 public interface INavigator {
 
   //for activity
-  void finishActivity(@NonNull AppCompatActivity activity);
+  void finishActivity(@NonNull AppCompatActivity appCompatActivity);
 
   void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
       @NonNull Intent intent);
 
   void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent);
 
-  void startActivity(@NonNull AppCompatActivity activity, @NonNull String action);
+  void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action);
 
-  void startActivity(@NonNull AppCompatActivity activity, @NonNull String action, @NonNull Uri uri);
+  void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action, @NonNull Uri uri);
 
-  void startActivityForResult(@NonNull AppCompatActivity activity, @NonNull Intent intent,
+  void startActivityForResult(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent,
       int requestCode);
 
   //for fragment
-  void addFragment(@NonNull AppCompatActivity activity, @IdRes int containerId,
+  void addFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
-  void addFragmentAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
-      @NonNull Fragment fragment);
-
-  void addFragmentTagAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
+  void addFragmentTag(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment, @NonNull String fragmentTag);
 
-  void replaceFragment(@NonNull AppCompatActivity activity, @IdRes int containerId,
+  void addFragmentBackStack(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
-  void replaceFragmentAndAddToBackStack(@NonNull AppCompatActivity activity, @IdRes int containerId,
+  void addFragmentTagBackStack(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment, @NonNull String fragmentTag);
+
+  void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment);
+
+  void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment, @NonNull String fragmentTag);
+
+  void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);
+
+  void replaceFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment);
 
   void addChildFragment(@NonNull Fragment parent, @IdRes int containerId, @NonNull Fragment child);
 
-  void clearBackStack(@NonNull AppCompatActivity activity);
+  void clearBackStack(@NonNull AppCompatActivity appCompatActivity);
 
-  boolean isEmptyBackStack(@NonNull AppCompatActivity activity);
+  boolean isEmptyBackStack(@NonNull AppCompatActivity appCompatActivity);
 }

@@ -11,6 +11,15 @@ public final class Constants {
     public static final String BASE_URL = "http://" + DOMEN + "/";
   }
 
+  public class FragmentTag {
+    public static final String MAIN_FRAGMENT = "MainFragment";
+    public static final String BOOKING_FRAGMENT = "BookingFragment";
+    public static final String MY_BOOK_FRAGMENT = "MyBookFragment";
+    public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
+    public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";
+    public static final String CONTACTS_FRAGMENT = "ContactsFragment";
+  }
+
   public class FragmentsArgumentKeys {
     public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";

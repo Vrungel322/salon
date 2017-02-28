@@ -24,6 +24,7 @@ import com.apps.twelve.floor.salon.ui.fragments.MainFragment;
 import com.apps.twelve.floor.salon.ui.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.ui.fragments.MyBookFragment;
 import com.apps.twelve.floor.salon.ui.fragments.OurWorkFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -106,36 +107,36 @@ public class StartActivity extends BaseActivity
     switch (item.getItemId()) {
       case R.id.nav_main:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            MainFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            MainFragment.newInstance(), Constants.FragmentTag.MAIN_FRAGMENT);
         break;
       case R.id.nav_booking:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            BookingFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            BookingFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
         break;
       case R.id.nav_my_book:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            MyBookFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         break;
       case R.id.nav_my_bonus:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            MyBonusFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_share:
         showAlertMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            OurWorkFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
         break;
       case R.id.nav_contacts:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(StartActivity.this, R.id.container_main,
-            ContactsFragment.newInstance());
+        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+            ContactsFragment.newInstance(), Constants.FragmentTag.CONTACTS_FRAGMENT);
         break;
       case R.id.nav_settings:
         mNavigator.clearBackStack(this);
@@ -148,6 +149,7 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void addFragmentMain() {
-    mNavigator.addFragment(StartActivity.this, R.id.container_main, new MainFragment());
+    mNavigator.addFragmentTag(StartActivity.this, R.id.container_main, new MainFragment(),
+        Constants.FragmentTag.MAIN_FRAGMENT);
   }
 }
