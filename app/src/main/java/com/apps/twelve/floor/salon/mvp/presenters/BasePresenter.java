@@ -13,7 +13,6 @@ import rx.subscriptions.CompositeSubscription;
  */
 public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
-  @Inject RxBus mRxBus;
   private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
   public BasePresenter() {
