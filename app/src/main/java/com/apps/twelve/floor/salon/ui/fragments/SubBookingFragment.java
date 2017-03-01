@@ -10,7 +10,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubFragmentBookingView;
-import com.apps.twelve.floor.salon.ui.adapters.MyLastBookingAdapter1;
+import com.apps.twelve.floor.salon.ui.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
@@ -41,11 +41,11 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
-    MyLastBookingAdapter1 mMyLastBookingAdapter1 = new MyLastBookingAdapter1();
-    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter1);
+    MyLastBookingAdapter mMyLastBookingAdapter = new MyLastBookingAdapter();
+    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
     mRecyclerViewMyLastBooking.setFocusable(false);
-    mMyLastBookingAdapter1.addListLastBookingEntity(lastBookingEntities);
+    mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
 }

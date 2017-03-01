@@ -22,8 +22,8 @@ import java.util.List;
  * Created by Vrungel on 28.02.2017.
  */
 
-public class MyLastBookingAdapter1
-    extends RecyclerView.Adapter<MyLastBookingAdapter1.MyLastBookingViewHolder> {
+public class MyLastBookingAdapter
+    extends RecyclerView.Adapter<MyLastBookingAdapter.MyLastBookingViewHolder> {
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
 
   public void addListLastBookingEntity(List<LastBookingEntity> lastBookingEntities) {
@@ -32,7 +32,7 @@ public class MyLastBookingAdapter1
   }
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MyLastBookingAdapter1.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
+    return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
         .inflate(R.layout.item_my_last_booking, parent, false));
   }
 
