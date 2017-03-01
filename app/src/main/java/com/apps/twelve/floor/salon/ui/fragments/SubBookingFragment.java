@@ -24,6 +24,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   @InjectPresenter SubFragmentBookingPresenter mSubFragmentBookingPresenter;
 
   @BindView(R.id.rvMyLastBooking) RecyclerView mRecyclerViewMyLastBooking;
+  private MyLastBookingAdapter mMyLastBookingAdapter;
 
   public static SubBookingFragment newInstance() {
     Bundle args = new Bundle();
@@ -38,14 +39,14 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-  }
-
-  @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
-    MyLastBookingAdapter mMyLastBookingAdapter = new MyLastBookingAdapter();
+    mMyLastBookingAdapter = new MyLastBookingAdapter(getMvpDelegate());
     mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
     mRecyclerViewMyLastBooking.setFocusable(false);
+  }
+
+  @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
 }
