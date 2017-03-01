@@ -19,31 +19,33 @@ import java.util.List;
  * Created by Vrungel on 28.02.2017.
  */
 
-public class SubFragmentBooking extends BaseFragment implements ISubFragmentBookingView {
-  @InjectPresenter SubFragmentBookingPresenter mSubFragmentBookingPresenter;
-  @BindView(R.id.rvMyLastBooking) RecyclerView mRecyclerViewMyLastBooking;
-  private MyLastBookingAdapter mMyLastBookingAdapter;
+public class SubBookingFragment extends BaseFragment implements ISubFragmentBookingView {
 
-  public static SubFragmentBooking newInstance() {
+  @InjectPresenter SubFragmentBookingPresenter mSubFragmentBookingPresenter;
+
+  @BindView(R.id.rvMyLastBooking) RecyclerView mRecyclerViewMyLastBooking;
+
+  public static SubBookingFragment newInstance() {
     Bundle args = new Bundle();
-    SubFragmentBooking fragment = new SubFragmentBooking();
+    SubBookingFragment fragment = new SubBookingFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public SubFragmentBooking() {
+  public SubBookingFragment() {
     super(R.layout.fragment_sub_booking);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mMyLastBookingAdapter = new MyLastBookingAdapter();
-    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
-    mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
-    //mSubFragmentBookingPresenter.fetchBookingEntities();
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
+    MyLastBookingAdapter mMyLastBookingAdapter = new MyLastBookingAdapter();
+    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
+    mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
+    mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
+    mRecyclerViewMyLastBooking.setFocusable(false);
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
 }

@@ -20,10 +20,15 @@ import rx.Subscription;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
+
   }
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    fetchNewsEntities();
+  }
+
+  @Override public void fetchNewsEntities() {
     Subscription subscription = mDataManager.fetchNewsPreview()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(previewNewsEntity -> getViewState().updateNewsPreview(previewNewsEntity),

@@ -1,8 +1,8 @@
 package com.apps.twelve.floor.salon.ui.adapters;
 
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +37,10 @@ public class MyLastBookingAdapter
   }
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
-    if (position == 0){
-      holder.mConstraintLayoutLastBooking.setBackgroundColor(Color.argb(255, 250,208,222));
+    if (position == 0) {
+      holder.mConstraintLayoutLastBooking.setBackgroundColor(
+          ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
+              R.color.colorItemBookingActive));
       holder.view.setVisibility(View.VISIBLE);
     }
     Picasso.with(holder.mImageViewServicePhoto.getContext())
@@ -58,9 +60,6 @@ public class MyLastBookingAdapter
       mLastBookingEntities.remove(position);
       notifyDataSetChanged();
     });
-
-
-
   }
 
   @Override public int getItemCount() {

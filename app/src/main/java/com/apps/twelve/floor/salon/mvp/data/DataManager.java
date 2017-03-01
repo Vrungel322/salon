@@ -60,7 +60,7 @@ public class DataManager {
 
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
     ArrayList<LastBookingEntity> lbe = new ArrayList<>();
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 5; i++) {
       lbe.add(new LastBookingEntity(
           "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
           "Прически и стрижки " + i, "28.02.2017"));

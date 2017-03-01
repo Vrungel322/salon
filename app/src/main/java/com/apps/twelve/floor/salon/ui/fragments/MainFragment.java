@@ -30,10 +30,13 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+  }
+
+  @Override public void addSubFragments() {
     mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubNewsFragment.newInstance());
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBonusRegistration,
         SubBonusRegistrationFragment.newInstance(Constants.FragmentToShow.REGISTRATION));
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBooking,
-        SubFragmentBooking.newInstance());
+        SubBookingFragment.newInstance());
   }
 }

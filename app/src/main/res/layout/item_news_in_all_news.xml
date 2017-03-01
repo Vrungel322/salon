@@ -48,6 +48,7 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp"
+      android:textSize="12sp"
       android:text="TextView"
       android:textColor="@color/colorNewsDate"
       app:layout_constraintBottom_toBottomOf="@+id/ivThumbNews"
