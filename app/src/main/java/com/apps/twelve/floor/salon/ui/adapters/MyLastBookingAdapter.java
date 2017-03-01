@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
+import com.apps.twelve.floor.salon.mvp.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.ui.base.MvpBaseRecyclerAdapter;
+import com.arellomobile.mvp.MvpDelegate;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +29,16 @@ import java.util.List;
  */
 
 public class MyLastBookingAdapter
-    extends RecyclerView.Adapter<MyLastBookingAdapter.MyLastBookingViewHolder> {
+    extends MvpBaseRecyclerAdapter<MyLastBookingAdapter.MyLastBookingViewHolder>
+    implements IMyLastBookingAdapterView {
+
+  @InjectPresenter MyLastBookingAdapterPresenter mMyLastBookingAdapterPresenter;
+
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
+
+  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate) {
+    super(parentDelegate, "MyLastBookingAdapterPresenter");
+  }
 
   public void addListLastBookingEntity(List<LastBookingEntity> lastBookingEntities) {
     mLastBookingEntities.addAll(lastBookingEntities);
@@ -54,16 +68,22 @@ public class MyLastBookingAdapter
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
       // TODO: 28.02.2017 send to server postpone query
+      mMyLastBookingAdapterPresenter.postponeOrder(position);
     });
     holder.mButtonCancel.setOnClickListener(v -> {
       // TODO: 28.02.2017 send to server cancel query
-      mLastBookingEntities.remove(position);
-      notifyDataSetChanged();
+      mMyLastBookingAdapterPresenter.cancelOrder(position);
     });
   }
 
   @Override public int getItemCount() {
     return mLastBookingEntities.size();
+  }
+
+  @Override public void removeBookedServiceFromList(int position) {
+    Log.wtf("TAG", "removeBookedServiceFromList " + position);
+    mLastBookingEntities.remove(position);
+    notifyDataSetChanged();
   }
 
   static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {

@@ -4,6 +4,7 @@ import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.RegistrationActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsPresenter;
@@ -62,4 +63,7 @@ import javax.inject.Singleton;
 
   //fragments
   void inject(BaseFragment fragment);
+
+  //adapters
+  void inject(MyLastBookingAdapterPresenter presenter);
 }
