@@ -7,11 +7,4 @@
     android:clickable="true"
     >
 
-  <TextView
-      android:id="@+id/tvTest"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Работа"
-      />
-
 </android.support.constraint.ConstraintLayout>
