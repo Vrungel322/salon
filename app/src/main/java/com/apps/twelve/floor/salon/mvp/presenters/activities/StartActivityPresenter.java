@@ -15,7 +15,7 @@ import com.arellomobile.mvp.InjectViewState;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getViewState().addFragmentMain();
+    //getViewState().addFragmentMain();
   }
 
   @Override protected void inject() {

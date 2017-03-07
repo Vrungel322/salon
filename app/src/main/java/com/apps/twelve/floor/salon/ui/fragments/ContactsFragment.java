@@ -2,13 +2,16 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IContactsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -18,7 +21,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class ContactsFragment extends BaseFragment implements IContactsFragmentView {
   @InjectPresenter ContactsFragmentPresenter mContactsFragmentPresenter;
 
-  @BindView(R.id.tvTest) TextView mTvTest;
+  @BindView(R.id.tv_map) TextView mTvMap;
 
   public static ContactsFragment newInstance() {
     Bundle args = new Bundle();
@@ -34,6 +37,20 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mTvTest.setOnClickListener(v -> showToastMessage("tvTest"));
+    ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setTitle(R.string.menu_contacts);
+    }
+
+    mTvMap.setOnClickListener(v -> showToastMessage("Show map"));
   }
+
+  @OnClick(R.id.tv_about) void about() {
+    showToastMessage("Show about");
+  }
+
+  @OnClick(R.id.tv_website) void website() {
+    showToastMessage("Show website");
+  }
+
 }

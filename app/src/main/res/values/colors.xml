@@ -2,7 +2,7 @@
 <resources>
   <color name="colorPrimary">#ff5992</color>
   <color name="colorPrimaryDark">#ff2972</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="colorAccent">#ff4081</color>
   <color name="colorSelectedItemInDrawer">#fad0de</color>
   <color name="colorItemTextInDrawer">#404141</color>
   <color name="colorItemSeparatorInDrawer">#404141</color>
@@ -22,4 +22,6 @@
   <color name="colorBackgroundCountBonusMenu">#FFCA1050</color>
   <color name="colorTextCountBonusMenu">#ffffff</color>
   <color name="colorItemBookingActive">#FFFBE9F0</color>
+  <color name="colorContacts">#939393</color>
+  <color name="colorContactsSeparator">#BDBDBD</color>
 </resources>
