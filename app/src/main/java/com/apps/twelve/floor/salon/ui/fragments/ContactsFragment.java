@@ -2,7 +2,9 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -40,6 +42,14 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
     ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
     if (actionBar != null) {
       actionBar.setTitle(R.string.menu_contacts);
+
+      /* turn off scrolling */
+      Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
+      AppBarLayout.LayoutParams toolbarLayoutParams =
+          (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+      toolbarLayoutParams.setScrollFlags(0);
+      mToolbar.setLayoutParams(toolbarLayoutParams);
     }
 
     mTvMap.setOnClickListener(v -> showToastMessage("Show map"));
@@ -51,6 +61,19 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
 
   @OnClick(R.id.tv_website) void website() {
     showToastMessage("Show website");
+  }
+
+  @Override public void onDestroy() {
+    /* turn on scrolling */
+    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    AppBarLayout.LayoutParams toolbarLayoutParams =
+        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+
+    toolbarLayoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+        | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+    mToolbar.setLayoutParams(toolbarLayoutParams);
+
+    super.onDestroy();
   }
 
 }
