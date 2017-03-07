@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBonusPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMyBonusFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -16,7 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentView {
-  @InjectPresenter MyBonusPresenter mMyBonusFragmentPresenter;
+  @InjectPresenter MyBonusFragmentPresenter mMyBonusFragmentPresenter;
 
   @BindView(R.id.tvTest) TextView mTvTest;
 

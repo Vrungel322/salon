@@ -10,7 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.adapters.OurWorkAdapter;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentView {
 
-  @InjectPresenter OurWorkPresenter mOurWorkFragmentPresenter;
+  @InjectPresenter OurWorkFragmentPresenter mOurWorkFragmentPresenter;
 
   @BindView(R.id.rvOurWorks) RecyclerView mRecyclerViewOurWorks;
   @BindView(R.id.textViewOurWorkIsEmpty) TextView mTextViewOurWorkIsEmpty;

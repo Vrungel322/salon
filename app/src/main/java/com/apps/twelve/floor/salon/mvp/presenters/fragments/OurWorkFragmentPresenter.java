@@ -14,7 +14,7 @@ import rx.Subscription;
  * Created by Vrungel on 21.02.2017.
  */
 
-@InjectViewState public class OurWorkPresenter extends BasePresenter<IOurWorkFragmentView>
+@InjectViewState public class OurWorkFragmentPresenter extends BasePresenter<IOurWorkFragmentView>
     implements IOurWorkFragmentPresenter {
 
   @Inject DataManager mDataManager;

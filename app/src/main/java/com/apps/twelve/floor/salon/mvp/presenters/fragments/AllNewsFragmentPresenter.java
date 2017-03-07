@@ -14,7 +14,7 @@ import rx.Subscription;
  * Created by Vrungel on 24.02.2017.
  */
 
-@InjectViewState public class AllNewsPresenter extends BasePresenter<IAllNewsFragmentView>
+@InjectViewState public class AllNewsFragmentPresenter extends BasePresenter<IAllNewsFragmentView>
     implements IAllNewsFragmentPresenter {
 
   @Inject DataManager mDataManager;
