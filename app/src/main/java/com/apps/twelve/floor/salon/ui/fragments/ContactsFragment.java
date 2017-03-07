@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -15,6 +17,8 @@ import com.apps.twelve.floor.salon.mvp.views.IContactsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -51,16 +55,33 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
       toolbarLayoutParams.setScrollFlags(0);
       mToolbar.setLayoutParams(toolbarLayoutParams);
     }
-
-    mTvMap.setOnClickListener(v -> showToastMessage("Show map"));
   }
 
-  @OnClick(R.id.tv_about) void about() {
+  @OnClick(R.id.tv_about) void showAbout() {
     showToastMessage("Show about");
   }
 
-  @OnClick(R.id.tv_website) void website() {
-    showToastMessage("Show website");
+  @OnClick(R.id.tv_website) void openWebsite() {
+    String url = "http://google.com";
+    startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+  }
+
+  @OnClick(R.id.tv_map) void openMap() {
+    try {
+      Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+          Uri.parse("geo:0,0?q=" + getString(R.string.contacts_address)));
+      startActivity(mapIntent);
+    } catch (android.content.ActivityNotFoundException e) {
+      String query = null;
+      try {
+        query = URLEncoder.encode(getString(R.string.contacts_address), "utf-8");
+      } catch (UnsupportedEncodingException e1) {
+        e1.printStackTrace();
+        query = "";
+      }
+      String url = "http://maps.google.com/maps?daddr=" + query;
+      startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+    }
   }
 
   @Override public void onDestroy() {
