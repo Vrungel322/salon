@@ -22,4 +22,10 @@
   <color name="colorBackgroundCountBonusMenu">#FFCA1050</color>
   <color name="colorTextCountBonusMenu">#ffffff</color>
   <color name="colorItemBookingActive">#FFFBE9F0</color>
+  <color name="colorContactsTitle">#939393</color>
+  <color name="colorContactsText">#727272</color>
+  <color name="colorContactsSeparator">#BDBDBD</color>
+  <color name="colorContactsBottomBackground">#FFFFFF</color>
+
+  <color name="colorTransparent">#00000000</color>
 </resources>

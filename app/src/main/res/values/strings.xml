@@ -28,4 +28,15 @@
   <string name="bonus">Бонусы</string>
   <string name="postpone">Перенести</string>
   <string name="cancel">Отменить</string>
+
+  <string name="contacts_salon_name">Beauty Salon \"Alfoginio\"</string>
+  <string name="contacts_phone_text">Контактный телефон</string>
+  <string name="contacts_phone">+8 (914) 544-66-77</string>
+  <string name="contacts_address">г. Хабаровск\nул. Карла Маркса д.141</string>
+  <string name="contacts_map"><u>Карта</u></string>
+  <string name="contacts_feedback">Отправляйте свои пожелания\nи коментарии на email:</string>
+  <string name="contacts_email">info@fiona.com</string>
+  <string name="contacts_schedule">График работы:\nЕждневно с\n9:00 до 22:00</string>
+  <string name="contacts_about">О нас</string>
+  <string name="contacts_website"><u>Перейти на веб-сайт</u></string>
 </resources>
