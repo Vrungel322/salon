@@ -1,95 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundWorkDetail"
     android:clickable="true"
     >
-  <android.support.v4.widget.NestedScrollView
-      android:id="@+id/nsv"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:fillViewport="true"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       >
+
+    <TextView
+        android:id="@+id/textViewTitleWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Glam classic"
+        android:textColor="@color/colorTitleWorkDetail"
+        android:textSize="30sp"
+        />
+    <TextView
+        android:id="@+id/textViewDescriptionWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewTitleWork"
+        android:layout_alignStart="@+id/textViewTitleWork"
+        android:layout_below="@+id/textViewTitleWork"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="zdlfibhzfvbhzIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.dkjlfvbhzdsiotjhsioggidrgkjfbhvsdgvzsdfgvbasdjvbi"
+        android:textColor="@color/colorDescriptionOurWork"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/textViewMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewDescriptionWork"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:padding="3dp"
+        android:text="@string/more"
+        android:textColor="@color/colorGray"
+        />
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="450dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textViewMore"
+        android:layout_marginTop="8dp"
         >
 
-      <TextView
-          android:id="@+id/textViewTitleWork"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="16dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="8dp"
-          android:text="Glam classic"
-          android:textColor="@color/colorTitleWorkDetail"
-          android:textSize="30sp"
-          />
-      <TextView
-          android:id="@+id/textViewDescriptionWork"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/textViewTitleWork"
-          android:layout_alignStart="@+id/textViewTitleWork"
-          android:layout_below="@+id/textViewTitleWork"
-          android:layout_marginEnd="16dp"
-          android:layout_marginRight="16dp"
-          android:ellipsize="end"
-          android:text="TextVergeegwergegwergwaetyjrtjxtVeTextVergeegwergegwergwaeTextVergeegwergegwergwaeTextVergeegwergegwergwaeTextVergeegwergegwergwaetyjrtjxtVergeegwergegwergwaetyjrtjdtyjdrtyjyjtyjrtjxtVergeegwergegwergwaetyjrtjdtyjdrtyjyjtyjrtjxtVergeegwergegwergwaetyjrtjdtyjdrtyjyjtyjrtjxtVergeegwergegwergwaetyjrtjdtyjdrtyjyjrgeegwergegwergwaetyjrtjdtyjdrtyjyjdrtyjhdfgjhdtyjdrtyjyjdrtyjhdfgjhgjhfghfgrgrwaetyjrtjdtegwergwaetyjrtjdtyjdrtyjyjdrtyjhdfgjhgjhfghfgrgryjdrtyjyjdrtyjhdfgjhgjhfghfgrgrrgaaegwergwaetyjrtjdtyjdrtyjyjdrtyjhdfgjhgjhfghfgrgrgrgrgiew"
-          android:textColor="@color/colorDescriptionOurWork"
-          />
-      <TextView
-          android:id="@+id/textViewMore"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentEnd="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/textViewDescriptionWork"
-          android:layout_marginEnd="16dp"
-          android:layout_marginRight="16dp"
-          android:layout_marginTop="8dp"
-          android:text="@string/more"
-          android:textColor="@color/colorGray"
-          />
-      <RelativeLayout
-          android:id="@+id/relativeLayout"
+      <com.mzelzoghbi.zgallery.CustomViewPager
+          android:id="@+id/viewPagerImages"
           android:layout_width="match_parent"
-          android:layout_height="250dp"
-          android:layout_above="@+id/recyclerViewImages"
-          android:layout_below="@+id/textViewMore"
-          android:layout_marginTop="8dp"
+          android:layout_height="match_parent"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_alignParentTop="true"
+          android:layout_marginBottom="71dp"
+          />
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="100dp"
+          android:layout_alignBottom="@+id/viewPagerImages"
+          android:background="@color/colorBackgroundTransparent"
           >
 
-        <com.mzelzoghbi.zgallery.CustomViewPager
-            android:id="@+id/viewPagerImages"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:button="@drawable/check_heart"
+            />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toLeftOf="@+id/checkBox"
+            android:layout_toStartOf="@+id/checkBox"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="3"
+            android:text="TextVisdfgvsdgvbasersdrgsergsdgsdfgvsdfgvgvasdfgvasdgvasldfnvASJKLDNgvSJKLnvklndvlkSNDvklsnDvklsdnvklsdnvklsdnvklsndvndvknsew"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
             />
-
       </RelativeLayout>
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/recyclerViewImages"
-          android:layout_width="match_parent"
-          android:layout_height="70dp"
-          android:layout_alignParentBottom="true"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:clipToPadding="false"
-          />
 
     </RelativeLayout>
-  </android.support.v4.widget.NestedScrollView>
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewImages"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clipToPadding="false"
+        />
+
+  </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
