@@ -63,6 +63,10 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
     return position == 0 ? NewsEntity.LAST_NEWS : NewsEntity.DEFAULT_NEWS;
   }
 
+  public NewsEntity getItem(int position){
+    return mNewsEntities.get(position);
+  }
+
   static class AllNewsViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivThumbNews) ImageView mImageViewThumbNews;
     @BindView(R.id.tvItemNewsShortDescription) TextView mTextViewItemNewsShortDescription;

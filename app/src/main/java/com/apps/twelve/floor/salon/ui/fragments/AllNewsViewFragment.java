@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -55,6 +56,8 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
         .setOnItemClickListener((recyclerView, position, v) -> {
           showToastMessage("" + position);
           // TODO: 24.02.2017 create FragmentDetailNews
+          mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+              NewsDetailFragment.newInstance(mAllNewsAdapter.getItem(position)));
         });
   }
 
