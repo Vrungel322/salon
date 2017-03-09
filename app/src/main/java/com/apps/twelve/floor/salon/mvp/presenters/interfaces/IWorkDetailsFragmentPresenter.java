@@ -5,4 +5,7 @@ package com.apps.twelve.floor.salon.mvp.presenters.interfaces;
  */
 
 public interface IWorkDetailsFragmentPresenter {
+  void addFavorite(int idPhoto);
+
+  void deleteFavorite(int idPhoto);
 }

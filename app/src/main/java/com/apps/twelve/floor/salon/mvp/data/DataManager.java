@@ -4,6 +4,7 @@ import android.net.Uri;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +24,20 @@ public class DataManager {
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     ArrayList<OurWorkEntity> owe = new ArrayList<>();
-    ArrayList<String> listImageUrl = new ArrayList<>();
+    ArrayList<PhotoWorksEntity> listImageUrl = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
-      listImageUrl.add(
-          "http://liza.ua/wp-content/uploads/2016/12/tild3332-6430-4264-b238-343934343733__79615508f7484025a538db52b07e5b04.jpg");
-      listImageUrl.add(
-          "http://stilnyiy-mir.ru/wp-content/uploads/2016/11/Modnye-pricheski-s-kudrjami-2017-zhenskie-na-srednie-volosy-foto-24-e1478638531162.jpg");
-      listImageUrl.add("http://v-2017.com/wp-content/uploads/2016/07/Hair-fashion-2017-12.jpg");
-      listImageUrl.add(
-          "http://www.alesyamag.by/wp-content/uploads/2015/04/%D0%93%D0%B0%D1%80%D1%81%D0%BE%D0%BD.jpg");
-      listImageUrl.add(
-          "http://god2017p.ru/wp-content/uploads/2016/07/modnye-korotkie-strizhki-v-2017-godu-01.jpg");
+      listImageUrl.add(new PhotoWorksEntity(1,
+          "Каждая свадебная прическа это своего рода шедевр. Если платья и аксессуары могут повторяться, то прическа всегда индивидуальна. "
+              + "Даже если она создается по какому-то образцу, все равно у каждой невесты она будет выглядеть по-своему неповторимо.",
+          true,
+          "http://liza.ua/wp-content/uploads/2016/12/tild3332-6430-4264-b238-343934343733__79615508f7484025a538db52b07e5b04.jpg"));
+      listImageUrl.add(new PhotoWorksEntity(2,
+          "Свой свадебный образ каждая девушка продумывает заблаговременно, ведь все должно быть гармоничным и сочетаемым: платье, аксессуары",
+          false,
+          "http://stilnyiy-mir.ru/wp-content/uploads/2016/11/Modnye-pricheski-s-kudrjami-2017-zhenskie-na-srednie-volosy-foto-24-e1478638531162.jpg"));
+      listImageUrl.add(new PhotoWorksEntity(3,
+          "Эти составляющие образа подбирают в одном стиле, наилучший вариант – соответствие постоянному стилю невесты.",
+          true, "http://v-2017.com/wp-content/uploads/2016/07/Hair-fashion-2017-12.jpg"));
     }
     for (int i = 0; i < 5; i++) {
       owe.add(new OurWorkEntity(Uri.parse(

@@ -1,10 +1,8 @@
 package com.apps.twelve.floor.salon.mvp.presenters;
 
 import android.support.annotation.NonNull;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
-import javax.inject.Inject;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 

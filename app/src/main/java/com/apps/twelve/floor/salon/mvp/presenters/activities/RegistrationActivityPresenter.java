@@ -10,8 +10,8 @@ import com.arellomobile.mvp.InjectViewState;
  * Created by Vrungel on 27.02.2017.
  */
 
-@InjectViewState public class RegistrationActivityPresenter extends BasePresenter<IRegistrationActivityView>
-implements IRegistrationActivityPresenter {
+@InjectViewState public class RegistrationActivityPresenter
+    extends BasePresenter<IRegistrationActivityView> implements IRegistrationActivityPresenter {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

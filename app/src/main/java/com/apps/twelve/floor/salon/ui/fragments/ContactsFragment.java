@@ -96,5 +96,4 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
 
     super.onDestroy();
   }
-
 }

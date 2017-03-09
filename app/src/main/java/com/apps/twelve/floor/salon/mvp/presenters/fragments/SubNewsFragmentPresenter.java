@@ -20,7 +20,6 @@ import rx.Subscription;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
-
   }
 
   @Override protected void onFirstViewAttach() {

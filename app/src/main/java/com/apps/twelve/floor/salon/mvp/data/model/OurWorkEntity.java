@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.mvp.data.model;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -14,21 +13,20 @@ public class OurWorkEntity implements Parcelable {
   private Uri mImageURL;
   private String mShortDescription;
   private int mImageCount;
-  private ArrayList<String> mListImageUrl;
+  private ArrayList<PhotoWorksEntity> mListPhotoWorks;
 
   public OurWorkEntity(Uri imageURL, String shortDescription, int imageCount,
-      ArrayList<String> listImageUrl) {
+      ArrayList<PhotoWorksEntity> listPhotoWorks) {
     mImageURL = imageURL;
     mShortDescription = shortDescription;
     mImageCount = imageCount;
-    mListImageUrl = listImageUrl;
+    mListPhotoWorks = listPhotoWorks;
   }
 
   protected OurWorkEntity(Parcel in) {
     mImageURL = in.readParcelable(Uri.class.getClassLoader());
     mShortDescription = in.readString();
     mImageCount = in.readInt();
-    mListImageUrl = in.createStringArrayList();
   }
 
   public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
@@ -65,12 +63,12 @@ public class OurWorkEntity implements Parcelable {
     mImageCount = imageCount;
   }
 
-  public ArrayList<String> getListImageUrl() {
-    return mListImageUrl;
+  public ArrayList<PhotoWorksEntity> getListPhotoWorks() {
+    return mListPhotoWorks;
   }
 
-  public void setListImageUrl(ArrayList<String> listImageUrl) {
-    mListImageUrl = listImageUrl;
+  public void setListPhotoWorks(ArrayList<PhotoWorksEntity> listPhotoWorks) {
+    mListPhotoWorks = listPhotoWorks;
   }
 
   @Override public int describeContents() {
@@ -81,6 +79,5 @@ public class OurWorkEntity implements Parcelable {
     dest.writeParcelable(mImageURL, flags);
     dest.writeString(mShortDescription);
     dest.writeInt(mImageCount);
-    dest.writeStringList(mListImageUrl);
   }
 }

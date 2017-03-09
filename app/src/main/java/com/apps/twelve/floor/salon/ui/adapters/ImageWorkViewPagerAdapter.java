@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by John on 07.03.2017.
@@ -21,17 +21,16 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
 
   private Activity mActivity;
   private LayoutInflater mLayoutInflater;
-  private ArrayList<String> mImages;
-  private PhotoViewAttacher mPhotoViewAttacher;
+  private ArrayList<PhotoWorksEntity> mPhotoWorks;
 
-  public ImageWorkViewPagerAdapter(Activity activity, ArrayList<String> images) {
+  public ImageWorkViewPagerAdapter(Activity activity, ArrayList<PhotoWorksEntity> photoWorks) {
     this.mActivity = activity;
     mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    this.mImages = images;
+    this.mPhotoWorks = photoWorks;
   }
 
   @Override public int getCount() {
-    return mImages.size();
+    return mPhotoWorks.size();
   }
 
   @Override public boolean isViewFromObject(View view, Object object) {
@@ -40,27 +39,14 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
 
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_page, container, false);
-
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
-    Glide.with(mActivity).load(mImages.get(position))
-        /*.listener(new RequestListener<String, GlideDrawable>() {
-          @Override
-          public boolean onException(Exception e, String model, Target<GlideDrawable> target,
-              boolean isFirstResource) {
-            return false;
-          }
-
-          @Override public boolean onResourceReady(GlideDrawable resource, String model,
-              Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-            mPhotoViewAttacher = new PhotoViewAttacher(imageView);
-
-            return false;
-          }
-        })*/.into(imageView);
-
+    Glide.with(mActivity).load(mPhotoWorks.get(position).getUrlPhoto()).into(imageView);
     container.addView(itemView);
-
     return itemView;
+  }
+
+  public PhotoWorksEntity getEntity(int position) {
+    return mPhotoWorks.get(position);
   }
 
   @Override public void destroyItem(ViewGroup container, int position, Object object) {

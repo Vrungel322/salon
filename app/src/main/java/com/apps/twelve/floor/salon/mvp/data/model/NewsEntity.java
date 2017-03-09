@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.mvp.data.model;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import java.io.Serializable;
 
 /**
  * Created by Vrungel on 23.02.2017.

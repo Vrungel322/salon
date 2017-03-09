@@ -1,8 +1,6 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import shortbread.Shortcut;

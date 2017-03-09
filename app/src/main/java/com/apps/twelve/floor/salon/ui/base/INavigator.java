@@ -23,7 +23,8 @@ public interface INavigator {
 
   void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action);
 
-  void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action, @NonNull Uri uri);
+  void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action,
+      @NonNull Uri uri);
 
   void startActivityForResult(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent,
       int requestCode);
@@ -44,8 +45,8 @@ public interface INavigator {
   void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
-  void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
-      @NonNull Fragment fragment, @NonNull String fragmentTag);
+  void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);
 
   void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);

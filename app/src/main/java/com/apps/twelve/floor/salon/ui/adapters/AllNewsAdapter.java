@@ -63,7 +63,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
     return position == 0 ? NewsEntity.LAST_NEWS : NewsEntity.DEFAULT_NEWS;
   }
 
-  public NewsEntity getItem(int position){
+  public NewsEntity getItem(int position) {
     return mNewsEntities.get(position);
   }
 

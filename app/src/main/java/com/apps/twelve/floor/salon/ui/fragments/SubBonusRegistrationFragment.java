@@ -72,11 +72,11 @@ public class SubBonusRegistrationFragment extends BaseFragment
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
     if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
         .equals(Constants.FragmentToShow.BONUS)) {
-      mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(),
-          R.id.container_main, MyBonusFragment.newInstance());
+      mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+          MyBonusFragment.newInstance());
     } else {
-      mNavigator.startActivity(
-          (AppCompatActivity) getActivity(), new Intent(getActivity(), RegistrationActivity.class));
+      mNavigator.startActivity((AppCompatActivity) getActivity(),
+          new Intent(getActivity(), RegistrationActivity.class));
     }
   }
 }

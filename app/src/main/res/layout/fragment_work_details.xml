@@ -54,7 +54,6 @@
         android:textColor="@color/colorGray"
         />
     <RelativeLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_alignParentBottom="true"
@@ -81,7 +80,7 @@
           >
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBoxFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -94,7 +93,7 @@
             android:button="@drawable/check_heart"
             />
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewDescriptionItemPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -103,8 +102,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_toLeftOf="@+id/checkBox"
-            android:layout_toStartOf="@+id/checkBox"
+            android:layout_toLeftOf="@+id/checkBoxFavorite"
+            android:layout_toStartOf="@+id/checkBoxFavorite"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="3"
@@ -122,7 +121,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:clipToPadding="false"
         />
 
   </RelativeLayout>

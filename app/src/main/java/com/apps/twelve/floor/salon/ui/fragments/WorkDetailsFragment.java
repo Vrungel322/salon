@@ -9,12 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ImageWorkViewPagerAdapter;
@@ -23,6 +24,7 @@ import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mzelzoghbi.zgallery.CustomViewPager;
 import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
+import java.util.ArrayList;
 
 /**
  * Created by Alexandra on 23.02.2017.
@@ -36,14 +38,13 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   @BindView(R.id.textViewDescriptionWork) TextView mTextViewDescriptionWork;
   @BindView(R.id.textViewMore) TextView mTextViewMore;
   @BindView(R.id.viewPagerImages) CustomViewPager mViewPagerImages;
-  @BindView(R.id.relativeLayout) RelativeLayout mRelativeLayout;
   @BindView(R.id.recyclerViewImages) RecyclerView mRecyclerViewImages;
+  @BindView(R.id.checkBoxFavorite) CheckBox mCheckBoxFavorite;
+  @BindView(R.id.textViewDescriptionItemPhoto) TextView mTextViewDescriptionItemPhoto;
 
-  private OurWorkEntity mOurWorkEntity;
-
-  ImageWorkViewPagerAdapter adapter;
-  LinearLayoutManager mLayoutManager;
-  HorizontalListAdapters hAdapter;
+  private ImageWorkViewPagerAdapter mViewPagerAdapter;
+  private HorizontalListAdapters mHorizontalListAdapter;
+  private PhotoWorksEntity mPhotoWorksEntity;
 
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
@@ -59,7 +60,8 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mOurWorkEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
+    OurWorkEntity ourWorkEntity =
+        getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
 
     /* turn off scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
@@ -68,18 +70,34 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
     toolbarLayoutParams.setScrollFlags(0);
     mToolbar.setLayoutParams(toolbarLayoutParams);
 
-    mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+    LinearLayoutManager mLayoutManager =
+        new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-    // pager adapter
-    adapter = new ImageWorkViewPagerAdapter(getActivity(), mOurWorkEntity.getListImageUrl());
-    mViewPagerImages.setAdapter(adapter);
+    if (ourWorkEntity != null) {
+      // pager adapter
+      mViewPagerAdapter =
+          new ImageWorkViewPagerAdapter(getActivity(), ourWorkEntity.getListPhotoWorks());
+      mViewPagerImages.setAdapter(mViewPagerAdapter);
 
-    // horizontal list adapter
-    hAdapter = new HorizontalListAdapters(getActivity(), mOurWorkEntity.getListImageUrl(),
-        pos -> mViewPagerImages.setCurrentItem(pos, true));
-    mRecyclerViewImages.setLayoutManager(mLayoutManager);
-    mRecyclerViewImages.setAdapter(hAdapter);
-    hAdapter.notifyDataSetChanged();
+      // horizontal list adapter
+      ArrayList<String> listUrlPhotos = new ArrayList<>();
+      for (PhotoWorksEntity photoWorksEntity : ourWorkEntity.getListPhotoWorks()) {
+        listUrlPhotos.add(photoWorksEntity.getUrlPhoto());
+      }
+      mHorizontalListAdapter = new HorizontalListAdapters(getActivity(), listUrlPhotos,
+          pos -> mViewPagerImages.setCurrentItem(pos, true));
+      mRecyclerViewImages.setLayoutManager(mLayoutManager);
+      mRecyclerViewImages.setAdapter(mHorizontalListAdapter);
+      mHorizontalListAdapter.notifyDataSetChanged();
+
+      int currentPos = 0;
+      mPhotoWorksEntity = mViewPagerAdapter.getEntity(currentPos);
+      mHorizontalListAdapter.setSelectedItem(currentPos);
+      mViewPagerImages.setCurrentItem(currentPos);
+
+      mCheckBoxFavorite.setChecked(mPhotoWorksEntity.isFavorite());
+      mTextViewDescriptionItemPhoto.setText(mPhotoWorksEntity.getDescriptionPhoto());
+    }
 
     mViewPagerImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
       @Override
@@ -87,18 +105,18 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
       }
 
       @Override public void onPageSelected(int position) {
+        mPhotoWorksEntity = mViewPagerAdapter.getEntity(position);
+
         mRecyclerViewImages.smoothScrollToPosition(position);
-        hAdapter.setSelectedItem(position);
+        mHorizontalListAdapter.setSelectedItem(position);
+
+        mCheckBoxFavorite.setChecked(mPhotoWorksEntity.isFavorite());
+        mTextViewDescriptionItemPhoto.setText(mPhotoWorksEntity.getDescriptionPhoto());
       }
 
       @Override public void onPageScrollStateChanged(int state) {
-
       }
     });
-
-    int currentPos = 0;
-    hAdapter.setSelectedItem(currentPos);
-    mViewPagerImages.setCurrentItem(currentPos);
   }
 
   @OnClick(R.id.textViewMore) public void onClick() {
@@ -121,5 +139,18 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
     mToolbar.setLayoutParams(toolbarLayoutParams);
 
     super.onDestroy();
+  }
+
+  @OnClick(R.id.checkBoxFavorite) public void onCheckFavorite() {
+    if (mCheckBoxFavorite.isChecked()) {
+      mWorkDetailsFragmentPresenter.addFavorite(mPhotoWorksEntity.getId());
+    } else {
+      mWorkDetailsFragmentPresenter.deleteFavorite(mPhotoWorksEntity.getId());
+    }
+  }
+
+  @Override public void setStatusFavorite(boolean statusFavorite) {
+    mPhotoWorksEntity.setFavorite(statusFavorite);
+    mCheckBoxFavorite.setChecked(statusFavorite);
   }
 }
