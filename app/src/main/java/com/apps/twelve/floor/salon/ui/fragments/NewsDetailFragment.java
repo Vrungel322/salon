@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 23.02.2017.
@@ -22,7 +23,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
-    args.putSerializable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
     NewsDetailFragment fragment = new NewsDetailFragment();
     fragment.setArguments(args);
     return fragment;
@@ -34,7 +35,9 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mNewsEntity = (NewsEntity) getArguments().getSerializable(
-        Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
+    this.mNewsEntity =
+        getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
+
+    Timber.e("" + mNewsEntity.getNewsData());
   }
 }

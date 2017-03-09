@@ -24,7 +24,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
-    args.putSerializable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
     WorkDetailsFragment fragment = new WorkDetailsFragment();
     fragment.setArguments(args);
     return fragment;
@@ -36,8 +36,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mOurWorkEntity = (OurWorkEntity) getArguments().getSerializable(
-        Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
+    mOurWorkEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
 
     Timber.e("" + mOurWorkEntity.getListImageUrl().size());
   }
