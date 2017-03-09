@@ -29,10 +29,14 @@ import rx.Subscription;
   }
 
   @Override public void fetchListOfNews() {
+    getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(newsEntities -> getViewState().addListOfNews(newsEntities),
-            Throwable::printStackTrace);
+        .subscribe(newsEntities -> {getViewState().addListOfNews(newsEntities);getViewState().stopRefreshingView();},
+            throwable -> {
+              throwable.printStackTrace();
+              getViewState().stopRefreshingView();
+            });
     addToUnsubscription(subscription);
   }
 }

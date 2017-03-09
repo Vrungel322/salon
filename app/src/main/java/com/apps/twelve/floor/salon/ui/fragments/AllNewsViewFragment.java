@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
   @InjectPresenter AllNewsFragmentPresenter mAllNewsFragmentPresenter;
 
   @BindView(R.id.rvAllNews) RecyclerView mRecyclerViewAllNews;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private AllNewsAdapter mAllNewsAdapter;
 
@@ -48,6 +50,7 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
     if (actionBar != null) {
       actionBar.setTitle(R.string.news);
     }
+    mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
 
     mAllNewsAdapter = new AllNewsAdapter();
     mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
@@ -59,9 +62,18 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
           mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
               NewsDetailFragment.newInstance(mAllNewsAdapter.getItem(position)));
         });
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mAllNewsFragmentPresenter.fetchListOfNews());
   }
 
   @Override public void addListOfNews(List<NewsEntity> newsEntities) {
     mAllNewsAdapter.addListNewsEntity(newsEntities);
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 }

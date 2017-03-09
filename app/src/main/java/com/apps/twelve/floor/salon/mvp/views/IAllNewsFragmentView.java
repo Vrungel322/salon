@@ -13,4 +13,8 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IAllNewsFragmentView
     extends MvpView {
   void addListOfNews(List<NewsEntity> newsEntities);
+
+  void startRefreshingView();
+
+  void stopRefreshingView();
 }
