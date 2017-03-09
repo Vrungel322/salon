@@ -2,14 +2,16 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IAllNewsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.AllNewsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -23,9 +25,10 @@ import java.util.List;
  */
 
 public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmentView {
-  @InjectPresenter AllNewsPresenter mAllNewsFragmentPresenter;
+  @InjectPresenter AllNewsFragmentPresenter mAllNewsFragmentPresenter;
 
   @BindView(R.id.rvAllNews) RecyclerView mRecyclerViewAllNews;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private AllNewsAdapter mAllNewsAdapter;
 
@@ -47,6 +50,7 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
     if (actionBar != null) {
       actionBar.setTitle(R.string.news);
     }
+    mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
 
     mAllNewsAdapter = new AllNewsAdapter();
     mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
@@ -55,10 +59,21 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
         .setOnItemClickListener((recyclerView, position, v) -> {
           showToastMessage("" + position);
           // TODO: 24.02.2017 create FragmentDetailNews
+          mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+              NewsDetailFragment.newInstance(mAllNewsAdapter.getItem(position)));
         });
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mAllNewsFragmentPresenter.fetchListOfNews());
   }
 
   @Override public void addListOfNews(List<NewsEntity> newsEntities) {
     mAllNewsAdapter.addListNewsEntity(newsEntities);
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 }

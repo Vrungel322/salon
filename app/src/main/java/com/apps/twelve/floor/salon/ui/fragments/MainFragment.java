@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -15,7 +15,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class MainFragment extends BaseFragment implements IMainFragmentView {
-  @InjectPresenter MainPresenter mMainFragmentPresenter;
+  @InjectPresenter MainFragmentPresenter mMainFragmentPresenter;
 
   public static MainFragment newInstance() {
     Bundle args = new Bundle();

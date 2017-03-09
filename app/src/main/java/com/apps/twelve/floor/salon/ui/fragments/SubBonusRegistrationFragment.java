@@ -13,11 +13,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubBonusRegistrationPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubBonusRegestrationFragmentView;
-import com.apps.twelve.floor.salon.ui.activities.MainActivity;
 import com.apps.twelve.floor.salon.ui.activities.RegistrationActivity;
-import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -35,7 +33,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
   @BindView(R.id.tvBonusRegistration) TextView mTextViewBonusRegistration;
   @BindView(R.id.cvBonusRegistration) CardView mCardViewBonusRegistration;
 
-  @InjectPresenter SubBonusRegistrationPresenter mSubBonusRegistrationPresenter;
+  @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
 
   public static SubBonusRegistrationFragment newInstance(String mode) {
     Bundle args = new Bundle();

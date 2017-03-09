@@ -14,7 +14,7 @@ import rx.Subscription;
  * Created by Vrungel on 24.02.2017.
  */
 
-@InjectViewState public class AllNewsPresenter extends BasePresenter<IAllNewsFragmentView>
+@InjectViewState public class AllNewsFragmentPresenter extends BasePresenter<IAllNewsFragmentView>
     implements IAllNewsFragmentPresenter {
 
   @Inject DataManager mDataManager;
@@ -29,10 +29,14 @@ import rx.Subscription;
   }
 
   @Override public void fetchListOfNews() {
+    getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(newsEntities -> getViewState().addListOfNews(newsEntities),
-            Throwable::printStackTrace);
+        .subscribe(newsEntities -> {getViewState().addListOfNews(newsEntities);getViewState().stopRefreshingView();},
+            throwable -> {
+              throwable.printStackTrace();
+              getViewState().stopRefreshingView();
+            });
     addToUnsubscription(subscription);
   }
 }

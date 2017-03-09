@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ImageWorkViewPagerAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -29,7 +29,7 @@ import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 
 public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFragmentView {
 
-  @InjectPresenter WorkDetailsPresenter mWorkDetailsFragmentPresenter;
+  @InjectPresenter WorkDetailsFragmentPresenter mWorkDetailsFragmentPresenter;
 
   @BindView(R.id.textViewTitleWork) TextView mTextViewTitleWork;
   @BindView(R.id.textViewDescriptionWork) TextView mTextViewDescriptionWork;
@@ -46,7 +46,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
-    args.putSerializable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
     WorkDetailsFragment fragment = new WorkDetailsFragment();
     fragment.setArguments(args);
     return fragment;
@@ -58,8 +58,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mOurWorkEntity = (OurWorkEntity) getArguments().getSerializable(
-        Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
+    mOurWorkEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY);
 
     /* turn off scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
