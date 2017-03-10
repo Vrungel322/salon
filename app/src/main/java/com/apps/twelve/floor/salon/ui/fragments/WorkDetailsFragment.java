@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -98,6 +99,18 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
       mCheckBoxFavorite.setChecked(mPhotoWorksEntity.isFavorite());
       mTextViewDescriptionItemPhoto.setText(mPhotoWorksEntity.getDescriptionPhoto());
     }
+
+    mTextViewDescriptionWork.getViewTreeObserver()
+        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+          @Override public void onGlobalLayout() {
+            if (mTextViewDescriptionWork.getLineCount() > 3) {
+              mTextViewMore.setVisibility(View.VISIBLE);
+              mTextViewDescriptionWork.setMaxLines(3);
+              mTextViewDescriptionWork.setEllipsize(TextUtils.TruncateAt.END);
+              mTextViewDescriptionWork.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+          }
+        });
 
     mViewPagerImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
       @Override

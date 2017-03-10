@@ -32,8 +32,6 @@
         android:layout_below="@+id/textViewTitleWork"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:ellipsize="end"
-        android:maxLines="3"
         android:text="zdlfibhzfvbhzIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.dkjlfvbhzdsiotjhsioggidrgkjfbhvsdgvzsdfgvbasdjvbi"
         android:textColor="@color/colorBlack"
         android:textSize="15sp"
@@ -52,6 +50,7 @@
         android:padding="3dp"
         android:text="@string/more"
         android:textColor="@color/colorGray"
+        android:visibility="gone"
         />
     <RelativeLayout
         android:layout_width="match_parent"
