@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#ff5992</color>
-  <color name="colorPrimaryDark">#ff2972</color>
+  <color name="colorPrimary">#FF5992</color>
+  <color name="colorPrimaryDark">#FF2972</color>
   <color name="colorAccent">#FF4081</color>
-  <color name="colorSelectedItemInDrawer">#fad0de</color>
-  <color name="colorItemTextInDrawer">#404141</color>
-  <color name="colorItemSeparatorInDrawer">#404141</color>
-  <color name="colorCountPhotoOurWork">#404141</color>
-  <color name="colorListPhotoOurWorkIsEmpty">#404141</color>
-  <color name="colorNewsDate">#404141</color>
-  <color name="colorBookingDate">#404141</color>
-  <color name="colorBookingButton">#404141</color>
-  <color name="colorNews">#404141</color>
-  <color name="colorDescriptionOurWork">#000001</color>
-  <color name="colorDescriptionNews">#000001</color>
-  <color name="colorDescriptionBooking">#000001</color>
-  <color name="colorBackgroundAllNews">#ffffff</color>
-  <color name="colorBackgroundWorkDetail">#ffffff</color>
-  <color name="colorBackgroundASubNews">#ffffff</color>
-  <color name="colorBackgroundBonus">#ffffff</color>
-  <color name="colorBonus">#404141</color>
-  <color name="colorTitleWorkDetail">#404141</color>
-  <color name="colorBackgroundCountBonusMenu">#FFCA1050</color>
-  <color name="colorTextCountBonusMenu">#ffffff</color>
-  <color name="colorItemBookingActive">#FFFBE9F0</color>
-  <color name="colorBackgroundTransparent">#b1ca1050</color>
 
   <color name="colorGray">#404141</color>
+  <color name="colorLightGray">#727272</color>
+  <color name="colorLLightGray">#939393</color>
+  <color name="colorLLLightGray">#BDBDBD</color>
   <color name="colorWhite">#FFFFFF</color>
-  <color name="colorContactsTitle">#939393</color>
-  <color name="colorContactsText">#727272</color>
-  <color name="colorContactsSeparator">#BDBDBD</color>
-  <color name="colorContactsBottomBackground">#FFFFFF</color>
+  <color name="colorBlack">#000001</color>
+  <color name="colorDarkPink">#FFCA1050</color>
+  <color name="colorLightPink">#FAD0DE</color>
+  <color name="colorLLightPink">#FFFBE9F0</color>
 
   <color name="colorTransparent">#00000000</color>
+  <color name="colorPinkTransparent">#b1ca1050</color>
+
 </resources>

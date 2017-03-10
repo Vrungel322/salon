@@ -23,7 +23,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/list_is_empty"
-      android:textColor="@color/colorListPhotoOurWorkIsEmpty"
+      android:textColor="@color/colorGray"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="@+id/rvOurWorks"
       app:layout_constraintRight_toRightOf="@+id/rvOurWorks"

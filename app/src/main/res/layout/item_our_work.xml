@@ -39,7 +39,7 @@
           android:ellipsize="end"
           android:maxLines="3"
           android:text="TextView"
-          android:textColor="@color/colorDescriptionOurWork"
+          android:textColor="@color/colorBlack"
           />
       <LinearLayout
           android:id="@+id/linearLayout"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="TextView"
-            android:textColor="@color/colorCountPhotoOurWork"
+            android:textColor="@color/colorGray"
             />
       </LinearLayout>
     </RelativeLayout>

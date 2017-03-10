@@ -4,7 +4,7 @@
     android:id="@+id/nsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundWorkDetail"
+    android:background="@color/colorWhite"
     android:clickable="true"
     >
   <RelativeLayout
@@ -20,7 +20,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Glam classic"
-        android:textColor="@color/colorTitleWorkDetail"
+        android:textColor="@color/colorGray"
         android:textSize="30sp"
         />
     <TextView
@@ -35,7 +35,7 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:text="zdlfibhzfvbhzIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.dkjlfvbhzdsiotjhsioggidrgkjfbhvsdgvzsdfgvbasdjvbi"
-        android:textColor="@color/colorDescriptionOurWork"
+        android:textColor="@color/colorBlack"
         android:textSize="15sp"
         />
     <TextView
@@ -76,7 +76,7 @@
           android:layout_width="match_parent"
           android:layout_height="100dp"
           android:layout_alignBottom="@+id/viewPagerImages"
-          android:background="@color/colorBackgroundTransparent"
+          android:background="@color/colorPinkTransparent"
           >
 
         <CheckBox
