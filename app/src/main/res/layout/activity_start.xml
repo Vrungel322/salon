@@ -34,7 +34,7 @@
           android:layout_alignParentTop="true"
           app:headerLayout="@layout/nav_header_start"
           app:itemBackground="@drawable/selector_nav_drawer"
-          app:itemTextColor="@color/colorItemTextInDrawer"
+          app:itemTextColor="@color/colorGray"
           app:menu="@menu/menu_start_drawer"
           />
       <View
@@ -44,7 +44,7 @@
           android:layout_above="@+id/navigation_drawer_bottomPart"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:background="@color/colorItemSeparatorInDrawer"
+          android:background="@color/colorGray"
           >
       </View>
       <android.support.design.widget.NavigationView
@@ -52,7 +52,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentBottom="true"
-          app:itemTextColor="@color/colorItemTextInDrawer"
+          app:itemTextColor="@color/colorGray"
           app:menu="@menu/menu_start_drawer_footer"
           />
     </RelativeLayout>

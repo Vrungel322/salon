@@ -83,8 +83,8 @@ public class StartActivity extends BaseActivity
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
 
     mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
-        ContextCompat.getColor(this, R.color.colorBackgroundCountBonusMenu),
-        ContextCompat.getColor(this, R.color.colorTextCountBonusMenu));
+        ContextCompat.getColor(this, R.color.colorDarkPink),
+        ContextCompat.getColor(this, R.color.colorWhite));
   }
 
   @Override public void onBackPressed() {

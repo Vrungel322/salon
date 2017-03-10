@@ -34,7 +34,7 @@
       android:ellipsize="end"
       android:maxLines="3"
       android:text="TextView"
-      android:textColor="@color/colorDescriptionNews"
+      android:textColor="@color/colorBlack"
       android:textSize="18sp"
       app:layout_constraintBottom_toTopOf="@+id/tvItemNewsData"
       app:layout_constraintLeft_toRightOf="@+id/ivThumbNews"
@@ -50,7 +50,7 @@
       android:layout_marginStart="8dp"
       android:textSize="12sp"
       android:text="TextView"
-      android:textColor="@color/colorNewsDate"
+      android:textColor="@color/colorGray"
       app:layout_constraintBottom_toBottomOf="@+id/ivThumbNews"
       app:layout_constraintLeft_toRightOf="@+id/ivThumbNews"
       />
