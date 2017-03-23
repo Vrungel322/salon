@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.activities.RegistrationActivit
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsFragmentPresenter;
@@ -37,6 +38,8 @@ import javax.inject.Singleton;
   void inject(MainFragmentPresenter presenter);
 
   void inject(BookingFragmentPresenter presenter);
+
+  void inject(BookingDetailFragmentPresenter presenter);
 
   void inject(MyBookFragmentPresenter presenter);
 

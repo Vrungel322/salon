@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="tab_names" >
+    <item>@string/choose_service</item>
+    <item>@string/choose_time</item>
+    <item>@string/choose_master</item>
+    <item>@string/contact_data</item>
+  </string-array>
+</resources>

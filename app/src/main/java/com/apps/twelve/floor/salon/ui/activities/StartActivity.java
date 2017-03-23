@@ -23,6 +23,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.apps.twelve.floor.salon.ui.fragments.BookingDetailFragment;
 import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
 import com.apps.twelve.floor.salon.ui.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.ui.fragments.MainFragment;
@@ -129,7 +130,9 @@ public class StartActivity extends BaseActivity
       case R.id.nav_booking:
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
-            BookingFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
+            //BookingFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
+            //for test
+            BookingDetailFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
         break;
       case R.id.nav_my_book:
         mNavigator.clearBackStack(this);
