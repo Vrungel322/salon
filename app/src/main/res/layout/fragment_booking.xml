@@ -27,12 +27,15 @@
   </LinearLayout>
 
   <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/rl_choose_service"
       android:layout_width="match_parent"
       android:layout_height="50dp"
-      android:orientation="vertical"
       android:layout_marginTop="4dp"
       android:background="@color/colorWhite"
-      android:id="@+id/rl_choose_service"
+      android:clickable="true"
+      android:orientation="vertical"
+      android:touchscreenBlocksFocus="false"
+      android:visibility="visible"
       >
     <TextView
         android:id="@+id/tv_service"
@@ -64,6 +67,7 @@
       android:layout_marginTop="4dp"
       android:background="@color/colorWhite"
       android:orientation="vertical"
+      android:clickable="true"
       android:id="@+id/rl_choose_specialist"
       >
     <TextView

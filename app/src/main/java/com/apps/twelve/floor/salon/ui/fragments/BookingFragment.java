@@ -2,10 +2,10 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingFragmentView;
@@ -19,8 +19,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class BookingFragment extends BaseFragment implements IBookingFragmentView {
   @InjectPresenter BookingFragmentPresenter mBookingFragmentPresenter;
 
-  @BindView(R.id.tvTest) TextView mTvTest;
-  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
+  @BindView(R.id.tv_book) TextView tvBook;
 
   public static BookingFragment newInstance() {
     Bundle args = new Bundle();
@@ -36,15 +35,14 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mTvTest.setOnClickListener(v -> showToastMessage("tvTest"));
   }
 
-  @Override public void startRefreshingView() {
-    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  @OnClick(R.id.rl_choose_service) void chooseService() {
+    showToastMessage(R.string.book_choose_service);
   }
 
-  @Override public void stopRefreshingView() {
-    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
+  @OnClick(R.id.rl_choose_specialist) void chooseSpecialist() {
+    showToastMessage(R.string.book_choose_specialist);
   }
 }
 
