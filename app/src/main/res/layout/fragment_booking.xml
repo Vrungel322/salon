@@ -1,21 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorLLLLightGray"
     >
-  <android.support.v4.widget.SwipeRefreshLayout
-      android:id="@+id/srlRefreshLayout"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      >
 
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:orientation="vertical"
+      android:background="@color/colorWhite"
+      >
     <TextView
-        android:id="@+id/tvTest"
+        android:id="@+id/tv_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Записаться"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_centerVertical="true"
+        android:text="@string/book_create"
+        android:textColor="@color/colorLLLightGray"
+        android:textSize="24sp"
         />
-  </android.support.v4.widget.SwipeRefreshLayout>
+  </RelativeLayout>
+
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/rl_choose_service"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginTop="4dp"
+      android:background="@color/colorWhite"
+      android:orientation="vertical"
+      android:visibility="visible"
+      >
+    <TextView
+        android:id="@+id/tv_service"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingLeft="14dp"
+        android:paddingEnd="14dp"
+        android:background="?attr/selectableItemBackground"
+        android:text="@string/book_choose_service"
+        android:textColor="@color/colorLLightGray"
+        android:textSize="18sp"
+        />
+    <ImageView
+        android:id="@+id/iv_next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:contentDescription="@string/book_choose_service"
+        app:srcCompat="@drawable/book_next"
+        />
+  </RelativeLayout>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_marginTop="4dp"
+      android:orientation="vertical"
+      android:background="@color/colorWhite"
+      android:id="@+id/rl_choose_specialist"
+      >
+    <TextView
+        android:id="@+id/tv_specialist"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingLeft="14dp"
+        android:paddingEnd="14dp"
+        android:background="?attr/selectableItemBackground"
+        android:text="@string/book_choose_specialist"
+        android:textColor="@color/colorLLightGray"
+        android:textSize="18sp"
+        />
+    <ImageView
+        android:id="@+id/iv_next2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:contentDescription="@string/book_choose_specialist"
+        app:srcCompat="@drawable/book_next"
+        />
+  </RelativeLayout>
 
 </LinearLayout>

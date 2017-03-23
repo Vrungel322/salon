@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,8 +22,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
-import com.apps.twelve.floor.salon.ui.fragments.BookingDetailFragment;
-import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
 import com.apps.twelve.floor.salon.ui.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.ui.fragments.MainFragment;
 import com.apps.twelve.floor.salon.ui.fragments.MyBonusFragment;
@@ -39,7 +36,7 @@ public class StartActivity extends BaseActivity
   @InjectPresenter StartActivityPresenter mStartActivityPresenter;
 
   @BindView(R.id.toolbar) Toolbar mToolbar;
-  @BindView(R.id.fab) FloatingActionButton mFab;
+  @BindView(R.id.fab_booking) FloatingActionButton mFabBooking;
   @BindView(R.id.navigation_drawer_topPart) NavigationView mNavViewTopPart;
   @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottomPart;
   @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
@@ -53,10 +50,8 @@ public class StartActivity extends BaseActivity
     super.onCreate(savedInstanceState);
     setUpUI();
 
-    mFab.setOnClickListener(
-        v -> Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null)
-            .show());
+    mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
+        new Intent(StartActivity.this, BookingActivity.class)));
 
     getSupportFragmentManager().addOnBackStackChangedListener(() -> {
       if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
@@ -129,10 +124,8 @@ public class StartActivity extends BaseActivity
         break;
       case R.id.nav_booking:
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
-            //BookingFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
-            //for test
-            BookingDetailFragment.newInstance(), Constants.FragmentTag.BOOKING_FRAGMENT);
+        mNavigator.startActivity(StartActivity.this,
+            new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
         mNavigator.clearBackStack(this);

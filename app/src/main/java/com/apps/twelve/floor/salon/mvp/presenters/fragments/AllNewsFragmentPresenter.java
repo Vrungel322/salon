@@ -31,7 +31,8 @@ import rx.Subscription;
   @Override public void fetchListOfNews() {
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(newsEntities -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(newsEntities -> {
           getViewState().addListOfNews(newsEntities);
           getViewState().stopRefreshingView();
         }, throwable -> {

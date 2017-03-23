@@ -11,7 +11,7 @@ buildscript {
     classpath 'com.android.tools.build:gradle:2.3.0'
 
     //for retrolambda
-    classpath 'me.tatarka:gradle-retrolambda:3.5.0'
+    classpath 'me.tatarka:gradle-retrolambda:3.6.0'
 
     //for dagger
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
