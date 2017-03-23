@@ -12,6 +12,7 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
@@ -41,8 +42,10 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
       @Nullable Bundle savedInstanceState) {
     final View fragmentView = inflater.inflate(mLayoutId, container, false);
     ButterKnife.bind(this, fragmentView);
-    AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
-    appBarLayout.setExpanded(true, false);
+    if (getActivity() instanceof StartActivity) {
+      AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
+      appBarLayout.setExpanded(true, false);
+    }
     return fragmentView;
   }
 

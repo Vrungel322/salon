@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.AppModule;
+import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.RegistrationActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
@@ -33,6 +34,8 @@ import javax.inject.Singleton;
   void inject(StartActivityPresenter presenter);
 
   void inject(RegistrationActivityPresenter presenter);
+
+  void inject(BookingActivityPresenter presenter);
 
   void inject(MainFragmentPresenter presenter);
 
