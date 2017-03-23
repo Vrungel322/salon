@@ -7,7 +7,7 @@
     android:background="@color/colorLLLLightGray"
     >
 
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
       android:layout_height="60dp"
       android:orientation="vertical"
@@ -19,12 +19,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_centerVertical="true"
         android:text="@string/book_create"
         android:textColor="@color/colorLLLightGray"
         android:textSize="24sp"
         />
-  </LinearLayout>
+  </RelativeLayout>
 
   <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:id="@+id/rl_choose_service"
