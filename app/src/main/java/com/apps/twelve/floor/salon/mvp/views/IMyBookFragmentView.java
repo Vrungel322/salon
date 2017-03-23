@@ -10,7 +10,4 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IMyBookFragmentView
     extends MvpView {
-  void startRefreshingView();
-
-  void stopRefreshingView();
 }
