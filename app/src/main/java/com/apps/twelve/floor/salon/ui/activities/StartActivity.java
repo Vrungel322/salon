@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -38,7 +37,7 @@ public class StartActivity extends BaseActivity
   @InjectPresenter StartActivityPresenter mStartActivityPresenter;
 
   @BindView(R.id.toolbar) Toolbar mToolbar;
-  @BindView(R.id.fab) FloatingActionButton mFab;
+  @BindView(R.id.fab_booking) FloatingActionButton mFabBooking;
   @BindView(R.id.navigation_drawer_topPart) NavigationView mNavViewTopPart;
   @BindView(R.id.navigation_drawer_bottomPart) NavigationView mNavViewBottomPart;
   @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
@@ -52,10 +51,8 @@ public class StartActivity extends BaseActivity
     super.onCreate(savedInstanceState);
     setUpUI();
 
-    mFab.setOnClickListener(
-        v -> Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null)
-            .show());
+    mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
+        new Intent(StartActivity.this, BookingActivity.class)));
 
     getSupportFragmentManager().addOnBackStackChangedListener(() -> {
       if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
