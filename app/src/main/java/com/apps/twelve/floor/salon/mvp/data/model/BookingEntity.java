@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.mvp.data.local;
+package com.apps.twelve.floor.salon.mvp.data.model;
 
 /**
  * Created by Vrungel on 24.03.2017.
@@ -9,9 +9,6 @@ public class BookingEntity {
   private String mUserPhone;
   private String mDateId;
   private String mMasterId;
-
-  public BookingEntity() {
-  }
 
   public String getMasterServiceId() {
     return mMasterServiceId;

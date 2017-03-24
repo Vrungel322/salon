@@ -7,7 +7,6 @@ import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPres
 import com.apps.twelve.floor.salon.mvp.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
-import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**

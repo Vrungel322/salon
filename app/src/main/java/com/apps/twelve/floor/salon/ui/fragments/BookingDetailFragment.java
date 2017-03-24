@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
-import com.apps.twelve.floor.salon.ui.adapters.BookingStepsAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.ViewPagerBookingStepsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import javax.inject.Inject;
 
 import static com.apps.twelve.floor.salon.R.id.tabLayout;
 
@@ -23,7 +26,10 @@ import static com.apps.twelve.floor.salon.R.id.tabLayout;
  */
 
 public class BookingDetailFragment extends BaseFragment implements IBookingDetailFragmentView {
+
   @InjectPresenter BookingDetailFragmentPresenter mBookingDetailFragmentPresenter;
+  @Inject BookingEntity mBookingEntity;
+
   @BindView(tabLayout) TabLayout mTabLayout;
   @BindView(R.id.vpBookingSteps) ViewPager mViewPager;
   @BindView(R.id.bNextStep) Button mButtonNextStep;
@@ -40,13 +46,22 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     super(R.layout.fragment_booking_detail);
   }
 
+  @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    App.getBookingComponent().inject(this);
+  }
+
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
   }
 
   @Override public void setUpViewPager() {
-    BookingStepsAdapter adapter =
-        new BookingStepsAdapter(getActivity().getSupportFragmentManager(), mContext);
+    ViewPagerBookingStepsAdapter adapter =
+        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
+    adapter.addFragment(MyBookFragment.newInstance(), getString(R.string.tab_services));
+    adapter.addFragment(MyBookFragment.newInstance(), getString(R.string.tab_time));
+    adapter.addFragment(MyBookFragment.newInstance(), getString(R.string.tab_master));
+    adapter.addFragment(MyBookFragment.newInstance(), getString(R.string.tab_data));
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);
     ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
@@ -57,7 +72,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   }
 
   @OnClick(R.id.bPrevStep) public void bPrevStepClicked() {
-    if (mViewPager.getCurrentItem() > 0){
+    if (mViewPager.getCurrentItem() > 0) {
       mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
     }
   }

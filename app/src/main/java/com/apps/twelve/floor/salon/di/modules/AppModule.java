@@ -2,10 +2,11 @@ package com.apps.twelve.floor.salon.di.modules;
 
 import android.app.Application;
 import android.content.Context;
+import com.apps.twelve.floor.salon.di.scopes.AppScope;
+import com.apps.twelve.floor.salon.ui.base.Navigator;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Singleton;
 
 /**
  * Created by Vrungel on 25.01.2017.
@@ -19,11 +20,15 @@ import javax.inject.Singleton;
     mApplication = application;
   }
 
-  @Provides @Singleton Context provideAppContext() {
+  @Provides @AppScope Context provideAppContext() {
     return mApplication;
   }
 
-  @Provides @Singleton public RxBus provideRxBus() {
+  @Provides @AppScope public RxBus provideRxBus() {
     return new RxBus();
+  }
+
+  @Provides @AppScope public Navigator provideNavigator() {
+    return new Navigator();
   }
 }
