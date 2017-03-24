@@ -4,9 +4,7 @@ import android.app.Application;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
-import com.apps.twelve.floor.salon.di.components.DaggerBookingComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
-import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import shortbread.Shortbread;
 import timber.log.Timber;
 
@@ -17,15 +15,15 @@ import timber.log.Timber;
 public class App extends Application {
 
   private static AppComponent sAppComponent;
-  private static BookingComponent sBookingComponent;
+  //private static BookingComponent sBookingComponent;
 
   public static AppComponent getAppComponent() {
     return sAppComponent;
   }
 
-  public static BookingComponent getBookingComponent() {
-    return sBookingComponent;
-  }
+  //public static BookingComponent getBookingComponent() {
+  //  return sBookingComponent;
+  //}
 
   @Override public void onCreate() {
     super.onCreate();
@@ -39,11 +37,11 @@ public class App extends Application {
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
   }
 
-  public static void initBookingComponent() {
-    sBookingComponent = DaggerBookingComponent.builder().build();
-  }
+  //public static void initBookingComponent() {
+  //  sBookingComponent = DaggerBookingComponent.builder().build();
+  //}
 
-  public static void destroyBookingComponent() {
-    sBookingComponent = null;
-  }
+  //public static void destroyBookingComponent() {
+  //  sBookingComponent = null;
+  //}
 }
