@@ -42,10 +42,10 @@
 
   <string name="more">Еще</string>
 
-  <string name="choose_service">Выбор услуги</string>
-  <string name="choose_time">Выбор времени</string>
-  <string name="choose_master">Выбор мастера</string>
-  <string name="contact_data">Контактные данные</string>
+  <string name="choose_service">Выбор\nуслуги</string>
+  <string name="choose_time">Выбор\nвремени</string>
+  <string name="choose_master">Выбор\nмастера</string>
+  <string name="contact_data">Контактные\nданные</string>
 
   <string name="book_create">Записаться</string>
   <string name="book_choose_service">Начать выбор услуги</string>
