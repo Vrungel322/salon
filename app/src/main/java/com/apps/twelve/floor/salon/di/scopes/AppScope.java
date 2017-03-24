@@ -1,8 +1,12 @@
 package com.apps.twelve.floor.salon.di.scopes;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.inject.Scope;
+
 /**
  * Created by Vrungel on 24.03.2017.
  */
 
-public @interface AppScope {
+@Scope @Retention(RetentionPolicy.RUNTIME) public @interface AppScope {
 }
