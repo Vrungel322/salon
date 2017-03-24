@@ -8,11 +8,13 @@ import com.apps.twelve.floor.salon.mvp.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import shortbread.Shortcut;
 
 /**
  * Created by John on 23.03.2017.
  */
 
+@Shortcut(id = "booking", icon = R.drawable.ic_shortcut_border_color, shortLabelRes = R.string.book_create)
 public class BookingActivity extends BaseActivity implements IBookingActivityView {
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
