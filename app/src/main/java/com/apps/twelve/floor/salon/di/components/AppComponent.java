@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.di.components;
 import android.content.Context;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
+import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.RegistrationActivityPresenter;
@@ -31,9 +32,7 @@ import dagger.Component;
  */
 @AppScope @Component(modules = AppModule.class) public interface AppComponent {
 
-  Context context();
-
-  Navigator navigator();
+  DataManager dataManager();
 
   //presenters
   void inject(MainActivityPresenter presenter);
@@ -47,8 +46,6 @@ import dagger.Component;
   void inject(MainFragmentPresenter presenter);
 
   void inject(BookingFragmentPresenter presenter);
-
-  void inject(BookingDetailFragmentPresenter presenter);
 
   void inject(MyBookFragmentPresenter presenter);
 

@@ -28,7 +28,7 @@ import static com.apps.twelve.floor.salon.R.id.tabLayout;
 public class BookingDetailFragment extends BaseFragment implements IBookingDetailFragmentView {
 
   @InjectPresenter BookingDetailFragmentPresenter mBookingDetailFragmentPresenter;
-  @Inject BookingEntity mBookingEntity;
+
 
   @BindView(tabLayout) TabLayout mTabLayout;
   @BindView(R.id.vpBookingSteps) ViewPager mViewPager;
@@ -48,7 +48,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    App.getBookingComponent().inject(this);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
