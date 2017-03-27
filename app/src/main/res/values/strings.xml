@@ -39,17 +39,17 @@
   <string name="contacts_schedule">График работы:\nЕждневно с\n9:00 до 22:00</string>
   <string name="contacts_about">О нас</string>
   <string name="contacts_website"><u>Перейти на веб-сайт</u></string>
-
   <string name="more">Еще</string>
-
-  <string name="choose_service">Выбор\nуслуги</string>
-  <string name="choose_time">Выбор\nвремени</string>
-  <string name="choose_master">Выбор\nмастера</string>
-  <string name="contact_data">Контактные\nданные</string>
 
   <string name="book_create">Записаться</string>
   <string name="book_choose_service">Начать выбор услуги</string>
   <string name="book_choose_specialist">Начать выбор специалиста</string>
   <string name="next_step">Вперед</string>
   <string name="prev_step">Назад</string>
+
+  <!--For tabs-->
+  <string name="tab_services">Выбор услуги</string>
+  <string name="tab_time">Выбор времени</string>
+  <string name="tab_master">Выбор мастера</string>
+  <string name="tab_data">Контактные данные</string>
 </resources>

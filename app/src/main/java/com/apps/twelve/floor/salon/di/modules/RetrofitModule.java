@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.di.modules;
 
 import android.content.Context;
 import com.apps.twelve.floor.salon.BuildConfig;
+import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.google.gson.FieldNamingPolicy;
@@ -12,7 +13,6 @@ import dagger.Provides;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Named;
-import javax.inject.Singleton;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -31,7 +31,7 @@ import timber.log.Timber;
  */
 @Module public class RetrofitModule {
 
-  @Provides @Singleton Retrofit provideRetrofit(Converter.Factory converterFactory,
+  @Provides @AppScope Retrofit provideRetrofit(Converter.Factory converterFactory,
       OkHttpClient okClient) {
     return new Retrofit.Builder().baseUrl(Constants.Remote.BASE_URL)
         .client(okClient)
@@ -40,18 +40,18 @@ import timber.log.Timber;
         .build();
   }
 
-  @Provides @Singleton Converter.Factory provideConverterFactory(Gson gson) {
+  @Provides @AppScope Converter.Factory provideConverterFactory(Gson gson) {
     return GsonConverterFactory.create(gson);
   }
 
-  @Provides @Singleton Gson provideGson() {
+  @Provides @AppScope Gson provideGson() {
     return new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
         .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
         .serializeNulls()
         .create();
   }
 
-  @Provides @Singleton OkHttpClient provideOkClient(HttpLoggingInterceptor httpLoggingInterceptor,
+  @Provides @AppScope OkHttpClient provideOkClient(HttpLoggingInterceptor httpLoggingInterceptor,
       Cache cache, @Named("CacheInterceptor") Interceptor cacheInterceptor,
       @Named("OfflineCacheInterceptor") Interceptor offlineCacheInterceptor) {
     return new OkHttpClient.Builder().readTimeout(10, TimeUnit.SECONDS)
@@ -62,7 +62,7 @@ import timber.log.Timber;
         .build();
   }
 
-  @Provides @Singleton HttpLoggingInterceptor provideHttpLoggingInterceptor() {
+  @Provides @AppScope HttpLoggingInterceptor provideHttpLoggingInterceptor() {
     HttpLoggingInterceptor interceptor =
         new HttpLoggingInterceptor(message -> Timber.tag("response").d(message));
     interceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.HEADERS
@@ -70,7 +70,7 @@ import timber.log.Timber;
     return interceptor;
   }
 
-  @Provides @Singleton Cache provideCache(Context context) {
+  @Provides @AppScope Cache provideCache(Context context) {
     Cache cache = null;
     try {
       cache = new Cache(new File(context.getCacheDir(), "http-cache"), 10 * 1024 * 1024); // 10 MB
@@ -80,7 +80,7 @@ import timber.log.Timber;
     return cache;
   }
 
-  @Provides @Singleton @Named("CacheInterceptor") Interceptor provideCacheInterceptor() {
+  @Provides @AppScope @Named("CacheInterceptor") Interceptor provideCacheInterceptor() {
     return chain -> {
       Request request = chain.request();
       Response response = chain.proceed(chain.request());
@@ -95,7 +95,7 @@ import timber.log.Timber;
     };
   }
 
-  @Provides @Singleton @Named("OfflineCacheInterceptor") Interceptor provideOfflineCacheInterceptor(
+  @Provides @AppScope @Named("OfflineCacheInterceptor") Interceptor provideOfflineCacheInterceptor(
       Context context) {
     return chain -> {
       Request request = chain.request();

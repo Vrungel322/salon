@@ -13,6 +13,11 @@ import com.arellomobile.mvp.InjectViewState;
 @InjectViewState public class BookingActivityPresenter extends BasePresenter<IBookingActivityView>
     implements IBookingActivityPresenter {
 
+  public BookingActivityPresenter() {
+    super();
+    App.initBookingComponent();
+  }
+
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFragmentBooking();
@@ -20,5 +25,10 @@ import com.arellomobile.mvp.InjectViewState;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    App.destroyBookingComponent();
   }
 }

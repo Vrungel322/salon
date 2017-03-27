@@ -7,17 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  * Created by Vrungel on 26.01.2017.
  */
 
-@Singleton public class Navigator implements INavigator {
-
-  @Inject Navigator() {
-  }
+public class Navigator implements INavigator {
 
   //for activity
   @Override public void finishActivity(@NonNull AppCompatActivity appCompatActivity) {
