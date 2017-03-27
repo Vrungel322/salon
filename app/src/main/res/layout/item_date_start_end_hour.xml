@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="12dp"
+    android:id="@+id/llParent"
     >
   <TextView
       android:id="@+id/tvDate"

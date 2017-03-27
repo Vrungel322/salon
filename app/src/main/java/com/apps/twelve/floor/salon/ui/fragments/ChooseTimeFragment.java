@@ -64,16 +64,37 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     DatesInMonthPagerAdapter datesInMonthPagerAdapter =
         new DatesInMonthPagerAdapter(getContext(), days);
     mViewPagerDatesOfMonth.setAdapter(datesInMonthPagerAdapter);
+    mViewPagerDatesOfMonth.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+      }
+
+      @Override public void onPageSelected(int position) {
+        chainViewPagerRecyclerView(position);
+      }
+
+      @Override public void onPageScrollStateChanged(int state) {
+
+      }
+    });
 
     //Horizontal RV
     mRecyclerViewDates.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     mAdapter = new DatesAdapter();
     mRecyclerViewDates.setAdapter(mAdapter);
+    chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-
+          mAdapter.setSelectedItem(position);
+          mViewPagerDatesOfMonth.setCurrentItem(position);
         });
+  }
+
+  private void chainViewPagerRecyclerView(int currentItem) {
+    mAdapter.setSelectedItem(currentItem);
+    mRecyclerViewDates.smoothScrollToPosition(currentItem);
   }
 
   @Override public void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities) {
