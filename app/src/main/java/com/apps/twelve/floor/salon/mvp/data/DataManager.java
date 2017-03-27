@@ -5,6 +5,7 @@ import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +89,14 @@ public class DataManager {
     ArrayList<String> arrayList = new ArrayList<>();
     for (int i = 0; i < 31; i++) {
       arrayList.add("day " + i);
+    }
+    return Observable.just(arrayList);
+  }
+
+  public Observable<List<WorkStartEndEntity>> fetchWorkSchedule() {
+    ArrayList<WorkStartEndEntity> arrayList = new ArrayList<>();
+    for (int i = 0; i < 31; i++) {
+      arrayList.add(new WorkStartEndEntity("day " + i, i + ":00", "19:00"));
     }
     return Observable.just(arrayList);
   }

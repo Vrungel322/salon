@@ -30,7 +30,17 @@ import rx.Subscription;
   private void loadData() {
     Subscription subscription = mDataManager.fetchDaysData()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(strings -> getViewState().setUpUi(strings));
+        .subscribe(strings -> {
+          getViewState().setUpUi(strings);
+          loadWorkSchedule();
+        });
+    addToUnsubscription(subscription);
+  }
+
+  private void loadWorkSchedule() {
+    Subscription subscription = mDataManager.fetchWorkSchedule()
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(workStartEndEntities -> getViewState().updateWorkSchedule(workStartEndEntities));
     addToUnsubscription(subscription);
   }
 }
