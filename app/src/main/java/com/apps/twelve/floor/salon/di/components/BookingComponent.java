@@ -2,15 +2,14 @@ package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
-import com.apps.twelve.floor.salon.ui.fragments.BookingDetailFragment;
-import dagger.Component;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
+import dagger.Subcomponent;
 
 /**
  * Created by Vrungel on 24.03.2017.
  */
 
-@BookingScope @Component(dependencies = AppComponent.class, modules = BookingModule.class)
-public interface BookingComponent {
+@BookingScope @Subcomponent(modules = BookingModule.class) public interface BookingComponent {
 
-  void inject(BookingDetailFragment fragment);
+  void inject(BookingDetailFragmentPresenter presenter);
 }
