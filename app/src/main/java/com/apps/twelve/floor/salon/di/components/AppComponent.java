@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.di.components;
 
 import android.content.Context;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
+import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPresenter;
@@ -32,7 +33,7 @@ import dagger.Component;
  */
 @AppScope @Component(modules = AppModule.class) public interface AppComponent {
 
-  DataManager dataManager();
+  BookingComponent plusBookingComponent(BookingModule bookingModule);
 
   //presenters
   void inject(MainActivityPresenter presenter);

@@ -4,7 +4,6 @@ import android.app.Application;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
-import com.apps.twelve.floor.salon.di.components.DaggerBookingComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import shortbread.Shortbread;
@@ -40,10 +39,7 @@ public class App extends Application {
   }
 
   public static void initBookingComponent() {
-    sBookingComponent = DaggerBookingComponent.builder()
-        .bookingModule(new BookingModule())
-        .appComponent(sAppComponent)
-        .build();
+    sBookingComponent = sAppComponent.plusBookingComponent(new BookingModule());
   }
 
   public static void destroyBookingComponent() {
