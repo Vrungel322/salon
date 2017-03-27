@@ -14,5 +14,8 @@ import java.util.List;
     extends MvpView {
 
   void setUpUi(List<String> days);
+
   void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities);
+
+  void setSelectedTime(int position);
 }

@@ -105,7 +105,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mScheduleAdapter.setSelectedItem(position));
+            (recyclerView, position, v) -> mChooseTimeFragmentPresenter.setSelectedTime(position));
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
@@ -118,6 +118,10 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mAdapter.addListWorkStartEndEntity(workStartEndEntities);
     mScheduleAdapter.setTimeSchedule(
         mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
+  }
+
+  @Override public void setSelectedTime(int position) {
+    mScheduleAdapter.setSelectedItem(position);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

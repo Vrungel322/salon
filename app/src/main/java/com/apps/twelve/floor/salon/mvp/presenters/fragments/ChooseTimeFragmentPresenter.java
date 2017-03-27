@@ -43,4 +43,8 @@ import rx.Subscription;
         .subscribe(workStartEndEntities -> getViewState().updateWorkSchedule(workStartEndEntities));
     addToUnsubscription(subscription);
   }
+
+  public void setSelectedTime(int position) {
+    getViewState().setSelectedTime(position);
+  }
 }

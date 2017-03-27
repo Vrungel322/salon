@@ -4,8 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/llTimeParent"
+    android:layout_margin="2dp"
     >
   <TextView
+      android:padding="3dp"
       android:id="@+id/tvTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
