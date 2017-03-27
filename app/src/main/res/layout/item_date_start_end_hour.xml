@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llParent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="12dp"
-    android:id="@+id/llParent"
     >
   <TextView
       android:id="@+id/tvDate"
@@ -13,15 +13,16 @@
       android:text="20 пн"
       />
   <View
+      android:id="@+id/vLine"
       android:layout_width="match_parent"
       android:layout_height="1dp"
-      android:background="@color/colorLightGray"
+      android:background="@color/colorAccent"
       />
   <TextView
-      android:layout_marginTop="2dp"
       android:id="@+id/tvStartTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="2dp"
       android:text="13:00"
       />
   <TextView

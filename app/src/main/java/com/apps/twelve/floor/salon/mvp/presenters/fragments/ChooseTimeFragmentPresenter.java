@@ -32,6 +32,7 @@ import rx.Subscription;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(strings -> {
           getViewState().setUpUi(strings);
+          setDateToTv();
           loadWorkSchedule();
         });
     addToUnsubscription(subscription);
@@ -46,5 +47,9 @@ import rx.Subscription;
 
   public void setSelectedTime(int position) {
     getViewState().setSelectedTime(position);
+  }
+
+  public void setDateToTv() {
+    getViewState().setTextToDayTv();
   }
 }

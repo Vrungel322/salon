@@ -18,4 +18,6 @@ import java.util.List;
   void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities);
 
   void setSelectedTime(int position);
+
+  void setTextToDayTv();
 }

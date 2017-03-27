@@ -15,8 +15,8 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
-import com.apps.twelve.floor.salon.ui.adapters.DatesAdapter;
-import com.apps.twelve.floor.salon.ui.adapters.DatesInMonthPagerAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.DatesHorizontalAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.DatesInMonthViewPagerAdapter;
 import com.apps.twelve.floor.salon.ui.adapters.ScheduleAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -42,8 +42,9 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   private String serviceName;
   private List<String> mDays = new ArrayList<>();
   private List<WorkStartEndEntity> mWorkStartEndEntities;
-  private DatesAdapter mAdapter;
+  private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
+  private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
   public static ChooseTimeFragment newInstance() {
     Bundle args = new Bundle();
@@ -66,9 +67,8 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   @Override public void setUpUi(List<String> days) {
     //viewPager
     mDays = days;
-    DatesInMonthPagerAdapter datesInMonthPagerAdapter =
-        new DatesInMonthPagerAdapter(getContext(), days);
-    mViewPagerDatesOfMonth.setAdapter(datesInMonthPagerAdapter);
+    mDatesInMonthViewPagerAdapter = new DatesInMonthViewPagerAdapter(getContext(), days);
+    mViewPagerDatesOfMonth.setAdapter(mDatesInMonthViewPagerAdapter);
     mViewPagerDatesOfMonth.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
       @Override
       public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -79,6 +79,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
+        mChooseTimeFragmentPresenter.setDateToTv();
       }
 
       @Override public void onPageScrollStateChanged(int state) {
@@ -89,12 +90,12 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     //Horizontal RV
     mRecyclerViewHorizontalDates.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-    mAdapter = new DatesAdapter();
-    mRecyclerViewHorizontalDates.setAdapter(mAdapter);
+    mDatesHorizontalAdapter = new DatesHorizontalAdapter();
+    mRecyclerViewHorizontalDates.setAdapter(mDatesHorizontalAdapter);
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          mAdapter.setSelectedItem(position);
+          mDatesHorizontalAdapter.setSelectedItem(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
 
@@ -109,19 +110,24 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
-    mAdapter.setSelectedItem(currentItem);
+    mDatesHorizontalAdapter.setSelectedItem(currentItem);
     mRecyclerViewHorizontalDates.smoothScrollToPosition(currentItem);
   }
 
   @Override public void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities) {
     mWorkStartEndEntities = workStartEndEntities;
-    mAdapter.addListWorkStartEndEntity(workStartEndEntities);
+    mDatesHorizontalAdapter.addListWorkStartEndEntity(workStartEndEntities);
     mScheduleAdapter.setTimeSchedule(
         mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
   }
 
   @Override public void setSelectedTime(int position) {
     mScheduleAdapter.setSelectedItem(position);
+  }
+
+  @Override public void setTextToDayTv() {
+    mTextViewDateInText.setText(
+        mDatesInMonthViewPagerAdapter.getEntity(mViewPagerDatesOfMonth.getCurrentItem()));
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

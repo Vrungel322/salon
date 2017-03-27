@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.ui.adapters;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,10 +38,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(
-          holder.mLinearLayoutParent.getContext().getResources().getColor(R.color.colorLightPink));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+              R.color.colorPrimaryDark));
+      holder.mTextViewTime.setTextColor(
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
-          holder.mLinearLayoutParent.getContext().getResources().getColor(R.color.colorWhite));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
+      holder.mTextViewTime.setTextColor(
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorBlack));
     }
   }
 

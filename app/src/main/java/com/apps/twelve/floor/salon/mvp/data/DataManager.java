@@ -99,7 +99,7 @@ public class DataManager {
 
     for (int t = 0; t < 25; t++) {
       if (t % 2 == 0) {
-        timestamp.add(String.valueOf(t + 2) + ":" + String.valueOf(27 - t) + "!!!");
+        timestamp.add(String.valueOf(t + 2) + ":" + String.valueOf(27 - t));
       } else {
         timestamp.add(String.valueOf(t + 1) + ":" + String.valueOf(25 - t));
       }

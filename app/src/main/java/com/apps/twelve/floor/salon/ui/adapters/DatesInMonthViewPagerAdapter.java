@@ -14,11 +14,11 @@ import java.util.List;
  * Created by Vrungel on 27.03.2017.
  */
 
-public class DatesInMonthPagerAdapter extends PagerAdapter {
+public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   private LayoutInflater mLayoutInflater;
   private List<String> daysInMonth;
 
-  public DatesInMonthPagerAdapter(Context context, List<String> daysInMonth) {
+  public DatesInMonthViewPagerAdapter(Context context, List<String> daysInMonth) {
     mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.daysInMonth = daysInMonth;
   }
