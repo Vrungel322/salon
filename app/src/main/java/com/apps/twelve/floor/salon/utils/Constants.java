@@ -24,6 +24,7 @@ public final class Constants {
     public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
+    public static final String SERVICE_NAME = "SERVICE_NAME";
   }
 
   public class FragmentToShow {

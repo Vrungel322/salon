@@ -52,4 +52,5 @@
   <string name="tab_time">Выбор времени</string>
   <string name="tab_master">Выбор мастера</string>
   <string name="tab_data">Контактные данные</string>
+  <string name="service">Услуга:</string>
 </resources>

@@ -1,18 +1,16 @@
 package com.apps.twelve.floor.salon.di.components;
 
-import android.content.Context;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
-import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.RegistrationActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.MainFragmentPresenter;
@@ -25,7 +23,6 @@ import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsFragmentPrese
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
-import com.apps.twelve.floor.salon.ui.base.Navigator;
 import dagger.Component;
 
 /**
@@ -67,6 +64,8 @@ import dagger.Component;
   void inject(SubBonusRegistrationFragmentPresenter presenter);
 
   void inject(SubFragmentBookingPresenter presenter);
+
+  void inject(ChooseTimeFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
