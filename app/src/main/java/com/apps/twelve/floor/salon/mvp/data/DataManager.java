@@ -83,4 +83,12 @@ public class DataManager {
     }
     return Observable.just(lbe);
   }
+
+  public Observable<List<String>> fetchDaysData() {
+    ArrayList<String> arrayList = new ArrayList<>();
+    for (int i = 0; i < 31; i++) {
+      arrayList.add("day " + i);
+    }
+    return Observable.just(arrayList);
+  }
 }

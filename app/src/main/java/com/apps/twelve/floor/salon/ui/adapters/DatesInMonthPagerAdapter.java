@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.apps.twelve.floor.salon.R;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vrungel on 27.03.2017.
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class DatesInMonthPagerAdapter extends PagerAdapter {
   private LayoutInflater mLayoutInflater;
-  private ArrayList<String> daysInMonth;
+  private List<String> daysInMonth;
 
-  public DatesInMonthPagerAdapter(Context context, ArrayList<String> daysInMonth) {
+  public DatesInMonthPagerAdapter(Context context, List<String> daysInMonth) {
     mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.daysInMonth = daysInMonth;
   }

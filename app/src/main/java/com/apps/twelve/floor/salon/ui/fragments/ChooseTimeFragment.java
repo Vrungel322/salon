@@ -18,6 +18,7 @@ import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vrungel on 27.03.2017.
@@ -33,7 +34,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   @BindView(R.id.tvDateInText) TextView mTextViewDateInText;
   @BindView(R.id.rvScheduleInDay) RecyclerView mRecyclerViewScheduleInDay;
   private String serviceName;
-  private ArrayList<String> mDays = new ArrayList<>();
+  private List<String> mDays = new ArrayList<>();
 
   public static ChooseTimeFragment newInstance() {
     Bundle args = new Bundle();
@@ -53,12 +54,10 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mTextViewServiceName.setText(serviceName);
   }
 
-  @Override public void setUpUi() {
-    for (int i = 1; i < 31; i++) {
-      mDays.add("day " + i);
-    }
+  @Override public void setUpUi(List<String> days) {
+    mDays = days;
     DatesInMonthPagerAdapter datesInMonthPagerAdapter =
-        new DatesInMonthPagerAdapter(getContext(), mDays);
+        new DatesInMonthPagerAdapter(getContext(), days);
     mViewPagerDatesOfMonth.setAdapter(datesInMonthPagerAdapter);
   }
 
