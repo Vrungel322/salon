@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseTimeFragmentPr
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.DatesAdapter;
 import com.apps.twelve.floor.salon.ui.adapters.DatesInMonthPagerAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.ScheduleAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
@@ -28,17 +30,20 @@ import java.util.List;
  */
 
 public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragmentView {
+  private static final int SCHEDULE_SPAN_COUNT = 6;
   @InjectPresenter ChooseTimeFragmentPresenter mChooseTimeFragmentPresenter;
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
   @BindView(R.id.vpDatesOfMonth) ViewPager mViewPagerDatesOfMonth;
   @BindView(R.id.bNextDay) ImageView mImageViewNextDay;
-  @BindView(R.id.rvDates) RecyclerView mRecyclerViewDates;
+  @BindView(R.id.rvDates) RecyclerView mRecyclerViewHorizontalDates;
   @BindView(R.id.tvDateInText) TextView mTextViewDateInText;
   @BindView(R.id.rvScheduleInDay) RecyclerView mRecyclerViewScheduleInDay;
   private String serviceName;
   private List<String> mDays = new ArrayList<>();
+  private List<WorkStartEndEntity> mWorkStartEndEntities;
   private DatesAdapter mAdapter;
+  private ScheduleAdapter mScheduleAdapter;
 
   public static ChooseTimeFragment newInstance() {
     Bundle args = new Bundle();
@@ -72,6 +77,8 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
 
       @Override public void onPageSelected(int position) {
         chainViewPagerRecyclerView(position);
+        mScheduleAdapter.setTimeSchedule(
+            mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
       }
 
       @Override public void onPageScrollStateChanged(int state) {
@@ -80,25 +87,37 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     });
 
     //Horizontal RV
-    mRecyclerViewDates.setLayoutManager(
+    mRecyclerViewHorizontalDates.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     mAdapter = new DatesAdapter();
-    mRecyclerViewDates.setAdapter(mAdapter);
+    mRecyclerViewHorizontalDates.setAdapter(mAdapter);
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
-    ItemClickSupport.addTo(mRecyclerViewDates)
+    ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
           mAdapter.setSelectedItem(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
+
+    //Schedule RV (hours)
+    mRecyclerViewScheduleInDay.setLayoutManager(
+        new GridLayoutManager(getContext(), SCHEDULE_SPAN_COUNT));
+    mScheduleAdapter = new ScheduleAdapter();
+    mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
+    ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
+        .setOnItemClickListener(
+            (recyclerView, position, v) -> mScheduleAdapter.setSelectedItem(position));
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
     mAdapter.setSelectedItem(currentItem);
-    mRecyclerViewDates.smoothScrollToPosition(currentItem);
+    mRecyclerViewHorizontalDates.smoothScrollToPosition(currentItem);
   }
 
   @Override public void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities) {
+    mWorkStartEndEntities = workStartEndEntities;
     mAdapter.addListWorkStartEndEntity(workStartEndEntities);
+    mScheduleAdapter.setTimeSchedule(
+        mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.mvp.data.model;
 
+import java.util.List;
+
 /**
  * Created by Vrungel on 27.03.2017.
  */
@@ -8,11 +10,14 @@ public class WorkStartEndEntity {
   private String date;
   private String startDate;
   private String endDate;
+  private List<String> freeTime;
 
-  public WorkStartEndEntity(String date, String startDate, String endDate) {
+  public WorkStartEndEntity(String date, String startDate, String endDate, List<String> freeTime) {
+
     this.date = date;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.freeTime = freeTime;
   }
 
   public String getDate() {
@@ -37,5 +42,13 @@ public class WorkStartEndEntity {
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+  public List<String> getFreeTime() {
+    return freeTime;
+  }
+
+  public void setFreeTime(List<String> freeTime) {
+    this.freeTime = freeTime;
   }
 }
