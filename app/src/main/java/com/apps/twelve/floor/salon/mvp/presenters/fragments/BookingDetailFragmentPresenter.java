@@ -26,7 +26,5 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpViewPager();
-    Timber.e(String.valueOf(mDataManager.hashCode()));
-    Timber.e(String.valueOf(mBookingEntity.hashCode()));
   }
 }
