@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="12dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginStart="3dp"
     >
   <TextView
       android:id="@+id/tvDate"
