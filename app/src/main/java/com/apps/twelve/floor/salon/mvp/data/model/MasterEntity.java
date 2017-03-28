@@ -1,7 +1,5 @@
 package com.apps.twelve.floor.salon.mvp.data.model;
 
-import android.net.Uri;
-
 /**
  * Created by Vrungel on 28.03.2017.
  */
