@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.ui.activities.StartActivity;
@@ -27,6 +28,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   @Inject protected Navigator mNavigator;
 
   private final int mLayoutId;
+  private Unbinder mUnbinder;
 
   public BaseFragment(int mLayoutId) {
     this.mLayoutId = mLayoutId;
@@ -41,12 +43,17 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     final View fragmentView = inflater.inflate(mLayoutId, container, false);
-    ButterKnife.bind(this, fragmentView);
+    mUnbinder = ButterKnife.bind(this, fragmentView);
     if (getActivity() instanceof StartActivity) {
       AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
       appBarLayout.setExpanded(true, false);
     }
     return fragmentView;
+  }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    mUnbinder.unbind();
   }
 
   protected void showAlertMessage(String title, String message) {
