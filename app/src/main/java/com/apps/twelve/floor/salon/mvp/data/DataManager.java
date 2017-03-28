@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.mvp.data;
 
 import android.net.Uri;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
@@ -109,5 +110,15 @@ public class DataManager {
     }
 
     return Observable.just(workStartEndEntities);
+  }
+
+  public Observable<List<MasterEntity>> fetchMasters() {
+    ArrayList<MasterEntity> arrayList = new ArrayList<>();
+    for (int i = 0; i < 7; i++) {
+      arrayList.add(new MasterEntity("Master " + i,
+          "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
+          "Lorem ipsum dolore sit amet"));
+    }
+    return Observable.just(arrayList);
   }
 }
