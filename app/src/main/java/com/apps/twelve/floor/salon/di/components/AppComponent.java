@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresen
 import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.DetailNewsFragmentPresenter;
@@ -66,6 +67,8 @@ import dagger.Component;
   void inject(SubFragmentBookingPresenter presenter);
 
   void inject(ChooseTimeFragmentPresenter presenter);
+
+  void inject(ChooseMasterFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
