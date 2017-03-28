@@ -48,9 +48,17 @@
   <string name="prev_step">Назад</string>
 
   <!--For tabs-->
-  <string name="tab_services">Выбор услуги</string>
-  <string name="tab_time">Выбор времени</string>
-  <string name="tab_master">Выбор мастера</string>
-  <string name="tab_data">Контактные данные</string>
-  <string name="service">Услуга:</string>
+  <string name="tab_services">Выбор\nуслуги</string>
+  <string name="tab_time">Выбор\nвремени</string>
+  <string name="tab_master">Выбор\nмастера</string>
+  <string name="tab_data">Контактные\nданные</string>
+  <string name="booking_service">Услуга:</string>
+  <string name="booking_time">Время:</string>
+  <string name="booking_master">Мастер:</string>
+  <string name="booking_name">Ваше имя</string>
+  <string name="booking_name_description">(ваше имя или ФИО, не менее 5 символов)</string>
+  <string name="booking_phone">Номер мобильного телефона</string>
+  <string name="booking_phone_description">(формат 0991112233)</string>
+  <string name="booking_button">ЗАПИСАТЬСЯ</string>
+
 </resources>
