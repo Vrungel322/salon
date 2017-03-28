@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubFragmentBookingPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubFragmentBookingView;
 import com.apps.twelve.floor.salon.ui.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

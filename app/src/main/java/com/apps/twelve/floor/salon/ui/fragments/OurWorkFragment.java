@@ -10,7 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.OurWorkFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.OurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.adapters.OurWorkAdapter;

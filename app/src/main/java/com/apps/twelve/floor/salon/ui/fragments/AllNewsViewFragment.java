@@ -11,7 +11,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.AllNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.AllNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IAllNewsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.AllNewsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

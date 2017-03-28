@@ -3,7 +3,7 @@ package com.apps.twelve.floor.salon.ui.activities;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.activities.BookingActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;

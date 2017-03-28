@@ -8,16 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
-import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ViewPagerBookingStepsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import javax.inject.Inject;
 
 import static com.apps.twelve.floor.salon.R.id.tabLayout;
 

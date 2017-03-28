@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.adapters.MyLastBookingAdapterPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMyLastBookingAdapterView;
 import com.apps.twelve.floor.salon.ui.base.MvpBaseRecyclerAdapter;
 import com.arellomobile.mvp.MvpDelegate;

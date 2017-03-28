@@ -2,7 +2,7 @@ package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingDetailFragmentPresenter;
 import dagger.Subcomponent;
 
 /**

@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseTimeFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.DatesHorizontalAdapter;
 import com.apps.twelve.floor.salon.ui.adapters.DatesInMonthViewPagerAdapter;
