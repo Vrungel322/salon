@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
+import android.widget.TextView;
+import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterFragmentView;
@@ -13,6 +15,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class ChooseMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
   @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
+
+  @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
 
   public static ChooseMasterFragment newInstance() {
     Bundle args = new Bundle();
