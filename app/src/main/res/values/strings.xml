@@ -53,4 +53,5 @@
   <string name="tab_master">Выбор мастера</string>
   <string name="tab_data">Контактные данные</string>
   <string name="service">Услуга:</string>
+  <string name="spare_time">Свободное время на:</string>
 </resources>
