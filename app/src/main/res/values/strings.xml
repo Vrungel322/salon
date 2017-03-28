@@ -54,4 +54,6 @@
   <string name="tab_data">Контактные данные</string>
   <string name="service">Услуга:</string>
   <string name="spare_time">Свободное время на:</string>
+  <string name="time_empty">Сведения о свободнов времени отсутствуют</string>
+  <string name="booking_phone">Вы можете записаться, позвонив по следующим телефонам:</string>
 </resources>

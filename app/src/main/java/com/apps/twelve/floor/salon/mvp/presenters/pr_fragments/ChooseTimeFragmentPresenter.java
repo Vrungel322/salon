@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 27.03.2017.
@@ -31,10 +32,16 @@ import rx.Subscription;
     Subscription subscription = mDataManager.fetchDaysData()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(strings -> {
-          getViewState().setUpUi(strings);
-          setDateToTv();
-          loadWorkSchedule();
-        });
+          getViewState().hideProgressBarBookingTime();
+          if (!strings.isEmpty()) {
+            getViewState().setUpUi(strings);
+            setDateToTv();
+            loadWorkSchedule();
+            getViewState().showTimeBooking();
+          } else {
+            getViewState().showNotTime();
+          }
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 

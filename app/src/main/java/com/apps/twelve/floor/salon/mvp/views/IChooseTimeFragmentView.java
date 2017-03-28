@@ -20,4 +20,10 @@ import java.util.List;
   void setSelectedTime(int position);
 
   void setTextToDayTv();
+
+  void showTimeBooking();
+
+  void showNotTime();
+
+  void hideProgressBarBookingTime();
 }
