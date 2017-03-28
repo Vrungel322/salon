@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ImageWorkViewPagerAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

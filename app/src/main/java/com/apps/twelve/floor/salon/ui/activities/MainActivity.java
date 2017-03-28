@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.activities.MainActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IMainActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;

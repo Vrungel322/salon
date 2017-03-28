@@ -12,7 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.ContactsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IContactsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.MvpAppCompatActivity;

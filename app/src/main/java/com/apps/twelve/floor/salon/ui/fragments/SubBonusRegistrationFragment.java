@@ -13,7 +13,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubBonusRegistrationFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.ui.activities.RegistrationActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

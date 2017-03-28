@@ -8,7 +8,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.ChooseMasterFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.MastersHorizontalAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;

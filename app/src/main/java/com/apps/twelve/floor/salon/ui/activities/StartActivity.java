@@ -19,7 +19,7 @@ import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.activities.StartActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IStartActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.ContactsFragment;

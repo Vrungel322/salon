@@ -9,7 +9,7 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.BookingDetailFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ViewPagerBookingStepsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
@@ -25,7 +25,6 @@ import static com.apps.twelve.floor.salon.R.id.tabLayout;
 public class BookingDetailFragment extends BaseFragment implements IBookingDetailFragmentView {
 
   @InjectPresenter BookingDetailFragmentPresenter mBookingDetailFragmentPresenter;
-
 
   @BindView(tabLayout) TabLayout mTabLayout;
   @BindView(R.id.vpBookingSteps) ViewPager mViewPager;

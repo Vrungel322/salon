@@ -8,7 +8,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.fragments.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.ISubNewsFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
