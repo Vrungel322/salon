@@ -3,7 +3,7 @@ package com.apps.twelve.floor.salon.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.HttpException;
 
 /**
  * Created by John on 26.01.2017.
