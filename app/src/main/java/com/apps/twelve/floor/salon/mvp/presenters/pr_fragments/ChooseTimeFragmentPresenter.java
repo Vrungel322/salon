@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -16,7 +15,7 @@ import timber.log.Timber;
  */
 
 @InjectViewState public class ChooseTimeFragmentPresenter
-    extends BasePresenter<IChooseTimeFragmentView> implements IChooseTimeFragmentPresenter {
+    extends BasePresenter<IChooseTimeFragmentView> {
   @Inject DataManager mDataManager;
 
   @Override protected void inject() {

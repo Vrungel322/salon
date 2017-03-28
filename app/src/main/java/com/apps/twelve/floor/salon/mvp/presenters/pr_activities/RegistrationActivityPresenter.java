@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_activities;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IRegistrationActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IRegistrationActivityView;
 import com.arellomobile.mvp.InjectViewState;
 
@@ -11,7 +10,7 @@ import com.arellomobile.mvp.InjectViewState;
  */
 
 @InjectViewState public class RegistrationActivityPresenter
-    extends BasePresenter<IRegistrationActivityView> implements IRegistrationActivityPresenter {
+    extends BasePresenter<IRegistrationActivityView> {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

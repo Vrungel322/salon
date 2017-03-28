@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IWorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -14,13 +13,13 @@ import timber.log.Timber;
  */
 
 @InjectViewState public class WorkDetailsFragmentPresenter
-    extends BasePresenter<IWorkDetailsFragmentView> implements IWorkDetailsFragmentPresenter {
+    extends BasePresenter<IWorkDetailsFragmentView> {
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
-  @Override public void addFavorite(int idPhoto) {
+  public void addFavorite(int idPhoto) {
     Timber.d("add favorite");
     Subscription subscription = rx.Observable.just(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())
@@ -28,7 +27,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  @Override public void deleteFavorite(int idPhoto) {
+  public void deleteFavorite(int idPhoto) {
     Timber.d("delete favorite");
     Subscription subscription = rx.Observable.just(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())

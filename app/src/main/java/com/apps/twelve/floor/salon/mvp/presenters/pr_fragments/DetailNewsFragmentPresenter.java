@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.INewsDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
 import com.arellomobile.mvp.InjectViewState;
 
@@ -11,7 +10,7 @@ import com.arellomobile.mvp.InjectViewState;
  */
 
 @InjectViewState public class DetailNewsFragmentPresenter
-    extends BasePresenter<INewsDetailFragmentView> implements INewsDetailFragmentPresenter {
+    extends BasePresenter<INewsDetailFragmentView> {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

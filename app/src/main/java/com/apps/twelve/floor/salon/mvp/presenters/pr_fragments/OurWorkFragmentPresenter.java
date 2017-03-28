@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IOurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -14,8 +13,7 @@ import rx.Subscription;
  * Created by Vrungel on 21.02.2017.
  */
 
-@InjectViewState public class OurWorkFragmentPresenter extends BasePresenter<IOurWorkFragmentView>
-    implements IOurWorkFragmentPresenter {
+@InjectViewState public class OurWorkFragmentPresenter extends BasePresenter<IOurWorkFragmentView> {
 
   @Inject DataManager mDataManager;
 
@@ -28,7 +26,7 @@ import rx.Subscription;
     fetchListOfWorks();
   }
 
-  @Override public void fetchListOfWorks() {
+  public void fetchListOfWorks() {
     Subscription subscription = mDataManager.fetchListOfWorks()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(ourWorkEntities -> getViewState().addListOfWorks(ourWorkEntities),
