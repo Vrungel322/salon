@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -15,7 +14,7 @@ import rx.Subscription;
  */
 
 @InjectViewState public class ChooseMasterFragmentPresenter
-    extends BasePresenter<IChooseMasterFragmentView> implements IChooseMasterFragmentPresenter {
+    extends BasePresenter<IChooseMasterFragmentView> {
   @Inject DataManager mDataManager;
 
   @Override protected void inject() {

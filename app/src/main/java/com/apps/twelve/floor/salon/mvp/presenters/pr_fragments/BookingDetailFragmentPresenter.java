@@ -4,7 +4,6 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_interfaces.IBookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
@@ -14,7 +13,7 @@ import javax.inject.Inject;
  */
 
 @InjectViewState public class BookingDetailFragmentPresenter
-    extends BasePresenter<IBookingDetailFragmentView> implements IBookingDetailFragmentPresenter {
+    extends BasePresenter<IBookingDetailFragmentView> {
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
 
