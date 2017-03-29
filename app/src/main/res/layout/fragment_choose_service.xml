@@ -2,31 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     >
-  <LinearLayout
+  <EditText
+      android:id="@+id/etChooseService"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/colorWhite"
-      >
-    <EditText
-        android:id="@+id/etChooseService"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorGrayTransparent"
-        android:ems="10"
-        android:hint="@string/search_service"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        />
-  </LinearLayout>
+      android:layout_height="30dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:background="@color/colorGrayTransparent"
+      android:hint="@string/search_service"
+      android:inputType="textPersonName"
+      android:textAlignment="center"
+      android:textSize="14sp"
+      />
   <LinearLayout
       android:id="@+id/llAllitems"
       android:layout_width="match_parent"
@@ -41,10 +35,10 @@
         />
   </LinearLayout>
   <LinearLayout
-      android:layout_marginTop="0dp"
       android:id="@+id/llDeepItems"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_marginTop="0dp"
       android:orientation="vertical"
       >
     <android.support.v7.widget.RecyclerView
