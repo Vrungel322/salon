@@ -53,7 +53,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   @Override public void setUpViewPager() {
     ViewPagerBookingStepsAdapter adapter =
         new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
-    adapter.addFragment(MyBookFragment.newInstance(), getString(R.string.tab_services));
+    adapter.addFragment(ChooseServiceFragment.newInstance(), getString(R.string.tab_services));
     adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
     adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));
     adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
