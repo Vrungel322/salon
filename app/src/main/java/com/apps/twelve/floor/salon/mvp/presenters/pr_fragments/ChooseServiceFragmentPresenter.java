@@ -49,7 +49,7 @@ import timber.log.Timber;
     Subscription subscription;
     if (!s.isEmpty()) {
       subscription = Observable.from(mServiceEntities)
-          .filter(serviceEntity -> serviceEntity.getTitle().contains(s))
+          .filter(serviceEntity -> serviceEntity.getTitle().contains(s.trim()))
           .toList()
           .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
     } else {

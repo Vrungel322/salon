@@ -69,7 +69,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   }
 
   @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {
-    Timber.e(String.valueOf(serviceEntities.size()));
     mServicesAdapter.setServiceEntity(serviceEntities);
   }
 }
