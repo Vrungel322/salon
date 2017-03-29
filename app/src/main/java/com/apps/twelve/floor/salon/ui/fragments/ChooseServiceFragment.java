@@ -17,7 +17,6 @@ import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.03.2017.
@@ -59,7 +58,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         mChooseServiceFragmentPresenter.filterServices(mEditTextChooseService.getText().toString());
-
       }
 
       @Override public void afterTextChanged(Editable s) {
