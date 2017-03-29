@@ -18,7 +18,7 @@
       android:background="@color/colorGrayTransparent"
       android:hint="@string/search_service"
       android:inputType="textPersonName"
-      android:textAlignment="center"
+      android:gravity="center"
       android:textSize="14sp"
       />
   <LinearLayout
