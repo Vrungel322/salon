@@ -15,6 +15,20 @@
   <color name="colorLightPink">#FAD0DE</color>
   <color name="colorLLightPink">#FFFBE9F0</color>
 
+  <!--screen contacts-->
+  <color name="colorIconContacts">#FFC6C5C1</color>
+  <color name="colorTitleBase">#FFA2A2A2</color>
+  <color name="colorPhone">#FFEA3472</color>
+  <color name="colorTitlePhone">#FF737373</color>
+  <color name="colorAddress">#FFEA3472</color>
+  <color name="colorTitleAddress">#FF737373</color>
+  <color name="colorMail">#FFEA3472</color>
+  <color name="colorTitleMail">#FF737373</color>
+  <color name="colorTime">#FFEA3472</color>
+  <color name="colorTitleTime">#FF737373</color>
+  <color name="colorTitleAbout">#FFEA3472</color>
+  <color name="colorTitleWeb">#FFEA3472</color>
+
   <color name="colorTransparent">#00000000</color>
   <color name="colorPinkTransparent">#b1ca1050</color>
   <color name="colorPinkGrayTransparent">#ce875664</color>
