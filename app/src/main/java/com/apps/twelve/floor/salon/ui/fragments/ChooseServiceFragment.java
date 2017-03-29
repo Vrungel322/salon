@@ -3,6 +3,8 @@ package com.apps.twelve.floor.salon.ui.fragments;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import butterknife.BindView;
@@ -49,6 +51,21 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mServicesAdapter.setSelectedItem(position));
+
+    mEditTextChooseService.addTextChangedListener(new TextWatcher() {
+      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+        mChooseServiceFragmentPresenter.filterServices(mEditTextChooseService.getText().toString());
+
+      }
+
+      @Override public void afterTextChanged(Editable s) {
+
+      }
+    });
   }
 
   @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {

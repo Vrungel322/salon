@@ -10,6 +10,7 @@ import com.arellomobile.mvp.InjectViewState;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -41,6 +42,20 @@ import timber.log.Timber;
           mServiceEntities.clear();
           mServiceEntities.addAll(serviceEntities);
         }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  public void filterServices(String s) {
+    Subscription subscription;
+    if (!s.isEmpty()) {
+      subscription = Observable.from(mServiceEntities)
+          .filter(serviceEntity -> serviceEntity.getTitle().contains(s))
+          .toList()
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+    } else {
+      subscription = Observable.just(mServiceEntities)
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+    }
     addToUnsubscription(subscription);
   }
 }
