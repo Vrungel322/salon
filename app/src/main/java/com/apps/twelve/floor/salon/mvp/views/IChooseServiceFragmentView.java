@@ -15,4 +15,6 @@ import java.util.List;
   void setUpRvServices();
 
   void updateRvServices(List<ServiceEntity> serviceEntities);
+
+  void hideProgressBar();
 }

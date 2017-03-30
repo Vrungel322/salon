@@ -5,8 +5,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
@@ -30,6 +32,9 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
+  @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
+  @BindView(R.id.linerLayoutChooseService) LinearLayout mLinerLayoutChooseService;
+
   private ServicesAdapter mServicesAdapter;
 
   public static ChooseServiceFragment newInstance() {
@@ -68,5 +73,10 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {
     mServicesAdapter.setServiceEntity(serviceEntities);
+  }
+
+  @Override public void hideProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
+    mLinerLayoutChooseService.setVisibility(View.VISIBLE);
   }
 }
