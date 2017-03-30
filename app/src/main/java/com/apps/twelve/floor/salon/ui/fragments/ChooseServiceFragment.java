@@ -114,6 +114,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
-    mLinerLayoutDeepItems.setVisibility(View.VISIBLE);
+    mLinearLayoutDeepItems.setVisibility(View.VISIBLE);
   }
 }
