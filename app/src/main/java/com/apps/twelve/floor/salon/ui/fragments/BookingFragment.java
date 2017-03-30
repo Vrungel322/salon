@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
-import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingFragmentPresenter;
@@ -19,8 +17,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class BookingFragment extends BaseFragment implements IBookingFragmentView {
   @InjectPresenter BookingFragmentPresenter mBookingFragmentPresenter;
-
-  @BindView(R.id.tv_book) TextView tvBook;
 
   public static BookingFragment newInstance() {
     Bundle args = new Bundle();
