@@ -99,11 +99,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mServicesAdapter.setSelectedItem(position);
   }
 
-  @Override public void showProgressBar() {
+  @Override public void showProgressBarAllServices() {
     mProgressBarLoadServices.setVisibility(View.VISIBLE);
   }
 
-  @Override public void hideProgressBar() {
+  @Override public void hideProgressBarAllServices() {
     mProgressBarLoadServices.setVisibility(View.GONE);
   }
 

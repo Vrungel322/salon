@@ -22,9 +22,9 @@ import java.util.List;
 
   void setItemSelected(int position);
   
-  void showProgressBar();
+  void showProgressBarAllServices();
   
-  void hideProgressBar();
+  void hideProgressBarAllServices();
 
   void showErrorMsg(String s);
 }

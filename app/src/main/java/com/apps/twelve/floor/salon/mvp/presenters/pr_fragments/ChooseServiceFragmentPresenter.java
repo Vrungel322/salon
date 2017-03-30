@@ -34,17 +34,17 @@ import timber.log.Timber;
   }
 
   public void fetchAllServices() {
-    getViewState().showProgressBar();
+    getViewState().showProgressBarAllServices();
     Subscription subscription = mDataManager.fetchServices(1, 10)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().updateRvServices(serviceEntities);
           mServiceEntities.clear();
           mServiceEntities.addAll(serviceEntities);
-          getViewState().hideProgressBar();
+          getViewState().hideProgressBarAllServices();
         }, throwable -> {
           Timber.e(throwable);
-          getViewState().hideProgressBar();
+          getViewState().hideProgressBarAllServices();
           getViewState().showErrorMsg(throwable.getMessage());
         });
     addToUnsubscription(subscription);
