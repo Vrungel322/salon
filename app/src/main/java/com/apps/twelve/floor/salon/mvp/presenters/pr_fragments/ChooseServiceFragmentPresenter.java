@@ -31,11 +31,10 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpRvServices();
-    fetchAllServices();
   }
 
   public void fetchAllServices() {
-    Subscription subscription = mDataManager.fetchServices(1, 1)
+    Subscription subscription = mDataManager.fetchServices(1, 10)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().updateRvServices(serviceEntities);
@@ -49,7 +48,7 @@ import timber.log.Timber;
     Subscription subscription;
     if (!s.isEmpty()) {
       subscription = Observable.from(mServiceEntities)
-          .filter(serviceEntity -> serviceEntity.getTitle().contains(s.trim()))
+          .filter(serviceEntity -> serviceEntity.getTitle().toLowerCase().contains(s.trim()))
           .toList()
           .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
     } else {
@@ -57,5 +56,13 @@ import timber.log.Timber;
           .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
     }
     addToUnsubscription(subscription);
+  }
+
+  public void showRvAllServices() {
+    getViewState().showRvAllServices();
+  }
+
+  public void hideRvAllServices() {
+    getViewState().hideRvAllServices();
   }
 }

@@ -26,14 +26,7 @@ public class DataManager {
   }
 
   public Observable<List<ServiceEntity>> fetchServices(int deep, int count) {
-    //return mRestApi.fetchServices(deep, count);
-    ArrayList<ServiceEntity> arrayList = new ArrayList<>();
-    for (int i = 0; i < 17; i++) {
-      arrayList.add(new ServiceEntity(i, "title " + i, "", true, "100" + i, false,
-          "http://stilnyiy-mir.ru/wp-content/uploads/2016/11/Modnye-pricheski-s-kudrjami-2017-zhenskie-na-srednie-volosy-foto-24-e1478638531162.jpg",
-          "Lorem ipsum dolore sit amet", 33));
-    }
-    return Observable.just(arrayList);
+    return mRestApi.fetchServices(deep, count);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
