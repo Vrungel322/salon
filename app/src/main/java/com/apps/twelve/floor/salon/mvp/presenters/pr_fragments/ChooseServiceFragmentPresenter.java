@@ -39,6 +39,7 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().updateRvServices(serviceEntities);
+          getViewState().hideProgressBar();
           mServiceEntities.clear();
           mServiceEntities.addAll(serviceEntities);
           getViewState().hideProgressBarAllServices();

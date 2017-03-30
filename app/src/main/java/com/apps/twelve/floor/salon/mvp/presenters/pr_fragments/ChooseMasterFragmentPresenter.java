@@ -29,8 +29,10 @@ import rx.Subscription;
 
   private void fetchMasters() {
     Subscription subscription = mDataManager.fetchMasters()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterEntities -> getViewState().showMasters(masterEntities));
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(masterEntities -> {
+          getViewState().showMasters(masterEntities);
+          getViewState().hideProgressBar();
+        });
     addToUnsubscription(subscription);
   }
 }

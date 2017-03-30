@@ -15,4 +15,6 @@ import java.util.List;
   void setUpUi();
 
   void showMasters(List<MasterEntity> masterEntities);
+
+  void hideProgressBar();
 }

@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +18,6 @@ import com.apps.twelve.floor.salon.ui.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +33,9 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
+  @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
+  @BindView(R.id.linerLayoutChooseService) LinearLayout mLinerLayoutChooseService;
+
   private ServicesAdapter mServicesAdapter;
 
   public static ChooseServiceFragment newInstance() {
@@ -54,7 +55,8 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mRecyclerViewServices.setAdapter(mServicesAdapter);
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(position));
+            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(
+                position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
@@ -68,11 +70,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
       }
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (s.length() != 0){
+        if (s.length() != 0) {
           mChooseServiceFragmentPresenter.showRvAllServices();
-          mChooseServiceFragmentPresenter.filterServices(mEditTextChooseService.getText().toString());
-        }
-        else {
+          mChooseServiceFragmentPresenter.filterServices(
+              mEditTextChooseService.getText().toString());
+        } else {
           mChooseServiceFragmentPresenter.hideRvAllServices();
         }
       }
@@ -109,5 +111,10 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void showErrorMsg(String s) {
     showAlertMessage(s, "Try again later");
+  }
+
+  @Override public void hideProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
+    mLinerLayoutChooseService.setVisibility(View.VISIBLE);
   }
 }

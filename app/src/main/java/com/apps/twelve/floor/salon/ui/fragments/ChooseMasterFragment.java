@@ -1,9 +1,12 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
@@ -28,6 +31,8 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @BindView(R.id.tvServiceDuration) TextView mTextViewServiceDuration;
   @BindView(R.id.cbAnyMaster) CheckBox mCheckBoxAnyMaster;
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
+  @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
+  @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
 
   private MastersHorizontalAdapter mMastersHorizontalAdapter;
 
@@ -55,5 +60,10 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void showMasters(List<MasterEntity> masterEntities) {
     mMastersHorizontalAdapter.addListMasterEntity(masterEntities);
+  }
+
+  @Override public void hideProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
+    mNestedScroll.setVisibility(View.VISIBLE);
   }
 }

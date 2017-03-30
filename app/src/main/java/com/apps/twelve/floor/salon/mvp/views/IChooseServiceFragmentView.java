@@ -21,10 +21,12 @@ import java.util.List;
   void hideRvAllServices();
 
   void setItemSelected(int position);
-  
+
   void showProgressBarAllServices();
-  
+
   void hideProgressBarAllServices();
 
   void showErrorMsg(String s);
+
+  void hideProgressBar();
 }
