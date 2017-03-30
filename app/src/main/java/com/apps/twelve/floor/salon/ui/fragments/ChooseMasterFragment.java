@@ -1,7 +1,7 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -43,10 +43,11 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   }
 
   @Override public void setUpUi() {
-    mRecyclerViewMasters.setLayoutManager(
-        new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+    mRecyclerViewMasters.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mMastersHorizontalAdapter = new MastersHorizontalAdapter();
     mRecyclerViewMasters.setAdapter(mMastersHorizontalAdapter);
+    mRecyclerViewMasters.setNestedScrollingEnabled(false);
+    mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mMastersHorizontalAdapter.setSelectedItem(position));
