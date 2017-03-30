@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
@@ -28,6 +30,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
+  @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
@@ -94,5 +97,17 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void setItemSelected(int position) {
     mServicesAdapter.setSelectedItem(position);
+  }
+
+  @Override public void showProgressBar() {
+    mProgressBarLoadServices.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideProgressBar() {
+    mProgressBarLoadServices.setVisibility(View.GONE);
+  }
+
+  @Override public void showErrorMsg(String s) {
+    showAlertMessage(s, "Try again later");
   }
 }
