@@ -33,7 +33,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
-  @BindView(R.id.linerLayoutChooseService) LinearLayout mLinerLayoutChooseService;
+  @BindView(R.id.llDeepItems) LinearLayout mLinerLayoutDeepItems;
 
   private ServicesAdapter mServicesAdapter;
 
@@ -77,6 +77,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
-    mLinerLayoutChooseService.setVisibility(View.VISIBLE);
+    mLinerLayoutDeepItems.setVisibility(View.VISIBLE);
   }
 }

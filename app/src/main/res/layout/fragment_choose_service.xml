@@ -12,7 +12,6 @@
       android:background="@color/colorWhite"
       android:focusableInTouchMode="true"
       android:orientation="vertical"
-      android:visibility="invisible"
       android:id="@+id/linerLayoutChooseService"
       >
     <EditText
@@ -49,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
+        android:visibility="invisible"
         android:orientation="vertical"
         >
       <android.support.v7.widget.RecyclerView
