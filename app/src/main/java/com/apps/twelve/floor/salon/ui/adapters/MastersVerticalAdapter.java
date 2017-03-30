@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,8 +21,8 @@ import java.util.List;
  * Created by Vrungel on 28.03.2017.
  */
 
-public class MastersHorizontalAdapter
-    extends RecyclerView.Adapter<MastersHorizontalAdapter.MastersViewHolder> {
+public class MastersVerticalAdapter
+    extends RecyclerView.Adapter<MastersVerticalAdapter.MastersViewHolder> {
   private List<MasterEntity> mMasterEntities = new ArrayList<>();
 
   private int selectedItem = -1;
@@ -34,7 +35,7 @@ public class MastersHorizontalAdapter
 
   @Override public MastersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_master, parent, false);
-    return new MastersHorizontalAdapter.MastersViewHolder(v);
+    return new MastersVerticalAdapter.MastersViewHolder(v);
   }
 
   @Override public void onBindViewHolder(MastersViewHolder holder, int position) {
@@ -45,7 +46,7 @@ public class MastersHorizontalAdapter
     holder.mTextViewMasterDescription.setText(mMasterEntities.get(position).getMasterDescription());
 
     if (this.selectedItem == position) {
-      holder.itemView.setBackgroundColor(
+      holder.mRelativeLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimaryDark));
       holder.mTextViewMasterName.setTextColor(
           ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorWhite));
@@ -53,7 +54,7 @@ public class MastersHorizontalAdapter
           ContextCompat.getColor(holder.mTextViewMasterDescription.getContext(),
               R.color.colorWhite));
     } else {
-      holder.itemView.setBackgroundColor(
+      holder.mRelativeLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.itemView.getContext(), R.color.colorWhite));
       holder.mTextViewMasterName.setTextColor(
           ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorBlack));
@@ -76,6 +77,7 @@ public class MastersHorizontalAdapter
     @BindView(R.id.ivMasterImg) ImageView mImageViewMasterImg;
     @BindView(R.id.tvMasterName) TextView mTextViewMasterName;
     @BindView(R.id.tvMasterDescription) TextView mTextViewMasterDescription;
+    @BindView(R.id.rlParent) RelativeLayout mRelativeLayoutParent;
 
     MastersViewHolder(View view) {
       super(view);

@@ -13,7 +13,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterFragmentView;
-import com.apps.twelve.floor.salon.ui.adapters.MastersHorizontalAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.MastersVerticalAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -34,7 +34,7 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
 
-  private MastersHorizontalAdapter mMastersHorizontalAdapter;
+  private MastersVerticalAdapter mMastersVerticalAdapter;
 
   public static ChooseMasterFragment newInstance() {
     Bundle args = new Bundle();
@@ -49,17 +49,17 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void setUpUi() {
     mRecyclerViewMasters.setLayoutManager(new GridLayoutManager(getContext(), 2));
-    mMastersHorizontalAdapter = new MastersHorizontalAdapter();
-    mRecyclerViewMasters.setAdapter(mMastersHorizontalAdapter);
+    mMastersVerticalAdapter = new MastersVerticalAdapter();
+    mRecyclerViewMasters.setAdapter(mMastersVerticalAdapter);
     mRecyclerViewMasters.setNestedScrollingEnabled(false);
     mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mMastersHorizontalAdapter.setSelectedItem(position));
+            (recyclerView, position, v) -> mMastersVerticalAdapter.setSelectedItem(position));
   }
 
   @Override public void showMasters(List<MasterEntity> masterEntities) {
-    mMastersHorizontalAdapter.addListMasterEntity(masterEntities);
+    mMastersVerticalAdapter.addListMasterEntity(masterEntities);
   }
 
   @Override public void hideProgressBar() {
