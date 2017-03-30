@@ -51,7 +51,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mRecyclerViewServices.setAdapter(mServicesAdapter);
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mServicesAdapter.setSelectedItem(position));
+            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
@@ -90,5 +90,9 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideRvAllServices() {
     mRecyclerViewServices.setVisibility(View.GONE);
+  }
+
+  @Override public void setItemSelected(int position) {
+    mServicesAdapter.setSelectedItem(position);
   }
 }

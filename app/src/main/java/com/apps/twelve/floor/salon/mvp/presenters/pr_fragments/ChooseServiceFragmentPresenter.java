@@ -65,4 +65,8 @@ import timber.log.Timber;
   public void hideRvAllServices() {
     getViewState().hideRvAllServices();
   }
+
+  public void setItemSelected(int position) {
+    getViewState().setItemSelected(position);
+  }
 }

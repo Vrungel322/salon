@@ -19,4 +19,6 @@ import java.util.List;
   void showRvAllServices();
 
   void hideRvAllServices();
+
+  void setItemSelected(int position);
 }
