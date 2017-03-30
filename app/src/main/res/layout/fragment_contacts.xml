@@ -77,14 +77,14 @@
           app:layout_constraintTop_toTopOf="@+id/iv_phone"
           />
       <TextView
-          android:id="@+id/tv_phone"
+          android:id="@+id/tv_phone1"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginEnd="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="8dp"
           android:autoLink="phone"
-          android:text="@string/contacts_phone"
+          android:text="@string/contacts_phone1"
           android:textColor="@color/colorPhone"
           android:textSize="16sp"
           app:layout_constraintHorizontal_bias="0.0"
@@ -92,13 +92,45 @@
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tv_phone_text"
           />
+      <TextView
+          android:id="@+id/tv_phone2"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="8dp"
+          android:autoLink="phone"
+          android:text="@string/contacts_phone2"
+          android:textColor="@color/colorPhone"
+          android:textSize="16sp"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintLeft_toLeftOf="@+id/tv_phone_text"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tv_phone1"
+          />
+      <TextView
+          android:id="@+id/tv_phone3"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="8dp"
+          android:autoLink="phone"
+          android:text="@string/contacts_phone3"
+          android:textColor="@color/colorPhone"
+          android:textSize="16sp"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintLeft_toLeftOf="@+id/tv_phone_text"
+          app:layout_constraintRight_toRightOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/tv_phone2"
+          />
       <ImageView
           android:id="@+id/iv_address"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="16dp"
           app:layout_constraintLeft_toLeftOf="@+id/iv_phone"
-          app:layout_constraintTop_toBottomOf="@+id/tv_phone"
+          app:layout_constraintTop_toBottomOf="@+id/tv_phone3"
           app:srcCompat="@drawable/ic_map_24dp"
           />
       <TextView
@@ -111,7 +143,7 @@
           android:textColor="@color/colorTitleAddress"
           android:textSize="16sp"
           app:layout_constraintHorizontal_bias="0.0"
-          app:layout_constraintLeft_toLeftOf="@+id/tv_phone"
+          app:layout_constraintLeft_toLeftOf="@+id/tv_phone3"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toTopOf="@+id/iv_address"
           />

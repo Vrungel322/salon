@@ -62,7 +62,7 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
   }
 
   @OnClick(R.id.tv_website) void openWebsite() {
-    String url = "http://google.com";
+    String url = "http://shanti-med.com.ua/";
     startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
   }
 

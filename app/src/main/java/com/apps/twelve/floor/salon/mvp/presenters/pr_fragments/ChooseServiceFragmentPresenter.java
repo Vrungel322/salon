@@ -38,8 +38,8 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.fetchServices(1, 10)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
-          getViewState().updateRvServices(serviceEntities);
           getViewState().hideProgressBar();
+          getViewState().updateRvServices(serviceEntities);
           mServiceEntities.clear();
           mServiceEntities.addAll(serviceEntities);
           getViewState().hideProgressBarAllServices();
