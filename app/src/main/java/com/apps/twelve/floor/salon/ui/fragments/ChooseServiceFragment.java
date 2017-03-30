@@ -29,12 +29,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
-  @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
+  @BindView(R.id.llDeepItems) LinearLayout mLinerLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
-  @BindView(R.id.llDeepItems) LinearLayout mLinerLayoutDeepItems;
 
   private ServicesAdapter mServicesAdapter;
 
