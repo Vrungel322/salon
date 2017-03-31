@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.mvp.views;
 
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
+import com.apps.twelve.floor.salon.ui.adapters.ServiceTreeAdapter;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -12,9 +14,11 @@ import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseServiceFragmentView
     extends MvpView {
-  void setUpRvServices();
+  void setUpRvAllServices();
 
-  void updateRvServices(List<ServiceEntity> serviceEntities);
+  void updateRvAllServices(List<ServiceEntity> serviceEntities);
+
+  void updateRvTreeServices(List<ParentService> serviceEntities);
 
   void showRvAllServices();
 
@@ -29,4 +33,10 @@ import java.util.List;
   void showErrorMsg(String s);
 
   void hideProgressBar();
+
+  void showProgressBar();
+
+  void setUpRvTreeServices();
+
+  void showRvTreeServices();
 }

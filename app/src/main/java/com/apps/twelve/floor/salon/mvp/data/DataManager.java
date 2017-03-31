@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,12 @@ public class DataManager {
     this.mRestApi = restApi;
   }
 
-  public Observable<List<ServiceEntity>> fetchServices(int deep, int count) {
-    return mRestApi.fetchServices(deep, count);
+  public Observable<List<ParentService>> fetchTreeServices(int deep, int count) {
+    return mRestApi.fetchTreeServices(deep, count);
+  }
+
+  public Observable<List<ServiceEntity>> fetchAllServices(int deep, int count) {
+    return mRestApi.fetchAllServices(deep, count);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -22,7 +23,8 @@ import timber.log.Timber;
     extends BasePresenter<IChooseServiceFragmentView> {
   @Inject DataManager mDataManager;
 
-  private List<ServiceEntity> mServiceEntities = new ArrayList<>();
+  private List<ParentService> mServiceTreeEntities = new ArrayList<>();
+  private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -30,18 +32,37 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getViewState().setUpRvServices();
+    getViewState().setUpRvAllServices();
+    getViewState().setUpRvTreeServices();
+    fetchTreeOfServices();
+  }
+
+  public void fetchTreeOfServices() {
+    getViewState().showProgressBar();
+    Subscription subscription = mDataManager.fetchTreeServices(1, 2)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(parentServices -> {
+          Timber.e(parentServices.get(0).getTitle());
+          getViewState().hideProgressBar();
+          getViewState().updateRvTreeServices(parentServices);
+          mServiceTreeEntities.clear();
+          mServiceTreeEntities.addAll(parentServices);
+        }, throwable -> {
+          Timber.e(throwable);
+          getViewState().hideProgressBar();
+          getViewState().showErrorMsg(throwable.getMessage());
+        });
+    addToUnsubscription(subscription);
   }
 
   public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
-    Subscription subscription = mDataManager.fetchServices(1, 10)
+    Subscription subscription = mDataManager.fetchAllServices(1, 2)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
-          getViewState().hideProgressBar();
-          getViewState().updateRvServices(serviceEntities);
-          mServiceEntities.clear();
-          mServiceEntities.addAll(serviceEntities);
+          getViewState().updateRvAllServices(serviceEntities);
+          mServiceAllEntities.clear();
+          mServiceAllEntities.addAll(serviceEntities);
           getViewState().hideProgressBarAllServices();
         }, throwable -> {
           Timber.e(throwable);
@@ -54,13 +75,13 @@ import timber.log.Timber;
   public void filterServices(String s) {
     Subscription subscription;
     if (!s.isEmpty()) {
-      subscription = Observable.from(mServiceEntities)
+      subscription = Observable.from(mServiceAllEntities)
           .filter(serviceEntity -> serviceEntity.getTitle().toLowerCase().contains(s.trim()))
           .toList()
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities));
     } else {
-      subscription = Observable.just(mServiceEntities)
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+      subscription = Observable.just(mServiceAllEntities)
+          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities));
     }
     addToUnsubscription(subscription);
   }
@@ -75,5 +96,9 @@ import timber.log.Timber;
 
   public void setItemSelected(int position) {
     getViewState().setItemSelected(position);
+  }
+
+  public void showRvTreeServices() {
+    getViewState().showRvTreeServices();
   }
 }
