@@ -12,20 +12,17 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.views.IChooseServiceFragmentView;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.views.IChooseMasterServiceView;
 import com.apps.twelve.floor.salon.ui.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
-/**
- * Created by Vrungel on 29.03.2017.
- */
+public class ChooseMasterServiceFragment extends BaseFragment implements IChooseMasterServiceView {
 
-public class ChooseServiceFragment extends BaseFragment implements IChooseServiceFragmentView {
-  @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
+  @InjectPresenter ChooseMasterServiceFragmentPresenter mChooseMasterServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
@@ -37,15 +34,15 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   private ServicesAdapter mServicesAdapter;
 
-  public static ChooseServiceFragment newInstance() {
-    Bundle args = new Bundle();
-    ChooseServiceFragment fragment = new ChooseServiceFragment();
-    fragment.setArguments(args);
-    return fragment;
+  public ChooseMasterServiceFragment() {
+    super(R.layout.fragment_choose_master_service);
   }
 
-  public ChooseServiceFragment() {
-    super(R.layout.fragment_choose_service);
+  public static ChooseMasterServiceFragment newInstance() {
+    Bundle args = new Bundle();
+    ChooseMasterServiceFragment fragment = new ChooseMasterServiceFragment();
+    fragment.setArguments(args);
+    return fragment;
   }
 
   @Override public void setUpRvServices() {
@@ -54,12 +51,12 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mRecyclerViewServices.setAdapter(mServicesAdapter);
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(
+            (recyclerView, position, v) -> mChooseMasterServiceFragmentPresenter.setItemSelected(
                 position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        mChooseServiceFragmentPresenter.fetchAllServices();
+        mChooseMasterServiceFragmentPresenter.fetchAllServices();
       }
     });
 
@@ -70,11 +67,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          mChooseServiceFragmentPresenter.showRvAllServices();
-          mChooseServiceFragmentPresenter.filterServices(
+          mChooseMasterServiceFragmentPresenter.showRvAllServices();
+          mChooseMasterServiceFragmentPresenter.filterServices(
               mEditTextChooseService.getText().toString());
         } else {
-          mChooseServiceFragmentPresenter.hideRvAllServices();
+          mChooseMasterServiceFragmentPresenter.hideRvAllServices();
         }
       }
 

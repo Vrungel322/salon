@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingFragmentView;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -36,11 +37,13 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   @OnClick(R.id.rl_choose_service) void chooseService() {
     showToastMessage(R.string.book_choose_service);
     mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
-        BookingDetailFragment.newInstance());
+        BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_SERVICE));
   }
 
   @OnClick(R.id.rl_choose_specialist) void chooseSpecialist() {
     showToastMessage(R.string.book_choose_specialist);
+    mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
+        BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_MASTER));
   }
 }
 
