@@ -118,39 +118,47 @@ public class StartActivity extends BaseActivity
   @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
     switch (item.getItemId()) {
       case R.id.nav_main:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
             MainFragment.newInstance(), Constants.FragmentTag.MAIN_FRAGMENT);
         break;
       case R.id.nav_booking:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
             MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         break;
       case R.id.nav_my_bonus:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_share:
+        setTitleAppBar(R.string.title_activity_start);
         showAlertMessage("Talk about how to share ???");
         break;
       case R.id.nav_our_work:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
         break;
       case R.id.nav_contacts:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
             ContactsFragment.newInstance(), Constants.FragmentTag.CONTACTS_FRAGMENT);
         break;
       case R.id.nav_settings:
+        setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, SettingsActivity.class));
