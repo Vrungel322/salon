@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.ui.adapters;
 
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,17 +47,17 @@ public class ServiceTreeAdapter extends RecursiveRecyclerAdapter<RecyclerView.Vi
     if (getItem(position) instanceof ParentService) {
       //service service_id = 4
       ParentViewHolder currentHolder = (ParentViewHolder) holder;
-      currentHolder.sampleTextView.setText(((ParentService) getItem(position)).getTitle());
+      currentHolder.mTextViewServiceTitle.setText(((ParentService) getItem(position)).getTitle());
     }
     if (getItem(position) instanceof Child_1) {
       //service service_id = 3
       ParentViewHolder currentHolder = (ParentViewHolder) holder;
-      currentHolder.sampleTextView.setText(((Child_1) getItem(position)).getTitle());
+      currentHolder.mTextViewServiceTitle.setText(((Child_1) getItem(position)).getTitle());
     }
     if (getItem(position) instanceof Child_2) {
       //service service_id = 2
       ParentViewHolder currentHolder = (ParentViewHolder) holder;
-      currentHolder.sampleTextView.setText(((Child_2) getItem(position)).getTitle());
+      currentHolder.mTextViewServiceTitle.setText(((Child_2) getItem(position)).getTitle());
     }
     if (getItem(position) instanceof Child_3) {
       //service service_id = 1 - final
@@ -90,7 +89,7 @@ public class ServiceTreeAdapter extends RecursiveRecyclerAdapter<RecyclerView.Vi
 
   class ParentViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.sample_text) TextView sampleTextView;
+    @BindView(R.id.tvServiceTitle) TextView mTextViewServiceTitle;
 
     public ParentViewHolder(View itemView) {
       super(itemView);
