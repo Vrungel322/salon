@@ -146,7 +146,7 @@
             android:maxLines="3"
             android:text="TextVisdfgvsdgvbasersdrgsergsdgsdfgvsdfgvgvasdfgvasdgvasldfnvASJKLDNgvSJKLnvklndvlkSNDvklsnDvklsdnvklsdnvklsdnvklsndvndvknsew"
             android:textColor="@color/colorWorkDetailsTextHover"
-            android:textSize="15sp"
+            android:textSize="14sp"
             />
       </RelativeLayout>
 

@@ -57,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             card_view:srcCompat="@drawable/image_24dp"
             />
         <TextView
@@ -68,6 +68,7 @@
             android:layout_gravity="bottom"
             android:text="TextView"
             android:textColor="@color/colorOurWorksText"
+            android:textSize="11sp"
             />
       </LinearLayout>
     </RelativeLayout>
