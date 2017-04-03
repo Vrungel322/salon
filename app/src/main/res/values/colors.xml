@@ -19,6 +19,7 @@
   <color name="colorOurWorksIcon">#FFC6C5C1</color>
   <color name="colorOurWorksTitile">#000000</color>
   <color name="colorOurWorksText">#c6c5c1</color>
+  <color name="colorOurWorksPressed">#1AEB3472</color>
 
   <!--screen WorkDetails-->
   <color name="colorIconHeart">#FFFFFF</color>
