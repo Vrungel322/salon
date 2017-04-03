@@ -75,4 +75,9 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
   @Override public void stopRefreshingView() {
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+  }
 }

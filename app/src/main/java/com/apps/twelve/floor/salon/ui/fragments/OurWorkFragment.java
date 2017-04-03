@@ -52,10 +52,9 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
-        .setOnItemClickListener((recyclerView, position, v) -> {
-          mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
-              WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position)));
-        });
+        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
+            (StartActivity) getActivity(), R.id.container_main,
+            WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position))));
     mOurWorkFragmentPresenter.fetchListOfWorks();
   }
 

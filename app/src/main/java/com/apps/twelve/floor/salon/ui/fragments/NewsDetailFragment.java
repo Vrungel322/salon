@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import timber.log.Timber;
 
@@ -47,5 +48,8 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   @Override public void onDestroyView() {
     super.onDestroyView();
+    if (mNavigator.isEmptyBackStack(((MvpAppCompatActivity) getActivity()))) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+    }
   }
 }
