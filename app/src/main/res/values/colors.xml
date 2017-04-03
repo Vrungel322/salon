@@ -39,6 +39,7 @@
   <color name="colorBookingContactsTitleTime">#a09498</color>
   <color name="colorBookingContactsDescriptionTime">#000000</color>
   <color name="colorBookingContactsDetailsTime">#80000000</color>
+  <color name="colorBookingContactsIconTime">#80000000</color>
   <color name="colorBookingContactsTitleMaster">#a09498</color>
   <color name="colorBookingContactsDescriptionMaster">#000000</color>
   <color name="colorBookingContactsDetailsMaster">#80000000</color>

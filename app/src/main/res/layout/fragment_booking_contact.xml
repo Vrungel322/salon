@@ -90,14 +90,14 @@
               android:layout_marginTop="4dp"
               app:layout_constraintLeft_toLeftOf="@+id/tv_time_description"
               app:layout_constraintTop_toBottomOf="@+id/tv_time_description"
-              app:srcCompat="@drawable/booking_time_2"
+              app:srcCompat="@drawable/ic_work_time_14dp"
               />
           <TextView
               android:id="@+id/tv_time_duration"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="8dp"
-              android:layout_marginStart="8dp"
+              android:layout_marginLeft="4dp"
+              android:layout_marginStart="4dp"
               android:text="40 мин"
               android:textSize="12sp"
               android:textColor="@color/colorBookingContactsDetailsTime"
