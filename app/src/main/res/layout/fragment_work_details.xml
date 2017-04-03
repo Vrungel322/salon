@@ -96,7 +96,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:background="@null"
-            app:srcCompat="@drawable/arrow_right_24dp"
+            app:srcCompat="@drawable/ic_gallery_next_24dp"
             />
         <ImageButton
             android:id="@+id/btn_previous"
@@ -106,7 +106,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:background="@null"
-            app:srcCompat="@drawable/arrow_left_24dp"
+            app:srcCompat="@drawable/ic_gallery_previous_24dp"
             />
       </RelativeLayout>
       <RelativeLayout
