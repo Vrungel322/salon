@@ -39,10 +39,9 @@ import timber.log.Timber;
 
   public void fetchTreeOfServices() {
     getViewState().showProgressBar();
-    Subscription subscription = mDataManager.fetchTreeServices(1, 2)
+    Subscription subscription = mDataManager.fetchTreeServices(1, 10)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(parentServices -> {
-          Timber.e(parentServices.get(0).getTitle());
           getViewState().hideProgressBar();
           getViewState().updateRvTreeServices(parentServices);
           mServiceTreeEntities.clear();
@@ -57,7 +56,7 @@ import timber.log.Timber;
 
   public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
-    Subscription subscription = mDataManager.fetchAllServices(1, 2)
+    Subscription subscription = mDataManager.fetchAllServices(1, 10)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().updateRvAllServices(serviceEntities);
