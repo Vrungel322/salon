@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.ui.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingActivityView;
@@ -23,10 +22,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
-    ActionBar actionBar = getSupportActionBar();
-    if (actionBar != null) {
-      actionBar.setTitle(R.string.book_create);
-    }
+    setTitleAppBar(R.string.book_create);
   }
 
   @Override public void addFragmentBooking() {

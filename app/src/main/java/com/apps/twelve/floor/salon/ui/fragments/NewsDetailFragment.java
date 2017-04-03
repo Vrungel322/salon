@@ -3,14 +3,19 @@ package com.apps.twelve.floor.salon.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import timber.log.Timber;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Vrungel on 23.02.2017.
@@ -19,7 +24,9 @@ import timber.log.Timber;
 public class NewsDetailFragment extends BaseFragment implements INewsDetailFragmentView {
 
   @InjectPresenter DetailNewsFragmentPresenter mDetailNewsFragmentPresenter;
-  private NewsEntity mNewsEntity;
+
+  @BindView(R.id.imageViewPhotoNews) ImageView mImageViewPhotoNews;
+  @BindView(R.id.textViewDescriptionNews) TextView mTextViewDescriptionNews;
 
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
@@ -35,9 +42,22 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    this.mNewsEntity =
+
+    ((StartActivity) getActivity()).setTitleAppBar(R.string.news);
+
+    NewsEntity newsEntity =
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
 
-    Timber.e("" + mNewsEntity.getNewsData());
+    if (newsEntity != null) {
+      Picasso.with(mContext).load(newsEntity.getImageNewsPreviewURL()).into(mImageViewPhotoNews);
+      mTextViewDescriptionNews.setText(newsEntity.getNewsShortDescription());
+    }
+  }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    if (mNavigator.isEmptyBackStack(((MvpAppCompatActivity) getActivity()))) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+    }
   }
 }
