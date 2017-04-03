@@ -59,7 +59,7 @@
             android:layout_gravity="bottom"
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
-            card_view:srcCompat="@drawable/image_24dp"
+            card_view:srcCompat="@drawable/ic_image_14dp"
             />
         <TextView
             android:id="@+id/tvNumOfImgToPreview"

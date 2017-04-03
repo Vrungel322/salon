@@ -32,6 +32,22 @@
   <color name="colorWorkDetailsTextCount">#FFFFFF</color>
   <color name="colorWorkDetailsHover">#B3EB3472</color>
 
+  <!--screen BookingContacts-->
+  <color name="colorBookingContactsBackground">#1AEB3472</color>
+  <color name="colorBookingContactsTitleService">#a09498</color>
+  <color name="colorBookingContactsDescriptionService">#000000</color>
+  <color name="colorBookingContactsTitleTime">#a09498</color>
+  <color name="colorBookingContactsDescriptionTime">#000000</color>
+  <color name="colorBookingContactsDetailsTime">#80000000</color>
+  <color name="colorBookingContactsTitleMaster">#a09498</color>
+  <color name="colorBookingContactsDescriptionMaster">#000000</color>
+  <color name="colorBookingContactsDetailsMaster">#80000000</color>
+  <color name="colorBookingContactsTitleName">#000000</color>
+  <color name="colorBookingContactsHintName">#80000000</color>
+  <color name="colorBookingContactsTitlePhone">#000000</color>
+  <color name="colorBookingContactsHintPhone">#80000000</color>
+  <color name="colorBookingContactsEditTextBg">#f9f5f5f5</color>
+
   <!--screen contacts-->
   <color name="colorIconContacts">#FFC6C5C1</color>
   <color name="colorTitleBase">#FFA2A2A2</color>
