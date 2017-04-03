@@ -15,6 +15,22 @@
   <color name="colorLightPink">#FAD0DE</color>
   <color name="colorLLightPink">#FFFBE9F0</color>
 
+  <!--screen OurWorks-->
+  <color name="colorOurWorksIcon">#FFC6C5C1</color>
+  <color name="colorOurWorksTitile">#000000</color>
+  <color name="colorOurWorksText">#c6c5c1</color>
+
+  <!--screen WorkDetails-->
+  <color name="colorIconHeart">#FFFFFF</color>
+  <color name="colorIconArrowLeft">#80ffffff</color>
+  <color name="colorIconArrowRight">#FFFFFF</color>
+  <color name="colorWorkDetailsTitle">#8C000000</color>
+  <color name="colorWorkDetailsText">#E6000000</color>
+  <color name="colorWorkDetailsTextHover">#ffffff</color>
+  <color name="colorWorkDetailsTextMore">#8C000000</color>
+  <color name="colorWorkDetailsTextCount">#FFFFFF</color>
+  <color name="colorWorkDetailsHover">#B3EB3472</color>
+
   <!--screen contacts-->
   <color name="colorIconContacts">#FFC6C5C1</color>
   <color name="colorTitleBase">#FFA2A2A2</color>

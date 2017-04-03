@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,6 +43,9 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   @BindView(R.id.recyclerViewImages) RecyclerView mRecyclerViewImages;
   @BindView(R.id.checkBoxFavorite) CheckBox mCheckBoxFavorite;
   @BindView(R.id.textViewDescriptionItemPhoto) TextView mTextViewDescriptionItemPhoto;
+  @BindView(R.id.btn_previous) ImageButton mImageButtonPrevious;
+  @BindView(R.id.btn_next) ImageButton mImageButtonNext;
+  @BindView(R.id.tv_count) TextView mTextViewCount;
 
   private ImageWorkViewPagerAdapter mViewPagerAdapter;
   private HorizontalListAdapters mHorizontalListAdapter;
@@ -98,6 +102,8 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
       mCheckBoxFavorite.setChecked(mPhotoWorksEntity.isFavorite());
       mTextViewDescriptionItemPhoto.setText(mPhotoWorksEntity.getDescriptionPhoto());
+
+      updateImageInfoAndButtons();
     }
 
     mTextViewDescriptionWork.getViewTreeObserver()
@@ -128,8 +134,24 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
       }
 
       @Override public void onPageScrollStateChanged(int state) {
+        updateImageInfoAndButtons();
       }
     });
+  }
+
+  private void updateImageInfoAndButtons() {
+    mTextViewCount.setText(
+        mViewPagerImages.getCurrentItem() + 1 + "/" + mViewPagerAdapter.getCount());
+    if (mViewPagerImages.getCurrentItem() == mViewPagerAdapter.getCount() - 1) {
+      mImageButtonNext.setVisibility(View.INVISIBLE);
+    } else {
+      mImageButtonNext.setVisibility(View.VISIBLE);
+    }
+    if (mViewPagerImages.getCurrentItem() == 0) {
+      mImageButtonPrevious.setVisibility(View.INVISIBLE);
+    } else {
+      mImageButtonPrevious.setVisibility(View.VISIBLE);
+    }
   }
 
   @OnClick(R.id.textViewMore) public void onClick() {
@@ -140,6 +162,14 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
       mTextViewDescriptionWork.setMaxLines(3);
       mTextViewDescriptionWork.setEllipsize(TextUtils.TruncateAt.END);
     }
+  }
+
+  @OnClick(R.id.btn_next) public void nextPicture() {
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() + 1, true);
+  }
+
+  @OnClick(R.id.btn_previous) public void previousPicture() {
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
   }
 
   @Override public void onDestroy() {
