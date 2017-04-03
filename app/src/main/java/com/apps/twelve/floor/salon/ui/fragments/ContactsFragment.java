@@ -14,6 +14,7 @@ import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IContactsFragmentView;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -45,7 +46,7 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
 
     ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
     if (actionBar != null) {
-      actionBar.setTitle(R.string.menu_contacts);
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_contacts);
 
       /* turn off scrolling */
       Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);

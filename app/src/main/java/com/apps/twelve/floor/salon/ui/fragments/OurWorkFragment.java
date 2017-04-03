@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.adapters.OurWorkAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
-import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -47,10 +45,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ActionBar actionBar = ((MvpAppCompatActivity) getActivity()).getSupportActionBar();
-    if (actionBar != null) {
-      actionBar.setTitle(R.string.menu_our_work);
-    }
+    ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_our_work);
 
     mOurWorkAdapter = new OurWorkAdapter();
     mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);

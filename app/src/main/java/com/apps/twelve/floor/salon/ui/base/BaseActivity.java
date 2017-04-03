@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.ui.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
@@ -44,5 +45,12 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
   protected void showToastMessage(@StringRes int id) {
     Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
+  }
+
+  public void setTitleAppBar(@StringRes int resId) {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setTitle(resId);
+    }
   }
 }

@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.INewsDetailFragmentView;
+import com.apps.twelve.floor.salon.ui.activities.StartActivity;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -19,6 +20,7 @@ import timber.log.Timber;
 public class NewsDetailFragment extends BaseFragment implements INewsDetailFragmentView {
 
   @InjectPresenter DetailNewsFragmentPresenter mDetailNewsFragmentPresenter;
+
   private NewsEntity mNewsEntity;
 
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {
@@ -35,9 +37,15 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    ((StartActivity) getActivity()).setTitleAppBar(R.string.news);
     this.mNewsEntity =
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
 
     Timber.e("" + mNewsEntity.getNewsData());
+  }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
   }
 }
