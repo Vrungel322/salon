@@ -17,6 +17,9 @@ import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import static com.apps.twelve.floor.salon.R.id.tabLayout;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentToShow.CHOOSE_MASTER;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentToShow.CHOOSE_SERVICE;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.BOOKING_SCREEN_TO_START;
 
 /**
  * Created by Vrungel on 23.03.2017.
@@ -31,8 +34,9 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   @BindView(R.id.bNextStep) Button mButtonNextStep;
   @BindView(R.id.bPrevStep) Button mButtonPrevStep;
 
-  public static BookingDetailFragment newInstance() {
+  public static BookingDetailFragment newInstance(String screenToStart) {
     Bundle args = new Bundle();
+    args.putSerializable(BOOKING_SCREEN_TO_START, screenToStart);
     BookingDetailFragment fragment = new BookingDetailFragment();
     fragment.setArguments(args);
     return fragment;
@@ -51,15 +55,19 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   }
 
   @Override public void setUpViewPager() {
-    ViewPagerBookingStepsAdapter adapter =
-        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
-    adapter.addFragment(ChooseServiceFragment.newInstance(), getString(R.string.tab_services));
-    adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
-    adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));
-    adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
-    mViewPager.setAdapter(adapter);
-    mTabLayout.setupWithViewPager(mViewPager);
-    ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
+    String serializedData = (String) getArguments().getSerializable(BOOKING_SCREEN_TO_START);
+    String screenToStart = serializedData != null ? serializedData : "";
+    switch (screenToStart) {
+      case CHOOSE_MASTER:
+        showChooseMasterFragment();
+        break;
+      case CHOOSE_SERVICE:
+        showChooseServiceFragment();
+        break;
+      default:
+        break;
+    }
+
   }
 
   @OnClick(R.id.bNextStep) public void bNextStepClicked() {
@@ -70,5 +78,30 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     if (mViewPager.getCurrentItem() > 0) {
       mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
     }
+  }
+
+  private void showChooseMasterFragment() {
+    ViewPagerBookingStepsAdapter adapter =
+        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
+    adapter.addFragment(ChooseMasterMasterFragment.newInstance(), getString(R.string.tab_master));
+    adapter.addFragment(ChooseMasterServiceFragment.newInstance(),
+        getString(R.string.tab_services));
+    adapter.addFragment(ChooseMasterTimeFragment.newInstance(), getString(R.string.tab_time));
+    adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    mViewPager.setAdapter(adapter);
+    mTabLayout.setupWithViewPager(mViewPager);
+    ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
+  }
+
+  private void showChooseServiceFragment() {
+    ViewPagerBookingStepsAdapter adapter =
+        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
+    adapter.addFragment(ChooseServiceFragment.newInstance(), getString(R.string.tab_services));
+    adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
+    adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));
+    adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    mViewPager.setAdapter(adapter);
+    mTabLayout.setupWithViewPager(mViewPager);
+    ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
   }
 }

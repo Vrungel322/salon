@@ -12,60 +12,51 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.views.IChooseServiceFragmentView;
-import com.apps.twelve.floor.salon.ui.adapters.ServiceTreeAdapter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.views.IChooseMasterServiceView;
 import com.apps.twelve.floor.salon.ui.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
-/**
- * Created by Vrungel on 29.03.2017.
- */
+public class ChooseMasterServiceFragment extends BaseFragment implements IChooseMasterServiceView {
 
-public class ChooseServiceFragment extends BaseFragment implements IChooseServiceFragmentView {
-  @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
+  @InjectPresenter ChooseMasterServiceFragmentPresenter mChooseMasterServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
-  @BindView(R.id.llTreeItems) LinearLayout mLinerLayoutTreeItems;
   @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
-  @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
+  @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
 
   private ServicesAdapter mServicesAdapter;
-  private ServiceTreeAdapter mServicesTreeAdapter;
 
-  public static ChooseServiceFragment newInstance() {
+  public ChooseMasterServiceFragment() {
+    super(R.layout.fragment_choose_master_service);
+  }
+
+  public static ChooseMasterServiceFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseServiceFragment fragment = new ChooseServiceFragment();
+    ChooseMasterServiceFragment fragment = new ChooseMasterServiceFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ChooseServiceFragment() {
-    super(R.layout.fragment_choose_service);
-  }
-
-  @Override public void setUpRvAllServices() {
+  @Override public void setUpRvServices() {
     mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
     mServicesAdapter = new ServicesAdapter();
     mRecyclerViewServices.setAdapter(mServicesAdapter);
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(
+            (recyclerView, position, v) -> mChooseMasterServiceFragmentPresenter.setItemSelected(
                 position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        mLinerLayoutTreeItems.setVisibility(View.GONE);
-        mLinearLayoutAllitems.setVisibility(View.VISIBLE);
-        mChooseServiceFragmentPresenter.fetchAllServices();
+        mChooseMasterServiceFragmentPresenter.fetchAllServices();
       }
     });
 
@@ -76,12 +67,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          mChooseServiceFragmentPresenter.showRvAllServices();
-          mChooseServiceFragmentPresenter.filterServices(
+          mChooseMasterServiceFragmentPresenter.showRvAllServices();
+          mChooseMasterServiceFragmentPresenter.filterServices(
               mEditTextChooseService.getText().toString());
         } else {
-          mChooseServiceFragmentPresenter.hideRvAllServices();
-          mChooseServiceFragmentPresenter.showRvTreeServices();
+          mChooseMasterServiceFragmentPresenter.hideRvAllServices();
         }
       }
 
@@ -91,13 +81,8 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     });
   }
 
-  @Override public void updateRvAllServices(List<ServiceEntity> serviceAllEntities) {
-    mServicesAdapter.setServiceEntity(serviceAllEntities);
-  }
-
-  @Override public void updateRvTreeServices(List<ParentService> parentServices) {
-    mServicesTreeAdapter.setData(parentServices);
-    mRecyclerViewTreeOfServices.setAdapter(mServicesTreeAdapter);
+  @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {
+    mServicesAdapter.setServiceEntity(serviceEntities);
   }
 
   @Override public void showRvAllServices() {
@@ -126,20 +111,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
-  }
-
-  @Override public void showProgressBar() {
-    mProgressBar.setVisibility(View.VISIBLE);
-  }
-
-  @Override public void setUpRvTreeServices() {
-    mRecyclerViewTreeOfServices.setLayoutManager(new LinearLayoutManager(getContext()));
-    mServicesTreeAdapter = new ServiceTreeAdapter();
-    mLinearLayoutAllitems.setVisibility(View.GONE);
-    //mRecyclerViewTreeOfServices.setAdapter(mServicesTreeAdapter);
-  }
-
-  @Override public void showRvTreeServices() {
-    mLinerLayoutTreeItems.setVisibility(View.VISIBLE);
+    mLinearLayoutDeepItems.setVisibility(View.VISIBLE);
   }
 }
