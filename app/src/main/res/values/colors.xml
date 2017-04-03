@@ -48,7 +48,7 @@
   <color name="colorBookingContactsTitlePhone">#000000</color>
   <color name="colorBookingContactsHintPhone">#80000000</color>
   <color name="colorBookingContactsEditTextBg">#f9f5f5f5</color>
-  <color name="colorBookingContactsButton">#ff4081</color>
+  <color name="colorBookingContactsButton">#EB3472</color>
   <color name="colorBookingContactsButtonText">#FFFFFF</color>
 
   <!--screen contacts-->

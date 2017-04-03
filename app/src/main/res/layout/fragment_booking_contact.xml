@@ -247,7 +247,7 @@
             android:background="@color/colorBookingContactsButton"
             android:text="@string/booking_button"
             android:textColor="@color/colorBookingContactsButtonText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
