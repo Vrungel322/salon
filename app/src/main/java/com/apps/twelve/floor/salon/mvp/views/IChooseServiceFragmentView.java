@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.mvp.views;
 
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
-import com.apps.twelve.floor.salon.ui.adapters.ServiceTreeAdapter;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -20,9 +19,7 @@ import java.util.List;
 
   void updateRvTreeServices(List<ParentService> serviceEntities);
 
-  void showRvAllServices();
-
-  void hideRvAllServices();
+  void hideLLAllServices();
 
   void setItemSelected(int position);
 
@@ -38,5 +35,9 @@ import java.util.List;
 
   void setUpRvTreeServices();
 
-  void showRvTreeServices();
+  void showLLTreeServices();
+
+  void showLLAllServices();
+
+  void hideLLTreeServices();
 }

@@ -12,7 +12,9 @@ import rx.Observable;
 
 public interface SalonApi {
 
-  @GET("v1/services/") Observable<List<ParentService>> fetchTreeServices(
+  @GET("v1/services/") Observable<List<ParentService>> fetchTreeServices(@Query("count") int count);
+
+  @GET("v1/services/") Observable<List<ServiceEntity>> fetchAllServices(@Query("service") int deep,
       @Query("count") int count);
 
   //@POST("signin") Observable<TokenEntity> login(

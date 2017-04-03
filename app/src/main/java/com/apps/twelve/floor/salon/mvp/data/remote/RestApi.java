@@ -23,7 +23,7 @@ public class RestApi {
 
   //todo fetchAllServices for filtering
   public Observable<List<ServiceEntity>> fetchAllServices(int deep, int count) {
-    return null;
+    return api.fetchAllServices(deep, count);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

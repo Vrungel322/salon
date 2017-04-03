@@ -86,19 +86,23 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void showRvAllServices() {
-    getViewState().showRvAllServices();
-  }
-
-  public void hideRvAllServices() {
-    getViewState().hideRvAllServices();
+  public void hideLLAllServices() {
+    getViewState().hideLLAllServices();
   }
 
   public void setItemSelected(int position) {
     getViewState().setItemSelected(position);
   }
 
-  public void showRvTreeServices() {
-    getViewState().showRvTreeServices();
+  public void showLLTreeServices() {
+    getViewState().showLLTreeServices();
+  }
+
+  public void showLLAllServices() {
+    getViewState().showLLAllServices();
+  }
+
+  public void hideLLTreeServices() {
+    getViewState().hideLLTreeServices();
   }
 }
