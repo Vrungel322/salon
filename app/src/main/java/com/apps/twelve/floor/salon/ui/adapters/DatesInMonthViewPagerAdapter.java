@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import java.util.List;
 
 /**
@@ -16,9 +17,9 @@ import java.util.List;
 
 public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   private LayoutInflater mLayoutInflater;
-  private List<String> daysInMonth;
+  private List<DataServiceEntity> daysInMonth;
 
-  public DatesInMonthViewPagerAdapter(Context context, List<String> daysInMonth) {
+  public DatesInMonthViewPagerAdapter(Context context, List<DataServiceEntity> daysInMonth) {
     mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.daysInMonth = daysInMonth;
   }
@@ -34,13 +35,13 @@ public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_day_in_month, container, false);
     final TextView textView = (TextView) itemView.findViewById(R.id.tvDayInMonth);
-    textView.setText(daysInMonth.get(position));
+    textView.setText(daysInMonth.get(position).getDay());
     container.addView(itemView);
     return itemView;
   }
 
   public String getEntity(int position) {
-    return daysInMonth.get(position);
+    return daysInMonth.get(position).getDay();
   }
 
   @Override public void destroyItem(ViewGroup container, int position, Object object) {

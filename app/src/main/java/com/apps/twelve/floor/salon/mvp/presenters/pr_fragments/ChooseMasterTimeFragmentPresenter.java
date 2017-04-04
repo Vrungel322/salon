@@ -24,27 +24,27 @@ import timber.log.Timber;
   }
 
   private void loadData() {
-    Subscription subscription = mDataManager.fetchDaysData("")
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(strings -> {
-          getViewState().hideProgressBarBookingTime();
-          if (!strings.isEmpty()) {
-            getViewState().setUpUi(strings);
-            setDateToTv();
-            loadWorkSchedule();
-            getViewState().showTimeBooking();
-          } else {
-            getViewState().showNotTime();
-          }
-        }, Timber::e);
-    addToUnsubscription(subscription);
+    //Subscription subscription = mDataManager.fetchDaysData("")
+    //    .compose(ThreadSchedulers.applySchedulers())
+    //    .subscribe(strings -> {
+    //      getViewState().hideProgressBarBookingTime();
+    //      if (!strings.isEmpty()) {
+    //        getViewState().setUpUi(strings);
+    //        setDateToTv();
+    //        loadWorkSchedule();
+    //        getViewState().showTimeBooking();
+    //      } else {
+    //        getViewState().showNotTime();
+    //      }
+    //    }, Timber::e);
+    //addToUnsubscription(subscription);
   }
 
   private void loadWorkSchedule() {
-    Subscription subscription = mDataManager.fetchWorkSchedule()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(workStartEndEntities -> getViewState().updateWorkSchedule(workStartEndEntities));
-    addToUnsubscription(subscription);
+    //Subscription subscription = mDataManager.fetchWorkSchedule()
+    //    .compose(ThreadSchedulers.applySchedulers())
+    //    .subscribe(workStartEndEntities -> getViewState().updateWorkSchedule(workStartEndEntities));
+    //addToUnsubscription(subscription);
   }
 
   public void setSelectedTime(int position) {

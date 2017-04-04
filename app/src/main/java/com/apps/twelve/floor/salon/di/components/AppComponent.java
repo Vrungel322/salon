@@ -71,10 +71,6 @@ import dagger.Component;
 
   void inject(SubFragmentBookingPresenter presenter);
 
-  void inject(ChooseTimeFragmentPresenter presenter);
-
-  void inject(ChooseMasterFragmentPresenter presenter);
-
   void inject(BookingContactFragmentPresenter presenter);
 
   void inject(ChooseMasterMasterFragmentPresenter presenter);

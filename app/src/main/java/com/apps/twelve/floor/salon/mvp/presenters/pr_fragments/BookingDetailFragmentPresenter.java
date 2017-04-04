@@ -38,6 +38,10 @@ import javax.inject.Inject;
         }
         break;
       case 1:
+        if (!mBookingEntity.getDateId().isEmpty()) {
+          getViewState().goNext(currentItem + 1);
+          mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId())));
+        }
         break;
       case 2:
         break;

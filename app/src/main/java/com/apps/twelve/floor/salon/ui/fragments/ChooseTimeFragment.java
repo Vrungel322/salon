@@ -19,7 +19,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.DatesHorizontalAdapter;
@@ -55,8 +55,8 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
 
-  private List<String> mDays = new ArrayList<>();
-  private List<WorkStartEndEntity> mWorkStartEndEntities;
+  private List<DataServiceEntity> mDays = new ArrayList<>();
+  //private List<DataServiceEntity> mWorkStartEndEntities;
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
@@ -77,7 +77,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mTextViewServiceName.setText("ТЕСТОВАЯ УСЛУГА");
   }
 
-  @Override public void setUpUi(List<String> days) {
+  @Override public void setUpUi(List<DataServiceEntity> days) {
     //viewPager
     mDays = days;
     mDatesInMonthViewPagerAdapter = new DatesInMonthViewPagerAdapter(getContext(), days);
@@ -91,7 +91,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
       @Override public void onPageSelected(int position) {
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
-            mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
+            mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
         mChooseTimeFragmentPresenter.setDateToTv();
       }
 
@@ -108,7 +108,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          mDatesHorizontalAdapter.setSelectedItem(position);
+          mChooseTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
 
@@ -120,6 +120,10 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mChooseTimeFragmentPresenter.setSelectedTime(position));
+
+    mDatesHorizontalAdapter.addListWorkStartEndEntity(mDays);
+    mScheduleAdapter.setTimeSchedule(
+        mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
@@ -127,15 +131,12 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mRecyclerViewHorizontalDates.smoothScrollToPosition(currentItem);
   }
 
-  @Override public void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities) {
-    mWorkStartEndEntities = workStartEndEntities;
-    mDatesHorizontalAdapter.addListWorkStartEndEntity(workStartEndEntities);
-    mScheduleAdapter.setTimeSchedule(
-        mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
-  }
-
   @Override public void setSelectedTime(int position) {
     mScheduleAdapter.setSelectedItem(position);
+  }
+
+  @Override public void setSelectedDay(int position) {
+    mDatesHorizontalAdapter.setSelectedItem(position);
   }
 
   @Override public void setTextToDayTv() {
