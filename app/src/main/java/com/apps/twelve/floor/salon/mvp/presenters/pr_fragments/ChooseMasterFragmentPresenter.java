@@ -49,6 +49,7 @@ import rx.Subscription;
 
   public void setSelectedItem(int position) {
     mBookingEntity.setMasterId(mMasterEntities.get(position).getMasterId());
+    mBookingEntity.setMasterName(mMasterEntities.get(position).getMasterName());
     getViewState().setSelectedItem(position);
   }
 }

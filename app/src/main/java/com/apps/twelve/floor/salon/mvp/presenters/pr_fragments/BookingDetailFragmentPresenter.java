@@ -34,19 +34,22 @@ import javax.inject.Inject;
       case 0:
         if (!mBookingEntity.getMasterServiceId().isEmpty()) {
           getViewState().goNext(currentItem + 1);
-          mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getMasterServiceId())));
+          mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getMasterServiceId()),
+              mBookingEntity.getMasterName()));
         }
         break;
       case 1:
         if (!mBookingEntity.getDateId().isEmpty()) {
           getViewState().goNext(currentItem + 1);
-          mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId())));
+          mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
+              mBookingEntity.getServiceTime()));
         }
         break;
       case 2:
         if (!mBookingEntity.getMasterId().isEmpty()) {
           getViewState().goNext(currentItem + 1);
-          mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId())));
+          mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
+              mBookingEntity.getMasterName()));
         }
         break;
     }
