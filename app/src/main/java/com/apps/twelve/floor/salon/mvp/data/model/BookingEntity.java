@@ -10,6 +10,15 @@ public class BookingEntity {
   private String mDateId;
   private String mMasterId;
 
+  public BookingEntity(String masterServiceId, String userName, String userPhone, String dateId,
+      String masterId) {
+    mMasterServiceId = masterServiceId;
+    mUserName = userName;
+    mUserPhone = userPhone;
+    mDateId = dateId;
+    mMasterId = masterId;
+  }
+
   public String getMasterServiceId() {
     return mMasterServiceId;
   }

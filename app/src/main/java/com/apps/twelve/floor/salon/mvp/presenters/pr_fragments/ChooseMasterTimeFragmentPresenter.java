@@ -24,7 +24,7 @@ import timber.log.Timber;
   }
 
   private void loadData() {
-    Subscription subscription = mDataManager.fetchDaysData()
+    Subscription subscription = mDataManager.fetchDaysData("")
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(strings -> {
           getViewState().hideProgressBarBookingTime();
