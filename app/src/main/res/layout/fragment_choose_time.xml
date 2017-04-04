@@ -96,7 +96,7 @@
           android:layout_height="200dp"
           android:background="@drawable/booking_not_time_background"
           android:padding="16dp"
-          android:visibility="visible"
+          android:visibility="gone"
           >
         <RelativeLayout
             android:layout_width="match_parent"
