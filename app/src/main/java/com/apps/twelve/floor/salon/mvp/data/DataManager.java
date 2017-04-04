@@ -1,13 +1,13 @@
 package com.apps.twelve.floor.salon.mvp.data;
 
 import android.net.Uri;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.apps.twelve.floor.salon.mvp.data.remote.RestApi;
 import java.util.ArrayList;
@@ -96,38 +96,44 @@ public class DataManager {
     return Observable.just(lbe);
   }
 
-  public Observable<List<String>> fetchDaysData() {
-    ArrayList<String> arrayList = new ArrayList<>();
-    for (int i = 0; i < 31; i++) {
-      arrayList.add("day " + i);
-    }
-    return Observable.just(arrayList);
-  }
-
-  public Observable<List<WorkStartEndEntity>> fetchWorkSchedule() {
-    ArrayList<WorkStartEndEntity> workStartEndEntities = new ArrayList<>();
-    ArrayList<String> timestamp = new ArrayList<>();
-
+  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
+    ArrayList<DataServiceEntity> dataServiceEntities = new ArrayList<>();
+    ArrayList<DataServiceEntity.ScheduleEntity> scheduleEntities = new ArrayList<>();
     for (int t = 0; t < 25; t++) {
-      if (t % 2 == 0) {
-        timestamp.add(String.valueOf(t + 2) + ":" + String.valueOf(27 - t));
-      } else {
-        timestamp.add(String.valueOf(t + 1) + ":" + String.valueOf(25 - t));
-      }
-    }
-    for (int i = 0; i < 31; i++) {
-      workStartEndEntities.add(new WorkStartEndEntity("day " + i, i + ":00", "19:00", timestamp));
+      scheduleEntities.add(new DataServiceEntity.ScheduleEntity("" + t, "00" + t));
     }
 
-    return Observable.just(workStartEndEntities);
+    for (int i = 0; i < 31; i++) {
+      dataServiceEntities.add(
+          new DataServiceEntity("" + i, i + ":00", i + ":00", "day " + i, scheduleEntities));
+    }
+    return Observable.just(dataServiceEntities);
   }
 
-  public Observable<List<MasterEntity>> fetchMasters() {
+  //public Observable<List<WorkStartEndEntity>> fetchWorkSchedule() {
+  //  ArrayList<WorkStartEndEntity> workStartEndEntities = new ArrayList<>();
+  //  ArrayList<String> timestamp = new ArrayList<>();
+  //
+  //  for (int t = 0; t < 25; t++) {
+  //    if (t % 2 == 0) {
+  //      timestamp.add(String.valueOf(t + 2) + ":" + String.valueOf(27 - t));
+  //    } else {
+  //      timestamp.add(String.valueOf(t + 1) + ":" + String.valueOf(25 - t));
+  //    }
+  //  }
+  //  for (int i = 0; i < 31; i++) {
+  //    workStartEndEntities.add(new WorkStartEndEntity("day " + i, i + ":00", "19:00", timestamp));
+  //  }
+  //
+  //  return Observable.just(workStartEndEntities);
+  //}
+
+  public Observable<List<MasterEntity>> fetchMasters(String dataID) {
     ArrayList<MasterEntity> arrayList = new ArrayList<>();
     for (int i = 0; i < 7; i++) {
       arrayList.add(new MasterEntity("Master " + i,
           "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-          "Lorem ipsum dolore sit amet"));
+          "Lorem ipsum dolore sit amet", "" + i));
     }
     return Observable.just(arrayList);
   }

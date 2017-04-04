@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.mvp.views;
 
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
@@ -13,11 +14,11 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseTimeFragmentView
     extends MvpView {
 
-  void setUpUi(List<String> days);
-
-  void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities);
+  void setUpUi(List<DataServiceEntity> days);
 
   void setSelectedTime(int position);
+
+  void setSelectedDay(int position);
 
   void setTextToDayTv();
 

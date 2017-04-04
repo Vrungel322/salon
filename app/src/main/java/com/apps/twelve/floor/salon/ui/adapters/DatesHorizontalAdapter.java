@@ -10,6 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,11 @@ import java.util.List;
 
 public class DatesHorizontalAdapter
     extends RecyclerView.Adapter<DatesHorizontalAdapter.DatesViewHolder> {
-  private List<WorkStartEndEntity> mWorkStartEndEntityList = new ArrayList<>();
+  private List<DataServiceEntity> mWorkStartEndEntityList = new ArrayList<>();
 
   private int selectedItem = -1;
 
-  public void addListWorkStartEndEntity(List<WorkStartEndEntity> workStartEndEntities) {
+  public void addListWorkStartEndEntity(List<DataServiceEntity> workStartEndEntities) {
     mWorkStartEndEntityList.clear();
     mWorkStartEndEntityList.addAll(workStartEndEntities);
     notifyDataSetChanged();
@@ -37,9 +38,9 @@ public class DatesHorizontalAdapter
   }
 
   @Override public void onBindViewHolder(DatesViewHolder holder, int position) {
-    holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDate());
-    holder.mTextViewStartTime.setText(mWorkStartEndEntityList.get(position).getStartDate());
-    holder.mTextViewEndTime.setText(mWorkStartEndEntityList.get(position).getEndDate());
+    holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDay());
+    holder.mTextViewStartTime.setText(mWorkStartEndEntityList.get(position).getStartTime());
+    holder.mTextViewEndTime.setText(mWorkStartEndEntityList.get(position).getEndTime());
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(

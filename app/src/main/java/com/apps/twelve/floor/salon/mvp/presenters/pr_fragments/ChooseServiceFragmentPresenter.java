@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
+import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
@@ -22,12 +23,13 @@ import timber.log.Timber;
 @InjectViewState public class ChooseServiceFragmentPresenter
     extends BasePresenter<IChooseServiceFragmentView> {
   @Inject DataManager mDataManager;
+  @Inject BookingEntity mBookingEntity;
 
   private List<ParentService> mServiceTreeEntities = new ArrayList<>();
   private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
 
   @Override protected void inject() {
-    App.getAppComponent().inject(this);
+    App.getBookingComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {
@@ -90,6 +92,8 @@ import timber.log.Timber;
   }
 
   public void setItemSelected(int position) {
+    mBookingEntity.setMasterServiceId(
+        String.valueOf(mServiceAllEntities.get(position).getServiceId()));
     getViewState().setItemSelected(position);
   }
 

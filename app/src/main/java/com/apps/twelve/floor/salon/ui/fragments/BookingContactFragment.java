@@ -79,6 +79,16 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
+    mBookingContactsFragmentPresenter.setPersonName(mEditTextName.getText().toString());
+    mBookingContactsFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
+    mBookingContactsFragmentPresenter.sendBookingEntity();
     showToastMessage("Записаться\n" + mName + "\n" + mPhone);
+  }
+
+  @Override
+  public void setUpBookingInformation(String masterServiceId, String dateId, String masterId) {
+    mTextViewService.setText(masterServiceId);
+    mTextViewTime.setText(dateId);
+    mTextViewMaster.setText(masterId);
   }
 }
