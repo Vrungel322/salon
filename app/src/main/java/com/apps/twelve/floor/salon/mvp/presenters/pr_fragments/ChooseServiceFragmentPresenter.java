@@ -94,6 +94,8 @@ import timber.log.Timber;
   public void setItemSelected(int position) {
     mBookingEntity.setMasterServiceId(
         String.valueOf(mServiceAllEntities.get(position).getServiceId()));
+    mBookingEntity.setServiceName(
+        String.valueOf(mServiceAllEntities.get(position).getTitle()));
     getViewState().setItemSelected(position);
   }
 

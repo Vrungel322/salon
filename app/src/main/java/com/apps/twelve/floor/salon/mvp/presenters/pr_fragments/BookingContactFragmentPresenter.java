@@ -35,8 +35,8 @@ import rx.Subscription;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MasterID.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(masterID -> {
-          getViewState().setUpBookingInformation(mBookingEntity.getMasterServiceId(),
-              mBookingEntity.getDateId(), mBookingEntity.getMasterId());
+          getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
+              mBookingEntity.getServiceTime(), mBookingEntity.getMasterName());
         });
     addToUnsubscription(subscription);
   }

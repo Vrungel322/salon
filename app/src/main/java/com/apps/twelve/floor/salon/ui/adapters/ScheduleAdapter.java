@@ -40,14 +40,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorPrimaryDark));
+              R.color.colorChooseDateChosenTimeBackground));
       holder.mTextViewTime.setTextColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+              R.color.colorChooseDateChosenTimeText));
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+              R.color.colorChooseDateNotChosenTimeBackground));
       holder.mTextViewTime.setTextColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorBlack));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+              R.color.colorChooseDateNotChosenTimeText));
     }
   }
 

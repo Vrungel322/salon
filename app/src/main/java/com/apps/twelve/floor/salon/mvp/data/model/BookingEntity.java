@@ -9,14 +9,20 @@ public class BookingEntity {
   private String mUserPhone;
   private String mDateId;
   private String mMasterId;
+  private String mServiceName;
+  private String mServiceTime;
+  private String mMasterName;
 
   public BookingEntity(String masterServiceId, String userName, String userPhone, String dateId,
-      String masterId) {
+      String masterId, String serviceName, String serviceTime, String masterName) {
     mMasterServiceId = masterServiceId;
     mUserName = userName;
     mUserPhone = userPhone;
     mDateId = dateId;
     mMasterId = masterId;
+    mServiceName = serviceName;
+    mServiceTime = serviceTime;
+    mMasterName = masterName;
   }
 
   public String getMasterServiceId() {
@@ -57,5 +63,29 @@ public class BookingEntity {
 
   public void setMasterId(String masterId) {
     mMasterId = masterId;
+  }
+
+  public String getServiceName() {
+    return mServiceName;
+  }
+
+  public void setServiceName(String serviceName) {
+    mServiceName = serviceName;
+  }
+
+  public String getServiceTime() {
+    return mServiceTime;
+  }
+
+  public void setServiceTime(String serviceTime) {
+    mServiceTime = serviceTime;
+  }
+
+  public String getMasterName() {
+    return mMasterName;
+  }
+
+  public void setMasterName(String masterName) {
+    mMasterName = masterName;
   }
 }
