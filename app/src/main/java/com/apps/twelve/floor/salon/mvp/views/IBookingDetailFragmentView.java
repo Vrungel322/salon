@@ -11,4 +11,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingDetailFragmentView
     extends MvpView {
   void setUpViewPager();
+
+  void goNext(int position);
+
+  void goPrev(int position);
 }

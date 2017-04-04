@@ -11,6 +11,6 @@ import dagger.Provides;
 
 @Module public class BookingModule {
   @Provides @BookingScope BookingEntity provideBookingEntity() {
-    return new BookingEntity();
+    return new BookingEntity("", "", "", "", "");
   }
 }
