@@ -57,4 +57,8 @@ import rx.Subscription;
     mBookingEntity.setMasterId(" ");
     mBookingEntity.setMasterName(" ");
   }
+
+  public void blockedClickRv(boolean isChecked) {
+    getViewState().blockedClickRv(isChecked);
+  }
 }

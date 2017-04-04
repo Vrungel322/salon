@@ -63,6 +63,7 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
     mCheckBoxAnyMaster.setOnCheckedChangeListener((buttonView, isChecked) -> {
       if (isChecked) {
         mViewBlockedClickRv.setClickable(true);
+        mChooseMasterFragmentPresenter.blockedClickRv(isChecked);
         mChooseMasterFragmentPresenter.setAnyMasterSelected();
       } else {
         mViewBlockedClickRv.setClickable(false);
@@ -81,5 +82,9 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void setSelectedItem(int position) {
     mMastersVerticalAdapter.setSelectedItem(position);
+  }
+
+  @Override public void blockedClickRv(boolean status) {
+    mViewBlockedClickRv.setClickable(status);
   }
 }
