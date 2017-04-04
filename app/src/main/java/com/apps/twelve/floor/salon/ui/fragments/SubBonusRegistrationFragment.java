@@ -49,16 +49,16 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    Picasso.with(getContext())
-        .load(Uri.parse(
-            "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117"))
-        .into(mImageViewUserAvatar);
     if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
         .equals(Constants.FragmentToShow.REGISTRATION)) {
       mTextViewBonusRegistration.setText(
           Html.fromHtml(getString(R.string.bonus_registration_text)));
       mButtonRegistration.setText(getString(R.string.registration));
     } else {
+      Picasso.with(getContext())
+          .load(Uri.parse(
+              "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117"))
+          .into(mImageViewUserAvatar);
       mTextViewBonusRegistration.setTextSize(32);
       mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
       mButtonRegistration.setText("100 баллов");

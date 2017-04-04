@@ -114,17 +114,19 @@
         <ImageView
             android:id="@+id/bPrevDay"
             android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             app:srcCompat="@drawable/ic_date_previous_24dp"
             />
         <ImageView
             android:id="@+id/bNextDay"
             android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             app:srcCompat="@drawable/ic_date_next_24dp"
             />
         <com.apps.twelve.floor.salon.ui.customViews.ViewPagerWithoutSwipe

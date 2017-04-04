@@ -54,7 +54,7 @@ public class MyLastBookingAdapter
     if (position == 0) {
       holder.mConstraintLayoutLastBooking.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
-              R.color.colorLLightPink));
+              R.color.colorMainScreenBookingPressed));
       holder.view.setVisibility(View.VISIBLE);
     }
     Picasso.with(holder.mImageViewServicePhoto.getContext())
