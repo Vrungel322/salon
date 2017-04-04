@@ -16,11 +16,17 @@
   <color name="colorLLightPink">#FFFBE9F0</color>
 
   <!--screen main-->
+  <!--sub news-->
   <color name="colorMainScreenText">#a7a8a8</color>
   <color name="colorMainScreenTextAllNews">#ff4081</color>
   <color name="colorMainScreenTextNews">#000000</color>
   <color name="colorMainScreenTextNewsDate">#a7a8a8</color>
   <color name="colorMainScreenNewsBackground">#ffffff</color>
+  <!--sub bonus-->
+  <color name="colorMainScreenBonusBackground">#e4336f</color>
+  <color name="colorMainScreenBonusIconInfo">#ffffff</color>
+  <color name="colorMainScreenBonusIconUser">#ffffff</color>>
+  <color name="colorMainScreenBonusText">#ffffff</color>
 
   <!--screen OurWorks-->
   <color name="colorOurWorksIcon">#FFC6C5C1</color>
