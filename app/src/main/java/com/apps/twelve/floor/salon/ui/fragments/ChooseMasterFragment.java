@@ -24,6 +24,7 @@ import java.util.List;
  */
 
 public class ChooseMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
+
   @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
 
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
@@ -33,6 +34,7 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
+  @BindView(R.id.viewBlockedClickRv) View mViewBlockedClickRv;
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
@@ -60,10 +62,10 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
     mCheckBoxAnyMaster.setOnCheckedChangeListener((buttonView, isChecked) -> {
       if (isChecked) {
-        mRecyclerViewMasters.setVisibility(View.GONE);
+        mViewBlockedClickRv.setClickable(true);
         mChooseMasterFragmentPresenter.setAnyMasterSelected();
       } else {
-        mRecyclerViewMasters.setVisibility(View.VISIBLE);
+        mViewBlockedClickRv.setClickable(false);
       }
     });
   }
