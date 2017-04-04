@@ -2,12 +2,15 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
+import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseTimeFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -20,9 +23,12 @@ import timber.log.Timber;
     extends BasePresenter<IChooseTimeFragmentView> {
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
+  @Inject BookingEntity mBookingEntity;
+  private List<DataServiceEntity> mDataServiceEntity;
+  private int dayPosition;
 
   @Override protected void inject() {
-    App.getAppComponent().inject(this);
+    App.getBookingComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {
@@ -34,12 +40,12 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
         .compose(ThreadSchedulers.applySchedulers())
         .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
-        .subscribe(strings -> {
+        .subscribe(dataServiceEntities -> {
+          mDataServiceEntity = dataServiceEntities;
           getViewState().hideProgressBarBookingTime();
-          if (!strings.isEmpty()) {
-            getViewState().setUpUi(strings);
+          if (!dataServiceEntities.isEmpty()) {
+            getViewState().setUpUi(dataServiceEntities);
             setDateToTv();
-            loadWorkSchedule();
             getViewState().showTimeBooking();
           } else {
             getViewState().showNotTime();
@@ -48,18 +54,18 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void loadWorkSchedule() {
-    Subscription subscription = mDataManager.fetchWorkSchedule()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(workStartEndEntities -> getViewState().updateWorkSchedule(workStartEndEntities));
-    addToUnsubscription(subscription);
-  }
-
   public void setSelectedTime(int position) {
+    mBookingEntity.setDateId(
+        String.valueOf(mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position)));
     getViewState().setSelectedTime(position);
   }
 
   public void setDateToTv() {
     getViewState().setTextToDayTv();
+  }
+
+  public void setSelectedDay(int position) {
+    dayPosition = position;
+    getViewState().setSelectedDay(position);
   }
 }

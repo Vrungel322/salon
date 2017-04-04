@@ -20,16 +20,16 @@ import rx.Subscription;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpUi();
-    fetchMasters();
+    //fetchMasters();
   }
 
-  private void fetchMasters() {
-    Subscription subscription = mDataManager.fetchMasters()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterEntities -> {
-          getViewState().showMasters(masterEntities);
-          getViewState().hideProgressBar();
-        });
-    addToUnsubscription(subscription);
-  }
+  //private void fetchMasters() {
+  //  Subscription subscription = mDataManager.fetchMasters()
+  //      .compose(ThreadSchedulers.applySchedulers())
+  //      .subscribe(masterEntities -> {
+  //        getViewState().showMasters(masterEntities);
+  //        getViewState().hideProgressBar();
+  //      });
+  //  addToUnsubscription(subscription);
+  //}
 }

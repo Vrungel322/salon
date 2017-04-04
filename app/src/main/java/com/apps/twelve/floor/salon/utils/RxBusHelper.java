@@ -12,4 +12,12 @@ public final class RxBusHelper {
       this.serviceId = serviceId;
     }
   }
+
+  public static class DataID {
+    public String dataId;
+
+    public DataID(String dataId) {
+      this.dataId = dataId;
+    }
+  }
 }
