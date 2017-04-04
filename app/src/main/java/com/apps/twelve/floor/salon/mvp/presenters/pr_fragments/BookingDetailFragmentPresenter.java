@@ -44,8 +44,10 @@ import javax.inject.Inject;
         }
         break;
       case 2:
-        break;
-      case 3:
+        if (!mBookingEntity.getMasterId().isEmpty()) {
+          getViewState().goNext(currentItem + 1);
+          mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId())));
+        }
         break;
     }
   }

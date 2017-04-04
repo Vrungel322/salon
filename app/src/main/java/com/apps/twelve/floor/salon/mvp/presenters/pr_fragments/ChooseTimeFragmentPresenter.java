@@ -56,7 +56,7 @@ import timber.log.Timber;
 
   public void setSelectedTime(int position) {
     mBookingEntity.setDateId(
-        String.valueOf(mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position)));
+        String.valueOf(mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getId()));
     getViewState().setSelectedTime(position);
   }
 

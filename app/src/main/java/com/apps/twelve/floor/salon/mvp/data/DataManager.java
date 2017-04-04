@@ -101,7 +101,8 @@ public class DataManager {
     for (int i = 0; i < 31; i++) {
       dataServiceEntities.add(
           new DataServiceEntity("" + i, i + ":00", i + ":00", "day " + i, scheduleEntities));
-    } return Observable.just(dataServiceEntities);
+    }
+    return Observable.just(dataServiceEntities);
   }
 
   //public Observable<List<WorkStartEndEntity>> fetchWorkSchedule() {
@@ -127,7 +128,7 @@ public class DataManager {
     for (int i = 0; i < 7; i++) {
       arrayList.add(new MasterEntity("Master " + i,
           "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-          "Lorem ipsum dolore sit amet"));
+          "Lorem ipsum dolore sit amet", "" + i));
     }
     return Observable.just(arrayList);
   }

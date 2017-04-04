@@ -55,7 +55,7 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
     mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mMastersVerticalAdapter.setSelectedItem(position));
+            (recyclerView, position, v) -> mChooseMasterFragmentPresenter.setSelectedItem(position));
   }
 
   @Override public void showMasters(List<MasterEntity> masterEntities) {
@@ -65,5 +65,9 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
     mNestedScroll.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void setSelectedItem(int position) {
+    mMastersVerticalAdapter.setSelectedItem(position);
   }
 }
