@@ -11,7 +11,7 @@
       android:id="@+id/nestedScrollBookingTime"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:visibility="gone"
+      android:visibility="visible"
       >
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,15 +93,15 @@
       <RelativeLayout
           android:id="@+id/relativeLayoutNotTime"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@color/colorGray"
+          android:layout_height="200dp"
+          android:background="@drawable/booking_not_time_background"
           android:padding="16dp"
           android:visibility="gone"
           >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorDarkPink"
+            android:background="@color/colorChooseDateNotTime"
             >
 
           <TextView
@@ -117,7 +117,7 @@
               android:layout_marginTop="32dp"
               android:gravity="center"
               android:text="@string/time_empty"
-              android:textColor="@color/colorWhite"
+              android:textColor="@color/colorChooseDateNotTimeText"
               />
           <TextView
               android:id="@+id/textView8"
@@ -132,7 +132,7 @@
               android:layout_marginTop="16dp"
               android:gravity="center"
               android:text="@string/booking_phone"
-              android:textColor="@color/colorWhite"
+              android:textColor="@color/colorChooseDateNotTimeText"
               />
           <Button
               android:id="@+id/buttonBookingPhone"
@@ -142,11 +142,11 @@
               android:layout_centerHorizontal="true"
               android:layout_marginBottom="16dp"
               android:layout_marginTop="16dp"
-              android:drawableLeft="@drawable/ic_action_call"
+              android:drawableLeft="@drawable/ic_phone_white"
               android:drawablePadding="5dp"
-              android:drawableStart="@drawable/ic_action_call"
+              android:drawableStart="@drawable/ic_phone_white"
               android:text="80996753872"
-              android:textColor="@color/colorWhite"
+              android:textColor="@color/colorChooseDateNotTimeText"
               />
         </RelativeLayout>
       </RelativeLayout>
@@ -154,7 +154,7 @@
           android:id="@+id/linearLayoutTime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/colorLLLLightGray"
+          android:background="@color/colorChooseDateTimeBackground"
           android:orientation="vertical"
           android:padding="16dp"
           android:visibility="gone"
@@ -179,6 +179,8 @@
               android:ellipsize="end"
               android:lines="1"
               android:text="@string/spare_time"
+              android:textColor="@color/colorChooseDateTimeTextFreeTime"
+              android:textSize="11sp"
               />
           <TextView
               android:id="@+id/tvDateInText"
@@ -190,7 +192,8 @@
               android:layout_toRightOf="@+id/textView4"
               android:ellipsize="end"
               android:lines="1"
-              android:textColor="@color/colorDarkPink"
+              android:textColor="@color/colorChooseDateTimeTextCurrentDay"
+              android:textSize="11sp"
               />
         </RelativeLayout>
         <android.support.v7.widget.RecyclerView

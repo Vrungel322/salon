@@ -44,10 +44,58 @@
   <color name="colorBookingInfoDescriptionMaster">#000000</color>
   <color name="colorBookingInfoDetailsMaster">#80000000</color>
 
+  <!--screen ChooseService-->
+  <color name="colorChooseServiceEditTextBackground">#f9f2f2f2</color>
+  <color name="colorChooseServiceBackground">#FFFFFF</color>
+  <color name="colorChooseServiceNotPressedBackground">#f8f8f8</color>
+  <color name="colorChooseServicePressedBackground">#f9d5e2</color>
+  <color name="colorChooseServiceName">#000000</color>
+  <color name="colorChooseServiceDescription">#B3000000</color>
+  <color name="colorChooseServicePrice">#000000</color>
+  <color name="colorChooseServiceDuration">#B3000000</color>
+
   <!--screen ChooseTime-->
   <color name="colorChooseDateBackground">#f5f5f5</color>
   <color name="colorChooseDateText">#000000</color>
   <color name="colorChooseDateArrow">#919191</color>
+  <color name="colorChooseDateNotTime">#EB3472</color>
+  <color name="colorChooseDateNotTimeBackground">#edf2f6</color>
+  <color name="colorChooseDateNotTimeText">#FFFFFF</color>
+  <color name="colorChooseDateNotTimeIcon">#FFFFFF</color>
+  <color name="colorChooseDateTimeBackground">#ececec</color>
+  <color name="colorChooseDateTimeTextFreeTime">#000000</color>
+  <color name="colorChooseDateTimeTextCurrentDay">#EB3472</color>
+  <color name="colorChooseDateTimeTextDayInMonth">#000000</color>
+  <color name="colorChooseDateChosenTimeBackground">#EB3472</color>
+  <color name="colorChooseDateChosenTimeText">#FFFFFF</color>
+  <color name="colorChooseDateNotChosenTimeBackground">#FFFFFF</color>
+  <color name="colorChooseDateNotChosenTimeText">#000000</color>
+  <color name="colorChooseDateNotActiveTimeBackground">#00000000</color>
+  <color name="colorChooseDateNotActiveTimeText">#4D000000</color>
+  <color name="colorChooseDateChosenDayBg">#EB3472</color>
+  <color name="colorChooseDateChosenDayText">#FFFFFF</color>
+  <color name="colorChooseDateChosenDayStartTime">#FFFFFF</color>
+  <color name="colorChooseDateChosenDayEndTime">#FFFFFF</color>
+  <color name="colorChooseDateChosenDayLine">#FFFFFF</color>
+  <color name="colorChooseDateNotChosenDayBg">#FFFFFF</color>
+  <color name="colorChooseDateNotChosenDayText">#000000</color>
+  <color name="colorChooseDateNotChosenDayStartTime">#000000</color>
+  <color name="colorChooseDateNotChosenDayEndTime">#000000</color>
+  <color name="colorChooseDateNotChosenDayLine">#EB3472</color>
+  <color name="colorChooseDateNotActiveDayBg">#4DFFFFFF</color>
+  <color name="colorChooseDateNotActiveDayText">#4D000000</color>
+  <color name="colorChooseDateNotActiveDayStartTime">#4D000000</color>
+  <color name="colorChooseDateNotActiveDayEndTime">#4D000000</color>
+  <color name="colorChooseDateNotActiveDayLine">#4DEB3472</color>
+
+  <!--screen ChooseMaster-->
+  <color name="colorChooseMasterBackground">#ededed</color>
+  <color name="colorChooseMasterTitle">#EB3472</color>
+  <color name="colorChooseMasterTextAnyMaster">#000000</color>
+  <color name="colorChooseMasterTextMasterName">#000000</color>
+  <color name="colorChooseMasterTextMasterDescription">#80000000</color>
+  <color name="colorChooseMasterChosen">#fbe9f0</color>
+  <color name="colorChooseMasterNotChosen">#FFFFFF</color>
 
   <!--screen BookingContacts-->
   <color name="colorBookingContactsTitleName">#000000</color>

@@ -42,8 +42,8 @@
           android:ellipsize="end"
           android:maxLines="3"
           android:text="TextView"
-          android:textColor="@color/colorBlack"
-          android:textSize="24sp"
+          android:textColor="@color/colorChooseMasterTextMasterName"
+          android:textSize="16sp"
           />
       <LinearLayout
           android:id="@+id/linearLayout"
@@ -62,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="TextView"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorChooseMasterTextMasterDescription"
+            android:textSize="12sp"
             />
       </LinearLayout>
     </RelativeLayout>

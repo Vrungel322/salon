@@ -6,6 +6,8 @@
     >
   <TextView
       android:text="Temp text"
+      android:textSize="14sp"
+      android:textColor="@color/colorChooseDateTimeTextDayInMonth"
       android:id="@+id/tvDayInMonth"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

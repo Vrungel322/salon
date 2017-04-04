@@ -47,20 +47,24 @@ public class MastersVerticalAdapter
 
     if (this.selectedItem == position) {
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorPrimaryDark));
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterChosen));
+      /* changing text color (if using darker pressed background)
       holder.mTextViewMasterName.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorWhite));
+          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorChooseMasterTextMasterName));
       holder.mTextViewMasterDescription.setTextColor(
           ContextCompat.getColor(holder.mTextViewMasterDescription.getContext(),
-              R.color.colorWhite));
+              R.color.colorChooseMasterTextMasterDescription));
+      */
     } else {
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorWhite));
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterNotChosen));
+      /*  changing text color (if using darker pressed background)
       holder.mTextViewMasterName.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorBlack));
+          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorChooseMasterTextMasterName));
       holder.mTextViewMasterDescription.setTextColor(
           ContextCompat.getColor(holder.mTextViewMasterDescription.getContext(),
-              R.color.colorBlack));
+              R.color.colorChooseMasterTextMasterDescription));
+      */
     }
   }
 
