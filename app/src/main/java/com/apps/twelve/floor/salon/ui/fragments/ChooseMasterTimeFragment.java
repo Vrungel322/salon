@@ -19,8 +19,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterTimeFragmentPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterTimeView;
 import com.apps.twelve.floor.salon.ui.adapters.DatesHorizontalAdapter;
 import com.apps.twelve.floor.salon.ui.adapters.DatesInMonthViewPagerAdapter;
@@ -32,11 +34,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMasterTimeView {
-
   private static final int SCHEDULE_SPAN_COUNT = 6;
 
-  @InjectPresenter ChooseMasterTimeFragmentPresenter mChooseMasterTimeFragmentPresenter;
+  @InjectPresenter ChooseMasterTimeFragmentPresenter mChooseTimeFragmentPresenter;
 
+  @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
   @BindView(R.id.vpDatesOfMonth) ViewPager mViewPagerDatesOfMonth;
   @BindView(R.id.bNextDay) ImageView mImageViewNextDay;
@@ -50,28 +52,29 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
 
-  private List<String> mDays = new ArrayList<>();
-  private List<WorkStartEndEntity> mWorkStartEndEntities;
+  private List<DataServiceEntity> mDays = new ArrayList<>();
+  private List<DataServiceEntity> mWorkStartEndEntities;
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
+
+  public static ChooseTimeFragment newInstance() {
+    Bundle args = new Bundle();
+    ChooseTimeFragment fragment = new ChooseTimeFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
 
   public ChooseMasterTimeFragment() {
     super(R.layout.fragment_choose_master_time);
   }
 
-  public static ChooseMasterTimeFragment newInstance() {
-    Bundle args = new Bundle();
-    ChooseMasterTimeFragment fragment = new ChooseMasterTimeFragment();
-    fragment.setArguments(args);
-    return fragment;
-  }
-
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    mTextViewServiceName.setText("ТЕСТОВАЯ УСЛУГА");
   }
 
-  @Override public void setUpUi(List<String> days) {
+  @Override public void setUpUi(List<DataServiceEntity> days) {
     //viewPager
     mDays = days;
     mDatesInMonthViewPagerAdapter = new DatesInMonthViewPagerAdapter(getContext(), days);
@@ -85,8 +88,8 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
       @Override public void onPageSelected(int position) {
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
-            mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
-        mChooseMasterTimeFragmentPresenter.setDateToTv();
+            mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+        mChooseTimeFragmentPresenter.setDateToTv();
       }
 
       @Override public void onPageScrollStateChanged(int state) {
@@ -102,7 +105,7 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          mDatesHorizontalAdapter.setSelectedItem(position);
+          //mChooseTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
 
@@ -113,8 +116,7 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseMasterTimeFragmentPresenter.setSelectedTime(
-                position));
+            (recyclerView, position, v) -> mChooseTimeFragmentPresenter.setSelectedTime(position));
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
@@ -122,15 +124,19 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     mRecyclerViewHorizontalDates.smoothScrollToPosition(currentItem);
   }
 
-  @Override public void updateWorkSchedule(List<WorkStartEndEntity> workStartEndEntities) {
-    mWorkStartEndEntities = workStartEndEntities;
-    mDatesHorizontalAdapter.addListWorkStartEndEntity(workStartEndEntities);
+  @Override public void updateWorkSchedule(List<DataServiceEntity> dataServiceEntities) {
+    mWorkStartEndEntities = dataServiceEntities;
+    mDatesHorizontalAdapter.addListWorkStartEndEntity(dataServiceEntities);
     mScheduleAdapter.setTimeSchedule(
-        mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getFreeTime());
+        mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
   }
 
   @Override public void setSelectedTime(int position) {
     mScheduleAdapter.setSelectedItem(position);
+  }
+
+  @Override public void setSelectedDay(int position) {
+    mDatesHorizontalAdapter.setSelectedItem(position);
   }
 
   @Override public void setTextToDayTv() {

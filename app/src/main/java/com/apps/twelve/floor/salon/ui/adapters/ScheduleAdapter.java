@@ -10,6 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +19,10 @@ import java.util.List;
  */
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
-  private List<String> mTimes = new ArrayList<>();
+  private List<DataServiceEntity.ScheduleEntity> mTimes = new ArrayList<>();
   private int selectedItem = -1;
 
-  public void setTimeSchedule(List<String> times) {
+  public void setTimeSchedule(List<DataServiceEntity.ScheduleEntity> times) {
     selectedItem = -1;
     mTimes.clear();
     mTimes.addAll(times);
@@ -34,7 +35,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
   }
 
   @Override public void onBindViewHolder(ScheduleViewHolder holder, int position) {
-    holder.mTextViewTime.setText(mTimes.get(position));
+    holder.mTextViewTime.setText(mTimes.get(position).getTime());
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(

@@ -67,17 +67,23 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
       default:
         break;
     }
+  }
 
+  @Override public void goNext(int position) {
+
+    mViewPager.setCurrentItem(position, true);
+  }
+
+  @Override public void goPrev(int position) {
+      mViewPager.setCurrentItem(position, true);
   }
 
   @OnClick(R.id.bNextStep) public void bNextStepClicked() {
-    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
+    mBookingDetailFragmentPresenter.nextStep(mViewPager.getCurrentItem());
   }
 
   @OnClick(R.id.bPrevStep) public void bPrevStepClicked() {
-    if (mViewPager.getCurrentItem() > 0) {
-      mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-    }
+    mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
   }
 
   private void showChooseMasterFragment() {
