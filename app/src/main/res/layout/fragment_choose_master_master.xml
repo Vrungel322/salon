@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -10,6 +9,7 @@
     >
 
   <android.support.v4.widget.NestedScrollView
+      android:id="@+id/nestedScrollChooseMaster"
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:layout_marginBottom="8dp"
@@ -21,25 +21,14 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      android:id="@+id/nestedScrollChooseMaster"
       >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorChooseMasterBackground"
         android:descendantFocusability="blocksDescendants"
         android:orientation="vertical"
         >
-
-
-      <View
-          android:id="@+id/view2"
-          android:layout_width="match_parent"
-          android:layout_height="8dp"
-          android:layout_marginTop="8dp"
-          android:background="@color/colorLLLLightGray"
-          app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-          tools:layout_editor_absoluteX="0dp"
-          />
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvMasters"
           android:layout_width="match_parent"
@@ -47,8 +36,8 @@
           android:layout_marginBottom="0dp"
           android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="0dp"
-          android:background="@color/colorLLLLightGray"
+          android:layout_marginTop="8dp"
+          android:background="@color/colorChooseMasterBackground"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintLeft_toLeftOf="parent"
