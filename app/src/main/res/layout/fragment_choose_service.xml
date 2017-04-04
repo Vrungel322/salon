@@ -22,7 +22,7 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
       android:layout_marginBottom="8dp"
-      android:background="@color/colorGrayTransparent"
+      android:background="@color/colorChooseServiceEditTextBackground"
       android:gravity="center"
       android:hint="@string/search_service"
       android:inputType="textPersonName"
@@ -46,13 +46,13 @@
       />
   </LinearLayout>
   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/linerLayoutChooseService"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@color/colorWhite"
+      android:layout_below="@+id/linearLayout"
+      android:background="@color/colorChooseServiceBackground"
       android:focusableInTouchMode="true"
       android:orientation="vertical"
-      android:layout_below="@+id/linearLayout"
-      android:id="@+id/linerLayoutChooseService"
       >
     <LinearLayout
         android:id="@+id/llAllitems"
@@ -72,14 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:visibility="invisible"
         android:orientation="vertical"
+        android:visibility="invisible"
         >
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvServices"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="@color/colorLLLLightGray"
+          android:background="@color/colorChooseServiceNotPressedBackground"
           />
     </LinearLayout>
   </LinearLayout>
