@@ -78,6 +78,8 @@
   <color name="colorChooseDateNotActiveDayEndTime">#4D000000</color>
   <color name="colorChooseDateNotActiveDayLine">#4DEB3472</color>
 
+  <!--screen ChooseMaster-->
+
   <!--screen BookingContacts-->
   <color name="colorBookingContactsTitleName">#000000</color>
   <color name="colorBookingContactsHintName">#80000000</color>
