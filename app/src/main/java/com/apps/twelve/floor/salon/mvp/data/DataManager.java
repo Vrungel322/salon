@@ -77,6 +77,10 @@ public class DataManager {
       ne.add(new NewsEntity(
           Uri.parse("http://mac.h-cdn.co/assets/16/16/640x320/landscape-1461093915-ciara-zoom.jpg"),
           "Short description", "23.02.2017"));
+      ne.add(new NewsEntity(Uri.parse(
+          "https://images2.cosmopolitan.ru/upload/img_cache/697/6975fe0cf0d47e3d58680a8f78c45e34_fitted_740x0.jpg"),
+          "Идеальный тон румян не зависит от оттенка кожи! Он зависит от... не поверишь!!!",
+          "4 апр 2017 13:45"));
     }
     return Observable.just(ne);
   }
