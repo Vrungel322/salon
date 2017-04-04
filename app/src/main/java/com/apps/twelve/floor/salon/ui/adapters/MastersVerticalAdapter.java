@@ -23,9 +23,10 @@ import java.util.List;
 
 public class MastersVerticalAdapter
     extends RecyclerView.Adapter<MastersVerticalAdapter.MastersViewHolder> {
+
   private List<MasterEntity> mMasterEntities = new ArrayList<>();
 
-  private int selectedItem = -1;
+  private int mSelectedItem = -1;
 
   public void addListMasterEntity(List<MasterEntity> masterEntities) {
     mMasterEntities.clear();
@@ -45,31 +46,17 @@ public class MastersVerticalAdapter
     holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
     holder.mTextViewMasterDescription.setText(mMasterEntities.get(position).getMasterDescription());
 
-    if (this.selectedItem == position) {
+    if (this.mSelectedItem == position) {
       holder.mRelativeLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterChosen));
-      /* changing text color (if using darker pressed background)
-      holder.mTextViewMasterName.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorChooseMasterTextMasterName));
-      holder.mTextViewMasterDescription.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterDescription.getContext(),
-              R.color.colorChooseMasterTextMasterDescription));
-      */
     } else {
       holder.mRelativeLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterNotChosen));
-      /*  changing text color (if using darker pressed background)
-      holder.mTextViewMasterName.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterName.getContext(), R.color.colorChooseMasterTextMasterName));
-      holder.mTextViewMasterDescription.setTextColor(
-          ContextCompat.getColor(holder.mTextViewMasterDescription.getContext(),
-              R.color.colorChooseMasterTextMasterDescription));
-      */
     }
   }
 
   public void setSelectedItem(int position) {
-    this.selectedItem = position;
+    this.mSelectedItem = position;
     this.notifyDataSetChanged();
   }
 
