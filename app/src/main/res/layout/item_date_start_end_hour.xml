@@ -12,7 +12,9 @@
       android:id="@+id/tvDate"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
       android:text="20 пн"
+      android:textSize="14sp"
       />
   <View
       android:id="@+id/vLine"
@@ -25,13 +27,17 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="2dp"
+      android:layout_gravity="center_horizontal"
       android:text="13:00"
+      android:textSize="11sp"
       />
   <TextView
       android:id="@+id/tvEndTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
       android:text="19:00"
+      android:textSize="11sp"
       />
 
 </LinearLayout>
