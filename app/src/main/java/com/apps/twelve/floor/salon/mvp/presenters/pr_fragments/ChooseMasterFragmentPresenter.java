@@ -54,8 +54,8 @@ import rx.Subscription;
   }
 
   public void setAnyMasterSelected() {
-    mBookingEntity.setMasterId(" ");
-    mBookingEntity.setMasterName(" ");
+    mBookingEntity.setMasterId("any");
+    mBookingEntity.setMasterName("any");
   }
 
   public void blockedClickRv(boolean isChecked) {

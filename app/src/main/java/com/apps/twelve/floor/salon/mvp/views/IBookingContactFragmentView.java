@@ -10,5 +10,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingContactFragmentView
     extends MvpView {
-  void setUpBookingInformation(String masterServiceId, String dateId, String masterId);
+  void setUpBookingInformation(String serviceName, String serviceTime, String serviceDuration,
+      String masterName);
 }

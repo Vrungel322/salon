@@ -98,7 +98,6 @@
               android:layout_height="wrap_content"
               android:layout_marginLeft="4dp"
               android:layout_marginStart="4dp"
-              android:text="40 мин"
               android:textSize="12sp"
               android:textColor="@color/colorBookingInfoDetailsTime"
               app:layout_constraintBottom_toBottomOf="@+id/iv_time"

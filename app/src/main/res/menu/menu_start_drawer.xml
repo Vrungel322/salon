@@ -5,31 +5,31 @@
     <item
         android:id="@+id/nav_main"
         android:checked="true"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_home_24dp"
         android:title="@string/menu_main"/>
     <item
         android:id="@+id/nav_booking"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_create_booking"
         android:title="@string/menu_booking"/>
     <item
         android:id="@+id/nav_my_book"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_timetable_24dp"
         android:title="@string/menu_my_booking"/>
     <item
         android:id="@+id/nav_my_bonus"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_bonus_24dp"
         android:title="@string/menu_my_bonus"/>
     <item
         android:id="@+id/nav_share"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_share_24dp"
         android:title="@string/menu_share"/>
     <item
         android:id="@+id/nav_our_work"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_our_works_24dp"
         android:title="@string/menu_our_work"/>
     <item
         android:id="@+id/nav_contacts"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_contacts_24dp"
         android:title="@string/menu_contacts"/>
 
   </group>

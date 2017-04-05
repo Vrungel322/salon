@@ -57,7 +57,6 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   }
 
   protected void showAlertMessage(String title, String message) {
-    //Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     Alerter.create(getActivity())
         .setTitle(title)
         .setText(message)

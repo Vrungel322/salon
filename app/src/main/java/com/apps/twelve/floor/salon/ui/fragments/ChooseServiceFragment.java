@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 public class ChooseServiceFragment extends BaseFragment implements IChooseServiceFragmentView {
+
   @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
