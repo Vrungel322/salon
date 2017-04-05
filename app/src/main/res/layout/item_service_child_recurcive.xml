@@ -92,7 +92,7 @@
       app:layout_constraintBottom_toBottomOf="@+id/tvServiceDuration"
       app:layout_constraintRight_toLeftOf="@+id/tvServiceDuration"
       app:layout_constraintTop_toTopOf="@+id/tvServiceDuration"
-      app:srcCompat="@drawable/booking_time_2"
+      app:srcCompat="@drawable/ic_work_time_14dp"
       />
   <TextView
       android:id="@+id/tvServiceDuration"
