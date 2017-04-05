@@ -18,6 +18,7 @@ import rx.Subscription;
 
 @InjectViewState public class BookingContactFragmentPresenter
     extends BasePresenter<IBookingContactFragmentView> {
+
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
@@ -34,10 +35,10 @@ import rx.Subscription;
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MasterID.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterID -> {
-          getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
-              mBookingEntity.getServiceTime(), mBookingEntity.getMasterName());
-        });
+        .subscribe(
+            masterID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
+                mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
+                mBookingEntity.getMasterName()));
     addToUnsubscription(subscription);
   }
 

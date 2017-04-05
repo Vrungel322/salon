@@ -17,5 +17,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void goPrev(int position);
 
+  void hideKeyboard();
+
+  void replaceTitleNextButton(boolean state);
+
   @StateStrategyType(SkipStrategy.class) void showMessageWarning();
 }

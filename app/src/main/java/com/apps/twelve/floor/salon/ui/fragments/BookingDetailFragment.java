@@ -78,6 +78,18 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     mViewPager.setCurrentItem(position, true);
   }
 
+  @Override public void hideKeyboard() {
+    ViewUtil.hideKeyboard(getActivity());
+  }
+
+  @Override public void replaceTitleNextButton(boolean state) {
+    if (state) {
+      mButtonNextStep.setText(R.string.done);
+    } else {
+      mButtonNextStep.setText(R.string.next_step);
+    }
+  }
+
   @Override public void showMessageWarning() {
     showAlertMessage(getString(R.string.title_write_error),
         getString(R.string.description_write_error));
@@ -99,6 +111,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
         getString(R.string.tab_services));
     adapter.addFragment(ChooseMasterTimeFragment.newInstance(), getString(R.string.tab_time));
     adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);
     ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
@@ -111,6 +124,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
     adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));
     adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);
     ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);

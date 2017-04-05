@@ -4,7 +4,7 @@ package com.apps.twelve.floor.salon.mvp.data.model;
  * Created by Vrungel on 24.03.2017.
  */
 public class BookingEntity {
-  private String mMasterServiceId;
+  private String mServiceId;
   private String mUserName;
   private String mUserPhone;
   private String mDateId;
@@ -12,10 +12,12 @@ public class BookingEntity {
   private String mServiceName;
   private String mServiceTime;
   private String mMasterName;
+  private String mDurationServices;
 
-  public BookingEntity(String masterServiceId, String userName, String userPhone, String dateId,
-      String masterId, String serviceName, String serviceTime, String masterName) {
-    mMasterServiceId = masterServiceId;
+  public BookingEntity(String serviceId, String userName, String userPhone, String dateId,
+      String masterId, String serviceName, String serviceTime, String masterName,
+      String durationServices) {
+    mServiceId = serviceId;
     mUserName = userName;
     mUserPhone = userPhone;
     mDateId = dateId;
@@ -23,14 +25,23 @@ public class BookingEntity {
     mServiceName = serviceName;
     mServiceTime = serviceTime;
     mMasterName = masterName;
+    mDurationServices = durationServices;
   }
 
-  public String getMasterServiceId() {
-    return mMasterServiceId;
+  public String getDurationServices() {
+    return mDurationServices;
   }
 
-  public void setMasterServiceId(String masterServiceId) {
-    mMasterServiceId = masterServiceId;
+  public void setDurationServices(String durationServices) {
+    mDurationServices = durationServices;
+  }
+
+  public String getServiceId() {
+    return mServiceId;
+  }
+
+  public void setServiceId(String serviceId) {
+    mServiceId = serviceId;
   }
 
   public String getUserName() {

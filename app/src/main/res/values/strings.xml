@@ -71,4 +71,5 @@
   <string name="search_service">Поиск услуги</string>
   <string name="title_write_error">Ошибка записи</string>
   <string name="description_write_error">Проверте корректность выбранных данных</string>
+  <string name="done">Готово</string>
 </resources>

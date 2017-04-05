@@ -21,6 +21,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class BookingContactFragment extends BaseFragment implements IBookingContactFragmentView {
+
   @InjectPresenter BookingContactFragmentPresenter mBookingContactsFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
@@ -85,10 +86,11 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
     showToastMessage("Записаться\n" + mName + "\n" + mPhone);
   }
 
-  @Override
-  public void setUpBookingInformation(String masterServiceId, String dateId, String masterId) {
-    mTextViewService.setText(masterServiceId);
-    mTextViewTime.setText(dateId);
-    mTextViewMaster.setText(masterId);
+  @Override public void setUpBookingInformation(String serviceName, String serviceTime,
+      String serviceDuration, String masterName) {
+    mTextViewService.setText(serviceName);
+    mTextViewTime.setText(serviceTime);
+    mTextViewDuration.setText(serviceDuration);
+    mTextViewMaster.setText(masterName);
   }
 }

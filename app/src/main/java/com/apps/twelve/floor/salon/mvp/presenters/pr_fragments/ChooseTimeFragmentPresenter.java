@@ -70,4 +70,9 @@ import timber.log.Timber;
     dayPosition = position;
     getViewState().setSelectedDay(position);
   }
+
+  public void clearSelectedTime() {
+    mBookingEntity.setDateId("");
+    getViewState().clearSelectedTime();
+  }
 }

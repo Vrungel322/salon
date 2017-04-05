@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 23.03.2017.
@@ -32,9 +33,10 @@ import javax.inject.Inject;
   public void nextStep(int currentItem) {
     switch (currentItem) {
       case 0:
-        if (!mBookingEntity.getMasterServiceId().isEmpty()) {
+        if (!mBookingEntity.getServiceId().isEmpty()) {
           getViewState().goNext(currentItem + 1);
-          mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getMasterServiceId()),
+          getViewState().hideKeyboard();
+          mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
               mBookingEntity.getMasterName()));
         } else {
           getViewState().showMessageWarning();
@@ -54,6 +56,7 @@ import javax.inject.Inject;
           getViewState().goNext(currentItem + 1);
           mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
               mBookingEntity.getMasterName()));
+          getViewState().replaceTitleNextButton(true);
         } else {
           getViewState().showMessageWarning();
         }
@@ -64,6 +67,10 @@ import javax.inject.Inject;
   public void prevStep(int currentItem) {
     if (currentItem > 0) {
       getViewState().goPrev(currentItem - 1);
+    }
+    Timber.e("" + currentItem);
+    if (currentItem == 3) {
+      getViewState().replaceTitleNextButton(false);
     }
   }
 }
