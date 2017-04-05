@@ -27,6 +27,8 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
 
+  private static final int SELECTED_ITEM_DEFAULT = -1;
+
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
   @BindView(R.id.tvServiceDuration) TextView mTextViewServiceDuration;
@@ -85,5 +87,8 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void blockedClickRv(boolean status) {
     mViewBlockedClickRv.setClickable(status);
+    if (status) {
+      mMastersVerticalAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
+    }
   }
 }
