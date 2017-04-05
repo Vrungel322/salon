@@ -25,13 +25,13 @@ import java.util.List;
  */
 
 public class ChooseServiceFragment extends BaseFragment implements IChooseServiceFragmentView {
+
   @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
-  @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
 

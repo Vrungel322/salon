@@ -38,6 +38,7 @@ import java.util.List;
 public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragmentView {
 
   private static final int SCHEDULE_SPAN_COUNT = 6;
+  private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @InjectPresenter ChooseTimeFragmentPresenter mChooseTimeFragmentPresenter;
 
@@ -56,7 +57,6 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
 
   private List<DataServiceEntity> mDays = new ArrayList<>();
-  //private List<DataServiceEntity> mWorkStartEndEntities;
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
@@ -92,6 +92,7 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+        mChooseTimeFragmentPresenter.clearSelectedTime();
         mChooseTimeFragmentPresenter.setDateToTv();
       }
 
@@ -156,6 +157,10 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   @Override public void hideProgressBarBookingTime() {
     mProgressBarBookingTime.setVisibility(View.GONE);
     mNestedScrollBookingTime.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void clearSelectedTime() {
+    mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

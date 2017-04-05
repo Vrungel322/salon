@@ -109,24 +109,6 @@ public class DataManager {
     return Observable.just(dataServiceEntities);
   }
 
-  //public Observable<List<WorkStartEndEntity>> fetchWorkSchedule() {
-  //  ArrayList<WorkStartEndEntity> workStartEndEntities = new ArrayList<>();
-  //  ArrayList<String> timestamp = new ArrayList<>();
-  //
-  //  for (int t = 0; t < 25; t++) {
-  //    if (t % 2 == 0) {
-  //      timestamp.add(String.valueOf(t + 2) + ":" + String.valueOf(27 - t));
-  //    } else {
-  //      timestamp.add(String.valueOf(t + 1) + ":" + String.valueOf(25 - t));
-  //    }
-  //  }
-  //  for (int i = 0; i < 31; i++) {
-  //    workStartEndEntities.add(new WorkStartEndEntity("day " + i, i + ":00", "19:00", timestamp));
-  //  }
-  //
-  //  return Observable.just(workStartEndEntities);
-  //}
-
   public Observable<List<MasterEntity>> fetchMasters(String dataID) {
     ArrayList<MasterEntity> arrayList = new ArrayList<>();
     for (int i = 0; i < 7; i++) {
