@@ -36,6 +36,8 @@ import javax.inject.Inject;
           getViewState().goNext(currentItem + 1);
           mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getMasterServiceId()),
               mBookingEntity.getMasterName()));
+        } else {
+          getViewState().showMessageWarning();
         }
         break;
       case 1:
@@ -43,6 +45,8 @@ import javax.inject.Inject;
           getViewState().goNext(currentItem + 1);
           mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
               mBookingEntity.getServiceTime()));
+        } else {
+          getViewState().showMessageWarning();
         }
         break;
       case 2:
@@ -50,6 +54,8 @@ import javax.inject.Inject;
           getViewState().goNext(currentItem + 1);
           mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
               mBookingEntity.getMasterName()));
+        } else {
+          getViewState().showMessageWarning();
         }
         break;
     }

@@ -69,4 +69,6 @@
   <string name="spare_time">Свободное время на</string>
   <string name="time_empty">Сведения о свободнов времени отсутствуют</string>
   <string name="search_service">Поиск услуги</string>
+  <string name="title_write_error">Ошибка записи</string>
+  <string name="description_write_error">Проверте корректность выбранных данных</string>
 </resources>

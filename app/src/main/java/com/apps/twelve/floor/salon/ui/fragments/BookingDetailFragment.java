@@ -75,7 +75,12 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   }
 
   @Override public void goPrev(int position) {
-      mViewPager.setCurrentItem(position, true);
+    mViewPager.setCurrentItem(position, true);
+  }
+
+  @Override public void showMessageWarning() {
+    showAlertMessage(getString(R.string.title_write_error),
+        getString(R.string.description_write_error));
   }
 
   @OnClick(R.id.bNextStep) public void bNextStepClicked() {
