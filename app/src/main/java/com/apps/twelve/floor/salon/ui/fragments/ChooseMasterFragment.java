@@ -24,7 +24,10 @@ import java.util.List;
  */
 
 public class ChooseMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
+
   @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
+
+  private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
@@ -33,6 +36,7 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
+  @BindView(R.id.viewBlockedClickRv) View mViewBlockedClickRv;
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
@@ -60,10 +64,10 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
     mCheckBoxAnyMaster.setOnCheckedChangeListener((buttonView, isChecked) -> {
       if (isChecked) {
-        mRecyclerViewMasters.setVisibility(View.GONE);
+        mChooseMasterFragmentPresenter.blockedClickRv(true);
         mChooseMasterFragmentPresenter.setAnyMasterSelected();
       } else {
-        mRecyclerViewMasters.setVisibility(View.VISIBLE);
+        mChooseMasterFragmentPresenter.blockedClickRv(false);
       }
     });
   }
@@ -79,5 +83,12 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void setSelectedItem(int position) {
     mMastersVerticalAdapter.setSelectedItem(position);
+  }
+
+  @Override public void blockedClickRv(boolean status) {
+    mViewBlockedClickRv.setClickable(status);
+    if (status) {
+      mMastersVerticalAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
+    }
   }
 }
