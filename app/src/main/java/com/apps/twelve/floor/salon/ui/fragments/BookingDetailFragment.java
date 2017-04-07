@@ -101,11 +101,11 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   }
 
   @OnClick(R.id.bPrevStep) public void bPrevStepClicked() {
-    mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
     if (mViewPager.getCurrentItem() == 0) {
       mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
           BookingFragment.newInstance());
     }
+    mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
   }
 
   private void showChooseMasterFragment() {
