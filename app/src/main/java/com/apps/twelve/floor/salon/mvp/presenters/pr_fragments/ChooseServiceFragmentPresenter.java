@@ -59,7 +59,11 @@ import timber.log.Timber;
   public void getCategoryWithParentId(int parentId) {
     Subscription subscription = mDataManager.fetchAllServices(parentId)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(serviceEntities -> getViewState().setCategoryWithParentId(serviceEntities), Timber::e);
+        .subscribe(serviceEntities -> {
+          getViewState().setCategoryWithParentId(serviceEntities);
+          mServiceAllEntities.clear();
+          mServiceAllEntities.addAll(serviceEntities);
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 
@@ -99,6 +103,7 @@ import timber.log.Timber;
   }
 
   public void setItemSelected(int position) {
+    Timber.e(""+ position);
     mBookingEntity.setServiceId(String.valueOf(mServiceAllEntities.get(position).getServiceId()));
     mBookingEntity.setServiceName(String.valueOf(mServiceAllEntities.get(position).getTitle()));
     mBookingEntity.setDurationServices(String.valueOf(mServiceAllEntities.get(position).getTime()));

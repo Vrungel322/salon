@@ -21,7 +21,6 @@ import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.03.2017.
@@ -62,6 +61,13 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
           if (mServiceCategoryAdapter.getItem(position).hasChildren()) {
             mChooseServiceFragmentPresenter.getCategoryWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
+            // TODO: 07.04.2017 remove next line when server become norm
+            // ->
+            mServiceCategoryAdapter.getItem(position).setHasChildren(false);
+            // <-
+          } else {
+            mChooseServiceFragmentPresenter.setItemSelected(
+                position);
           }
         });
   }
