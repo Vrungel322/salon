@@ -31,7 +31,7 @@ import timber.log.Timber;
 
   public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
-    Subscription subscription = mDataManager.fetchAllServices(1, 10)
+    Subscription subscription = mDataManager.fetchAllServices(0)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().hideProgressBar();

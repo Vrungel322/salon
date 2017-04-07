@@ -1,8 +1,8 @@
 package com.apps.twelve.floor.salon.mvp.data.remote;
 
-import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
+import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.SalonApi;
+import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import java.util.List;
 import rx.Observable;
 
@@ -17,13 +17,13 @@ public class RestApi {
     this.api = api;
   }
 
-  public Observable<List<ParentService>> fetchTreeServices(int deep, int count) {
-    return api.fetchTreeServices(count);
+  public Observable<List<CategoryEntity>> fetchCategory() {
+    return api.fetchCategory();
   }
 
   //todo fetchAllServices for filtering
-  public Observable<List<ServiceEntity>> fetchAllServices(int deep, int count) {
-    return api.fetchAllServices(deep, count);
+  public Observable<List<ServiceEntity>> fetchAllServices(int id) {
+    return api.fetchAllServices(id);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

@@ -11,16 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseServiceFragmentView;
-import com.apps.twelve.floor.salon.ui.adapters.ServiceTreeAdapter;
+import com.apps.twelve.floor.salon.ui.adapters.ServiceCategoryAdapter;
 import com.apps.twelve.floor.salon.ui.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.03.2017.
@@ -34,12 +35,12 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llTreeItems) LinearLayout mLinerLayoutTreeItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
-  @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
+  @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewCategory;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
 
   private ServicesAdapter mServicesAdapter;
-  private ServiceTreeAdapter mServicesTreeAdapter;
+  private ServiceCategoryAdapter mServiceCategoryAdapter;
 
   public static ChooseServiceFragment newInstance() {
     Bundle args = new Bundle();
@@ -52,15 +53,22 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     super(R.layout.fragment_choose_service);
   }
 
-  @Override public void setUpRvTreeServices() {
-    mRecyclerViewTreeOfServices.setLayoutManager(new LinearLayoutManager(getContext()));
-    mServicesTreeAdapter = new ServiceTreeAdapter();
+  @Override public void setUpRvCategory() {
+    mRecyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
+    mServiceCategoryAdapter = new ServiceCategoryAdapter();
     mLinearLayoutAllitems.setVisibility(View.GONE);
+    ItemClickSupport.addTo(mRecyclerViewCategory)
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          if (mServiceCategoryAdapter.getItem(position).hasChildren()) {
+            mChooseServiceFragmentPresenter.getCategoryWithParentId(
+                mServiceCategoryAdapter.getItem(position).getId());
+          }
+        });
   }
 
-  @Override public void updateRvTreeServices(List<ParentService> parentServices) {
-    mServicesTreeAdapter.setData(parentServices);
-    mRecyclerViewTreeOfServices.setAdapter(mServicesTreeAdapter);
+  @Override public void updateRvCategory(List<CategoryEntity> parentServices) {
+    mServiceCategoryAdapter.setData(parentServices);
+    mRecyclerViewCategory.setAdapter(mServiceCategoryAdapter);
   }
 
   @Override public void setUpRvAllServices() {
@@ -106,6 +114,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void updateRvAllServices(List<ServiceEntity> serviceAllEntities) {
     mServicesAdapter.setServiceEntity(serviceAllEntities);
+    mRecyclerViewServices.setAdapter(mServicesAdapter);
   }
 
   @Override public void hideLLAllServices() {
@@ -119,6 +128,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideLLTreeServices() {
     mLinerLayoutTreeItems.setVisibility(View.GONE);
+  }
+
+  @Override public void setCategoryWithParentId(List<ServiceEntity> serviceEntities) {
+    mRecyclerViewCategory.setAdapter(mServicesAdapter);
+    mServicesAdapter.setServiceEntity(serviceEntities);
   }
 
   @Override public void showLLTreeServices() {

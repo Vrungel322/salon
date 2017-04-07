@@ -1,7 +1,7 @@
 package com.apps.twelve.floor.salon.mvp.views;
 
+import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -17,7 +17,7 @@ import java.util.List;
 
   void updateRvAllServices(List<ServiceEntity> serviceEntities);
 
-  void updateRvTreeServices(List<ParentService> serviceEntities);
+  void updateRvCategory(List<CategoryEntity> serviceEntities);
 
   void hideLLAllServices();
 
@@ -33,11 +33,13 @@ import java.util.List;
 
   void showProgressBar();
 
-  void setUpRvTreeServices();
+  void setUpRvCategory();
 
   void showLLTreeServices();
 
   void showLLAllServices();
 
   void hideLLTreeServices();
+
+  void setCategoryWithParentId(List<ServiceEntity> serviceEntities);
 }

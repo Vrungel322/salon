@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.mvp.data.model;
 
-import com.apps.twelve.floor.salon.mvp.data.model.service_tree_item.ParentService;
 import java.util.List;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,10 +11,9 @@ import rx.Observable;
 
 public interface SalonApi {
 
-  @GET("v1/services/") Observable<List<ParentService>> fetchTreeServices(@Query("count") int count);
+  @GET("api/v1/categories/") Observable<List<CategoryEntity>> fetchCategory();
 
-  @GET("v1/services/") Observable<List<ServiceEntity>> fetchAllServices(@Query("service") int deep,
-      @Query("count") int count);
+  @GET("api/v1/services/") Observable<List<ServiceEntity>> fetchAllServices(@Query("id") int id);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

@@ -4,11 +4,8 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterTimeView;
-import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import rx.Subscription;
-import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterTimeFragmentPresenter
     extends BasePresenter<IChooseMasterTimeView> {

@@ -4,10 +4,8 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterMasterView;
-import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import rx.Subscription;
 
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
     extends BasePresenter<IChooseMasterMasterView> {
