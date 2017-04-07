@@ -9,7 +9,6 @@ import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 23.03.2017.
@@ -68,7 +67,6 @@ import timber.log.Timber;
     if (currentItem > 0) {
       getViewState().goPrev(currentItem - 1);
     }
-    Timber.e("" + currentItem);
     if (currentItem == 3) {
       getViewState().replaceTitleNextButton(false);
     }
