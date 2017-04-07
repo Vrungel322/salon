@@ -21,6 +21,7 @@ import javax.inject.Inject;
   @Inject RxBus mRxBus;
 
   @Override protected void inject() {
+    App.initBookingComponent();
     App.getBookingComponent().inject(this);
   }
 
@@ -70,5 +71,10 @@ import javax.inject.Inject;
     if (currentItem == 3) {
       getViewState().replaceTitleNextButton(false);
     }
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    App.destroyBookingComponent();
   }
 }
