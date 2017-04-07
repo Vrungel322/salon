@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
@@ -101,6 +102,10 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @OnClick(R.id.bPrevStep) public void bPrevStepClicked() {
     mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
+    if (mViewPager.getCurrentItem() == 0) {
+      mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
+          BookingFragment.newInstance());
+    }
   }
 
   private void showChooseMasterFragment() {
