@@ -40,6 +40,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
+  private StringBuilder path = new StringBuilder();
 
   public static ChooseServiceFragment newInstance() {
     Bundle args = new Bundle();
@@ -58,10 +59,12 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mLinearLayoutAllitems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" ->");
           if (mServiceCategoryAdapter.getItem(position).hasChildren()) {
             mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
+            path.replace(path.length() - 3, path.length(), "");
 
             if (recyclerView.getAdapter() instanceof ServicesAdapter) {
               mChooseServiceFragmentPresenter.setItemSelected(position);
