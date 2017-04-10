@@ -114,7 +114,6 @@ import timber.log.Timber;
   }
 
   public void setItemSelected(int position) {
-    Timber.e(""+ position);
     mBookingEntity.setServiceId(String.valueOf(mServiceAllEntities.get(position).getServiceId()));
     mBookingEntity.setServiceName(String.valueOf(mServiceAllEntities.get(position).getTitle()));
     mBookingEntity.setDurationServices(String.valueOf(mServiceAllEntities.get(position).getTime()));
@@ -131,5 +130,13 @@ import timber.log.Timber;
 
   public void hideLLTreeServices() {
     getViewState().hideLLTreeServices();
+  }
+
+  public void showTextPath(String text) {
+    getViewState().showTextPath(text);
+  }
+
+  public void hideTextPath() {
+    getViewState().hideTextPath();
   }
 }

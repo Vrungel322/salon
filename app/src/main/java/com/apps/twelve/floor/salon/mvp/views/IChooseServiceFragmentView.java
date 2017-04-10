@@ -44,4 +44,8 @@ import java.util.List;
   void setServicesWithParentId(List<ServiceEntity> serviceEntities);
 
   void setCategoriesWithParentId(List<CategoryEntity> categoryEntities);
+
+  void showTextPath(String text);
+
+  void hideTextPath();
 }
