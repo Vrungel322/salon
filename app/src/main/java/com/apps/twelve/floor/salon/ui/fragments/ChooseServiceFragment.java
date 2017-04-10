@@ -1,14 +1,17 @@
 package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
@@ -37,6 +40,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewCategory;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
+  @BindView(R.id.tvPath) TextView tvPath;
 
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
@@ -53,19 +57,29 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     super(R.layout.fragment_choose_service);
   }
 
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    tvPath.setSelected(true);
+    tvPath.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+    tvPath.setSingleLine(true);
+  }
+
   @Override public void setUpRvCategory() {
     mRecyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
     mServiceCategoryAdapter = new ServiceCategoryAdapter();
     mLinearLayoutAllitems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter
-              && mServiceCategoryAdapter.getItem(position).hasChildren()) {
-            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" ->");
+          if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
+              .getItem(position)
+              .hasChildren()) {
+            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" -> ");
+            mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
             mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
-            path.replace(path.length() - 3, path.length(), "");
+            path.replace(path.length() - 4, path.length(), "");
+            mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
 
             if (recyclerView.getAdapter() instanceof ServicesAdapter) {
               mChooseServiceFragmentPresenter.setItemSelected(position);
@@ -93,8 +107,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        //mLinerLayoutTreeItems.setVisibility(View.GONE);
-        //mLinearLayoutAllitems.setVisibility(View.VISIBLE);
         mChooseServiceFragmentPresenter.fetchAllServices();
       }
     });
@@ -106,7 +118,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          //mChooseServiceFragmentPresenter.showRvAllServices();
           mChooseServiceFragmentPresenter.showLLAllServices();
           mChooseServiceFragmentPresenter.hideLLTreeServices();
           mChooseServiceFragmentPresenter.filterServices(
@@ -149,6 +160,16 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @Override public void setCategoriesWithParentId(List<CategoryEntity> categoryEntities) {
     mServiceCategoryAdapter.setData(categoryEntities);
     mRecyclerViewCategory.setAdapter(mServiceCategoryAdapter);
+  }
+
+  @Override public void showTextPath(String text) {
+    tvPath.setVisibility(View.VISIBLE);
+    tvPath.setText(text);
+  }
+
+  @Override public void hideTextPath() {
+    tvPath.setVisibility(View.GONE);
+    path.setLength(0);
   }
 
   @Override public void showLLTreeServices() {
