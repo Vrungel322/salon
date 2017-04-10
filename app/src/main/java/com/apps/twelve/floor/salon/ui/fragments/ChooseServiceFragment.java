@@ -45,6 +45,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
   private StringBuilder path = new StringBuilder();
+  public static final String SLASH = "/";
 
   public static ChooseServiceFragment newInstance() {
     Bundle args = new Bundle();
@@ -73,12 +74,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
           if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
               .getItem(position)
               .hasChildren()) {
-            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" -> ");
+            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(SLASH);
             mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
             mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
-            path.replace(path.length() - 4, path.length(), "");
             mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
 
             if (recyclerView.getAdapter() instanceof ServicesAdapter) {

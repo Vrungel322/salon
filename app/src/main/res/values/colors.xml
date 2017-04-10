@@ -71,7 +71,7 @@
 
   <!--screen ChooseService-->
   <color name="colorChooseServiceEditTextBackground">#f9f2f2f2</color>
-  <color name="colorChooseServiceTextPath">#f9f2f2f2</color>
+  <color name="colorChooseServiceTextPath">#FFA2A2A2</color>
   <color name="colorChooseServiceBackground">#FFFFFF</color>
   <color name="colorChooseServiceNotPressedBackground">#f8f8f8</color>
   <color name="colorChooseServicePressedBackground">#f9d5e2</color>
