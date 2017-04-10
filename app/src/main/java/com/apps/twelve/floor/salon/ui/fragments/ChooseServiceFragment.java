@@ -59,8 +59,9 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mLinearLayoutAllitems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" ->");
-          if (mServiceCategoryAdapter.getItem(position).hasChildren()) {
+          if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter
+              && mServiceCategoryAdapter.getItem(position).hasChildren()) {
+            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(" ->");
             mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
