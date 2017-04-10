@@ -60,6 +60,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="visible"
+        android:clickable="true"
         >
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvServices"
@@ -75,6 +76,7 @@
         android:layout_marginTop="0dp"
         android:orientation="vertical"
         android:visibility="visible"
+        android:clickable="true"
         >
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvTreeOfServices"

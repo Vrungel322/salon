@@ -33,7 +33,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llTreeItems) LinearLayout mLinerLayoutTreeItems;
-  @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
+  @BindView(R.id.rvServices) RecyclerView mRecyclerViewAllServices;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewCategory;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
@@ -59,15 +59,16 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
           if (mServiceCategoryAdapter.getItem(position).hasChildren()) {
-            mChooseServiceFragmentPresenter.getCategoryWithParentId(
+            mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
-            // TODO: 07.04.2017 remove next line when server become norm
-            // ->
-            mServiceCategoryAdapter.getItem(position).setHasChildren(false);
-            // <-
           } else {
-            mChooseServiceFragmentPresenter.setItemSelected(
-                position);
+
+            if (recyclerView.getAdapter() instanceof ServicesAdapter) {
+              mChooseServiceFragmentPresenter.setItemSelected(position);
+            } else {
+              mChooseServiceFragmentPresenter.getServiceWithParentId(
+                  mServiceCategoryAdapter.getItem(position).getId());
+            }
           }
         });
   }
@@ -78,18 +79,18 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   }
 
   @Override public void setUpRvAllServices() {
-    mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
+    mRecyclerViewAllServices.setLayoutManager(new LinearLayoutManager(getContext()));
     mServicesAdapter = new ServicesAdapter();
-    mRecyclerViewServices.setAdapter(mServicesAdapter);
-    ItemClickSupport.addTo(mRecyclerViewServices)
+    mRecyclerViewAllServices.setAdapter(mServicesAdapter);
+    ItemClickSupport.addTo(mRecyclerViewAllServices)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(
                 position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        mLinerLayoutTreeItems.setVisibility(View.GONE);
-        mLinearLayoutAllitems.setVisibility(View.VISIBLE);
+        //mLinerLayoutTreeItems.setVisibility(View.GONE);
+        //mLinearLayoutAllitems.setVisibility(View.VISIBLE);
         mChooseServiceFragmentPresenter.fetchAllServices();
       }
     });
@@ -120,7 +121,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void updateRvAllServices(List<ServiceEntity> serviceAllEntities) {
     mServicesAdapter.setServiceEntity(serviceAllEntities);
-    mRecyclerViewServices.setAdapter(mServicesAdapter);
+    mRecyclerViewAllServices.setAdapter(mServicesAdapter);
   }
 
   @Override public void hideLLAllServices() {
@@ -136,9 +137,14 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
     mLinerLayoutTreeItems.setVisibility(View.GONE);
   }
 
-  @Override public void setCategoryWithParentId(List<ServiceEntity> serviceEntities) {
-    mRecyclerViewCategory.setAdapter(mServicesAdapter);
+  @Override public void setServicesWithParentId(List<ServiceEntity> serviceEntities) {
     mServicesAdapter.setServiceEntity(serviceEntities);
+    mRecyclerViewCategory.setAdapter(mServicesAdapter);
+  }
+
+  @Override public void setCategoriesWithParentId(List<CategoryEntity> categoryEntities) {
+    mServiceCategoryAdapter.setData(categoryEntities);
+    mRecyclerViewCategory.setAdapter(mServiceCategoryAdapter);
   }
 
   @Override public void showLLTreeServices() {

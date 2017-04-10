@@ -30,8 +30,16 @@ public class DataManager {
     return mRestApi.fetchCategory();
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServices(int id) {
-    return mRestApi.fetchAllServices(id);
+  public Observable<List<ServiceEntity>> fetchAllServices() {
+    return mRestApi.fetchAllServices();
+  }
+
+  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
+    return mRestApi.fetchServicesOfCategoryWithId(id);
+  }
+
+  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
+   return mRestApi.fetchCategoriesOfCategoryWithId(parentId);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

@@ -41,5 +41,7 @@ import java.util.List;
 
   void hideLLTreeServices();
 
-  void setCategoryWithParentId(List<ServiceEntity> serviceEntities);
+  void setServicesWithParentId(List<ServiceEntity> serviceEntities);
+
+  void setCategoriesWithParentId(List<CategoryEntity> categoryEntities);
 }

@@ -22,8 +22,16 @@ public class RestApi {
   }
 
   //todo fetchAllServices for filtering
-  public Observable<List<ServiceEntity>> fetchAllServices(int id) {
-    return api.fetchAllServices(id);
+  public Observable<List<ServiceEntity>> fetchAllServices() {
+    return api.fetchAllServices();
+  }
+
+  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId( int id) {
+    return api.fetchServicesOfCategoryWithId(id);
+  }
+
+  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
+    return api.fetchCategoriesOfCategoryWithId(parentId);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

@@ -10,8 +10,7 @@ public class CategoryEntity {
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;
   @SerializedName("image") @Expose private String image;
-  @SerializedName("children") @Expose private String children;
-  private Boolean hasChildren = true;
+  @SerializedName("has_children") @Expose private Boolean hasChildren;
 
   /**
    * No args constructor for use in serialization
@@ -19,24 +18,14 @@ public class CategoryEntity {
   public CategoryEntity() {
   }
 
-  /**
-   *
-   * @param id
-   * @param parentId
-   * @param text
-   * @param title
-   * @param children
-   * @param image
-   */
   public CategoryEntity(Integer id, Integer parentId, String title, String text, String image,
-      String children) {
-    super();
+      Boolean hasChildren) {
     this.id = id;
     this.parentId = parentId;
     this.title = title;
     this.text = text;
     this.image = image;
-    this.children = children;
+    this.hasChildren = hasChildren;
   }
 
   public Integer getId() {
@@ -77,14 +66,6 @@ public class CategoryEntity {
 
   public void setImage(String image) {
     this.image = image;
-  }
-
-  public String getChildren() {
-    return children;
-  }
-
-  public void setChildren(String children) {
-    this.children = children;
   }
 
   public Boolean hasChildren() {

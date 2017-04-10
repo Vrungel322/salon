@@ -25,7 +25,7 @@ import timber.log.Timber;
   @Inject DataManager mDataManager;
   @Inject BookingEntity mBookingEntity;
 
-  private List<CategoryEntity> mServiceTreeEntities = new ArrayList<>();
+  private List<CategoryEntity> mCategoriesEntities = new ArrayList<>();
   private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
 
   @Override protected void inject() {
@@ -36,18 +36,18 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().setUpRvAllServices();
     getViewState().setUpRvCategory();
-    fetchCategory(0);
+    fetchCategory();
   }
 
-  public void fetchCategory(int parentId) {
+  public void fetchCategory() {
     getViewState().showProgressBar();
     Subscription subscription = mDataManager.fetchCategory()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(parentServices -> {
           getViewState().hideProgressBar();
           getViewState().updateRvCategory(parentServices);
-          mServiceTreeEntities.clear();
-          mServiceTreeEntities.addAll(parentServices);
+          mCategoriesEntities.clear();
+          mCategoriesEntities.addAll(parentServices);
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBar();
@@ -56,20 +56,31 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void getCategoryWithParentId(int parentId) {
-    Subscription subscription = mDataManager.fetchAllServices(parentId)
+  public void getServiceWithParentId(int parentId) {
+    Subscription subscription = mDataManager.fetchServicesOfCategoryWithId(parentId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
-          getViewState().setCategoryWithParentId(serviceEntities);
+          getViewState().setServicesWithParentId(serviceEntities);
           mServiceAllEntities.clear();
           mServiceAllEntities.addAll(serviceEntities);
         }, Timber::e);
     addToUnsubscription(subscription);
   }
 
+  public void getCategoriesWithParentId(int parentId) {
+    Subscription subscription = mDataManager.fetchCategoriesOfCategoryWithId(parentId)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(categoryEntities -> {
+          getViewState().setCategoriesWithParentId(categoryEntities);
+          mCategoriesEntities.clear();
+          mCategoriesEntities.addAll(categoryEntities);
+        }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
   public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
-    Subscription subscription = mDataManager.fetchAllServices(0)
+    Subscription subscription = mDataManager.fetchAllServices()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().updateRvAllServices(serviceEntities);
