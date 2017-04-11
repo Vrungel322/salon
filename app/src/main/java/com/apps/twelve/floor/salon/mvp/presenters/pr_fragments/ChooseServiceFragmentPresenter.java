@@ -34,7 +34,7 @@ import timber.log.Timber;
   private List<String> mPathList = new ArrayList<>();
   private StringBuilder mPath = new StringBuilder();
 
-  public static final String SLASH = "/";
+  private static final String SLASH = "/";
 
   @Override protected void inject() {
     App.getBookingComponent().inject(this);
