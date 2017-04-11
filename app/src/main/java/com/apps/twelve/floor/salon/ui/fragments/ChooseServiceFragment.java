@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -178,6 +179,11 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
       mRecyclerViewCategory.setVisibility(View.GONE);
       mProgressBarCategoryService.setVisibility(View.VISIBLE);
     }
+  }
+
+  @Override public void backCategory() {
+    mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
+        BookingFragment.newInstance());
   }
 
   @Override public void showLLTreeServices() {

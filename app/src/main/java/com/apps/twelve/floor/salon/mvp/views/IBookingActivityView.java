@@ -13,6 +13,4 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   @StateStrategyType(SkipStrategy.class) void addFragmentBooking();
-
-  @StateStrategyType(SkipStrategy.class) void isBackPressed(boolean back);
 }

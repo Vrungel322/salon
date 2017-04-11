@@ -40,12 +40,4 @@ public final class RxBusHelper {
 
   public static class StateBooking {
   }
-
-  public static class BackCategoriesResult {
-    public boolean isBack;
-
-    public BackCategoriesResult(boolean isBack) {
-      this.isBack = isBack;
-    }
-  }
 }
