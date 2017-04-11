@@ -65,6 +65,7 @@ import timber.log.Timber;
   }
 
   public void getServiceWithParentId(int parentId) {
+    getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchServicesOfCategoryWithId(parentId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
@@ -73,17 +74,20 @@ import timber.log.Timber;
           mServiceAllEntities.addAll(serviceEntities);
           mListListCategories.add(new ArrayList<>());
           getViewState().showTextPath(String.valueOf(mPath));
+          getViewState().stateCategoriesServices(true);
         }, Timber::e);
     addToUnsubscription(subscription);
   }
 
   public void getCategoriesWithParentId(int parentId) {
+    getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchCategoriesOfCategoryWithId(parentId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(categoryEntities -> {
           getViewState().setCategoriesWithParentId(categoryEntities);
           mListListCategories.add(categoryEntities);
           getViewState().showTextPath(String.valueOf(mPath));
+          getViewState().stateCategoriesServices(true);
         }, Timber::e);
     addToUnsubscription(subscription);
   }

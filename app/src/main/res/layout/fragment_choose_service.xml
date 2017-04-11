@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/colorWhite"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:animateLayoutChanges="true"
     >
   <LinearLayout
       android:id="@+id/linearLayout"
@@ -87,11 +87,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:background="#222222"
+        android:background="@color/colorWhite"
         android:clickable="true"
         android:orientation="vertical"
         android:visibility="visible"
         >
+      <ProgressBar
+          android:id="@+id/progressBarCategoryService"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          style="?android:attr/progressBarStyle"
+          />
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvTreeOfServices"
           android:layout_width="match_parent"

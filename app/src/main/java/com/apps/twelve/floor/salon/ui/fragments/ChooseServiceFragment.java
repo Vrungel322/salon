@@ -41,6 +41,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
   @BindView(R.id.tvPath) TextView tvPath;
+  @BindView(R.id.progressBarCategoryService) ProgressBar mProgressBarCategoryService;
 
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
@@ -167,6 +168,16 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideTextPath() {
     tvPath.setVisibility(View.GONE);
+  }
+
+  @Override public void stateCategoriesServices(boolean state) {
+    if (state) {
+      mRecyclerViewCategory.setVisibility(View.VISIBLE);
+      mProgressBarCategoryService.setVisibility(View.GONE);
+    } else {
+      mRecyclerViewCategory.setVisibility(View.GONE);
+      mProgressBarCategoryService.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override public void showLLTreeServices() {
