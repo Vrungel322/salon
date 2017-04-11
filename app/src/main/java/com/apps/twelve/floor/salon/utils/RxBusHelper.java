@@ -34,4 +34,15 @@ public final class RxBusHelper {
       this.masterName = masterName;
     }
   }
+
+  public static class BackCategories {
+  }
+
+  public static class BackCategoriesResult {
+    public boolean isBack;
+
+    public BackCategoriesResult(boolean isBack) {
+      this.isBack = isBack;
+    }
+  }
 }
