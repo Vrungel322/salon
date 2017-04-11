@@ -13,7 +13,8 @@ public final class Constants {
 
   public class FragmentTag {
     public static final String MAIN_FRAGMENT = "MainFragment";
-    public static final String BOOKING_FRAGMENT = "BookingFragment";
+    public static final String BOOKING_SERVICES_FRAGMENT = "BookingServicesFragment";
+    public static final String BOOKING_MASTERS_FRAGMENT = "BookingMastersFragment";
     public static final String MY_BOOK_FRAGMENT = "MyBookFragment";
     public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";

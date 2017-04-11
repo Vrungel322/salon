@@ -45,8 +45,13 @@ public interface INavigator {
   void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment);
 
+  void replaceFragmentTag(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment, @NonNull String fragmentTag);
+
   void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);
+
+  boolean isFragmentTag(@NonNull AppCompatActivity appCompatActivity, @NonNull String fragmentTag);
 
   void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);

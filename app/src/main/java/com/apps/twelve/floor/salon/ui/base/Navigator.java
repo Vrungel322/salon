@@ -91,6 +91,14 @@ public class Navigator implements INavigator {
         .commit();
   }
 
+  @Override public void replaceFragmentTag(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
+    appCompatActivity.getSupportFragmentManager()
+        .beginTransaction()
+        .replace(containerId, fragment, fragmentTag)
+        .commit();
+  }
+
   @Override public void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
@@ -98,6 +106,13 @@ public class Navigator implements INavigator {
     if (fragmentCopy == null) {
       fragmentManager.beginTransaction().replace(containerId, fragment, fragmentTag).commit();
     }
+  }
+
+  @Override public boolean isFragmentTag(@NonNull AppCompatActivity appCompatActivity,
+      @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    return fragmentCopy != null;
   }
 
   @Override

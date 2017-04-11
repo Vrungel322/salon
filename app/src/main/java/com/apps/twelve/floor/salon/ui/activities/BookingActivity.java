@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.BookingActivityP
 import com.apps.twelve.floor.salon.mvp.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
 import com.apps.twelve.floor.salon.ui.fragments.BookingFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
 
@@ -37,6 +38,10 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   }
 
   @Override public void onBackPressed() {
-    mBookingActivityPresenter.backCategories();
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {
+      super.onBackPressed();
+    } else {
+      mBookingActivityPresenter.backCategories();
+    }
   }
 }
