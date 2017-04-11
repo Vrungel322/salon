@@ -46,7 +46,6 @@ import timber.log.Timber;
   public void setSelectedItem(int position) {
     mBookingEntity.setMasterId(mMasterEntities.get(position).getMasterId());
     mBookingEntity.setMasterName(mMasterEntities.get(position).getMasterName());
-    Timber.e(mMasterEntities.get(position).getMasterName());
     getViewState().setSelectedItem(position);
   }
 

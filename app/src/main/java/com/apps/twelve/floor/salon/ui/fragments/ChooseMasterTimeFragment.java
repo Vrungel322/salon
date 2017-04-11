@@ -35,10 +35,13 @@ import java.util.List;
 
 public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMasterTimeView {
   private static final int SCHEDULE_SPAN_COUNT = 6;
+  private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @InjectPresenter ChooseMasterTimeFragmentPresenter mChooseTimeFragmentPresenter;
 
-  @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
+  @BindView(R.id.tv_service_description) TextView mTextViewServiceName;
+  @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
+
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
   @BindView(R.id.vpDatesOfMonth) ViewPager mViewPagerDatesOfMonth;
   @BindView(R.id.bNextDay) ImageView mImageViewNextDay;
@@ -53,25 +56,19 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
 
   private List<DataServiceEntity> mDays = new ArrayList<>();
-  private List<DataServiceEntity> mWorkStartEndEntities;
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
-  public static ChooseTimeFragment newInstance() {
+  public static ChooseMasterTimeFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseTimeFragment fragment = new ChooseTimeFragment();
+    ChooseMasterTimeFragment fragment = new ChooseMasterTimeFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
   public ChooseMasterTimeFragment() {
     super(R.layout.fragment_choose_master_time);
-  }
-
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
-    mTextViewServiceName.setText("ТЕСТОВАЯ УСЛУГА");
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {
@@ -88,7 +85,8 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
       @Override public void onPageSelected(int position) {
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
-            mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+            mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+        mChooseTimeFragmentPresenter.clearSelectedTime();
         mChooseTimeFragmentPresenter.setDateToTv();
       }
 
@@ -105,7 +103,7 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          //mChooseTimeFragmentPresenter.setSelectedDay(position);
+          mChooseTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
 
@@ -117,18 +115,15 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mChooseTimeFragmentPresenter.setSelectedTime(position));
+
+    mDatesHorizontalAdapter.addListWorkStartEndEntity(mDays);
+    mScheduleAdapter.setTimeSchedule(
+        mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
     mDatesHorizontalAdapter.setSelectedItem(currentItem);
     mRecyclerViewHorizontalDates.smoothScrollToPosition(currentItem);
-  }
-
-  @Override public void updateWorkSchedule(List<DataServiceEntity> dataServiceEntities) {
-    mWorkStartEndEntities = dataServiceEntities;
-    mDatesHorizontalAdapter.addListWorkStartEndEntity(dataServiceEntities);
-    mScheduleAdapter.setTimeSchedule(
-        mWorkStartEndEntities.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
   }
 
   @Override public void setSelectedTime(int position) {
@@ -156,6 +151,15 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
   @Override public void hideProgressBarBookingTime() {
     mProgressBarBookingTime.setVisibility(View.GONE);
     mNestedScrollBookingTime.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void clearSelectedTime() {
+    mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
+  }
+
+  @Override public void setUpRedSquare(String serviceName, String masterName) {
+    mTextViewMasterDescription.setText(masterName);
+    mTextViewServiceName.setText(serviceName);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

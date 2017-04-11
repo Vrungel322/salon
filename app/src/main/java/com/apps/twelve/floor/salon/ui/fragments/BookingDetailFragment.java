@@ -118,7 +118,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     adapter.addFragment(ChooseMasterServiceFragment.newInstance(),
         getString(R.string.tab_services));
     adapter.addFragment(ChooseMasterTimeFragment.newInstance(), getString(R.string.tab_time));
-    adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    adapter.addFragment(BookingMasterContactFragment.newInstance(), getString(R.string.tab_data));
     mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);

@@ -11,8 +11,6 @@ import java.util.List;
 
   void setUpUi(List<DataServiceEntity> days);
 
-  void updateWorkSchedule(List<DataServiceEntity> dataServiceEntities);
-
   void setSelectedTime(int position);
 
   void setSelectedDay(int position);
@@ -24,4 +22,8 @@ import java.util.List;
   void showNotTime();
 
   void hideProgressBarBookingTime();
+
+  void clearSelectedTime();
+
+  void setUpRedSquare(String serviceName, String masterName);
 }
