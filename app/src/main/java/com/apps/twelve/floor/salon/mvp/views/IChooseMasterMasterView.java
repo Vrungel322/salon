@@ -8,10 +8,13 @@ import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterMasterView
     extends MvpView {
-
   void setUpUi();
 
   void showMasters(List<MasterEntity> masterEntities);
 
   void hideProgressBar();
+
+  void setSelectedItem(int position);
+
+  void blockedClickRv(boolean status);
 }

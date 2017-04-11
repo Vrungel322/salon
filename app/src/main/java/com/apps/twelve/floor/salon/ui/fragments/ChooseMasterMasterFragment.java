@@ -5,6 +5,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
@@ -20,10 +21,13 @@ import java.util.List;
 public class ChooseMasterMasterFragment extends BaseFragment implements IChooseMasterMasterView {
 
   @InjectPresenter ChooseMasterMasterFragmentPresenter mChooseMasterMasterFragmentPresenter;
+  private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
+  @BindView(R.id.cbAnyMaster) CheckBox mCheckBoxAnyMaster;
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
+  @BindView(R.id.viewBlockedClickRv) View mViewBlockedClickRv;
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
@@ -46,7 +50,17 @@ public class ChooseMasterMasterFragment extends BaseFragment implements IChooseM
     mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mMastersVerticalAdapter.setSelectedItem(position));
+            (recyclerView, position, v) -> mChooseMasterMasterFragmentPresenter.setSelectedItem(
+                position));
+
+    mCheckBoxAnyMaster.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      if (isChecked) {
+        mChooseMasterMasterFragmentPresenter.blockedClickRv(true);
+        mChooseMasterMasterFragmentPresenter.setAnyMasterSelected();
+      } else {
+        mChooseMasterMasterFragmentPresenter.blockedClickRv(false);
+      }
+    });
   }
 
   @Override public void showMasters(List<MasterEntity> masterEntities) {
@@ -56,5 +70,16 @@ public class ChooseMasterMasterFragment extends BaseFragment implements IChooseM
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
     mNestedScroll.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void setSelectedItem(int position) {
+    mMastersVerticalAdapter.setSelectedItem(position);
+  }
+
+  @Override public void blockedClickRv(boolean status) {
+    mViewBlockedClickRv.setClickable(status);
+    if (status) {
+      mMastersVerticalAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
+    }
   }
 }

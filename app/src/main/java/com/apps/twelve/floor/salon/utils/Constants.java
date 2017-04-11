@@ -35,4 +35,9 @@ public final class Constants {
     public static final String CHOOSE_MASTER = "MASTER";
     public static final String CHOOSE_SERVICE = "SERVICE";
   }
+
+  public class BookingMode {
+    public static final int START_WITH_MASTER = 1;
+    public static final int START_WITH_SERVICE = 2;
+  }
 }

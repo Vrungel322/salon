@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingDetailFrag
 import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.ui.adapters.ViewPagerBookingStepsAdapter;
 import com.apps.twelve.floor.salon.ui.base.BaseFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -61,9 +62,11 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     switch (screenToStart) {
       case CHOOSE_MASTER:
         showChooseMasterFragment();
+        mBookingDetailFragmentPresenter.setMode(Constants.BookingMode.START_WITH_MASTER);
         break;
       case CHOOSE_SERVICE:
         showChooseServiceFragment();
+        mBookingDetailFragmentPresenter.setMode(Constants.BookingMode.START_WITH_SERVICE);
         break;
       default:
         break;

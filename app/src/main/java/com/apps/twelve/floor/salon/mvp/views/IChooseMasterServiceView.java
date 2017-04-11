@@ -12,9 +12,9 @@ import java.util.List;
 
   void updateRvServices(List<ServiceEntity> serviceEntities);
 
-  void showRvAllServices();
-
-  void hideRvAllServices();
+  //void showRvAllServices();
+  //
+  //void hideRvAllServices();
 
   void setItemSelected(int position);
 
@@ -25,4 +25,6 @@ import java.util.List;
   void showErrorMsg(String s);
 
   void hideProgressBar();
+
+  void setMasterName(String masterName);
 }

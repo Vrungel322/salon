@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
@@ -24,6 +25,7 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
 
   @InjectPresenter ChooseMasterServiceFragmentPresenter mChooseMasterServiceFragmentPresenter;
 
+  @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
@@ -49,16 +51,12 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
     mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
     mServicesAdapter = new ServicesAdapter();
     mRecyclerViewServices.setAdapter(mServicesAdapter);
+    mChooseMasterServiceFragmentPresenter.fetchAllServices();
+
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
             (recyclerView, position, v) -> mChooseMasterServiceFragmentPresenter.setItemSelected(
                 position));
-
-    mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
-      if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        mChooseMasterServiceFragmentPresenter.fetchAllServices();
-      }
-    });
 
     mEditTextChooseService.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -67,11 +65,11 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          mChooseMasterServiceFragmentPresenter.showRvAllServices();
+          //mChooseMasterServiceFragmentPresenter.showRvAllServices();
           mChooseMasterServiceFragmentPresenter.filterServices(
               mEditTextChooseService.getText().toString());
         } else {
-          mChooseMasterServiceFragmentPresenter.hideRvAllServices();
+          //mChooseMasterServiceFragmentPresenter.hideRvAllServices();
         }
       }
 
@@ -85,13 +83,13 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
     mServicesAdapter.setServiceEntity(serviceEntities);
   }
 
-  @Override public void showRvAllServices() {
-    mRecyclerViewServices.setVisibility(View.VISIBLE);
-  }
-
-  @Override public void hideRvAllServices() {
-    mRecyclerViewServices.setVisibility(View.GONE);
-  }
+  //@Override public void showRvAllServices() {
+  //  mRecyclerViewServices.setVisibility(View.VISIBLE);
+  //}
+  //
+  //@Override public void hideRvAllServices() {
+  //  mRecyclerViewServices.setVisibility(View.GONE);
+  //}
 
   @Override public void setItemSelected(int position) {
     mServicesAdapter.setSelectedItem(position);
@@ -112,5 +110,9 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
     mLinearLayoutDeepItems.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void setMasterName(String masterName) {
+    mTextViewMasterDescription.setText(masterName);
   }
 }
