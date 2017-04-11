@@ -29,4 +29,14 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     mNavigator.addFragment(BookingActivity.this, R.id.container_booking,
         BookingFragment.newInstance());
   }
+
+  @Override public void isBackPressed(boolean back) {
+    if (back) {
+      super.onBackPressed();
+    }
+  }
+
+  @Override public void onBackPressed() {
+    mBookingActivityPresenter.backCategories();
+  }
 }

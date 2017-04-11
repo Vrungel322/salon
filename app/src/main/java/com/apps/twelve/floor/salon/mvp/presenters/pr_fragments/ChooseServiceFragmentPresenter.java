@@ -7,6 +7,8 @@ import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseServiceFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.ArrayList;
@@ -22,11 +24,17 @@ import timber.log.Timber;
 
 @InjectViewState public class ChooseServiceFragmentPresenter
     extends BasePresenter<IChooseServiceFragmentView> {
+
   @Inject DataManager mDataManager;
   @Inject BookingEntity mBookingEntity;
+  @Inject RxBus mRxBus;
 
-  private List<CategoryEntity> mCategoriesEntities = new ArrayList<>();
   private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
+  private List<List<CategoryEntity>> mListListCategories = new ArrayList<>();
+  private List<String> mPathList = new ArrayList<>();
+  private StringBuilder mPath = new StringBuilder();
+
+  private static final String SLASH = "/";
 
   @Override protected void inject() {
     App.getBookingComponent().inject(this);
@@ -37,6 +45,7 @@ import timber.log.Timber;
     getViewState().setUpRvAllServices();
     getViewState().setUpRvCategory();
     fetchCategory();
+    backCategories();
   }
 
   public void fetchCategory() {
@@ -46,8 +55,7 @@ import timber.log.Timber;
         .subscribe(parentServices -> {
           getViewState().hideProgressBar();
           getViewState().updateRvCategory(parentServices);
-          mCategoriesEntities.clear();
-          mCategoriesEntities.addAll(parentServices);
+          mListListCategories.add(parentServices);
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBar();
@@ -63,6 +71,7 @@ import timber.log.Timber;
           getViewState().setServicesWithParentId(serviceEntities);
           mServiceAllEntities.clear();
           mServiceAllEntities.addAll(serviceEntities);
+          mListListCategories.add(new ArrayList<>());
         }, Timber::e);
     addToUnsubscription(subscription);
   }
@@ -72,8 +81,7 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(categoryEntities -> {
           getViewState().setCategoriesWithParentId(categoryEntities);
-          mCategoriesEntities.clear();
-          mCategoriesEntities.addAll(categoryEntities);
+          mListListCategories.add(categoryEntities);
         }, Timber::e);
     addToUnsubscription(subscription);
   }
@@ -133,10 +141,34 @@ import timber.log.Timber;
   }
 
   public void showTextPath(String text) {
-    getViewState().showTextPath(text);
+    mPath.append(text).append(SLASH);
+    mPathList.add(text);
+    getViewState().showTextPath(String.valueOf(mPath));
   }
 
-  public void hideTextPath() {
-    getViewState().hideTextPath();
+  private void backCategories() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.BackCategories.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(backCategories -> {
+          if (mListListCategories.size() > 1) {
+            getViewState().setCategoriesWithParentId(
+                mListListCategories.get(mListListCategories.size() - 2));
+            mListListCategories.remove(mListListCategories.size() - 1);
+
+            mPath.setLength(0);
+            mPathList.remove(mPathList.size() - 1);
+            for (String s : mPathList) {
+              mPath.append(s).append(SLASH);
+            }
+            getViewState().showTextPath(String.valueOf(mPath));
+
+            if (mListListCategories.size() == 1) {
+              getViewState().hideTextPath();
+            }
+          } else {
+            mRxBus.post(new RxBusHelper.BackCategoriesResult(true));
+          }
+        });
+    addToUnsubscription(subscription);
   }
 }
