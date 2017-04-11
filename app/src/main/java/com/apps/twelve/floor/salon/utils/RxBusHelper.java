@@ -38,6 +38,9 @@ public final class RxBusHelper {
   public static class BackCategories {
   }
 
+  public static class StateBooking {
+  }
+
   public static class BackCategoriesResult {
     public boolean isBack;
 

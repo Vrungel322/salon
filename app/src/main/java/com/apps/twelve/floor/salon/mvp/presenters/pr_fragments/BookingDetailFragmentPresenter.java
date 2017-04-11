@@ -8,8 +8,10 @@ import com.apps.twelve.floor.salon.mvp.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
+import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import rx.Subscription;
 
 /**
  * Created by Vrungel on 23.03.2017.
@@ -31,6 +33,7 @@ import javax.inject.Inject;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpViewPager();
+    stateBooking();
   }
 
   public void nextStep(int currentItem) {
@@ -117,5 +120,12 @@ import javax.inject.Inject;
   @Override public void onDestroy() {
     super.onDestroy();
     App.destroyBookingComponent();
+  }
+
+  private void stateBooking() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StateBooking.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(stateBooking -> getViewState().stateBooking());
+    addToUnsubscription(subscription);
   }
 }

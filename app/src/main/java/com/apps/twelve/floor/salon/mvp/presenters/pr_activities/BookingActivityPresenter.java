@@ -39,4 +39,8 @@ import rx.Subscription;
             backCategoriesResult -> getViewState().isBackPressed(backCategoriesResult.isBack));
     addToUnsubscription(subscription);
   }
+
+  public void stateBooking() {
+    mRxBus.post(new RxBusHelper.StateBooking());
+  }
 }

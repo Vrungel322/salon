@@ -6,7 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -33,8 +33,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @BindView(tabLayout) TabLayout mTabLayout;
   @BindView(R.id.vpBookingSteps) ViewPager mViewPager;
-  @BindView(R.id.bNextStep) Button mButtonNextStep;
-  @BindView(R.id.bPrevStep) Button mButtonPrevStep;
+  @BindView(R.id.linearLayoutState) LinearLayout mLinearLayoutState;
 
   public static BookingDetailFragment newInstance(String screenToStart) {
     Bundle args = new Bundle();
@@ -74,7 +73,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   }
 
   @Override public void goNext(int position) {
-
     mViewPager.setCurrentItem(position, true);
   }
 
@@ -88,9 +86,9 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @Override public void replaceTitleNextButton(boolean state) {
     if (state) {
-      mButtonNextStep.setText(R.string.done);
+      mLinearLayoutState.setVisibility(View.GONE);
     } else {
-      mButtonNextStep.setText(R.string.next_step);
+      mLinearLayoutState.setVisibility(View.VISIBLE);
     }
   }
 
@@ -99,16 +97,17 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
         getString(R.string.description_write_error));
   }
 
-  @OnClick(R.id.bNextStep) public void bNextStepClicked() {
-    mBookingDetailFragmentPresenter.nextStep(mViewPager.getCurrentItem());
-  }
-
-  @OnClick(R.id.bPrevStep) public void bPrevStepClicked() {
+  @Override public void stateBooking() {
     if (mViewPager.getCurrentItem() == 0) {
       mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
           BookingFragment.newInstance());
+    } else {
+      mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
     }
-    mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
+  }
+
+  @OnClick(R.id.bNextStep) public void bNextStepClicked() {
+    mBookingDetailFragmentPresenter.nextStep(mViewPager.getCurrentItem());
   }
 
   private void showChooseMasterFragment() {

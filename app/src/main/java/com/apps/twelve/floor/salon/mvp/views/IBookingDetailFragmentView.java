@@ -22,4 +22,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void replaceTitleNextButton(boolean state);
 
   @StateStrategyType(SkipStrategy.class) void showMessageWarning();
+
+  @StateStrategyType(SkipStrategy.class) void stateBooking();
 }
