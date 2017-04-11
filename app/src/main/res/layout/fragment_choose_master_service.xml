@@ -6,7 +6,6 @@
     android:background="@color/colorWhite"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:animateLayoutChanges="true"
     >
   <android.support.constraint.ConstraintLayout
       android:id="@+id/constraintLayout"

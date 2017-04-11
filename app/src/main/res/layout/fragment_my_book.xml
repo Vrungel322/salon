@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="#fffa5c"
     android:orientation="vertical"
-    android:animateLayoutChanges="true"
     >
   <android.support.v4.widget.SwipeRefreshLayout
       android:id="@+id/srlRefreshLayout"
