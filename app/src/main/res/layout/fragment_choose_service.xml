@@ -5,6 +5,7 @@
     android:background="@color/colorWhite"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
+    android:animateLayoutChanges="true"
     >
   <LinearLayout
       android:id="@+id/linearLayout"
