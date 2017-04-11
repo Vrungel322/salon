@@ -66,9 +66,8 @@ import javax.inject.Inject;
           }
           break;
       }
-    }
-    else {
-      switch (currentItem){
+    } else {
+      switch (currentItem) {
         case 0:
           if (!mBookingEntity.getMasterId().isEmpty()) {
             mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
@@ -99,7 +98,6 @@ import javax.inject.Inject;
           }
           break;
       }
-
     }
   }
 

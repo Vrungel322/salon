@@ -26,7 +26,7 @@ public class RestApi {
     return api.fetchAllServices();
   }
 
-  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId( int id) {
+  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
     return api.fetchServicesOfCategoryWithId(id);
   }
 

@@ -9,14 +9,7 @@ import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.RegistrationActi
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.AllNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingContactFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseMasterTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.MainFragmentPresenter;

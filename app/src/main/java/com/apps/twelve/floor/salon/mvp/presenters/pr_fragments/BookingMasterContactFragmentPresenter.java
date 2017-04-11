@@ -3,12 +3,12 @@ package com.apps.twelve.floor.salon.mvp.presenters.pr_fragments;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.mvp.data.DataManager;
 import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
+import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IBookingMasterContactFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import javax.inject.Inject;
 import rx.Subscription;
 
@@ -31,10 +31,9 @@ import rx.Subscription;
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.DataID.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(
-            dataID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
-                mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
-                mBookingEntity.getMasterName()));
+        .subscribe(dataID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
+            mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
+            mBookingEntity.getMasterName()));
     addToUnsubscription(subscription);
   }
 

@@ -11,7 +11,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.WorkStartEndEntity;
 import java.util.ArrayList;
 import java.util.List;
 

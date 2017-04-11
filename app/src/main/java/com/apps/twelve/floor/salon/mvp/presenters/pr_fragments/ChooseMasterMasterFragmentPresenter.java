@@ -7,13 +7,11 @@ import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.mvp.presenters.BasePresenter;
 import com.apps.twelve.floor.salon.mvp.views.IChooseMasterMasterView;
 import com.apps.twelve.floor.salon.utils.RxBus;
-import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
-import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
     extends BasePresenter<IChooseMasterMasterView> {

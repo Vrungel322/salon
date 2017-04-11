@@ -43,7 +43,7 @@ public class DataManager {
   }
 
   public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
-   return mRestApi.fetchCategoriesOfCategoryWithId(parentId);
+    return mRestApi.fetchCategoriesOfCategoryWithId(parentId);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

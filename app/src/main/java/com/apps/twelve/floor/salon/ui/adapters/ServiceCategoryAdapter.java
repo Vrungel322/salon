@@ -1,20 +1,16 @@
 package com.apps.twelve.floor.salon.ui.adapters;
 
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
-import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.DoubleAccumulator;
 
 /**
  * Created by choiintack on 2017. 1. 31..
@@ -31,10 +27,9 @@ public class ServiceCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
   @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view;
-      view = LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.item_service_parent_recurcive, parent, false);
-      return new ParentViewHolder(view);
-
+    view = LayoutInflater.from(parent.getContext())
+        .inflate(R.layout.item_service_parent_recurcive, parent, false);
+    return new ParentViewHolder(view);
   }
 
   @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
