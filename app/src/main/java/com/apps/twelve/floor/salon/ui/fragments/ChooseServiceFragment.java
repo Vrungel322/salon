@@ -44,8 +44,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
-  private StringBuilder path = new StringBuilder();
-  public static final String SLASH = "/";
 
   public static ChooseServiceFragment newInstance() {
     Bundle args = new Bundle();
@@ -74,16 +72,16 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
           if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
               .getItem(position)
               .hasChildren()) {
-            path.append(mServiceCategoryAdapter.getItem(position).getTitle()).append(SLASH);
-            mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
+            mChooseServiceFragmentPresenter.showTextPath(
+                mServiceCategoryAdapter.getItem(position).getTitle());
             mChooseServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
-            mChooseServiceFragmentPresenter.showTextPath(String.valueOf(path));
-
             if (recyclerView.getAdapter() instanceof ServicesAdapter) {
               mChooseServiceFragmentPresenter.setItemSelected(position);
             } else {
+              mChooseServiceFragmentPresenter.showTextPath(
+                  mServiceCategoryAdapter.getItem(position).getTitle());
               mChooseServiceFragmentPresenter.getServiceWithParentId(
                   mServiceCategoryAdapter.getItem(position).getId());
             }
@@ -169,7 +167,6 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
 
   @Override public void hideTextPath() {
     tvPath.setVisibility(View.GONE);
-    path.setLength(0);
   }
 
   @Override public void showLLTreeServices() {

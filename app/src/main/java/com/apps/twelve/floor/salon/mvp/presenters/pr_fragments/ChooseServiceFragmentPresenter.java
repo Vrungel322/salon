@@ -31,6 +31,10 @@ import timber.log.Timber;
 
   private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
   private List<List<CategoryEntity>> mListListCategories = new ArrayList<>();
+  private List<String> mPathList = new ArrayList<>();
+  private StringBuilder mPath = new StringBuilder();
+
+  public static final String SLASH = "/";
 
   @Override protected void inject() {
     App.getBookingComponent().inject(this);
@@ -137,11 +141,9 @@ import timber.log.Timber;
   }
 
   public void showTextPath(String text) {
-    getViewState().showTextPath(text);
-  }
-
-  public void hideTextPath() {
-    getViewState().hideTextPath();
+    mPath.append(text).append(SLASH);
+    mPathList.add(text);
+    getViewState().showTextPath(String.valueOf(mPath));
   }
 
   private void backCategories() {
@@ -152,6 +154,17 @@ import timber.log.Timber;
             getViewState().setCategoriesWithParentId(
                 mListListCategories.get(mListListCategories.size() - 2));
             mListListCategories.remove(mListListCategories.size() - 1);
+
+            mPath.setLength(0);
+            mPathList.remove(mPathList.size() - 1);
+            for (String s : mPathList) {
+              mPath.append(s).append(SLASH);
+            }
+            getViewState().showTextPath(String.valueOf(mPath));
+
+            if (mListListCategories.size() == 1) {
+              getViewState().hideTextPath();
+            }
           } else {
             mRxBus.post(new RxBusHelper.BackCategoriesResult(true));
           }
