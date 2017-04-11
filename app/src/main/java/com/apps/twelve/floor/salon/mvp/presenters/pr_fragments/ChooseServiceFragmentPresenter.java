@@ -72,6 +72,7 @@ import timber.log.Timber;
           mServiceAllEntities.clear();
           mServiceAllEntities.addAll(serviceEntities);
           mListListCategories.add(new ArrayList<>());
+          getViewState().showTextPath(String.valueOf(mPath));
         }, Timber::e);
     addToUnsubscription(subscription);
   }
@@ -82,6 +83,7 @@ import timber.log.Timber;
         .subscribe(categoryEntities -> {
           getViewState().setCategoriesWithParentId(categoryEntities);
           mListListCategories.add(categoryEntities);
+          getViewState().showTextPath(String.valueOf(mPath));
         }, Timber::e);
     addToUnsubscription(subscription);
   }
@@ -143,7 +145,6 @@ import timber.log.Timber;
   public void showTextPath(String text) {
     mPath.append(text).append(SLASH);
     mPathList.add(text);
-    getViewState().showTextPath(String.valueOf(mPath));
   }
 
   private void backCategories() {
