@@ -42,6 +42,7 @@ import timber.log.Timber;
         .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
+          getViewState().setServiceName(mBookingEntity.getServiceName());
           getViewState().hideProgressBarBookingTime();
           if (!dataServiceEntities.isEmpty()) {
             getViewState().setUpUi(dataServiceEntities);

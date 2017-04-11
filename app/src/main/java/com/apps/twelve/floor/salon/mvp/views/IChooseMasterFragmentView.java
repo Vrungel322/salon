@@ -21,4 +21,6 @@ import java.util.List;
   void setSelectedItem(int position);
 
   void blockedClickRv(boolean status);
+
+  void setUpRedSquare(String serviceName, String serviceTime);
 }

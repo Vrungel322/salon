@@ -163,6 +163,10 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
     mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
   }
 
+  @Override public void setServiceName(String serviceName) {
+    mTextViewServiceName.setText(serviceName);
+  }
+
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {
     if (mViewPagerDatesOfMonth.getCurrentItem() > 0) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() - 1);

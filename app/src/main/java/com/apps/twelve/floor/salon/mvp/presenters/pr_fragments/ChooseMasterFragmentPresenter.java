@@ -41,6 +41,8 @@ import rx.Subscription;
         .concatMap(dataID -> mDataManager.fetchMasters(dataID.dataId))
         .subscribe(masterEntities -> {
           mMasterEntities = masterEntities;
+          getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
+              mBookingEntity.getServiceTime());
           getViewState().showMasters(masterEntities);
           getViewState().hideProgressBar();
         });

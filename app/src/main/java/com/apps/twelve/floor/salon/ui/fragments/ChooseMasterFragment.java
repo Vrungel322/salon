@@ -91,4 +91,10 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
       mMastersVerticalAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
     }
   }
+
+  @Override public void setUpRedSquare(String serviceName, String serviceTime) {
+    mTextViewServiceName.setText(serviceName);
+    mTextViewServiceTime.setText(serviceTime);
+
+  }
 }

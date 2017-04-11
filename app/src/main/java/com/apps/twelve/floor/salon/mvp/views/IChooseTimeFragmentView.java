@@ -28,4 +28,6 @@ import java.util.List;
   void hideProgressBarBookingTime();
 
   void clearSelectedTime();
+
+  void setServiceName(String serviceName);
 }
