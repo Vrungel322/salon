@@ -12,10 +12,6 @@ import java.util.List;
 
   void updateRvServices(List<ServiceEntity> serviceEntities);
 
-  //void showRvAllServices();
-  //
-  //void hideRvAllServices();
-
   void setItemSelected(int position);
 
   void showProgressBarAllServices();

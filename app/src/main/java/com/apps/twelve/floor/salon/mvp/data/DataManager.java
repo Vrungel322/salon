@@ -34,6 +34,10 @@ public class DataManager {
     return mRestApi.fetchAllServices();
   }
 
+  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(int masterId) {
+    return mRestApi.fetchAllServices();
+  }
+
   public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
     return mRestApi.fetchServicesOfCategoryWithId(id);
   }

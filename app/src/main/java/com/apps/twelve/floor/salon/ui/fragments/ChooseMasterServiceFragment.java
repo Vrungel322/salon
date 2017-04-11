@@ -51,7 +51,7 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
     mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
     mServicesAdapter = new ServicesAdapter();
     mRecyclerViewServices.setAdapter(mServicesAdapter);
-    mChooseMasterServiceFragmentPresenter.fetchAllServices();
+    mChooseMasterServiceFragmentPresenter.fetchAllServicesByMasterId(0);
 
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(

@@ -42,9 +42,9 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void fetchAllServices() {
+  public void fetchAllServicesByMasterId(int masterId) {
     getViewState().showProgressBarAllServices();
-    Subscription subscription = mDataManager.fetchAllServices()
+    Subscription subscription = mDataManager.fetchAllServicesByMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(serviceEntities -> {
           getViewState().hideProgressBar();
