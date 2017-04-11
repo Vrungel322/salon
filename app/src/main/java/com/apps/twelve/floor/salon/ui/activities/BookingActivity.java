@@ -41,8 +41,10 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
       //mBookingActivityPresenter.backCategories();
       mBookingActivityPresenter.stateBooking();
-    } else {
-      super.onBackPressed();
+    }
+
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {
+      mBookingActivityPresenter.stateBooking();
     }
   }
 }
