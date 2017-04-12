@@ -19,7 +19,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
 
-  private boolean mVisible;
+  private boolean mVisible = true;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
