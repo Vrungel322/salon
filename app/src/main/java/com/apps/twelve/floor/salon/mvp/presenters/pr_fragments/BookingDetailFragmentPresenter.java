@@ -113,6 +113,10 @@ import rx.Subscription;
     }
   }
 
+  public void isVisibleFragment(boolean visible) {
+    mRxBus.post(new RxBusHelper.VisibleFragmentChooseService(visible));
+  }
+
   public void setMode(int mode) {
     this.mStartWith = mode;
   }

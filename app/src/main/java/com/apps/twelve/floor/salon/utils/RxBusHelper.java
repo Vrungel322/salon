@@ -40,4 +40,13 @@ public final class RxBusHelper {
 
   public static class StateBooking {
   }
+
+  public static class VisibleFragmentChooseService {
+    public boolean visible;
+
+    public VisibleFragmentChooseService(boolean visible) {
+      this.visible = visible;
+    }
+  }
+
 }

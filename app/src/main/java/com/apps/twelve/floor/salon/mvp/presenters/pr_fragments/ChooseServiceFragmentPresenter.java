@@ -115,10 +115,12 @@ import timber.log.Timber;
       subscription = Observable.from(mServiceAllEntities)
           .filter(serviceEntity -> serviceEntity.getTitle().toLowerCase().contains(s.trim()))
           .toList()
-          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities));
+          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities),
+              Timber::e);
     } else {
       subscription = Observable.just(mServiceAllEntities)
-          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities));
+          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities),
+              Timber::e);
     }
     addToUnsubscription(subscription);
   }
@@ -173,7 +175,7 @@ import timber.log.Timber;
           } else {
             mRxBus.post(new RxBusHelper.StateBooking());
           }
-        });
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 }

@@ -38,7 +38,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @BindView(R.id.llTreeItems) LinearLayout mLinerLayoutTreeItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewAllServices;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewCategory;
-  @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
+  @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllItems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
   @BindView(R.id.tvPath) TextView tvPath;
   @BindView(R.id.progressBarCategoryService) ProgressBar mProgressBarCategoryService;
@@ -67,7 +67,7 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   @Override public void setUpRvCategory() {
     mRecyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
     mServiceCategoryAdapter = new ServiceCategoryAdapter();
-    mLinearLayoutAllitems.setVisibility(View.GONE);
+    mLinearLayoutAllItems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
           if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
@@ -139,12 +139,12 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   }
 
   @Override public void hideLLAllServices() {
-    mLinearLayoutAllitems.setVisibility(View.GONE);
+    mLinearLayoutAllItems.setVisibility(View.GONE);
   }
 
   @Override public void showLLAllServices() {
 
-    mLinearLayoutAllitems.setVisibility(View.VISIBLE);
+    mLinearLayoutAllItems.setVisibility(View.VISIBLE);
   }
 
   @Override public void hideLLTreeServices() {

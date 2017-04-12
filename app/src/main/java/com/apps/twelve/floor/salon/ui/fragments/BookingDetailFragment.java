@@ -53,6 +53,24 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+      }
+
+      @Override public void onPageSelected(int position) {
+        if (position == 0) {
+          mBookingDetailFragmentPresenter.isVisibleFragment(true);
+        } else {
+          mBookingDetailFragmentPresenter.isVisibleFragment(false);
+        }
+      }
+
+      @Override public void onPageScrollStateChanged(int state) {
+
+      }
+    });
   }
 
   @Override public void setUpViewPager() {

@@ -19,6 +19,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
 
+  private boolean mVisible;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
@@ -31,9 +33,17 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         BookingFragment.newInstance());
   }
 
+  @Override public void isVisibleChooseService(boolean visible) {
+    mVisible = visible;
+  }
+
   @Override public void onBackPressed() {
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
-      mBookingActivityPresenter.backCategories();
+      if (mVisible) {
+        mBookingActivityPresenter.backCategories();
+      } else {
+        mBookingActivityPresenter.stateBooking();
+      }
     }
 
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {
