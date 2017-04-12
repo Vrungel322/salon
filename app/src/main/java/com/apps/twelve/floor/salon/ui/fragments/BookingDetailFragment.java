@@ -112,7 +112,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   private void showChooseMasterFragment() {
     ViewPagerBookingStepsAdapter adapter =
-        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
+        new ViewPagerBookingStepsAdapter(this.getChildFragmentManager());
     adapter.addFragment(ChooseMasterMasterFragment.newInstance(), getString(R.string.tab_master));
     adapter.addFragment(ChooseMasterServiceFragment.newInstance(),
         getString(R.string.tab_services));
@@ -126,7 +126,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   private void showChooseServiceFragment() {
     ViewPagerBookingStepsAdapter adapter =
-        new ViewPagerBookingStepsAdapter(getActivity().getSupportFragmentManager());
+        new ViewPagerBookingStepsAdapter(this.getChildFragmentManager());
     adapter.addFragment(ChooseServiceFragment.newInstance(), getString(R.string.tab_services));
     adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
     adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));

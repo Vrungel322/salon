@@ -34,7 +34,6 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public void onBackPressed() {
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
       mBookingActivityPresenter.backCategories();
-      // mBookingActivityPresenter.stateBooking();
     }
 
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {

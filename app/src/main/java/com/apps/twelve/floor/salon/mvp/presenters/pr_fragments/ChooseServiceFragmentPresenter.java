@@ -171,7 +171,7 @@ import timber.log.Timber;
               getViewState().hideTextPath();
             }
           } else {
-            getViewState().backCategory();
+            mRxBus.post(new RxBusHelper.StateBooking());
           }
         });
     addToUnsubscription(subscription);

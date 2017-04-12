@@ -4,7 +4,6 @@ import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
-import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
@@ -51,6 +50,4 @@ import java.util.List;
   void hideTextPath();
 
   void stateCategoriesServices(boolean state);
-
-  @StateStrategyType(SkipStrategy.class) void backCategory();
 }
