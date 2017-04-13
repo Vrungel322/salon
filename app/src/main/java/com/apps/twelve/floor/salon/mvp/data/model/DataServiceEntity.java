@@ -10,14 +10,12 @@ import java.util.List;
 public class DataServiceEntity {
   @SerializedName("min") private Integer startTime;
   @SerializedName("max") private Integer endTime;
-  @SerializedName("day") private String day;
   @SerializedName("time") private List<ScheduleEntity> mScheduleEntities;
 
-  public DataServiceEntity(Integer startTime, Integer endTime, String day,
+  public DataServiceEntity(Integer startTime, Integer endTime,
       List<ScheduleEntity> scheduleEntities) {
     this.startTime = startTime;
     this.endTime = endTime;
-    this.day = day;
     mScheduleEntities = scheduleEntities;
   }
 
@@ -35,14 +33,6 @@ public class DataServiceEntity {
 
   public void setEndTime(Integer endTime) {
     this.endTime = endTime;
-  }
-
-  public String getDay() {
-    return day;
-  }
-
-  public void setDay(String day) {
-    this.day = day;
   }
 
   public List<ScheduleEntity> getScheduleEntities() {

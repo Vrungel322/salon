@@ -60,4 +60,33 @@ public class Converters {
     }
     return "";
   }
+
+  public static String dayFromSeconds(String date) {
+    if (!date.equals("")) {
+      String dateResult;
+      SimpleDateFormat formatter = new SimpleDateFormat("dd EEE", java.util.Locale.getDefault());
+      Calendar calendar = Calendar.getInstance();
+      long d = Long.valueOf(date);
+      calendar.setTimeInMillis(d);
+      dateResult = formatter.format(calendar.getTime());
+
+      return dateResult;
+    }
+    return "";
+  }
+
+  public static String detailDayFromSeconds(String date) {
+    if (!date.equals("")) {
+      String dateResult;
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd MMMM (E)", java.util.Locale.getDefault());
+      Calendar calendar = Calendar.getInstance();
+      long d = Long.valueOf(date);
+      calendar.setTimeInMillis(d);
+      dateResult = formatter.format(calendar.getTime());
+
+      return dateResult;
+    }
+    return "";
+  }
 }

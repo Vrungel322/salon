@@ -38,7 +38,8 @@ public class DatesHorizontalAdapter
   }
 
   @Override public void onBindViewHolder(DatesViewHolder holder, int position) {
-    holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDay().split(" ")[0]);
+    holder.mTextViewDate.setText(
+        Converters.dayFromSeconds(mWorkStartEndEntityList.get(position).getStartTime().toString()));
     holder.mTextViewStartTime.setText(Converters.timeFromSeconds(
         mWorkStartEndEntityList.get(position).getStartTime().toString()));
     holder.mTextViewEndTime.setText(

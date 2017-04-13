@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import java.util.List;
 
 /**
@@ -35,13 +36,14 @@ public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_day_in_month, container, false);
     final TextView textView = (TextView) itemView.findViewById(R.id.tvDayInMonth);
-    textView.setText(daysInMonth.get(position).getDay());
+    textView.setText(
+        Converters.detailDayFromSeconds(daysInMonth.get(position).getStartTime().toString()));
     container.addView(itemView);
     return itemView;
   }
 
   public String getEntity(int position) {
-    return daysInMonth.get(position).getDay();
+    return Converters.detailDayFromSeconds(daysInMonth.get(position).getStartTime().toString());
   }
 
   @Override public void destroyItem(ViewGroup container, int position, Object object) {
