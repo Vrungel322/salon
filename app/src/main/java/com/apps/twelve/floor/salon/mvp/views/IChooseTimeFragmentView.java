@@ -30,4 +30,6 @@ import java.util.List;
   void clearSelectedTime();
 
   void setServiceName(String serviceName);
+
+  void timeIsNotAvailable();
 }

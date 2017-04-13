@@ -34,8 +34,8 @@ import timber.log.Timber;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .compose(ThreadSchedulers.applySchedulers())
         .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
+        .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
           getViewState().hideProgressBarBookingTime();

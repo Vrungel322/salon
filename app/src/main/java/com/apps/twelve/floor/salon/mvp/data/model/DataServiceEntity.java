@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.mvp.data.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
@@ -7,19 +8,33 @@ import java.util.List;
  */
 
 public class DataServiceEntity {
-  private String id;
-  private String startTime;
-  private String endTime;
-  private String day;
-  private List<ScheduleEntity> mScheduleEntities;
+  @SerializedName("min") private Integer startTime;
+  @SerializedName("max") private Integer endTime;
+  @SerializedName("day") private String day;
+  @SerializedName("time") private List<ScheduleEntity> mScheduleEntities;
 
-  public DataServiceEntity(String id, String startTime, String endTime, String day,
+  public DataServiceEntity(Integer startTime, Integer endTime, String day,
       List<ScheduleEntity> scheduleEntities) {
-    this.id = id;
     this.startTime = startTime;
     this.endTime = endTime;
     this.day = day;
     mScheduleEntities = scheduleEntities;
+  }
+
+  public Integer getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(Integer startTime) {
+    this.startTime = startTime;
+  }
+
+  public Integer getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(Integer endTime) {
+    this.endTime = endTime;
   }
 
   public String getDay() {
@@ -28,30 +43,6 @@ public class DataServiceEntity {
 
   public void setDay(String day) {
     this.day = day;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getStartTime() {
-    return startTime;
-  }
-
-  public void setStartTime(String startTime) {
-    this.startTime = startTime;
-  }
-
-  public String getEndTime() {
-    return endTime;
-  }
-
-  public void setEndTime(String endTime) {
-    this.endTime = endTime;
   }
 
   public List<ScheduleEntity> getScheduleEntities() {
@@ -63,12 +54,16 @@ public class DataServiceEntity {
   }
 
   public static class ScheduleEntity {
-    private String id;
-    private String time;
+    @SerializedName("id") private String id;
+    @SerializedName("start") private String time;
+    @SerializedName("ts_start") private String timeInSec;
+    @SerializedName("status") private Boolean status;
 
-    public ScheduleEntity(String id, String time) {
+    public ScheduleEntity(String id, String time, String timeInSec, Boolean status) {
       this.id = id;
       this.time = time;
+      this.timeInSec = timeInSec;
+      this.status = status;
     }
 
     public String getId() {
@@ -85,6 +80,22 @@ public class DataServiceEntity {
 
     public void setTime(String time) {
       this.time = time;
+    }
+
+    public String getTimeInSec() {
+      return timeInSec;
+    }
+
+    public void setTimeInSec(String timeInSec) {
+      this.timeInSec = timeInSec;
+    }
+
+    public Boolean getStatus() {
+      return status;
+    }
+
+    public void setStatus(Boolean status) {
+      this.status = status;
     }
   }
 }

@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import rx.Observable;
 import rx.Subscription;
 
 /**
@@ -41,10 +42,15 @@ import rx.Subscription;
       switch (currentItem) {
         case 0:
           if (!mBookingEntity.getServiceId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().hideKeyboard();
+            Observable.create(subscriber -> {
+              mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
+                  mBookingEntity.getMasterName()));
+              subscriber.onNext("");
+              subscriber.onCompleted();
+            }).compose(ThreadSchedulers.applySchedulers()).subscribe(o -> {
+              getViewState().goNext(currentItem + 1);
+              getViewState().hideKeyboard();
+            });
           } else {
             getViewState().showMessageWarning();
           }
@@ -82,10 +88,15 @@ import rx.Subscription;
           break;
         case 1:
           if (!mBookingEntity.getServiceId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().hideKeyboard();
+            Observable.create(subscriber -> {
+              mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
+                  mBookingEntity.getMasterName()));
+              subscriber.onNext("");
+              subscriber.onCompleted();
+            }).compose(ThreadSchedulers.applySchedulers()).subscribe(o -> {
+              getViewState().goNext(currentItem + 1);
+              getViewState().hideKeyboard();
+            });
           } else {
             getViewState().showMessageWarning();
           }
