@@ -41,8 +41,8 @@ public class DatesHorizontalAdapter
     holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDay().split(" ")[0]);
     holder.mTextViewStartTime.setText(Converters.timeFromSeconds(
         mWorkStartEndEntityList.get(position).getStartTime().toString()));
-    holder.mTextViewEndTime.setText(Converters.timeFromSeconds(
-        mWorkStartEndEntityList.get(position).getEndTime().toString()));
+    holder.mTextViewEndTime.setText(
+        Converters.timeFromSeconds(mWorkStartEndEntityList.get(position).getEndTime().toString()));
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(

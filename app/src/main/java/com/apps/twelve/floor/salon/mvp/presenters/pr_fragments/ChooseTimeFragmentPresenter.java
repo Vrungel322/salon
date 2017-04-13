@@ -62,7 +62,7 @@ import timber.log.Timber;
       mBookingEntity.setServiceTime(String.valueOf(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
-    }else {
+    } else {
       getViewState().timeIsNotAvailable();
     }
   }

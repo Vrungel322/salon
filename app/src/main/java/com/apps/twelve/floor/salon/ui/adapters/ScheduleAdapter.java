@@ -53,7 +53,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
                 R.color.colorChooseDateNotChosenTimeText));
       }
-    }else {
+    } else {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
               R.color.colorLLLightGray));
