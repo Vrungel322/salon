@@ -24,6 +24,7 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
@@ -35,7 +36,7 @@ import timber.log.Timber;
       OkHttpClient okClient) {
     return new Retrofit.Builder().baseUrl(Constants.Remote.BASE_URL)
         .client(okClient)
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
         .addConverterFactory(converterFactory)
         .build();
   }

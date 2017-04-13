@@ -42,15 +42,10 @@ import rx.Subscription;
       switch (currentItem) {
         case 0:
           if (!mBookingEntity.getServiceId().isEmpty()) {
-            Observable.create(subscriber -> {
               mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
                   mBookingEntity.getMasterName()));
-              subscriber.onNext("");
-              subscriber.onCompleted();
-            }).compose(ThreadSchedulers.applySchedulers()).subscribe(o -> {
               getViewState().goNext(currentItem + 1);
               getViewState().hideKeyboard();
-            });
           } else {
             getViewState().showMessageWarning();
           }
