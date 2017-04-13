@@ -38,8 +38,8 @@ import timber.log.Timber;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .compose(ThreadSchedulers.applySchedulers())
         .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
+        .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
           getViewState().setServiceName(mBookingEntity.getServiceName());
@@ -56,11 +56,15 @@ import timber.log.Timber;
   }
 
   public void setSelectedTime(int position) {
-    mBookingEntity.setDateId(String.valueOf(
-        mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getId()));
-    mBookingEntity.setServiceTime(String.valueOf(
-        mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
-    getViewState().setSelectedTime(position);
+    if (mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getStatus()) {
+      mBookingEntity.setDateId(String.valueOf(
+          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getId()));
+      mBookingEntity.setServiceTime(String.valueOf(
+          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
+      getViewState().setSelectedTime(position);
+    } else {
+      getViewState().timeIsNotAvailable();
+    }
   }
 
   public void setDateToTv() {

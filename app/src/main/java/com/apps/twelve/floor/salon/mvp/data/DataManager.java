@@ -46,6 +46,10 @@ public class DataManager {
     return mRestApi.fetchCategoriesOfCategoryWithId(parentId);
   }
 
+  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
+    return mRestApi.fetchDaysData(serviceId);
+  }
+
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     ArrayList<OurWorkEntity> owe = new ArrayList<>();
     ArrayList<PhotoWorksEntity> listImageUrl = new ArrayList<>();
@@ -110,20 +114,6 @@ public class DataManager {
           "Прически и стрижки " + i, "28.02.2017"));
     }
     return Observable.just(lbe);
-  }
-
-  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
-    ArrayList<DataServiceEntity> dataServiceEntities = new ArrayList<>();
-    ArrayList<DataServiceEntity.ScheduleEntity> scheduleEntities = new ArrayList<>();
-    for (int t = 0; t < 25; t++) {
-      scheduleEntities.add(new DataServiceEntity.ScheduleEntity("" + t, "00" + t));
-    }
-
-    for (int i = 0; i < 31; i++) {
-      dataServiceEntities.add(
-          new DataServiceEntity("" + i, i + ":00", i + ":00", "day " + i, scheduleEntities));
-    }
-    return Observable.just(dataServiceEntities);
   }
 
   public Observable<List<MasterEntity>> fetchMasters(String dataID) {

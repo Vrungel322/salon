@@ -37,20 +37,26 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
   @Override public void onBindViewHolder(ScheduleViewHolder holder, int position) {
     holder.mTextViewTime.setText(mTimes.get(position).getTime());
 
-    if (this.selectedItem == position) {
-      holder.mLinearLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateChosenTimeBackground));
-      holder.mTextViewTime.setTextColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateChosenTimeText));
+    if (mTimes.get(position).getStatus()) {
+      if (this.selectedItem == position) {
+        holder.mLinearLayoutParent.setBackgroundColor(
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+                R.color.colorChooseDateChosenTimeBackground));
+        holder.mTextViewTime.setTextColor(
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+                R.color.colorChooseDateChosenTimeText));
+      } else {
+        holder.mLinearLayoutParent.setBackgroundColor(
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+                R.color.colorChooseDateNotChosenTimeBackground));
+        holder.mTextViewTime.setTextColor(
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
+                R.color.colorChooseDateNotChosenTimeText));
+      }
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateNotChosenTimeBackground));
-      holder.mTextViewTime.setTextColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateNotChosenTimeText));
+              R.color.colorLLLightGray));
     }
   }
 

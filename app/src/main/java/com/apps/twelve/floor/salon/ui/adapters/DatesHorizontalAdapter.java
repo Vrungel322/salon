@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +38,11 @@ public class DatesHorizontalAdapter
   }
 
   @Override public void onBindViewHolder(DatesViewHolder holder, int position) {
-    holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDay());
-    holder.mTextViewStartTime.setText(mWorkStartEndEntityList.get(position).getStartTime());
-    holder.mTextViewEndTime.setText(mWorkStartEndEntityList.get(position).getEndTime());
+    holder.mTextViewDate.setText(mWorkStartEndEntityList.get(position).getDay().split(" ")[0]);
+    holder.mTextViewStartTime.setText(Converters.timeFromSeconds(
+        mWorkStartEndEntityList.get(position).getStartTime().toString()));
+    holder.mTextViewEndTime.setText(
+        Converters.timeFromSeconds(mWorkStartEndEntityList.get(position).getEndTime().toString()));
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(

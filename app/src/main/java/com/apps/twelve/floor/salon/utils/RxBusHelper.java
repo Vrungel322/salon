@@ -48,5 +48,4 @@ public final class RxBusHelper {
       this.visible = visible;
     }
   }
-
 }
