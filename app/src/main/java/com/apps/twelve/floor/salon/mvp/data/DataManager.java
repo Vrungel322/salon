@@ -50,6 +50,14 @@ public class DataManager {
     return mRestApi.fetchDaysData(serviceId);
   }
 
+  public Observable<List<MasterEntity>> fetchMasters(String serviceId, String dataID) {
+    return mRestApi.fetchMasters(serviceId, dataID);
+  }
+
+  public Observable<List<MasterEntity>> fetchAllMasters() {
+    return mRestApi.fetchAllMasters();
+  }
+
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     ArrayList<OurWorkEntity> owe = new ArrayList<>();
     ArrayList<PhotoWorksEntity> listImageUrl = new ArrayList<>();
@@ -116,13 +124,13 @@ public class DataManager {
     return Observable.just(lbe);
   }
 
-  public Observable<List<MasterEntity>> fetchMasters(String dataID) {
-    ArrayList<MasterEntity> arrayList = new ArrayList<>();
-    for (int i = 0; i < 7; i++) {
-      arrayList.add(new MasterEntity("Master " + i,
-          "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-          "Lorem ipsum dolore sit amet", "" + i));
-    }
-    return Observable.just(arrayList);
-  }
+  //public Observable<List<MasterEntity>> fetchMasters(String dataID) {
+  //  ArrayList<MasterEntity> arrayList = new ArrayList<>();
+  //  for (int i = 0; i < 7; i++) {
+  //    arrayList.add(new MasterEntity("Master " + i,
+  //        "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
+  //        "Lorem ipsum dolore sit amet", "" + i));
+  //  }
+  //  return Observable.just(arrayList);
+  //}
 }

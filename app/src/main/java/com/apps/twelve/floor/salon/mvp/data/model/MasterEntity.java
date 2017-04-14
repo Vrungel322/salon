@@ -1,14 +1,20 @@
 package com.apps.twelve.floor.salon.mvp.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Vrungel on 28.03.2017.
  */
 
 public class MasterEntity {
-  private String masterName;
-  private String masterImg;
-  private String masterDescription;
+  @SerializedName("id")
   private String masterId;
+  @SerializedName("name")
+  private String masterName;
+  @SerializedName("photo")
+  private String masterImg;
+  @SerializedName("description")
+  private String masterDescription;
 
   public MasterEntity(String masterName, String masterImg, String masterDescription,
       String masterId) {

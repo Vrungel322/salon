@@ -27,11 +27,11 @@ import rx.Subscription;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpUi();
-    fetchMasters();
+    fetchAllMasters();
   }
 
-  private void fetchMasters() {
-    Subscription subscription = mDataManager.fetchMasters("")
+  private void fetchAllMasters() {
+    Subscription subscription = mDataManager.fetchAllMasters()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(masterEntities -> {
           mMasterEntities = masterEntities;

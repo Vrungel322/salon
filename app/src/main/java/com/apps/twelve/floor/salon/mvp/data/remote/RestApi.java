@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.mvp.data.remote;
 
 import com.apps.twelve.floor.salon.mvp.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.mvp.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.mvp.data.model.SalonApi;
 import com.apps.twelve.floor.salon.mvp.data.model.ServiceEntity;
 import java.util.List;
@@ -37,6 +38,14 @@ public class RestApi {
 
   public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
     return api.fetchDaysData(serviceId);
+  }
+
+  public Observable<List<MasterEntity>> fetchMasters(String serviceId, String dataID) {
+    return api.fetchMasters(serviceId, dataID);
+  }
+
+  public Observable<List<MasterEntity>> fetchAllMasters() {
+    return api.fetchAllMasters();
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

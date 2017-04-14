@@ -37,8 +37,8 @@ import rx.Subscription;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.DataID.class)
+        .concatMap(dataID -> mDataManager.fetchMasters(mBookingEntity.getServiceId(), dataID.dataId))
         .compose(ThreadSchedulers.applySchedulers())
-        .concatMap(dataID -> mDataManager.fetchMasters(dataID.dataId))
         .subscribe(masterEntities -> {
           mMasterEntities = masterEntities;
           getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
