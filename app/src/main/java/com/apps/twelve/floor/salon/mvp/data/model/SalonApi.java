@@ -21,7 +21,7 @@ public interface SalonApi {
   @GET("api/v1/categories/{id}") Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(
       @Path("id") int parentId);
 
-  @GET("api/v1/schedules") Observable<List<DataServiceEntity>> fetchDaysData();
+  @GET("api/v1/schedules/{id}") Observable<List<DataServiceEntity>> fetchDaysData(@Path("id") String serviceIdAtData);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

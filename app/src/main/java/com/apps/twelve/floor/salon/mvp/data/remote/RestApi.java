@@ -36,7 +36,7 @@ public class RestApi {
   }
 
   public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
-    return api.fetchDaysData();
+    return api.fetchDaysData(serviceId);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {
