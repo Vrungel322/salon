@@ -13,7 +13,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity
-        android:name=".ui.activities.MainActivity"
+        android:name=".feature.start_point.activities.MainActivity"
         android:theme="@style/SplashTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -22,31 +22,24 @@
       </intent-filter>
     </activity>
     <activity
-        android:name=".ui.activities.StartActivity"
+        android:name=".feature.start_point.activities.StartActivity"
         android:alwaysRetainTaskState="true"
         android:label="@string/title_activity_start"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity
-        android:name=".ui.activities.SettingsActivity"
-        android:parentActivityName=".ui.activities.StartActivity">
+        android:name=".feature.settings.activities.SettingsActivity"
+        android:parentActivityName=".feature.start_point.activities.StartActivity">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.apps.twelve.floor.salon.ui.activities.StartActivity"/>
+          android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"/>
     </activity>
     <activity
-        android:name=".ui.activities.BookingActivity"
-        android:parentActivityName=".ui.activities.StartActivity">
+        android:name=".feature.booking.activities.BookingActivity"
+        android:parentActivityName=".feature.start_point.activities.StartActivity">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.apps.twelve.floor.salon.ui.activities.StartActivity"/>
-    </activity>
-    <activity
-        android:name=".ui.activities.RegistrationActivity"
-        android:parentActivityName=".ui.activities.MainActivity">
-      <meta-data
-          android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.apps.twelve.floor.salon.ui.activities.MainActivity"/>
+          android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"/>
     </activity>
   </application>
 

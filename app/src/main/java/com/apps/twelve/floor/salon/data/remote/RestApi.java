@@ -1,0 +1,54 @@
+package com.apps.twelve.floor.salon.data.remote;
+
+import com.apps.twelve.floor.salon.data.model.CategoryEntity;
+import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.data.model.MasterEntity;
+import com.apps.twelve.floor.salon.data.model.SalonApi;
+import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import java.util.List;
+import rx.Observable;
+
+/**
+ * Created by Vrungel on 26.01.2017.
+ */
+
+public class RestApi {
+  private final SalonApi api;
+
+  public RestApi(SalonApi api) {
+    this.api = api;
+  }
+
+  public Observable<List<CategoryEntity>> fetchCategory() {
+    return api.fetchCategory();
+  }
+
+  //todo fetchAllServices for filtering
+  public Observable<List<ServiceEntity>> fetchAllServices() {
+    return api.fetchAllServices();
+  }
+
+  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
+    return api.fetchServicesOfCategoryWithId(id);
+  }
+
+  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
+    return api.fetchCategoriesOfCategoryWithId(parentId);
+  }
+
+  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
+    return api.fetchDaysData(serviceId);
+  }
+
+  public Observable<List<MasterEntity>> fetchMasters(String serviceId, String dataID) {
+    return api.fetchMasters(serviceId, dataID);
+  }
+
+  public Observable<List<MasterEntity>> fetchAllMasters() {
+    return api.fetchAllMasters();
+  }
+
+  //public Observable<TokenEntity> login(LoginBody credentials) {
+  //  return api.login(credentials);
+  //}
+}

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_coordinator_layout"
-    tools:context="com.apps.twelve.floor.salon.ui.activities.StartActivity"
+    tools:context="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"
     >
 
   <android.support.design.widget.AppBarLayout

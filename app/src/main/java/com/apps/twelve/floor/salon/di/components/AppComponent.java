@@ -3,25 +3,24 @@ package com.apps.twelve.floor.salon.di.components;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.BookingActivityPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.MainActivityPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.RegistrationActivityPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.StartActivityPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_adapters.MyLastBookingAdapterPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.AllNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.BookingFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.ContactsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.DetailNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.MainFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.MyBonusFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.MyBookFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.OurWorkFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubBonusRegistrationFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubFragmentBookingPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.SubNewsFragmentPresenter;
-import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.WorkDetailsFragmentPresenter;
-import com.apps.twelve.floor.salon.ui.base.BaseActivity;
-import com.apps.twelve.floor.salon.ui.base.BaseFragment;
+import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
+import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
+import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapterPresenter;
+import com.apps.twelve.floor.salon.feature.news.presenters.AllNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.news.presenters.DetailNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubFragmentBookingPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.base.BaseActivity;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import dagger.Component;
 
 /**
@@ -35,8 +34,6 @@ import dagger.Component;
   void inject(MainActivityPresenter presenter);
 
   void inject(StartActivityPresenter presenter);
-
-  void inject(RegistrationActivityPresenter presenter);
 
   void inject(BookingActivityPresenter presenter);
 

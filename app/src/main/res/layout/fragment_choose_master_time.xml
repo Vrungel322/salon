@@ -120,7 +120,7 @@
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/ic_date_next_24dp"
             />
-        <com.apps.twelve.floor.salon.ui.customViews.ViewPagerWithoutSwipe
+        <com.apps.twelve.floor.salon.feature.booking.custom_views.ViewPagerWithoutSwipe
             android:id="@+id/vpDatesOfMonth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

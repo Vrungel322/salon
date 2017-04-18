@@ -1,7 +1,7 @@
 package com.apps.twelve.floor.salon.di.modules;
 
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
-import com.apps.twelve.floor.salon.mvp.data.model.BookingEntity;
+import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import dagger.Module;
 import dagger.Provides;
 
