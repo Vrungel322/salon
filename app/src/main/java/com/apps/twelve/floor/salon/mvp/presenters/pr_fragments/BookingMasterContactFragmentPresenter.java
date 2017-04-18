@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 @InjectViewState public class BookingMasterContactFragmentPresenter
     extends BasePresenter<IBookingMasterContactFragmentView> {
@@ -33,7 +34,7 @@ import rx.Subscription;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
             mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
-            mBookingEntity.getMasterName()));
+            mBookingEntity.getMasterName()), Timber::e);
     addToUnsubscription(subscription);
   }
 

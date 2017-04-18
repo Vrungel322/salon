@@ -12,6 +12,7 @@ import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
     extends BasePresenter<IChooseMasterMasterView> {
@@ -37,7 +38,7 @@ import rx.Subscription;
           mMasterEntities = masterEntities;
           getViewState().showMasters(masterEntities);
           getViewState().hideProgressBar();
-        });
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 
