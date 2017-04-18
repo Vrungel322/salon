@@ -1,26 +1,26 @@
 package com.apps.twelve.floor.salon.di.components;
 
+import com.apps.twelve.floor.salon.base.BaseActivity;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
-import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
-import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
-import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapterPresenter;
-import com.apps.twelve.floor.salon.feature.news.presenters.AllNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.news.presenters.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.news.presenters.AllNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.news.presenters.DetailNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
-import com.apps.twelve.floor.salon.base.BaseActivity;
-import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
+import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import dagger.Component;
 
 /**

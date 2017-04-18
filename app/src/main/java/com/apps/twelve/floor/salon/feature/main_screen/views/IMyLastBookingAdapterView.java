@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.feature.main_screen.adapters;
+package com.apps.twelve.floor.salon.feature.main_screen.views;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
