@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -38,7 +39,7 @@ import rx.Subscription;
         .subscribe(
             masterID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
                 mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
-                mBookingEntity.getMasterName()));
+                mBookingEntity.getMasterName()), Timber::e);
     addToUnsubscription(subscription);
   }
 

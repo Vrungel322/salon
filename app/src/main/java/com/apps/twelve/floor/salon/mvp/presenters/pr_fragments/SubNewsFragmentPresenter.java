@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 23.02.2017.
@@ -29,7 +30,7 @@ import rx.Subscription;
     Subscription subscription = mDataManager.fetchNewsPreview()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(previewNewsEntity -> getViewState().updateNewsPreview(previewNewsEntity),
-            Throwable::printStackTrace);
+            Timber::e);
     addToUnsubscription(subscription);
   }
 }

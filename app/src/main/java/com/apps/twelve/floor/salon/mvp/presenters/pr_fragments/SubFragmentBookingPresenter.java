@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -30,7 +31,7 @@ import rx.Subscription;
     Subscription subscription = mDataManager.fetchLastBooking()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
-            Throwable::printStackTrace);
+            Timber::e);
     addToUnsubscription(subscription);
   }
 }

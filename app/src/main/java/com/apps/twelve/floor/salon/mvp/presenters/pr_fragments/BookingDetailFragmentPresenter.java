@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 23.03.2017.
@@ -129,7 +130,7 @@ import rx.Subscription;
   private void stateBooking() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StateBooking.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(stateBooking -> getViewState().stateBooking());
+        .subscribe(stateBooking -> getViewState().stateBooking(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

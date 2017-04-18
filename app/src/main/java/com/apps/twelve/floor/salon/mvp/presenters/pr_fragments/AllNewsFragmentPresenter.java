@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 24.02.2017.
@@ -34,7 +35,7 @@ import rx.Subscription;
           getViewState().addListOfNews(newsEntities);
           getViewState().stopRefreshingView();
         }, throwable -> {
-          throwable.printStackTrace();
+          Timber.e(throwable);
           getViewState().stopRefreshingView();
         });
     addToUnsubscription(subscription);
