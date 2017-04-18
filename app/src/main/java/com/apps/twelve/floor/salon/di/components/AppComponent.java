@@ -21,6 +21,7 @@ import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentP
 import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import dagger.Component;
 
 /**
@@ -60,6 +61,8 @@ import dagger.Component;
   void inject(SubBonusRegistrationFragmentPresenter presenter);
 
   void inject(SubFragmentBookingPresenter presenter);
+
+  void inject(SettingsActivityPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
