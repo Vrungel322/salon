@@ -11,7 +11,7 @@ public class PreferencesHelper {
 
   private static final String PREF_FILE_NAME = "com.salon.Salon";
 
-  private static final String PREF_PROFILE_IMAGE = "PREF_COUNTRY";
+  private static final String PREF_PROFILE_IMAGE = "PREF_PROFILE_IMAGE";
 
   private final SharedPreferences mPreferences;
 
