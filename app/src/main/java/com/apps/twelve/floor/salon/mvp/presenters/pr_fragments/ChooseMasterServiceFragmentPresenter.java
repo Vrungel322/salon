@@ -38,7 +38,8 @@ import timber.log.Timber;
   private void setMasterName() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MasterID.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterID -> getViewState().setMasterName(mBookingEntity.getMasterName()));
+        .subscribe(masterID -> getViewState().setMasterName(mBookingEntity.getMasterName()),
+            Timber::e);
     addToUnsubscription(subscription);
   }
 
@@ -66,10 +67,12 @@ import timber.log.Timber;
       subscription = Observable.from(mServiceEntities)
           .filter(serviceEntity -> serviceEntity.getTitle().toLowerCase().contains(s.trim()))
           .toList()
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities),
+              Timber::e);
     } else {
       subscription = Observable.just(mServiceEntities)
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities));
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities),
+              Timber::e);
     }
     addToUnsubscription(subscription);
   }
