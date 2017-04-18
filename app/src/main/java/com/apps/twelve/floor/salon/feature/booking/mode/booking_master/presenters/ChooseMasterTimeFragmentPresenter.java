@@ -34,7 +34,7 @@ import timber.log.Timber;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
+        .concatMap(serviceID -> mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId()))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;

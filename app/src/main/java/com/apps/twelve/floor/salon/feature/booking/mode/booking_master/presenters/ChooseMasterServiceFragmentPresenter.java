@@ -38,12 +38,13 @@ import timber.log.Timber;
   private void setMasterName() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MasterID.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterID -> getViewState().setMasterName(mBookingEntity.getMasterName()),
+        .subscribe(masterID -> {getViewState().setMasterName(mBookingEntity.getMasterName());
+        fetchAllServicesByMasterId(masterID.masterId);},
             Timber::e);
     addToUnsubscription(subscription);
   }
 
-  public void fetchAllServicesByMasterId(int masterId) {
+  public void fetchAllServicesByMasterId(String masterId) {
     getViewState().showProgressBarAllServices();
     Subscription subscription = mDataManager.fetchAllServicesByMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())

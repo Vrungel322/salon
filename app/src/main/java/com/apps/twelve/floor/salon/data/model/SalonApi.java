@@ -28,7 +28,13 @@ public interface SalonApi {
   Observable<List<MasterEntity>> fetchMasters(@Path("serviceId") String serviceId,
       @Path("dataID") String dataID);
 
-  @GET("api/v1/services/masters") Observable<List<MasterEntity>> fetchAllMasters();
+  @GET("api/v1/masters") Observable<List<MasterEntity>> fetchAllMasters();
+
+  @GET("api/v1/masters/{masterId}") Observable<List<ServiceEntity>> fetchAllServicesByMasterId(
+      @Path("masterId") String masterId);
+
+  @GET("api/v1/masters/{masterId}/schedules")
+  Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(@Path("masterId") String masterId);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

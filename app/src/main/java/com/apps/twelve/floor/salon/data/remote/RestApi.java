@@ -48,6 +48,14 @@ public class RestApi {
     return api.fetchAllMasters();
   }
 
+  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(String masterId) {
+    return api.fetchAllServicesByMasterId(masterId);
+  }
+
+  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
+    return api.fetchDaysDataInMasterMode(masterId);
+  }
+
   //public Observable<TokenEntity> login(LoginBody credentials) {
   //  return api.login(credentials);
   //}
