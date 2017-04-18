@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.MainActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.RegistrationActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.StartActivityPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_adapters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.mvp.presenters.pr_fragments.AllNewsFragmentPresenter;
@@ -63,6 +64,8 @@ import dagger.Component;
   void inject(SubBonusRegistrationFragmentPresenter presenter);
 
   void inject(SubFragmentBookingPresenter presenter);
+
+  void inject(SettingsActivityPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
