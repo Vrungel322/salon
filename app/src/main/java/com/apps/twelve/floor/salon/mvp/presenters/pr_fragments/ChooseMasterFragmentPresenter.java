@@ -13,6 +13,7 @@ import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.03.2017.
@@ -45,7 +46,7 @@ import rx.Subscription;
               mBookingEntity.getServiceTime());
           getViewState().showMasters(masterEntities);
           getViewState().hideProgressBar();
-        });
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 
