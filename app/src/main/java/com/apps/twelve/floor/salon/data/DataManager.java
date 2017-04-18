@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.data;
 
 import android.net.Uri;
+import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
@@ -21,9 +22,11 @@ import rx.Observable;
 public class DataManager {
 
   private RestApi mRestApi;
+  private PreferencesHelper mPref;
 
-  public DataManager(RestApi restApi) {
+  public DataManager(RestApi restApi, PreferencesHelper preferencesHelper) {
     this.mRestApi = restApi;
+    this.mPref = preferencesHelper;
   }
 
   public Observable<List<CategoryEntity>> fetchCategory() {
@@ -60,6 +63,14 @@ public class DataManager {
 
   public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
     return mRestApi.fetchDaysDataInMasterMode(masterId);
+  }
+
+  public Observable<String> getProfileImage() {
+    return mPref.getProfileImage().filter((s) -> !s.isEmpty());
+  }
+
+  public void setProfileImage(String uri) {
+    mPref.setProfileImage(uri);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

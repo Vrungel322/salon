@@ -1,11 +1,11 @@
 package com.apps.twelve.floor.salon.di.modules;
 
 import android.content.Context;
-import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -24,8 +24,9 @@ import retrofit2.Retrofit;
     return new RestApi(api);
   }
 
-  @Provides @AppScope DataManager provideDataManager(RestApi restApi) {
-    return new DataManager(restApi);
+  @Provides @AppScope DataManager provideDataManager(RestApi restApi,
+      PreferencesHelper preferencesHelper) {
+    return new DataManager(restApi, preferencesHelper);
   }
 
   @Provides @AppScope PreferencesHelper providePreferencesHelper(Context context) {

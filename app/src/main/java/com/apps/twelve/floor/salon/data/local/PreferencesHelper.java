@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import rx.Observable;
 
 /**
  * Created by John on 26.01.2017.
@@ -23,8 +24,8 @@ public class PreferencesHelper {
     mPreferences.edit().clear().apply();
   }
 
-  public String getProfileImage() {
-    return mPreferences.getString(PREF_PROFILE_IMAGE, "");
+  public Observable<String> getProfileImage() {
+    return Observable.just(mPreferences.getString(PREF_PROFILE_IMAGE, ""));
   }
 
   public void setProfileImage(String uri) {

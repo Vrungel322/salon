@@ -3,10 +3,13 @@ package com.apps.twelve.floor.salon.feature.settings.presenters;
 import android.net.Uri;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
+import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Alexandra on 18.04.2017.
@@ -19,20 +22,22 @@ import javax.inject.Inject;
     App.getAppComponent().inject(this);
   }
 
-  @Inject PreferencesHelper mPref;
+  @Inject DataManager mDataManager;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    setUpPhoto();
   }
 
-  public void setUpPhoto() {
-    if (!mPref.getProfileImage().equals("")) {
-      getViewState().setUserPhoto(Uri.parse(mPref.getProfileImage()));
-    }
+  private void setUpPhoto() {
+    Subscription subscription = mDataManager.getProfileImage()
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(s -> getViewState().setUserPhoto(Uri.parse(s)), Timber::e);
+    addToUnsubscription(subscription);
   }
 
   public void savePhoto(String uri) {
-    mPref.setProfileImage(uri);
+    mDataManager.setProfileImage(uri);
     setUpPhoto();
   }
 }

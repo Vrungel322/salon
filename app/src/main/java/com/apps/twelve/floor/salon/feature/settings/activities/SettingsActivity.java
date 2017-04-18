@@ -25,11 +25,11 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_settings);
     super.onCreate(savedInstanceState);
-    mSettingsActivityPresenter.setUpPhoto();
   }
 
   public void setUserPhoto(Uri uri) {
     Picasso.with(this).load(uri).into(mProfileImage);
+    Timber.e("set");
   }
 
   @OnClick(R.id.btnNewImage) void getNewImage() {
@@ -50,10 +50,5 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
         Timber.e(result.getError());
       }
     }
-  }
-
-  @Override public void onBackPressed() {
-    super.onBackPressed();
-    finish();
   }
 }
