@@ -6,20 +6,30 @@ import android.os.Bundle;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.mvp.presenters.pr_activities.SettingsActivityPresenter;
+import com.apps.twelve.floor.salon.mvp.views.ISettingsActivityView;
 import com.apps.twelve.floor.salon.ui.base.BaseActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import timber.log.Timber;
 
-public class SettingsActivity extends BaseActivity {
+public class SettingsActivity extends BaseActivity implements ISettingsActivityView {
+
+  @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
   @BindView(R.id.ivProfile) CircleImageView mProfileImage;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_settings);
     super.onCreate(savedInstanceState);
+    mSettingsActivityPresenter.setUpPhoto();
+  }
+
+  public void setUserPhoto(Uri uri) {
+    Picasso.with(this).load(uri).into(mProfileImage);
   }
 
   @OnClick(R.id.btnNewImage) void getNewImage() {
@@ -27,8 +37,6 @@ public class SettingsActivity extends BaseActivity {
         .setFixAspectRatio(true)
         .setCropShape(CropImageView.CropShape.OVAL)
         .setShowCropOverlay(true)
-        //.setMultiTouchEnabled(true)
-        //.setAspectRatio(1, 1)
         .start(this);
   }
 
@@ -36,8 +44,8 @@ public class SettingsActivity extends BaseActivity {
     if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
       CropImage.ActivityResult result = CropImage.getActivityResult(data);
       if (resultCode == RESULT_OK) {
-        Uri cropImageUri = result.getUri();
-        Picasso.with(this).load(cropImageUri).into(mProfileImage);
+        Uri uri = result.getUri();
+        mSettingsActivityPresenter.savePhoto(uri.toString());
       } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
         Timber.e(result.getError());
       }

@@ -11,6 +11,8 @@ public class PreferencesHelper {
 
   private static final String PREF_FILE_NAME = "com.salon.Salon";
 
+  private static final String PREF_PROFILE_IMAGE = "PREF_COUNTRY";
+
   private final SharedPreferences mPreferences;
 
   public PreferencesHelper(Context context) {
@@ -19,5 +21,13 @@ public class PreferencesHelper {
 
   public void clear() {
     mPreferences.edit().clear().apply();
+  }
+
+  public String getProfileImage() {
+    return mPreferences.getString(PREF_PROFILE_IMAGE, "");
+  }
+
+  public void setProfileImage(String uri) {
+    mPreferences.edit().putString(PREF_PROFILE_IMAGE, uri).apply();
   }
 }
