@@ -149,11 +149,12 @@
   <!--screen settings-->
   <color name="colorSettingsBackground">#f9fafa</color>
   <color name="colorSettingsBlockBackground">#ffffff</color>
-  <color name="colorSettingsSeparator">#e4e4e4</color>
+  <color name="colorSettingsSeparator">#7be4e4e4</color>
   <color name="colorSettingsIcons">#b1b1b1</color>
   <color name="colorSettingsChangePhotoText">#FFEA3472</color>
   <color name="colorSettingsGeneralText">#000000</color>
   <color name="colorSettingsBlockHeaderText">#9f9f9f</color>
+  <color name="colorSettingsFinalBlockText">#FFEA3472</color>
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
