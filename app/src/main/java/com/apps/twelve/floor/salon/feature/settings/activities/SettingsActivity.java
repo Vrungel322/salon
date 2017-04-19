@@ -20,7 +20,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
 
   @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
-  @BindView(R.id.ivProfile) CircleImageView mProfileImage;
+  @BindView(R.id.ivProfilePhoto) CircleImageView mProfileImage;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_settings);
