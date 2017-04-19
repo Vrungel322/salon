@@ -20,7 +20,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
 
   @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
-  @BindView(R.id.ivProfile) CircleImageView mProfileImage;
+  @BindView(R.id.ivProfilePhoto) CircleImageView mProfileImage;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_settings);
@@ -32,7 +32,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
     Timber.e("set");
   }
 
-  @OnClick(R.id.btnNewImage) void getNewImage() {
+  @OnClick(R.id.btnChangePhoto) void getNewImage() {
     CropImage.activity(null)
         .setFixAspectRatio(true)
         .setCropShape(CropImageView.CropShape.OVAL)
