@@ -9,21 +9,6 @@ import java.util.Calendar;
 
 public class Converters {
 
-  public static String dateFromMilliseconds(String date) {
-    if (!date.equals("")) {
-      String dateResult;
-      SimpleDateFormat formatter =
-          new SimpleDateFormat("dd.MM.yyyy", java.util.Locale.getDefault());
-      Calendar calendar = Calendar.getInstance();
-      long d = Long.valueOf(date) * 1000L;
-      calendar.setTimeInMillis(d);
-      dateResult = formatter.format(calendar.getTime());
-
-      return dateResult;
-    }
-    return "";
-  }
-
   public static String dateNow() {
     String dateResult;
     SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", java.util.Locale.getDefault());
@@ -38,7 +23,7 @@ public class Converters {
       String dateResult;
       SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
       Calendar calendar = Calendar.getInstance();
-      long d = Long.valueOf(date) * 1000L;
+      long d = Long.valueOf(date);
       calendar.setTimeInMillis(d);
       dateResult = formatter.format(calendar.getTime());
 
@@ -52,7 +37,22 @@ public class Converters {
       String dateResult;
       SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
       Calendar calendar = Calendar.getInstance();
-      long d = Long.valueOf(date);
+      long d = Long.valueOf(date) * 1000L;
+      calendar.setTimeInMillis(d);
+      dateResult = formatter.format(calendar.getTime());
+
+      return dateResult;
+    }
+    return "";
+  }
+
+  public static String dateFromSeconds(String date) {
+    if (!date.equals("")) {
+      String dateResult;
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd.MM.yyyy", java.util.Locale.getDefault());
+      Calendar calendar = Calendar.getInstance();
+      long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
       dateResult = formatter.format(calendar.getTime());
 
@@ -66,7 +66,7 @@ public class Converters {
       String dateResult;
       SimpleDateFormat formatter = new SimpleDateFormat("dd EEE", java.util.Locale.getDefault());
       Calendar calendar = Calendar.getInstance();
-      long d = Long.valueOf(date);
+      long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
       dateResult = formatter.format(calendar.getTime());
 
@@ -81,7 +81,7 @@ public class Converters {
       SimpleDateFormat formatter =
           new SimpleDateFormat("dd MMMM (E)", java.util.Locale.getDefault());
       Calendar calendar = Calendar.getInstance();
-      long d = Long.valueOf(date);
+      long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
       dateResult = formatter.format(calendar.getTime());
 

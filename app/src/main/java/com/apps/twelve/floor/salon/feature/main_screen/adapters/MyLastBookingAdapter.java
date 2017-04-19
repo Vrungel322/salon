@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,10 +63,10 @@ public class MyLastBookingAdapter
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());
-    holder.mTextViewServiceTime.setText(Converters.timeFromMilliseconds(
+    holder.mTextViewServiceTime.setText(Converters.dateFromSeconds(
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
     holder.mTextViewRemainTime.setText(Converters.timeFromMilliseconds(String.valueOf(
-        mLastBookingEntities.get(position).getServiceTime() - System.currentTimeMillis())));
+        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())));
 
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
@@ -85,7 +84,6 @@ public class MyLastBookingAdapter
   }
 
   @Override public void removeBookedServiceFromList(int position) {
-    Log.wtf("TAG", "removeBookedServiceFromList " + position);
     mLastBookingEntities.remove(position);
     notifyDataSetChanged();
   }
