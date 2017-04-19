@@ -72,4 +72,8 @@
   <string name="title_write_error">Ошибка записи</string>
   <string name="description_write_error">Проверте корректность выбранных данных</string>
   <string name="done">Готово</string>
+
+  <!--for settings-->
+  <string name="change_photo">Сменить фото профиля</string>
+  <string name="private_information">Личная информация</string>
 </resources>
