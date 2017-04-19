@@ -1,10 +1,10 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
-import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;

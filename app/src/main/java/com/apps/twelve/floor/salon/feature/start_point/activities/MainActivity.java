@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.views.IMainActivityView;
-import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class MainActivity extends BaseActivity implements IMainActivityView {

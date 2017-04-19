@@ -7,14 +7,10 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class MasterEntity {
-  @SerializedName("id")
-  private String masterId;
-  @SerializedName("name")
-  private String masterName;
-  @SerializedName("photo")
-  private String masterImg;
-  @SerializedName("description")
-  private String masterDescription;
+  @SerializedName("id") private String masterId;
+  @SerializedName("name") private String masterName;
+  @SerializedName("photo") private String masterImg;
+  @SerializedName("description") private String masterDescription;
 
   public MasterEntity(String masterName, String masterImg, String masterDescription,
       String masterId) {

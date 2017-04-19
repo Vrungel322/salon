@@ -1,9 +1,9 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
@@ -57,11 +57,10 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.checkInService(bookingServerEntity)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          if (response.code() == 200){
+          if (response.code() == 200) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             getViewState().closeActivity();
-          }
-          else {
+          } else {
             getViewState().showAlert();
           }
         }, Timber::e);

@@ -7,14 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBookingView;
-import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapter;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -49,5 +48,14 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
 
   @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
+  }
+
+  @Override public void updateRvTiming() {
+    mMyLastBookingAdapter.notifyDataSetChanged();
+  }
+
+  @Override public void onStart() {
+    super.onStart();
+    mSubFragmentBookingPresenter.updateTiming();
   }
 }

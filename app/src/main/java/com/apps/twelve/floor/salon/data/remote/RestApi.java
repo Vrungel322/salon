@@ -8,8 +8,6 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import java.util.List;
-import okhttp3.ResponseBody;
-import retrofit2.Response;
 import rx.Observable;
 
 /**
@@ -60,7 +58,8 @@ public class RestApi {
     return api.fetchDaysDataInMasterMode(masterId);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(String token, BookingServerEntity bookingServerEntity) {
+  public Observable<retrofit2.Response<Void>> checkInService(String token,
+      BookingServerEntity bookingServerEntity) {
     return api.checkInService(Integer.parseInt(token), bookingServerEntity);
   }
 

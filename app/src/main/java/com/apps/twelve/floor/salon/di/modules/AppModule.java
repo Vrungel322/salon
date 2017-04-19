@@ -2,8 +2,8 @@ package com.apps.twelve.floor.salon.di.modules;
 
 import android.app.Application;
 import android.content.Context;
-import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.base.Navigator;
+import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import dagger.Module;
 import dagger.Provides;

@@ -14,8 +14,6 @@ import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -76,13 +74,13 @@ public class DataManager {
     mPref.setProfileImage(uri);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(BookingServerEntity bookingServerEntity) {
+  public Observable<retrofit2.Response<Void>> checkInService(
+      BookingServerEntity bookingServerEntity) {
     return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
   }
 
-
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
-   return mRestApi.fetchLastBooking(mPref.getToken());
+    return mRestApi.fetchLastBooking(mPref.getToken());
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

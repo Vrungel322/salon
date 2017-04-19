@@ -2,10 +2,10 @@ package com.apps.twelve.floor.salon.feature.booking.activities;
 
 import android.os.Bundle;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
-import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
+import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
+import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;

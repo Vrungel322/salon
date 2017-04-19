@@ -1,9 +1,9 @@
 package com.apps.twelve.floor.salon.feature.booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBus;

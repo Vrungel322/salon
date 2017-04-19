@@ -13,4 +13,6 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ISubFragmentBookingView
     extends MvpView {
   void showAllBooking(List<LastBookingEntity> lastBookingEntities);
+
+  void updateRvTiming();
 }

@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +12,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;

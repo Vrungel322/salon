@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 

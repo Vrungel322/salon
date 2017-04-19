@@ -13,8 +13,8 @@ public class BookingServerEntity {
   @SerializedName("name") private String clientName;
   @SerializedName("phone") private String clientPhone;
 
-  public BookingServerEntity(Integer masterId, Integer serviceId,
-      Integer scheduleId, String clientName, String clientPhone) {
+  public BookingServerEntity(Integer masterId, Integer serviceId, Integer scheduleId,
+      String clientName, String clientPhone) {
     this.masterId = masterId;
     this.serviceId = serviceId;
     this.scheduleId = scheduleId;

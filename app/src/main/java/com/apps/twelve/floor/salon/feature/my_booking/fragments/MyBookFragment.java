@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**

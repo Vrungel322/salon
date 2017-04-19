@@ -62,11 +62,10 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.checkInService(bookingServerEntity)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          if (response.code() == 200){
+          if (response.code() == 200) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             getViewState().closeActivity();
-          }
-          else {
+          } else {
             getViewState().showAlert();
           }
         }, Timber::e);

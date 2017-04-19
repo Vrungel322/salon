@@ -13,7 +13,7 @@ public class LastBookingEntity implements Parcelable {
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
   @SerializedName("master") private String masterName;
-  @SerializedName("master_photo") private String imageUri;
+  @SerializedName("service_image") private String imageUri;
   @SerializedName("schedule") private Integer serviceTime;
   @SerializedName("service_title") private String serviceName;
 

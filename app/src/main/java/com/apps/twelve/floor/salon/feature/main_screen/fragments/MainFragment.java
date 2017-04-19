@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMainFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 

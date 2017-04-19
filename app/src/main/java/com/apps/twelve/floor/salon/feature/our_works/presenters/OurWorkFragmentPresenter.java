@@ -1,8 +1,8 @@
 package com.apps.twelve.floor.salon.feature.our_works.presenters;
 
 import com.apps.twelve.floor.salon.App;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;

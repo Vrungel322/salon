@@ -10,9 +10,9 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingContactFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 

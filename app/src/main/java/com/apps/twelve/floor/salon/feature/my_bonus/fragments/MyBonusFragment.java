@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IMyBonusFragmentView;
-import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**

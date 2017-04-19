@@ -1,10 +1,10 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
-import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterTimeView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -34,7 +34,8 @@ import timber.log.Timber;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .concatMap(serviceID -> mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId()))
+        .concatMap(
+            serviceID -> mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId()))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
@@ -59,7 +60,7 @@ import timber.log.Timber;
       mBookingEntity.setServiceTime(String.valueOf(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
-    }else {
+    } else {
       getViewState().timeIsNotAvailable();
     }
   }
