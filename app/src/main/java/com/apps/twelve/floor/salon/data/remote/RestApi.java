@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.data.remote;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
@@ -61,6 +62,10 @@ public class RestApi {
 
   public Observable<retrofit2.Response<Void>> checkInService(int token, BookingServerEntity bookingServerEntity) {
     return api.checkInService(token, bookingServerEntity);
+  }
+
+  public Observable<List<LastBookingEntity>> fetchLastBooking(String token) {
+    return api.fetchLastBooking(Integer.parseInt(token));
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

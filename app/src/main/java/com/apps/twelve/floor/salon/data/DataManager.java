@@ -81,6 +81,10 @@ public class DataManager {
   }
 
 
+  public Observable<List<LastBookingEntity>> fetchLastBooking() {
+   return mRestApi.fetchLastBooking(mPref.getToken());
+  }
+
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     ArrayList<OurWorkEntity> owe = new ArrayList<>();
     ArrayList<PhotoWorksEntity> listImageUrl = new ArrayList<>();
@@ -135,16 +139,6 @@ public class DataManager {
           "4 апр 2017 13:45"));
     }
     return Observable.just(ne);
-  }
-
-  public Observable<List<LastBookingEntity>> fetchLastBooking() {
-    ArrayList<LastBookingEntity> lbe = new ArrayList<>();
-    for (int i = 0; i < 5; i++) {
-      lbe.add(new LastBookingEntity(
-          "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-          "Прически и стрижки " + i, "28.02.2017"));
-    }
-    return Observable.just(lbe);
   }
 
   //public Observable<List<MasterEntity>> fetchMasters(String dataID) {

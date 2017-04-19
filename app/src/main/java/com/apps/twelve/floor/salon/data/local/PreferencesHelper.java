@@ -13,6 +13,7 @@ public class PreferencesHelper {
   private static final String PREF_FILE_NAME = "com.salon.Salon";
 
   private static final String PREF_PROFILE_IMAGE = "PREF_PROFILE_IMAGE";
+  private static final String PREF_TOKEN = "PREF_TOKEN";
 
   private final SharedPreferences mPreferences;
 
@@ -30,5 +31,13 @@ public class PreferencesHelper {
 
   public void setProfileImage(String uri) {
     mPreferences.edit().putString(PREF_PROFILE_IMAGE, uri).apply();
+  }
+
+  public String getToken() {
+    return mPreferences.getString(PREF_TOKEN, "1");
+  }
+
+  public void setToken(String token) {
+    mPreferences.edit().putString(PREF_TOKEN, token).apply();
   }
 }
