@@ -1,7 +1,12 @@
 package com.apps.twelve.floor.salon.data.model;
 
 import java.util.List;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -35,6 +40,9 @@ public interface SalonApi {
 
   @GET("api/v1/masters/{masterId}/schedules")
   Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(@Path("masterId") String masterId);
+
+  @POST("api/v1/entry")
+  Observable<retrofit2.Response<Void>> checkInService(@Header("User") int token, @Body BookingServerEntity bookingServerEntity);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

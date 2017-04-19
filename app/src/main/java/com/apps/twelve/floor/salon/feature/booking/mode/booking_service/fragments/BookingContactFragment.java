@@ -93,4 +93,12 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
   }
+
+  @Override public void closeActivity() {
+    getActivity().finish();
+  }
+
+  @Override public void showAlert() {
+    showAlertMessage("Error", "smth wrong");
+  }
 }

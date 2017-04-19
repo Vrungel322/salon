@@ -4,6 +4,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -47,6 +48,23 @@ import timber.log.Timber;
   }
 
   public void sendBookingEntity() {
-    // TODO: 04.04.2017 проверка всех полей и откравка
+    BookingServerEntity bookingServerEntity =
+        new BookingServerEntity(Integer.parseInt(mBookingEntity.getMasterId()),
+            Integer.parseInt(mBookingEntity.getServiceId()),
+            Integer.parseInt(mBookingEntity.getDateId()), mBookingEntity.getUserName(),
+            mBookingEntity.getUserPhone());
+
+    Subscription subscription = mDataManager.checkInService(1, bookingServerEntity)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
+          if (response.code() == 200){
+            mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+            getViewState().closeActivity();
+          }
+          else {
+            getViewState().showAlert();
+          }
+        }, Timber::e);
+    addToUnsubscription(subscription);
   }
 }

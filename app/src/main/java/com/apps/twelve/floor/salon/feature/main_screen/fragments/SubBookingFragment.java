@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAda
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.

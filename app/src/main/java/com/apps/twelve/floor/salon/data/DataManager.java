@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.data;
 
 import android.net.Uri;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
+import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
@@ -13,6 +14,8 @@ import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -72,6 +75,11 @@ public class DataManager {
   public void setProfileImage(String uri) {
     mPref.setProfileImage(uri);
   }
+
+  public Observable<retrofit2.Response<Void>> checkInService(int token, BookingServerEntity bookingServerEntity) {
+    return mRestApi.checkInService(token, bookingServerEntity);
+  }
+
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     ArrayList<OurWorkEntity> owe = new ArrayList<>();

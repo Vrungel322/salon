@@ -41,6 +41,7 @@ public class MyLastBookingAdapter
   }
 
   public void addListLastBookingEntity(List<LastBookingEntity> lastBookingEntities) {
+    mLastBookingEntities.clear();
     mLastBookingEntities.addAll(lastBookingEntities);
     notifyDataSetChanged();
   }

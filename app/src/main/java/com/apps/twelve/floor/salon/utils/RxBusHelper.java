@@ -48,4 +48,7 @@ public final class RxBusHelper {
       this.visible = visible;
     }
   }
+
+  public static class UpdateLastBookingListEvent {
+  }
 }

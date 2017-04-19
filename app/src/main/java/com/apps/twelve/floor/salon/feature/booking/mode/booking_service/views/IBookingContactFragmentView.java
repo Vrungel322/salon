@@ -12,4 +12,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
   void setUpBookingInformation(String serviceName, String serviceTime, String serviceDuration,
       String masterName);
+
+  void closeActivity();
+
+  void showAlert();
 }

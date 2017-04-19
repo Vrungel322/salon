@@ -89,4 +89,12 @@ public class BookingMasterContactFragment extends BaseFragment
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
   }
+
+  @Override public void closeActivity() {
+    getActivity().finish();
+  }
+
+  @Override public void showAlert() {
+    showAlertMessage("Error", "smth wrong");
+  }
 }

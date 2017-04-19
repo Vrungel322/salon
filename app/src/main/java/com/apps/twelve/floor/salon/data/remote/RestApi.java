@@ -1,11 +1,14 @@
 package com.apps.twelve.floor.salon.data.remote;
 
+import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import java.util.List;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import rx.Observable;
 
 /**
@@ -54,6 +57,10 @@ public class RestApi {
 
   public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
     return api.fetchDaysDataInMasterMode(masterId);
+  }
+
+  public Observable<retrofit2.Response<Void>> checkInService(int token, BookingServerEntity bookingServerEntity) {
+    return api.checkInService(token, bookingServerEntity);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {
