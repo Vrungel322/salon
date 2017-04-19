@@ -150,7 +150,7 @@
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvEmail"
-          android:layout_marginLeft="50dp"
+          android:layout_alignLeft="@+id/tvEmail"
           android:background="@color/colorSettingsSeparator"
           />
       <android.support.v7.widget.AppCompatImageView
@@ -184,7 +184,7 @@
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvPhone"
-          android:layout_marginLeft="50dp"
+          android:layout_alignLeft="@+id/tvPhone"
           android:background="@color/colorSettingsSeparator"
           />
       <android.support.v7.widget.AppCompatImageView
@@ -271,7 +271,7 @@
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvLanguage"
-          android:layout_marginLeft="50dp"
+          android:layout_alignLeft="@+id/tvLanguage"
           android:background="@color/colorSettingsSeparator"
           />
       <TextView
@@ -349,7 +349,7 @@
           android:id="@+id/separator11"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
-          android:layout_marginLeft="50dp"
+          android:layout_alignLeft="@+id/tvClearHistory"
           android:layout_below="@+id/tvClearHistory"
           android:background="@color/colorSettingsSeparator"
           />
