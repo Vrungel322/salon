@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presente
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
+import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
@@ -20,6 +21,7 @@ import timber.log.Timber;
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
+  @Inject BookingToBookingServerEntityMapper mapper;
 
   @Override protected void inject() {
     App.getBookingComponent().inject(this);
@@ -48,13 +50,7 @@ import timber.log.Timber;
   }
 
   public void sendBookingEntity() {
-    BookingServerEntity bookingServerEntity =
-        new BookingServerEntity(Integer.parseInt(mBookingEntity.getMasterId()),
-            Integer.parseInt(mBookingEntity.getServiceId()),
-            Integer.parseInt(mBookingEntity.getDateId()), mBookingEntity.getUserName(),
-            mBookingEntity.getUserPhone());
-
-    Subscription subscription = mDataManager.checkInService(bookingServerEntity)
+    Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
           if (response.code() == 200) {
