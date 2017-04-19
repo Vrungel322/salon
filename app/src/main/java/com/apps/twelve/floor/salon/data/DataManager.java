@@ -76,8 +76,8 @@ public class DataManager {
     mPref.setProfileImage(uri);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(int token, BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(token, bookingServerEntity);
+  public Observable<retrofit2.Response<Void>> checkInService(BookingServerEntity bookingServerEntity) {
+    return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
   }
 
 

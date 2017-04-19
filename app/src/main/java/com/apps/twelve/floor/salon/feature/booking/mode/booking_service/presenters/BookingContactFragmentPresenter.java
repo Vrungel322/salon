@@ -59,7 +59,7 @@ import timber.log.Timber;
             Integer.parseInt(mBookingEntity.getDateId()), mBookingEntity.getUserName(),
             mBookingEntity.getUserPhone());
 
-    Subscription subscription = mDataManager.checkInService(1, bookingServerEntity)
+    Subscription subscription = mDataManager.checkInService(bookingServerEntity)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
           if (response.code() == 200){
