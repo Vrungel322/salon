@@ -40,9 +40,10 @@
           android:layout_height="wrap_content"
           android:layout_below="@+id/ivProfile"
           android:layout_centerHorizontal="true"
-          android:layout_marginBottom="24dp"
+          android:layout_marginBottom="16dp"
           android:paddingTop="8dp"
           android:text="@string/change_photo"
+          android:textSize="16sp"
           android:textColor="@color/colorSettingsChangePhotoText"
           />
       <View
