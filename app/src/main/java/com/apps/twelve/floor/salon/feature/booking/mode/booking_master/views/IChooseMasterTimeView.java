@@ -26,4 +26,6 @@ import java.util.List;
   void clearSelectedTime();
 
   void setUpRedSquare(String serviceName, String masterName);
+
+  void timeIsNotAvailable();
 }

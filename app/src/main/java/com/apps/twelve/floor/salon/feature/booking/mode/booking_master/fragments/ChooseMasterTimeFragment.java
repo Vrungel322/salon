@@ -159,6 +159,10 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     mTextViewServiceName.setText(serviceName);
   }
 
+  @Override public void timeIsNotAvailable() {
+    showToastMessage("Time is not Available");
+  }
+
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {
     if (mViewPagerDatesOfMonth.getCurrentItem() > 0) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() - 1);
