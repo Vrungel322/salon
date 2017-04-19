@@ -27,8 +27,8 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    //getEventFromRxBus();
-    //fetchBookingEntities();
+    getEventFromRxBus();
+    fetchBookingEntities();
   }
 
   private void fetchBookingEntities() {

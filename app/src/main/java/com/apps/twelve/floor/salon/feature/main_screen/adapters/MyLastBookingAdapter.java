@@ -18,6 +18,7 @@ import com.apps.twelve.floor.salon.base.MvpBaseRecyclerAdapter;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
@@ -63,9 +64,11 @@ public class MyLastBookingAdapter
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());
-    holder.mTextViewServiceTime.setText(mLastBookingEntities.get(position).getServiceTime());
-    // TODO: 28.02.2017 set mTextViewRemainTime
-    holder.mTextViewRemainTime.setText("1 h 55 m");
+    holder.mTextViewServiceTime.setText(Converters.timeFromMilliseconds(
+        String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
+    holder.mTextViewRemainTime.setText(Converters.timeFromMilliseconds(String.valueOf(
+        mLastBookingEntities.get(position).getServiceTime() - System.currentTimeMillis())));
+
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
       // TODO: 28.02.2017 send to server postpone query

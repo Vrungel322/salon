@@ -44,7 +44,7 @@ public interface SalonApi {
   @POST("api/v1/entry")
   Observable<retrofit2.Response<Void>> checkInService(@Header("User") int token, @Body BookingServerEntity bookingServerEntity);
 
-  @GET("api/v1/entry")
+  @GET("api/v1/users/entries")
   Observable<List<LastBookingEntity>> fetchLastBooking(@Header("User") int token);
 
   //@POST("signin") Observable<TokenEntity> login(
