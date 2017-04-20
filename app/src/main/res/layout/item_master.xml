@@ -41,7 +41,6 @@
           android:layout_marginTop="8dp"
           android:ellipsize="end"
           android:maxLines="3"
-          android:text="TextView"
           android:textColor="@color/colorChooseMasterTextMasterName"
           android:textSize="16sp"
           />
@@ -61,7 +60,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="TextView"
             android:textColor="@color/colorChooseMasterTextMasterDescription"
             android:textSize="12sp"
             />
