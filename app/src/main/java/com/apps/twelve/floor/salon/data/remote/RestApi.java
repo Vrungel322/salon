@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import java.util.List;
+import retrofit2.Response;
 import rx.Observable;
 
 /**
@@ -65,6 +66,10 @@ public class RestApi {
 
   public Observable<List<LastBookingEntity>> fetchLastBooking(String token) {
     return api.fetchLastBooking(Integer.parseInt(token));
+  }
+
+  public Observable<Response<Void>> cancelOrder(Integer serviceId) {
+    return api.cancelOrder(String.valueOf(serviceId));
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

@@ -15,6 +15,7 @@ import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Observable;
+import rx.Subscription;
 
 /**
  * Created by Vrungel on 26.01.2017.
@@ -81,6 +82,10 @@ public class DataManager {
 
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
     return mRestApi.fetchLastBooking(mPref.getToken());
+  }
+
+  public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
+    return mRestApi.cancelOrder(serviceId);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
