@@ -74,7 +74,6 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mTextViewServiceName.setText("ТЕСТОВАЯ УСЛУГА");
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {

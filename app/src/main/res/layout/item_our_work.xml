@@ -38,7 +38,6 @@
           android:layout_marginTop="8dp"
           android:ellipsize="end"
           android:maxLines="3"
-          android:text="TextView"
           android:textColor="@color/colorOurWorksTitile"
           />
       <LinearLayout
@@ -66,7 +65,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="TextView"
             android:textColor="@color/colorOurWorksText"
             android:textSize="11sp"
             />
