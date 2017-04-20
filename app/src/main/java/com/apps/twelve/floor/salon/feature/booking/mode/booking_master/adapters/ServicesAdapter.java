@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +47,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
               R.color.colorChooseServiceNotPressedBackground));
     }
-    //Picasso.with(holder.mImageViewServiceImg.getContext())
-    //    .load(Uri.parse(mServiceEntities.get(position).getImgHref()))
-    //    .into(holder.mImageViewServiceImg);
+    Picasso.with(holder.mImageViewServiceImg.getContext())
+        .load(mServiceEntities.get(position).getImage())
+        .into(holder.mImageViewServiceImg);
 
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());
     holder.mTextViewAboutService.setText(mServiceEntities.get(position).getDescription());

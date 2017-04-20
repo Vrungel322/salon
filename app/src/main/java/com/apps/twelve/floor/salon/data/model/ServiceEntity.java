@@ -12,6 +12,7 @@ public class ServiceEntity {
   @SerializedName("id") @Expose private Integer serviceId;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String description;
+  @SerializedName("image") @Expose private String image;
   @SerializedName("duration") @Expose private Integer time;
   @SerializedName("average_price") @Expose private String price;
   @SerializedName("category_id") @Expose private String categoryId;
@@ -19,14 +20,24 @@ public class ServiceEntity {
   public ServiceEntity() {
   }
 
-  public ServiceEntity(Integer serviceId, String title, String description, Integer time,
+  public ServiceEntity(Integer serviceId, String title, String description, String image,
+      Integer time,
       String price, String categoryId) {
     this.serviceId = serviceId;
     this.title = title;
     this.description = description;
+    this.image = image;
     this.time = time;
     this.price = price;
     this.categoryId = categoryId;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
   }
 
   public Integer getServiceId() {
