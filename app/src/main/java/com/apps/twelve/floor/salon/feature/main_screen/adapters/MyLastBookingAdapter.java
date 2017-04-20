@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
-import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -59,7 +58,7 @@ public class MyLastBookingAdapter
       holder.view.setVisibility(View.VISIBLE);
     }
     Picasso.with(holder.mImageViewServicePhoto.getContext())
-        .load(Uri.parse(mLastBookingEntities.get(position).getImageUri()))
+        .load(mLastBookingEntities.get(position).getImageUri())
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());

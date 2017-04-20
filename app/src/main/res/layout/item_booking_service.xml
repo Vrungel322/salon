@@ -22,7 +22,6 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0"
-      app:srcCompat="@drawable/booking_service"
       />
   <TextView
       android:id="@+id/tvServiceName"
