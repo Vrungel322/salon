@@ -81,6 +81,7 @@ import timber.log.Timber;
   public void setItemSelected(int position) {
     mBookingEntity.setServiceId(String.valueOf(mServiceEntities.get(position).getServiceId()));
     mBookingEntity.setServiceName(mServiceEntities.get(position).getTitle());
+    mBookingEntity.setDurationServices(String.valueOf(mServiceEntities.get(position).getTime()));
     getViewState().setItemSelected(position);
   }
 }

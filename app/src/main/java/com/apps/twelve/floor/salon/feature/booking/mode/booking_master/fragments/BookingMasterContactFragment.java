@@ -2,8 +2,6 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragment
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,8 +27,6 @@ public class BookingMasterContactFragment extends BaseFragment
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
 
-  private String mName, mPhone;
-
   public static BookingMasterContactFragment newInstance() {
     Bundle args = new Bundle();
     BookingMasterContactFragment fragment = new BookingMasterContactFragment();
@@ -47,39 +43,12 @@ public class BookingMasterContactFragment extends BaseFragment
 
     mTextViewService.setText(
         getArguments().getString(Constants.FragmentsArgumentKeys.SERVICE_NAME));
-
-    mEditTextName.addTextChangedListener(new TextWatcher() {
-
-      @Override public void afterTextChanged(Editable s) {
-        mName = s.toString();
-      }
-
-      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-      }
-
-      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-      }
-    });
-
-    mEditTextPhone.addTextChangedListener(new TextWatcher() {
-
-      @Override public void afterTextChanged(Editable s) {
-        mPhone = s.toString();
-      }
-
-      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-      }
-
-      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-      }
-    });
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
     mBookingMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mBookingMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mBookingMasterContactFragmentPresenter.sendBookingEntity();
-    showToastMessage("Записаться\n" + mName + "\n" + mPhone);
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
@@ -95,6 +64,6 @@ public class BookingMasterContactFragment extends BaseFragment
   }
 
   @Override public void showAlert() {
-    showAlertMessage("Error", "smth wrong");
+    showAlertMessage("Error", "Warning");
   }
 }

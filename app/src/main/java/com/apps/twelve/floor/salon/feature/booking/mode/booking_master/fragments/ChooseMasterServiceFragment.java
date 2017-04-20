@@ -51,7 +51,6 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
     mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
     mServicesAdapter = new ServicesAdapter();
     mRecyclerViewServices.setAdapter(mServicesAdapter);
-    //mChooseMasterServiceFragmentPresenter.fetchAllServicesByMasterId(0);
 
     ItemClickSupport.addTo(mRecyclerViewServices)
         .setOnItemClickListener(
@@ -65,11 +64,8 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          //mChooseMasterServiceFragmentPresenter.showRvAllServices();
           mChooseMasterServiceFragmentPresenter.filterServices(
               mEditTextChooseService.getText().toString());
-        } else {
-          //mChooseMasterServiceFragmentPresenter.hideRvAllServices();
         }
       }
 
@@ -82,14 +78,6 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
   @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {
     mServicesAdapter.setServiceEntity(serviceEntities);
   }
-
-  //@Override public void showRvAllServices() {
-  //  mRecyclerViewServices.setVisibility(View.VISIBLE);
-  //}
-  //
-  //@Override public void hideRvAllServices() {
-  //  mRecyclerViewServices.setVisibility(View.GONE);
-  //}
 
   @Override public void setItemSelected(int position) {
     mServicesAdapter.setSelectedItem(position);
