@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,14 +19,12 @@ public class Converters {
     return dateResult;
   }
 
-  public static String timeFromMilliseconds(Long milis) {
-    if (Math.abs(milis) != 0) {
-      StringBuilder dateResult = new StringBuilder();
-      dateResult.append(TimeUnit.MILLISECONDS.toHours(milis));
-      dateResult.append(":");
-      dateResult.append(TimeUnit.MILLISECONDS.toMinutes(milis));
-
-      return dateResult.toString();
+  public static String timeFromMilliseconds(Long millis) {
+    if (Math.abs(millis) != 0) {
+      return String.valueOf(TimeUnit.MILLISECONDS.toHours(millis))
+          + ":"
+          + (TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(
+          TimeUnit.MILLISECONDS.toHours(millis)));
     }
     return "";
   }
