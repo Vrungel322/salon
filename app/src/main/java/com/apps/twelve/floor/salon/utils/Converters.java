@@ -3,6 +3,8 @@ package com.apps.twelve.floor.salon.utils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+import java.util.TimeZone;
 
 /**
  * Created by Vrungel on 13.04.2017.
@@ -17,6 +19,18 @@ public class Converters {
     calendar.getTimeInMillis();
     dateResult = formatter.format(calendar.getTime());
     return dateResult;
+  }
+
+  public static String timeFromMilliseconds(Long milis) {
+    if (Math.abs(milis) != 0) {
+      StringBuilder dateResult = new StringBuilder();
+      dateResult.append(TimeUnit.MILLISECONDS.toHours(milis));
+      dateResult.append(":");
+      dateResult.append(TimeUnit.MILLISECONDS.toMinutes(milis));
+
+      return dateResult.toString();
+    }
+    return "";
   }
 
   public static String timeFromMilliseconds(String date) {

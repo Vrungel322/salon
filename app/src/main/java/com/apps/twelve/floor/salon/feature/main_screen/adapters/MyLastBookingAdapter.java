@@ -21,7 +21,10 @@ import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -64,8 +67,9 @@ public class MyLastBookingAdapter
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());
     holder.mTextViewServiceTime.setText(Converters.dateFromSeconds(
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
-    holder.mTextViewRemainTime.setText(Converters.timeFromMilliseconds(String.valueOf(
-        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())));
+
+    holder.mTextViewRemainTime.setText(Converters.timeFromMilliseconds(
+        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()));
 
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
