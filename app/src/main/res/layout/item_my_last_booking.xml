@@ -29,11 +29,11 @@
       android:layout_marginBottom="8dp"
       android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp"
+      android:scaleType="centerCrop"
       android:layout_marginTop="8dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@+id/view"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@mipmap/ic_launcher"
       />
   <TextView
       android:id="@+id/tvServiceName"
@@ -49,6 +49,8 @@
       tools:text="Парикмахер"
       android:layout_marginRight="8dp"
       android:layout_marginEnd="8dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp"
       app:layout_constraintRight_toRightOf="parent"
       />
   <TextView
@@ -58,6 +60,8 @@
       android:layout_marginTop="8dp"
       android:textColor="@color/colorMainScreenBookingDate"
       android:textSize="12sp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp"
       app:layout_constraintLeft_toRightOf="@+id/ivServicePhoto"
       app:layout_constraintTop_toBottomOf="@+id/tvServiceName"
       tools:text="14.02.2017 at 17:00"
@@ -92,6 +96,8 @@
       android:paddingBottom="3dp"
       android:paddingEnd="3dp"
       android:paddingRight="3dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp"
       android:paddingTop="3dp"
       android:text="@string/postpone"
       android:textAllCaps="false"
