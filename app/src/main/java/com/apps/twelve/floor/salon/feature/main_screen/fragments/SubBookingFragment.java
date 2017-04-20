@@ -24,6 +24,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   @InjectPresenter SubFragmentBookingPresenter mSubFragmentBookingPresenter;
 
   @BindView(R.id.rvMyLastBooking) RecyclerView mRecyclerViewMyLastBooking;
+
   private MyLastBookingAdapter mMyLastBookingAdapter;
 
   public static SubBookingFragment newInstance() {

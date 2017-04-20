@@ -86,7 +86,8 @@ public class MyLastBookingAdapter
 
   @Override public void removeBookedServiceFromList(int position) {
     mLastBookingEntities.remove(position);
-    notifyDataSetChanged();
+    notifyItemRemoved(position);
+    notifyItemRangeChanged(position, mLastBookingEntities.size());
   }
 
   static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {
