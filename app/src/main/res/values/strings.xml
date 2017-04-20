@@ -62,6 +62,8 @@
   <string name="booking_phone">Номер мобильного телефона</string>
   <string name="booking_phone_description">(формат 0991112233)</string>
   <string name="booking_button">ЗАПИСАТЬСЯ</string>
+  <string name="name">Имя</string>
+  <string name="phone">Телефон</string>
 
   <string name="choose_master">Выбор Специалиста</string>
   <string name="any_master">Любой Специалист</string>
