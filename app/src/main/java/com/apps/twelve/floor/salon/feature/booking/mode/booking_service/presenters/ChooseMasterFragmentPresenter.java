@@ -44,7 +44,7 @@ import timber.log.Timber;
         .subscribe(masterEntities -> {
           mMasterEntities = masterEntities;
           getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
-              mBookingEntity.getServiceTime());
+              mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
           getViewState().showMasters(masterEntities);
           getViewState().hideProgressBar();
         }, Timber::e);

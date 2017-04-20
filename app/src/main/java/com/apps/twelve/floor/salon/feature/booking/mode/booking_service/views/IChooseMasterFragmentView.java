@@ -22,5 +22,5 @@ import java.util.List;
 
   void blockedClickRv(boolean status);
 
-  void setUpRedSquare(String serviceName, String serviceTime);
+  void setUpRedSquare(String serviceName, String serviceTime, String serviceDuration);
 }
