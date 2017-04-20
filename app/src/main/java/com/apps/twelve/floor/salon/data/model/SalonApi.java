@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon.data.model;
 
 import java.util.List;
+import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -44,6 +46,9 @@ public interface SalonApi {
 
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
       @Header("User") int token);
+
+  @DELETE("api/v1/entry/{id}")
+  Observable<Response<Void>> cancelOrder(@Path("id") String serviceId);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

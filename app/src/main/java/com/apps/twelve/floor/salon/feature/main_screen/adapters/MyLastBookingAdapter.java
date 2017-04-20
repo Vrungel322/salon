@@ -21,10 +21,7 @@ import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -78,7 +75,8 @@ public class MyLastBookingAdapter
     });
     holder.mButtonCancel.setOnClickListener(v -> {
       // TODO: 28.02.2017 send to server cancel query
-      mMyLastBookingAdapterPresenter.cancelOrder(position);
+      mMyLastBookingAdapterPresenter.cancelOrder(position,
+          mLastBookingEntities.get(position).getId());
     });
   }
 
