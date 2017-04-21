@@ -50,13 +50,4 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
-
-  @Override public void updateRvTiming() {
-    mMyLastBookingAdapter.notifyDataSetChanged();
-  }
-
-  @Override public void onStart() {
-    super.onStart();
-    mSubFragmentBookingPresenter.updateTiming();
-  }
 }

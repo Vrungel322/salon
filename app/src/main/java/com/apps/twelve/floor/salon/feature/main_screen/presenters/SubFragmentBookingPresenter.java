@@ -48,8 +48,4 @@ import timber.log.Timber;
                 Timber::e);
     addToUnsubscription(subscription);
   }
-
-  public void updateTiming() {
-    getViewState().updateRvTiming();
-  }
 }

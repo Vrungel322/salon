@@ -42,6 +42,7 @@
   <string name="contacts_about">О нас</string>
   <string name="contacts_website"><u>Перейти на веб-сайт</u></string>
   <string name="more">Еще</string>
+  <string name="time_is_up">Время истекло!</string>
 
   <string name="book_create">Записаться</string>
   <string name="book_choose_service">Начать выбор услуги</string>

@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -65,8 +67,20 @@ public class MyLastBookingAdapter
     holder.mTextViewServiceTime.setText(Converters.dateFromSeconds(
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
 
-    holder.mTextViewRemainTime.setText(Converters.timeFromMilliseconds(
-        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()));
+    new CountDownTimer(
+        mLastBookingEntities.get(holder.getAdapterPosition()).getServiceTime() * 1000L
+            - System.currentTimeMillis(), 1000) {
+
+      public void onTick(long millisUntilFinished) {
+        holder.mTextViewRemainTime.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",
+            ((millisUntilFinished / (1000 * 60 * 60)) % 24),
+            ((millisUntilFinished / (1000 * 60)) % 60), (millisUntilFinished / 1000) % 60));
+      }
+
+      public void onFinish() {
+        holder.mTextViewRemainTime.setText(R.string.time_is_up);
+      }
+    }.start();
 
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
