@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -102,6 +103,7 @@ public class MyLastBookingAdapter
     mLastBookingEntities.remove(position);
     notifyItemRemoved(position);
     notifyItemRangeChanged(position, mLastBookingEntities.size());
+    Timber.e("removeBookedServiceFromList " + position);
   }
 
   static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {
