@@ -67,7 +67,11 @@ public class MyLastBookingAdapter
     holder.mTextViewServiceTime.setText(Converters.dateFromSeconds(
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
 
-    new CountDownTimer(
+    //for DownTimer
+    if (holder.mDownTimer != null) {
+      holder.mDownTimer.cancel();
+    }
+    holder.mDownTimer = new CountDownTimer(
         mLastBookingEntities.get(holder.getAdapterPosition()).getServiceTime() * 1000L
             - System.currentTimeMillis(), 1000) {
 
@@ -118,6 +122,8 @@ public class MyLastBookingAdapter
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;
     @BindView(R.id.bPostpone) Button mButtonPostpone;
     @BindView(R.id.bCancel) Button mButtonCancel;
+
+    private CountDownTimer mDownTimer;
 
     MyLastBookingViewHolder(View view) {
       super(view);
