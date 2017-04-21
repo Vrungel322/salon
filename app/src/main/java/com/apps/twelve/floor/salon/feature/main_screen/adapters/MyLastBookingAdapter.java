@@ -74,7 +74,7 @@ public class MyLastBookingAdapter
 
       public void onTick(long millisUntilFinished) {
         holder.mTextViewRemainTime.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",
-            ((millisUntilFinished / (1000 * 60 * 60)) % 24),
+            ((millisUntilFinished / (1000 * 60 * 60))),
             ((millisUntilFinished / (1000 * 60)) % 60), (millisUntilFinished / 1000) % 60));
       }
 
@@ -89,7 +89,6 @@ public class MyLastBookingAdapter
       mMyLastBookingAdapterPresenter.postponeOrder(position);
     });
     holder.mButtonCancel.setOnClickListener(v -> {
-      // TODO: 28.02.2017 send to server cancel query
       mMyLastBookingAdapterPresenter.cancelOrder(position,
           mLastBookingEntities.get(position).getId());
     });
