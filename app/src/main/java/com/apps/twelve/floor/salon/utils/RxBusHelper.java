@@ -51,4 +51,7 @@ public final class RxBusHelper {
 
   public static class UpdateLastBookingListEvent {
   }
+
+  public static class StopRefreshMainFragment {
+  }
 }
