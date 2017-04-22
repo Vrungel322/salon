@@ -82,7 +82,9 @@ public class MyLastBookingAdapter
       }
 
       public void onFinish() {
-        mMyLastBookingAdapterPresenter.removeItemBooking(holder.getAdapterPosition());
+        holder.mTextViewRemainTime.setText(R.string.time_is_up);
+        holder.mButtonPostpone.setVisibility(View.GONE);
+        holder.mButtonCancel.setVisibility(View.GONE);
       }
     }.start();
 
@@ -102,12 +104,6 @@ public class MyLastBookingAdapter
   }
 
   @Override public void removeBookedServiceFromList(int position) {
-    mLastBookingEntities.remove(position);
-    notifyItemRemoved(position);
-    notifyItemRangeChanged(position, mLastBookingEntities.size());
-  }
-
-  @Override public void removeItemBooking(int position) {
     mLastBookingEntities.remove(position);
     notifyItemRemoved(position);
     notifyItemRangeChanged(position, mLastBookingEntities.size());

@@ -7,9 +7,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapt
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import rx.Observable;
 import rx.Subscription;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 01.03.2017.
@@ -35,12 +33,5 @@ import timber.log.Timber;
   }
 
   public void postponeOrder(int position) {
-  }
-
-  public void removeItemBooking(int position) {
-    Subscription subscription = Observable.just(position)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(integer -> getViewState().removeItemBooking(integer), Timber::e);
-    addToUnsubscription(subscription);
   }
 }
