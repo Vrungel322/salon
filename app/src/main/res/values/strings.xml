@@ -28,6 +28,7 @@
   <string name="bonus">Бонусы</string>
   <string name="postpone">Перенести</string>
   <string name="cancel">Отменить</string>
+  <string name="time_is_up">Время истекло!</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Alfoginio\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
