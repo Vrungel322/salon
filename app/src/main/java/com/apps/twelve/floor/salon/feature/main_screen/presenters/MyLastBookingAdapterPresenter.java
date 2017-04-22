@@ -39,7 +39,6 @@ import rx.Subscription;
   }
 
   public void showConfirmationDialog(int position) {
-    //mRxBus.post(RxBusHelper.ShowDialo);
     getViewState().showConfirmationDialog(position);
   }
 

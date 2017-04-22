@@ -50,4 +50,9 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
     mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
+
+  @Override public void onDestroyView() {
+    mMyLastBookingAdapter.cancelAlertDialog();
+    super.onDestroyView();
+  }
 }

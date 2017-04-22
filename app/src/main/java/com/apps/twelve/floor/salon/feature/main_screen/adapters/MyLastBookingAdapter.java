@@ -129,7 +129,9 @@ public class MyLastBookingAdapter
   }
 
   @Override public void cancelAlertDialog() {
-    mAlertDialog.cancel();
+    if (mAlertDialog != null) {
+      mAlertDialog.dismiss();
+    }
   }
 
   public static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {

@@ -32,8 +32,6 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
 
-  private String mName, mPhone;
-
   public static BookingContactFragment newInstance() {
     Bundle args = new Bundle();
     args.putString(Constants.FragmentsArgumentKeys.SERVICE_NAME, "ТЕСТОВАЯ УСЛУГА");
@@ -51,39 +49,12 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
 
     mTextViewService.setText(
         getArguments().getString(Constants.FragmentsArgumentKeys.SERVICE_NAME));
-
-    mEditTextName.addTextChangedListener(new TextWatcher() {
-
-      @Override public void afterTextChanged(Editable s) {
-        mName = s.toString();
-      }
-
-      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-      }
-
-      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-      }
-    });
-
-    mEditTextPhone.addTextChangedListener(new TextWatcher() {
-
-      @Override public void afterTextChanged(Editable s) {
-        mPhone = s.toString();
-      }
-
-      @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-      }
-
-      @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-      }
-    });
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
     mBookingContactsFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mBookingContactsFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mBookingContactsFragmentPresenter.sendBookingEntity();
-    showToastMessage("Записаться\n" + mName + "\n" + mPhone);
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
