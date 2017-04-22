@@ -45,8 +45,11 @@ import timber.log.Timber;
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
-          mRxBus.post(new RxBusHelper.StopRefreshMainFragment());
-        }, Timber::e);
+          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+        }, throwable -> {
+          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 }

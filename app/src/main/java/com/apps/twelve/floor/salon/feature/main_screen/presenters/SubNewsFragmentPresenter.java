@@ -4,6 +4,8 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubNewsFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
@@ -15,7 +17,9 @@ import timber.log.Timber;
  */
 
 @InjectViewState public class SubNewsFragmentPresenter extends BasePresenter<ISubNewsFragmentView> {
+
   @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -24,6 +28,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchNewsEntities();
+    updateNews();
   }
 
   public void fetchNewsEntities() {
@@ -31,6 +36,20 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(previewNewsEntity -> getViewState().updateNewsPreview(previewNewsEntity),
             Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void updateNews() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateNews.class)
+        .flatMap(updateNews -> mDataManager.fetchNewsPreview())
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(newsEntity -> {
+          getViewState().updateNewsPreview(newsEntity);
+          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+        }, throwable -> {
+          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 }

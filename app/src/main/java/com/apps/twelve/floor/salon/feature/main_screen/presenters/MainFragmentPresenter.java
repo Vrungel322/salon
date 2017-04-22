@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -32,15 +33,19 @@ import timber.log.Timber;
   public void updateBookingAndNews() {
     getViewState().startRefreshingView();
     mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+    mRxBus.post(new RxBusHelper.UpdateNews());
   }
 
   private void stopRefreshMainFragment() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StopRefreshMainFragment.class)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(stopRefreshMainFragment -> getViewState().stopRefreshingView(), throwable -> {
-          Timber.e(throwable);
-          getViewState().stopRefreshingView();
-        });
+    Subscription subscription =
+        Observable.zip(mRxBus.filteredObservable(RxBusHelper.StopRefreshBookingMainFragment.class),
+            mRxBus.filteredObservable(RxBusHelper.StopRefreshNewsMainFragment.class),
+            (stopRefreshBookingMainFragment, stopRefreshNewsMainFragment) -> true)
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(aBoolean -> getViewState().stopRefreshingView(), throwable -> {
+              Timber.e(throwable);
+              getViewState().stopRefreshingView();
+            });
     addToUnsubscription(subscription);
   }
 }
