@@ -1,8 +1,10 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
+import android.content.Context;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,12 +35,15 @@ public class MyLastBookingAdapter
     extends MvpBaseRecyclerAdapter<MyLastBookingAdapter.MyLastBookingViewHolder>
     implements IMyLastBookingAdapterView {
 
+  private final Context mContext;
   @InjectPresenter MyLastBookingAdapterPresenter mMyLastBookingAdapterPresenter;
 
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
+  private AlertDialog mAlertDialog;
 
-  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate) {
+  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context) {
     super(parentDelegate, "MyLastBookingAdapterPresenter");
+    this.mContext = context;
   }
 
   public void addListLastBookingEntity(List<LastBookingEntity> lastBookingEntities) {
@@ -64,7 +69,7 @@ public class MyLastBookingAdapter
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());
-    holder.mTextViewServiceTime.setText(Converters.dateFromSeconds(
+    holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
 
     //for DownTimer
@@ -77,8 +82,8 @@ public class MyLastBookingAdapter
 
       public void onTick(long millisUntilFinished) {
         holder.mTextViewRemainTime.setText(String.format(Locale.getDefault(), "%02d:%02d:%02d",
-            ((millisUntilFinished / (1000 * 60 * 60))),
-            ((millisUntilFinished / (1000 * 60)) % 60), (millisUntilFinished / 1000) % 60));
+            ((millisUntilFinished / (1000 * 60 * 60))), ((millisUntilFinished / (1000 * 60)) % 60),
+            (millisUntilFinished / 1000) % 60));
       }
 
       public void onFinish() {
@@ -93,10 +98,8 @@ public class MyLastBookingAdapter
       // TODO: 28.02.2017 send to server postpone query
       mMyLastBookingAdapterPresenter.postponeOrder(position);
     });
-    holder.mButtonCancel.setOnClickListener(v -> {
-      mMyLastBookingAdapterPresenter.cancelOrder(position,
-          mLastBookingEntities.get(position).getId());
-    });
+    holder.mButtonCancel.setOnClickListener(
+        v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));
   }
 
   @Override public int getItemCount() {
@@ -109,7 +112,27 @@ public class MyLastBookingAdapter
     notifyItemRangeChanged(position, mLastBookingEntities.size());
   }
 
-  static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {
+  @Override public void showConfirmationDialog(int position) {
+    AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
+    adb.setTitle("Отмена записи")
+        .setMessage("Подтвердите удаление записи.")
+        .setIcon(android.R.drawable.ic_dialog_alert)
+        .setPositiveButton("Подтвердить", (dialog, which) -> {
+          mMyLastBookingAdapterPresenter.cancelOrder(position,
+              mLastBookingEntities.get(position).getId());
+          mMyLastBookingAdapterPresenter.cancelAlertDialog();
+        })
+        .setNegativeButton("Отменить",
+            (dialog, which) -> mMyLastBookingAdapterPresenter.cancelAlertDialog());
+    mAlertDialog = adb.create();
+    mAlertDialog.show();
+  }
+
+  @Override public void cancelAlertDialog() {
+    mAlertDialog.cancel();
+  }
+
+  public static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.view) TextView view;
     @BindView(R.id.clLastBooking) ConstraintLayout mConstraintLayoutLastBooking;
     @BindView(R.id.ivServicePhoto) ImageView mImageViewServicePhoto;

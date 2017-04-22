@@ -4,6 +4,8 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
@@ -16,6 +18,7 @@ import rx.Subscription;
 @InjectViewState public class MyLastBookingAdapterPresenter
     extends BasePresenter<IMyLastBookingAdapterView> {
   @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -33,5 +36,14 @@ import rx.Subscription;
   }
 
   public void postponeOrder(int position) {
+  }
+
+  public void showConfirmationDialog(int position) {
+    //mRxBus.post(RxBusHelper.ShowDialo);
+    getViewState().showConfirmationDialog(position);
+  }
+
+  public void cancelAlertDialog() {
+    getViewState().cancelAlertDialog();
   }
 }
