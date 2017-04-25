@@ -85,6 +85,10 @@ public class StartActivity extends BaseActivity
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 
+  public void setMyBooksItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(2).setChecked(true);
+  }
+
   @Override public void onBackPressed() {
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     if (drawer.isDrawerOpen(GravityCompat.START)) {

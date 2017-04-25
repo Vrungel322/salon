@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -43,6 +44,8 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
 
     mMyLastBookingAdapter =
         new MyLastBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
