@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.utils;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
 import com.apps.twelve.floor.salon.R;
@@ -32,6 +33,14 @@ public final class DialogFactory {
         new AlertDialog.Builder(context).setTitle(context.getString(R.string.dialog_error_title))
             .setMessage(message);
     return alertDialog.create();
+  }
+
+  public static AlertDialog.Builder createAlertDialogBuilder(Context context,
+      @StringRes int titleResource, @StringRes int messageResource,
+      @DrawableRes int drawableResource) {
+    return new AlertDialog.Builder(context).setTitle(titleResource)
+        .setMessage(messageResource)
+        .setIcon(drawableResource);
   }
 
   public static Dialog createGenericErrorDialog(Context context, @StringRes int messageResource) {

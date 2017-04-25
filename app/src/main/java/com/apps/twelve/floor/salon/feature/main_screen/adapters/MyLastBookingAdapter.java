@@ -20,6 +20,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
 import com.apps.twelve.floor.salon.utils.Converters;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
@@ -39,7 +40,7 @@ public class MyLastBookingAdapter
   @InjectPresenter MyLastBookingAdapterPresenter mMyLastBookingAdapterPresenter;
 
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
-  private AlertDialog mAlertDialog;
+  private AlertDialog mRemoveBookingDialog;
 
   public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context) {
     super(parentDelegate, "MyLastBookingAdapterPresenter");
@@ -113,24 +114,22 @@ public class MyLastBookingAdapter
   }
 
   @Override public void showConfirmationDialog(int position) {
-    AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
-    adb.setTitle("Отмена записи")
-        .setMessage("Подтвердите удаление записи.")
-        .setIcon(android.R.drawable.ic_dialog_alert)
-        .setPositiveButton("Подтвердить", (dialog, which) -> {
+    mRemoveBookingDialog = DialogFactory.createAlertDialogBuilder(mContext, R.string.cancel_booking,
+        R.string.confirm_cancel_booking, R.drawable.ic_report_problem)
+        .setPositiveButton(R.string.confirm, (dialog, which) -> {
           mMyLastBookingAdapterPresenter.cancelOrder(position,
               mLastBookingEntities.get(position).getId());
           mMyLastBookingAdapterPresenter.cancelAlertDialog();
         })
-        .setNegativeButton("Отменить",
-            (dialog, which) -> mMyLastBookingAdapterPresenter.cancelAlertDialog());
-    mAlertDialog = adb.create();
-    mAlertDialog.show();
+        .setNegativeButton(R.string.cancel,
+            (dialog, which) -> mMyLastBookingAdapterPresenter.cancelAlertDialog())
+        .create();
+    mRemoveBookingDialog.show();
   }
 
   @Override public void cancelAlertDialog() {
-    if (mAlertDialog != null) {
-      mAlertDialog.dismiss();
+    if (mRemoveBookingDialog != null) {
+      mRemoveBookingDialog.dismiss();
     }
   }
 
