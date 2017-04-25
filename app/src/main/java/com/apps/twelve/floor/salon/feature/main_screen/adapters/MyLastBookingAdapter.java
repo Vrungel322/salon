@@ -103,12 +103,7 @@ public class MyLastBookingAdapter
       }
     }.start();
 
-    // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
-      // TODO: 28.02.2017 send to server postpone query
-      mMyLastBookingAdapterPresenter.postponeOrder(mLastBookingEntities.get(position).getId(),
-          mLastBookingEntities.get(position).getMasterName());
-
       mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
           PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
               mLastBookingEntities.get(position).getMasterName()));
