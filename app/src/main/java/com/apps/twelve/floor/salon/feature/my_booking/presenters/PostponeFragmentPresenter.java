@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
@@ -23,31 +22,25 @@ import timber.log.Timber;
     extends BasePresenter<IPostponeFragmentView> {
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
-  @Inject BookingEntity mBookingEntity;
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
 
   @Override protected void inject() {
-    App.initBookingComponent();
-    App.getBookingComponent().inject(this);
+    App.getAppComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-  }
-
-  public void hideFloatingButton() {
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  public void onDestroy() {
+  @Override public void onDestroy() {
     mRxBus.post(new RxBusHelper.ShowFloatingButton());
   }
 
   public void getInfFromRxBus(String masterName) {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .concatMap(
-            serviceID -> mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId()))
+        .concatMap(serviceID -> mDataManager.fetchDaysDataInMasterMode(null))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
@@ -64,6 +57,7 @@ import timber.log.Timber;
   }
 
   public void setSelectedTime(int position) {
+    /*
     if (mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getStatus()) {
       mBookingEntity.setDateId(String.valueOf(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getId()));
@@ -73,6 +67,7 @@ import timber.log.Timber;
     } else {
       getViewState().timeIsNotAvailable();
     }
+    */
   }
 
   public void setDateToTv() {
@@ -85,7 +80,9 @@ import timber.log.Timber;
   }
 
   public void clearSelectedTime() {
+    /*
     mBookingEntity.setDateId("");
     getViewState().clearSelectedTime();
+    */
   }
 }

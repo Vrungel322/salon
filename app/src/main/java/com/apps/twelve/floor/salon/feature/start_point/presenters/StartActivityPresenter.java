@@ -29,7 +29,7 @@ import timber.log.Timber;
     App.getAppComponent().inject(this);
   }
 
-  public void getEventFromRxBus() {
+  private void getEventFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.SetBookingItemInMenu.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().setMyBooksItemInMenu(), Timber::e);

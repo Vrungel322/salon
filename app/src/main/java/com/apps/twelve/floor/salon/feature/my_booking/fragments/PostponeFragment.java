@@ -82,8 +82,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mPostponeFragmentPresenter.hideFloatingButton();
-
     /* turn off scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
 
@@ -213,11 +211,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     Intent intent = new Intent(Intent.ACTION_DIAL);
     intent.setData(Uri.parse("tel:" + mButtonBookingPhone.getText()));
     startActivity(intent);
-  }
-
-  @Override public void onDestroy() {
-    mPostponeFragmentPresenter.onDestroy();
-    super.onDestroy();
   }
 
 }

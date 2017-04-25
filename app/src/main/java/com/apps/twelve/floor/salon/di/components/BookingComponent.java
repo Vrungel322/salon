@@ -11,7 +11,6 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presente
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingDetailFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
 import dagger.Subcomponent;
 
 /**
@@ -38,5 +37,4 @@ import dagger.Subcomponent;
 
   void inject(BookingMasterContactFragmentPresenter presenter);
 
-  void inject(PostponeFragmentPresenter presenter);
 }
