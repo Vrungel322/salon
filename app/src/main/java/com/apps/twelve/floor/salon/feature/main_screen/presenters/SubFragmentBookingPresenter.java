@@ -3,13 +3,11 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBookingView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import java.util.ArrayList;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
@@ -36,11 +34,10 @@ import timber.log.Timber;
 
   private void fetchBookingEntities() {
     Subscription subscription = mDataManager.fetchLastBooking()
-        .compose(ThreadSchedulers.applySchedulers()).flatMap(allEntities -> {
-          ArrayList<LastBookingEntity> firstEntities = new ArrayList<>();
-          for (int i = 0; i < 2; i++) firstEntities.add(allEntities.get(i));
-          return Observable.just(firstEntities);
-        })
+        .compose(ThreadSchedulers.applySchedulers())
+        .flatMap(Observable::from)
+        .take(2)
+        .toList()
         .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
             Timber::e);
     addToUnsubscription(subscription);
@@ -50,12 +47,7 @@ import timber.log.Timber;
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
-            .compose(ThreadSchedulers.applySchedulers())
-            .flatMap(allEntities -> {
-              ArrayList<LastBookingEntity> firstEntities = new ArrayList<>();
-              for (int i = 0; i < 2; i++) firstEntities.add(allEntities.get(i));
-              return Observable.just(firstEntities);
-            })
+            .compose(ThreadSchedulers.applySchedulers()).flatMap(Observable::from).take(2).toList()
             .subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
           mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
