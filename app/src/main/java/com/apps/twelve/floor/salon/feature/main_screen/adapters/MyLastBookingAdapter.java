@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -16,9 +17,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.MvpBaseRecyclerAdapter;
+import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.feature.my_booking.fragments.PostponeFragment;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -36,14 +40,20 @@ public class MyLastBookingAdapter
     implements IMyLastBookingAdapterView {
 
   private final Context mContext;
+  private final Activity mActivity;
+  private final Navigator mNavigator;
+
   @InjectPresenter MyLastBookingAdapterPresenter mMyLastBookingAdapterPresenter;
 
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
   private AlertDialog mAlertDialog;
 
-  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context) {
+  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
+      Navigator navigator) {
     super(parentDelegate, "MyLastBookingAdapterPresenter");
     this.mContext = context;
+    this.mActivity = activity;
+    this.mNavigator = navigator;
   }
 
   public void addListLastBookingEntity(List<LastBookingEntity> lastBookingEntities) {
@@ -96,7 +106,12 @@ public class MyLastBookingAdapter
     // TODO: 28.02.2017 create postpone feature
     holder.mButtonPostpone.setOnClickListener(v -> {
       // TODO: 28.02.2017 send to server postpone query
-      mMyLastBookingAdapterPresenter.postponeOrder(position);
+      mMyLastBookingAdapterPresenter.postponeOrder(mLastBookingEntities.get(position).getId(),
+          mLastBookingEntities.get(position).getMasterName());
+
+      mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
+          PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
+              mLastBookingEntities.get(position).getMasterName()));
     });
     holder.mButtonCancel.setOnClickListener(
         v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));

@@ -5,7 +5,6 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
 import com.apps.twelve.floor.salon.utils.RxBus;
-import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
@@ -35,7 +34,8 @@ import rx.Subscription;
     addToUnsubscription(subscription);
   }
 
-  public void postponeOrder(int position) {
+  public void postponeOrder(Integer serviceId, String masterName) {
+
   }
 
   public void showConfirmationDialog(int position) {
