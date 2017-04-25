@@ -39,6 +39,11 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  public void startRefreshing() {
+    getViewState().startRefreshingView();
+    mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+  }
+
   private void getEventFromRxBus() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
@@ -46,6 +51,7 @@ import timber.log.Timber;
             .compose(ThreadSchedulers.applySchedulers())
             .subscribe(lastBookingEntities -> {
               getViewState().showAllBooking(lastBookingEntities);
+              getViewState().stopRefreshingView();
               mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
             }, throwable -> {
               mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());

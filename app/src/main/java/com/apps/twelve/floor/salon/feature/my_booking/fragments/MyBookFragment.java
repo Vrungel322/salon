@@ -51,6 +51,10 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
     mRecyclerViewMyBooks.setFocusable(false);
 
     mRecyclerViewMyBooks.setAdapter(mMyLastBookingAdapter);
+
+    mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mMyBookFragmentPresenter.startRefreshing());
+
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> bookingEntities) {
