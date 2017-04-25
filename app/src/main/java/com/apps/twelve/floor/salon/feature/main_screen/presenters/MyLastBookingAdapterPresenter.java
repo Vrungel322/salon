@@ -34,10 +34,6 @@ import rx.Subscription;
     addToUnsubscription(subscription);
   }
 
-  public void postponeOrder(Integer serviceId, String masterName) {
-
-  }
-
   public void showConfirmationDialog(int position) {
     getViewState().showConfirmationDialog(position);
   }
