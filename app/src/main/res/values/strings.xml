@@ -30,6 +30,9 @@
   <string name="postpone">Перенести</string>
   <string name="cancel">Отменить</string>
   <string name="time_is_up">Время истекло!</string>
+  <string name="cancel_booking">Отмена записи</string>
+  <string name="confirm_cancel_booking">Подтвердите удаление записи.</string>
+  <string name="confirm">Подтвердить</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Alfoginio\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
