@@ -28,7 +28,6 @@ import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesInMonthVie
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.ScheduleAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
-import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
@@ -83,7 +82,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ((StartActivity) getActivity()).hideFloatingButton();
+    mPostponeFragmentPresenter.hideFloatingButton();
 
     /* turn off scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
@@ -217,7 +216,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   }
 
   @Override public void onDestroy() {
-    ((StartActivity) getActivity()).showFloatingButton();
+    mPostponeFragmentPresenter.onDestroy();
     super.onDestroy();
   }
 

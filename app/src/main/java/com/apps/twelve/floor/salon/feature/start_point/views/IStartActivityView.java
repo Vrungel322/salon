@@ -13,4 +13,11 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   @StateStrategyType(SkipStrategy.class) void addFragmentMain();
+
+  @StateStrategyType(SkipStrategy.class) void setMyBooksItemInMenu();
+
+  @StateStrategyType(AddToEndSingleStrategy.class) void hideFloatingButton();
+
+  @StateStrategyType(AddToEndSingleStrategy.class) void showFloatingButton();
+
 }

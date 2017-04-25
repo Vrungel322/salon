@@ -45,7 +45,6 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ((StartActivity) getActivity()).setMyBooksItemInMenu();
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
 
     mMyLastBookingAdapter =

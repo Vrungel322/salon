@@ -38,7 +38,7 @@ import timber.log.Timber;
         .flatMap(Observable::from)
         .take(2)
         .toList()
-        .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
+        .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
             Timber::e);
     addToUnsubscription(subscription);
   }
@@ -49,7 +49,7 @@ import timber.log.Timber;
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers()).flatMap(Observable::from).take(2).toList()
             .subscribe(lastBookingEntities -> {
-          getViewState().showAllBooking(lastBookingEntities);
+              getViewState().showLastBookings(lastBookingEntities);
           mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
         }, throwable -> {
           mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());

@@ -59,7 +59,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
 
   }
 
-  @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
+  @Override public void showLastBookings(List<LastBookingEntity> lastBookingEntities) {
     mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }

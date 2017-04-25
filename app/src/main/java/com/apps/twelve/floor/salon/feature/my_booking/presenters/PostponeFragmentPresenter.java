@@ -36,6 +36,14 @@ import timber.log.Timber;
     super.onFirstViewAttach();
   }
 
+  public void hideFloatingButton() {
+    mRxBus.post(new RxBusHelper.HideFloatingButton());
+  }
+
+  public void onDestroy() {
+    mRxBus.post(new RxBusHelper.ShowFloatingButton());
+  }
+
   public void getInfFromRxBus(String masterName) {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
         .concatMap(

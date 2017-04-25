@@ -86,15 +86,15 @@ public class StartActivity extends BaseActivity
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 
-  public void setMyBooksItemInMenu() {
+  @Override public void setMyBooksItemInMenu() {
     mNavViewTopPart.getMenu().getItem(2).setChecked(true);
   }
 
-  public void hideFloatingButton() {
+  @Override public void hideFloatingButton() {
     mFabBooking.setVisibility(View.INVISIBLE);
   }
 
-  public void showFloatingButton() {
+  @Override public void showFloatingButton() {
     mFabBooking.setVisibility(View.VISIBLE);
   }
 
