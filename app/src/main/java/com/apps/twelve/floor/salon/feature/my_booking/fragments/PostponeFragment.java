@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -81,15 +83,24 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ((StartActivity) getActivity()).setMyBooksItemInMenu();
     ((StartActivity) getActivity()).hideFloatingButton();
 
+    /* turn off scrolling */
+    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
+    AppBarLayout.LayoutParams toolbarLayoutParams =
+        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+    toolbarLayoutParams.setScrollFlags(0);
+    mToolbar.setLayoutParams(toolbarLayoutParams);
+
+    /* get booking information */
     mServiceName = getArguments().getString("service");
     mMasterName = getArguments().getString("master");
 
-    mPostponeFragmentPresenter.getInfFromRxBus(mMasterName);
-
     setUpRedSquare(mServiceName, mMasterName);
+
+    /* get available time */
+    mPostponeFragmentPresenter.getInfFromRxBus(mMasterName);
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {

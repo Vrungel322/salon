@@ -56,6 +56,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
         c -> mNavigator.replaceFragmentTagNotCopy((StartActivity) getActivity(),
             R.id.container_main, MyBookFragment.newInstance(),
             Constants.FragmentTag.MY_BOOK_FRAGMENT));
+
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> lastBookingEntities) {
