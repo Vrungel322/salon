@@ -64,7 +64,7 @@ public class MyLastBookingAdapter
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.item_my_last_booking, parent, false));
+        .inflate(R.layout.item_my_booking, parent, false));
   }
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
