@@ -58,6 +58,7 @@ import timber.log.Timber;
 
   public void saveNewTime(String entryId) {
     if (timePosition != -1) {
+      getViewState().setConfirmButtonUnClickable();
       Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
           .compose(ThreadSchedulers.applySchedulers())
@@ -74,6 +75,7 @@ import timber.log.Timber;
                 getViewState().showErrorMessage("This booking entity does not exist");
                 break;
               default:
+                getViewState().setConfirmButtonClickable();
                 break;
             }
           }, Timber::e);

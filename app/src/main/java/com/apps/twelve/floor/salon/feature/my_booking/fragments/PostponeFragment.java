@@ -63,6 +63,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @BindView(R.id.textViewCurrentDate) TextView mTextViewCurrentDate;
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
+  @BindView(R.id.btnConfirmPostpone) Button mBtnConfirmPostpone;
 
   private List<DataServiceEntity> mDays = new ArrayList<>();
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
@@ -99,18 +100,23 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mToolbar.setLayoutParams(toolbarLayoutParams);
 
     /* get booking information */
-    String mServiceName = getArguments().getString(SERVICE_NAME);
-    String mMasterName = getArguments().getString(MASTER_NAME);
-    Integer serviceId = getArguments().getInt(SERVICE_ID);
     mEntityId = getArguments().getInt(ENTITY_ID);
 
-    setUpRedSquare(mServiceName, mMasterName);
+    setUpRedSquare(getArguments().getString(SERVICE_NAME), getArguments().getString(MASTER_NAME));
 
-    mPostponeFragmentPresenter.getAvailableTime(String.valueOf(serviceId));
+    mPostponeFragmentPresenter.getAvailableTime(String.valueOf(getArguments().getInt(SERVICE_ID)));
   }
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
     mPostponeFragmentPresenter.saveNewTime(String.valueOf(mEntityId));
+  }
+
+  @Override public void setConfirmButtonClickable() {
+    mBtnConfirmPostpone.setClickable(true);
+  }
+
+  @Override public void setConfirmButtonUnClickable() {
+    mBtnConfirmPostpone.setClickable(false);
   }
 
   @Override public void showSuccessMessageAndCloseTheFragment() {

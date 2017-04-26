@@ -13,6 +13,10 @@ import java.util.List;
 
   void showErrorMessage(String message);
 
+  void setConfirmButtonClickable();
+
+  void setConfirmButtonUnClickable();
+
   void setUpUi(List<DataServiceEntity> days);
 
   void setSelectedTime(int position);
