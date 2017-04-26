@@ -115,7 +115,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @Override public void showSuccessMessageAndCloseTheFragment() {
     showToastMessage("updated");
-    getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+    getActivity().onBackPressed();
   }
 
   @Override public void showErrorMessage(String message) {
