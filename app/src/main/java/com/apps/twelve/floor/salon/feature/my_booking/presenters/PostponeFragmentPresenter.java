@@ -101,10 +101,4 @@ import timber.log.Timber;
     getViewState().setSelectedDay(position);
   }
 
-  public void clearSelectedTime() {
-    /*
-    mBookingEntity.setDateId("");
-    getViewState().clearSelectedTime();
-    */
-  }
 }

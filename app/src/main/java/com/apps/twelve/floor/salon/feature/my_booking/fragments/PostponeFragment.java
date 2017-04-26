@@ -137,7 +137,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
-        mPostponeFragmentPresenter.clearSelectedTime();
         mPostponeFragmentPresenter.setDateToTv();
       }
 
