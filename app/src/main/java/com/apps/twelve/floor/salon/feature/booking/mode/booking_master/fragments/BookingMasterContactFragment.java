@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragment
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -26,6 +27,7 @@ public class BookingMasterContactFragment extends BaseFragment
   @BindView(R.id.tv_master_details) TextView mTextViewMasterDetails;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
+  @BindView(R.id.btn_booking_contact) Button btnCreateBooking;
 
   public static BookingMasterContactFragment newInstance() {
     Bundle args = new Bundle();
@@ -46,6 +48,7 @@ public class BookingMasterContactFragment extends BaseFragment
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
+    btnCreateBooking.setClickable(false);
     mBookingMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mBookingMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mBookingMasterContactFragmentPresenter.sendBookingEntity();

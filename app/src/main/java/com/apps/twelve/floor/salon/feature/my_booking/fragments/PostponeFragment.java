@@ -64,8 +64,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
-  private String mServiceName, mMasterName;
-
   public static PostponeFragment newInstance(String serviceName, String masterName) {
     Bundle args = new Bundle();
     args.putString("service", serviceName);
@@ -91,8 +89,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mToolbar.setLayoutParams(toolbarLayoutParams);
 
     /* get booking information */
-    mServiceName = getArguments().getString("service");
-    mMasterName = getArguments().getString("master");
+    String mServiceName = getArguments().getString("service");
+    String mMasterName = getArguments().getString("master");
 
     setUpRedSquare(mServiceName, mMasterName);
 
