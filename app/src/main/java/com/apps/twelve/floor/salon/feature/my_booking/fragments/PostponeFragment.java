@@ -64,10 +64,15 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
-  public static PostponeFragment newInstance(String serviceName, String masterName) {
+  private Integer mEntityId;
+
+  public static PostponeFragment newInstance(String serviceName, String masterName,
+      Integer serviceId, Integer entityId) {
     Bundle args = new Bundle();
     args.putString("service", serviceName);
     args.putString("master", masterName);
+    args.putInt("service_id", serviceId);
+    args.putInt("entity_id", entityId);
     PostponeFragment fragment = new PostponeFragment();
     fragment.setArguments(args);
     return fragment;
@@ -92,10 +97,25 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     String mServiceName = getArguments().getString("service");
     String mMasterName = getArguments().getString("master");
 
+    Integer serviceId = getArguments().getInt("service_id");
+    mEntityId = getArguments().getInt("entity_id");
+
     setUpRedSquare(mServiceName, mMasterName);
 
-    /* get available time */
-    mPostponeFragmentPresenter.getAvailableTime(mMasterName);
+    mPostponeFragmentPresenter.getAvailableTime(String.valueOf(serviceId));
+  }
+
+  @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
+    mPostponeFragmentPresenter.saveNewTime(String.valueOf(mEntityId));
+  }
+
+  @Override public void showSuccessMessageAndCloseTheFragment() {
+    showToastMessage("updated");
+    getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+  }
+
+  @Override public void showErrorMessage(String message) {
+    showAlertMessage("Error", message);
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {

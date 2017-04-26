@@ -72,6 +72,10 @@ public class RestApi {
     return api.cancelOrder(String.valueOf(serviceId));
   }
 
+  public Observable<Response<Void>> postponeService(String entryId, String userId, int scheduleId) {
+    return api.postponeService(entryId, userId, scheduleId);
+  }
+
   //public Observable<TokenEntity> login(LoginBody credentials) {
   //  return api.login(credentials);
   //}

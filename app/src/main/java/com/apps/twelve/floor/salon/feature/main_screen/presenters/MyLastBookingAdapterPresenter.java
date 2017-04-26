@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 01.03.2017.
@@ -30,7 +31,7 @@ import rx.Subscription;
           if (voidResponse.code() == 200) {
             getViewState().removeBookedServiceFromList(position);
           }
-        });
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 

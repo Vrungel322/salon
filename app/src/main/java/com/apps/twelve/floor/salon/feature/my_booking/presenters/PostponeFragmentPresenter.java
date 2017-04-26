@@ -24,6 +24,7 @@ import timber.log.Timber;
   @Inject RxBus mRxBus;
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
+  private int timePosition;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -38,9 +39,8 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.ShowFloatingButton());
   }
 
-  public void getAvailableTime(String masterName) {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
-        .concatMap(serviceID -> mDataManager.fetchDaysDataInMasterMode(null))
+  public void getAvailableTime(String serviceId) {
+    Subscription subscription = mDataManager.fetchDaysData(serviceId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
@@ -56,18 +56,36 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  public void saveNewTime(String entryId) {
+    Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
+        mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(voidResponse -> {
+          switch (voidResponse.code()) {
+            case 200: // updated
+              getViewState().showSuccessMessageAndCloseTheFragment();
+              mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+              break;
+            case 400: // this time has already been picked
+              getViewState().showErrorMessage("This time has already been picked");
+              break;
+            case 404: // this booking entity does not exist
+              getViewState().showErrorMessage("This booking entity does not exist");
+              break;
+            default:
+              break;
+          }
+        }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
   public void setSelectedTime(int position) {
-    /*
+    timePosition = position;
     if (mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getStatus()) {
-      mBookingEntity.setDateId(String.valueOf(
-          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getId()));
-      mBookingEntity.setServiceTime(String.valueOf(
-          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
     } else {
       getViewState().timeIsNotAvailable();
     }
-    */
   }
 
   public void setDateToTv() {

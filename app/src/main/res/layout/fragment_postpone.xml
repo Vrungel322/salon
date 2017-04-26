@@ -251,7 +251,7 @@
       style="?android:attr/progressBarStyle"
       />
   <Button
-      android:id="@+id/btnConfirm"
+      android:id="@+id/btnConfirmPostpone"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"

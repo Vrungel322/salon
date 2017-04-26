@@ -42,11 +42,12 @@ import timber.log.Timber;
 
   public void startRefreshing() {
     getViewState().startRefreshingView();
-    mRxBus.post(new RxBusHelper.UpdateBooking());
+    mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
   }
 
   private void getEventFromRxBus() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBooking.class)
+    Subscription subscription =
+        mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers())
             .subscribe(lastBookingEntities -> {

@@ -9,6 +9,10 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IPostponeFragmentView
     extends MvpView {
 
+  void showSuccessMessageAndCloseTheFragment();
+
+  void showErrorMessage(String message);
+
   void setUpUi(List<DataServiceEntity> days);
 
   void setSelectedTime(int position);

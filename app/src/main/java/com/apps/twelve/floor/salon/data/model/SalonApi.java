@@ -4,9 +4,12 @@ import java.util.List;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -47,8 +50,11 @@ public interface SalonApi {
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
       @Header("User") int token);
 
-  @DELETE("api/v1/entry/{id}")
-  Observable<Response<Void>> cancelOrder(@Path("id") String serviceId);
+  @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(@Path("id") String serviceId);
+
+  @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
+      @Path("entryId") String entryId, @Header("user") String userId,
+      @Field("schedule_id") int scheduleId);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

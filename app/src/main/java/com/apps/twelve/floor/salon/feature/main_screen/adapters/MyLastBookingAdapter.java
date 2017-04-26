@@ -107,7 +107,10 @@ public class MyLastBookingAdapter
     holder.mButtonPostpone.setOnClickListener(v -> {
       mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
           PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
-              mLastBookingEntities.get(position).getMasterName()));
+              mLastBookingEntities.get(position).getMasterName()
+              //, service_id, entity_id
+              , mLastBookingEntities.get(position).getServiceId(),
+              mLastBookingEntities.get(position).getId()));
     });
     holder.mButtonCancel.setOnClickListener(
         v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));

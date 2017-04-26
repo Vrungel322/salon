@@ -16,9 +16,12 @@ public class LastBookingEntity implements Parcelable {
   @SerializedName("service_image") private String imageUri;
   @SerializedName("schedule") private Integer serviceTime;
   @SerializedName("service_title") private String serviceName;
+  @SerializedName("service_id") private Integer serviceId;
+  @SerializedName("master_id") private Integer masterId;
 
   public LastBookingEntity(Integer id, String userPhone, String userName, String masterName,
-      String imageUri, Integer serviceTime, String serviceName) {
+      String imageUri, Integer serviceTime, String serviceName, Integer serviceId,
+      Integer masterId) {
     this.id = id;
     this.userPhone = userPhone;
     this.userName = userName;
@@ -26,6 +29,8 @@ public class LastBookingEntity implements Parcelable {
     this.imageUri = imageUri;
     this.serviceTime = serviceTime;
     this.serviceName = serviceName;
+    this.serviceId = serviceId;
+    this.masterId = masterId;
   }
 
   protected LastBookingEntity(Parcel in) {
@@ -114,5 +119,21 @@ public class LastBookingEntity implements Parcelable {
 
   public void setServiceName(String serviceName) {
     this.serviceName = serviceName;
+  }
+
+  public Integer getServiceId() {
+    return serviceId;
+  }
+
+  public void setServiceId(Integer serviceId) {
+    this.serviceId = serviceId;
+  }
+
+  public Integer getMasterId() {
+    return masterId;
+  }
+
+  public void setMasterId(Integer masterId) {
+    this.masterId = masterId;
   }
 }

@@ -14,8 +14,8 @@ import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.ArrayList;
 import java.util.List;
+import retrofit2.Response;
 import rx.Observable;
-import rx.Subscription;
 
 /**
  * Created by Vrungel on 26.01.2017.
@@ -86,6 +86,10 @@ public class DataManager {
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
     return mRestApi.cancelOrder(serviceId);
+  }
+
+  public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
+    return mRestApi.postponeService(entryId, mPref.getToken(), scheduleId);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {

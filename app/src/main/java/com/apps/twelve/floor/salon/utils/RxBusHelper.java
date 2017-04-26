@@ -61,9 +61,6 @@ public final class RxBusHelper {
   public static class StopRefreshNewsMainFragment {
   }
 
-  public static class UpdateBooking {
-  }
-
   public static class StopRefreshBookingFragment {
   }
 
