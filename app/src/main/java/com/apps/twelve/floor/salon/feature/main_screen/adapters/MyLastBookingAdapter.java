@@ -64,8 +64,8 @@ public class MyLastBookingAdapter
   }
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.item_my_booking, parent, false));
+    return new MyLastBookingAdapter.MyLastBookingViewHolder(
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_booking, parent, false));
   }
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
@@ -107,10 +107,9 @@ public class MyLastBookingAdapter
     holder.mButtonPostpone.setOnClickListener(v -> {
       mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
           PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
-              mLastBookingEntities.get(position).getMasterName()
-              //, service_id, entity_id
-              , mLastBookingEntities.get(position).getServiceId(),
-              mLastBookingEntities.get(position).getId()));
+              mLastBookingEntities.get(position).getMasterName(),
+              mLastBookingEntities.get(position).getServiceId(),
+              /* entity_id */ mLastBookingEntities.get(position).getId()));
     });
     holder.mButtonCancel.setOnClickListener(
         v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));

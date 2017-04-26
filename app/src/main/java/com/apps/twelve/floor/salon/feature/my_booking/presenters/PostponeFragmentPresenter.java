@@ -24,7 +24,7 @@ import timber.log.Timber;
   @Inject RxBus mRxBus;
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
-  private int timePosition;
+  private int timePosition = -1;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -57,32 +57,36 @@ import timber.log.Timber;
   }
 
   public void saveNewTime(String entryId) {
-    Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
-        mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(voidResponse -> {
-          switch (voidResponse.code()) {
-            case 200: // updated
-              getViewState().showSuccessMessageAndCloseTheFragment();
-              mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-              break;
-            case 400: // this time has already been picked
-              getViewState().showErrorMessage("This time has already been picked");
-              break;
-            case 404: // this booking entity does not exist
-              getViewState().showErrorMessage("This booking entity does not exist");
-              break;
-            default:
-              break;
-          }
-        }, Timber::e);
-    addToUnsubscription(subscription);
+    if (timePosition != -1) {
+      Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
+          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(voidResponse -> {
+            switch (voidResponse.code()) {
+              case 200: // updated
+                getViewState().showSuccessMessageAndCloseTheFragment();
+                mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                break;
+              case 400: // this time has already been picked
+                getViewState().showErrorMessage("This time has already been picked");
+                break;
+              case 404: // this booking entity does not exist
+                getViewState().showErrorMessage("This booking entity does not exist");
+                break;
+              default:
+                break;
+            }
+          }, Timber::e);
+      addToUnsubscription(subscription);
+    } else {
+      getViewState().showErrorMessage("Pick the time!");
+    }
   }
 
   public void setSelectedTime(int position) {
-    timePosition = position;
     if (mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getStatus()) {
       getViewState().setSelectedTime(position);
+      timePosition = position;
     } else {
       getViewState().timeIsNotAvailable();
     }

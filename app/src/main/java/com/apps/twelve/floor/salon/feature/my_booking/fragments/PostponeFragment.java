@@ -101,7 +101,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     /* get booking information */
     String mServiceName = getArguments().getString(SERVICE_NAME);
     String mMasterName = getArguments().getString(MASTER_NAME);
-
     Integer serviceId = getArguments().getInt(SERVICE_ID);
     mEntityId = getArguments().getInt(ENTITY_ID);
 
