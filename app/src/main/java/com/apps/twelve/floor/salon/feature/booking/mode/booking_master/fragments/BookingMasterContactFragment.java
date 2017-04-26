@@ -27,7 +27,7 @@ public class BookingMasterContactFragment extends BaseFragment
   @BindView(R.id.tv_master_details) TextView mTextViewMasterDetails;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
-  @BindView(R.id.btn_booking_contact) Button btnCreateBooking;
+  @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
   public static BookingMasterContactFragment newInstance() {
     Bundle args = new Bundle();
@@ -48,7 +48,7 @@ public class BookingMasterContactFragment extends BaseFragment
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
-    btnCreateBooking.setClickable(false);
+    mBtnCreateBooking.setClickable(false);
     mBookingMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mBookingMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mBookingMasterContactFragmentPresenter.sendBookingEntity();
@@ -68,5 +68,9 @@ public class BookingMasterContactFragment extends BaseFragment
 
   @Override public void showAlert() {
     showAlertMessage("Error", "Warning");
+  }
+
+  @Override public void setButtonClickable() {
+    mBtnCreateBooking.setClickable(true);
   }
 }

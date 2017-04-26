@@ -5,7 +5,6 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -59,6 +58,7 @@ import timber.log.Timber;
           } else {
             getViewState().showAlert();
           }
+          getViewState().setButtonClickable();
         }, Timber::e);
     addToUnsubscription(subscription);
   }

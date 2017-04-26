@@ -30,7 +30,7 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   @BindView(R.id.tv_master_details) TextView mTextViewMasterDetails;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
-  @BindView(R.id.btn_booking_contact) Button btnCreateBooking;
+  @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
   public static BookingContactFragment newInstance() {
     Bundle args = new Bundle();
@@ -52,7 +52,7 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
-    btnCreateBooking.setClickable(false);
+    mBtnCreateBooking.setClickable(false);
     mBookingContactsFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mBookingContactsFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mBookingContactsFragmentPresenter.sendBookingEntity();
@@ -72,5 +72,9 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
 
   @Override public void showAlert() {
     showAlertMessage("Error", "smth wrong");
+  }
+
+  @Override public void setButtonClickable() {
+    mBtnCreateBooking.setClickable(true);
   }
 }

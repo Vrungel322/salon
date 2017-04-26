@@ -12,4 +12,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void closeActivity();
 
   void showAlert();
+
+  void setButtonClickable();
 }
