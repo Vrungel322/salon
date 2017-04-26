@@ -33,6 +33,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.ENTITY_ID;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.MASTER_NAME;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_ID;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
+
 /**
  * Created by Alexandra on 25.04.2017.
  */
@@ -69,10 +74,10 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   public static PostponeFragment newInstance(String serviceName, String masterName,
       Integer serviceId, Integer entityId) {
     Bundle args = new Bundle();
-    args.putString("service", serviceName);
-    args.putString("master", masterName);
-    args.putInt("service_id", serviceId);
-    args.putInt("entity_id", entityId);
+    args.putString(SERVICE_NAME, serviceName);
+    args.putString(MASTER_NAME, masterName);
+    args.putInt(SERVICE_ID, serviceId);
+    args.putInt(ENTITY_ID, entityId);
     PostponeFragment fragment = new PostponeFragment();
     fragment.setArguments(args);
     return fragment;
@@ -94,11 +99,11 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mToolbar.setLayoutParams(toolbarLayoutParams);
 
     /* get booking information */
-    String mServiceName = getArguments().getString("service");
-    String mMasterName = getArguments().getString("master");
+    String mServiceName = getArguments().getString(SERVICE_NAME);
+    String mMasterName = getArguments().getString(MASTER_NAME);
 
-    Integer serviceId = getArguments().getInt("service_id");
-    mEntityId = getArguments().getInt("entity_id");
+    Integer serviceId = getArguments().getInt(SERVICE_ID);
+    mEntityId = getArguments().getInt(ENTITY_ID);
 
     setUpRedSquare(mServiceName, mMasterName);
 

@@ -27,6 +27,9 @@ public final class Constants {
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
     public static final String SERVICE_NAME = "SERVICE_NAME";
     public static final String BOOKING_SCREEN_TO_START = "BOOKING_SCREEN_TO_START";
+    public static final String MASTER_NAME = "MASTER_NAME";
+    public static final String SERVICE_ID = "SERVICE_ID";
+    public static final String ENTITY_ID = "ENTITY_ID";
   }
 
   public class FragmentToShow {
