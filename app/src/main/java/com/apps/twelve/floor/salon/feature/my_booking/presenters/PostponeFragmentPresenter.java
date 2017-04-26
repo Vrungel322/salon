@@ -38,7 +38,7 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.ShowFloatingButton());
   }
 
-  public void getInfFromRxBus(String masterName) {
+  public void getAvailableTime(String masterName) {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ServiceID.class)
         .concatMap(serviceID -> mDataManager.fetchDaysDataInMasterMode(null))
         .compose(ThreadSchedulers.applySchedulers())

@@ -97,7 +97,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     setUpRedSquare(mServiceName, mMasterName);
 
     /* get available time */
-    mPostponeFragmentPresenter.getInfFromRxBus(mMasterName);
+    mPostponeFragmentPresenter.getAvailableTime(mMasterName);
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {
