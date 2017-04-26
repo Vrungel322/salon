@@ -70,12 +70,12 @@ import timber.log.Timber;
                 break;
               case 400: // this time has already been picked
                 getViewState().showErrorMessage("This time has already been picked");
+                getViewState().setConfirmButtonClickable();
                 break;
               case 404: // this booking entity does not exist
                 getViewState().showErrorMessage("This booking entity does not exist");
                 break;
               default:
-                getViewState().setConfirmButtonClickable();
                 break;
             }
           }, Timber::e);
