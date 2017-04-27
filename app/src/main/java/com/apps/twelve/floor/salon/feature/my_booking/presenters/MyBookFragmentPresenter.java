@@ -28,16 +28,28 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchBookingEntities();
+    getEventFromRxBus();
     mRxBus.post(new RxBusHelper.SetBookingItemInMenu());
   }
 
   private void fetchBookingEntities() {
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchLastBooking()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
           getViewState().stopRefreshingView();
         }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void getEventFromRxBus() {
+    Subscription subscription =
+        mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
+            .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
+                Timber::e);
     addToUnsubscription(subscription);
   }
 
