@@ -122,8 +122,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mBtnConfirmPostpone.setClickable(false);
   }
 
-  @Override public void showSuccessMessageAndCloseTheFragment() {
-    showToastMessage("updated");
+  @Override public void closeTheFragment() {
     getActivity().onBackPressed();
   }
 
