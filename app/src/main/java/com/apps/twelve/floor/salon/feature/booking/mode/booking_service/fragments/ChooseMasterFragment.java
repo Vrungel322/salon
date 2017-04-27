@@ -5,7 +5,6 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -32,7 +31,6 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
   @BindView(R.id.tvServiceDuration) TextView mTextViewServiceDuration;
-  @BindView(R.id.cbAnyMaster) CheckBox mCheckBoxAnyMaster;
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
@@ -58,18 +56,13 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
     mRecyclerViewMasters.setNestedScrollingEnabled(false);
     mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
-        .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseMasterFragmentPresenter.setSelectedItem(
-                position));
-
-    mCheckBoxAnyMaster.setOnCheckedChangeListener((buttonView, isChecked) -> {
-      if (isChecked) {
-        mChooseMasterFragmentPresenter.blockedClickRv(true);
-        mChooseMasterFragmentPresenter.setAnyMasterSelected();
-      } else {
-        mChooseMasterFragmentPresenter.blockedClickRv(false);
-      }
-    });
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          if (position == 0) {
+            mChooseMasterFragmentPresenter.setAnyMasterSelected();
+          } else {
+            mChooseMasterFragmentPresenter.setSelectedItem(position - 1);
+          }
+        });
   }
 
   @Override public void showMasters(List<MasterEntity> masterEntities) {
@@ -83,13 +76,6 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   @Override public void setSelectedItem(int position) {
     mMastersVerticalAdapter.setSelectedItem(position);
-  }
-
-  @Override public void blockedClickRv(boolean status) {
-    mViewBlockedClickRv.setClickable(status);
-    if (status) {
-      mMastersVerticalAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
-    }
   }
 
   @Override

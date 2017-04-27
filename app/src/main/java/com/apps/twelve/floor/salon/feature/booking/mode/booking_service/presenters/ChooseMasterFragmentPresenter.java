@@ -54,7 +54,7 @@ import timber.log.Timber;
   public void setSelectedItem(int position) {
     mBookingEntity.setMasterId(mMasterEntities.get(position).getMasterId());
     mBookingEntity.setMasterName(mMasterEntities.get(position).getMasterName());
-    getViewState().setSelectedItem(position);
+    getViewState().setSelectedItem(position + 1);
     mRxBus.post(new RxBusHelper.EventForNextStep(
         new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
             mBookingEntity.getMasterName()), 2));
@@ -63,9 +63,10 @@ import timber.log.Timber;
   public void setAnyMasterSelected() {
     mBookingEntity.setMasterId("any");
     mBookingEntity.setMasterName("any");
+    getViewState().setSelectedItem(0);
+    mRxBus.post(new RxBusHelper.EventForNextStep(
+        new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
+            mBookingEntity.getMasterName()), 2));
   }
 
-  public void blockedClickRv(boolean isChecked) {
-    getViewState().blockedClickRv(isChecked);
-  }
 }
