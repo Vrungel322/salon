@@ -5,6 +5,16 @@ package com.apps.twelve.floor.salon.utils;
  */
 
 public final class RxBusHelper {
+  public static class EventForNextStep{
+    public Object data;
+    public int currentItem;
+
+    public EventForNextStep(Object data, int currentItem) {
+      this.data = data;
+      this.currentItem = currentItem;
+    }
+  }
+
   public static class ServiceID {
     public String serviceId;
     public String serviceName;

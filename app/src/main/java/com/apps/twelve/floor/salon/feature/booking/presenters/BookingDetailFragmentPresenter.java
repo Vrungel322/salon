@@ -35,74 +35,80 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().setUpViewPager();
     stateBooking();
+    nextStep(2);
   }
 
-  public void nextStep(int currentItem) {
-    if (mStartWith == Constants.BookingMode.START_WITH_SERVICE) {
-      switch (currentItem) {
-        case 0:
-          if (!mBookingEntity.getServiceId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().hideKeyboard();
+  public void nextStep(int currentItem1) {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class)
+        .subscribe(eventForNextStep -> {
+          if (mStartWith == Constants.BookingMode.START_WITH_SERVICE) {
+            switch (eventForNextStep.currentItem) {
+              case 0:
+                if (!mBookingEntity.getServiceId().isEmpty()) {
+                  mRxBus.post(
+                      new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
+                          mBookingEntity.getMasterName()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                  getViewState().hideKeyboard();
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+              case 1:
+                if (!mBookingEntity.getDateId().isEmpty()) {
+                  mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
+                      mBookingEntity.getServiceTime()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+              case 2:
+                if (!mBookingEntity.getMasterId().isEmpty()) {
+                  mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
+                      mBookingEntity.getMasterName()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                  getViewState().replaceTitleNextButton(true);
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+            }
           } else {
-            getViewState().showMessageWarning();
+            switch (eventForNextStep.currentItem) {
+              case 0:
+                if (!mBookingEntity.getMasterId().isEmpty()) {
+                  mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
+                      mBookingEntity.getMasterName()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+              case 1:
+                if (!mBookingEntity.getServiceId().isEmpty()) {
+                  mRxBus.post(
+                      new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
+                          mBookingEntity.getMasterName()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                  getViewState().hideKeyboard();
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+              case 2:
+                if (!mBookingEntity.getDateId().isEmpty()) {
+                  mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
+                      mBookingEntity.getServiceTime()));
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
+                  getViewState().replaceTitleNextButton(true);
+                } else {
+                  getViewState().showMessageWarning();
+                }
+                break;
+            }
           }
-          break;
-        case 1:
-          if (!mBookingEntity.getDateId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
-                mBookingEntity.getServiceTime()));
-            getViewState().goNext(currentItem + 1);
-          } else {
-            getViewState().showMessageWarning();
-          }
-          break;
-        case 2:
-          if (!mBookingEntity.getMasterId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().replaceTitleNextButton(true);
-          } else {
-            getViewState().showMessageWarning();
-          }
-          break;
-      }
-    } else {
-      switch (currentItem) {
-        case 0:
-          if (!mBookingEntity.getMasterId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-          } else {
-            getViewState().showMessageWarning();
-          }
-          break;
-        case 1:
-          if (!mBookingEntity.getServiceId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
-                mBookingEntity.getMasterName()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().hideKeyboard();
-          } else {
-            getViewState().showMessageWarning();
-          }
-          break;
-        case 2:
-          if (!mBookingEntity.getDateId().isEmpty()) {
-            mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
-                mBookingEntity.getServiceTime()));
-            getViewState().goNext(currentItem + 1);
-            getViewState().replaceTitleNextButton(true);
-          } else {
-            getViewState().showMessageWarning();
-          }
-          break;
-      }
-    }
+        });
   }
 
   public void prevStep(int currentItem) {
