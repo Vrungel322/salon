@@ -28,7 +28,6 @@
           android:layout_alignParentTop="true"
           android:background="@color/colorChooseMasterAnyMasterBackground"
           android:scaleType="centerCrop"
-          android:padding="5dp"
           card_view:srcCompat="@drawable/ic_user_female"
           />
 
