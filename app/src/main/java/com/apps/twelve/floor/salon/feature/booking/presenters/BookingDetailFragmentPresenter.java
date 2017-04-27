@@ -69,7 +69,6 @@ import timber.log.Timber;
                   mRxBus.post(new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
                       mBookingEntity.getMasterName()));
                   getViewState().goNext(eventForNextStep.currentItem + 1);
-                  getViewState().replaceTitleNextButton(true);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_master);
                 }
@@ -102,7 +101,6 @@ import timber.log.Timber;
                   mRxBus.post(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
                       mBookingEntity.getServiceTime()));
                   getViewState().goNext(eventForNextStep.currentItem + 1);
-                  getViewState().replaceTitleNextButton(true);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_date);
                 }
@@ -115,9 +113,6 @@ import timber.log.Timber;
   public void prevStep(int currentItem) {
     if (currentItem > 0) {
       getViewState().goPrev(currentItem - 1);
-    }
-    if (currentItem == 3) {
-      getViewState().replaceTitleNextButton(false);
     }
   }
 
