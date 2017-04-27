@@ -124,8 +124,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     getActivity().onBackPressed();
   }
 
-  @Override public void showErrorMessage(String message) {
-    showAlertMessage("Error", message);
+  @Override public void showErrorMessage(int message) {
+    showAlertMessage(getString(R.string.title_write_error), getString(message));
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {
