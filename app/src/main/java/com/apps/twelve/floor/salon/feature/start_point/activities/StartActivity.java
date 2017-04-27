@@ -80,6 +80,8 @@ public class StartActivity extends BaseActivity
 
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
+    // disable checking share item
+    mNavViewTopPart.getMenu().getItem(4).setCheckable(false);
 
     mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
         ContextCompat.getColor(this, R.color.colorDarkPink),
@@ -158,7 +160,7 @@ public class StartActivity extends BaseActivity
         break;
       case R.id.nav_share:
         setTitleAppBar(R.string.title_activity_start);
-        showAlertMessage("Talk about how to share ???");
+        mStartActivityPresenter.share();
         break;
       case R.id.nav_our_work:
         setTitleAppBar(R.string.title_activity_start);
@@ -181,6 +183,15 @@ public class StartActivity extends BaseActivity
     }
     mDrawerLayout.closeDrawer(GravityCompat.START);
     return true;
+  }
+
+  @Override public void share() {
+    String appUrl = "http://www.google.com";
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.setType("text/plain");
+    intent.putExtra(Intent.EXTRA_SUBJECT, "Watch this cool app!");
+    intent.putExtra(Intent.EXTRA_TEXT, appUrl);
+    startActivity(Intent.createChooser(intent, "Share app URL"));
   }
 
   @Override public void addFragmentMain() {
