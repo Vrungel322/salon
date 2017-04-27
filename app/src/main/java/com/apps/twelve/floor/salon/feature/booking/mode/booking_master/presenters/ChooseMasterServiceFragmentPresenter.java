@@ -83,5 +83,8 @@ import timber.log.Timber;
     mBookingEntity.setServiceName(mServiceEntities.get(position).getTitle());
     mBookingEntity.setDurationServices(String.valueOf(mServiceEntities.get(position).getTime()));
     getViewState().setItemSelected(position);
+    mRxBus.post(new RxBusHelper.EventForNextStep(
+        new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
+            mBookingEntity.getMasterName()), 1));
   }
 }
