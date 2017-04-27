@@ -81,6 +81,8 @@
   <string name="error_empty_service">Услуга не выбрана</string>
   <string name="error_empty_master">Мастер не выбран</string>
   <string name="error_empty_date">Время не выбрано</string>
+  <string name="error_time_not_available">Выбранное время уже занято!</string>
+  <string name="error_booking_entity_not_exist">Текущей записи не существует</string>
   <string name="done">Готово</string>
 
   <!--for settings-->
