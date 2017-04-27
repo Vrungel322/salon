@@ -11,7 +11,7 @@ import java.util.List;
 
   void showSuccessMessageAndCloseTheFragment();
 
-  void showErrorMessage(String message);
+  void showErrorMessage(int message);
 
   void setConfirmButtonClickable();
 

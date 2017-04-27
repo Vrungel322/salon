@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
@@ -35,10 +36,10 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().setUpViewPager();
     stateBooking();
-    nextStep(2);
+    nextStep(0);
   }
 
-  public void nextStep(int currentItem1) {
+  public void nextStep(int currentItem) {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class)
         .subscribe(eventForNextStep -> {
           if (mStartWith == Constants.BookingMode.START_WITH_SERVICE) {
@@ -51,7 +52,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                   getViewState().hideKeyboard();
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_service);
                 }
                 break;
               case 1:
@@ -60,7 +61,7 @@ import timber.log.Timber;
                       mBookingEntity.getServiceTime()));
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_date);
                 }
                 break;
               case 2:
@@ -70,7 +71,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                   getViewState().replaceTitleNextButton(true);
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_master);
                 }
                 break;
             }
@@ -82,7 +83,7 @@ import timber.log.Timber;
                       mBookingEntity.getMasterName()));
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_master);
                 }
                 break;
               case 1:
@@ -93,7 +94,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                   getViewState().hideKeyboard();
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_service);
                 }
                 break;
               case 2:
@@ -103,7 +104,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                   getViewState().replaceTitleNextButton(true);
                 } else {
-                  getViewState().showMessageWarning();
+                  getViewState().showMessageWarning(R.string.error_empty_date);
                 }
                 break;
             }

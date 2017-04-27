@@ -33,28 +33,33 @@ import timber.log.Timber;
   }
 
   private void fetchBookingEntities() {
-    Subscription subscription = mDataManager.fetchLastBooking()
-        .compose(ThreadSchedulers.applySchedulers())
-        .flatMap(Observable::from)
+    Subscription subscription = mDataManager.fetchLastBooking().concatMap(Observable::from)
         .take(2)
-        .toList()
-        .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
-            Timber::e);
+        .toList().compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
+          getViewState().showLastBookings(lastBookingEntities);
+          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+        }, throwable -> {
+          Timber.e(throwable);
+          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+        });
     addToUnsubscription(subscription);
   }
 
   private void getEventFromRxBus() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
-            .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
-            .compose(ThreadSchedulers.applySchedulers()).flatMap(Observable::from).take(2).toList()
+            .concatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking()
+                .concatMap(Observable::from)
+                .take(2)
+                .toList())
+            .compose(ThreadSchedulers.applySchedulers())
             .subscribe(lastBookingEntities -> {
               getViewState().showLastBookings(lastBookingEntities);
-          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-        }, throwable -> {
-          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-          Timber.e(throwable);
-        });
+              mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+            }, throwable -> {
+              mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+              Timber.e(throwable);
+            });
     addToUnsubscription(subscription);
   }
 }

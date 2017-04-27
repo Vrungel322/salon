@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.feature.main_screen.views;
+package com.apps.twelve.floor.salon.feature.my_booking.views;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
@@ -7,10 +7,10 @@ import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
- * Created by Vrungel on 01.03.2017.
+ * Created by Alexandra on 27.04.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IMyLastBookingAdapterView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IMyBookingAdapterView
     extends MvpView {
   @StateStrategyType(AddToEndStrategy.class) void removeBookedServiceFromList(int position);
 

@@ -1,73 +1,121 @@
+
 package com.apps.twelve.floor.salon.data.model;
 
-import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-/**
- * Created by Vrungel on 23.02.2017.
- */
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class NewsEntity implements Parcelable {
-  public static final int LAST_NEWS = 1;
-  public static final int DEFAULT_NEWS = 0;
-  private Uri mImageNewsPreviewURL;
-  private String mNewsShortDescription;
-  private String mNewsData;
 
-  public NewsEntity(Uri imageNewsPreviewURL, String newsShortDescription, String newsData) {
-    mImageNewsPreviewURL = imageNewsPreviewURL;
-    mNewsShortDescription = newsShortDescription;
-    mNewsData = newsData;
-  }
+    @SerializedName("id") @Expose private Integer id;
+    @SerializedName("title") @Expose private String title;
+    @SerializedName("text") @Expose private String text;
+    @SerializedName("img") @Expose private String img;
+    @SerializedName("created_at") @Expose private String createdAt;
+    @SerializedName("updated_at") @Expose private String updatedAt;
 
-  protected NewsEntity(Parcel in) {
-    mImageNewsPreviewURL = in.readParcelable(Uri.class.getClassLoader());
-    mNewsShortDescription = in.readString();
-    mNewsData = in.readString();
-  }
-
-  public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
-    @Override public NewsEntity createFromParcel(Parcel in) {
-      return new NewsEntity(in);
+    /**
+     * No args constructor for use in serialization
+     */
+    public NewsEntity() {
     }
 
-    @Override public NewsEntity[] newArray(int size) {
-      return new NewsEntity[size];
+    /**
+     *
+     * @param updatedAt
+     * @param id
+     * @param text
+     * @param title
+     * @param createdAt
+     * @param img
+     */
+    public NewsEntity(Integer id, String title, String text, String img, String createdAt,
+        String updatedAt) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.img = img;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
-  };
 
-  public Uri getImageNewsPreviewURL() {
-    return mImageNewsPreviewURL;
-  }
+    protected NewsEntity(Parcel in) {
+        title = in.readString();
+        text = in.readString();
+        img = in.readString();
+        createdAt = in.readString();
+        updatedAt = in.readString();
+    }
 
-  public void setImageNewsPreviewURL(Uri imageNewsPreviewURL) {
-    mImageNewsPreviewURL = imageNewsPreviewURL;
-  }
+    public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
+        @Override public NewsEntity createFromParcel(Parcel in) {
+            return new NewsEntity(in);
+        }
 
-  public String getNewsShortDescription() {
-    return mNewsShortDescription;
-  }
+        @Override public NewsEntity[] newArray(int size) {
+            return new NewsEntity[size];
+        }
+    };
 
-  public void setNewsShortDescription(String newsShortDescription) {
-    mNewsShortDescription = newsShortDescription;
-  }
+    public Integer getId() {
+        return id;
+    }
 
-  public String getNewsData() {
-    return mNewsData;
-  }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-  public void setNewsData(String newsData) {
-    mNewsData = newsData;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  @Override public int describeContents() {
-    return 0;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  @Override public void writeToParcel(Parcel dest, int flags) {
-    dest.writeParcelable(mImageNewsPreviewURL, flags);
-    dest.writeString(mNewsShortDescription);
-    dest.writeString(mNewsData);
-  }
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override public int describeContents() {
+        return 0;
+    }
+
+    @Override public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(text);
+        dest.writeString(img);
+        dest.writeString(createdAt);
+        dest.writeString(updatedAt);
+    }
 }

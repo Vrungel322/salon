@@ -76,8 +76,12 @@
   <string name="spare_time">Свободное время на</string>
   <string name="time_empty">Сведения о свободнов времени отсутствуют</string>
   <string name="search_service">Поиск услуги</string>
-  <string name="title_write_error">Ошибка записи</string>
-  <string name="description_write_error">Проверте корректность выбранных данных</string>
+  <string name="title_write_error">Проверьте данные</string>
+  <string name="error_empty_service">Услуга не выбрана</string>
+  <string name="error_empty_master">Мастер не выбран</string>
+  <string name="error_empty_date">Время не выбрано</string>
+  <string name="error_time_not_available">Выбранное время уже занято!</string>
+  <string name="error_booking_entity_not_exist">Текущей записи не существует</string>
   <string name="done">Готово</string>
 
   <!--for settings-->

@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 import android.widget.Toast;
@@ -51,6 +52,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setTitle(resId);
+    }
+  }
+
+  public void setIconAppBar(@DrawableRes int resId) {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setHomeAsUpIndicator(resId);
     }
   }
 }

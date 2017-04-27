@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
@@ -30,13 +31,13 @@ import timber.log.Timber;
     App.getAppComponent().inject(this);
   }
 
+  public PostponeFragmentPresenter(String serviceId) {
+    getAvailableTime(serviceId);
+  }
+
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     mRxBus.post(new RxBusHelper.HideFloatingButton());
-  }
-
-  @Override public void onDestroy() {
-    mRxBus.post(new RxBusHelper.ShowFloatingButton());
   }
 
   public void getAvailableTime(String serviceId) {
@@ -69,11 +70,11 @@ import timber.log.Timber;
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                 break;
               case 400: // this time has already been picked
-                getViewState().showErrorMessage("This time has already been picked");
+                getViewState().showErrorMessage(R.string.error_time_not_available);
                 getViewState().setConfirmButtonClickable();
                 break;
               case 404: // this booking entity does not exist
-                getViewState().showErrorMessage("This booking entity does not exist");
+                getViewState().showErrorMessage(R.string.error_booking_entity_not_exist);
                 break;
               default:
                 break;
@@ -81,7 +82,7 @@ import timber.log.Timber;
           }, Timber::e);
       addToUnsubscription(subscription);
     } else {
-      getViewState().showErrorMessage("Pick the time!");
+      getViewState().showErrorMessage(R.string.error_empty_date);
     }
   }
 
@@ -103,4 +104,7 @@ import timber.log.Timber;
     getViewState().setSelectedDay(position);
   }
 
+  @Override public void onDestroy() {
+    mRxBus.post(new RxBusHelper.ShowFloatingButton());
+  }
 }

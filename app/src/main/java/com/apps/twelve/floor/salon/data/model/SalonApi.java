@@ -56,6 +56,10 @@ public interface SalonApi {
       @Path("entryId") String entryId, @Header("user") String userId,
       @Field("schedule_id") int scheduleId);
 
+  @GET("api/v1/pages") Observable<List<NewsEntity>> fetchAllNews();
+
+  @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
+
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials
   //);

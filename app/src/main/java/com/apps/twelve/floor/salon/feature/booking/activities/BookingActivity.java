@@ -26,6 +26,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     super.onCreate(savedInstanceState);
 
     setTitleAppBar(R.string.book_create);
+    setIconAppBar(R.drawable.ic_home_white_24dp);
   }
 
   @Override public void addFragmentBooking() {
