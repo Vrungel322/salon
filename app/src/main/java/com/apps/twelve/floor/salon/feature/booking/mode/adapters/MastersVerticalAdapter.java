@@ -33,6 +33,7 @@ public class MastersVerticalAdapter
 
   public void addListMasterEntity(List<MasterEntity> masterEntities) {
     mMasterEntities.clear();
+    mMasterEntities.add(null);
     mMasterEntities.addAll(masterEntities);
     notifyDataSetChanged();
   }
@@ -55,12 +56,12 @@ public class MastersVerticalAdapter
 
   @Override public void onBindViewHolder(MastersViewHolder holder, int position) {
     if (position > 0) {
-      int pos = position - 1;
       Picasso.with(holder.mImageViewMasterImg.getContext())
-          .load(Uri.parse(mMasterEntities.get(pos).getMasterImg()))
+          .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
           .into(holder.mImageViewMasterImg);
-      holder.mTextViewMasterName.setText(mMasterEntities.get(pos).getMasterName());
-      holder.mTextViewMasterDescription.setText(mMasterEntities.get(pos).getMasterDescription());
+      holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
+      holder.mTextViewMasterDescription.setText(
+          mMasterEntities.get(position).getMasterDescription());
     }
 
     if (this.mSelectedItem == position) {
