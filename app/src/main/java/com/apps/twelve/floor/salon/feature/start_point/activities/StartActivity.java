@@ -123,6 +123,8 @@ public class StartActivity extends BaseActivity
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_booking:
+        mNavigator.startActivity(StartActivity.this,
+            new Intent(StartActivity.this, BookingActivity.class));
         return true;
       case R.id.action_my_bonus:
         mBadge.setCount(55);
