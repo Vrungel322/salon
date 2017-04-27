@@ -66,7 +66,7 @@ import timber.log.Timber;
           .subscribe(voidResponse -> {
             switch (voidResponse.code()) {
               case 200: // updated
-                getViewState().showSuccessMessageAndCloseTheFragment();
+                getViewState().closeTheFragment();
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                 break;
               case 400: // this time has already been picked

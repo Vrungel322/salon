@@ -9,7 +9,7 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IPostponeFragmentView
     extends MvpView {
 
-  void showSuccessMessageAndCloseTheFragment();
+  void closeTheFragment();
 
   void showErrorMessage(int message);
 
