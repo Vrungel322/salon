@@ -31,13 +31,13 @@ import timber.log.Timber;
     App.getAppComponent().inject(this);
   }
 
+  public PostponeFragmentPresenter(String serviceId) {
+    getAvailableTime(serviceId);
+  }
+
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     mRxBus.post(new RxBusHelper.HideFloatingButton());
-  }
-
-  @Override public void onDestroy() {
-    mRxBus.post(new RxBusHelper.ShowFloatingButton());
   }
 
   public void getAvailableTime(String serviceId) {
@@ -104,4 +104,7 @@ import timber.log.Timber;
     getViewState().setSelectedDay(position);
   }
 
+  @Override public void onDestroy() {
+    mRxBus.post(new RxBusHelper.ShowFloatingButton());
+  }
 }

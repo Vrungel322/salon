@@ -63,7 +63,7 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
     if (!bookingEntities.isEmpty()) {
       mTextViewBookEmptyList.setVisibility(View.GONE);
       mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
-      mMyBookingAdapter.addListLastBookingEntity(bookingEntities);
+      mMyBookingAdapter.addListBookingEntity(bookingEntities);
     } else {
       mTextViewBookEmptyList.setVisibility(View.VISIBLE);
     }

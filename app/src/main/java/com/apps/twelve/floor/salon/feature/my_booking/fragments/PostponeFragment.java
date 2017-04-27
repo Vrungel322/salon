@@ -30,6 +30,7 @@ import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmen
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,9 +49,12 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @InjectPresenter PostponeFragmentPresenter mPostponeFragmentPresenter;
 
+  @ProvidePresenter PostponeFragmentPresenter providePostponeFragmentPresenter() {
+    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(SERVICE_ID)));
+  }
+
   @BindView(R.id.tv_service_description) TextView mTextViewServiceName;
   @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
-
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
   @BindView(R.id.vpDatesOfMonth) ViewPager mViewPagerDatesOfMonth;
   @BindView(R.id.bNextDay) ImageView mImageViewNextDay;
@@ -104,7 +108,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
     setUpRedSquare(getArguments().getString(SERVICE_NAME), getArguments().getString(MASTER_NAME));
 
-    mPostponeFragmentPresenter.getAvailableTime(String.valueOf(getArguments().getInt(SERVICE_ID)));
   }
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {

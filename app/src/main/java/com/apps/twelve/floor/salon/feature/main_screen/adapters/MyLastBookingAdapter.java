@@ -105,11 +105,7 @@ public class MyLastBookingAdapter
     }.start();
 
     holder.mButtonPostpone.setOnClickListener(
-        v -> mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
-            PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
-                mLastBookingEntities.get(position).getMasterName(),
-                mLastBookingEntities.get(position).getServiceId(),
-            /* entity_id */ mLastBookingEntities.get(position).getId())));
+        v -> mMyLastBookingAdapterPresenter.openPostponeFragment(position));
     holder.mButtonCancel.setOnClickListener(
         v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));
   }
@@ -122,6 +118,14 @@ public class MyLastBookingAdapter
     mLastBookingEntities.remove(position);
     notifyItemRemoved(position);
     notifyItemRangeChanged(position, mLastBookingEntities.size());
+  }
+
+  @Override public void openPostponeFragment(int position) {
+    mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
+        PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
+            mLastBookingEntities.get(position).getMasterName(),
+            mLastBookingEntities.get(position).getServiceId(),
+            /* entity_id */ mLastBookingEntities.get(position).getId()));
   }
 
   @Override public void showConfirmationDialog(int position) {

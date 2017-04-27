@@ -1,9 +1,9 @@
-package com.apps.twelve.floor.salon.feature.main_screen.presenters;
+package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookingAdapterView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -12,11 +12,11 @@ import rx.Subscription;
 import timber.log.Timber;
 
 /**
- * Created by Vrungel on 01.03.2017.
+ * Created by Alexandra on 27.04.2017.
  */
 
-@InjectViewState public class MyLastBookingAdapterPresenter
-    extends BasePresenter<IMyLastBookingAdapterView> {
+@InjectViewState public class MyBookingAdapterPresenter
+    extends BasePresenter<IMyBookingAdapterView> {
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 
