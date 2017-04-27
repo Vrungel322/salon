@@ -5,32 +5,10 @@
     android:layout_height="match_parent"
     >
 
-  <LinearLayout
-      android:id="@+id/linearLayoutState"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentStart="true"
-      android:background="@color/colorWhite"
-      android:gravity="end"
-      android:orientation="horizontal"
-      >
-
-    <Button
-        android:id="@+id/bNextStep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:background="@color/colorTransparent"
-        android:text="@string/next_step"
-        />
-  </LinearLayout>
   <com.apps.twelve.floor.salon.feature.booking.custom_views.ViewPagerWithoutSwipe
       android:id="@+id/vpBookingSteps"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@+id/linearLayoutState"
       android:layout_below="@+id/tabLayout"
       />
   <android.support.design.widget.TabLayout

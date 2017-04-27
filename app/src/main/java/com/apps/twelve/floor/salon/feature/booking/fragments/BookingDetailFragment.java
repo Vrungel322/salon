@@ -41,7 +41,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
   @BindView(tabLayout) TabLayout mTabLayout;
   @BindView(R.id.vpBookingSteps) ViewPager mViewPager;
-  @BindView(R.id.linearLayoutState) LinearLayout mLinearLayoutState;
 
   public static BookingDetailFragment newInstance(String screenToStart) {
     Bundle args = new Bundle();
@@ -110,14 +109,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     ViewUtil.hideKeyboard(getActivity());
   }
 
-  @Override public void replaceTitleNextButton(boolean state) {
-    if (state) {
-      mLinearLayoutState.setVisibility(View.GONE);
-    } else {
-      mLinearLayoutState.setVisibility(View.VISIBLE);
-    }
-  }
-
   @Override public void showMessageWarning(int warning) {
     showAlertMessage(getString(R.string.title_write_error), getString(warning));
   }
@@ -129,10 +120,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     } else {
       mBookingDetailFragmentPresenter.prevStep(mViewPager.getCurrentItem());
     }
-  }
-
-  @OnClick(R.id.bNextStep) public void bNextStepClicked() {
-    mBookingDetailFragmentPresenter.nextStep(mViewPager.getCurrentItem());
   }
 
   private void showChooseMasterFragment() {
