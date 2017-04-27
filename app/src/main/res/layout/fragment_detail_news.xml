@@ -35,13 +35,31 @@
       android:fillViewport="true"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       >
-    <TextView
-        android:id="@+id/textViewDescriptionNews"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorWhite"
-        android:padding="8dp"
-        />
+        android:layout_height="wrap_content"
+        >
+      <TextView
+          android:id="@+id/textViewTitleNews"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="20sp"
+          android:maxLines="5"
+          android:textColor="@color/colorDetailNewsTitle"
+          android:padding="8dp"
+          />
+      <TextView
+          android:id="@+id/textViewDescriptionNews"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/colorWhite"
+          android:layout_marginTop="8dp"
+          android:padding="8dp"
+          android:textSize="14sp"
+          android:textColor="@color/colorDetailNewsText"
+          android:layout_below="@id/textViewTitleNews"
+          />
+    </RelativeLayout>
   </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

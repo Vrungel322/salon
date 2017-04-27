@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Converters.dateFromSeconds;
+
 /**
  * Created by Vrungel on 24.02.2017.
  */
@@ -21,6 +23,9 @@ import java.util.List;
 public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsViewHolder> {
 
   private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
+
+  public static final int LAST_NEWS = 1;
+  public static final int DEFAULT_NEWS = 0;
 
   public void addListNewsEntity(List<NewsEntity> newsEntities) {
     mNewsEntities.addAll(newsEntities);
@@ -30,12 +35,12 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   @Override public AllNewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v;
     switch (viewType) {
-      case NewsEntity.DEFAULT_NEWS: {
+      case DEFAULT_NEWS: {
         v = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_news_in_all_news, parent, false);
         return new AllNewsViewHolder(v);
       }
-      case NewsEntity.LAST_NEWS: {
+      case LAST_NEWS: {
         v = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_last_news_in_all_news, parent, false);
         return new AllNewsViewHolder(v);
@@ -45,14 +50,13 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   @Override public void onBindViewHolder(AllNewsViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewThumbNews.getContext())
-        .load(mNewsEntities.get(position).getImageNewsPreviewURL())
+    Picasso.with(holder.mImageViewThumbNews.getContext()).load(mNewsEntities.get(position).getImg())
         .into(holder.mImageViewThumbNews);
 
-    holder.mTextViewItemNewsShortDescription.setText(
-        mNewsEntities.get(position).getNewsShortDescription());
+    holder.mTextViewItemNewsShortDescription.setText(mNewsEntities.get(position).getTitle());
 
-    holder.mTextViewItemNewsData.setText(String.valueOf(mNewsEntities.get(position).getNewsData()));
+    holder.mTextViewItemNewsData.setText(
+        dateFromSeconds(mNewsEntities.get(position).getCreatedAt()));
   }
 
   @Override public int getItemCount() {
@@ -60,7 +64,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   @Override public int getItemViewType(int position) {
-    return position == 0 ? NewsEntity.LAST_NEWS : NewsEntity.DEFAULT_NEWS;
+    return position == 0 ? LAST_NEWS : DEFAULT_NEWS;
   }
 
   public NewsEntity getItem(int position) {

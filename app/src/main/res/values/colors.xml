@@ -53,6 +53,10 @@
   <color name="colorWorkDetailsTextCount">#FFFFFF</color>
   <color name="colorWorkDetailsHover">#B3EB3472</color>
 
+  <!--news screens-->
+  <color name="colorDetailNewsTitle">#8C000000</color>
+  <color name="colorDetailNewsText">#000000</color>
+
   <!--screen booking-->
   <color name="colorBookingText">#80000000</color>
   <color name="colorBookingBackground">#f9fafa</color>
