@@ -5,6 +5,7 @@ import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
+import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import java.util.List;
@@ -74,6 +75,14 @@ public class RestApi {
 
   public Observable<Response<Void>> postponeService(String entryId, String userId, int scheduleId) {
     return api.postponeService(entryId, userId, scheduleId);
+  }
+
+  public Observable<List<NewsEntity>> fetchAllNews() {
+    return api.fetchAllNews();
+  }
+
+  public Observable<NewsEntity> fetchNewsPreview() {
+    return api.fetchNewsPreview();
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

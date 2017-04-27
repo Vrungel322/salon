@@ -27,6 +27,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
 
   @BindView(R.id.imageViewPhotoNews) ImageView mImageViewPhotoNews;
   @BindView(R.id.textViewDescriptionNews) TextView mTextViewDescriptionNews;
+  @BindView(R.id.textViewTitleNews) TextView mTextViewTitleNews;
 
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
@@ -49,8 +50,9 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
 
     if (newsEntity != null) {
-      Picasso.with(mContext).load(newsEntity.getImageNewsPreviewURL()).into(mImageViewPhotoNews);
-      mTextViewDescriptionNews.setText(newsEntity.getNewsShortDescription());
+      Picasso.with(mContext).load(newsEntity.getImg()).into(mImageViewPhotoNews);
+      mTextViewTitleNews.setText(newsEntity.getTitle());
+      mTextViewDescriptionNews.setText(newsEntity.getText());
     }
   }
 
