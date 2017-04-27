@@ -27,37 +27,21 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getEventFromRxBus();
     fetchBookingEntities();
     mRxBus.post(new RxBusHelper.SetBookingItemInMenu());
   }
 
   private void fetchBookingEntities() {
+    getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchLastBooking()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
-            Timber::e);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
+          getViewState().showAllBooking(lastBookingEntities);
+          getViewState().stopRefreshingView();
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 
   public void startRefreshing() {
-    getViewState().startRefreshingView();
-    mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-  }
-
-  private void getEventFromRxBus() {
-    Subscription subscription =
-        mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
-            .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
-            .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(lastBookingEntities -> {
-              getViewState().showAllBooking(lastBookingEntities);
-              getViewState().stopRefreshingView();
-              mRxBus.post(new RxBusHelper.StopRefreshBookingFragment());
-            }, throwable -> {
-              mRxBus.post(new RxBusHelper.StopRefreshBookingFragment());
-              Timber.e(throwable);
-            });
-    addToUnsubscription(subscription);
+    fetchBookingEntities();
   }
 }

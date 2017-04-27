@@ -33,15 +33,19 @@ import timber.log.Timber;
 
   public void fetchNewsEntities() {
     Subscription subscription = mDataManager.fetchNewsPreview()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(previewNewsEntity -> getViewState().updateNewsPreview(previewNewsEntity),
-            Timber::e);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(previewNewsEntity -> {
+          getViewState().updateNewsPreview(previewNewsEntity);
+          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+        }, throwable -> {
+          Timber.e(throwable);
+          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+        });
     addToUnsubscription(subscription);
   }
 
   private void updateNews() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateNews.class)
-        .flatMap(updateNews -> mDataManager.fetchNewsPreview())
+        .concatMap(updateNews -> mDataManager.fetchNewsPreview())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(newsEntity -> {
           getViewState().updateNewsPreview(newsEntity);

@@ -27,6 +27,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addSubFragments();
+    getViewState().startRefreshingView();
     stopRefreshMainFragment();
   }
 
