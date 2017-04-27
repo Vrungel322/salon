@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.feature.main_screen.adapters;
+package com.apps.twelve.floor.salon.feature.my_booking.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,8 +36,8 @@ import java.util.Locale;
  * Created by Vrungel on 28.02.2017.
  */
 
-public class MyLastBookingAdapter
-    extends MvpBaseRecyclerAdapter<MyLastBookingAdapter.MyLastBookingViewHolder>
+public class MyBookingAdapter
+    extends MvpBaseRecyclerAdapter<MyBookingAdapter.MyLastBookingViewHolder>
     implements IMyLastBookingAdapterView {
 
   private final Context mContext;
@@ -49,7 +49,7 @@ public class MyLastBookingAdapter
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
   private AlertDialog mRemoveBookingDialog;
 
-  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
+  public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
       Navigator navigator) {
     super(parentDelegate, "MyLastBookingAdapterPresenter");
     this.mContext = context;
@@ -64,7 +64,7 @@ public class MyLastBookingAdapter
   }
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MyLastBookingAdapter.MyLastBookingViewHolder(
+    return new MyBookingAdapter.MyLastBookingViewHolder(
         LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_booking, parent, false));
   }
 

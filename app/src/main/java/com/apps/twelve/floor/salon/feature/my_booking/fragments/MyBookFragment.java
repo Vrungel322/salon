@@ -11,7 +11,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
-import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapter;
+import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
@@ -29,7 +29,7 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @BindView(R.id.rvMyBook) RecyclerView mRecyclerViewMyBooks;
   @BindView(R.id.tvBookEmptyList) TextView mTextViewBookEmptyList;
 
-  private MyLastBookingAdapter mMyLastBookingAdapter;
+  private MyBookingAdapter mMyBookingAdapter;
 
   public static MyBookFragment newInstance() {
     Bundle args = new Bundle();
@@ -47,24 +47,23 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
 
-    mMyLastBookingAdapter =
-        new MyLastBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
+    mMyBookingAdapter =
+        new MyBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
     mRecyclerViewMyBooks.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyBooks.setNestedScrollingEnabled(false);
     mRecyclerViewMyBooks.setFocusable(false);
 
-    mRecyclerViewMyBooks.setAdapter(mMyLastBookingAdapter);
+    mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
 
     mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
     mSwipeRefreshLayout.setOnRefreshListener(() -> mMyBookFragmentPresenter.startRefreshing());
-
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> bookingEntities) {
     if (!bookingEntities.isEmpty()) {
       mTextViewBookEmptyList.setVisibility(View.GONE);
-      mRecyclerViewMyBooks.setAdapter(mMyLastBookingAdapter);
-      mMyLastBookingAdapter.addListLastBookingEntity(bookingEntities);
+      mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
+      mMyBookingAdapter.addListLastBookingEntity(bookingEntities);
     } else {
       mTextViewBookEmptyList.setVisibility(View.VISIBLE);
     }
