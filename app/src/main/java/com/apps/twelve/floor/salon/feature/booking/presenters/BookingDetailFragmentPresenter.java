@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
@@ -47,7 +48,7 @@ import timber.log.Timber;
             getViewState().goNext(currentItem + 1);
             getViewState().hideKeyboard();
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_service);
           }
           break;
         case 1:
@@ -56,7 +57,7 @@ import timber.log.Timber;
                 mBookingEntity.getServiceTime()));
             getViewState().goNext(currentItem + 1);
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_date);
           }
           break;
         case 2:
@@ -66,7 +67,7 @@ import timber.log.Timber;
             getViewState().goNext(currentItem + 1);
             getViewState().replaceTitleNextButton(true);
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_master);
           }
           break;
       }
@@ -78,7 +79,7 @@ import timber.log.Timber;
                 mBookingEntity.getMasterName()));
             getViewState().goNext(currentItem + 1);
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_master);
           }
           break;
         case 1:
@@ -88,7 +89,7 @@ import timber.log.Timber;
             getViewState().goNext(currentItem + 1);
             getViewState().hideKeyboard();
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_service);
           }
           break;
         case 2:
@@ -98,7 +99,7 @@ import timber.log.Timber;
             getViewState().goNext(currentItem + 1);
             getViewState().replaceTitleNextButton(true);
           } else {
-            getViewState().showMessageWarning();
+            getViewState().showMessageWarning(R.string.error_empty_date);
           }
           break;
       }

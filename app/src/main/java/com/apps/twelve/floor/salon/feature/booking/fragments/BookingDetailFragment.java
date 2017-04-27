@@ -118,9 +118,8 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     }
   }
 
-  @Override public void showMessageWarning() {
-    showAlertMessage(getString(R.string.title_write_error),
-        getString(R.string.description_write_error));
+  @Override public void showMessageWarning(int warning) {
+    showAlertMessage(getString(R.string.title_write_error), getString(warning));
   }
 
   @Override public void stateBooking() {
