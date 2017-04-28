@@ -28,10 +28,13 @@
         android:icon="@drawable/ic_our_works_24dp"
         android:title="@string/menu_our_work"/>
     <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/ic_news_24dp"
+        android:title="@string/menu_news"/>
+    <item
         android:id="@+id/nav_contacts"
         android:icon="@drawable/ic_contacts_24dp"
         android:title="@string/menu_contacts"/>
-
   </group>
 
 </menu>

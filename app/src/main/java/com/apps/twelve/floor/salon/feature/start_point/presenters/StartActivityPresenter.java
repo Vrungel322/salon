@@ -38,6 +38,10 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().setMyBooksItemInMenu(), Timber::e);
     addToUnsubscription(subscription);
+    subscription = mRxBus.filteredObservable(RxBusHelper.SetNewsItemInMenu.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().setNewsItemInMenu(), Timber::e);
+    addToUnsubscription(subscription);
     subscription = mRxBus.filteredObservable(RxBusHelper.HideFloatingButton.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe((event -> getViewState().hideFloatingButton()), Timber::e);

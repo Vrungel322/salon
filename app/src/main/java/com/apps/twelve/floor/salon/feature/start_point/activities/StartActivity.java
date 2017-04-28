@@ -26,6 +26,7 @@ import com.apps.twelve.floor.salon.feature.contacts.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.fragments.MainFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.MyBookFragment;
+import com.apps.twelve.floor.salon.feature.news.fragments.AllNewsViewFragment;
 import com.apps.twelve.floor.salon.feature.our_works.fragments.OurWorkFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
@@ -83,6 +84,10 @@ public class StartActivity extends BaseActivity
 
   @Override public void setMyBooksItemInMenu() {
     mNavViewTopPart.getMenu().getItem(2).setChecked(true);
+  }
+
+  @Override public void setNewsItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(6).setChecked(true);
   }
 
   @Override public void hideFloatingButton() {
@@ -155,6 +160,10 @@ public class StartActivity extends BaseActivity
       case R.id.nav_our_work:
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
+        break;
+      case R.id.nav_news:
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+            AllNewsViewFragment.newInstance(), Constants.FragmentTag.ALL_NEWS_FRAGMENT);
         break;
       case R.id.nav_contacts:
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,

@@ -23,4 +23,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   @StateStrategyType(SkipStrategy.class) void share();
 
   void setDrawerIndicator();
+
+  @StateStrategyType(SkipStrategy.class) void setNewsItemInMenu();
 }
