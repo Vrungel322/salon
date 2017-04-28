@@ -64,7 +64,7 @@ dependencies {
   compile 'com.squareup.picasso:picasso:2.5.2'
 
   //Alerter
-  compile 'com.tapadoo.android:alerter:1.0.6'
+  compile 'com.tapadoo.android:alerter:1.0.7'
 
   //A badge for any drawable
   compile "berlin.volders:badger:0.2.1"
@@ -74,13 +74,13 @@ dependencies {
   apt 'com.github.matthiasrobbers:shortbread-compiler:1.0.1'
 
   //RxJava, RxAndroid
-  compile 'io.reactivex:rxjava:1.2.9'
+  compile 'io.reactivex:rxjava:1.2.10'
   compile 'io.reactivex:rxandroid:1.2.1'
 
   //Dagger2
-  compile 'com.google.dagger:dagger:2.10'
+  compile 'com.google.dagger:dagger:2.11-rc1'
   provided 'org.glassfish:javax.annotation:10.0-b28'
-  apt "com.google.dagger:dagger-compiler:2.10"
+  apt "com.google.dagger:dagger-compiler:2.11-rc1"
 
   //Moxy
   compile 'com.arello-mobile:moxy:1.5.1'
@@ -102,6 +102,6 @@ dependencies {
   androidTestCompile 'junit:junit:4.12'
 
   //Image cropper
-  compile 'com.theartofdev.edmodo:android-image-cropper:2.4.0'
+  compile 'com.theartofdev.edmodo:android-image-cropper:2.4.2'
   compile 'de.hdodenhof:circleimageview:2.1.0'
 }
