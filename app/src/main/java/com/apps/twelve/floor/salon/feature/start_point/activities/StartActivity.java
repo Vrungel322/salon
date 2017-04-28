@@ -103,6 +103,7 @@ public class StartActivity extends BaseActivity
         appBarLayout.setExpanded(true, true);
       }
       if (mNavigator.isOneFragmentBackStack(this)) {
+        setTitleAppBar(R.string.title_activity_start);
         mNavViewTopPart.getMenu().getItem(0).setChecked(true);
       }
       super.onBackPressed();
@@ -137,36 +138,29 @@ public class StartActivity extends BaseActivity
         mNavigator.clearBackStack(this);
         break;
       case R.id.nav_booking:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         break;
       case R.id.nav_my_bonus:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_share:
-        setTitleAppBar(R.string.title_activity_start);
         mStartActivityPresenter.share();
         break;
       case R.id.nav_our_work:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
         break;
       case R.id.nav_contacts:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             ContactsFragment.newInstance(), Constants.FragmentTag.CONTACTS_FRAGMENT);
         break;
       case R.id.nav_settings:
-        setTitleAppBar(R.string.title_activity_start);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, SettingsActivity.class));
         break;
