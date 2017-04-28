@@ -127,6 +127,7 @@
   <color name="colorChooseMasterTextMasterDescription">#80000000</color>
   <color name="colorChooseMasterChosen">#fbe9f0</color>
   <color name="colorChooseMasterNotChosen">#FFFFFF</color>
+  <color name="colorChooseMasterAnyMasterBackground">#e4336f</color>
 
   <!--screen BookingContacts-->
   <color name="colorBookingContactsTitleName">#000000</color>

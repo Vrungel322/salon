@@ -24,27 +24,45 @@ import java.util.List;
 public class MastersVerticalAdapter
     extends RecyclerView.Adapter<MastersVerticalAdapter.MastersViewHolder> {
 
+  public static final int ANY_MASTER = 0;
+  public static final int OTHER_MASTER = 1;
+
   private List<MasterEntity> mMasterEntities = new ArrayList<>();
 
   private int mSelectedItem = -1;
 
   public void addListMasterEntity(List<MasterEntity> masterEntities) {
     mMasterEntities.clear();
+    mMasterEntities.add(null);
     mMasterEntities.addAll(masterEntities);
     notifyDataSetChanged();
   }
 
   @Override public MastersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_master, parent, false);
-    return new MastersVerticalAdapter.MastersViewHolder(v);
+    View v;
+    switch (viewType) {
+      case ANY_MASTER: {
+        v = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.item_master_any, parent, false);
+        return new MastersVerticalAdapter.MastersViewHolder(v);
+      }
+      case OTHER_MASTER: {
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_master, parent, false);
+        return new MastersVerticalAdapter.MastersViewHolder(v);
+      }
+    }
+    return null;
   }
 
   @Override public void onBindViewHolder(MastersViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewMasterImg.getContext())
-        .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
-        .into(holder.mImageViewMasterImg);
-    holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
-    holder.mTextViewMasterDescription.setText(mMasterEntities.get(position).getMasterDescription());
+    if (position > 0) {
+      Picasso.with(holder.mImageViewMasterImg.getContext())
+          .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
+          .into(holder.mImageViewMasterImg);
+      holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
+      holder.mTextViewMasterDescription.setText(
+          mMasterEntities.get(position).getMasterDescription());
+    }
 
     if (this.mSelectedItem == position) {
       holder.mRelativeLayoutParent.setBackgroundColor(
@@ -58,6 +76,10 @@ public class MastersVerticalAdapter
   public void setSelectedItem(int position) {
     this.mSelectedItem = position;
     this.notifyDataSetChanged();
+  }
+
+  @Override public int getItemViewType(int position) {
+    return position == 0 ? ANY_MASTER : OTHER_MASTER;
   }
 
   @Override public int getItemCount() {

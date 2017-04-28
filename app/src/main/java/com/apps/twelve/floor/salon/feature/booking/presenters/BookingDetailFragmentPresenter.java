@@ -40,7 +40,7 @@ import timber.log.Timber;
   }
 
   public void nextStep(int currentItem) {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class)
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class).compose(ThreadSchedulers.applySchedulers())
         .subscribe(eventForNextStep -> {
           if (mStartWith == Constants.BookingMode.START_WITH_SERVICE) {
             switch (eventForNextStep.currentItem) {
@@ -108,6 +108,7 @@ import timber.log.Timber;
             }
           }
         });
+    addToUnsubscription(subscription);
   }
 
   public void prevStep(int currentItem) {

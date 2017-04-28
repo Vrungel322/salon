@@ -2,10 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/selectableItemBackgroundBorderless"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackgroundBorderless"
     >
   <android.support.v7.widget.CardView
       android:layout_width="match_parent"
@@ -27,8 +26,9 @@
           android:layout_width="match_parent"
           android:layout_height="150dp"
           android:layout_alignParentTop="true"
+          android:background="@color/colorChooseMasterAnyMasterBackground"
           android:scaleType="centerCrop"
-          tools:background="@drawable/hair33"
+          card_view:srcCompat="@drawable/ic_user_female"
           />
 
       <TextView
@@ -41,6 +41,7 @@
           android:layout_marginBottom="8dp"
           android:layout_marginTop="8dp"
           android:ellipsize="end"
+          android:text="@string/any_master"
           android:maxLines="3"
           android:textColor="@color/colorChooseMasterTextMasterName"
           android:textSize="16sp"

@@ -15,6 +15,4 @@ import java.util.List;
   void hideProgressBar();
 
   void setSelectedItem(int position);
-
-  void blockedClickRv(boolean status);
 }
