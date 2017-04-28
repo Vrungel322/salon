@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmentView {
+
   @InjectPresenter AllNewsFragmentPresenter mAllNewsFragmentPresenter;
 
   @BindView(R.id.rvAllNews) RecyclerView mRecyclerViewAllNews;

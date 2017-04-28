@@ -83,4 +83,7 @@ public final class RxBusHelper {
   public static class SetBookingItemInMenu {
   }
 
+  public static class SetNewsItemInMenu {
+  }
+
 }

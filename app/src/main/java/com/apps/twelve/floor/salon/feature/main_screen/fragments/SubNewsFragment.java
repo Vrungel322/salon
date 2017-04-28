@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmen
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubNewsFragmentView;
 import com.apps.twelve.floor.salon.feature.news.fragments.AllNewsViewFragment;
 import com.apps.twelve.floor.salon.feature.news.fragments.NewsDetailFragment;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 
@@ -45,17 +46,15 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
 
   @Override public void updateNewsPreview(NewsEntity newsEntity) {
     mNewsEntity = newsEntity;
-    Picasso.with(getContext()).load(newsEntity.getImg())
-        .into(mImageViewNewsPreview);
+    Picasso.with(getContext()).load(newsEntity.getImg()).into(mImageViewNewsPreview);
     mTextViewNewsShortDescription.setText(newsEntity.getTitle());
     mTextViewNewsData.setText(dateFromSeconds(newsEntity.getCreatedAt()));
   }
 
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
-    // TODO: 23.02.2017 create FragmentNews
-    showToastMessage("tvAllNews clicked");
-    mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
-        AllNewsViewFragment.newInstance());
+    mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
+        R.id.container_main, AllNewsViewFragment.newInstance(),
+        Constants.FragmentTag.ALL_NEWS_FRAGMENT);
   }
 
   @OnClick(R.id.layoutAllNews) public void setLayoutAllNewsClicked() {

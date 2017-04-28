@@ -19,6 +19,7 @@ public final class Constants {
     public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";
     public static final String CONTACTS_FRAGMENT = "ContactsFragment";
+    public static final String ALL_NEWS_FRAGMENT = "AllNewsFragment";
   }
 
   public class FragmentsArgumentKeys {

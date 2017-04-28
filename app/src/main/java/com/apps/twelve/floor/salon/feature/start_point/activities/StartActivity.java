@@ -26,6 +26,7 @@ import com.apps.twelve.floor.salon.feature.contacts.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.fragments.MainFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.MyBookFragment;
+import com.apps.twelve.floor.salon.feature.news.fragments.AllNewsViewFragment;
 import com.apps.twelve.floor.salon.feature.our_works.fragments.OurWorkFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
@@ -56,15 +57,8 @@ public class StartActivity extends BaseActivity
     mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
         new Intent(StartActivity.this, BookingActivity.class)));
 
-    getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-      if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
-        mToggle.setDrawerIndicatorEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      } else {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        mToggle.setDrawerIndicatorEnabled(true);
-      }
-    });
+    getSupportFragmentManager().addOnBackStackChangedListener(
+        () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
   }
@@ -92,6 +86,10 @@ public class StartActivity extends BaseActivity
     mNavViewTopPart.getMenu().getItem(2).setChecked(true);
   }
 
+  @Override public void setNewsItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(6).setChecked(true);
+  }
+
   @Override public void hideFloatingButton() {
     mFabBooking.setVisibility(View.INVISIBLE);
   }
@@ -108,6 +106,10 @@ public class StartActivity extends BaseActivity
       if (!mNavigator.isEmptyBackStack(StartActivity.this)) {
         AppBarLayout appBarLayout = (AppBarLayout) this.findViewById(R.id.appBar);
         appBarLayout.setExpanded(true, true);
+      }
+      if (mNavigator.isOneFragmentBackStack(this)) {
+        setTitleAppBar(R.string.title_activity_start);
+        mNavViewTopPart.getMenu().getItem(0).setChecked(true);
       }
       super.onBackPressed();
     }
@@ -139,46 +141,35 @@ public class StartActivity extends BaseActivity
       case R.id.nav_main:
         setTitleAppBar(R.string.title_activity_start);
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
-            MainFragment.newInstance(), Constants.FragmentTag.MAIN_FRAGMENT);
         break;
       case R.id.nav_booking:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         break;
       case R.id.nav_my_bonus:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_share:
-        setTitleAppBar(R.string.title_activity_start);
         mStartActivityPresenter.share();
         break;
       case R.id.nav_our_work:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
         break;
+      case R.id.nav_news:
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+            AllNewsViewFragment.newInstance(), Constants.FragmentTag.ALL_NEWS_FRAGMENT);
+        break;
       case R.id.nav_contacts:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
-        mNavigator.replaceFragmentTagNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
             ContactsFragment.newInstance(), Constants.FragmentTag.CONTACTS_FRAGMENT);
         break;
       case R.id.nav_settings:
-        setTitleAppBar(R.string.title_activity_start);
-        mNavigator.clearBackStack(this);
         mNavigator.startActivity(StartActivity.this,
             new Intent(StartActivity.this, SettingsActivity.class));
         break;
@@ -194,6 +185,16 @@ public class StartActivity extends BaseActivity
     intent.putExtra(Intent.EXTRA_SUBJECT, "Watch this cool app!");
     intent.putExtra(Intent.EXTRA_TEXT, appUrl);
     startActivity(Intent.createChooser(intent, "Share app URL"));
+  }
+
+  @Override public void setDrawerIndicator() {
+    if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
+      mToggle.setDrawerIndicatorEnabled(false);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    } else {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+      mToggle.setDrawerIndicatorEnabled(true);
+    }
   }
 
   @Override public void addFragmentMain() {
