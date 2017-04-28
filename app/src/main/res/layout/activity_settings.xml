@@ -48,7 +48,7 @@
           android:textColor="@color/colorSettingsChangePhotoText"
           />
       <View
-          android:id="@+id/separator1"
+          android:id="@+id/separatorChangePhoto"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/btnChangePhoto"
@@ -60,7 +60,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:layout_below="@+id/separator1"
+          android:layout_below="@+id/separatorChangePhoto"
           android:layout_marginTop="14dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -70,7 +70,7 @@
           android:id="@+id/tvName"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator1"
+          android:layout_below="@+id/separatorChangePhoto"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -81,11 +81,71 @@
           android:textSize="16sp"
           />
       <View
-          android:id="@+id/separator2"
+          android:id="@+id/separatorTvName"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvName"
           android:background="@color/colorSettingsSeparator"
+          />
+      <android.support.v7.widget.AppCompatImageView
+          android:id="@+id/ivLogin"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/separatorTvName"
+          android:layout_marginTop="14dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          app:srcCompat="@drawable/ic_user_female_grey"
+          />
+      <TextView
+          android:id="@+id/tvLogin"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/separatorTvName"
+          android:layout_marginBottom="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_toRightOf="@+id/ivProfile"
+          android:text="login_vasilisa"
+          android:textColor="@color/colorSettingsGeneralText"
+          android:textSize="16sp"
+          />
+      <View
+          android:id="@+id/separatorLogin"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:layout_below="@+id/tvLogin"
+          android:background="@color/colorSettingsSeparator"
+          />
+      <android.support.v7.widget.AppCompatImageView
+          android:id="@+id/ivPassword"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/separatorLogin"
+          android:layout_marginTop="14dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          app:srcCompat="@drawable/ic_password_24dp"
+          />
+      <TextView
+          android:id="@+id/tvPassword"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/separatorLogin"
+          android:layout_marginBottom="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_toRightOf="@+id/ivProfile"
+          android:text="***********"
+          android:inputType="textPassword"
+          android:textColor="@color/colorSettingsGeneralText"
+          android:textSize="16sp"
           />
     </RelativeLayout>
 
@@ -115,7 +175,7 @@
         android:background="@color/colorSettingsBlockBackground"
         >
       <View
-          android:id="@+id/separator3"
+          android:id="@+id/separatorPrivateInformation"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:background="@color/colorSettingsSeparator"
@@ -126,7 +186,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:layout_below="@+id/separator3"
+          android:layout_below="@+id/separatorPrivateInformation"
           android:layout_marginTop="14dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -146,7 +206,7 @@
           android:textSize="16sp"
           />
       <View
-          android:id="@+id/separator4"
+          android:id="@+id/separatorEmail"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvEmail"
@@ -159,7 +219,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:layout_below="@+id/separator4"
+          android:layout_below="@+id/separatorEmail"
           android:layout_marginTop="14dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -169,7 +229,7 @@
           android:id="@+id/tvPhone"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator4"
+          android:layout_below="@+id/separatorEmail"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -180,7 +240,7 @@
           android:textSize="16sp"
           />
       <View
-          android:id="@+id/separator5"
+          android:id="@+id/separatorPhone"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvPhone"
@@ -193,7 +253,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:layout_below="@+id/separator5"
+          android:layout_below="@+id/separatorPhone"
           android:layout_marginTop="14dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -201,20 +261,35 @@
           />
       <TextView
           android:id="@+id/tvGender"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator5"
+          android:layout_below="@+id/separatorPhone"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:layout_toRightOf="@+id/ivGender"
+          android:paddingRight="8dp"
           android:text="Женский"
           android:textColor="@color/colorSettingsGeneralText"
           android:textSize="16sp"
+          android:visibility="invisible"
+          />
+      <Spinner
+          android:id="@+id/spinnerGender"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/separatorPhone"
+          android:entries="@array/gender"
+          android:layout_marginBottom="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_toRightOf="@+id/ivGender"
+          android:layout_alignBaseline="@+id/tvGender"
           />
       <View
-          android:id="@+id/separator6"
+          android:id="@+id/separatorGender"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvGender"
@@ -248,50 +323,57 @@
         android:background="@color/colorSettingsBlockBackground"
         >
       <View
-          android:id="@+id/separator7"
+          android:id="@+id/separatorAdditionalSettings"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
-          android:background="@color/colorSettingsSeparator"
-          />
-      <TextView
-          android:id="@+id/tvLanguage"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@+id/separator7"
-          android:layout_marginBottom="16dp"
-          android:layout_marginLeft="16dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="16dp"
-          android:text="@string/language"
-          android:textColor="@color/colorSettingsGeneralText"
-          android:textSize="16sp"
-          />
-      <View
-          android:id="@+id/separator8"
-          android:layout_width="match_parent"
-          android:layout_height="0.25dp"
-          android:layout_below="@+id/tvLanguage"
-          android:layout_alignLeft="@+id/tvLanguage"
           android:background="@color/colorSettingsSeparator"
           />
       <TextView
           android:id="@+id/tvNotifications"
-          android:layout_width="wrap_content"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator8"
+          android:layout_below="@+id/separatorAdditionalSettings"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
+          android:paddingRight="8dp"
+          android:paddingEnd="8dp"
           android:text="@string/settings_notifications"
           android:textColor="@color/colorSettingsGeneralText"
           android:textSize="16sp"
+          android:drawableEnd="@drawable/ic_date_next_24dp"
+          android:drawableRight="@drawable/ic_date_next_24dp"
           />
       <View
-          android:id="@+id/separator9"
+          android:id="@+id/separatorNotifications"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_below="@+id/tvNotifications"
+          android:background="@color/colorSettingsSeparator"
+          />
+      <TextView
+          android:id="@+id/tvProblem"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/separatorNotifications"
+          android:layout_marginBottom="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:paddingRight="8dp"
+          android:paddingEnd="8dp"
+          android:text="@string/settings_problem"
+          android:textColor="@color/colorSettingsGeneralText"
+          android:textSize="16sp"
+          android:drawableEnd="@drawable/ic_date_next_24dp"
+          android:drawableRight="@drawable/ic_date_next_24dp"
+          />
+      <View
+          android:id="@+id/separatorProblem"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:layout_below="@+id/tvProblem"
           android:background="@color/colorSettingsSeparator"
           />
     </RelativeLayout>
@@ -326,7 +408,7 @@
         android:background="@color/colorSettingsBlockBackground"
         >
       <View
-          android:id="@+id/separator10"
+          android:id="@+id/separatorFinalSpace"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:background="@color/colorSettingsSeparator"
@@ -335,7 +417,7 @@
           android:id="@+id/tvClearHistory"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator10"
+          android:layout_below="@+id/separatorFinalSpace"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -345,7 +427,7 @@
           android:textSize="16sp"
           />
       <View
-          android:id="@+id/separator11"
+          android:id="@+id/separatorClearHistory"
           android:layout_width="match_parent"
           android:layout_height="0.25dp"
           android:layout_alignLeft="@+id/tvClearHistory"
@@ -356,7 +438,7 @@
           android:id="@+id/tvExit"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/separator11"
+          android:layout_below="@+id/separatorClearHistory"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
