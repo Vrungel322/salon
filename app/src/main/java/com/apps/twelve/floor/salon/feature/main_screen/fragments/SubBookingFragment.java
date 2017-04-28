@@ -53,7 +53,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
     mRecyclerViewMyLastBooking.setFocusable(false);
 
     mTextViewAllBooks.setOnClickListener(
-        c -> mNavigator.replaceFragmentTagNotCopy((StartActivity) getActivity(),
+        c -> mNavigator.addFragmentTagBackStackNotCopy((StartActivity) getActivity(),
             R.id.container_main, MyBookFragment.newInstance(),
             Constants.FragmentTag.MY_BOOK_FRAGMENT));
 
