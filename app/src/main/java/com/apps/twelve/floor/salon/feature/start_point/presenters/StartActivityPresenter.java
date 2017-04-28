@@ -47,4 +47,8 @@ import timber.log.Timber;
         .subscribe((event -> getViewState().showFloatingButton()), Timber::e);
     addToUnsubscription(subscription);
   }
+
+  public void setDrawerIndicator() {
+    getViewState().setDrawerIndicator();
+  }
 }

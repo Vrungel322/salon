@@ -56,15 +56,8 @@ public class StartActivity extends BaseActivity
     mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
         new Intent(StartActivity.this, BookingActivity.class)));
 
-    getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-      if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
-        mToggle.setDrawerIndicatorEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      } else {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        mToggle.setDrawerIndicatorEnabled(true);
-      }
-    });
+    getSupportFragmentManager().addOnBackStackChangedListener(
+        () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
   }
@@ -189,6 +182,16 @@ public class StartActivity extends BaseActivity
     intent.putExtra(Intent.EXTRA_SUBJECT, "Watch this cool app!");
     intent.putExtra(Intent.EXTRA_TEXT, appUrl);
     startActivity(Intent.createChooser(intent, "Share app URL"));
+  }
+
+  @Override public void setDrawerIndicator() {
+    if (getSupportActionBar() != null && !mNavigator.isEmptyBackStack(StartActivity.this)) {
+      mToggle.setDrawerIndicatorEnabled(false);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    } else {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+      mToggle.setDrawerIndicatorEnabled(true);
+    }
   }
 
   @Override public void addFragmentMain() {
