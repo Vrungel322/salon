@@ -88,8 +88,13 @@
   <string name="change_photo">Сменить фото профиля</string>
   <string name="private_information">Личная информация</string>
   <string name="additional_settings">Доп. настройки</string>
-  <string name="language">Язык</string>
+  <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
+  <string-array name="gender">
+    <item name="w">Женский</item>
+    <item name="m">Мужской</item>
+    <item name="n">Не указан</item>
+  </string-array>
 </resources>
