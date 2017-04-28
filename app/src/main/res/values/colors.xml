@@ -37,6 +37,7 @@
   <color name="colorMainScreenBookingPressed">#fbe9f0</color>
 
   <!--screen OurWorks-->
+  <color name="colorOurWorksBackground">#FFFFFF</color>
   <color name="colorOurWorksIcon">#FFC6C5C1</color>
   <color name="colorOurWorksTitile">#000000</color>
   <color name="colorOurWorksText">#c6c5c1</color>
