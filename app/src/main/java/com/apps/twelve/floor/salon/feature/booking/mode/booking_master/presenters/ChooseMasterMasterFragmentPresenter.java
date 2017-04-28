@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
-import java.util.Random;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -56,12 +55,12 @@ import timber.log.Timber;
 
   public void setAnyMasterSelected() {
     mBookingEntity.setMasterId(
-        String.valueOf(Randomizer.getRandomNumberInRange(1, mMasterEntities.size())));
+        mMasterEntities.get(Randomizer.getRandomNumberInRange(1, mMasterEntities.size()))
+            .getMasterId());
     mBookingEntity.setMasterName("any");
     getViewState().setSelectedItem(0);
     mRxBus.post(new RxBusHelper.EventForNextStep(
         new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
             mBookingEntity.getMasterName()), 0));
   }
-
 }

@@ -63,12 +63,12 @@ import timber.log.Timber;
 
   public void setAnyMasterSelected() {
     mBookingEntity.setMasterId(
-        String.valueOf(Randomizer.getRandomNumberInRange(1, mMasterEntities.size())));
+        mMasterEntities.get(Randomizer.getRandomNumberInRange(1, mMasterEntities.size()))
+            .getMasterId());
     mBookingEntity.setMasterName("any");
     getViewState().setSelectedItem(0);
     mRxBus.post(new RxBusHelper.EventForNextStep(
         new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
             mBookingEntity.getMasterName()), 2));
   }
-
 }

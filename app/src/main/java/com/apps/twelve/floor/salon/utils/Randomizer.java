@@ -9,11 +9,14 @@ import java.util.Random;
 public class Randomizer {
   public static int getRandomNumberInRange(int min, int max) {
 
-    if (min >= max) {
+    if (min > max) {
       throw new IllegalArgumentException("max must be greater than min");
     }
+    if (max == 1) return 0;
 
     Random r = new Random();
-    return r.nextInt((max - min) + 1) + min;
+    int generetedNum = r.nextInt((max - min) + 1) + min;
+    if (generetedNum == max) return generetedNum - 1;
+    return generetedNum;
   }
 }
