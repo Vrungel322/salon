@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseMasterFragmentView;
+import com.apps.twelve.floor.salon.utils.Randomizer;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -61,7 +62,8 @@ import timber.log.Timber;
   }
 
   public void setAnyMasterSelected() {
-    mBookingEntity.setMasterId("any");
+    mBookingEntity.setMasterId(
+        String.valueOf(Randomizer.getRandomNumberInRange(1, mMasterEntities.size())));
     mBookingEntity.setMasterName("any");
     getViewState().setSelectedItem(0);
     mRxBus.post(new RxBusHelper.EventForNextStep(
