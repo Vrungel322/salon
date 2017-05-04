@@ -71,16 +71,43 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
         mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterServiceFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
+        mBookingDetailMasterFragmentPresenter.setSelectedTab(
+            Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
         mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterTimeFragment.newInstance(),
+            Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
+        mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
         mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterContactFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
+        mBookingDetailMasterFragmentPresenter.setSelectedTab(
+            Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
+        break;
+    }
+  }
+
+  @Override public void setSelectedTab(String fragmentTag) {
+    mViewAccentMaster.setVisibility(View.INVISIBLE);
+    mViewAccentService.setVisibility(View.INVISIBLE);
+    mViewAccentTime.setVisibility(View.INVISIBLE);
+    mViewAccentData.setVisibility(View.INVISIBLE);
+    switch (fragmentTag) {
+      case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
+        mViewAccentService.setVisibility(View.VISIBLE);
+        break;
+      case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
+        mViewAccentTime.setVisibility(View.VISIBLE);
+        break;
+      case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
+        mViewAccentData.setVisibility(View.VISIBLE);
+        break;
+      default:
+        mViewAccentMaster.setVisibility(View.VISIBLE);
         break;
     }
   }

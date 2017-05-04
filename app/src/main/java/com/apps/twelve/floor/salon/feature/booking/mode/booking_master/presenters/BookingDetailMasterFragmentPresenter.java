@@ -48,14 +48,14 @@ import rx.Subscription;
           switch (eventForNextStep.fragmentTag) {
             case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
               if (!mBookingEntity.getMasterId().isEmpty()) {
-                getViewState().goNextFragment(eventForNextStep.fragmentTag);
+                getViewState().goNextFragment(Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
               } else {
                 getViewState().showMessageWarning(R.string.error_empty_master);
               }
               break;
             case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
               if (!mBookingEntity.getServiceId().isEmpty()) {
-                getViewState().goNextFragment(eventForNextStep.fragmentTag);
+                getViewState().goNextFragment(Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
                 getViewState().hideKeyboard();
               } else {
                 getViewState().showMessageWarning(R.string.error_empty_service);
@@ -63,7 +63,7 @@ import rx.Subscription;
               break;
             case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
               if (!mBookingEntity.getDateId().isEmpty()) {
-                getViewState().goNextFragment(eventForNextStep.fragmentTag);
+                getViewState().goNextFragment(Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
               } else {
                 getViewState().showMessageWarning(R.string.error_empty_date);
               }
@@ -71,5 +71,9 @@ import rx.Subscription;
           }
         });
     addToUnsubscription(subscription);
+  }
+
+  public void setSelectedTab(String fragmentTag) {
+    getViewState().setSelectedTab(fragmentTag);
   }
 }

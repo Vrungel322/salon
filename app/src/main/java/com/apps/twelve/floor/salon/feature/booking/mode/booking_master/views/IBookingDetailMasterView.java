@@ -18,4 +18,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void hideKeyboard();
 
   @StateStrategyType(SkipStrategy.class) void goNextFragment(String fragmentTag);
+
+  void setSelectedTab(String fragmentTag);
 }
