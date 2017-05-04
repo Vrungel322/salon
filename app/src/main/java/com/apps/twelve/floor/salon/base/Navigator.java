@@ -157,6 +157,14 @@ public class Navigator implements INavigator {
     parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
   }
 
+  @Override public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child, @NonNull String fragmentTag) {
+    parent.getChildFragmentManager()
+        .beginTransaction()
+        .add(containerId, child, fragmentTag)
+        .commit();
+  }
+
   @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
     if (!isEmptyBackStack(activity)) {
       activity.getSupportFragmentManager()

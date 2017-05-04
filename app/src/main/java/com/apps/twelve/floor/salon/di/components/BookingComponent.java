@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingDetailMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterServiceFragmentPresenter;
@@ -36,5 +37,7 @@ import dagger.Subcomponent;
   void inject(ChooseMasterTimeFragmentPresenter presenter);
 
   void inject(BookingMasterContactFragmentPresenter presenter);
+
+  void inject(BookingDetailMasterFragmentPresenter presenter);
 
 }

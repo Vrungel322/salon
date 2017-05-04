@@ -7,6 +7,7 @@ import android.view.View;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.BookingDetailMasterFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -42,7 +43,7 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
 
   @OnClick(R.id.rl_choose_specialist) void chooseMasters() {
     mNavigator.replaceFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking,
-        BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_MASTER),
+        BookingDetailMasterFragment.newInstance(),
         Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT);
   }
 }

@@ -11,12 +11,11 @@ import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class BookingMasterContactFragment extends BaseFragment
-    implements IBookingMasterContactFragmentView {
+public class BookingMasterContact extends BaseFragment implements IBookingMasterContactView {
 
   @InjectPresenter BookingMasterContactFragmentPresenter mBookingMasterContactFragmentPresenter;
 
@@ -29,14 +28,14 @@ public class BookingMasterContactFragment extends BaseFragment
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
-  public static BookingMasterContactFragment newInstance() {
+  public static BookingMasterContact newInstance() {
     Bundle args = new Bundle();
-    BookingMasterContactFragment fragment = new BookingMasterContactFragment();
+    BookingMasterContact fragment = new BookingMasterContact();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public BookingMasterContactFragment() {
+  public BookingMasterContact() {
     super(R.layout.fragment_booking_master_contact);
   }
 
