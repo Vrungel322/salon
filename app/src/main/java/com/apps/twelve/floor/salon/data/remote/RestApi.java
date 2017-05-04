@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
+import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import java.util.List;
@@ -83,6 +84,10 @@ public class RestApi {
 
   public Observable<NewsEntity> fetchNewsPreview() {
     return api.fetchNewsPreview();
+  }
+
+  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
+    return api.fetchListOfWorks();
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {
