@@ -8,7 +8,7 @@ import java.util.TimeZone;
  * Created by Vrungel on 13.04.2017.
  */
 
-public class Converters {
+public final class Converters {
 
   public static String dateNow() {
     String dateResult;
