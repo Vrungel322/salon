@@ -36,11 +36,12 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().setUpViewPager();
     stateBooking();
-    nextStep(0);
+    nextStep();
   }
 
-  public void nextStep(int currentItem) {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class).compose(ThreadSchedulers.applySchedulers())
+  private void nextStep() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class)
+        .compose(ThreadSchedulers.applySchedulers())
         .subscribe(eventForNextStep -> {
           if (mStartWith == Constants.BookingMode.START_WITH_SERVICE) {
             switch (eventForNextStep.currentItem) {
@@ -53,6 +54,7 @@ import timber.log.Timber;
                   getViewState().hideKeyboard();
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_service);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
               case 1:
@@ -62,6 +64,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_date);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
               case 2:
@@ -71,6 +74,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_master);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
             }
@@ -83,6 +87,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_master);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
               case 1:
@@ -94,6 +99,7 @@ import timber.log.Timber;
                   getViewState().hideKeyboard();
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_service);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
               case 2:
@@ -103,6 +109,7 @@ import timber.log.Timber;
                   getViewState().goNext(eventForNextStep.currentItem + 1);
                 } else {
                   getViewState().showMessageWarning(R.string.error_empty_date);
+                  getViewState().goNext(eventForNextStep.currentItem + 1);
                 }
                 break;
             }
@@ -135,5 +142,9 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(stateBooking -> getViewState().stateBooking(), Timber::e);
     addToUnsubscription(subscription);
+  }
+
+  public void eventForNextStep(int position) {
+    mRxBus.post(new RxBusHelper.EventForNextStep(position));
   }
 }

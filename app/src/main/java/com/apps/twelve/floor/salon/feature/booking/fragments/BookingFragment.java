@@ -35,14 +35,12 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   }
 
   @OnClick(R.id.rl_choose_service) void chooseService() {
-    showToastMessage(R.string.book_choose_service);
     mNavigator.replaceFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking,
         BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_SERVICE),
         Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT);
   }
 
   @OnClick(R.id.rl_choose_specialist) void chooseMasters() {
-    showToastMessage(R.string.book_choose_specialist);
     mNavigator.replaceFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking,
         BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_MASTER),
         Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT);
