@@ -17,7 +17,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  * Created by John on 04.05.2017.
  */
 
-public class BookingDetailMasterFragment extends BaseFragment implements IBookingDetailMasterView {
+public class BookingDetailMastersFragment extends BaseFragment implements IBookingDetailMasterView {
 
   @InjectPresenter BookingDetailMasterFragmentPresenter mBookingDetailMasterFragmentPresenter;
 
@@ -34,13 +34,13 @@ public class BookingDetailMasterFragment extends BaseFragment implements IBookin
   @BindView(R.id.viewAccentData) View mViewAccentData;
   @BindView(R.id.tabData) LinearLayout mTabData;
 
-  public BookingDetailMasterFragment() {
+  public BookingDetailMastersFragment() {
     super(R.layout.fragment_booking_detail_master);
   }
 
-  public static BookingDetailMasterFragment newInstance() {
+  public static BookingDetailMastersFragment newInstance() {
     Bundle args = new Bundle();
-    BookingDetailMasterFragment fragment = new BookingDetailMasterFragment();
+    BookingDetailMastersFragment fragment = new BookingDetailMastersFragment();
     fragment.setArguments(args);
     return fragment;
   }
@@ -49,8 +49,8 @@ public class BookingDetailMasterFragment extends BaseFragment implements IBookin
     super.onViewCreated(view, savedInstanceState);
   }
 
-  @Override public void addFirstFragment() {
-    mNavigator.addChildFragmentTag(this, R.id.container_booking_detail,
+  @Override public void addMasterFragment() {
+    mNavigator.addChildFragmentTagBackStack(this, R.id.container_booking_detail,
         ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
   }

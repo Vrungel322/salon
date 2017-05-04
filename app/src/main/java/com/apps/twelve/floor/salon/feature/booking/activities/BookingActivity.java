@@ -47,11 +47,11 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
       }
     }
 
-    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTERS_FRAGMENT)) {
       mBookingActivityPresenter.stateBooking();
     }
 
-    if (!mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)
+    if (!mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTERS_FRAGMENT)
         && !mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
       super.onBackPressed();
     }

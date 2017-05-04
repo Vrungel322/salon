@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
@@ -15,4 +16,6 @@ import java.util.List;
   void hideProgressBar();
 
   void setSelectedItem(int position);
+
+  @StateStrategyType(SkipStrategy.class) void addServiceFragment();
 }

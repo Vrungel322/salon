@@ -8,7 +8,6 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterView;
 import com.apps.twelve.floor.salon.utils.Randomizer;
 import com.apps.twelve.floor.salon.utils.RxBus;
-import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
@@ -48,7 +47,7 @@ import timber.log.Timber;
     mBookingEntity.setMasterId(mMasterEntities.get(position).getMasterId());
     mBookingEntity.setMasterName(mMasterEntities.get(position).getMasterName());
     getViewState().setSelectedItem(position + 1);
-    mRxBus.post(new RxBusHelper.EventForNextStep(0));
+    getViewState().addServiceFragment();
   }
 
   public void setAnyMasterSelected() {
@@ -57,6 +56,6 @@ import timber.log.Timber;
             .getMasterId());
     mBookingEntity.setMasterName("any");
     getViewState().setSelectedItem(0);
-    mRxBus.post(new RxBusHelper.EventForNextStep(0));
+    getViewState().addServiceFragment();
   }
 }

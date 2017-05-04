@@ -19,7 +19,7 @@ import com.arellomobile.mvp.InjectViewState;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getViewState().addFirstFragment();
+    getViewState().addMasterFragment();
   }
 
   @Override public void onDestroy() {
