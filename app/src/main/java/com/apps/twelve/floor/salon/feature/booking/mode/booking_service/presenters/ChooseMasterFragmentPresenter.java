@@ -56,9 +56,7 @@ import timber.log.Timber;
     mBookingEntity.setMasterId(mMasterEntities.get(position).getMasterId());
     mBookingEntity.setMasterName(mMasterEntities.get(position).getMasterName());
     getViewState().setSelectedItem(position + 1);
-    mRxBus.post(new RxBusHelper.EventForNextStep(
-        new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
-            mBookingEntity.getMasterName()), 2));
+    mRxBus.post(new RxBusHelper.EventForNextStep(2));
   }
 
   public void setAnyMasterSelected() {
@@ -67,8 +65,6 @@ import timber.log.Timber;
             .getMasterId());
     mBookingEntity.setMasterName("any");
     getViewState().setSelectedItem(0);
-    mRxBus.post(new RxBusHelper.EventForNextStep(
-        new RxBusHelper.MasterID(String.valueOf(mBookingEntity.getMasterId()),
-            mBookingEntity.getMasterName()), 2));
+    mRxBus.post(new RxBusHelper.EventForNextStep(2));
   }
 }

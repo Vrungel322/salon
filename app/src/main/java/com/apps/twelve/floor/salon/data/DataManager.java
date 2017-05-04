@@ -141,35 +141,7 @@ public class DataManager {
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    ArrayList<OurWorkEntity> owe = new ArrayList<>();
-    ArrayList<PhotoWorksEntity> listImageUrl = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-      listImageUrl.add(new PhotoWorksEntity(1,
-          "Каждая свадебная прическа это своего рода шедевр. Если платья и аксессуары могут повторяться, то прическа всегда индивидуальна. "
-              + "Даже если она создается по какому-то образцу, все равно у каждой невесты она будет выглядеть по-своему неповторимо.",
-          true,
-          "http://liza.ua/wp-content/uploads/2016/12/tild3332-6430-4264-b238-343934343733__79615508f7484025a538db52b07e5b04.jpg"));
-      listImageUrl.add(new PhotoWorksEntity(2,
-          "Свой свадебный образ каждая девушка продумывает заблаговременно, ведь все должно быть гармоничным и сочетаемым: платье, аксессуары",
-          false,
-          "http://stilnyiy-mir.ru/wp-content/uploads/2016/11/Modnye-pricheski-s-kudrjami-2017-zhenskie-na-srednie-volosy-foto-24-e1478638531162.jpg"));
-      listImageUrl.add(new PhotoWorksEntity(3,
-          "Эти составляющие образа подбирают в одном стиле, наилучший вариант – соответствие постоянному стилю невесты.",
-          true, "http://v-2017.com/wp-content/uploads/2016/07/Hair-fashion-2017-12.jpg"));
-    }
-    for (int i = 0; i < 5; i++) {
-      owe.add(new OurWorkEntity(Uri.parse(
-          "http://beauty-proceduri.ru/assets/images/gallery/srednie-svadebnie-pricheski/svadebnaya-na-srednie-volosi-53.jpg"),
-          "Каталог причесок, новинки 2017", i, listImageUrl));
-      owe.add(new OurWorkEntity(Uri.parse(
-          "http://beauty-proceduri.ru/assets/images/gallery/srednie-svadebnie-pricheski/svadebnaya-na-srednie-volosi-53.jpg"),
-          "Прически и стрижки", i, listImageUrl));
-      owe.add(new OurWorkEntity(Uri.parse(
-          "http://beauty-proceduri.ru/assets/images/gallery/srednie-svadebnie-pricheski/svadebnaya-na-srednie-volosi-53.jpg"),
-          "COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford COMMUNIQUE Прически и стрижки Stafford",
-          i, listImageUrl));
-    }
-    return Observable.just(owe);
+    return mRestApi.fetchListOfWorks();
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {

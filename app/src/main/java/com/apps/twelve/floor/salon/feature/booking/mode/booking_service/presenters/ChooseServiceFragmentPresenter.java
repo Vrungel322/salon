@@ -135,8 +135,7 @@ import timber.log.Timber;
     mBookingEntity.setDurationServices(String.valueOf(mServiceAllEntities.get(position).getTime()));
     getViewState().setItemSelected(position);
 
-    mRxBus.post(new RxBusHelper.EventForNextStep(new RxBusHelper.ServiceID(String.valueOf(mBookingEntity.getServiceId()),
-        mBookingEntity.getMasterName()), 0));
+    mRxBus.post(new RxBusHelper.EventForNextStep(0));
   }
 
   public void showLLTreeServices() {

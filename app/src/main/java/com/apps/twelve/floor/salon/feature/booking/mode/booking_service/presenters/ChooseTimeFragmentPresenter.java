@@ -41,7 +41,6 @@ import timber.log.Timber;
         .concatMap(serviceID -> mDataManager.fetchDaysData(serviceID.serviceId))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
-          Timber.e("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
           mDataServiceEntity = dataServiceEntities;
           getViewState().setServiceName(mBookingEntity.getServiceName());
           getViewState().hideProgressBarBookingTime();
@@ -63,8 +62,7 @@ import timber.log.Timber;
       mBookingEntity.setServiceTime(String.valueOf(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
-      mRxBus.post(new RxBusHelper.EventForNextStep(new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
-          mBookingEntity.getServiceTime()), 1));
+      mRxBus.post(new RxBusHelper.EventForNextStep(1));
     } else {
       getViewState().timeIsNotAvailable();
     }

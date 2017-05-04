@@ -61,9 +61,7 @@ import timber.log.Timber;
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
 
-      mRxBus.post(new RxBusHelper.EventForNextStep(
-          new RxBusHelper.DataID(String.valueOf(mBookingEntity.getDateId()),
-              mBookingEntity.getServiceTime()), 2));
+      mRxBus.post(new RxBusHelper.EventForNextStep(2));
     } else {
       getViewState().timeIsNotAvailable();
     }

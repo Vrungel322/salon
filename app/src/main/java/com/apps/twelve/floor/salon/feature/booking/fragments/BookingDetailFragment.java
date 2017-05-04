@@ -6,9 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
 import butterknife.BindView;
-import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.adapters.ViewPagerBookingStepsAdapter;
@@ -78,6 +76,20 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
 
       }
     });
+
+    mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+      @Override public void onTabSelected(TabLayout.Tab tab) {
+        mBookingDetailFragmentPresenter.eventForNextStep(tab.getPosition() - 1);
+      }
+
+      @Override public void onTabUnselected(TabLayout.Tab tab) {
+
+      }
+
+      @Override public void onTabReselected(TabLayout.Tab tab) {
+
+      }
+    });
   }
 
   @Override public void setUpViewPager() {
@@ -133,7 +145,6 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);
-    ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
   }
 
   private void showChooseServiceFragment() {
@@ -146,6 +157,5 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);
-    ViewUtil.TabLayoutUtils.enableTabs(mTabLayout, false);
   }
 }
