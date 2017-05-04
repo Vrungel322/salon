@@ -43,6 +43,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
     super.onCreate(savedInstanceState);
 
     setTitleAppBar(R.string.menu_settings);
+    setIconAppBar(R.drawable.ic_home_white_24dp);
 
   }
 
