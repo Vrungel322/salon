@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
-@InjectViewState public class BookingMasterContactFragmentPresenter
+@InjectViewState public class ChooseMasterContactFragmentPresenter
     extends BasePresenter<IBookingMasterContactView> {
 
   @Inject BookingEntity mBookingEntity;
@@ -28,16 +28,9 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getInfFromRxBus();
-  }
-
-  private void getInfFromRxBus() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.DataID.class)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(dataID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
-            mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
-            mBookingEntity.getMasterName()), Timber::e);
-    addToUnsubscription(subscription);
+    getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
+        mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
+        mBookingEntity.getMasterName());
   }
 
   public void setPersonName(String s) {

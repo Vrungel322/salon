@@ -10,14 +10,14 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class ChooseMasterContactFragment extends BaseFragment implements IBookingMasterContactView {
 
-  @InjectPresenter BookingMasterContactFragmentPresenter mBookingMasterContactFragmentPresenter;
+  @InjectPresenter ChooseMasterContactFragmentPresenter mChooseMasterContactFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
@@ -48,9 +48,9 @@ public class ChooseMasterContactFragment extends BaseFragment implements IBookin
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
     mBtnCreateBooking.setClickable(false);
-    mBookingMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
-    mBookingMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
-    mBookingMasterContactFragmentPresenter.sendBookingEntity();
+    mChooseMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
+    mChooseMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
+    mChooseMasterContactFragmentPresenter.sendBookingEntity();
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
