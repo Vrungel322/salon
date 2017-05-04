@@ -36,6 +36,11 @@ import timber.log.Timber;
     fetchAllServicesByMasterId();
   }
 
+  @Override public void onDestroy() {
+    super.onDestroy();
+    mBookingEntity.setServiceId("");
+  }
+
   public void fetchAllServicesByMasterId() {
     getViewState().showProgressBarAllServices();
     getViewState().setMasterName(mBookingEntity.getMasterName());

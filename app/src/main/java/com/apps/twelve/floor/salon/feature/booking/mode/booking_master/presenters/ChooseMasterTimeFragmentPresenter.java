@@ -33,6 +33,11 @@ import timber.log.Timber;
     getTimeMaster();
   }
 
+  @Override public void onDestroy() {
+    super.onDestroy();
+    mBookingEntity.setDateId("");
+  }
+
   private void getTimeMaster() {
     Subscription subscription = mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId())
         .compose(ThreadSchedulers.applySchedulers())
@@ -74,10 +79,5 @@ import timber.log.Timber;
   public void setSelectedDay(int position) {
     dayPosition = position;
     getViewState().setSelectedDay(position);
-  }
-
-  public void clearSelectedTime() {
-    mBookingEntity.setDateId("");
-    getViewState().clearSelectedTime();
   }
 }

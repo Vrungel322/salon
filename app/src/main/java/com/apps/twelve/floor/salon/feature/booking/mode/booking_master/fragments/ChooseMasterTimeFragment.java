@@ -32,7 +32,6 @@ import java.util.List;
 
 public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMasterTimeView {
   private static final int SCHEDULE_SPAN_COUNT = 6;
-  private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @InjectPresenter ChooseMasterTimeFragmentPresenter mChooseTimeFragmentPresenter;
 
@@ -83,7 +82,7 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
-        mChooseTimeFragmentPresenter.clearSelectedTime();
+        //mChooseTimeFragmentPresenter.clearSelectedTime();
         mChooseTimeFragmentPresenter.setDateToTv();
       }
 
@@ -148,10 +147,6 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
   @Override public void hideProgressBarBookingTime() {
     mProgressBarBookingTime.setVisibility(View.GONE);
     mNestedScrollBookingTime.setVisibility(View.VISIBLE);
-  }
-
-  @Override public void clearSelectedTime() {
-    mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
   }
 
   @Override public void setUpRedSquare(String serviceName, String masterName) {

@@ -23,8 +23,6 @@ import java.util.List;
 
   void hideProgressBarBookingTime();
 
-  void clearSelectedTime();
-
   void setUpRedSquare(String serviceName, String masterName);
 
   void timeIsNotAvailable();
