@@ -36,7 +36,7 @@ public class ChooseMasterContactFragment extends BaseFragment implements IBookin
   }
 
   public ChooseMasterContactFragment() {
-    super(R.layout.fragment_booking_master_contact);
+    super(R.layout.fragment_choose_master_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -52,7 +52,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
   }
 
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
-    mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
+    mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
         R.id.container_main, AllNewsViewFragment.newInstance(),
         Constants.FragmentTag.ALL_NEWS_FRAGMENT);
   }

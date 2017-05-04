@@ -147,26 +147,26 @@ public class StartActivity extends BaseActivity
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
-        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         break;
       case R.id.nav_my_bonus:
-        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_share:
         mStartActivityPresenter.share();
         break;
       case R.id.nav_our_work:
-        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
         break;
       case R.id.nav_news:
-        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             AllNewsViewFragment.newInstance(), Constants.FragmentTag.ALL_NEWS_FRAGMENT);
         break;
       case R.id.nav_contacts:
-        mNavigator.addFragmentTagBackStackNotCopy(StartActivity.this, R.id.container_main,
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             ContactsFragment.newInstance(), Constants.FragmentTag.CONTACTS_FRAGMENT);
         break;
       case R.id.nav_settings:

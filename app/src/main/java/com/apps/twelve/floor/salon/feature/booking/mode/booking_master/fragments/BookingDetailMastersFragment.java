@@ -49,6 +49,18 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    mTabMaster.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
+        Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT));
+
+    mTabService.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
+        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT));
+
+    mTabTime.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
+        Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT));
+
+    mTabData.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
+        Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT));
   }
 
   @Override public void addFirstFragment() {
@@ -67,22 +79,27 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
 
   @Override public void goNextFragment(String fragmentTag) {
     switch (fragmentTag) {
+      case Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT:
+        mNavigator.clearBackStack((AppCompatActivity) getActivity());
+        mBookingDetailMasterFragmentPresenter.setSelectedTab(
+            Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
+        break;
       case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
-        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+        mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterServiceFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
-        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+        mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterTimeFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
-        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+        mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
             R.id.container_booking_detail, ChooseMasterContactFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
@@ -97,6 +114,9 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
     mViewAccentTime.setVisibility(View.INVISIBLE);
     mViewAccentData.setVisibility(View.INVISIBLE);
     switch (fragmentTag) {
+      case Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT:
+        mViewAccentMaster.setVisibility(View.VISIBLE);
+        break;
       case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
         mViewAccentService.setVisibility(View.VISIBLE);
         break;
@@ -105,9 +125,6 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
         mViewAccentData.setVisibility(View.VISIBLE);
-        break;
-      default:
-        mViewAccentMaster.setVisibility(View.VISIBLE);
         break;
     }
   }

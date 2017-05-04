@@ -46,6 +46,9 @@ import rx.Subscription;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(eventForNextStep -> {
           switch (eventForNextStep.fragmentTag) {
+            case Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT:
+              getViewState().goNextFragment(Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
+              break;
             case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
               if (!mBookingEntity.getMasterId().isEmpty()) {
                 getViewState().goNextFragment(Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
@@ -75,5 +78,9 @@ import rx.Subscription;
 
   public void setSelectedTab(String fragmentTag) {
     getViewState().setSelectedTab(fragmentTag);
+  }
+
+  public void clickTab(String fragmentTag) {
+    mRxBus.post(new RxBusHelper.EventForNextStep(fragmentTag));
   }
 }

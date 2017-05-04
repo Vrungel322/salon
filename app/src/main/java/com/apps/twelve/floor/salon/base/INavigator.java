@@ -42,6 +42,9 @@ public interface INavigator {
   void addFragmentTagBackStack(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment, @NonNull String fragmentTag);
 
+  void addFragmentTagClearBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);
+
   void addFragmentTagBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag);
 

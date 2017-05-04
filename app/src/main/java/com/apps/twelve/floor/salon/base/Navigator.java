@@ -82,12 +82,26 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void addFragmentTagBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
+  @Override
+  public void addFragmentTagClearBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
     if (fragmentCopy == null) {
       clearBackStack(appCompatActivity);
+      appCompatActivity.getSupportFragmentManager()
+          .beginTransaction()
+          .addToBackStack(null)
+          .add(containerId, fragment, fragmentTag)
+          .commit();
+    }
+  }
+
+  @Override public void addFragmentTagBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    if (fragmentCopy == null) {
       appCompatActivity.getSupportFragmentManager()
           .beginTransaction()
           .addToBackStack(null)
