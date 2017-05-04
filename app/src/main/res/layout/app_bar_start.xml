@@ -24,6 +24,10 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         />
+    <!--
+        app:titleTextColor="@color/colorNavigationText"
+        app:subtitleTextColor="@color/colorNavigationText"
+        -->
 
   </android.support.design.widget.AppBarLayout>
 

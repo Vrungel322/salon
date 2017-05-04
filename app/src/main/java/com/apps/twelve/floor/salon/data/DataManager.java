@@ -75,6 +75,54 @@ public class DataManager {
     mPref.setProfileImage(uri);
   }
 
+  public Observable<String> getProfileName() {
+    return mPref.getProfileName();
+  }
+
+  public void setProfileName(String name) {
+    mPref.setProfileName(name);
+  }
+
+  public Observable<String> getProfileLogin() {
+    return mPref.getProfileLogin();
+  }
+
+  public void setProfileLogin(String login) {
+    mPref.setProfileLogin(login);
+  }
+
+  public Observable<String> getProfilePassword() {
+    return mPref.getProfilePassword();
+  }
+
+  public void setProfilePassword(String password) {
+    mPref.setProfilePassword(password);
+  }
+
+  public Observable<String> getProfileEmail() {
+    return mPref.getProfileEmail();
+  }
+
+  public void setProfileEmail(String email) {
+    mPref.setProfileEmail(email);
+  }
+
+  public Observable<String> getProfilePhone() {
+    return mPref.getProfilePhone();
+  }
+
+  public void setProfilePhone(String phone) {
+    mPref.setProfilePhone(phone);
+  }
+
+  public Observable<Integer> getProfileGender() {
+    return mPref.getProfileGender();
+  }
+
+  public void setProfileGender(int gender) {
+    mPref.setProfileGender(gender);
+  }
+
   public Observable<retrofit2.Response<Void>> checkInService(
       BookingServerEntity bookingServerEntity) {
     return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);

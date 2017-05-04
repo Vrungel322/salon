@@ -93,9 +93,28 @@
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
+  <string name="change_user_info">Изменить %s</string>
+  <string name="current_field_name">Текущее имя:</string>
+  <string name="new_field_name">Новое имя:</string>
+  <string name="current_field_login">Текущий логин:</string>
+  <string name="new_field_login">Новый логин:</string>
+  <string name="current_field_password">Текущий пароль:</string>
+  <string name="new_field_password">Новый пароль:</string>
+  <string name="current_field_email">Текущая почта:</string>
+  <string name="new_field_email">Новая почта:</string>
+  <string name="current_field_phone">Текущий телефон:</string>
+  <string name="new_field_phone">Новый телефон:</string>
+  <string name="button_save">Сохранить</string>
   <string-array name="gender">
-    <item name="w">Женский</item>
-    <item name="m">Мужской</item>
-    <item name="n">Не указан</item>
+    <item>Женский</item>
+    <item>Мужской</item>
+    <item>Не указан</item>
+  </string-array>
+  <string-array name="changing_field">
+    <item>имя</item>
+    <item>логин</item>
+    <item>пароль</item>
+    <item>почту</item>
+    <item>телефон</item>
   </string-array>
 </resources>
