@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.our_works.adapters;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
   private ArrayList<OurWorkEntity> mOurWorkEntities = new ArrayList<>();
 
   public void addListWorkEntities(List<OurWorkEntity> ourWorkEntities) {
+    mOurWorkEntities.clear();
     mOurWorkEntities.addAll(ourWorkEntities);
     notifyDataSetChanged();
   }
@@ -33,10 +35,10 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
 
   @Override public void onBindViewHolder(OurWorkViewHolder holder, int position) {
     Picasso.with(holder.mImageViewWorkPreview.getContext())
-        .load(mOurWorkEntities.get(position).getImageURL())
+        .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
         .into(holder.mImageViewWorkPreview);
 
-    holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getShortDescription());
+    holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
 
     holder.mTextViewNumOfImgToPreview.setText(
         String.valueOf(mOurWorkEntities.get(position).getImageCount()));

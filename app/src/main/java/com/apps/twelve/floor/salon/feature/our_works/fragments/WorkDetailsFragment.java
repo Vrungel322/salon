@@ -79,6 +79,10 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
     if (ourWorkEntity != null) {
+      //some TV (title and gallery description)
+      mTextViewTitleWork.setText(ourWorkEntity.getTitle());
+      mTextViewDescriptionWork.setText(ourWorkEntity.getShortDescription());
+
       // pager adapter
       mViewPagerAdapter =
           new ImageWorkViewPagerAdapter(getActivity(), ourWorkEntity.getListPhotoWorks());
@@ -113,6 +117,9 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
               mTextViewMore.setVisibility(View.VISIBLE);
               mTextViewDescriptionWork.setMaxLines(3);
               mTextViewDescriptionWork.setEllipsize(TextUtils.TruncateAt.END);
+              mTextViewDescriptionWork.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+            else {
               mTextViewDescriptionWork.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
           }
