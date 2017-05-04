@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by Vrungel on 28.04.2017.
  */
 
-public class Randomizer {
+public final class Randomizer {
   public static int getRandomNumberInRange(int min, int max) {
 
     if (min > max) {
