@@ -26,6 +26,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    setUpPhoto();
     setUpUserInfo();
   }
 
