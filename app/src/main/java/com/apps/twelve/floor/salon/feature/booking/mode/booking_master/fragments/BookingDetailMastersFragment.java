@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragment
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingDetailMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingDetailMasterView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -49,9 +51,37 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
     super.onViewCreated(view, savedInstanceState);
   }
 
-  @Override public void addMasterFragment() {
-    mNavigator.addChildFragmentTagBackStack(this, R.id.container_booking_detail,
+  @Override public void addFirstFragment() {
+    mNavigator.addFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking_detail,
         ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
+  }
+
+  @Override public void showMessageWarning(int warning) {
+    showAlertMessage(getString(R.string.title_write_error), getString(warning));
+  }
+
+  @Override public void hideKeyboard() {
+    ViewUtil.hideKeyboard(getActivity());
+  }
+
+  @Override public void goNextFragment(String fragmentTag) {
+    switch (fragmentTag) {
+      case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
+        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+            R.id.container_booking_detail, ChooseMasterServiceFragment.newInstance(),
+            Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
+        break;
+      case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
+        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+            R.id.container_booking_detail, ChooseMasterTimeFragment.newInstance(),
+            Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
+        break;
+      case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
+        mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+            R.id.container_booking_detail, ChooseMasterContactFragment.newInstance(),
+            Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
+        break;
+    }
   }
 }

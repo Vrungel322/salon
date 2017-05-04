@@ -11,5 +11,11 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingDetailMasterView
     extends MvpView {
-  @StateStrategyType(SkipStrategy.class) void addMasterFragment();
+  @StateStrategyType(SkipStrategy.class) void addFirstFragment();
+
+  @StateStrategyType(SkipStrategy.class) void showMessageWarning(int warning);
+
+  void hideKeyboard();
+
+  @StateStrategyType(SkipStrategy.class) void goNextFragment(String fragmentTag);
 }

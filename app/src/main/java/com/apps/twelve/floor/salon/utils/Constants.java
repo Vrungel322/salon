@@ -22,6 +22,8 @@ public final class Constants {
     public static final String ALL_NEWS_FRAGMENT = "AllNewsFragment";
     public static final String CHOOSE_MASTER_MASTER_FRAGMENT = "ChooseMasterMasterFragment";
     public static final String CHOOSE_MASTER_SERVICE_FRAGMENT = "ChooseMasterServiceFragment";
+    public static final String CHOOSE_MASTER_TIME_FRAGMENT = "ChooseMasterTimeFragment";
+    public static final String CHOOSE_MASTER_CONTACT_FRAGMENT = "ChooseMasterContactFragment";
   }
 
   public class FragmentsArgumentKeys {

@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragment
 
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,7 +13,6 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.MastersVerticalAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
@@ -26,7 +24,6 @@ public class ChooseMasterMasterFragment extends BaseFragment implements IChooseM
   @BindView(R.id.rvMasters) RecyclerView mRecyclerViewMasters;
   @BindView(R.id.progressBarChooseMaster) ProgressBar mProgressBar;
   @BindView(R.id.nestedScrollChooseMaster) NestedScrollView mNestedScroll;
-  @BindView(R.id.viewBlockedClickRv) View mViewBlockedClickRv;
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
@@ -68,11 +65,5 @@ public class ChooseMasterMasterFragment extends BaseFragment implements IChooseM
 
   @Override public void setSelectedItem(int position) {
     mMastersVerticalAdapter.setSelectedItem(position);
-  }
-
-  @Override public void addServiceFragment() {
-    mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
-        R.id.container_booking_detail, ChooseMasterServiceFragment.newInstance(),
-        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
   }
 }

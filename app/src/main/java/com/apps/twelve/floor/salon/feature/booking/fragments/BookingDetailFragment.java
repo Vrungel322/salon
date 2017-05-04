@@ -10,7 +10,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.adapters.ViewPagerBookingStepsAdapter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.BookingMasterContact;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterContactFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterMasterFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterServiceFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterTimeFragment;
@@ -141,7 +141,7 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
     adapter.addFragment(ChooseMasterServiceFragment.newInstance(),
         getString(R.string.tab_services));
     adapter.addFragment(ChooseMasterTimeFragment.newInstance(), getString(R.string.tab_time));
-    adapter.addFragment(BookingMasterContact.newInstance(), getString(R.string.tab_data));
+    adapter.addFragment(ChooseMasterContactFragment.newInstance(), getString(R.string.tab_data));
     mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);

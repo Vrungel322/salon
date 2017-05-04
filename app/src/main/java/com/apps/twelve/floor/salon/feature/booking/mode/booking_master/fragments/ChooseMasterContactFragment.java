@@ -15,7 +15,7 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBo
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class BookingMasterContact extends BaseFragment implements IBookingMasterContactView {
+public class ChooseMasterContactFragment extends BaseFragment implements IBookingMasterContactView {
 
   @InjectPresenter BookingMasterContactFragmentPresenter mBookingMasterContactFragmentPresenter;
 
@@ -28,14 +28,14 @@ public class BookingMasterContact extends BaseFragment implements IBookingMaster
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
-  public static BookingMasterContact newInstance() {
+  public static ChooseMasterContactFragment newInstance() {
     Bundle args = new Bundle();
-    BookingMasterContact fragment = new BookingMasterContact();
+    ChooseMasterContactFragment fragment = new ChooseMasterContactFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public BookingMasterContact() {
+  public ChooseMasterContactFragment() {
     super(R.layout.fragment_booking_master_contact);
   }
 

@@ -7,9 +7,14 @@ package com.apps.twelve.floor.salon.utils;
 public final class RxBusHelper {
   public static class EventForNextStep{
     public int currentItem;
+    public String fragmentTag;
 
     public EventForNextStep(int currentItem) {
       this.currentItem = currentItem;
+    }
+
+    public EventForNextStep(String fragmentTag) {
+      this.fragmentTag = fragmentTag;
     }
   }
 

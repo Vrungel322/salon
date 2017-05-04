@@ -157,11 +157,9 @@ public class Navigator implements INavigator {
     parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
   }
 
-  @Override
-  public void addChildFragmentTagBackStack(@NonNull Fragment parent, @IdRes int containerId,
+  @Override public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
       @NonNull Fragment child, @NonNull String fragmentTag) {
-    parent.getChildFragmentManager()
-        .beginTransaction().addToBackStack(null)
+    parent.getChildFragmentManager().beginTransaction()
         .add(containerId, child, fragmentTag)
         .commit();
   }
