@@ -11,6 +11,8 @@ import butterknife.OnItemSelected;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.settings.fragments.ChangeUserInfoFragment;
+import com.apps.twelve.floor.salon.feature.settings.fragments.NotificationSettingsFragment;
+import com.apps.twelve.floor.salon.feature.settings.fragments.ReportProblemFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -111,11 +113,13 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   /** bottom buttons */
 
   @OnClick(R.id.rlNotifications) void editNotifications() {
-    showToastMessage("notifications");
+    mNavigator.addFragmentBackStack(this, R.id.activity_settings,
+        NotificationSettingsFragment.newInstance());
   }
 
   @OnClick(R.id.rlProblem) void problems() {
-    showToastMessage("problems");
+    mNavigator.addFragmentBackStack(this, R.id.activity_settings,
+        ReportProblemFragment.newInstance());
   }
 
   @OnClick(R.id.rlClearHistory) void clearHistory() {

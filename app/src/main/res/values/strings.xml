@@ -106,6 +106,9 @@
   <string name="current_field_phone">Текущий телефон:</string>
   <string name="new_field_phone">Новый телефон:</string>
   <string name="button_save">Сохранить</string>
+  <string name="report_problem_description">Опишите Вашу проблему:</string>
+  <string name="report_problem_hint">Мой кот меня не любит</string>
+  <string name="report_problem_button">Отправить</string>
   <string-array name="gender">
     <item>Женский</item>
     <item>Мужской</item>
