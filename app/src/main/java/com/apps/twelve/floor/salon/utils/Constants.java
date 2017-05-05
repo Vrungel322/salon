@@ -14,7 +14,8 @@ public final class Constants {
   public class FragmentTag {
     public static final String MAIN_FRAGMENT = "MainFragment";
     public static final String BOOKING_SERVICES_FRAGMENT = "BookingServicesFragment";
-    public static final String BOOKING_DETAIL_MASTERS_FRAGMENT = "BookingDetailMastersFragment";
+    public static final String BOOKING_DETAIL_MASTER_FRAGMENT = "BookingDetailMasterFragment";
+    public static final String BOOKING_DETAIL_SERVICE_FRAGMENT = "BookingDetailServiceFragment";
     public static final String MY_BOOK_FRAGMENT = "MyBookFragment";
     public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";

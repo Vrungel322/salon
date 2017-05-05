@@ -7,7 +7,8 @@ import android.view.View;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.BookingDetailMastersFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.BookingDetailMasterFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.BookingDetailServiceFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -36,15 +37,15 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   }
 
   @OnClick(R.id.rl_choose_service) void chooseService() {
-    mNavigator.replaceFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking,
-        BookingDetailFragment.newInstance(Constants.FragmentToShow.CHOOSE_SERVICE),
-        Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT);
+    mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
+        BookingDetailServiceFragment.newInstance(),
+        Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT);
   }
 
   @OnClick(R.id.rl_choose_specialist) void chooseMasters() {
     mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
-        BookingDetailMastersFragment.newInstance(),
-        Constants.FragmentTag.BOOKING_DETAIL_MASTERS_FRAGMENT);
+        BookingDetailMasterFragment.newInstance(),
+        Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT);
   }
 }
 

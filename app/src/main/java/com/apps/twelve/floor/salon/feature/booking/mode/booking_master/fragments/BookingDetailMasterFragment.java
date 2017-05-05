@@ -19,7 +19,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  * Created by John on 04.05.2017.
  */
 
-public class BookingDetailMastersFragment extends BaseFragment implements IBookingDetailMasterView {
+public class BookingDetailMasterFragment extends BaseFragment implements IBookingDetailMasterView {
 
   @InjectPresenter BookingDetailMasterFragmentPresenter mBookingDetailMasterFragmentPresenter;
 
@@ -36,13 +36,13 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
   @BindView(R.id.viewAccentData) View mViewAccentData;
   @BindView(R.id.tabData) LinearLayout mTabData;
 
-  public BookingDetailMastersFragment() {
+  public BookingDetailMasterFragment() {
     super(R.layout.fragment_booking_detail_master);
   }
 
-  public static BookingDetailMastersFragment newInstance() {
+  public static BookingDetailMasterFragment newInstance() {
     Bundle args = new Bundle();
-    BookingDetailMastersFragment fragment = new BookingDetailMastersFragment();
+    BookingDetailMasterFragment fragment = new BookingDetailMasterFragment();
     fragment.setArguments(args);
     return fragment;
   }
@@ -73,7 +73,8 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
   }
 
   @Override public void addFirstFragment() {
-    mNavigator.addFragmentTag((AppCompatActivity) getActivity(), R.id.container_booking_detail,
+    mNavigator.addFragmentTag((AppCompatActivity) getActivity(),
+        R.id.container_booking_detail_master,
         ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
   }
@@ -94,21 +95,21 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
         mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
-            R.id.container_booking_detail, ChooseMasterServiceFragment.newInstance(),
+            R.id.container_booking_detail_master, ChooseMasterServiceFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
         mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
-            R.id.container_booking_detail, ChooseMasterTimeFragment.newInstance(),
+            R.id.container_booking_detail_master, ChooseMasterTimeFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
         mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
-            R.id.container_booking_detail, ChooseMasterContactFragment.newInstance(),
+            R.id.container_booking_detail_master, ChooseMasterContactFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);

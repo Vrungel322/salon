@@ -20,30 +20,6 @@
       app:layout_constraintTop_toTopOf="parent"
       >
     <LinearLayout
-        android:id="@+id/tabMaster"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:orientation="vertical"
-        >
-      <TextView
-          android:id="@+id/textAccentMaster"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="3dp"
-          android:gravity="center_horizontal"
-          android:text="@string/tab_master"
-          android:textSize="13sp"
-          />
-      <View
-          android:id="@+id/viewAccentMaster"
-          android:layout_width="match_parent"
-          android:layout_height="5dp"
-          android:background="@color/colorAccent"
-          />
-    </LinearLayout>
-    <LinearLayout
         android:id="@+id/tabService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +41,6 @@
           android:layout_width="match_parent"
           android:layout_height="5dp"
           android:background="@color/colorAccent"
-          android:visibility="invisible"
           />
     </LinearLayout>
     <LinearLayout
@@ -87,6 +62,31 @@
           />
       <View
           android:id="@+id/viewAccentTime"
+          android:layout_width="match_parent"
+          android:layout_height="5dp"
+          android:background="@color/colorAccent"
+          android:visibility="invisible"
+          />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/tabMaster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:orientation="vertical"
+        >
+      <TextView
+          android:id="@+id/textAccentMaster"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="3dp"
+          android:gravity="center_horizontal"
+          android:text="@string/tab_master"
+          android:textSize="13sp"
+          />
+      <View
+          android:id="@+id/viewAccentMaster"
           android:layout_width="match_parent"
           android:layout_height="5dp"
           android:background="@color/colorAccent"
@@ -120,7 +120,7 @@
     </LinearLayout>
   </LinearLayout>
   <FrameLayout
-      android:id="@+id/container_booking_detail_master"
+      android:id="@+id/container_booking_detail_service"
       android:layout_width="0dp"
       android:layout_height="0dp"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -128,4 +128,5 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
       />
+
 </android.support.constraint.ConstraintLayout>

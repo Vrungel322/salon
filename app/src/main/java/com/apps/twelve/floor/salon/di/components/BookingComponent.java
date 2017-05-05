@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenter
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingDetailServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseTimeFragmentPresenter;
@@ -39,5 +40,7 @@ import dagger.Subcomponent;
   void inject(ChooseMasterContactFragmentPresenter presenter);
 
   void inject(BookingDetailMasterFragmentPresenter presenter);
+
+  void inject(BookingDetailServiceFragmentPresenter presenter);
 
 }
