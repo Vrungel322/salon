@@ -60,7 +60,7 @@ public interface SalonApi {
 
   @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
 
-  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks();
+  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(@Header("User") String token);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

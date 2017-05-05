@@ -86,8 +86,8 @@ public class RestApi {
     return api.fetchNewsPreview();
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return api.fetchListOfWorks();
+  public Observable<List<OurWorkEntity>> fetchListOfWorks(String token) {
+    return api.fetchListOfWorks(token);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

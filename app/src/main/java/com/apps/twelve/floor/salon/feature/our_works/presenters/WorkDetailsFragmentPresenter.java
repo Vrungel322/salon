@@ -20,7 +20,6 @@ import timber.log.Timber;
   }
 
   public void addFavorite(int idPhoto) {
-    Timber.d("add favorite");
     Subscription subscription = rx.Observable.just(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(integer -> getViewState().setStatusFavorite(true), Timber::e);

@@ -93,7 +93,7 @@ public class DataManager {
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks();
+    return mRestApi.fetchListOfWorks(mPref.getToken());
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {
