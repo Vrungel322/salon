@@ -93,6 +93,7 @@
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
+  <string name="error_empty_gallery">Список пуст …</string>
   <string-array name="gender">
     <item name="w">Женский</item>
     <item name="m">Мужской</item>
