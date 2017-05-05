@@ -41,23 +41,17 @@ import timber.log.Timber;
     mBookingEntity.setServiceId("");
   }
 
-  public void fetchAllServicesByMasterId() {
-    getViewState().showProgressBarAllServices();
+  private void fetchAllServicesByMasterId() {
     getViewState().setMasterName(mBookingEntity.getMasterName());
     Subscription subscription =
         mDataManager.fetchAllServicesByMasterId(mBookingEntity.getMasterId())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(serviceEntities -> {
-          getViewState().hideProgressBar();
-          getViewState().updateRvServices(serviceEntities);
-          mServiceEntities.clear();
-          mServiceEntities.addAll(serviceEntities);
-          getViewState().hideProgressBarAllServices();
-        }, throwable -> {
-          Timber.e(throwable);
-          getViewState().hideProgressBarAllServices();
-          getViewState().showErrorMsg(throwable.getMessage());
-        });
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(serviceEntities -> {
+              getViewState().hideProgressBar();
+              getViewState().updateRvServices(serviceEntities);
+              mServiceEntities.clear();
+              mServiceEntities.addAll(serviceEntities);
+            }, Timber::e);
     addToUnsubscription(subscription);
   }
 

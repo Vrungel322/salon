@@ -27,7 +27,6 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
 
   @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
-  @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
   @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
   @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
@@ -81,18 +80,6 @@ public class ChooseMasterServiceFragment extends BaseFragment implements IChoose
 
   @Override public void setItemSelected(int position) {
     mServicesAdapter.setSelectedItem(position);
-  }
-
-  @Override public void showProgressBarAllServices() {
-    mProgressBarLoadServices.setVisibility(View.VISIBLE);
-  }
-
-  @Override public void hideProgressBarAllServices() {
-    mProgressBarLoadServices.setVisibility(View.GONE);
-  }
-
-  @Override public void showErrorMsg(String s) {
-    showAlertMessage(s, "Try again later");
   }
 
   @Override public void hideProgressBar() {
