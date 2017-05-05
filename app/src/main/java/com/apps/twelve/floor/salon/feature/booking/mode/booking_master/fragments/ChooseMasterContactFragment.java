@@ -11,11 +11,11 @@ import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterContactView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class ChooseMasterContactFragment extends BaseFragment implements IBookingMasterContactView {
+public class ChooseMasterContactFragment extends BaseFragment implements IChooseMasterContactView {
 
   @InjectPresenter ChooseMasterContactFragmentPresenter mChooseMasterContactFragmentPresenter;
 

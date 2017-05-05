@@ -21,10 +21,16 @@ public final class Constants {
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";
     public static final String CONTACTS_FRAGMENT = "ContactsFragment";
     public static final String ALL_NEWS_FRAGMENT = "AllNewsFragment";
+
     public static final String CHOOSE_MASTER_MASTER_FRAGMENT = "ChooseMasterMasterFragment";
     public static final String CHOOSE_MASTER_SERVICE_FRAGMENT = "ChooseMasterServiceFragment";
     public static final String CHOOSE_MASTER_TIME_FRAGMENT = "ChooseMasterTimeFragment";
     public static final String CHOOSE_MASTER_CONTACT_FRAGMENT = "ChooseMasterContactFragment";
+
+    public static final String CHOOSE_SERVICE_MASTER_FRAGMENT = "ChooseServiceMasterFragment";
+    public static final String CHOOSE_SERVICE_SERVICE_FRAGMENT = "ChooseServiceServiceFragment";
+    public static final String CHOOSE_SERVICE_TIME_FRAGMENT = "ChooseServiceTimeFragment";
+    public static final String CHOOSE_SERVICE_CONTACT_FRAGMENT = "ChooseServiceContactFragment";
   }
 
   public class FragmentsArgumentKeys {

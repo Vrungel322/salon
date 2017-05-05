@@ -10,8 +10,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseContactFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -19,9 +19,10 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  * Created by Alexandra on 28.03.2017.
  */
 
-public class BookingContactFragment extends BaseFragment implements IBookingContactFragmentView {
+public class ChooseServiceContactFragment extends BaseFragment
+    implements IChooseContactFragmentView {
 
-  @InjectPresenter BookingContactFragmentPresenter mBookingContactsFragmentPresenter;
+  @InjectPresenter ChooseContactFragmentPresenter mBookingContactsFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
@@ -32,15 +33,15 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
-  public static BookingContactFragment newInstance() {
+  public static ChooseServiceContactFragment newInstance() {
     Bundle args = new Bundle();
     args.putString(Constants.FragmentsArgumentKeys.SERVICE_NAME, "ТЕСТОВАЯ УСЛУГА");
-    BookingContactFragment fragment = new BookingContactFragment();
+    ChooseServiceContactFragment fragment = new ChooseServiceContactFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public BookingContactFragment() {
+  public ChooseServiceContactFragment() {
     super(R.layout.fragment_booking_contact);
   }
 

@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Vrungel on 28.03.2017.
  */
 
-public class ChooseMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
+public class ChooseServiceMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
 
   @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
 
@@ -38,14 +38,14 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
-  public static ChooseMasterFragment newInstance() {
+  public static ChooseServiceMasterFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseMasterFragment fragment = new ChooseMasterFragment();
+    ChooseServiceMasterFragment fragment = new ChooseServiceMasterFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ChooseMasterFragment() {
+  public ChooseServiceMasterFragment() {
     super(R.layout.fragment_choose_master);
   }
 

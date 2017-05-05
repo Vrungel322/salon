@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
@@ -10,4 +11,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingDetailServiceView
     extends MvpView {
+
+  @StateStrategyType(SkipStrategy.class) void addFirstFragment();
 }

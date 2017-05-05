@@ -29,7 +29,8 @@ import java.util.List;
  * Created by Vrungel on 29.03.2017.
  */
 
-public class ChooseServiceFragment extends BaseFragment implements IChooseServiceFragmentView {
+public class ChooseServiceServiceFragment extends BaseFragment
+    implements IChooseServiceFragmentView {
 
   @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
 
@@ -46,14 +47,14 @@ public class ChooseServiceFragment extends BaseFragment implements IChooseServic
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
 
-  public static ChooseServiceFragment newInstance() {
+  public static ChooseServiceServiceFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseServiceFragment fragment = new ChooseServiceFragment();
+    ChooseServiceServiceFragment fragment = new ChooseServiceServiceFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ChooseServiceFragment() {
+  public ChooseServiceServiceFragment() {
     super(R.layout.fragment_choose_service);
   }
 

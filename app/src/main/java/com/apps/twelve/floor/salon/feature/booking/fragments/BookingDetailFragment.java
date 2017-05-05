@@ -14,10 +14,10 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterMasterFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterServiceFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments.ChooseMasterTimeFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.BookingContactFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseMasterFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseServiceFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseTimeFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseServiceContactFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseServiceMasterFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseServiceServiceFragment;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments.ChooseServiceTimeFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingDetailFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingDetailFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -150,10 +150,11 @@ public class BookingDetailFragment extends BaseFragment implements IBookingDetai
   private void showChooseServiceFragment() {
     ViewPagerBookingStepsAdapter adapter =
         new ViewPagerBookingStepsAdapter(this.getChildFragmentManager());
-    adapter.addFragment(ChooseServiceFragment.newInstance(), getString(R.string.tab_services));
-    adapter.addFragment(ChooseTimeFragment.newInstance(), getString(R.string.tab_time));
-    adapter.addFragment(ChooseMasterFragment.newInstance(), getString(R.string.tab_master));
-    adapter.addFragment(BookingContactFragment.newInstance(), getString(R.string.tab_data));
+    adapter.addFragment(ChooseServiceServiceFragment.newInstance(),
+        getString(R.string.tab_services));
+    adapter.addFragment(ChooseServiceTimeFragment.newInstance(), getString(R.string.tab_time));
+    adapter.addFragment(ChooseServiceMasterFragment.newInstance(), getString(R.string.tab_master));
+    adapter.addFragment(ChooseServiceContactFragment.newInstance(), getString(R.string.tab_data));
     mViewPager.setOffscreenPageLimit(3);
     mViewPager.setAdapter(adapter);
     mTabLayout.setupWithViewPager(mViewPager);

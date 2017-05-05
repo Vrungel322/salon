@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragmen
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingDetailServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceView;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -46,5 +48,11 @@ public class BookingDetailServiceFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+  }
+
+  @Override public void addFirstFragment() {
+    mNavigator.addFragmentTag((AppCompatActivity) getActivity(),
+        R.id.container_booking_detail_service, ChooseServiceMasterFragment.newInstance(),
+        Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT);
   }
 }

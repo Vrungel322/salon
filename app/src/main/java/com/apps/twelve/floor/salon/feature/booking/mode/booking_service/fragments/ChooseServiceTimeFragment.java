@@ -35,7 +35,7 @@ import java.util.List;
  * Created by Vrungel on 27.03.2017.
  */
 
-public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragmentView {
+public class ChooseServiceTimeFragment extends BaseFragment implements IChooseTimeFragmentView {
 
   private static final int SCHEDULE_SPAN_COUNT = 6;
   private static final int SELECTED_ITEM_DEFAULT = -1;
@@ -61,14 +61,14 @@ public class ChooseTimeFragment extends BaseFragment implements IChooseTimeFragm
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
-  public static ChooseTimeFragment newInstance() {
+  public static ChooseServiceTimeFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseTimeFragment fragment = new ChooseTimeFragment();
+    ChooseServiceTimeFragment fragment = new ChooseServiceTimeFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ChooseTimeFragment() {
+  public ChooseServiceTimeFragment() {
     super(R.layout.fragment_choose_time);
   }
 
