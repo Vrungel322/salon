@@ -54,6 +54,9 @@ public final class RxBusHelper {
   public static class StateBooking {
   }
 
+  public static class StateBackBookingMaster {
+  }
+
   public static class VisibleFragmentChooseService {
     public boolean visible;
 
@@ -72,9 +75,6 @@ public final class RxBusHelper {
   }
 
   public static class StopRefreshNewsMainFragment {
-  }
-
-  public static class StopRefreshBookingFragment {
   }
 
   public static class HideFloatingButton {

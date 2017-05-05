@@ -42,8 +42,9 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   }
 
   @OnClick(R.id.rl_choose_specialist) void chooseMasters() {
-    mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.container_booking,
-        BookingDetailMastersFragment.newInstance());
+    mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
+        BookingDetailMastersFragment.newInstance(),
+        Constants.FragmentTag.BOOKING_DETAIL_MASTERS_FRAGMENT);
   }
 }
 

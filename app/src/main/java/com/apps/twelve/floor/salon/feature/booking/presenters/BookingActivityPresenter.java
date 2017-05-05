@@ -45,4 +45,8 @@ import timber.log.Timber;
                 visibleFragmentChoseService.visible), Timber::e);
     addToUnsubscription(subscription);
   }
+
+  public void stateBackBookingMaster() {
+    mRxBus.post(new RxBusHelper.StateBackBookingMaster());
+  }
 }

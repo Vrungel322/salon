@@ -53,25 +53,23 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
     mTabMaster.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
-      mNavigator.clearBackStack((AppCompatActivity) getActivity());
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 1);
     });
 
     mTabService.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 1);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
     });
 
     mTabTime.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 3);
     });
 
-    mTabData.setOnClickListener(v -> {
-      mBookingDetailMasterFragmentPresenter.clickTab(
-          Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
-    });
+    mTabData.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
+        Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT));
   }
 
   @Override public void addFirstFragment() {
@@ -136,6 +134,24 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
         mViewAccentData.setVisibility(View.VISIBLE);
         break;
+    }
+  }
+
+  @Override public void stateBackBookingMaster() {
+    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT)) {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
+    }
+    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT)) {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
+    }
+    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT)) {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
     }
   }
 }

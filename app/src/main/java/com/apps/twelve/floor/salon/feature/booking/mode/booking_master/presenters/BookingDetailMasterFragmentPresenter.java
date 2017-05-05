@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presente
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingDetailMasterView;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -13,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by John on 04.05.2017.
@@ -22,7 +22,6 @@ import rx.Subscription;
     extends BasePresenter<IBookingDetailMasterView> {
 
   @Inject BookingEntity mBookingEntity;
-  @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 
   @Override protected void inject() {
@@ -34,6 +33,7 @@ import rx.Subscription;
     super.onFirstViewAttach();
     getViewState().addFirstFragment();
     nextStep();
+    stateBackBookingMaster();
   }
 
   @Override public void onDestroy() {
@@ -82,5 +82,12 @@ import rx.Subscription;
 
   public void clickTab(String fragmentTag) {
     mRxBus.post(new RxBusHelper.EventForNextStep(fragmentTag));
+  }
+
+  private void stateBackBookingMaster() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StateBackBookingMaster.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(stateBackBookingMaster -> getViewState().stateBackBookingMaster(), Timber::e);
+    addToUnsubscription(subscription);
   }
 }
