@@ -185,6 +185,15 @@ public class Navigator implements INavigator {
     }
   }
 
+  @Override
+  public void clearBackStackWithCountFragment(@NonNull AppCompatActivity appCompatActivity,
+      int count) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    for (int i = count; i < fragmentManager.getBackStackEntryCount(); i++) {
+      fragmentManager.popBackStack();
+    }
+  }
+
   @Override public boolean isEmptyBackStack(@NonNull AppCompatActivity activity) {
     return activity.getSupportFragmentManager().getBackStackEntryCount() == 0;
   }

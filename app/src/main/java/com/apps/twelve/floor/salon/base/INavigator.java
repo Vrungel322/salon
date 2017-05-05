@@ -72,6 +72,8 @@ public interface INavigator {
 
   void clearBackStack(@NonNull AppCompatActivity appCompatActivity);
 
+  void clearBackStackWithCountFragment(@NonNull AppCompatActivity appCompatActivity, int count);
+
   boolean isEmptyBackStack(@NonNull AppCompatActivity appCompatActivity);
 
   boolean isOneFragmentBackStack(@NonNull AppCompatActivity appCompatActivity);

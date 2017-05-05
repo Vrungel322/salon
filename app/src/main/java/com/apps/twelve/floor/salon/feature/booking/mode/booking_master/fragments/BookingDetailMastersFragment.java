@@ -50,17 +50,28 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mTabMaster.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
-        Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT));
+    mTabMaster.setOnClickListener(v -> {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
+      mNavigator.clearBackStack((AppCompatActivity) getActivity());
+    });
 
-    mTabService.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
-        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT));
+    mTabService.setOnClickListener(v -> {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 1);
+    });
 
-    mTabTime.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
-        Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT));
+    mTabTime.setOnClickListener(v -> {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
+    });
 
-    mTabData.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
-        Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT));
+    mTabData.setOnClickListener(v -> {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT);
+    });
   }
 
   @Override public void addFirstFragment() {
@@ -80,7 +91,6 @@ public class BookingDetailMastersFragment extends BaseFragment implements IBooki
   @Override public void goNextFragment(String fragmentTag) {
     switch (fragmentTag) {
       case Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT:
-        mNavigator.clearBackStack((AppCompatActivity) getActivity());
         mBookingDetailMasterFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
         break;
