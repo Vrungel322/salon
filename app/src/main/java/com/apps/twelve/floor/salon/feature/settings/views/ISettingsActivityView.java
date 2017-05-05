@@ -13,4 +13,16 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   void setUserPhoto(Uri uri);
+
+  void setUserName(String name);
+
+  void setUserLogin(String login);
+
+  void setUserPassword(String password);
+
+  void setUserEmail(String email);
+
+  void setUserPhone(String phone);
+
+  void setUserGender(int gender);
 }
