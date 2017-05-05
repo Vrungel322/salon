@@ -13,4 +13,12 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   @StateStrategyType(SkipStrategy.class) void addFirstFragment();
+
+  @StateStrategyType(SkipStrategy.class) void showMessageWarning(int warning);
+
+  void hideKeyboard();
+
+  @StateStrategyType(SkipStrategy.class) void goNextFragment(String fragmentTag);
+
+  void setSelectedTab(String fragmentTag);
 }
