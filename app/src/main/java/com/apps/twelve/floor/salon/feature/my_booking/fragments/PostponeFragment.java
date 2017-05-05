@@ -35,8 +35,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.ENTITY_ID;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.MASTER_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.MASTER_NAME;
-import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
 
 /**
@@ -50,7 +50,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @InjectPresenter PostponeFragmentPresenter mPostponeFragmentPresenter;
 
   @ProvidePresenter PostponeFragmentPresenter providePostponeFragmentPresenter() {
-    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(SERVICE_ID)));
+    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(MASTER_ID)));
   }
 
   @BindView(R.id.tv_service_description) TextView mTextViewServiceName;
@@ -77,11 +77,11 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   private Integer mEntityId;
 
   public static PostponeFragment newInstance(String serviceName, String masterName,
-      Integer serviceId, Integer entityId) {
+      Integer masterId, Integer entityId) {
     Bundle args = new Bundle();
     args.putString(SERVICE_NAME, serviceName);
     args.putString(MASTER_NAME, masterName);
-    args.putInt(SERVICE_ID, serviceId);
+    args.putInt(MASTER_ID, masterId);
     args.putInt(ENTITY_ID, entityId);
     PostponeFragment fragment = new PostponeFragment();
     fragment.setArguments(args);

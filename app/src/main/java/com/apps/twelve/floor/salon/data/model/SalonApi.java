@@ -42,7 +42,7 @@ public interface SalonApi {
       @Path("masterId") String masterId);
 
   @GET("api/v1/masters/{masterId}/schedules")
-  Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(@Path("masterId") String masterId);
+  Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Path("masterId") String masterId);
 
   @POST("api/v1/entry") Observable<retrofit2.Response<Void>> checkInService(
       @Header("User") int token, @Body BookingServerEntity bookingServerEntity);
@@ -50,10 +50,11 @@ public interface SalonApi {
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
       @Header("User") int token);
 
-  @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(@Path("id") String serviceId);
+  @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(@Path("id") String serviceId,
+      @Header("User") String token);
 
   @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
-      @Path("entryId") String entryId, @Header("user") String userId,
+      @Path("entryId") String entryId, @Header("user") String token,
       @Field("schedule_id") int scheduleId);
 
   @GET("api/v1/pages") Observable<List<NewsEntity>> fetchAllNews();

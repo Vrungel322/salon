@@ -29,7 +29,7 @@ public final class Constants {
     public static final String SERVICE_NAME = "SERVICE_NAME";
     public static final String BOOKING_SCREEN_TO_START = "BOOKING_SCREEN_TO_START";
     public static final String MASTER_NAME = "MASTER_NAME";
-    public static final String SERVICE_ID = "SERVICE_ID";
+    public static final String MASTER_ID = "MASTER_ID";
     public static final String ENTITY_ID = "ENTITY_ID";
     public static final String CHANGING_FIELD = "CHANGING_FIELD";
     public static final String CHANGING_FIELD_VALUE = "CHANGING_FIELD_VALUE";

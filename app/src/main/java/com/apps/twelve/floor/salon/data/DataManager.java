@@ -60,8 +60,8 @@ public class DataManager {
     return mRestApi.fetchAllMasters();
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
-    return mRestApi.fetchDaysDataInMasterMode(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+    return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
   public Observable<String> getProfileImage() {
@@ -130,7 +130,7 @@ public class DataManager {
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(serviceId);
+    return mRestApi.cancelOrder(serviceId, mPref.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {

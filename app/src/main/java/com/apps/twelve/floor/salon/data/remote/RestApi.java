@@ -56,8 +56,8 @@ public class RestApi {
     return api.fetchAllServicesByMasterId(masterId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
-    return api.fetchDaysDataInMasterMode(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+    return api.fetchDaysDataWithMasterId(masterId);
   }
 
   public Observable<retrofit2.Response<Void>> checkInService(String token,
@@ -69,8 +69,8 @@ public class RestApi {
     return api.fetchLastBooking(Integer.parseInt(token));
   }
 
-  public Observable<Response<Void>> cancelOrder(Integer serviceId) {
-    return api.cancelOrder(String.valueOf(serviceId));
+  public Observable<Response<Void>> cancelOrder(Integer serviceId, String token) {
+    return api.cancelOrder(String.valueOf(serviceId), token);
   }
 
   public Observable<Response<Void>> postponeService(String entryId, String userId, int scheduleId) {
