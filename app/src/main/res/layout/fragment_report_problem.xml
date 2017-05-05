@@ -5,4 +5,49 @@
     android:layout_height="match_parent"
     >
 
+  <TextView
+      android:id="@+id/tvProblemDescription"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
+      android:layout_marginLeft="16dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:textSize="17sp"
+      android:textColor="@color/colorSettingsReportProblemText"
+      android:text="@string/report_problem_description"
+      />
+  <EditText
+      android:id="@+id/etProblem"
+      android:layout_width="match_parent"
+      android:layout_height="300dp"
+      android:layout_below="@+id/tvProblemDescription"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="24dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:inputType="textMultiLine"
+      android:scrollbars="vertical"
+      android:padding="10dp"
+      android:ems="10"
+      android:gravity="top|left"
+      android:hint="@string/report_problem_hint"
+      android:textColorHint="@color/colorSettingsReportProblemHint"
+      android:background="@color/colorSettingsReportProblemBackground"
+      />
+  <Button
+      android:id="@+id/btnSendProblem"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/etProblem"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="45dp"
+      android:layout_marginLeft="24dp"
+      android:layout_marginRight="24dp"
+      android:text="@string/report_problem_button"
+      android:background="@color/colorSettingsReportProblemButton"
+      android:textColor="@color/colorSettingsReportProblemButtonText"
+      />
 </RelativeLayout>

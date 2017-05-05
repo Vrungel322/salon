@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
@@ -33,6 +34,10 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
     super.onViewCreated(view, savedInstanceState);
 
     ((SettingsActivity) getActivity()).setTitleAppBar(R.string.settings_problem);
+  }
+
+  @OnClick(R.id.btnSendProblem) void sendAndClose() {
+    getActivity().onBackPressed();
   }
 
   @Override public void onDestroy() {
