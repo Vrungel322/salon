@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
+import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -18,8 +19,6 @@ import shortbread.Shortcut;
 public class BookingActivity extends BaseActivity implements IBookingActivityView {
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
-
-  private boolean mVisible = true;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
@@ -34,27 +33,22 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         BookingFragment.newInstance());
   }
 
-  @Override public void isVisibleChooseService(boolean visible) {
-    mVisible = visible;
-  }
-
   @Override public void onBackPressed() {
-    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
-      if (mVisible) {
-        mBookingActivityPresenter.backCategories();
-      } else {
-        mBookingActivityPresenter.stateBooking();
-      }
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT)) {
+      mBookingActivityPresenter.backCategories();
+      Timber.e("yes");
+    } else {
+      Timber.e("no");
+      mBookingActivityPresenter.stateBackBookingService();
     }
 
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT)) {
       mBookingActivityPresenter.stateBackBookingMaster();
+      super.onBackPressed();
     }
 
-    super.onBackPressed();
-
     /*if (!mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT)
-        && !mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
+        && !mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT)) {
       super.onBackPressed();
     }*/
   }

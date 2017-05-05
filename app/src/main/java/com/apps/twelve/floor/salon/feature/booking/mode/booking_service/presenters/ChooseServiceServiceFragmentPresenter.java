@@ -49,7 +49,7 @@ import timber.log.Timber;
     backCategories();
   }
 
-  public void fetchCategory() {
+  private void fetchCategory() {
     getViewState().showProgressBar();
     Subscription subscription = mDataManager.fetchCategory()
         .compose(ThreadSchedulers.applySchedulers())
@@ -176,7 +176,7 @@ import timber.log.Timber;
               getViewState().hideTextPath();
             }
           } else {
-            mRxBus.post(new RxBusHelper.StateBooking());
+            mRxBus.post(new RxBusHelper.StateBackBookingService());
           }
         }, Timber::e);
     addToUnsubscription(subscription);

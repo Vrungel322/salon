@@ -23,6 +23,7 @@ public class BookingDetailServiceFragment extends BaseFragment
     implements IBookingDetailServiceFragmentView {
 
   @InjectPresenter BookingDetailServiceFragmentPresenter mBookingDetailServiceFragmentPresenter;
+
   @BindView(R.id.textAccentService) TextView mTextAccentService;
   @BindView(R.id.viewAccentService) View mViewAccentService;
   @BindView(R.id.tabService) LinearLayout mTabService;
@@ -134,6 +135,26 @@ public class BookingDetailServiceFragment extends BaseFragment
       case Constants.FragmentTag.CHOOSE_SERVICE_CONTACT_FRAGMENT:
         mViewAccentData.setVisibility(View.VISIBLE);
         break;
+    }
+  }
+
+  @Override public void stateBackBookingService() {
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT)) {
+      mBookingDetailServiceFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT);
+      return;
+    }
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT)) {
+      mBookingDetailServiceFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT);
+      return;
+    }
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT)) {
+      mBookingDetailServiceFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);
     }
   }
 }

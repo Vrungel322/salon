@@ -21,4 +21,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   @StateStrategyType(SkipStrategy.class) void goNextFragment(String fragmentTag);
 
   void setSelectedTab(String fragmentTag);
+
+  void stateBackBookingService();
 }

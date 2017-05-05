@@ -137,13 +137,6 @@ public class Navigator {
     return fragmentCopy != null;
   }
 
-  public boolean isVisibleFragmentTag(@NonNull AppCompatActivity appCompatActivity,
-      @NonNull String fragmentTag) {
-    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
-    Fragment fragment = fragmentManager.findFragmentByTag(fragmentTag);
-    return fragment != null && fragment.isVisible();
-  }
-
   public void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();

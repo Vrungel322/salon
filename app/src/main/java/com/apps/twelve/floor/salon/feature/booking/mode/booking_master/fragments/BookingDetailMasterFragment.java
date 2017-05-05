@@ -75,8 +75,7 @@ public class BookingDetailMasterFragment extends BaseFragment
 
   @Override public void addFirstFragment() {
     mNavigator.addFragmentTag((AppCompatActivity) getActivity(),
-        R.id.container_booking_detail_master,
-        ChooseMasterMasterFragment.newInstance(),
+        R.id.container_booking_detail_master, ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
   }
 
@@ -140,20 +139,22 @@ public class BookingDetailMasterFragment extends BaseFragment
   }
 
   @Override public void stateBackBookingMaster() {
-    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
-        Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT)) {
-      mBookingDetailMasterFragmentPresenter.clickTab(
-          Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
-    }
-    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
-        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT)) {
-      mBookingDetailMasterFragmentPresenter.clickTab(
-          Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
-    }
-    if (mNavigator.isVisibleFragmentTag((AppCompatActivity) getActivity(),
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT)) {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
+      return;
+    }
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT)) {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
+      return;
+    }
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+        Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT)) {
+      mBookingDetailMasterFragmentPresenter.clickTab(
+          Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
     }
   }
 }

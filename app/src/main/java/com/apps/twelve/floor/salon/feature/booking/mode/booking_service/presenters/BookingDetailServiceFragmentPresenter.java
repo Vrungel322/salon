@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by John on 05.05.2017.
@@ -32,6 +33,7 @@ import rx.Subscription;
     super.onFirstViewAttach();
     getViewState().addFirstFragment();
     nextStep();
+    stateBackBookingService();
   }
 
   @Override public void onDestroy() {
@@ -80,6 +82,13 @@ import rx.Subscription;
               break;
           }
         });
+    addToUnsubscription(subscription);
+  }
+
+  private void stateBackBookingService() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StateBackBookingService.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(stateBackBookingMaster -> getViewState().stateBackBookingService(), Timber::e);
     addToUnsubscription(subscription);
   }
 }
