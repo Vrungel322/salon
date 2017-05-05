@@ -90,6 +90,13 @@ public class RestApi {
     return api.fetchListOfWorks(token);
   }
 
+  public Observable<Response<Void>> addToFavorite(int photoId, String token) {
+    return api.addToFavorite(photoId, token);
+  }
+  public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
+    return api.removeFromFavorite(photoId, token);
+  }
+
   //public Observable<TokenEntity> login(LoginBody credentials) {
   //  return api.login(credentials);
   //}

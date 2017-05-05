@@ -104,6 +104,14 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
+  public Observable<Response<Void>> addToFavorite(int photoId){
+    return mRestApi.addToFavorite(photoId, mPref.getToken());
+  }
+
+  public Observable<Response<Void>> removeFromFavorite(int photoId){
+    return mRestApi.removeFromFavorite(photoId, mPref.getToken());
+  }
+
   //public Observable<List<MasterEntity>> fetchMasters(String dataID) {
   //  ArrayList<MasterEntity> arrayList = new ArrayList<>();
   //  for (int i = 0; i < 7; i++) {

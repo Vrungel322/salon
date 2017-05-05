@@ -60,7 +60,14 @@ public interface SalonApi {
 
   @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
 
-  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(@Header("User") String token);
+  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
+      @Header("User") String token);
+
+  @POST("api/v1/favorite") @FormUrlEncoded Observable<Response<Void>> addToFavorite(
+      @Field("photo_id") int photoId, @Header("User") String token);
+
+  @DELETE("api/v1/favorite/{photoId}") Observable<Response<Void>> removeFromFavorite(
+      @Path("photoId") int photoId, @Header("User") String token);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials
