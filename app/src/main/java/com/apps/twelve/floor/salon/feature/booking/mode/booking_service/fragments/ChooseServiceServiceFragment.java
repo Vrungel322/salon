@@ -19,8 +19,8 @@ import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.adapters.ServiceCategoryAdapter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
@@ -30,9 +30,9 @@ import java.util.List;
  */
 
 public class ChooseServiceServiceFragment extends BaseFragment
-    implements IChooseServiceFragmentView {
+    implements IChooseServiceServiceFragmentView {
 
-  @InjectPresenter ChooseServiceFragmentPresenter mChooseServiceFragmentPresenter;
+  @InjectPresenter ChooseServiceServiceFragmentPresenter mChooseServiceServiceFragmentPresenter;
 
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
   @BindView(R.id.pbLoadServices) ProgressBar mProgressBarLoadServices;
@@ -74,17 +74,17 @@ public class ChooseServiceServiceFragment extends BaseFragment
           if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
               .getItem(position)
               .hasChildren()) {
-            mChooseServiceFragmentPresenter.showTextPath(
+            mChooseServiceServiceFragmentPresenter.showTextPath(
                 mServiceCategoryAdapter.getItem(position).getTitle());
-            mChooseServiceFragmentPresenter.getCategoriesWithParentId(
+            mChooseServiceServiceFragmentPresenter.getCategoriesWithParentId(
                 mServiceCategoryAdapter.getItem(position).getId());
           } else {
             if (recyclerView.getAdapter() instanceof ServicesAdapter) {
-              mChooseServiceFragmentPresenter.setItemSelected(position);
+              mChooseServiceServiceFragmentPresenter.setItemSelected(position);
             } else {
-              mChooseServiceFragmentPresenter.showTextPath(
+              mChooseServiceServiceFragmentPresenter.showTextPath(
                   mServiceCategoryAdapter.getItem(position).getTitle());
-              mChooseServiceFragmentPresenter.getServiceWithParentId(
+              mChooseServiceServiceFragmentPresenter.getServiceWithParentId(
                   mServiceCategoryAdapter.getItem(position).getId());
             }
           }
@@ -102,12 +102,12 @@ public class ChooseServiceServiceFragment extends BaseFragment
     mRecyclerViewAllServices.setAdapter(mServicesAdapter);
     ItemClickSupport.addTo(mRecyclerViewAllServices)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseServiceFragmentPresenter.setItemSelected(
+            (recyclerView, position, v) -> mChooseServiceServiceFragmentPresenter.setItemSelected(
                 position));
 
     mEditTextChooseService.setOnFocusChangeListener((v, hasFocus) -> {
       if (hasFocus && mEditTextChooseService.getText().toString().isEmpty()) {
-        mChooseServiceFragmentPresenter.fetchAllServices();
+        mChooseServiceServiceFragmentPresenter.fetchAllServices();
       }
     });
 
@@ -118,13 +118,13 @@ public class ChooseServiceServiceFragment extends BaseFragment
 
       @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (s.length() != 0) {
-          mChooseServiceFragmentPresenter.showLLAllServices();
-          mChooseServiceFragmentPresenter.hideLLTreeServices();
-          mChooseServiceFragmentPresenter.filterServices(
+          mChooseServiceServiceFragmentPresenter.showLLAllServices();
+          mChooseServiceServiceFragmentPresenter.hideLLTreeServices();
+          mChooseServiceServiceFragmentPresenter.filterServices(
               mEditTextChooseService.getText().toString());
         } else {
-          mChooseServiceFragmentPresenter.hideLLAllServices();
-          mChooseServiceFragmentPresenter.showLLTreeServices();
+          mChooseServiceServiceFragmentPresenter.hideLLAllServices();
+          mChooseServiceServiceFragmentPresenter.showLLTreeServices();
         }
       }
 

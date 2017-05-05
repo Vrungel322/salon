@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views;
+package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views;
 
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.arellomobile.mvp.MvpView;
@@ -6,11 +6,7 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
-/**
- * Created by Vrungel on 27.03.2017.
- */
-
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseTimeFragmentView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterTimeFragmentView
     extends MvpView {
 
   void setUpUi(List<DataServiceEntity> days);
@@ -27,9 +23,9 @@ import java.util.List;
 
   void hideProgressBarBookingTime();
 
-  void clearSelectedTime();
-
-  void setServiceName(String serviceName);
+  void setUpRedSquare(String serviceName, String masterName);
 
   void timeIsNotAvailable();
+
+  void clearSelectedTime();
 }

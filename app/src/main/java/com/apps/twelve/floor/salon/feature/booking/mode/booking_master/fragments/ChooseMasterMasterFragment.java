@@ -12,12 +12,13 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.MastersVerticalAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
-public class ChooseMasterMasterFragment extends BaseFragment implements IChooseMasterMasterView {
+public class ChooseMasterMasterFragment extends BaseFragment
+    implements IChooseMasterMasterFragmentView {
 
   @InjectPresenter ChooseMasterMasterFragmentPresenter mChooseMasterMasterFragmentPresenter;
 

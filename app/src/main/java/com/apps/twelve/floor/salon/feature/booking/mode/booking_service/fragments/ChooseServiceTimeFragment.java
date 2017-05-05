@@ -24,8 +24,8 @@ import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesHorizontalAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesInMonthViewPagerAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.ScheduleAdapter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseTimeFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceTimeFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceTimeFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
@@ -35,12 +35,13 @@ import java.util.List;
  * Created by Vrungel on 27.03.2017.
  */
 
-public class ChooseServiceTimeFragment extends BaseFragment implements IChooseTimeFragmentView {
+public class ChooseServiceTimeFragment extends BaseFragment
+    implements IChooseServiceTimeFragmentView {
 
   private static final int SCHEDULE_SPAN_COUNT = 6;
   private static final int SELECTED_ITEM_DEFAULT = -1;
 
-  @InjectPresenter ChooseTimeFragmentPresenter mChooseTimeFragmentPresenter;
+  @InjectPresenter ChooseServiceTimeFragmentPresenter mChooseServiceTimeFragmentPresenter;
 
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
@@ -91,8 +92,8 @@ public class ChooseServiceTimeFragment extends BaseFragment implements IChooseTi
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
-        mChooseTimeFragmentPresenter.clearSelectedTime();
-        mChooseTimeFragmentPresenter.setDateToTv();
+        mChooseServiceTimeFragmentPresenter.clearSelectedTime();
+        mChooseServiceTimeFragmentPresenter.setDateToTv();
       }
 
       @Override public void onPageScrollStateChanged(int state) {
@@ -108,7 +109,7 @@ public class ChooseServiceTimeFragment extends BaseFragment implements IChooseTi
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          mChooseTimeFragmentPresenter.setSelectedDay(position);
+          mChooseServiceTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
         });
 
@@ -119,7 +120,8 @@ public class ChooseServiceTimeFragment extends BaseFragment implements IChooseTi
     mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseTimeFragmentPresenter.setSelectedTime(position));
+            (recyclerView, position, v) -> mChooseServiceTimeFragmentPresenter.setSelectedTime(
+                position));
 
     mDatesHorizontalAdapter.addListWorkStartEndEntity(mDays);
     mScheduleAdapter.setTimeSchedule(

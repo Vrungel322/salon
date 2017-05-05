@@ -10,8 +10,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -20,9 +20,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class ChooseServiceContactFragment extends BaseFragment
-    implements IChooseContactFragmentView {
+    implements IChooseServiceContactFragmentView {
 
-  @InjectPresenter ChooseContactFragmentPresenter mBookingContactsFragmentPresenter;
+  @InjectPresenter ChooseServiceContactFragmentPresenter mBookingContactsFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;

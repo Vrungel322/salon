@@ -16,12 +16,13 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.adapters.ServicesAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterServiceView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
-public class ChooseMasterServiceFragment extends BaseFragment implements IChooseMasterServiceView {
+public class ChooseMasterServiceFragment extends BaseFragment
+    implements IChooseMasterServiceFragmentView {
 
   @InjectPresenter ChooseMasterServiceFragmentPresenter mChooseMasterServiceFragmentPresenter;
 

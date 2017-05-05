@@ -4,7 +4,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -18,7 +18,7 @@ import rx.Subscription;
  */
 
 @InjectViewState public class BookingDetailServiceFragmentPresenter
-    extends BasePresenter<IBookingDetailServiceView> {
+    extends BasePresenter<IBookingDetailServiceFragmentView> {
 
   @Inject BookingEntity mBookingEntity;
   @Inject RxBus mRxBus;

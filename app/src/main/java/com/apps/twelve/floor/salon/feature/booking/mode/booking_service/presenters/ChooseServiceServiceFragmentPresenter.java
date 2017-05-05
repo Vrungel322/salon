@@ -6,7 +6,8 @@ import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceServiceFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -22,8 +23,8 @@ import timber.log.Timber;
  * Created by Vrungel on 29.03.2017.
  */
 
-@InjectViewState public class ChooseServiceFragmentPresenter
-    extends BasePresenter<IChooseServiceFragmentView> {
+@InjectViewState public class ChooseServiceServiceFragmentPresenter
+    extends BasePresenter<IChooseServiceServiceFragmentView> {
 
   @Inject DataManager mDataManager;
   @Inject BookingEntity mBookingEntity;
@@ -134,8 +135,8 @@ import timber.log.Timber;
     mBookingEntity.setServiceName(String.valueOf(mServiceAllEntities.get(position).getTitle()));
     mBookingEntity.setDurationServices(String.valueOf(mServiceAllEntities.get(position).getTime()));
     getViewState().setItemSelected(position);
-
-    mRxBus.post(new RxBusHelper.EventForNextStep(0));
+    mRxBus.post(
+        new RxBusHelper.EventForNextStep(Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT));
   }
 
   public void showLLTreeServices() {

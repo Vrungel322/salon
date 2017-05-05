@@ -5,7 +5,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterServiceView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -19,7 +19,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterServiceFragmentPresenter
-    extends BasePresenter<IChooseMasterServiceView> {
+    extends BasePresenter<IChooseMasterServiceFragmentView> {
   @Inject DataManager mDataManager;
   @Inject BookingEntity mBookingEntity;
   @Inject RxBus mRxBus;

@@ -5,7 +5,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.Randomizer;
 import com.apps.twelve.floor.salon.utils.RxBus;
@@ -18,7 +18,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
-    extends BasePresenter<IChooseMasterMasterView> {
+    extends BasePresenter<IChooseMasterMasterFragmentView> {
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
   @Inject BookingEntity mBookingEntity;

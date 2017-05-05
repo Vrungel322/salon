@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Vrungel on 28.03.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterFragmentView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseServiceMasterFragmentView
     extends MvpView {
   void setUpUi();
 

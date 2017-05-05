@@ -8,10 +8,10 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenter
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingDetailServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseTimeFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceMasterFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceTimeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingDetailFragmentPresenter;
 import dagger.Subcomponent;
 
@@ -23,13 +23,13 @@ import dagger.Subcomponent;
 
   void inject(BookingDetailFragmentPresenter presenter);
 
-  void inject(ChooseServiceFragmentPresenter presenter);
+  void inject(ChooseServiceServiceFragmentPresenter presenter);
 
-  void inject(ChooseTimeFragmentPresenter presenter);
+  void inject(ChooseServiceTimeFragmentPresenter presenter);
 
-  void inject(ChooseMasterFragmentPresenter presenter);
+  void inject(ChooseServiceMasterFragmentPresenter presenter);
 
-  void inject(ChooseContactFragmentPresenter presenter);
+  void inject(ChooseServiceContactFragmentPresenter presenter);
 
   void inject(ChooseMasterMasterFragmentPresenter presenter);
 

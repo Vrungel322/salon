@@ -10,7 +10,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingDetailMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingDetailMasterView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingDetailMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -19,7 +19,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  * Created by John on 04.05.2017.
  */
 
-public class BookingDetailMasterFragment extends BaseFragment implements IBookingDetailMasterView {
+public class BookingDetailMasterFragment extends BaseFragment
+    implements IBookingDetailMasterFragmentView {
 
   @InjectPresenter BookingDetailMasterFragmentPresenter mBookingDetailMasterFragmentPresenter;
 

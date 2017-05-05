@@ -10,7 +10,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingDetailServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -20,7 +20,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
  */
 
 public class BookingDetailServiceFragment extends BaseFragment
-    implements IBookingDetailServiceView {
+    implements IBookingDetailServiceFragmentView {
 
   @InjectPresenter BookingDetailServiceFragmentPresenter mBookingDetailServiceFragmentPresenter;
   @BindView(R.id.textAccentService) TextView mTextAccentService;
@@ -106,7 +106,7 @@ public class BookingDetailServiceFragment extends BaseFragment
         mBookingDetailServiceFragmentPresenter.setSelectedTab(
             Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT);
         break;
-      case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
+      case Constants.FragmentTag.CHOOSE_SERVICE_CONTACT_FRAGMENT:
         mNavigator.addFragmentTagBackStackNotCopy((AppCompatActivity) getActivity(),
             R.id.container_booking_detail_service, ChooseServiceContactFragment.newInstance(),
             Constants.FragmentTag.CHOOSE_SERVICE_CONTACT_FRAGMENT);

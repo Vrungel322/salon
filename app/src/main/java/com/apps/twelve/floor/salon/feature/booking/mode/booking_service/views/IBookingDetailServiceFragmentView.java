@@ -9,7 +9,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  * Created by John on 05.05.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingDetailServiceView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingDetailServiceFragmentView
     extends MvpView {
 
   @StateStrategyType(SkipStrategy.class) void addFirstFragment();
