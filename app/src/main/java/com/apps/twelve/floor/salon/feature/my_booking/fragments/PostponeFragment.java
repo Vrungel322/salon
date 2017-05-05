@@ -107,7 +107,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mEntityId = getArguments().getInt(ENTITY_ID);
 
     setUpRedSquare(getArguments().getString(SERVICE_NAME), getArguments().getString(MASTER_NAME));
-
   }
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
@@ -241,5 +240,4 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     intent.setData(Uri.parse("tel:" + mButtonBookingPhone.getText()));
     startActivity(intent);
   }
-
 }

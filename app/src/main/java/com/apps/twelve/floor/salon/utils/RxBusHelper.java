@@ -5,7 +5,7 @@ package com.apps.twelve.floor.salon.utils;
  */
 
 public final class RxBusHelper {
-  public static class EventForNextStep{
+  public static class EventForNextStep {
     public int currentItem;
 
     public EventForNextStep(int currentItem) {

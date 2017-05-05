@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.data;
 
-import android.net.Uri;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -9,10 +8,8 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -152,11 +149,11 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
-  public Observable<Response<Void>> addToFavorite(int photoId){
+  public Observable<Response<Void>> addToFavorite(int photoId) {
     return mRestApi.addToFavorite(photoId, mPref.getToken());
   }
 
-  public Observable<Response<Void>> removeFromFavorite(int photoId){
+  public Observable<Response<Void>> removeFromFavorite(int photoId) {
     return mRestApi.removeFromFavorite(photoId, mPref.getToken());
   }
 

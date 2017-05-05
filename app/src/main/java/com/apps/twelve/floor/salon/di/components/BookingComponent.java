@@ -36,5 +36,4 @@ import dagger.Subcomponent;
   void inject(ChooseMasterTimeFragmentPresenter presenter);
 
   void inject(BookingMasterContactFragmentPresenter presenter);
-
 }

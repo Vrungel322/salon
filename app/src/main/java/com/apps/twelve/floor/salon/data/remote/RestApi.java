@@ -28,7 +28,6 @@ public class RestApi {
     return api.fetchCategory();
   }
 
-  //todo fetchAllServices for filtering
   public Observable<List<ServiceEntity>> fetchAllServices() {
     return api.fetchAllServices();
   }
@@ -93,6 +92,7 @@ public class RestApi {
   public Observable<Response<Void>> addToFavorite(int photoId, String token) {
     return api.addToFavorite(photoId, token);
   }
+
   public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
     return api.removeFromFavorite(photoId, token);
   }
