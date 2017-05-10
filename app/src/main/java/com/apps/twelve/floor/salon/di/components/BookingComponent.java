@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presente
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.presenters.BookingDetailFragmentPresenter;
 import dagger.Subcomponent;
 
 /**
@@ -20,8 +19,6 @@ import dagger.Subcomponent;
  */
 
 @BookingScope @Subcomponent(modules = BookingModule.class) public interface BookingComponent {
-
-  void inject(BookingDetailFragmentPresenter presenter);
 
   void inject(ChooseServiceServiceFragmentPresenter presenter);
 

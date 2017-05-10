@@ -5,53 +5,16 @@ package com.apps.twelve.floor.salon.utils;
  */
 
 public final class RxBusHelper {
-  public static class EventForNextStep{
-    public int currentItem;
-    public String fragmentTag;
 
-    public EventForNextStep(int currentItem) {
-      this.currentItem = currentItem;
-    }
+  public static class EventForNextStep {
+    public String fragmentTag;
 
     public EventForNextStep(String fragmentTag) {
       this.fragmentTag = fragmentTag;
     }
   }
 
-  public static class ServiceID {
-    public String serviceId;
-    public String serviceName;
-
-    public ServiceID(String serviceId, String serviceName) {
-      this.serviceId = serviceId;
-      this.serviceName = serviceName;
-    }
-  }
-
-  public static class DataID {
-    public String dataId;
-    public String serviceTime;
-
-    public DataID(String dataId, String serviceTime) {
-      this.dataId = dataId;
-      this.serviceTime = serviceTime;
-    }
-  }
-
-  public static class MasterID {
-    public String masterId;
-    public String masterName;
-
-    public MasterID(String masterId, String masterName) {
-      this.masterId = masterId;
-      this.masterName = masterName;
-    }
-  }
-
   public static class BackCategories {
-  }
-
-  public static class StateBooking {
   }
 
   public static class StateBackBookingMaster {
@@ -61,14 +24,6 @@ public final class RxBusHelper {
   }
 
   public static class CloseBookingService {
-  }
-
-  public static class VisibleFragmentChooseService {
-    public boolean visible;
-
-    public VisibleFragmentChooseService(boolean visible) {
-      this.visible = visible;
-    }
   }
 
   public static class UpdateLastBookingListEvent {
@@ -94,5 +49,4 @@ public final class RxBusHelper {
 
   public static class SetNewsItemInMenu {
   }
-
 }
