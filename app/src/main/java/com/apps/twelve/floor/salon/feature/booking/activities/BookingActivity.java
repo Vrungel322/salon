@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
+import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -48,8 +49,15 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     }
 
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT)) {
-      mBookingActivityPresenter.stateBackBookingMaster();
-      super.onBackPressed();
+      if (mNavigator.getCountBackStack(this) > 2) {
+        mBookingActivityPresenter.stateBackBookingMaster();
+        super.onBackPressed();
+      } else {
+        mNavigator.clearBackStack(this);
+        mNavigator.replaceFragment(this, R.id.container_booking,
+            BookingFragment.newInstance());
+      }
+
       return;
     }
 

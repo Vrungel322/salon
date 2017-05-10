@@ -54,19 +54,19 @@ public class BookingDetailMasterFragment extends BaseFragment
     mTabMaster.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 1);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
     });
 
     mTabService.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 3);
     });
 
     mTabTime.setOnClickListener(v -> {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 3);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 4);
     });
 
     mTabData.setOnClickListener(v -> mBookingDetailMasterFragmentPresenter.clickTab(
@@ -74,7 +74,7 @@ public class BookingDetailMasterFragment extends BaseFragment
   }
 
   @Override public void addFirstFragment() {
-    mNavigator.addChildFragmentTag(this,
+    mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
         R.id.container_booking_detail_master, ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
   }
@@ -151,7 +151,7 @@ public class BookingDetailMasterFragment extends BaseFragment
           Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
       return;
     }
-    if (mNavigator.isChildFragmentTag(this,
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT)) {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
