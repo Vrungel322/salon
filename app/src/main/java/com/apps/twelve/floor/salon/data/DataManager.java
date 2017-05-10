@@ -156,14 +156,4 @@ public class DataManager {
   public Observable<Response<Void>> removeFromFavorite(int photoId) {
     return mRestApi.removeFromFavorite(photoId, mPref.getToken());
   }
-
-  //public Observable<List<MasterEntity>> fetchMasters(String dataID) {
-  //  ArrayList<MasterEntity> arrayList = new ArrayList<>();
-  //  for (int i = 0; i < 7; i++) {
-  //    arrayList.add(new MasterEntity("Master " + i,
-  //        "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-  //        "Lorem ipsum dolore sit amet", "" + i));
-  //  }
-  //  return Observable.just(arrayList);
-  //}
 }

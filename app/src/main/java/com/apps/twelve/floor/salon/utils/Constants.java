@@ -47,9 +47,6 @@ public final class Constants {
   public class FragmentToShow {
     public static final String BONUS = "BONUS";
     public static final String REGISTRATION = "REGISTRATION";
-
-    public static final String CHOOSE_MASTER = "MASTER";
-    public static final String CHOOSE_SERVICE = "SERVICE";
   }
 
   public class ChangingUserInfoField {
@@ -58,10 +55,5 @@ public final class Constants {
     public static final int PASSWORD = 2;
     public static final int EMAIL = 3;
     public static final int PHONE = 4;
-  }
-
-  public class BookingMode {
-    public static final int START_WITH_MASTER = 1;
-    public static final int START_WITH_SERVICE = 2;
   }
 }

@@ -39,7 +39,7 @@ import timber.log.Timber;
   }
 
   private void getTimeMaster() {
-    Subscription subscription = mDataManager.fetchDaysDataInMasterMode(mBookingEntity.getMasterId())
+    Subscription subscription = mDataManager.fetchDaysDataWithMasterId(mBookingEntity.getMasterId())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;
