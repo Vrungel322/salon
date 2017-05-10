@@ -54,19 +54,19 @@ public class BookingDetailServiceFragment extends BaseFragment
     mTabService.setOnClickListener(v -> {
       mBookingDetailServiceFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 1);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
     });
 
     mTabTime.setOnClickListener(v -> {
       mBookingDetailServiceFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 2);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 3);
     });
 
     mTabMaster.setOnClickListener(v -> {
       mBookingDetailServiceFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT);
-      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 3);
+      mNavigator.clearBackStackWithCountFragment((AppCompatActivity) getActivity(), 4);
     });
 
     mTabData.setOnClickListener(v -> mBookingDetailServiceFragmentPresenter.clickTab(
@@ -74,8 +74,8 @@ public class BookingDetailServiceFragment extends BaseFragment
   }
 
   @Override public void addFirstFragment() {
-    mNavigator.addChildFragmentTag(this, R.id.container_booking_detail_service,
-        ChooseServiceServiceFragment.newInstance(),
+    mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(),
+        R.id.container_booking_detail_service, ChooseServiceServiceFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);
   }
 
@@ -151,7 +151,7 @@ public class BookingDetailServiceFragment extends BaseFragment
           Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT);
       return;
     }
-    if (mNavigator.isChildFragmentTag(this,
+    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT)) {
       mBookingDetailServiceFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);

@@ -9,7 +9,6 @@ import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
-import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -34,12 +33,13 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   }
 
   @Override public void closeBookingService() {
-    super.onBackPressed();
+    mNavigator.clearBackStack(this);
+    mNavigator.replaceFragment(this, R.id.container_booking, BookingFragment.newInstance());
   }
 
   @Override public void onBackPressed() {
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT)) {
-      if (mNavigator.getCountBackStack(this) == 1) {
+      if (mNavigator.getCountBackStack(this) == 2) {
         mBookingActivityPresenter.backCategories();
       } else {
         mBookingActivityPresenter.stateBackBookingService();
@@ -54,8 +54,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         super.onBackPressed();
       } else {
         mNavigator.clearBackStack(this);
-        mNavigator.replaceFragment(this, R.id.container_booking,
-            BookingFragment.newInstance());
+        mNavigator.replaceFragment(this, R.id.container_booking, BookingFragment.newInstance());
       }
 
       return;
