@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.data;
 
-import android.net.Uri;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -9,10 +8,8 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -63,8 +60,8 @@ public class DataManager {
     return mRestApi.fetchAllMasters();
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
-    return mRestApi.fetchDaysDataInMasterMode(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+    return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
   public Observable<String> getProfileImage() {
@@ -73,6 +70,54 @@ public class DataManager {
 
   public void setProfileImage(String uri) {
     mPref.setProfileImage(uri);
+  }
+
+  public Observable<String> getProfileName() {
+    return mPref.getProfileName();
+  }
+
+  public void setProfileName(String name) {
+    mPref.setProfileName(name);
+  }
+
+  public Observable<String> getProfileLogin() {
+    return mPref.getProfileLogin();
+  }
+
+  public void setProfileLogin(String login) {
+    mPref.setProfileLogin(login);
+  }
+
+  public Observable<String> getProfilePassword() {
+    return mPref.getProfilePassword();
+  }
+
+  public void setProfilePassword(String password) {
+    mPref.setProfilePassword(password);
+  }
+
+  public Observable<String> getProfileEmail() {
+    return mPref.getProfileEmail();
+  }
+
+  public void setProfileEmail(String email) {
+    mPref.setProfileEmail(email);
+  }
+
+  public Observable<String> getProfilePhone() {
+    return mPref.getProfilePhone();
+  }
+
+  public void setProfilePhone(String phone) {
+    mPref.setProfilePhone(phone);
+  }
+
+  public Observable<Integer> getProfileGender() {
+    return mPref.getProfileGender();
+  }
+
+  public void setProfileGender(int gender) {
+    mPref.setProfileGender(gender);
   }
 
   public Observable<retrofit2.Response<Void>> checkInService(
@@ -85,7 +130,7 @@ public class DataManager {
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(serviceId);
+    return mRestApi.cancelOrder(serviceId, mPref.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
@@ -93,7 +138,7 @@ public class DataManager {
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks();
+    return mRestApi.fetchListOfWorks(mPref.getToken());
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {
@@ -102,6 +147,14 @@ public class DataManager {
 
   public Observable<List<NewsEntity>> fetchAllNews() {
     return mRestApi.fetchAllNews();
+  }
+
+  public Observable<Response<Void>> addToFavorite(int photoId) {
+    return mRestApi.addToFavorite(photoId, mPref.getToken());
+  }
+
+  public Observable<Response<Void>> removeFromFavorite(int photoId) {
+    return mRestApi.removeFromFavorite(photoId, mPref.getToken());
   }
 
   //public Observable<List<MasterEntity>> fetchMasters(String dataID) {

@@ -118,8 +118,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
               mTextViewDescriptionWork.setMaxLines(3);
               mTextViewDescriptionWork.setEllipsize(TextUtils.TruncateAt.END);
               mTextViewDescriptionWork.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-            else {
+            } else {
               mTextViewDescriptionWork.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
           }

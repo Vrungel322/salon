@@ -16,6 +16,8 @@
   <color name="colorLLightPink">#FFFBE9F0</color>
 
   <!--screen main-->
+  <!--<color name="colorNavigationText">#ffffff</color>-->
+  <!--<color name="colorNavigationIcon">#ffffff</color>-->
   <!--sub news-->
   <color name="colorMainScreenText">#a7a8a8</color>
   <color name="colorMainScreenTextAllNews">#ff4081</color>
@@ -161,6 +163,14 @@
   <color name="colorSettingsGeneralText">#000000</color>
   <color name="colorSettingsBlockHeaderText">#9f9f9f</color>
   <color name="colorSettingsFinalBlockText">#FFEA3472</color>
+  <color name="colorSettingEditText">#7be4e4e4</color>
+  <color name="colorSettingsSaveButton">#EB3472</color>
+  <color name="colorSettingsSaveButtonText">#ffffff</color>
+  <color name="colorSettingsReportProblemBackground">#e7e7e7</color>
+  <color name="colorSettingsReportProblemText">#000000</color>
+  <color name="colorSettingsReportProblemHint">#9f9f9f</color>
+  <color name="colorSettingsReportProblemButton">#EB3472</color>
+  <color name="colorSettingsReportProblemButtonText">#ffffff</color>
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>

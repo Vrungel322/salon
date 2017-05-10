@@ -33,9 +33,12 @@ import timber.log.Timber;
   }
 
   private void fetchBookingEntities() {
-    Subscription subscription = mDataManager.fetchLastBooking().concatMap(Observable::from)
+    Subscription subscription = mDataManager.fetchLastBooking()
+        .concatMap(Observable::from)
         .take(2)
-        .toList().compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
+        .toList()
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(lastBookingEntities -> {
           getViewState().showLastBookings(lastBookingEntities);
           mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
         }, throwable -> {

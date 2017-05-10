@@ -130,5 +130,4 @@ public class OurWorkEntity implements Parcelable {
   public void setListPhotoWorks(ArrayList<PhotoWorksEntity> listPhotoWorks) {
     mListPhotoWorks = listPhotoWorks;
   }
-
 }

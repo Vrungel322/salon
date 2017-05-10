@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.di.modules;
 
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
-import com.apps.twelve.floor.salon.data.local.mappers.Mapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
 import dagger.Module;
@@ -16,7 +15,7 @@ import dagger.Provides;
     return new BookingEntity("", "", "", "", "", "", "", "", "");
   }
 
-  @Provides @BookingScope BookingToBookingServerEntityMapper provideMApper(){
+  @Provides @BookingScope BookingToBookingServerEntityMapper provideMApper() {
     return new BookingToBookingServerEntityMapper();
   }
 }

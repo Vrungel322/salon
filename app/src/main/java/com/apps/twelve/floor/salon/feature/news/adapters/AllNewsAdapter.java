@@ -50,7 +50,8 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   @Override public void onBindViewHolder(AllNewsViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewThumbNews.getContext()).load(mNewsEntities.get(position).getImg())
+    Picasso.with(holder.mImageViewThumbNews.getContext())
+        .load(mNewsEntities.get(position).getImg())
         .into(holder.mImageViewThumbNews);
 
     holder.mTextViewItemNewsShortDescription.setText(mNewsEntities.get(position).getTitle());
