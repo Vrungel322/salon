@@ -74,8 +74,8 @@ public class BookingDetailServiceFragment extends BaseFragment
   }
 
   @Override public void addFirstFragment() {
-    mNavigator.addFragmentTag((AppCompatActivity) getActivity(),
-        R.id.container_booking_detail_service, ChooseServiceServiceFragment.newInstance(),
+    mNavigator.addChildFragmentTag(this, R.id.container_booking_detail_service,
+        ChooseServiceServiceFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);
   }
 
@@ -151,7 +151,7 @@ public class BookingDetailServiceFragment extends BaseFragment
           Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT);
       return;
     }
-    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+    if (mNavigator.isChildFragmentTag(this,
         Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT)) {
       mBookingDetailServiceFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT);

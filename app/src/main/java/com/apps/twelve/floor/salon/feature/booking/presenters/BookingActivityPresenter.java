@@ -5,8 +5,11 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
+import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
+import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -19,6 +22,7 @@ import javax.inject.Inject;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFragmentBooking();
+    closeBookingService();
   }
 
   @Override protected void inject() {
@@ -35,5 +39,12 @@ import javax.inject.Inject;
 
   public void stateBackBookingService() {
     mRxBus.post(new RxBusHelper.StateBackBookingService());
+  }
+
+  private void closeBookingService() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.CloseBookingService.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(closeBookingService -> getViewState().closeBookingService(), Timber::e);
+    addToUnsubscription(subscription);
   }
 }

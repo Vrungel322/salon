@@ -60,6 +60,9 @@ public final class RxBusHelper {
   public static class StateBackBookingService {
   }
 
+  public static class CloseBookingService {
+  }
+
   public static class VisibleFragmentChooseService {
     public boolean visible;
 

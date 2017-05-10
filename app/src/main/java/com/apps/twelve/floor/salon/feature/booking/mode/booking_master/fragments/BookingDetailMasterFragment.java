@@ -74,7 +74,7 @@ public class BookingDetailMasterFragment extends BaseFragment
   }
 
   @Override public void addFirstFragment() {
-    mNavigator.addFragmentTag((AppCompatActivity) getActivity(),
+    mNavigator.addChildFragmentTag(this,
         R.id.container_booking_detail_master, ChooseMasterMasterFragment.newInstance(),
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);
   }
@@ -151,7 +151,7 @@ public class BookingDetailMasterFragment extends BaseFragment
           Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT);
       return;
     }
-    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
+    if (mNavigator.isChildFragmentTag(this,
         Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT)) {
       mBookingDetailMasterFragmentPresenter.clickTab(
           Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT);

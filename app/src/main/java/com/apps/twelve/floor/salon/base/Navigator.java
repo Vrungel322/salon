@@ -159,18 +159,6 @@ public class Navigator {
         .commit();
   }
 
-  public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
-      @NonNull Fragment child) {
-    parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
-  }
-
-  public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
-      @NonNull Fragment child, @NonNull String fragmentTag) {
-    parent.getChildFragmentManager().beginTransaction()
-        .add(containerId, child, fragmentTag)
-        .commit();
-  }
-
   public void clearBackStack(@NonNull AppCompatActivity activity) {
     if (!isEmptyBackStack(activity)) {
       activity.getSupportFragmentManager()
@@ -190,7 +178,31 @@ public class Navigator {
     return activity.getSupportFragmentManager().getBackStackEntryCount() == 0;
   }
 
+  public int getCountBackStack(@NonNull AppCompatActivity activity) {
+    return activity.getSupportFragmentManager().getBackStackEntryCount();
+  }
+
   public boolean isOneFragmentBackStack(@NonNull AppCompatActivity appCompatActivity) {
     return appCompatActivity.getSupportFragmentManager().getBackStackEntryCount() == 1;
+  }
+
+  //for child fragment
+  public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child) {
+    parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
+  }
+
+  public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child, @NonNull String fragmentTag) {
+    parent.getChildFragmentManager()
+        .beginTransaction()
+        .add(containerId, child, fragmentTag)
+        .commit();
+  }
+
+  public boolean isChildFragmentTag(@NonNull Fragment parent, @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = parent.getChildFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    return fragmentCopy != null;
   }
 }
