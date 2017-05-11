@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class BookingMasterContactFragment extends BaseFragment
@@ -42,9 +41,6 @@ public class BookingMasterContactFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
-    mTextViewService.setText(
-        getArguments().getString(Constants.FragmentsArgumentKeys.SERVICE_NAME));
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
@@ -60,6 +56,7 @@ public class BookingMasterContactFragment extends BaseFragment
     mTextViewTime.setText(serviceTime);
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
+    mTextViewMasterDetails.setText("great master");
   }
 
   @Override public void closeActivity() {

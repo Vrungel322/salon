@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingContactFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -34,7 +33,6 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
 
   public static BookingContactFragment newInstance() {
     Bundle args = new Bundle();
-    args.putString(Constants.FragmentsArgumentKeys.SERVICE_NAME, "ТЕСТОВАЯ УСЛУГА");
     BookingContactFragment fragment = new BookingContactFragment();
     fragment.setArguments(args);
     return fragment;
@@ -46,9 +44,6 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
-    mTextViewService.setText(
-        getArguments().getString(Constants.FragmentsArgumentKeys.SERVICE_NAME));
   }
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
@@ -64,6 +59,7 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
     mTextViewTime.setText(serviceTime);
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
+    mTextViewMasterDetails.setText("great master");
   }
 
   @Override public void closeActivity() {
