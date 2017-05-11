@@ -70,44 +70,13 @@
         android:textSize="14sp"
         />
   </LinearLayout>
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      android:id="@+id/linerLayoutChooseService"
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/rvServices"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_below="@+id/linearLayout"
-      android:background="@color/colorChooseServiceBackground"
-      android:focusableInTouchMode="true"
-      android:orientation="vertical"
-      >
-    <LinearLayout
-        android:id="@+id/llAllitems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
-        >
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rvTreeOfServices"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/llDeepItems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        >
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rvServices"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/colorChooseServiceNotPressedBackground"
-          />
-    </LinearLayout>
-  </LinearLayout>
+      android:background="@color/colorChooseServiceNotPressedBackground"
+      />
   <ProgressBar
       android:id="@+id/progressBarChooseService"
       android:layout_width="wrap_content"

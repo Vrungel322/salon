@@ -49,6 +49,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
     mMyLastBookingAdapter =
         new MyLastBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
     mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
+    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
     mRecyclerViewMyLastBooking.setFocusable(false);
 
@@ -59,7 +60,6 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   }
 
   @Override public void showLastBookings(List<LastBookingEntity> lastBookingEntities) {
-    mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mMyLastBookingAdapter.addListLastBookingEntity(lastBookingEntities);
   }
 

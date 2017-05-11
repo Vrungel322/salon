@@ -39,7 +39,7 @@ public class ChooseServiceServiceFragment extends BaseFragment
   @BindView(R.id.llTreeItems) LinearLayout mLinerLayoutTreeItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewAllServices;
   @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewCategory;
-  @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllItems;
+  @BindView(R.id.llAllItems) LinearLayout mLinearLayoutAllItems;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
   @BindView(R.id.tvPath) TextView tvPath;
   @BindView(R.id.progressBarCategoryService) ProgressBar mProgressBarCategoryService;
@@ -55,7 +55,7 @@ public class ChooseServiceServiceFragment extends BaseFragment
   }
 
   public ChooseServiceServiceFragment() {
-    super(R.layout.fragment_choose_service);
+    super(R.layout.fragment_choose_service_service);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

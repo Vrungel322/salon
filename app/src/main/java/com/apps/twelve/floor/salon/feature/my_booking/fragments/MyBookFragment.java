@@ -50,6 +50,7 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
     mMyBookingAdapter =
         new MyBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
     mRecyclerViewMyBooks.setLayoutManager(new LinearLayoutManager(getContext()));
+    mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
     mRecyclerViewMyBooks.setNestedScrollingEnabled(false);
     mRecyclerViewMyBooks.setFocusable(false);
 
@@ -62,7 +63,6 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @Override public void showAllBooking(List<LastBookingEntity> bookingEntities) {
     if (!bookingEntities.isEmpty()) {
       mTextViewBookEmptyList.setVisibility(View.GONE);
-      mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
       mMyBookingAdapter.addListBookingEntity(bookingEntities);
     } else {
       mTextViewBookEmptyList.setVisibility(View.VISIBLE);

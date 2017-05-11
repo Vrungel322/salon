@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -28,10 +27,7 @@ public class ChooseMasterServiceFragment extends BaseFragment
 
   @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
   @BindView(R.id.etChooseService) EditText mEditTextChooseService;
-  @BindView(R.id.llDeepItems) LinearLayout mLinearLayoutDeepItems;
   @BindView(R.id.rvServices) RecyclerView mRecyclerViewServices;
-  @BindView(R.id.llAllitems) LinearLayout mLinearLayoutAllitems;
-  @BindView(R.id.rvTreeOfServices) RecyclerView mRecyclerViewTreeOfServices;
   @BindView(R.id.progressBarChooseService) ProgressBar mProgressBar;
 
   private ServicesAdapter mServicesAdapter;
@@ -85,7 +81,6 @@ public class ChooseMasterServiceFragment extends BaseFragment
 
   @Override public void hideProgressBar() {
     mProgressBar.setVisibility(View.GONE);
-    mLinearLayoutDeepItems.setVisibility(View.VISIBLE);
   }
 
   @Override public void setMasterName(String masterName) {

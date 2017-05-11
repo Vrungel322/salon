@@ -48,8 +48,8 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_our_work);
 
     mOurWorkAdapter = new OurWorkAdapter();
-    mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
         .setOnItemClickListener((recyclerView, position, v) -> {

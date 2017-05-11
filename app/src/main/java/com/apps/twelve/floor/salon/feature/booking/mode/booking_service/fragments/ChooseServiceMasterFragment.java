@@ -27,8 +27,6 @@ public class ChooseServiceMasterFragment extends BaseFragment
 
   @InjectPresenter ChooseServiceMasterFragmentPresenter mChooseServiceMasterFragmentPresenter;
 
-  private static final int SELECTED_ITEM_DEFAULT = -1;
-
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
   @BindView(R.id.tvServiceDuration) TextView mTextViewServiceDuration;
@@ -47,7 +45,7 @@ public class ChooseServiceMasterFragment extends BaseFragment
   }
 
   public ChooseServiceMasterFragment() {
-    super(R.layout.fragment_choose_master);
+    super(R.layout.fragment_choose_service_master);
   }
 
   @Override public void setUpUi() {

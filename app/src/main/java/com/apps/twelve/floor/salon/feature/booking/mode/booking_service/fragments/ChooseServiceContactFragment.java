@@ -42,7 +42,7 @@ public class ChooseServiceContactFragment extends BaseFragment
   }
 
   public ChooseServiceContactFragment() {
-    super(R.layout.fragment_booking_contact);
+    super(R.layout.fragment_choose_service_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

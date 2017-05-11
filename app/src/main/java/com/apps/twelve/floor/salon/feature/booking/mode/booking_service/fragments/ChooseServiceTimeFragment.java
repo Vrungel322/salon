@@ -70,7 +70,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
   }
 
   public ChooseServiceTimeFragment() {
-    super(R.layout.fragment_choose_time);
+    super(R.layout.fragment_choose_service_time);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
