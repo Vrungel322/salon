@@ -14,5 +14,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void addFragmentBooking();
 
-  void isVisibleChooseService(boolean visible);
+  @StateStrategyType(SkipStrategy.class) void closeBookingService();
+
 }

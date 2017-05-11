@@ -1,4 +1,3 @@
-
 package com.apps.twelve.floor.salon.data.model;
 
 import android.os.Parcel;
@@ -8,114 +7,114 @@ import com.google.gson.annotations.SerializedName;
 
 public class NewsEntity implements Parcelable {
 
-    @SerializedName("id") @Expose private Integer id;
-    @SerializedName("title") @Expose private String title;
-    @SerializedName("text") @Expose private String text;
-    @SerializedName("img") @Expose private String img;
-    @SerializedName("created_at") @Expose private String createdAt;
-    @SerializedName("updated_at") @Expose private String updatedAt;
+  @SerializedName("id") @Expose private Integer id;
+  @SerializedName("title") @Expose private String title;
+  @SerializedName("text") @Expose private String text;
+  @SerializedName("img") @Expose private String img;
+  @SerializedName("created_at") @Expose private String createdAt;
+  @SerializedName("updated_at") @Expose private String updatedAt;
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public NewsEntity() {
+  /**
+   * No args constructor for use in serialization
+   */
+  public NewsEntity() {
+  }
+
+  /**
+   *
+   * @param updatedAt
+   * @param id
+   * @param text
+   * @param title
+   * @param createdAt
+   * @param img
+   */
+  public NewsEntity(Integer id, String title, String text, String img, String createdAt,
+      String updatedAt) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.text = text;
+    this.img = img;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+  }
+
+  protected NewsEntity(Parcel in) {
+    title = in.readString();
+    text = in.readString();
+    img = in.readString();
+    createdAt = in.readString();
+    updatedAt = in.readString();
+  }
+
+  public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
+    @Override public NewsEntity createFromParcel(Parcel in) {
+      return new NewsEntity(in);
     }
 
-    /**
-     *
-     * @param updatedAt
-     * @param id
-     * @param text
-     * @param title
-     * @param createdAt
-     * @param img
-     */
-    public NewsEntity(Integer id, String title, String text, String img, String createdAt,
-        String updatedAt) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.text = text;
-        this.img = img;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+    @Override public NewsEntity[] newArray(int size) {
+      return new NewsEntity[size];
     }
+  };
 
-    protected NewsEntity(Parcel in) {
-        title = in.readString();
-        text = in.readString();
-        img = in.readString();
-        createdAt = in.readString();
-        updatedAt = in.readString();
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
-        @Override public NewsEntity createFromParcel(Parcel in) {
-            return new NewsEntity(in);
-        }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-        @Override public NewsEntity[] newArray(int size) {
-            return new NewsEntity[size];
-        }
-    };
+  public String getTitle() {
+    return title;
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public String getText() {
+    return text;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public void setText(String text) {
+    this.text = text;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public String getImg() {
+    return img;
+  }
 
-    public String getText() {
-        return text;
-    }
+  public void setImg(String img) {
+    this.img = img;
+  }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+  public String getCreatedAt() {
+    return createdAt;
+  }
 
-    public String getImg() {
-        return img;
-    }
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
+  @Override public int describeContents() {
+    return 0;
+  }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override public int describeContents() {
-        return 0;
-    }
-
-    @Override public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(title);
-        dest.writeString(text);
-        dest.writeString(img);
-        dest.writeString(createdAt);
-        dest.writeString(updatedAt);
-    }
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(title);
+    dest.writeString(text);
+    dest.writeString(img);
+    dest.writeString(createdAt);
+    dest.writeString(updatedAt);
+  }
 }

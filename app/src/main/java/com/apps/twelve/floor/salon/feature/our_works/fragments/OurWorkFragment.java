@@ -48,13 +48,18 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_our_work);
 
     mOurWorkAdapter = new OurWorkAdapter();
-    mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
-        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
-            (StartActivity) getActivity(), R.id.container_main,
-            WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position))));
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          if (mOurWorkAdapter.getEntity(position).getImageCount() != 0) {
+            mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+                WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position)));
+          } else {
+            showToastMessage(R.string.error_empty_gallery);
+          }
+        });
     mOurWorkFragmentPresenter.fetchListOfWorks();
   }
 

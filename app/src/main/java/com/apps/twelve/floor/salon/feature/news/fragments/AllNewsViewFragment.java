@@ -53,8 +53,8 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
         ContextCompat.getColor(getContext(), R.color.colorAccent));
 
     mAllNewsAdapter = new AllNewsAdapter();
-    mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
     mRecyclerViewAllNews.setLayoutManager(new LinearLayoutManager(getContext()));
+    mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
     ItemClickSupport.addTo(mRecyclerViewAllNews)
         .setOnItemClickListener((recyclerView, position, v) -> {
           showToastMessage("" + position);

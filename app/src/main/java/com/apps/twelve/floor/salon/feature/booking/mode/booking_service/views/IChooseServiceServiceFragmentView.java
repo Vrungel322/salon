@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Vrungel on 29.03.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseServiceFragmentView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseServiceServiceFragmentView
     extends MvpView {
   void setUpRvAllServices();
 

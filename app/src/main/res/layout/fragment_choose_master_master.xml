@@ -41,38 +41,14 @@
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/view2"
           />
-
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginTop="8dp"
-          android:paddingBottom="8dp"
-          android:background="@color/colorChooseMasterBackground"
-          android:descendantFocusability="blocksDescendants"
-          android:orientation="vertical"
-          >
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvMasters"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:background="@color/colorChooseMasterBackground"
             />
-        <View
-            android:id="@+id/viewBlockedClickRv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/rvMasters"
-            android:layout_alignEnd="@+id/rvMasters"
-            android:layout_alignLeft="@+id/rvMasters"
-            android:layout_alignRight="@+id/rvMasters"
-            android:layout_alignStart="@+id/rvMasters"
-            android:layout_alignTop="@+id/rvMasters"
-            />
-      </RelativeLayout>
     </LinearLayout>
   </android.support.v4.widget.NestedScrollView>
   <ProgressBar

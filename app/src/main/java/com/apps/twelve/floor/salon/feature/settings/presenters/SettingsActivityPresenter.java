@@ -96,5 +96,4 @@ import timber.log.Timber;
         .subscribe(s -> getViewState().setUserGender(s), Timber::e);
     addToUnsubscription(subscription);
   }
-
 }

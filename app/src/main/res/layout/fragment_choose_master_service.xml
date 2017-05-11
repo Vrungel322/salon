@@ -47,83 +47,36 @@
 
   </android.support.constraint.ConstraintLayout>
   <LinearLayout
+      android:id="@+id/linearLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:id="@+id/linearLayout"
       android:layout_below="@+id/constraintLayout"
+      android:orientation="vertical"
       >
     <EditText
         android:id="@+id/etChooseService"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorChooseServiceEditTextBackground"
         android:gravity="center"
         android:hint="@string/search_service"
         android:inputType="textPersonName"
         android:textSize="14sp"
         />
-    <ProgressBar
-        android:id="@+id/pbLoadServices"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
-        android:visibility="gone"
-        android:indeterminate="true"
-        android:indeterminateTintMode="src_atop"
-        android:indeterminateTint="@color/colorAccent"
-        style="?android:attr/progressBarStyleHorizontal"
-        />
   </LinearLayout>
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/rvServices"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="@color/colorChooseServiceBackground"
-      android:focusableInTouchMode="true"
-      android:orientation="vertical"
       android:layout_below="@+id/linearLayout"
-      android:id="@+id/linerLayoutChooseService"
-      >
-    <LinearLayout
-        android:id="@+id/llAllitems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
-        >
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rvTreeOfServices"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/llDeepItems"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:visibility="invisible"
-        android:orientation="vertical"
-        >
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/rvServices"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/colorChooseServiceNotPressedBackground"
-          />
-    </LinearLayout>
-  </LinearLayout>
+      android:background="@color/colorChooseServiceNotPressedBackground"
+      />
   <ProgressBar
       android:id="@+id/progressBarChooseService"
       android:layout_width="wrap_content"

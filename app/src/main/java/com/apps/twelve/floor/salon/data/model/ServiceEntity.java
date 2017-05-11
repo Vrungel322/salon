@@ -21,8 +21,7 @@ public class ServiceEntity {
   }
 
   public ServiceEntity(Integer serviceId, String title, String description, String image,
-      Integer time,
-      String price, String categoryId) {
+      Integer time, String price, String categoryId) {
     this.serviceId = serviceId;
     this.title = title;
     this.description = description;

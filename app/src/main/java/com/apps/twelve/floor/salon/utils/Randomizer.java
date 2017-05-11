@@ -15,8 +15,8 @@ public final class Randomizer {
     if (max == 1) return 0;
 
     Random r = new Random();
-    int generetedNum = r.nextInt((max - min) + 1) + min;
-    if (generetedNum == max) return generetedNum - 1;
-    return generetedNum;
+    int generatedNum = r.nextInt((max - min) + 1) + min;
+    if (generatedNum == max) return generatedNum - 1;
+    return generatedNum;
   }
 }

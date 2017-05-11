@@ -22,7 +22,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFragmentBooking();
-    visibleChoseServices();
+    closeBookingService();
   }
 
   @Override protected void inject() {
@@ -33,16 +33,18 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.BackCategories());
   }
 
-  public void stateBooking() {
-    mRxBus.post(new RxBusHelper.StateBooking());
+  public void stateBackBookingMaster() {
+    mRxBus.post(new RxBusHelper.StateBackBookingMaster());
   }
 
-  private void visibleChoseServices() {
-    Subscription subscription =
-        mRxBus.filteredObservable(RxBusHelper.VisibleFragmentChooseService.class)
-            .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(visibleFragmentChoseService -> getViewState().isVisibleChooseService(
-                visibleFragmentChoseService.visible), Timber::e);
+  public void stateBackBookingService() {
+    mRxBus.post(new RxBusHelper.StateBackBookingService());
+  }
+
+  private void closeBookingService() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.CloseBookingService.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(closeBookingService -> getViewState().closeBookingService(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

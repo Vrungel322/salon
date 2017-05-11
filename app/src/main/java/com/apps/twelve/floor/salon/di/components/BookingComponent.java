@@ -2,15 +2,16 @@ package com.apps.twelve.floor.salon.di.components;
 
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.BookingScope;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingDetailMasterFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterServiceFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.presenters.BookingDetailFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingDetailServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceMasterFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceServiceFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceTimeFragmentPresenter;
 import dagger.Subcomponent;
 
 /**
@@ -19,15 +20,13 @@ import dagger.Subcomponent;
 
 @BookingScope @Subcomponent(modules = BookingModule.class) public interface BookingComponent {
 
-  void inject(BookingDetailFragmentPresenter presenter);
+  void inject(ChooseServiceServiceFragmentPresenter presenter);
 
-  void inject(ChooseServiceFragmentPresenter presenter);
+  void inject(ChooseServiceTimeFragmentPresenter presenter);
 
-  void inject(ChooseTimeFragmentPresenter presenter);
+  void inject(ChooseServiceMasterFragmentPresenter presenter);
 
-  void inject(ChooseMasterFragmentPresenter presenter);
-
-  void inject(BookingContactFragmentPresenter presenter);
+  void inject(ChooseServiceContactFragmentPresenter presenter);
 
   void inject(ChooseMasterMasterFragmentPresenter presenter);
 
@@ -35,6 +34,10 @@ import dagger.Subcomponent;
 
   void inject(ChooseMasterTimeFragmentPresenter presenter);
 
-  void inject(BookingMasterContactFragmentPresenter presenter);
+  void inject(ChooseMasterContactFragmentPresenter presenter);
+
+  void inject(BookingDetailMasterFragmentPresenter presenter);
+
+  void inject(BookingDetailServiceFragmentPresenter presenter);
 
 }

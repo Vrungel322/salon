@@ -31,8 +31,8 @@ import timber.log.Timber;
     App.getAppComponent().inject(this);
   }
 
-  public PostponeFragmentPresenter(String serviceId) {
-    getAvailableTime(serviceId);
+  public PostponeFragmentPresenter(String masterId) {
+    getAvailableTime(masterId);
   }
 
   @Override protected void onFirstViewAttach() {
@@ -40,8 +40,8 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  public void getAvailableTime(String serviceId) {
-    Subscription subscription = mDataManager.fetchDaysData(serviceId)
+  public void getAvailableTime(String masterId) {
+    Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
           mDataServiceEntity = dataServiceEntities;

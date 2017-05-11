@@ -10,14 +10,15 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.BookingMasterContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IBookingMasterContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterContactFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class BookingMasterContactFragment extends BaseFragment
-    implements IBookingMasterContactFragmentView {
+public class ChooseMasterContactFragment extends BaseFragment
+    implements IChooseMasterContactFragmentView {
 
-  @InjectPresenter BookingMasterContactFragmentPresenter mBookingMasterContactFragmentPresenter;
+  @InjectPresenter ChooseMasterContactFragmentPresenter mChooseMasterContactFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
@@ -28,15 +29,15 @@ public class BookingMasterContactFragment extends BaseFragment
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
-  public static BookingMasterContactFragment newInstance() {
+  public static ChooseMasterContactFragment newInstance() {
     Bundle args = new Bundle();
-    BookingMasterContactFragment fragment = new BookingMasterContactFragment();
+    ChooseMasterContactFragment fragment = new ChooseMasterContactFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public BookingMasterContactFragment() {
-    super(R.layout.fragment_booking_master_contact);
+  public ChooseMasterContactFragment() {
+    super(R.layout.fragment_choose_master_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -45,9 +46,9 @@ public class BookingMasterContactFragment extends BaseFragment
 
   @OnClick(R.id.btn_booking_contact) void createBooking() {
     mBtnCreateBooking.setClickable(false);
-    mBookingMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
-    mBookingMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
-    mBookingMasterContactFragmentPresenter.sendBookingEntity();
+    mChooseMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
+    mChooseMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
+    mChooseMasterContactFragmentPresenter.sendBookingEntity();
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,

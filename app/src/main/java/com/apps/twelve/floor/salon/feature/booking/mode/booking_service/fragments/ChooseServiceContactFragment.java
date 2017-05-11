@@ -10,17 +10,19 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.BookingContactFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
  * Created by Alexandra on 28.03.2017.
  */
 
-public class BookingContactFragment extends BaseFragment implements IBookingContactFragmentView {
+public class ChooseServiceContactFragment extends BaseFragment
+    implements IChooseServiceContactFragmentView {
 
-  @InjectPresenter BookingContactFragmentPresenter mBookingContactsFragmentPresenter;
+  @InjectPresenter ChooseServiceContactFragmentPresenter mBookingContactsFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
@@ -31,15 +33,17 @@ public class BookingContactFragment extends BaseFragment implements IBookingCont
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
-  public static BookingContactFragment newInstance() {
+  public static ChooseServiceContactFragment newInstance() {
     Bundle args = new Bundle();
     BookingContactFragment fragment = new BookingContactFragment();
+    args.putString(Constants.FragmentsArgumentKeys.SERVICE_NAME, "ТЕСТОВАЯ УСЛУГА");
+    ChooseServiceContactFragment fragment = new ChooseServiceContactFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public BookingContactFragment() {
-    super(R.layout.fragment_booking_contact);
+  public ChooseServiceContactFragment() {
+    super(R.layout.fragment_choose_service_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

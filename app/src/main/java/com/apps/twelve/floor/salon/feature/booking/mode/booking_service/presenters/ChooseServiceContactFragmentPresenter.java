@@ -5,7 +5,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingContactFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -18,8 +18,8 @@ import timber.log.Timber;
  * Created by Alexandra on 28.03.2017.
  */
 
-@InjectViewState public class BookingContactFragmentPresenter
-    extends BasePresenter<IBookingContactFragmentView> {
+@InjectViewState public class ChooseServiceContactFragmentPresenter
+    extends BasePresenter<IChooseServiceContactFragmentView> {
 
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
@@ -32,17 +32,9 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getInfFromRxBus();
-  }
-
-  private void getInfFromRxBus() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MasterID.class)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(
-            masterID -> getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
-                mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
-                mBookingEntity.getMasterName()), Timber::e);
-    addToUnsubscription(subscription);
+    getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
+        mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
+        mBookingEntity.getMasterName());
   }
 
   public void setPersonName(String s) {

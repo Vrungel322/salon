@@ -28,7 +28,6 @@ public class RestApi {
     return api.fetchCategory();
   }
 
-  //todo fetchAllServices for filtering
   public Observable<List<ServiceEntity>> fetchAllServices() {
     return api.fetchAllServices();
   }
@@ -57,8 +56,8 @@ public class RestApi {
     return api.fetchAllServicesByMasterId(masterId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
-    return api.fetchDaysDataInMasterMode(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+    return api.fetchDaysDataWithMasterId(masterId);
   }
 
   public Observable<retrofit2.Response<Void>> checkInService(String token,
@@ -70,8 +69,8 @@ public class RestApi {
     return api.fetchLastBooking(Integer.parseInt(token));
   }
 
-  public Observable<Response<Void>> cancelOrder(Integer serviceId) {
-    return api.cancelOrder(String.valueOf(serviceId));
+  public Observable<Response<Void>> cancelOrder(Integer serviceId, String token) {
+    return api.cancelOrder(String.valueOf(serviceId), token);
   }
 
   public Observable<Response<Void>> postponeService(String entryId, String userId, int scheduleId) {
@@ -86,8 +85,16 @@ public class RestApi {
     return api.fetchNewsPreview();
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return api.fetchListOfWorks();
+  public Observable<List<OurWorkEntity>> fetchListOfWorks(String token) {
+    return api.fetchListOfWorks(token);
+  }
+
+  public Observable<Response<Void>> addToFavorite(int photoId, String token) {
+    return api.addToFavorite(photoId, token);
+  }
+
+  public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
+    return api.removeFromFavorite(photoId, token);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

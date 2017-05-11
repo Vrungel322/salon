@@ -33,7 +33,8 @@ import timber.log.Timber;
 
   public void fetchNewsEntities() {
     Subscription subscription = mDataManager.fetchNewsPreview()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(previewNewsEntity -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(previewNewsEntity -> {
           getViewState().updateNewsPreview(previewNewsEntity);
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
         }, throwable -> {

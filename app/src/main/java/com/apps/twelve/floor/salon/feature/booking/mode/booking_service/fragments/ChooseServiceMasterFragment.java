@@ -12,8 +12,8 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.MastersVerticalAdapter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseMasterFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseMasterFragmentView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceMasterFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
@@ -22,11 +22,10 @@ import java.util.List;
  * Created by Vrungel on 28.03.2017.
  */
 
-public class ChooseMasterFragment extends BaseFragment implements IChooseMasterFragmentView {
+public class ChooseServiceMasterFragment extends BaseFragment
+    implements IChooseServiceMasterFragmentView {
 
-  @InjectPresenter ChooseMasterFragmentPresenter mChooseMasterFragmentPresenter;
-
-  private static final int SELECTED_ITEM_DEFAULT = -1;
+  @InjectPresenter ChooseServiceMasterFragmentPresenter mChooseServiceMasterFragmentPresenter;
 
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
@@ -38,15 +37,15 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
-  public static ChooseMasterFragment newInstance() {
+  public static ChooseServiceMasterFragment newInstance() {
     Bundle args = new Bundle();
-    ChooseMasterFragment fragment = new ChooseMasterFragment();
+    ChooseServiceMasterFragment fragment = new ChooseServiceMasterFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
-  public ChooseMasterFragment() {
-    super(R.layout.fragment_choose_master);
+  public ChooseServiceMasterFragment() {
+    super(R.layout.fragment_choose_service_master);
   }
 
   @Override public void setUpUi() {
@@ -58,9 +57,9 @@ public class ChooseMasterFragment extends BaseFragment implements IChooseMasterF
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener((recyclerView, position, v) -> {
           if (position == 0) {
-            mChooseMasterFragmentPresenter.setAnyMasterSelected();
+            mChooseServiceMasterFragmentPresenter.setAnyMasterSelected();
           } else {
-            mChooseMasterFragmentPresenter.setSelectedItem(position - 1);
+            mChooseServiceMasterFragmentPresenter.setSelectedItem(position - 1);
           }
         });
   }

@@ -24,13 +24,14 @@ import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesHorizontal
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesInMonthViewPagerAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.ScheduleAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterTimeFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterTimeView;
+import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterTimeFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMasterTimeView {
+public class ChooseMasterTimeFragment extends BaseFragment
+    implements IChooseMasterTimeFragmentView {
   private static final int SCHEDULE_SPAN_COUNT = 6;
   private static final int SELECTED_ITEM_DEFAULT = -1;
 
@@ -150,10 +151,6 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
     mNestedScrollBookingTime.setVisibility(View.VISIBLE);
   }
 
-  @Override public void clearSelectedTime() {
-    mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
-  }
-
   @Override public void setUpRedSquare(String serviceName, String masterName) {
     mTextViewMasterDescription.setText(masterName);
     mTextViewServiceName.setText(serviceName);
@@ -161,6 +158,10 @@ public class ChooseMasterTimeFragment extends BaseFragment implements IChooseMas
 
   @Override public void timeIsNotAvailable() {
     showToastMessage("Time is not Available");
+  }
+
+  @Override public void clearSelectedTime() {
+    mScheduleAdapter.setSelectedItem(SELECTED_ITEM_DEFAULT);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

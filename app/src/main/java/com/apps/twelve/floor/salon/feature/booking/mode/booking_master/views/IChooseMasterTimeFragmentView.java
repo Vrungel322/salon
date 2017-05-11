@@ -6,7 +6,7 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterTimeView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterTimeFragmentView
     extends MvpView {
 
   void setUpUi(List<DataServiceEntity> days);
@@ -23,9 +23,9 @@ import java.util.List;
 
   void hideProgressBarBookingTime();
 
-  void clearSelectedTime();
-
   void setUpRedSquare(String serviceName, String masterName);
 
   void timeIsNotAvailable();
+
+  void clearSelectedTime();
 }

@@ -122,7 +122,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
         PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
             mBookingEntities.get(position).getMasterName(),
-            mBookingEntities.get(position).getServiceId(),
+            mBookingEntities.get(position).getMasterId(),
             /* entity_id */ mBookingEntities.get(position).getId()));
   }
 

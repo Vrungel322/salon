@@ -13,13 +13,23 @@ public final class Constants {
 
   public class FragmentTag {
     public static final String MAIN_FRAGMENT = "MainFragment";
-    public static final String BOOKING_SERVICES_FRAGMENT = "BookingServicesFragment";
-    public static final String BOOKING_MASTERS_FRAGMENT = "BookingMastersFragment";
+    public static final String BOOKING_DETAIL_MASTER_FRAGMENT = "BookingDetailMasterFragment";
+    public static final String BOOKING_DETAIL_SERVICE_FRAGMENT = "BookingDetailServiceFragment";
     public static final String MY_BOOK_FRAGMENT = "MyBookFragment";
     public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";
     public static final String CONTACTS_FRAGMENT = "ContactsFragment";
     public static final String ALL_NEWS_FRAGMENT = "AllNewsFragment";
+
+    public static final String CHOOSE_MASTER_MASTER_FRAGMENT = "ChooseMasterMasterFragment";
+    public static final String CHOOSE_MASTER_SERVICE_FRAGMENT = "ChooseMasterServiceFragment";
+    public static final String CHOOSE_MASTER_TIME_FRAGMENT = "ChooseMasterTimeFragment";
+    public static final String CHOOSE_MASTER_CONTACT_FRAGMENT = "ChooseMasterContactFragment";
+
+    public static final String CHOOSE_SERVICE_MASTER_FRAGMENT = "ChooseServiceMasterFragment";
+    public static final String CHOOSE_SERVICE_SERVICE_FRAGMENT = "ChooseServiceServiceFragment";
+    public static final String CHOOSE_SERVICE_TIME_FRAGMENT = "ChooseServiceTimeFragment";
+    public static final String CHOOSE_SERVICE_CONTACT_FRAGMENT = "ChooseServiceContactFragment";
   }
 
   public class FragmentsArgumentKeys {
@@ -27,9 +37,8 @@ public final class Constants {
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
     public static final String SERVICE_NAME = "SERVICE_NAME";
-    public static final String BOOKING_SCREEN_TO_START = "BOOKING_SCREEN_TO_START";
     public static final String MASTER_NAME = "MASTER_NAME";
-    public static final String SERVICE_ID = "SERVICE_ID";
+    public static final String MASTER_ID = "MASTER_ID";
     public static final String ENTITY_ID = "ENTITY_ID";
     public static final String CHANGING_FIELD = "CHANGING_FIELD";
     public static final String CHANGING_FIELD_VALUE = "CHANGING_FIELD_VALUE";
@@ -38,9 +47,6 @@ public final class Constants {
   public class FragmentToShow {
     public static final String BONUS = "BONUS";
     public static final String REGISTRATION = "REGISTRATION";
-
-    public static final String CHOOSE_MASTER = "MASTER";
-    public static final String CHOOSE_SERVICE = "SERVICE";
   }
 
   public class ChangingUserInfoField {
@@ -49,10 +55,5 @@ public final class Constants {
     public static final int PASSWORD = 2;
     public static final int EMAIL = 3;
     public static final int PHONE = 4;
-  }
-
-  public class BookingMode {
-    public static final int START_WITH_MASTER = 1;
-    public static final int START_WITH_SERVICE = 2;
   }
 }

@@ -12,50 +12,46 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Vrungel on 26.01.2017.
  */
 
-public class Navigator implements INavigator {
+public class Navigator {
 
   //for activity
-  @Override public void finishActivity(@NonNull AppCompatActivity appCompatActivity) {
+  public void finishActivity(@NonNull AppCompatActivity appCompatActivity) {
     appCompatActivity.finish();
   }
 
-  @Override public void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
+  public void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
       @NonNull Intent intent) {
     appCompatActivity.startActivity(intent);
     appCompatActivity.finishAffinity();
   }
 
-  @Override
   public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent) {
     appCompatActivity.startActivity(intent);
   }
 
-  @Override
   public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action) {
     appCompatActivity.startActivity(new Intent(action));
   }
 
-  @Override
   public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull String action,
       @NonNull Uri uri) {
     appCompatActivity.startActivity(new Intent(action, uri));
   }
 
-  @Override public void startActivityForResult(@NonNull AppCompatActivity appCompatActivity,
+  public void startActivityForResult(@NonNull AppCompatActivity appCompatActivity,
       @NonNull Intent intent, int requestCode) {
     appCompatActivity.startActivityForResult(intent, requestCode);
   }
 
   //for fragment
-  @Override public void addFragment(@NonNull AppCompatActivity appCompatActivity,
-      @IdRes int containerId, @NonNull Fragment fragment) {
+  public void addFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
+      @NonNull Fragment fragment) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
         .add(containerId, fragment)
         .commit();
   }
 
-  @Override
   public void addFragmentTag(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment, @NonNull String fragmentTag) {
     appCompatActivity.getSupportFragmentManager()
@@ -64,7 +60,7 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void addFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
+  public void addFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
@@ -73,7 +69,7 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void addFragmentTagBackStack(@NonNull AppCompatActivity appCompatActivity,
+  public void addFragmentTagBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
@@ -82,7 +78,7 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void addFragmentTagBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
+  public void addFragmentTagClearBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
@@ -96,7 +92,19 @@ public class Navigator implements INavigator {
     }
   }
 
-  @Override
+  public void addFragmentTagBackStackNotCopy(@NonNull AppCompatActivity appCompatActivity,
+      @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    if (fragmentCopy == null) {
+      appCompatActivity.getSupportFragmentManager()
+          .beginTransaction()
+          .addToBackStack(null)
+          .add(containerId, fragment, fragmentTag)
+          .commit();
+    }
+  }
+
   public void replaceFragment(@NonNull AppCompatActivity appCompatActivity, @IdRes int containerId,
       @NonNull Fragment fragment) {
     appCompatActivity.getSupportFragmentManager()
@@ -105,7 +113,7 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void replaceFragmentTag(@NonNull AppCompatActivity appCompatActivity,
+  public void replaceFragmentTag(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
@@ -113,7 +121,7 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
+  public void replaceFragmentTagNotCopy(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
@@ -122,14 +130,13 @@ public class Navigator implements INavigator {
     }
   }
 
-  @Override public boolean isFragmentTag(@NonNull AppCompatActivity appCompatActivity,
+  public boolean isFragmentTag(@NonNull AppCompatActivity appCompatActivity,
       @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
     Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
     return fragmentCopy != null;
   }
 
-  @Override
   public void replaceFragmentTagNotCopyBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
@@ -143,7 +150,7 @@ public class Navigator implements INavigator {
     }
   }
 
-  @Override public void replaceFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
+  public void replaceFragmentBackStack(@NonNull AppCompatActivity appCompatActivity,
       @IdRes int containerId, @NonNull Fragment fragment) {
     appCompatActivity.getSupportFragmentManager()
         .beginTransaction()
@@ -152,23 +159,50 @@ public class Navigator implements INavigator {
         .commit();
   }
 
-  @Override public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
-      @NonNull Fragment child) {
-    parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
-  }
-
-  @Override public void clearBackStack(@NonNull AppCompatActivity activity) {
+  public void clearBackStack(@NonNull AppCompatActivity activity) {
     if (!isEmptyBackStack(activity)) {
       activity.getSupportFragmentManager()
           .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
   }
 
-  @Override public boolean isEmptyBackStack(@NonNull AppCompatActivity activity) {
+  public void clearBackStackWithCountFragment(@NonNull AppCompatActivity appCompatActivity,
+      int count) {
+    FragmentManager fragmentManager = appCompatActivity.getSupportFragmentManager();
+    for (int i = count; i < fragmentManager.getBackStackEntryCount(); i++) {
+      fragmentManager.popBackStack();
+    }
+  }
+
+  public boolean isEmptyBackStack(@NonNull AppCompatActivity activity) {
     return activity.getSupportFragmentManager().getBackStackEntryCount() == 0;
   }
 
-  @Override public boolean isOneFragmentBackStack(@NonNull AppCompatActivity appCompatActivity) {
+  public int getCountBackStack(@NonNull AppCompatActivity activity) {
+    return activity.getSupportFragmentManager().getBackStackEntryCount();
+  }
+
+  public boolean isOneFragmentBackStack(@NonNull AppCompatActivity appCompatActivity) {
     return appCompatActivity.getSupportFragmentManager().getBackStackEntryCount() == 1;
+  }
+
+  //for child fragment
+  public void addChildFragment(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child) {
+    parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
+  }
+
+  public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child, @NonNull String fragmentTag) {
+    parent.getChildFragmentManager()
+        .beginTransaction()
+        .add(containerId, child, fragmentTag)
+        .commit();
+  }
+
+  public boolean isChildFragmentTag(@NonNull Fragment parent, @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = parent.getChildFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    return fragmentCopy != null;
   }
 }

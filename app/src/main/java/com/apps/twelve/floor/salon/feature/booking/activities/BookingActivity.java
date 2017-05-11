@@ -19,8 +19,6 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
 
-  private boolean mVisible = true;
-
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
@@ -34,26 +32,34 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         BookingFragment.newInstance());
   }
 
-  @Override public void isVisibleChooseService(boolean visible) {
-    mVisible = visible;
+  @Override public void closeBookingService() {
+    mNavigator.clearBackStack(this);
+    mNavigator.replaceFragment(this, R.id.container_booking, BookingFragment.newInstance());
   }
 
   @Override public void onBackPressed() {
-    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
-      if (mVisible) {
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT)) {
+      if (mNavigator.getCountBackStack(this) == 2) {
         mBookingActivityPresenter.backCategories();
       } else {
-        mBookingActivityPresenter.stateBooking();
+        mBookingActivityPresenter.stateBackBookingService();
+        super.onBackPressed();
       }
+      return;
     }
 
-    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)) {
-      mBookingActivityPresenter.stateBooking();
+    if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT)) {
+      if (mNavigator.getCountBackStack(this) > 2) {
+        mBookingActivityPresenter.stateBackBookingMaster();
+        super.onBackPressed();
+      } else {
+        mNavigator.clearBackStack(this);
+        mNavigator.replaceFragment(this, R.id.container_booking, BookingFragment.newInstance());
+      }
+
+      return;
     }
 
-    if (!mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_MASTERS_FRAGMENT)
-        && !mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_SERVICES_FRAGMENT)) {
-      super.onBackPressed();
-    }
+    super.onBackPressed();
   }
 }

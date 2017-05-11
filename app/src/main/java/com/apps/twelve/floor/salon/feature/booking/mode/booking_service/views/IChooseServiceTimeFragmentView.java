@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Vrungel on 27.03.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseTimeFragmentView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseServiceTimeFragmentView
     extends MvpView {
 
   void setUpUi(List<DataServiceEntity> days);

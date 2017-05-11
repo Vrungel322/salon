@@ -6,7 +6,7 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterMasterView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterMasterFragmentView
     extends MvpView {
   void setUpUi();
 

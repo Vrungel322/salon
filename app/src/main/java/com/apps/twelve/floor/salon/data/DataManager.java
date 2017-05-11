@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.data;
 
-import android.net.Uri;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -9,10 +8,8 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
-import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -63,8 +60,8 @@ public class DataManager {
     return mRestApi.fetchAllMasters();
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataInMasterMode(String masterId) {
-    return mRestApi.fetchDaysDataInMasterMode(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+    return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
   public Observable<String> getProfileImage() {
@@ -133,7 +130,7 @@ public class DataManager {
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(serviceId);
+    return mRestApi.cancelOrder(serviceId, mPref.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
@@ -141,7 +138,7 @@ public class DataManager {
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks();
+    return mRestApi.fetchListOfWorks(mPref.getToken());
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {
@@ -152,13 +149,11 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
-  //public Observable<List<MasterEntity>> fetchMasters(String dataID) {
-  //  ArrayList<MasterEntity> arrayList = new ArrayList<>();
-  //  for (int i = 0; i < 7; i++) {
-  //    arrayList.add(new MasterEntity("Master " + i,
-  //        "https://s-media-cache-ak0.pinimg.com/736x/9a/34/cb/9a34cb759887396a7e46b62e39dfc60d.jpg",
-  //        "Lorem ipsum dolore sit amet", "" + i));
-  //  }
-  //  return Observable.just(arrayList);
-  //}
+  public Observable<Response<Void>> addToFavorite(int photoId) {
+    return mRestApi.addToFavorite(photoId, mPref.getToken());
+  }
+
+  public Observable<Response<Void>> removeFromFavorite(int photoId) {
+    return mRestApi.removeFromFavorite(photoId, mPref.getToken());
+  }
 }
