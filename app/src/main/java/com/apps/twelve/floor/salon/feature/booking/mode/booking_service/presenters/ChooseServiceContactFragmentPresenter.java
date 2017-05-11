@@ -51,11 +51,10 @@ import timber.log.Timber;
         .subscribe(response -> {
           if (response.code() == 200) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-            getViewState().closeActivity();
+            getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
           }
-          getViewState().setButtonClickable();
         }, Timber::e);
     addToUnsubscription(subscription);
   }

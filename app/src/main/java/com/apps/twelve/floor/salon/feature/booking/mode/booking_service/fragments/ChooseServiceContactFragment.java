@@ -1,11 +1,14 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -21,7 +24,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class ChooseServiceContactFragment extends BaseFragment
     implements IChooseServiceContactFragmentView {
 
-  @InjectPresenter ChooseServiceContactFragmentPresenter mBookingContactsFragmentPresenter;
+  @InjectPresenter ChooseServiceContactFragmentPresenter mChooseServiceContactFragmentPresenter;
 
   @BindView(R.id.tv_service_description) TextView mTextViewService;
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
@@ -29,7 +32,7 @@ public class ChooseServiceContactFragment extends BaseFragment
   @BindView(R.id.tv_master_description) TextView mTextViewMaster;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
-  @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
+  @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
   public static ChooseServiceContactFragment newInstance() {
     Bundle args = new Bundle();
@@ -46,11 +49,19 @@ public class ChooseServiceContactFragment extends BaseFragment
     super.onViewCreated(view, savedInstanceState);
   }
 
-  @OnClick(R.id.btn_booking_contact) void createBooking() {
-    mBtnCreateBooking.setClickable(false);
-    mBookingContactsFragmentPresenter.setPersonName(mEditTextName.getText().toString());
-    mBookingContactsFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
-    mBookingContactsFragmentPresenter.sendBookingEntity();
+  @OnClick(R.id.btn_booking_contact) void animate() {
+    mBtnCreateBooking.startAnimation();
+    mChooseServiceContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
+    mChooseServiceContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
+    mChooseServiceContactFragmentPresenter.sendBookingEntity();
+  }
+
+  @Override public void stopAnimation() {
+    mBtnCreateBooking.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+    Handler handler = new Handler();
+    handler.postDelayed(this::closeActivity, 300);
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
@@ -61,7 +72,7 @@ public class ChooseServiceContactFragment extends BaseFragment
     mTextViewMaster.setText(masterName);
   }
 
-  @Override public void closeActivity() {
+  public void closeActivity() {
     getActivity().finish();
   }
 
@@ -69,7 +80,4 @@ public class ChooseServiceContactFragment extends BaseFragment
     showAlertMessage("Error", "smth wrong");
   }
 
-  @Override public void setButtonClickable() {
-    mBtnCreateBooking.setClickable(true);
-  }
 }

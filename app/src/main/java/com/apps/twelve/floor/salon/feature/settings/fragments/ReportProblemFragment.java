@@ -1,8 +1,13 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
@@ -18,6 +23,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class ReportProblemFragment extends BaseFragment implements IReportProblemFragmentView {
 
   @InjectPresenter ReportProblemFragmentPresenter mReportProblemFragmentPresenter;
+
+  @BindView(R.id.btnSendProblem) CircularProgressButton mBtnSend;
 
   public static ReportProblemFragment newInstance() {
     Bundle args = new Bundle();
@@ -37,6 +44,16 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   }
 
   @OnClick(R.id.btnSendProblem) void sendAndClose() {
+    mBtnSend.startAnimation();
+    mBtnSend.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+    Handler handler = new Handler();
+    handler.postDelayed(this::closeFragment, 1000);
+  }
+
+  public void closeFragment() {
+    ((SettingsActivity) getActivity()).setUpUserInfo();
     getActivity().onBackPressed();
   }
 

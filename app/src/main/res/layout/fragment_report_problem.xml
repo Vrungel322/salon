@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorSettingsBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,17 +38,23 @@
       android:textColorHint="@color/colorSettingsReportProblemHint"
       android:background="@color/colorSettingsReportProblemBackground"
       />
-  <Button
+  <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
       android:id="@+id/btnSendProblem"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/etProblem"
+      android:background="@color/colorSettingsReportProblemButton"
       android:layout_centerHorizontal="true"
+      app:spinning_bar_padding="10dp"
+      app:spinning_bar_color="@color/colorSettingsReportProblemButtonText"
+      app:spinning_bar_width="2dp"
+      app:initialCornerAngle="0dp"
+      app:finalCornerAngle="50dp"
+      android:textSize="14sp"
+      android:text="@string/report_problem_button"
+      android:textColor="@color/colorSettingsReportProblemButtonText"
+      android:layout_below="@+id/etProblem"
       android:layout_marginTop="45dp"
       android:layout_marginLeft="24dp"
       android:layout_marginRight="24dp"
-      android:text="@string/report_problem_button"
-      android:background="@color/colorSettingsReportProblemButton"
-      android:textColor="@color/colorSettingsReportProblemButtonText"
       />
 </RelativeLayout>

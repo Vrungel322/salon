@@ -1,11 +1,14 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragments;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -25,7 +28,7 @@ public class ChooseMasterContactFragment extends BaseFragment
   @BindView(R.id.tv_master_description) TextView mTextViewMaster;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
-  @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
+  @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
   public static ChooseMasterContactFragment newInstance() {
     Bundle args = new Bundle();
@@ -42,11 +45,19 @@ public class ChooseMasterContactFragment extends BaseFragment
     super.onViewCreated(view, savedInstanceState);
   }
 
-  @OnClick(R.id.btn_booking_contact) void createBooking() {
-    mBtnCreateBooking.setClickable(false);
+  @OnClick(R.id.btn_booking_contact) void animate() {
+    mBtnCreateBooking.startAnimation();
     mChooseMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mChooseMasterContactFragmentPresenter.sendBookingEntity();
+  }
+
+  @Override public void stopAnimation() {
+    mBtnCreateBooking.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+    Handler handler = new Handler();
+    handler.postDelayed(this::closeActivity, 300);
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
@@ -57,15 +68,11 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewMaster.setText(masterName);
   }
 
-  @Override public void closeActivity() {
+  public void closeActivity() {
     getActivity().finish();
   }
 
   @Override public void showAlert() {
     showAlertMessage("Error", "Warning");
-  }
-
-  @Override public void setButtonClickable() {
-    mBtnCreateBooking.setClickable(true);
   }
 }

@@ -11,5 +11,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChangeUserInfoFragmentView
     extends MvpView {
 
-  void closeFragment();
+  void stopAnimation();
+
 }

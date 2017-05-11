@@ -9,9 +9,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void setUpBookingInformation(String serviceName, String serviceTime, String serviceDuration,
       String masterName);
 
-  void closeActivity();
-
   void showAlert();
 
-  void setButtonClickable();
+  void stopAnimation();
 }

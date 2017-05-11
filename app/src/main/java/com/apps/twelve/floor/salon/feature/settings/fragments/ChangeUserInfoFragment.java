@@ -1,11 +1,15 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -35,6 +39,7 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
   @BindView(R.id.tvCurrentField) TextView mCurrentField;
   @BindView(R.id.tvNewFieldText) TextView mNewFieldText;
   @BindView(R.id.etNewField) EditText mEditTextNewField;
+  @BindView(R.id.btnSave) CircularProgressButton mButtonSave;
 
   public static ChangeUserInfoFragment newInstance(int changingField, CharSequence currentValue) {
     Bundle args = new Bundle();
@@ -65,14 +70,23 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
     mCurrentField.setText(getArguments().getCharSequence(CHANGING_FIELD_VALUE));
   }
 
-  @Override public void closeFragment() {
+  public void closeFragment() {
     ((SettingsActivity) getActivity()).setUpUserInfo();
     getActivity().onBackPressed();
   }
 
   @OnClick(R.id.btnSave) void save() {
+    mButtonSave.startAnimation();
     mChangeUserInfoFragmentPresenter.saveInfo(getArguments().getInt(CHANGING_FIELD),
         mEditTextNewField.getText().toString());
+  }
+
+  @Override public void stopAnimation() {
+    mButtonSave.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+    Handler handler = new Handler();
+    handler.postDelayed(this::closeFragment, 1000);
   }
 
   @Override public void onDestroy() {

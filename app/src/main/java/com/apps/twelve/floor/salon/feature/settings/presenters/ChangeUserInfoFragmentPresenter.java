@@ -48,6 +48,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
         mDataManager.setProfilePhone(value);
         break;
     }
-    getViewState().closeFragment();
+    getViewState().stopAnimation();
   }
 }
