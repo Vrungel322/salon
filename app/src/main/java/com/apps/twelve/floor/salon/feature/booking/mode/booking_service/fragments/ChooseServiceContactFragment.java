@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -28,15 +27,12 @@ public class ChooseServiceContactFragment extends BaseFragment
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
   @BindView(R.id.tv_time_duration) TextView mTextViewDuration;
   @BindView(R.id.tv_master_description) TextView mTextViewMaster;
-  @BindView(R.id.tv_master_details) TextView mTextViewMasterDetails;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
 
   public static ChooseServiceContactFragment newInstance() {
     Bundle args = new Bundle();
-    BookingContactFragment fragment = new BookingContactFragment();
-    args.putString(Constants.FragmentsArgumentKeys.SERVICE_NAME, "ТЕСТОВАЯ УСЛУГА");
     ChooseServiceContactFragment fragment = new ChooseServiceContactFragment();
     fragment.setArguments(args);
     return fragment;
@@ -63,7 +59,6 @@ public class ChooseServiceContactFragment extends BaseFragment
     mTextViewTime.setText(serviceTime);
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
-    mTextViewMasterDetails.setText("great master");
   }
 
   @Override public void closeActivity() {

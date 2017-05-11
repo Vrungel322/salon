@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterContactFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class ChooseMasterContactFragment extends BaseFragment
@@ -24,7 +23,6 @@ public class ChooseMasterContactFragment extends BaseFragment
   @BindView(R.id.tv_time_description) TextView mTextViewTime;
   @BindView(R.id.tv_time_duration) TextView mTextViewDuration;
   @BindView(R.id.tv_master_description) TextView mTextViewMaster;
-  @BindView(R.id.tv_master_details) TextView mTextViewMasterDetails;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) Button mBtnCreateBooking;
@@ -57,7 +55,6 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewTime.setText(serviceTime);
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
-    mTextViewMasterDetails.setText("great master");
   }
 
   @Override public void closeActivity() {

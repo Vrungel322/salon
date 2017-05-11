@@ -38,7 +38,8 @@
     </activity>
     <activity
         android:name=".feature.booking.activities.BookingActivity"
-        android:parentActivityName=".feature.start_point.activities.StartActivity">
+        android:parentActivityName=".feature.start_point.activities.StartActivity"
+        android:windowSoftInputMode="adjustNothing">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
           android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"/>

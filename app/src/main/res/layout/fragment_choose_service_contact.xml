@@ -9,16 +9,13 @@
   <android.support.v4.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:fillViewport="true"
       android:background="@color/colorWhite"
       >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
       <android.support.constraint.ConstraintLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:paddingBottom="16dp"
           android:background="@color/colorWhite"
           android:orientation="vertical"
           >
@@ -29,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorBookingInfoBackground"
-            android:paddingBottom="16dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -42,7 +38,7 @@
               android:layout_height="wrap_content"
               android:layout_marginLeft="16dp"
               android:layout_marginStart="16dp"
-              android:layout_marginTop="12dp"
+              android:layout_marginTop="16dp"
               android:text="@string/booking_service"
               android:textColor="@color/colorBookingInfoTitleService"
               android:textSize="16sp"
@@ -51,14 +47,17 @@
               />
           <TextView
               android:id="@+id/tv_service_description"
-              android:layout_width="wrap_content"
+              android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginLeft="24dp"
               android:layout_marginStart="24dp"
-              android:layout_marginEnd="16dp"
               android:layout_marginRight="16dp"
+              android:layout_marginEnd="16dp"
+              android:ellipsize="end"
+              android:maxLines="1"
               android:textColor="@color/colorBookingInfoDescriptionService"
               android:textSize="16sp"
+              app:layout_constraintRight_toRightOf="parent"
               app:layout_constraintLeft_toRightOf="@+id/tv_service"
               app:layout_constraintTop_toTopOf="@+id/tv_service"
               />
@@ -125,31 +124,26 @@
               />
           <TextView
               android:id="@+id/tv_master_description"
-              android:layout_width="wrap_content"
+              android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:textColor="@color/colorBookingInfoDescriptionMaster"
               android:textSize="16sp"
-              android:layout_marginEnd="16dp"
               android:layout_marginRight="16dp"
+              android:layout_marginEnd="16dp"
+              android:ellipsize="end"
+              android:maxLines="1"
+              app:layout_constraintRight_toRightOf="parent"
               app:layout_constraintLeft_toLeftOf="@+id/tv_time_description"
               app:layout_constraintTop_toTopOf="@+id/tv_master"
               />
-          <TextView
+          <View
               android:id="@+id/tv_master_details"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginEnd="16dp"
-              android:layout_marginRight="16dp"
-              android:layout_marginTop="4dp"
-              android:paddingBottom="16dp"
-              android:textColor="@color/colorBookingInfoDetailsMaster"
-              android:textSize="12sp"
-              app:layout_constraintHorizontal_bias="0.0"
-              app:layout_constraintLeft_toLeftOf="@+id/tv_master_description"
-              app:layout_constraintRight_toRightOf="parent"
+              android:layout_width="0dp"
+              android:layout_height="16dp"
+              app:layout_constraintLeft_toLeftOf="@+id/tv_master"
+              app:layout_constraintRight_toRightOf="@+id/tv_master_description"
               app:layout_constraintTop_toBottomOf="@+id/tv_master_description"
               />
-
         </android.support.constraint.ConstraintLayout>
         <TextView
             android:id="@+id/tv_name"
@@ -256,6 +250,5 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_phone"
             />
       </android.support.constraint.ConstraintLayout>
-    </RelativeLayout>
   </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
