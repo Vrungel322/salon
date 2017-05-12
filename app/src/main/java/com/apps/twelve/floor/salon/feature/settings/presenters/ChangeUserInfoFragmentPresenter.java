@@ -42,7 +42,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
     Subscription subscription = Observable.just(200)
         .doOnNext(voidResponse -> {
           if (voidResponse == 200) {
-            mRxBus.post(new RxBusHelper.SetUserInfo());
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
@@ -53,7 +52,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
         .subscribe(response -> {
           if (response == 200) {
             setUserInfo(field, value);
+            mRxBus.post(new RxBusHelper.SetUserInfo());
             getViewState().closeFragment();
+          } else {
+            getViewState().revertAnimation();
           }
         }, Timber::e);
     addToUnsubscription(subscription);

@@ -14,5 +14,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void stopAnimation();
 
+  void revertAnimation();
+
   @StateStrategyType(SkipStrategy.class) void closeBooking();
 }

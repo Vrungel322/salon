@@ -45,6 +45,8 @@ import timber.log.Timber;
         .subscribe(response -> {
           if (response == 200) {
             getViewState().closeFragment();
+          } else {
+            getViewState().revertAnimation();
           }
         }, Timber::e);
     addToUnsubscription(subscription);

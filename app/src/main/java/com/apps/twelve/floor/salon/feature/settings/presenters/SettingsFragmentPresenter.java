@@ -37,6 +37,8 @@ import timber.log.Timber;
     setUpUserEmail();
     setUpUserPhone();
     setUpUserGender();
+
+    mRxBus.post(new RxBusHelper.SetUserInfo());
   }
 
   private void setUpPhoto() {

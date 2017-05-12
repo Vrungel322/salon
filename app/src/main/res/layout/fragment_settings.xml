@@ -83,7 +83,6 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivName"
               android:layout_toRightOf="@+id/ivName"
-              android:text="Василиса"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
               />
@@ -124,7 +123,6 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivLogin"
               android:layout_toRightOf="@+id/ivLogin"
-              android:text="login_vasilisa"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
               />
@@ -166,7 +164,6 @@
               android:layout_toEndOf="@+id/ivPassword"
               android:layout_toRightOf="@+id/ivPassword"
               android:inputType="textPassword"
-              android:text="password"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
               />
@@ -240,7 +237,6 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivEmail"
               android:layout_toRightOf="@+id/ivEmail"
-              android:text="vasilisa.info@gmail.com"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
               />
@@ -283,7 +279,6 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivPhone"
               android:layout_toRightOf="@+id/ivPhone"
-              android:text="+38 095 937 99 92"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
               />

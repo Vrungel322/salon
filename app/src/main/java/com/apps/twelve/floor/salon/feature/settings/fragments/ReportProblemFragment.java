@@ -67,4 +67,8 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
         ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
+
+  @Override public void revertAnimation() {
+    mBtnSend.revertAnimation();
+  }
 }

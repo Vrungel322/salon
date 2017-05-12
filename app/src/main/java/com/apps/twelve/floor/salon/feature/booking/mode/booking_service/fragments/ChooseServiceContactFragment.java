@@ -62,6 +62,10 @@ public class ChooseServiceContactFragment extends BaseFragment
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 
+  @Override public void revertAnimation() {
+    mBtnCreateBooking.revertAnimation();
+  }
+
   @Override public void closeBooking() {
     mNavigator.finishActivity((AppCompatActivity) getActivity());
   }

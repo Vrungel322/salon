@@ -58,6 +58,8 @@ import timber.log.Timber;
             .subscribe(response -> {
               if (response.code() == 200) {
                 getViewState().closeBooking();
+              } else {
+                getViewState().revertAnimation();
               }
             }, Timber::e);
     addToUnsubscription(subscription);

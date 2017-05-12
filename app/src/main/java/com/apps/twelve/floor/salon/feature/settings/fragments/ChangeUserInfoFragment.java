@@ -81,6 +81,10 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 
+  @Override public void revertAnimation() {
+    mButtonSave.revertAnimation();
+  }
+
   @Override public void closeFragment() {
     getActivity().onBackPressed();
   }
