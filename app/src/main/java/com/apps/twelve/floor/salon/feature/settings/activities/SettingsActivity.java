@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.settings.activities;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.settings.fragments.SettingsFragment;
@@ -17,6 +18,16 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
     super.onCreate(savedInstanceState);
 
     setTitleAppBar(R.string.menu_settings);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 
   @Override public void addFragmentSettings() {
