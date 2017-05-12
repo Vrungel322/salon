@@ -31,7 +31,7 @@ import timber.log.Timber;
     updateNews();
   }
 
-  public void fetchNewsEntities() {
+  private void fetchNewsEntities() {
     Subscription subscription = mDataManager.fetchNewsPreview()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(previewNewsEntity -> {

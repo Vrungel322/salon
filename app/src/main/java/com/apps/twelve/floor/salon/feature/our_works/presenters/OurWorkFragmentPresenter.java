@@ -35,7 +35,6 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(updateOurWorkList -> {
-          Timber.e("list refreshed");
           fetchListOfWorks();
         });
     addToUnsubscription(subscription);

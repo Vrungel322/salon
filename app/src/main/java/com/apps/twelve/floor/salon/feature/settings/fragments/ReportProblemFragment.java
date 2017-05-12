@@ -2,10 +2,10 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.EditText;
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,6 +25,7 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   @InjectPresenter ReportProblemFragmentPresenter mReportProblemFragmentPresenter;
 
   @BindView(R.id.btnSendProblem) CircularProgressButton mBtnSend;
+  @BindView(R.id.etProblem) EditText mTextProblem;
 
   public static ReportProblemFragment newInstance() {
     Bundle args = new Bundle();
@@ -43,22 +44,27 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
     ((SettingsActivity) getActivity()).setTitleAppBar(R.string.settings_problem);
   }
 
-  @OnClick(R.id.btnSendProblem) void sendAndClose() {
+  @OnClick(R.id.btnSendProblem) void sendProblem() {
     mBtnSend.startAnimation();
-    mBtnSend.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
-        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
-    Handler handler = new Handler();
-    handler.postDelayed(this::closeFragment, 1000);
-  }
-
-  public void closeFragment() {
-    ((SettingsActivity) getActivity()).setUpUserInfo();
-    getActivity().onBackPressed();
+    mReportProblemFragmentPresenter.sendProblem(mTextProblem.getText().toString());
   }
 
   @Override public void onDestroy() {
     ((SettingsActivity) getActivity()).setTitleAppBar(R.string.menu_settings);
     super.onDestroy();
+  }
+
+  @Override public void closeFragment() {
+    getActivity().onBackPressed();
+  }
+
+  @Override public void showAlert() {
+    showAlertMessage("Error", "Warning");
+  }
+
+  @Override public void stopAnimation() {
+    mBtnSend.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 }

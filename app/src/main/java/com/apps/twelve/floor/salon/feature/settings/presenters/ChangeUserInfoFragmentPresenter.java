@@ -4,8 +4,15 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.settings.views.IChangeUserInfoFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
+import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
+import rx.Observable;
+import rx.Subscription;
+import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.LOGIN;
@@ -21,6 +28,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
     extends BasePresenter<IChangeUserInfoFragmentView> {
 
   @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -31,6 +39,27 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
   }
 
   public void saveInfo(int field, String value) {
+    Subscription subscription = Observable.just(200)
+        .doOnNext(voidResponse -> {
+          if (voidResponse == 200) {
+            mRxBus.post(new RxBusHelper.SetUserInfo());
+            getViewState().stopAnimation();
+          } else {
+            getViewState().showAlert();
+          }
+        })
+        .delay(1, TimeUnit.SECONDS)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
+          if (response == 200) {
+            setUserInfo(field, value);
+            getViewState().closeFragment();
+          }
+        }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void setUserInfo(int field, String value) {
     switch (field) {
       case NAME:
         mDataManager.setProfileName(value);
@@ -48,6 +77,5 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
         mDataManager.setProfilePhone(value);
         break;
     }
-    getViewState().stopAnimation();
   }
 }

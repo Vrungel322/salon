@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -70,11 +69,6 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
     mCurrentField.setText(getArguments().getCharSequence(CHANGING_FIELD_VALUE));
   }
 
-  public void closeFragment() {
-    ((SettingsActivity) getActivity()).setUpUserInfo();
-    getActivity().onBackPressed();
-  }
-
   @OnClick(R.id.btnSave) void save() {
     mButtonSave.startAnimation();
     mChangeUserInfoFragmentPresenter.saveInfo(getArguments().getInt(CHANGING_FIELD),
@@ -85,8 +79,14 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
     mButtonSave.doneLoadingAnimation(
         ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
-    Handler handler = new Handler();
-    handler.postDelayed(this::closeFragment, 1000);
+  }
+
+  @Override public void closeFragment() {
+    getActivity().onBackPressed();
+  }
+
+  @Override public void showAlert() {
+    showAlertMessage("Error", "Warning");
   }
 
   @Override public void onDestroy() {
