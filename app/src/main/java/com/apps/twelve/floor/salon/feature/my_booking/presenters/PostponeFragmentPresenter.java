@@ -91,8 +91,7 @@ import timber.log.Timber;
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);
-      Handler handler = new Handler();
-      handler.postDelayed(() -> getViewState().revertAnimation(), 1000);
+      (new Handler()).postDelayed(() -> getViewState().revertAnimation(), 1000);
     }
   }
 
