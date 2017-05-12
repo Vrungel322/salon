@@ -5,6 +5,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookingAdapterView;
 import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ import timber.log.Timber;
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
             getViewState().removeBookedServiceFromList(position);
+            mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
           }
         }, Timber::e);
     addToUnsubscription(subscription);
