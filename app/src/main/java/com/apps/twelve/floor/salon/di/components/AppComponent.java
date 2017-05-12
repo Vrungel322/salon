@@ -25,6 +25,7 @@ import com.apps.twelve.floor.salon.feature.settings.presenters.ChangeUserInfoFra
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.ReportProblemFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
+import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import dagger.Component;
@@ -68,6 +69,8 @@ import dagger.Component;
   void inject(SubFragmentBookingPresenter presenter);
 
   void inject(SettingsActivityPresenter presenter);
+
+  void inject(SettingsFragmentPresenter presenter);
 
   void inject(ChangeUserInfoFragmentPresenter presenter);
 

@@ -1,8 +1,8 @@
 package com.apps.twelve.floor.salon.feature.settings.views;
 
-import android.net.Uri;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
@@ -12,17 +12,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ISettingsActivityView
     extends MvpView {
 
-  void setUserPhoto(Uri uri);
-
-  void setUserName(String name);
-
-  void setUserLogin(String login);
-
-  void setUserPassword(String password);
-
-  void setUserEmail(String email);
-
-  void setUserPhone(String phone);
-
-  void setUserGender(int gender);
+  @StateStrategyType(SkipStrategy.class) void addFragmentSettings();
 }
