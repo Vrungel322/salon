@@ -1,10 +1,12 @@
 package com.apps.twelve.floor.salon.feature.my_booking.fragments;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -67,7 +70,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @BindView(R.id.textViewCurrentDate) TextView mTextViewCurrentDate;
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
-  @BindView(R.id.btnConfirmPostpone) Button mBtnConfirmPostpone;
+  @BindView(R.id.btnConfirmPostpone) CircularProgressButton mBtnConfirmPostpone;
 
   private List<DataServiceEntity> mDays = new ArrayList<>();
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
@@ -110,15 +113,18 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   }
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
+    mBtnConfirmPostpone.startAnimation();
     mPostponeFragmentPresenter.saveNewTime(String.valueOf(mEntityId));
   }
 
-  @Override public void setConfirmButtonClickable() {
-    mBtnConfirmPostpone.setClickable(true);
+  @Override public void stopAnimation() {
+    mBtnConfirmPostpone.doneLoadingAnimation(
+        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+        BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 
-  @Override public void setConfirmButtonUnClickable() {
-    mBtnConfirmPostpone.setClickable(false);
+  @Override public void revertAnimation() {
+    mBtnConfirmPostpone.revertAnimation();
   }
 
   @Override public void closeTheFragment() {

@@ -252,7 +252,7 @@
       android:layout_centerVertical="true"
       style="?android:attr/progressBarStyle"
       />
-  <Button
+  <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
       android:id="@+id/btnConfirmPostpone"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -262,9 +262,15 @@
       android:layout_marginLeft="16dp"
       android:layout_marginRight="16dp"
       android:layout_marginStart="16dp"
+      android:layout_centerHorizontal="true"
       android:background="@color/colorBookingContactsButton"
+      app:spinning_bar_padding="10dp"
+      app:spinning_bar_color="@color/colorBookingContactsButtonText"
+      app:spinning_bar_width="2dp"
+      app:initialCornerAngle="0dp"
+      app:finalCornerAngle="50dp"
+      android:textSize="14sp"
       android:text="@string/postpone"
       android:textColor="@color/colorBookingContactsButtonText"
-      android:textSize="14sp"
       />
 </RelativeLayout>
