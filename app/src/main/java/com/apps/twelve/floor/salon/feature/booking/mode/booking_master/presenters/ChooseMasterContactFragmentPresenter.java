@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -43,13 +44,16 @@ import timber.log.Timber;
 
   public void sendBookingEntity() {
     Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(response -> {
-          if (response.code() == 200) {
+        .compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
+          if (voidResponse.code() == 200) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
+          }
+        }).delay(1, TimeUnit.SECONDS).subscribe(response -> {
+          if (response.code() == 200) {
+            getViewState().closeBooking();
           }
         }, Timber::e);
     addToUnsubscription(subscription);

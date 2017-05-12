@@ -2,9 +2,9 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.fragment
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -56,8 +56,10 @@ public class ChooseMasterContactFragment extends BaseFragment
     mBtnCreateBooking.doneLoadingAnimation(
         ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
-    Handler handler = new Handler();
-    handler.postDelayed(this::closeActivity, 300);
+  }
+
+  @Override public void closeBooking() {
+    mNavigator.finishActivity((AppCompatActivity) getActivity());
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
@@ -66,10 +68,6 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewTime.setText(serviceTime);
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
-  }
-
-  public void closeActivity() {
-    getActivity().finish();
   }
 
   @Override public void showAlert() {

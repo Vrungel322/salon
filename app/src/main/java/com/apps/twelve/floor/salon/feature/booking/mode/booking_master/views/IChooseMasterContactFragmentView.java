@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterContactFragmentView
@@ -12,4 +13,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void showAlert();
 
   void stopAnimation();
+
+  @StateStrategyType(SkipStrategy.class) void closeBooking();
 }
