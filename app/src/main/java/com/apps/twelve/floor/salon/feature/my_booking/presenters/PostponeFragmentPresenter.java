@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
-import android.os.Handler;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
@@ -14,6 +13,7 @@ import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -91,7 +91,11 @@ import timber.log.Timber;
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);
-      (new Handler()).postDelayed(() -> getViewState().revertAnimation(), 1000);
+      Subscription subscription = Observable.just(null)
+          .delay(1000, TimeUnit.MILLISECONDS)
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(o -> getViewState().revertAnimation(), Timber::e);
+      addToUnsubscription(subscription);
     }
   }
 
