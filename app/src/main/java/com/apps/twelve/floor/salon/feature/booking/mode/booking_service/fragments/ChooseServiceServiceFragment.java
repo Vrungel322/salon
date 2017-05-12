@@ -68,6 +68,7 @@ public class ChooseServiceServiceFragment extends BaseFragment
   @Override public void setUpRvCategory() {
     mRecyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
     mServiceCategoryAdapter = new ServiceCategoryAdapter();
+    mRecyclerViewCategory.setAdapter(mServiceCategoryAdapter);
     mLinearLayoutAllItems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
@@ -93,7 +94,6 @@ public class ChooseServiceServiceFragment extends BaseFragment
 
   @Override public void updateRvCategory(List<CategoryEntity> parentServices) {
     mServiceCategoryAdapter.setData(parentServices);
-    mRecyclerViewCategory.setAdapter(mServiceCategoryAdapter);
   }
 
   @Override public void setUpRvAllServices() {
