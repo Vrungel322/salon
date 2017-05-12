@@ -13,9 +13,9 @@ import java.util.List;
 
   void showErrorMessage(int message);
 
-  void setConfirmButtonClickable();
+  void stopAnimation();
 
-  void setConfirmButtonUnClickable();
+  void revertAnimation();
 
   void setUpUi(List<DataServiceEntity> days);
 

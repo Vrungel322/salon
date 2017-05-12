@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
+import android.os.Handler;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
@@ -11,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -59,19 +61,16 @@ import timber.log.Timber;
 
   public void saveNewTime(String entryId) {
     if (timePosition != -1) {
-      getViewState().setConfirmButtonUnClickable();
       Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(voidResponse -> {
+          .doOnNext(voidResponse -> {
             switch (voidResponse.code()) {
               case 200: // updated
-                getViewState().closeTheFragment();
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked
                 getViewState().showErrorMessage(R.string.error_time_not_available);
-                getViewState().setConfirmButtonClickable();
                 break;
               case 404: // this booking entity does not exist
                 getViewState().showErrorMessage(R.string.error_booking_entity_not_exist);
@@ -79,10 +78,20 @@ import timber.log.Timber;
               default:
                 break;
             }
+          })
+          .delay(1, TimeUnit.SECONDS)
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(response -> {
+            if (response.code() == 200) {
+              getViewState().closeTheFragment();
+            } else {
+              getViewState().revertAnimation();
+            }
           }, Timber::e);
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);
+      (new Handler()).postDelayed(() -> getViewState().revertAnimation(), 1000);
     }
   }
 
