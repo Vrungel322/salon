@@ -2,8 +2,6 @@ package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
@@ -76,13 +74,6 @@ public class MyLastBookingAdapter
           ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
               R.color.colorMainScreenBookingPressed));
       holder.view.setVisibility(View.VISIBLE);
-    } else {
-      int[] attrs = new int[] { android.R.attr.selectableItemBackground };
-      TypedArray ta = mContext.obtainStyledAttributes(attrs);
-      Drawable drawableFromTheme = ta.getDrawable(0);
-      ta.recycle();
-      holder.mConstraintLayoutLastBooking.setBackground(drawableFromTheme);
-      holder.view.setVisibility(View.INVISIBLE);
     }
     Picasso.with(holder.mImageViewServicePhoto.getContext())
         .load(mLastBookingEntities.get(position).getImageUri())
