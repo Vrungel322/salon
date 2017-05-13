@@ -19,6 +19,7 @@ import timber.log.Timber;
 
 @InjectViewState public class SubFragmentBookingPresenter
     extends BasePresenter<ISubFragmentBookingView> {
+
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 
@@ -28,8 +29,9 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getEventFromRxBus();
     fetchBookingEntities();
+    //RxBus
+    getEventFromRxBus();
   }
 
   private void fetchBookingEntities() {

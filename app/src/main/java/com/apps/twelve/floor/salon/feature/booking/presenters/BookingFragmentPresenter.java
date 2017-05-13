@@ -10,6 +10,7 @@ import com.arellomobile.mvp.InjectViewState;
  */
 
 @InjectViewState public class BookingFragmentPresenter extends BasePresenter<IBookingFragmentView> {
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

@@ -28,6 +28,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchBookingEntities();
+    //RxBus
     getEventFromRxBus();
     mRxBus.post(new RxBusHelper.SetBookingItemInMenu());
   }

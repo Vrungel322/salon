@@ -28,6 +28,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().addSubFragments();
     getViewState().startRefreshingView();
+    //RxBus
     stopRefreshMainFragment();
   }
 

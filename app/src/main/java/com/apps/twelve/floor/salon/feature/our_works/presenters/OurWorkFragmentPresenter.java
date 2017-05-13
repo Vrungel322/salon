@@ -28,15 +28,14 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchListOfWorks();
+    //RxBus
     getInfFromRxBus();
   }
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(updateOurWorkList -> {
-          fetchListOfWorks();
-        });
+        .subscribe(updateOurWorkList -> fetchListOfWorks());
     addToUnsubscription(subscription);
   }
 

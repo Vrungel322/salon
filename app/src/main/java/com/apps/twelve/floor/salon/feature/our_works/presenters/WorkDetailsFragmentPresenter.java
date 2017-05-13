@@ -18,6 +18,7 @@ import timber.log.Timber;
 
 @InjectViewState public class WorkDetailsFragmentPresenter
     extends BasePresenter<IWorkDetailsFragmentView> {
+
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 

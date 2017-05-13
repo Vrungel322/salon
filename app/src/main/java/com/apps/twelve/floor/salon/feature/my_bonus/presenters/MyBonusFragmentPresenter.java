@@ -10,6 +10,7 @@ import com.arellomobile.mvp.InjectViewState;
  */
 
 @InjectViewState public class MyBonusFragmentPresenter extends BasePresenter<IMyBonusFragmentView> {
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

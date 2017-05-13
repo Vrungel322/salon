@@ -103,7 +103,8 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
       }
     }.start();
 
-    holder.mButtonPostpone.setOnClickListener(v -> openPostponeFragment(position));
+    holder.mButtonPostpone.setOnClickListener(
+        v -> mMyBookingAdapterPresenter.openPostponeFragment(position));
     holder.mButtonCancel.setOnClickListener(
         v -> mMyBookingAdapterPresenter.showConfirmationDialog(position));
   }

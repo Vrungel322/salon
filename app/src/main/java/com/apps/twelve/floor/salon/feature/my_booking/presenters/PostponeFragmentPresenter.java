@@ -23,6 +23,7 @@ import timber.log.Timber;
 
 @InjectViewState public class PostponeFragmentPresenter
     extends BasePresenter<IPostponeFragmentView> {
+
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
   private List<DataServiceEntity> mDataServiceEntity;

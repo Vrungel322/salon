@@ -11,6 +11,7 @@ import com.arellomobile.mvp.InjectViewState;
 
 @InjectViewState public class ContactsFragmentPresenter
     extends BasePresenter<IContactsFragmentView> {
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

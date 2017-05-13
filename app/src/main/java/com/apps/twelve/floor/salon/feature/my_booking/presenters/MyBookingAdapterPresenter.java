@@ -18,6 +18,7 @@ import timber.log.Timber;
 
 @InjectViewState public class MyBookingAdapterPresenter
     extends BasePresenter<IMyBookingAdapterView> {
+
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 

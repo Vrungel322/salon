@@ -28,6 +28,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchNewsEntities();
+    //RxBus
     updateNews();
   }
 

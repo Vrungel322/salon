@@ -46,6 +46,7 @@ import timber.log.Timber;
     getViewState().setUpRvAllServices();
     getViewState().setUpRvCategory();
     fetchCategory();
+    //RxBus
     backCategories();
   }
 

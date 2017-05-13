@@ -32,6 +32,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFirstFragment();
+    //RxBus
     nextStep();
     stateBackBookingService();
   }
