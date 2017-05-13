@@ -91,7 +91,7 @@ import timber.log.Timber;
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);
-      Subscription subscription = Observable.just(null)
+      Subscription subscription = Observable.just(true)
           .delay(1000, TimeUnit.MILLISECONDS)
           .compose(ThreadSchedulers.applySchedulers())
           .subscribe(o -> getViewState().revertAnimation(), Timber::e);
