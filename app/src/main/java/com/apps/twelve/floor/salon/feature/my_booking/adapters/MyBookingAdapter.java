@@ -113,12 +113,6 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     return mBookingEntities.size();
   }
 
-  @Override public void removeBookedServiceFromList(int position) {
-    mBookingEntities.remove(position);
-    notifyItemRemoved(position);
-    notifyItemRangeChanged(position, mBookingEntities.size());
-  }
-
   @Override public void openPostponeFragment(int position) {
     mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
         PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),

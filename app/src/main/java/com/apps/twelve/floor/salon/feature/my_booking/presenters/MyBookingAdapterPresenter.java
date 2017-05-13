@@ -31,7 +31,6 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
-            getViewState().removeBookedServiceFromList(position);
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
           }
         }, Timber::e);

@@ -12,7 +12,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IMyLastBookingAdapterView
     extends MvpView {
-  @StateStrategyType(AddToEndStrategy.class) void removeBookedServiceFromList(int position);
 
   @StateStrategyType(AddToEndSingleStrategy.class) void showConfirmationDialog(int position);
 

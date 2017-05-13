@@ -114,12 +114,6 @@ public class MyLastBookingAdapter
     return mLastBookingEntities.size();
   }
 
-  @Override public void removeBookedServiceFromList(int position) {
-    mLastBookingEntities.remove(position);
-    notifyItemRemoved(position);
-    notifyItemRangeChanged(position, mLastBookingEntities.size());
-  }
-
   @Override public void openPostponeFragment(int position) {
     mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
         PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
