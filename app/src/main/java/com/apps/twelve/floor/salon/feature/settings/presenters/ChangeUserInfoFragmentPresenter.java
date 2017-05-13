@@ -52,7 +52,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
         .subscribe(response -> {
           if (response == 200) {
             setUserInfo(field, value);
-            mRxBus.post(new RxBusHelper.SetUserInfo());
+            mRxBus.post(new RxBusHelper.UpdateUserInfo());
             getViewState().closeFragment();
           } else {
             getViewState().revertAnimation();

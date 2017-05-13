@@ -34,7 +34,7 @@ import timber.log.Timber;
     Subscription subscription = Observable.just(200)
         .doOnNext(voidResponse -> {
           if (voidResponse == 200) {
-            mRxBus.post(new RxBusHelper.SetUserInfo());
+            mRxBus.post(new RxBusHelper.UpdateUserInfo());
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
