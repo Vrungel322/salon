@@ -30,4 +30,20 @@
         />
   </android.support.v4.widget.SwipeRefreshLayout>
 
+  <TextView
+      android:id="@+id/tvNewsEmptyList"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:text="@string/list_is_empty"
+      android:textColor="@color/colorGray"
+      android:layout_marginRight="8dp"
+      app:layout_constraintRight_toRightOf="parent"
+      android:layout_marginLeft="8dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/srlRefreshLayout"
+      app:layout_constraintTop_toTopOf="@+id/srlRefreshLayout"
+      android:layout_marginBottom="8dp"
+      />
+
 </android.support.constraint.ConstraintLayout>

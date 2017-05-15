@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
@@ -30,6 +31,7 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
 
   @BindView(R.id.rvAllNews) RecyclerView mRecyclerViewAllNews;
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
+  @BindView(R.id.tvNewsEmptyList) TextView mTextViewNewsEmptyList;
 
   private AllNewsAdapter mAllNewsAdapter;
 
@@ -66,7 +68,12 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
   }
 
   @Override public void addListOfNews(List<NewsEntity> newsEntities) {
-    mAllNewsAdapter.addListNewsEntity(newsEntities);
+    if (!newsEntities.isEmpty()) {
+      mTextViewNewsEmptyList.setVisibility(View.GONE);
+      mAllNewsAdapter.addListNewsEntity(newsEntities);
+    } else {
+      mTextViewNewsEmptyList.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override public void startRefreshingView() {
