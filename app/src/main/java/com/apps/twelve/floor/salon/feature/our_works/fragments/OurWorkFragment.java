@@ -69,9 +69,9 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {
+    mOurWorkAdapter.addListWorkEntities(ourWorkEntities);
     if (!ourWorkEntities.isEmpty()) {
       mTextViewOurWorkIsEmpty.setVisibility(View.GONE);
-      mOurWorkAdapter.addListWorkEntities(ourWorkEntities);
     } else {
       mTextViewOurWorkIsEmpty.setVisibility(View.VISIBLE);
     }
