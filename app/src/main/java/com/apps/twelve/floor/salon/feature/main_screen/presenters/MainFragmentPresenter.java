@@ -33,6 +33,7 @@ import timber.log.Timber;
   }
 
   public void updateBookingAndNews() {
+    Timber.e("updateBookingAndNews");
     getViewState().startRefreshingView();
     mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
     mRxBus.post(new RxBusHelper.UpdateNews());

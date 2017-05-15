@@ -34,15 +34,25 @@ import timber.log.Timber;
 
   private void getInfFromRxBus() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(updateOurWorkList -> fetchListOfWorks());
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(updateOurWorkList -> {
+          fetchListOfWorks();
+          getViewState().stopRefreshingView();
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
   public void fetchListOfWorks() {
     Subscription subscription = mDataManager.fetchListOfWorks()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> getViewState().addListOfWorks(ourWorkEntities), Timber::e);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {
+          getViewState().addListOfWorks(ourWorkEntities);
+          getViewState().stopRefreshingView();
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 }

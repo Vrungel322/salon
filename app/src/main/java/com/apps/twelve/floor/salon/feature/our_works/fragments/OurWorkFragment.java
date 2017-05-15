@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.our_works.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,6 +27,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
   @InjectPresenter OurWorkFragmentPresenter mOurWorkFragmentPresenter;
 
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.rvOurWorks) RecyclerView mRecyclerViewOurWorks;
   @BindView(R.id.textViewOurWorkIsEmpty) TextView mTextViewOurWorkIsEmpty;
 
@@ -61,6 +63,9 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
           }
         });
     mOurWorkFragmentPresenter.fetchListOfWorks();
+
+    mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchListOfWorks());
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {
@@ -70,5 +75,13 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     } else {
       mTextViewOurWorkIsEmpty.setVisibility(View.VISIBLE);
     }
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 }
