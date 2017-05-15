@@ -68,9 +68,9 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
   }
 
   @Override public void addListOfNews(List<NewsEntity> newsEntities) {
+    mAllNewsAdapter.addListNewsEntity(newsEntities);
     if (!newsEntities.isEmpty()) {
       mTextViewNewsEmptyList.setVisibility(View.GONE);
-      mAllNewsAdapter.addListNewsEntity(newsEntities);
     } else {
       mTextViewNewsEmptyList.setVisibility(View.VISIBLE);
     }

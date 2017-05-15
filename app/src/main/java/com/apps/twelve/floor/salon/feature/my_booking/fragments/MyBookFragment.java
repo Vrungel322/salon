@@ -61,9 +61,9 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> bookingEntities) {
+    mMyBookingAdapter.addListBookingEntity(bookingEntities);
     if (!bookingEntities.isEmpty()) {
       mTextViewBookEmptyList.setVisibility(View.GONE);
-      mMyBookingAdapter.addListBookingEntity(bookingEntities);
     } else {
       mTextViewBookEmptyList.setVisibility(View.VISIBLE);
     }
