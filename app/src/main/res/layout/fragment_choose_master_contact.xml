@@ -178,6 +178,8 @@
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:textSize="12sp"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/edit_phone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -220,12 +222,12 @@
             android:hint="@string/phone"
             android:inputType="phone"
             android:textSize="12sp"
+            android:imeOptions="actionDone"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_phone_description"
             />
-
         <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
             android:id="@+id/btn_booking_contact"
             android:layout_width="320dp"

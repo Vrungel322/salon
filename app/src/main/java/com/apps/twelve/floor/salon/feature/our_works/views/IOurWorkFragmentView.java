@@ -13,4 +13,8 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IOurWorkFragmentView
     extends MvpView {
   void addListOfWorks(List<OurWorkEntity> ourWorkEntities);
+
+  void startRefreshingView();
+
+  void stopRefreshingView();
 }

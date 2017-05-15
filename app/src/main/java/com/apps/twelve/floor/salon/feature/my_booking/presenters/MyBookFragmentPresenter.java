@@ -40,7 +40,10 @@ import timber.log.Timber;
         .subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
           getViewState().stopRefreshingView();
-        }, Timber::e);
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
