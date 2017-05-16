@@ -13,6 +13,7 @@ import com.arellomobile.mvp.InjectViewState;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterContactFragmentPresenter
@@ -53,9 +54,7 @@ import timber.log.Timber;
               } else {
                 getViewState().showAlert();
               }
-            })
-            .delay(1, TimeUnit.SECONDS)
-            .compose(ThreadSchedulers.applySchedulers())
+            }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
             .subscribe(response -> {
               if (response.code() == 200) {
                 getViewState().closeBooking();
