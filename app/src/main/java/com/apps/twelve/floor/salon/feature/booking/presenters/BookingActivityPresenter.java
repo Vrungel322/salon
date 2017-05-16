@@ -23,7 +23,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().addFragmentBooking();
     //RxBus
-    closeBookingService();
+    subscribeCloseBookingService();
   }
 
   @Override protected void inject() {
@@ -42,7 +42,7 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.StateBackBookingService());
   }
 
-  private void closeBookingService() {
+  private void subscribeCloseBookingService() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.CloseBookingService.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(closeBookingService -> getViewState().closeBookingService(), Timber::e);

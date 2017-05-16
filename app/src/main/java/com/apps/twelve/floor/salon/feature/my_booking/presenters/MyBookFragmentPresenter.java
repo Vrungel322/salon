@@ -29,7 +29,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     fetchBookingEntities();
     //RxBus
-    getEventFromRxBus();
+    subscribeUpdateBooking();
     mRxBus.post(new RxBusHelper.SetBookingItemInMenu());
   }
 
@@ -47,7 +47,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void getEventFromRxBus() {
+  private void subscribeUpdateBooking() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())

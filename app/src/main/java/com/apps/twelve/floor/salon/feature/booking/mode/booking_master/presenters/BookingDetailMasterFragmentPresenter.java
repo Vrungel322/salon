@@ -33,8 +33,8 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().addFirstFragment();
     //RxBus
-    nextStep();
-    stateBackBookingMaster();
+    subscribeNextStep();
+    subscribeBackSteps();
   }
 
   @Override public void onDestroy() {
@@ -42,7 +42,7 @@ import timber.log.Timber;
     App.destroyBookingComponent();
   }
 
-  private void nextStep() {
+  private void subscribeNextStep() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.EventForNextStep.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(eventForNextStep -> {
@@ -85,7 +85,7 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.EventForNextStep(fragmentTag));
   }
 
-  private void stateBackBookingMaster() {
+  private void subscribeBackSteps() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.StateBackBookingMaster.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(stateBackBookingMaster -> getViewState().stateBackBookingMaster(), Timber::e);

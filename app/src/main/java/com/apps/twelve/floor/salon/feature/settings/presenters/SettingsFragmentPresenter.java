@@ -32,7 +32,7 @@ import timber.log.Timber;
     setUpPhoto();
     setUserInfo();
     //RxBus
-    updateUserInfo();
+    subscribeUpdateUserInfo();
   }
 
   private void setUpPhoto() {
@@ -78,7 +78,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void updateUserInfo() {
+  private void subscribeUpdateUserInfo() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
         .concatMap(updateUserInfo -> mDataManager.getProfileName())
         .compose(ThreadSchedulers.applySchedulers())
