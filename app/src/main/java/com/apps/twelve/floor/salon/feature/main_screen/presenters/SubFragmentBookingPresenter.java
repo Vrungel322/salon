@@ -63,6 +63,7 @@ import timber.log.Timber;
               mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
             }, throwable -> {
               mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
+              updateSubBooking();
               Timber.e(throwable);
             });
     addToUnsubscription(subscription);

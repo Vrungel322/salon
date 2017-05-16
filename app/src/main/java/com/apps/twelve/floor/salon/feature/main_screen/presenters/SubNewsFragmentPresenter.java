@@ -54,6 +54,7 @@ import timber.log.Timber;
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
         }, throwable -> {
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+          updateNews();
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);

@@ -51,7 +51,8 @@ import timber.log.Timber;
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
-            .compose(ThreadSchedulers.applySchedulers()).subscribe(lastBookingEntities -> {
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
           getViewState().stopRefreshingView();
         }, throwable -> {
