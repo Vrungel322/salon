@@ -38,7 +38,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpUi();
-    getInfFromRxBus();
+    fetchMasters();
   }
 
   @Override public void onDestroy() {
@@ -46,7 +46,7 @@ import timber.log.Timber;
     mBookingEntity.setMasterId("");
   }
 
-  private void getInfFromRxBus() {
+  private void fetchMasters() {
     Subscription subscription =
         mDataManager.fetchMasters(mBookingEntity.getServiceId(), mBookingEntity.getDateId())
             .compose(ThreadSchedulers.applySchedulers())

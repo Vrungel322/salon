@@ -47,7 +47,7 @@ import timber.log.Timber;
     getViewState().setUpRvCategory();
     fetchCategory();
     //RxBus
-    backCategories();
+    subscribeBackCategories();
   }
 
   private void fetchCategory() {
@@ -157,7 +157,7 @@ import timber.log.Timber;
     mPathList.add(text);
   }
 
-  private void backCategories() {
+  private void subscribeBackCategories() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.BackCategories.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(backCategories -> {

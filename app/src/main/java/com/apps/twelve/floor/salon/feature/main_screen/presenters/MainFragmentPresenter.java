@@ -29,17 +29,16 @@ import timber.log.Timber;
     getViewState().addSubFragments();
     getViewState().startRefreshingView();
     //RxBus
-    stopRefreshMainFragment();
+    subscribeStopRefreshMainFragment();
   }
 
   public void updateBookingAndNews() {
-    Timber.e("updateBookingAndNews");
     getViewState().startRefreshingView();
     mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
     mRxBus.post(new RxBusHelper.UpdateNews());
   }
 
-  private void stopRefreshMainFragment() {
+  private void subscribeStopRefreshMainFragment() {
     Subscription subscription =
         Observable.zip(mRxBus.filteredObservable(RxBusHelper.StopRefreshBookingMainFragment.class),
             mRxBus.filteredObservable(RxBusHelper.StopRefreshNewsMainFragment.class),
