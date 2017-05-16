@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -43,7 +44,7 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  public void getAvailableTime(String masterId) {
+  private void getAvailableTime(String masterId) {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
@@ -64,6 +65,7 @@ import timber.log.Timber;
     if (timePosition != -1) {
       Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
+          .compose(ThreadSchedulers.applySchedulers())
           .doOnNext(voidResponse -> {
             switch (voidResponse.code()) {
               case 200: // updated
@@ -79,9 +81,7 @@ import timber.log.Timber;
               default:
                 break;
             }
-          })
-          .delay(1, TimeUnit.SECONDS)
-          .compose(ThreadSchedulers.applySchedulers())
+          }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
           .subscribe(response -> {
             if (response.code() == 200) {
               getViewState().closeTheFragment();

@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.feature.booking.activities;
 
 import android.os.Bundle;
-import android.view.WindowManager;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
@@ -23,7 +22,6 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
     setTitleAppBar(R.string.book_create);
     setIconAppBar(R.drawable.ic_home_white_24dp);

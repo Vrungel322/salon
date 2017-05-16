@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -31,7 +32,7 @@ import timber.log.Timber;
   }
 
   public void sendProblem(String problem) {
-    Subscription subscription = Observable.just(200)
+    Subscription subscription = Observable.just(200).compose(ThreadSchedulers.applySchedulers())
         .doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             mRxBus.post(new RxBusHelper.UpdateUserInfo());
@@ -39,9 +40,7 @@ import timber.log.Timber;
           } else {
             getViewState().showAlert();
           }
-        })
-        .delay(1, TimeUnit.SECONDS)
-        .compose(ThreadSchedulers.applySchedulers())
+        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
         .subscribe(response -> {
           if (response == 200) {
             getViewState().closeFragment();
