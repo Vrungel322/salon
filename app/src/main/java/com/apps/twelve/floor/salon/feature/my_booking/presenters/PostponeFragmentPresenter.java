@@ -43,7 +43,7 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  public void getAvailableTime(String masterId) {
+  private void getAvailableTime(String masterId) {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {
@@ -64,6 +64,7 @@ import timber.log.Timber;
     if (timePosition != -1) {
       Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
+          .compose(ThreadSchedulers.applySchedulers())
           .doOnNext(voidResponse -> {
             switch (voidResponse.code()) {
               case 200: // updated

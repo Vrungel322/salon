@@ -31,7 +31,7 @@ import timber.log.Timber;
   }
 
   public void sendProblem(String problem) {
-    Subscription subscription = Observable.just(200)
+    Subscription subscription = Observable.just(200).compose(ThreadSchedulers.applySchedulers())
         .doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             mRxBus.post(new RxBusHelper.UpdateUserInfo());

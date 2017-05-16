@@ -45,6 +45,7 @@ import timber.log.Timber;
   public void sendBookingEntity() {
     Subscription subscription =
         mDataManager.checkInService(mapper.transform(mBookingEntity))
+            .compose(ThreadSchedulers.applySchedulers())
             .doOnNext(voidResponse -> {
               if (voidResponse.code() == 200) {
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());

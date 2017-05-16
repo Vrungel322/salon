@@ -39,7 +39,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
   }
 
   public void saveInfo(int field, String value) {
-    Subscription subscription = Observable.just(200)
+    Subscription subscription = Observable.just(200).compose(ThreadSchedulers.applySchedulers())
         .doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             getViewState().stopAnimation();
