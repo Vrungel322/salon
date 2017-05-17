@@ -15,20 +15,20 @@ public class JobsCreator implements com.evernote.android.job.JobCreator {
     return new NotificationJob();
   }
 
-  public void createNotification(String tag) {
-    new JobRequest.Builder(tag).setExact(TimeUnit.SECONDS.toMillis(24))
+  public void createNotification(int tag) {
+    new JobRequest.Builder(String.valueOf(tag)).setExact(TimeUnit.SECONDS.toMillis(24))
         .setRequiresCharging(false)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();
-    new JobRequest.Builder(tag).setExact(TimeUnit.SECONDS.toMillis(5))
+    new JobRequest.Builder(String.valueOf(tag)).setExact(TimeUnit.SECONDS.toMillis(5))
         .setRequiresCharging(false)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();
   }
 
-  public void cancelJob(String tag) {
-    JobManager.instance().cancelAllForTag(tag);
+  public void cancelJob(int tag) {
+    JobManager.instance().cancelAllForTag(String.valueOf(tag));
   }
 }
