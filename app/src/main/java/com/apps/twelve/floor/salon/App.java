@@ -6,6 +6,8 @@ import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
+import com.apps.twelve.floor.salon.utils.JobsCreator;
+import com.evernote.android.job.JobManager;
 import shortbread.Shortbread;
 import timber.log.Timber;
 
@@ -30,6 +32,7 @@ public class App extends Application {
     super.onCreate();
 
     Shortbread.create(this);
+    JobManager.create(this).addJobCreator(new JobsCreator());
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());

@@ -120,7 +120,7 @@ public class DataManager {
     mPref.setProfileGender(gender);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       BookingServerEntity bookingServerEntity) {
     return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
   }
