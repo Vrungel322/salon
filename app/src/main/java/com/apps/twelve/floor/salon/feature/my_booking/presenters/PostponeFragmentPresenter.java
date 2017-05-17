@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
+import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -25,6 +26,7 @@ import timber.log.Timber;
     extends BasePresenter<IPostponeFragmentView> {
 
   @Inject DataManager mDataManager;
+  @Inject JobsCreator mJobsCreator;
   @Inject RxBus mRxBus;
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
@@ -68,6 +70,8 @@ import timber.log.Timber;
             switch (voidResponse.code()) {
               case 200: // updated
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                mJobsCreator.cancelJob(entryId);
+                mJobsCreator.createNotification(entryId);
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked

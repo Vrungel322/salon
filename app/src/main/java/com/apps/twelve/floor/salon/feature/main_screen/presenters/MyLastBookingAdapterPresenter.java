@@ -35,7 +35,7 @@ import timber.log.Timber;
           if (voidResponse.code() == 200) {
             getViewState().removeBookedServiceFromList(position);
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-            mJobsCreator.cancelJob(entityId);
+            mJobsCreator.cancelJob(String.valueOf(entityId));
           }
         }, Timber::e);
     addToUnsubscription(subscription);
