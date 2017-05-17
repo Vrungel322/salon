@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
+import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -25,6 +26,7 @@ import timber.log.Timber;
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
+  @Inject JobsCreator mJobsCreator;
   @Inject BookingToBookingServerEntityMapper mapper;
 
   @Override protected void inject() {
@@ -48,10 +50,10 @@ import timber.log.Timber;
 
   public void sendBookingEntity() {
     Subscription subscription =
-        mDataManager.checkInService(mapper.transform(mBookingEntity))
-            .doOnNext(voidResponse -> {
-              if (voidResponse.code() == 200) {
+        mDataManager.checkInService(mapper.transform(mBookingEntity)).doOnNext(response -> {
+          if (response.code() == 200) {
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+            mJobsCreator.createNotification(String.valueOf(response.body().getId()));
                 getViewState().stopAnimation();
               } else {
                 getViewState().showAlert();
