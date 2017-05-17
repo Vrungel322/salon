@@ -4,6 +4,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -20,19 +21,21 @@ import timber.log.Timber;
     extends BasePresenter<IMyLastBookingAdapterView> {
 
   @Inject DataManager mDataManager;
+  @Inject JobsCreator mJobsCreator;
   @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
-  public void cancelOrder(int position, Integer serviceId) {
-    Subscription subscription = mDataManager.cancelOrder(serviceId)
+  public void cancelOrder(int position, Integer entityId) {
+    Subscription subscription = mDataManager.cancelOrder(entityId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
             getViewState().removeBookedServiceFromList(position);
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+            mJobsCreator.cancelJob(entityId);
           }
         }, Timber::e);
     addToUnsubscription(subscription);
