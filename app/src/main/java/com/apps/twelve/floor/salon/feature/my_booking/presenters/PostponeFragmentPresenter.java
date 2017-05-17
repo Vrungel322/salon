@@ -71,7 +71,11 @@ import timber.log.Timber;
               case 200: // updated
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                 mJobsCreator.cancelJob(entryId);
-                mJobsCreator.createNotification(entryId);
+                mJobsCreator.createNotification(entryId, Integer.parseInt(
+                    mDataServiceEntity.get(dayPosition)
+                        .getScheduleEntities()
+                        .get(timePosition)
+                        .getTimeInSec()) * 1000L - System.currentTimeMillis());
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked

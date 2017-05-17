@@ -53,8 +53,7 @@ import timber.log.Timber;
         mDataManager.checkInService(mapper.transform(mBookingEntity)).doOnNext(response -> {
           if (response.code() == 200) {
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-            mJobsCreator.createNotification(String.valueOf(response.body().getId()),
-                response.body().getServiceTime() * 1000L - System.currentTimeMillis());
+            mJobsCreator.createNotification(String.valueOf(response.body().getId()));
                 getViewState().stopAnimation();
               } else {
                 getViewState().showAlert();
