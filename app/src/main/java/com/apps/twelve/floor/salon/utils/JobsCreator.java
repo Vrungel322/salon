@@ -22,8 +22,8 @@ public class JobsCreator implements JobCreator {
   }
 
   public void createNotification(String tag, Long millis) {
-    if (millis - TimeUnit.SECONDS.toMillis(3) > 0) {
-      createHourly(tag, millis - TimeUnit.SECONDS.toMillis(3));
+    if (millis - TimeUnit.HOURS.toMillis(1) > 0) {
+      createHourly(tag, millis - TimeUnit.HOURS.toMillis(1));
     }
     if (millis - TimeUnit.HOURS.toMillis(24) > 0) {
       createDaily(tag, millis - TimeUnit.HOURS.toMillis(24));

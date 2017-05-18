@@ -3,12 +3,10 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMainFragmentView;
-import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
@@ -21,7 +19,6 @@ import timber.log.Timber;
 @InjectViewState public class MainFragmentPresenter extends BasePresenter<IMainFragmentView> {
 
   @Inject RxBus mRxBus;
-  @Inject JobsCreator mJob;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -33,7 +30,6 @@ import timber.log.Timber;
     getViewState().startRefreshingView();
     //RxBus
     subscribeStopRefreshMainFragment();
-    mJob.createNotification("tag", TimeUnit.SECONDS.toMillis(5));
   }
 
   public void updateBookingAndNews() {
