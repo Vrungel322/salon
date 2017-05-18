@@ -101,8 +101,11 @@ public class StartActivity extends BaseActivity
     mNavViewTopPart.getMenu().getItem(6).setChecked(true);
   }
 
-  @Override public void setBonusCount(int integer) {
-    mCountBonus = integer;
+  @Override public void setBonusCount(int count) {
+    mCountBonus = count;
+    if (mBadge != null) {
+      mBadge.setCount(count);
+    }
   }
 
   @Override public void hideFloatingButton() {
@@ -131,7 +134,7 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu, menu);
+    getMenuInflater().inflate(R.menu.menu_start, menu);
     mBadge = Badger.sett(menu.findItem(R.id.action_my_bonus), mCircleFactory);
     mBadge.setCount(mCountBonus);
     return true;

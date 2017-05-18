@@ -1,6 +1,13 @@
 package com.apps.twelve.floor.salon.feature.booking.activities;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import berlin.volders.badger.BadgeShape;
+import berlin.volders.badger.Badger;
+import berlin.volders.badger.CountBadge;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
@@ -19,12 +26,43 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @InjectPresenter BookingActivityPresenter mBookingActivityPresenter;
 
+  private CountBadge.Factory mCircleFactory;
+  private CountBadge mBadge;
+  private int mCountBonus;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
     setTitleAppBar(R.string.book_create);
     setIconAppBar(R.drawable.ic_home_white_24dp);
+
+    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
+        ContextCompat.getColor(this, R.color.colorDarkPink),
+        ContextCompat.getColor(this, R.color.colorWhite));
+  }
+
+  @Override protected void onResume() {
+    super.onResume();
+    mBookingActivityPresenter.fetchBonusCount();
+  }
+
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_booking, menu);
+    mBadge = Badger.sett(menu.findItem(R.id.action_my_bonus), mCircleFactory);
+    mBadge.setCount(mCountBonus);
+    return true;
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_my_bonus:
+        /*mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this, R.id.container_main,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);*/
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
   }
 
   @Override public void addFragmentBooking() {
@@ -35,6 +73,13 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public void closeBookingService() {
     mNavigator.clearBackStack(this);
     mNavigator.replaceFragment(this, R.id.container_booking, BookingFragment.newInstance());
+  }
+
+  @Override public void setBonusCount(int count) {
+    mCountBonus = count;
+    if (mBadge != null) {
+      mBadge.setCount(count);
+    }
   }
 
   @Override public void onBackPressed() {

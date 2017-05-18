@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -18,6 +19,7 @@ import timber.log.Timber;
 @InjectViewState public class BookingActivityPresenter extends BasePresenter<IBookingActivityView> {
 
   @Inject RxBus mRxBus;
+  @Inject DataManager mDataManager;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
@@ -40,6 +42,14 @@ import timber.log.Timber;
 
   public void stateBackBookingService() {
     mRxBus.post(new RxBusHelper.StateBackBookingService());
+  }
+
+  public void fetchBonusCount() {
+    Subscription subscription = mDataManager.fetchBonusCount()
+        .doOnNext(count -> mDataManager.setBonusCount(count))
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
+    addToUnsubscription(subscription);
   }
 
   private void subscribeCloseBookingService() {
