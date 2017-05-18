@@ -16,8 +16,8 @@
   <color name="colorLLightPink">#FFFBE9F0</color>
 
   <!--screen main-->
-  <!--<color name="colorNavigationText">#ffffff</color>-->
-  <!--<color name="colorNavigationIcon">#ffffff</color>-->
+  <color name="colorNavigationText">#ffffff</color>
+  <color name="colorNavigationIcon">#ffffff</color>
   <!--sub news-->
   <color name="colorMainScreenText">#a7a8a8</color>
   <color name="colorMainScreenTextAllNews">#ff4081</color>
@@ -171,6 +171,15 @@
   <color name="colorSettingsReportProblemHint">#9f9f9f</color>
   <color name="colorSettingsReportProblemButton">#EB3472</color>
   <color name="colorSettingsReportProblemButtonText">#ffffff</color>
+
+  <!--screen choose staff-->
+  <color name="colorStaffText">#a09498</color>
+  <color name="colorStaffButton">#ededed</color>
+  <color name="colorBackgroundStaffList">#ededed</color>
+  <color name="colorStaffPrice">#EB3472</color>
+  <color name="colorStaffDescriptionText">#969394</color>
+  <color name="colorStaffCustomViewPager">#d1d0d0</color>
+
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
