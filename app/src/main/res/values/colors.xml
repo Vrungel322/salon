@@ -173,6 +173,15 @@
   <color name="colorSettingsReportProblemButton">#EB3472</color>
   <color name="colorSettingsReportProblemButtonText">#ffffff</color>
 
+  <!--screen choose staff-->
+  <color name="colorStaffText">#a09498</color>
+  <color name="colorStaffButton">#ededed</color>
+  <color name="colorBackgroundStaffList">#ededed</color>
+  <color name="colorStaffPrice">#EB3472</color>
+  <color name="colorStaffDescriptionText">#969394</color>
+  <color name="colorStaffCustomViewPager">#d1d0d0</color>
+
+
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
   <color name="colorPinkTransparent">#b1ca1050</color>
