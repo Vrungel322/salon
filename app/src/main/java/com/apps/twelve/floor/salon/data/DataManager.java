@@ -67,6 +67,18 @@ public class DataManager {
     return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
+  public Observable<Integer> fetchBonusCount() {
+    return Observable.just(100);
+  }
+
+  public void setBonusCount(int bonusCount) {
+    mPref.setBonusCount(bonusCount);
+  }
+
+  public Observable<Integer> getBonusCount() {
+    return mPref.getBonusCaunt();
+  }
+
   public Observable<String> getProfileImage() {
     return mPref.getProfileImage().filter((s) -> !s.isEmpty());
   }

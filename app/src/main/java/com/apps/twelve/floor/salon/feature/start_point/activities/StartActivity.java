@@ -49,6 +49,7 @@ public class StartActivity extends BaseActivity
   private ActionBarDrawerToggle mToggle;
   private CountBadge.Factory mCircleFactory;
   private CountBadge mBadge;
+  private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_start);
@@ -83,12 +84,25 @@ public class StartActivity extends BaseActivity
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 
+  @Override protected void onResume() {
+    super.onResume();
+    mStartActivityPresenter.fetchBonusCount();
+  }
+
   @Override public void setMyBooksItemInMenu() {
     mNavViewTopPart.getMenu().getItem(2).setChecked(true);
   }
 
   @Override public void setNewsItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(7).setChecked(true);
+  }
+
+  @Override public void setCatalogItemInMenu() {
     mNavViewTopPart.getMenu().getItem(6).setChecked(true);
+  }
+
+  @Override public void setBonusCount(int integer) {
+    mCountBonus = integer;
   }
 
   @Override public void hideFloatingButton() {
@@ -119,7 +133,7 @@ public class StartActivity extends BaseActivity
   @Override public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu, menu);
     mBadge = Badger.sett(menu.findItem(R.id.action_my_bonus), mCircleFactory);
-    mBadge.setCount(5);
+    mBadge.setCount(mCountBonus);
     return true;
   }
 
@@ -130,7 +144,8 @@ public class StartActivity extends BaseActivity
             new Intent(StartActivity.this, BookingActivity.class));
         return true;
       case R.id.action_my_bonus:
-        mBadge.setCount(55);
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
       default:
         return super.onOptionsItemSelected(item);

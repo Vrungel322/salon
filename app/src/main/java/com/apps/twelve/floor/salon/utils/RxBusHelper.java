@@ -53,6 +53,9 @@ public final class RxBusHelper {
   public static class SetNewsItemInMenu {
   }
 
+  public static class SetCatalogItemInMenu {
+  }
+
   public static class UpdateOurWorkList {
   }
 }
