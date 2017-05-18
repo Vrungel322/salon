@@ -2,18 +2,19 @@ package com.apps.twelve.floor.salon.utils.jobs;
 
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
+import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.evernote.android.job.Job;
 import java.util.Random;
+import javax.inject.Inject;
 
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
@@ -25,18 +26,21 @@ import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICA
 
 public class NotificationJob extends Job {
 
-  @Override @NonNull protected Result onRunJob(Params params) {
+  @Inject DataManager mDataManager;
 
-    SharedPreferences sharedPref =
-        getContext().getSharedPreferences("com.salon.Salon", Context.MODE_PRIVATE);
+  public NotificationJob() {
+    App.getAppComponent().inject(this);
+  }
+
+  @Override @NonNull protected Result onRunJob(Params params) {
 
     boolean showNotification = true;
     switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
       case HOURLY:
-        showNotification = sharedPref.getBoolean("PREF_NOTIF_HOURLY_ENABLED", true);
+        showNotification = mDataManager.isHourlyNotificationsEnabled();
         break;
       case DAILY:
-        showNotification = sharedPref.getBoolean("PREF_NOTIF_DAILY_ENABLED", true);
+        showNotification = mDataManager.isDailyNotificationsEnabled();
         break;
     }
 

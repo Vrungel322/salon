@@ -29,6 +29,7 @@ import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityP
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.utils.jobs.NotificationJob;
 import dagger.Component;
 
 /**
@@ -93,4 +94,7 @@ import dagger.Component;
   void inject(MyLastBookingAdapterPresenter presenter);
 
   void inject(MyBookingAdapterPresenter presenter);
+
+  //job
+  void inject(NotificationJob notificationJob);
 }
