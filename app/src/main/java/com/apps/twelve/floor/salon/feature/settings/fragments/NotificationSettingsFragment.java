@@ -39,6 +39,8 @@ public class NotificationSettingsFragment extends BaseFragment
     super.onViewCreated(view, savedInstanceState);
 
     ((SettingsActivity) getActivity()).setTitleAppBar(R.string.settings_notifications);
+
+    mNotificationSettingsFragmentPresenter.setUpSwitches();
   }
 
   @OnCheckedChanged(R.id.switchHourly) void switchHourly(boolean checked) {

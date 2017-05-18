@@ -25,7 +25,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICA
 
 public class NotificationJob extends Job {
 
-
   @Override @NonNull protected Result onRunJob(Params params) {
 
     SharedPreferences sharedPref =

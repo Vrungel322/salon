@@ -7,9 +7,7 @@ import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
-import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
-import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -22,14 +20,12 @@ import timber.log.Timber;
 
   @Inject RxBus mRxBus;
   @Inject DataManager mDataManager;
-  @Inject JobsCreator mJob;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFragmentMain();
     //RxBus
     subscribeOnEvents();
-    mJob.createNotification("tag", TimeUnit.SECONDS.toMillis(15));
   }
 
   @Override protected void inject() {

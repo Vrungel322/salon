@@ -22,7 +22,6 @@ import javax.inject.Inject;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    setUpSwitches();
   }
 
   public void setUpSwitches() {
