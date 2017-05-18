@@ -28,6 +28,14 @@ public class App extends Application {
     return sBookingComponent;
   }
 
+  public static void initBookingComponent() {
+    sBookingComponent = sAppComponent.plusBookingComponent(new BookingModule());
+  }
+
+  public static void destroyBookingComponent() {
+    sBookingComponent = null;
+  }
+
   @Override public void onCreate() {
     super.onCreate();
 
@@ -39,13 +47,5 @@ public class App extends Application {
     }
 
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
-  }
-
-  public static void initBookingComponent() {
-    sBookingComponent = sAppComponent.plusBookingComponent(new BookingModule());
-  }
-
-  public static void destroyBookingComponent() {
-    sBookingComponent = null;
   }
 }

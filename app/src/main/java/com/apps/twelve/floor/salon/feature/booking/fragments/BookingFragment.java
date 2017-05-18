@@ -21,15 +21,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class BookingFragment extends BaseFragment implements IBookingFragmentView {
   @InjectPresenter BookingFragmentPresenter mBookingFragmentPresenter;
 
+  public BookingFragment() {
+    super(R.layout.fragment_booking);
+  }
+
   public static BookingFragment newInstance() {
     Bundle args = new Bundle();
     BookingFragment fragment = new BookingFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public BookingFragment() {
-    super(R.layout.fragment_booking);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

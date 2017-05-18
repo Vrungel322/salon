@@ -34,16 +34,16 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
 
+  public SubBonusRegistrationFragment() {
+    super(R.layout.fragment_sub_bonus_registration);
+  }
+
   public static SubBonusRegistrationFragment newInstance(String mode) {
     Bundle args = new Bundle();
     args.putString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY, mode);
     SubBonusRegistrationFragment fragment = new SubBonusRegistrationFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public SubBonusRegistrationFragment() {
-    super(R.layout.fragment_sub_bonus_registration);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -9,6 +9,15 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class PhotoWorksEntity implements Parcelable {
+  public static final Creator<PhotoWorksEntity> CREATOR = new Creator<PhotoWorksEntity>() {
+    @Override public PhotoWorksEntity createFromParcel(Parcel in) {
+      return new PhotoWorksEntity(in);
+    }
+
+    @Override public PhotoWorksEntity[] newArray(int size) {
+      return new PhotoWorksEntity[size];
+    }
+  };
   @SerializedName("id") private int id;
   @SerializedName("gallery_id") private int galleryId;
   @SerializedName("image") private String mUrlPhoto;
@@ -22,6 +31,18 @@ public class PhotoWorksEntity implements Parcelable {
     mUrlPhoto = urlPhoto;
     mDescriptionPhoto = descriptionPhoto;
     mFavorite = favorite;
+  }
+
+  protected PhotoWorksEntity(Parcel in) {
+    id = in.readInt();
+    galleryId = in.readInt();
+    mUrlPhoto = in.readString();
+    mDescriptionPhoto = in.readString();
+    mFavorite = in.readByte() != 0;
+  }
+
+  public static Creator<PhotoWorksEntity> getCREATOR() {
+    return CREATOR;
   }
 
   public int getId() {
@@ -64,18 +85,6 @@ public class PhotoWorksEntity implements Parcelable {
     mFavorite = favorite;
   }
 
-  public static Creator<PhotoWorksEntity> getCREATOR() {
-    return CREATOR;
-  }
-
-  protected PhotoWorksEntity(Parcel in) {
-    id = in.readInt();
-    galleryId = in.readInt();
-    mUrlPhoto = in.readString();
-    mDescriptionPhoto = in.readString();
-    mFavorite = in.readByte() != 0;
-  }
-
   @Override public void writeToParcel(Parcel dest, int flags) {
     dest.writeInt(id);
     dest.writeInt(galleryId);
@@ -87,14 +96,4 @@ public class PhotoWorksEntity implements Parcelable {
   @Override public int describeContents() {
     return 0;
   }
-
-  public static final Creator<PhotoWorksEntity> CREATOR = new Creator<PhotoWorksEntity>() {
-    @Override public PhotoWorksEntity createFromParcel(Parcel in) {
-      return new PhotoWorksEntity(in);
-    }
-
-    @Override public PhotoWorksEntity[] newArray(int size) {
-      return new PhotoWorksEntity[size];
-    }
-  };
 }

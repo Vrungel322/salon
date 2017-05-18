@@ -43,21 +43,21 @@
           android:id="@+id/textViewTitleNews"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:textSize="20sp"
           android:maxLines="5"
-          android:textColor="@color/colorDetailNewsTitle"
           android:padding="8dp"
+          android:textColor="@color/colorDetailNewsTitle"
+          android:textSize="20sp"
           />
       <TextView
           android:id="@+id/textViewDescriptionNews"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="@color/colorWhite"
-          android:layout_marginTop="8dp"
-          android:padding="8dp"
-          android:textSize="14sp"
-          android:textColor="@color/colorDetailNewsText"
           android:layout_below="@id/textViewTitleNews"
+          android:layout_marginTop="8dp"
+          android:background="@color/colorWhite"
+          android:padding="8dp"
+          android:textColor="@color/colorDetailNewsText"
+          android:textSize="14sp"
           />
     </RelativeLayout>
   </android.support.v4.widget.NestedScrollView>

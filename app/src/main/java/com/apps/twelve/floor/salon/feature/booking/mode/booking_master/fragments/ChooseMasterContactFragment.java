@@ -30,15 +30,15 @@ public class ChooseMasterContactFragment extends BaseFragment
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
+  public ChooseMasterContactFragment() {
+    super(R.layout.fragment_choose_master_contact);
+  }
+
   public static ChooseMasterContactFragment newInstance() {
     Bundle args = new Bundle();
     ChooseMasterContactFragment fragment = new ChooseMasterContactFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseMasterContactFragment() {
-    super(R.layout.fragment_choose_master_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

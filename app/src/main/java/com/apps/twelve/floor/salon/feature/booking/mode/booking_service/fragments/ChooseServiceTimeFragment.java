@@ -62,15 +62,15 @@ public class ChooseServiceTimeFragment extends BaseFragment
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
+  public ChooseServiceTimeFragment() {
+    super(R.layout.fragment_choose_service_time);
+  }
+
   public static ChooseServiceTimeFragment newInstance() {
     Bundle args = new Bundle();
     ChooseServiceTimeFragment fragment = new ChooseServiceTimeFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseServiceTimeFragment() {
-    super(R.layout.fragment_choose_service_time);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

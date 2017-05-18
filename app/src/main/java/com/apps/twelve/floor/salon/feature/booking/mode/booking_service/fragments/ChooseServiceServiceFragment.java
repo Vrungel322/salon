@@ -47,15 +47,15 @@ public class ChooseServiceServiceFragment extends BaseFragment
   private ServicesAdapter mServicesAdapter;
   private ServiceCategoryAdapter mServiceCategoryAdapter;
 
+  public ChooseServiceServiceFragment() {
+    super(R.layout.fragment_choose_service_service);
+  }
+
   public static ChooseServiceServiceFragment newInstance() {
     Bundle args = new Bundle();
     ChooseServiceServiceFragment fragment = new ChooseServiceServiceFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseServiceServiceFragment() {
-    super(R.layout.fragment_choose_service_service);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

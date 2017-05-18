@@ -32,14 +32,14 @@ public class JobsCreator implements JobCreator {
   }
 
   public void createNotification(String tag) {
+    Timber.e(tag);
   }
 
   private void createHourly(String tag, Long millis) {
     Timber.e(millis + "");
     PersistableBundleCompat bundle = new PersistableBundleCompat();
     bundle.putString(NOTIFICATION_TYPE, HOURLY);
-    new JobRequest.Builder(tag).setExact(millis)
-        .setRequiresCharging(false).setExtras(bundle)
+    new JobRequest.Builder(tag).setExact(millis).setRequiresCharging(false).setExtras(bundle)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();
@@ -48,8 +48,7 @@ public class JobsCreator implements JobCreator {
   private void createDaily(String tag, Long millis) {
     PersistableBundleCompat bundle = new PersistableBundleCompat();
     bundle.putString(NOTIFICATION_TYPE, DAILY);
-    new JobRequest.Builder(tag).setExact(millis)
-        .setRequiresCharging(false).setExtras(bundle)
+    new JobRequest.Builder(tag).setExact(millis).setRequiresCharging(false).setExtras(bundle)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();

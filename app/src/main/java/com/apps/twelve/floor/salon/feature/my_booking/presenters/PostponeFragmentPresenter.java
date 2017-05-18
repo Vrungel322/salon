@@ -32,12 +32,12 @@ import timber.log.Timber;
   private int dayPosition;
   private int timePosition = -1;
 
-  @Override protected void inject() {
-    App.getAppComponent().inject(this);
-  }
-
   public PostponeFragmentPresenter(String masterId) {
     getAvailableTime(masterId);
+  }
+
+  @Override protected void inject() {
+    App.getAppComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {

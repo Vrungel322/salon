@@ -19,15 +19,15 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @InjectPresenter NotificationSettingsFragmentPresenter mNotificationSettingsFragmentPresenter;
 
+  public NotificationSettingsFragment() {
+    super(R.layout.fragment_notification_settings);
+  }
+
   public static NotificationSettingsFragment newInstance() {
     Bundle args = new Bundle();
     NotificationSettingsFragment fragment = new NotificationSettingsFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public NotificationSettingsFragment() {
-    super(R.layout.fragment_notification_settings);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

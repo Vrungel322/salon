@@ -7,6 +7,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class NewsEntity implements Parcelable {
 
+  public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
+    @Override public NewsEntity createFromParcel(Parcel in) {
+      return new NewsEntity(in);
+    }
+
+    @Override public NewsEntity[] newArray(int size) {
+      return new NewsEntity[size];
+    }
+  };
   @SerializedName("id") @Expose private Integer id;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;
@@ -47,16 +56,6 @@ public class NewsEntity implements Parcelable {
     createdAt = in.readString();
     updatedAt = in.readString();
   }
-
-  public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
-    @Override public NewsEntity createFromParcel(Parcel in) {
-      return new NewsEntity(in);
-    }
-
-    @Override public NewsEntity[] newArray(int size) {
-      return new NewsEntity[size];
-    }
-  };
 
   public Integer getId() {
     return id;

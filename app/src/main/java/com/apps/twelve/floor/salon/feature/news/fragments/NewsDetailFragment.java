@@ -29,16 +29,16 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
   @BindView(R.id.textViewDescriptionNews) TextView mTextViewDescriptionNews;
   @BindView(R.id.textViewTitleNews) TextView mTextViewTitleNews;
 
+  public NewsDetailFragment() {
+    super(R.layout.fragment_detail_news);
+  }
+
   public static NewsDetailFragment newInstance(NewsEntity newsEntity) {
     Bundle args = new Bundle();
     args.putParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY, newsEntity);
     NewsDetailFragment fragment = new NewsDetailFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public NewsDetailFragment() {
-    super(R.layout.fragment_detail_news);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

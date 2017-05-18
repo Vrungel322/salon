@@ -33,15 +33,15 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
 
   private AllNewsAdapter mAllNewsAdapter;
 
+  public AllNewsViewFragment() {
+    super(R.layout.fragment_all_news);
+  }
+
   public static AllNewsViewFragment newInstance() {
     Bundle args = new Bundle();
     AllNewsViewFragment fragment = new AllNewsViewFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public AllNewsViewFragment() {
-    super(R.layout.fragment_all_news);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

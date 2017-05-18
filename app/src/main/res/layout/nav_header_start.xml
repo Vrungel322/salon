@@ -18,8 +18,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:paddingTop="@dimen/nav_header_vertical_spacing"
       android:background="@android:drawable/sym_def_app_icon"
+      android:paddingTop="@dimen/nav_header_vertical_spacing"
       />
 
   <TextView
@@ -28,8 +28,8 @@
       android:layout_gravity="center"
       android:paddingTop="@dimen/nav_header_vertical_spacing"
       android:text="Beauty Room"
-      android:textSize="24sp"
       android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+      android:textSize="24sp"
       />
   <!--android:textColor="@color/colorNavigationText"-->
 

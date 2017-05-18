@@ -41,8 +41,8 @@
           android:layout_marginBottom="8dp"
           android:layout_marginTop="8dp"
           android:ellipsize="end"
-          android:text="@string/any_master"
           android:maxLines="3"
+          android:text="@string/any_master"
           android:textColor="@color/colorChooseMasterTextMasterName"
           android:textSize="16sp"
           />

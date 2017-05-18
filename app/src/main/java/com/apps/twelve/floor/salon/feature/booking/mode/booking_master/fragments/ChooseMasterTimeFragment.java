@@ -58,15 +58,15 @@ public class ChooseMasterTimeFragment extends BaseFragment
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
 
+  public ChooseMasterTimeFragment() {
+    super(R.layout.fragment_choose_master_time);
+  }
+
   public static ChooseMasterTimeFragment newInstance() {
     Bundle args = new Bundle();
     ChooseMasterTimeFragment fragment = new ChooseMasterTimeFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseMasterTimeFragment() {
-    super(R.layout.fragment_choose_master_time);
   }
 
   @Override public void setUpUi(List<DataServiceEntity> days) {

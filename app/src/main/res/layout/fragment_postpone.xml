@@ -11,9 +11,9 @@
       android:id="@+id/nestedScrollBookingTime"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:visibility="visible"
       android:layout_above="@+id/btnConfirmPostpone"
       android:layout_marginBottom="16dp"
+      android:visibility="visible"
       >
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,9 +124,9 @@
             android:id="@+id/vpDatesOfMonth"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             />
       </RelativeLayout>
       <RelativeLayout
@@ -257,20 +257,20 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
       android:layout_marginBottom="16dp"
       android:layout_marginEnd="16dp"
       android:layout_marginLeft="16dp"
       android:layout_marginRight="16dp"
       android:layout_marginStart="16dp"
-      android:layout_centerHorizontal="true"
       android:background="@color/colorBookingContactsButton"
-      app:spinning_bar_padding="10dp"
-      app:spinning_bar_color="@color/colorBookingContactsButtonText"
-      app:spinning_bar_width="2dp"
-      app:initialCornerAngle="0dp"
-      app:finalCornerAngle="50dp"
-      android:textSize="14sp"
       android:text="@string/postpone"
       android:textColor="@color/colorBookingContactsButtonText"
+      android:textSize="14sp"
+      app:finalCornerAngle="50dp"
+      app:initialCornerAngle="0dp"
+      app:spinning_bar_color="@color/colorBookingContactsButtonText"
+      app:spinning_bar_padding="10dp"
+      app:spinning_bar_width="2dp"
       />
 </RelativeLayout>

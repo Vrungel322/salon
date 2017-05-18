@@ -51,16 +51,16 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   private HorizontalListAdapters mHorizontalListAdapter;
   private PhotoWorksEntity mPhotoWorksEntity;
 
+  public WorkDetailsFragment() {
+    super(R.layout.fragment_work_details);
+  }
+
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {
     Bundle args = new Bundle();
     args.putParcelable(Constants.FragmentsArgumentKeys.OUR_ENTITY_KEY, entity);
     WorkDetailsFragment fragment = new WorkDetailsFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public WorkDetailsFragment() {
-    super(R.layout.fragment_work_details);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

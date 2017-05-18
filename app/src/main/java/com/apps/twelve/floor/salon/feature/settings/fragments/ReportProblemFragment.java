@@ -27,15 +27,15 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   @BindView(R.id.btnSendProblem) CircularProgressButton mBtnSend;
   @BindView(R.id.etProblem) EditText mTextProblem;
 
+  public ReportProblemFragment() {
+    super(R.layout.fragment_report_problem);
+  }
+
   public static ReportProblemFragment newInstance() {
     Bundle args = new Bundle();
     ReportProblemFragment fragment = new ReportProblemFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ReportProblemFragment() {
-    super(R.layout.fragment_report_problem);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

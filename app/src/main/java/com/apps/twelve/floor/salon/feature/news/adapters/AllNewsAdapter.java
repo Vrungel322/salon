@@ -22,10 +22,9 @@ import static com.apps.twelve.floor.salon.utils.Converters.dateFromSeconds;
 
 public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsViewHolder> {
 
-  private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
-
   public static final int LAST_NEWS = 1;
   public static final int DEFAULT_NEWS = 0;
+  private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
 
   public void addListNewsEntity(List<NewsEntity> newsEntities) {
     mNewsEntities.addAll(newsEntities);
