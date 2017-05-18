@@ -19,6 +19,7 @@ public class PreferencesHelper {
   private static final String PREF_PROFILE_EMAIL = "PREF_PROFILE_EMAIL";
   private static final String PREF_PROFILE_PHONE = "PREF_PROFILE_PHONE";
   private static final String PREF_PROFILE_GENDER = "PREF_PROFILE_GENDER";
+  private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   private static final String PREF_TOKEN = "PREF_TOKEN";
 
   private final SharedPreferences mPreferences;
@@ -45,6 +46,14 @@ public class PreferencesHelper {
 
   public void setProfileName(String name) {
     mPreferences.edit().putString(PREF_PROFILE_NAME, name).apply();
+  }
+
+  public Observable<Integer> getBonusCaunt() {
+    return Observable.just(mPreferences.getInt(PREF_BONUS_COUNT, 0));
+  }
+
+  public void setBonusCount(int bonusCount) {
+    mPreferences.edit().putInt(PREF_BONUS_COUNT, bonusCount).apply();
   }
 
   public Observable<String> getProfileLogin() {

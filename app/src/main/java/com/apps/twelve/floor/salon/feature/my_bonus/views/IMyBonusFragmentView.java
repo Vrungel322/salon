@@ -10,7 +10,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IMyBonusFragmentView
     extends MvpView {
-  void startRefreshingView();
 
-  void stopRefreshingView();
+  void setBonusCount(Integer count);
 }
