@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    android:clickable="true"
     >
 
 
@@ -193,8 +194,8 @@
           android:layout_marginEnd="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="8dp"
-          android:text="@string/contacts_email"
           android:autoLink="email"
+          android:text="@string/contacts_email"
           android:textColor="@color/colorMail"
           android:textSize="16sp"
           app:layout_constraintHorizontal_bias="0.0"

@@ -27,6 +27,11 @@
         android:id="@+id/nav_our_work"
         android:icon="@drawable/ic_our_works_24dp"
         android:title="@string/menu_our_work"/>
+
+    <item
+        android:id="@+id/nav_catalog"
+        android:icon="@drawable/ic_news_24dp"
+        android:title="@string/menu_catalog"/>
     <item
         android:id="@+id/nav_news"
         android:icon="@drawable/ic_news_24dp"

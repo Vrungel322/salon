@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
@@ -79,6 +80,8 @@ import dagger.Component;
   void inject(NotificationSettingsFragmentPresenter presenter);
 
   void inject(ReportProblemFragmentPresenter presenter);
+
+  void inject(CatalogFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);
