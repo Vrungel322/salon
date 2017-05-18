@@ -16,8 +16,8 @@
   <color name="colorLLightPink">#FFFBE9F0</color>
 
   <!--screen main-->
-  <!--<color name="colorNavigationText">#ffffff</color>-->
-  <!--<color name="colorNavigationIcon">#ffffff</color>-->
+  <color name="colorNavigationText">#ffffff</color>
+  <color name="colorNavigationIcon">#ffffff</color>
   <!--sub news-->
   <color name="colorMainScreenText">#a7a8a8</color>
   <color name="colorMainScreenTextAllNews">#ff4081</color>

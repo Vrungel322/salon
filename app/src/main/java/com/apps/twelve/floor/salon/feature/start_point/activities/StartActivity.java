@@ -139,9 +139,8 @@ public class StartActivity extends BaseActivity
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.action_booking:
-        mNavigator.startActivity(StartActivity.this,
-            new Intent(StartActivity.this, BookingActivity.class));
+      case R.id.action_favourite:
+        showAlertMessage(getString(R.string.menu_favourite));
         return true;
       case R.id.action_my_bonus:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,

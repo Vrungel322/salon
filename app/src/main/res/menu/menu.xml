@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
-      android:id="@+id/action_booking"
-      android:icon="@drawable/ic_create_booking_menu"
+      android:id="@+id/action_favourite"
+      android:icon="@drawable/ic_heart_full"
       android:orderInCategory="1"
-      android:title="@string/menu_booking"
+      android:title="@string/menu_favourite"
       app:showAsAction="ifRoom"/>
 
   <item
