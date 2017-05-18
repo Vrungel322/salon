@@ -23,16 +23,12 @@ public class JobsCreator implements JobCreator {
   }
 
   public void createNotification(String tag, Long millis) {
-    if (millis - TimeUnit.SECONDS.toMillis(5) > 0) {
-      createHourly(tag, millis - TimeUnit.SECONDS.toMillis(5));
+    if (millis - TimeUnit.MINUTES.toMillis(25) > 0) {
+      createHourly(tag, millis - TimeUnit.MINUTES.toMillis(25));
     }
-    if (millis - TimeUnit.SECONDS.toMillis(10) > 0) {
-      createDaily(tag, millis - TimeUnit.SECONDS.toMillis(10));
+    if (millis - TimeUnit.MINUTES.toMillis(27) > 0) {
+      createDaily(tag, millis - TimeUnit.MINUTES.toMillis(27));
     }
-  }
-
-  public void createNotification(String tag) {
-    Timber.e(tag);
   }
 
   private void createHourly(String tag, Long millis) {
