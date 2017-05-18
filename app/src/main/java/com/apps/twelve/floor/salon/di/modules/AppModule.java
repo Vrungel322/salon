@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
-import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import dagger.Module;
 import dagger.Provides;
 

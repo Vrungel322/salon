@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.utils;
+package com.apps.twelve.floor.salon.utils.jobs;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -34,7 +34,6 @@ public class NotificationJob extends Job {
         break;
       case DAILY:
         message.append(getContext().getResources().getString(R.string.notification_daily));
-      default:
         break;
     }
 

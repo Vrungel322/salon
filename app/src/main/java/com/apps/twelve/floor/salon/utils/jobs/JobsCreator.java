@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.utils;
+package com.apps.twelve.floor.salon.utils.jobs;
 
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobCreator;

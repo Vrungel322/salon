@@ -6,10 +6,10 @@ import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
-import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.evernote.android.job.JobManager;
+import io.fabric.sdk.android.Fabric;
 import shortbread.Shortbread;
 import timber.log.Timber;
 
