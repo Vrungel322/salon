@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.start_point.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
@@ -18,6 +19,7 @@ import timber.log.Timber;
 @InjectViewState public class StartActivityPresenter extends BasePresenter<IStartActivityView> {
 
   @Inject RxBus mRxBus;
+  @Inject DataManager mDataManager;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
@@ -43,6 +45,10 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().setNewsItemInMenu(), Timber::e);
     addToUnsubscription(subscription);
+    subscription = mRxBus.filteredObservable(RxBusHelper.SetCatalogItemInMenu.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().setCatalogItemInMenu(), Timber::e);
+    addToUnsubscription(subscription);
     subscription = mRxBus.filteredObservable(RxBusHelper.HideFloatingButton.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe((event -> getViewState().hideFloatingButton()), Timber::e);
@@ -50,6 +56,14 @@ import timber.log.Timber;
     subscription = mRxBus.filteredObservable(RxBusHelper.ShowFloatingButton.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe((event -> getViewState().showFloatingButton()), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  public void fetchBonusCount() {
+    Subscription subscription = mDataManager.fetchBonusCount()
+        .doOnNext(count -> mDataManager.setBonusCount(count))
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
 
