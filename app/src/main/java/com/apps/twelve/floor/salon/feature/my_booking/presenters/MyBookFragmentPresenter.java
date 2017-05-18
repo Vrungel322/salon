@@ -29,7 +29,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     fetchBookingEntities();
     //RxBus
-    getEventFromRxBus();
+    subscribeUpdateBooking();
     mRxBus.post(new RxBusHelper.SetBookingItemInMenu());
   }
 
@@ -40,17 +40,25 @@ import timber.log.Timber;
         .subscribe(lastBookingEntities -> {
           getViewState().showAllBooking(lastBookingEntities);
           getViewState().stopRefreshingView();
-        }, Timber::e);
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
-  private void getEventFromRxBus() {
+  private void subscribeUpdateBooking() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(lastBookingEntities -> getViewState().showAllBooking(lastBookingEntities),
-                Timber::e);
+            .subscribe(lastBookingEntities -> {
+          getViewState().showAllBooking(lastBookingEntities);
+          getViewState().stopRefreshingView();
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 

@@ -1,17 +1,17 @@
 buildscript {
-  repositories {
-    maven { url 'https://maven.fabric.io/public' }
-  }
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
 
-  dependencies {
-    classpath 'io.fabric.tools:gradle:1.+'
-  }
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 repositories {
-  maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 apply plugin: 'me.tatarka.retrolambda'
@@ -28,8 +28,8 @@ android {
     applicationId "com.apps.twelve.floor.salon"
     minSdkVersion 16
     targetSdkVersion 25
-    versionCode 15
-    versionName "1.1.5"
+    versionCode 16
+    versionName "1.1.6"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
   }
@@ -124,9 +124,9 @@ dependencies {
   compile 'br.com.simplepass:loading-button-android:1.7.0'
 
   //crashlitics
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
-    transitive = true;
-  }
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
 
   //Alarm
   compile 'com.evernote:android-job:1.1.10'

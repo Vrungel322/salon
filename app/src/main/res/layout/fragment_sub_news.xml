@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorMainScreenNewsBackground"
+    android:clickable="true"
     >
   <android.support.constraint.ConstraintLayout
       android:id="@+id/layoutAllNews"
@@ -66,7 +67,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:background="@drawable/hair33"
         />
     <TextView
         android:id="@+id/tvNewsShortDescription"
@@ -79,12 +79,12 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="@string/lorem_ipsum"
         android:textColor="@color/colorMainScreenTextNews"
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivNewsPreview"
+        tools:text="@string/lorem_ipsum"
         />
     <TextView
         android:id="@+id/tvNewsData"
@@ -92,7 +92,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingBottom="16dp"
-        android:text="23.02.2017"
         android:textColor="@color/colorMainScreenTextNewsDate"
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="@+id/tvNewsShortDescription"

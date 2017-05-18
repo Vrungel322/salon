@@ -23,7 +23,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     getViewState().addFragmentMain();
     //RxBus
-    getEventFromRxBus();
+    subscribeOnEvents();
   }
 
   @Override protected void inject() {
@@ -34,7 +34,7 @@ import timber.log.Timber;
     getViewState().share();
   }
 
-  private void getEventFromRxBus() {
+  private void subscribeOnEvents() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.SetBookingItemInMenu.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().setMyBooksItemInMenu(), Timber::e);

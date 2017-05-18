@@ -22,6 +22,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
+import com.apps.twelve.floor.salon.feature.catalog.fragments.CatalogFragment;
 import com.apps.twelve.floor.salon.feature.contacts.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.fragments.MainFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
@@ -160,6 +161,10 @@ public class StartActivity extends BaseActivity
       case R.id.nav_our_work:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
+        break;
+      case R.id.nav_catalog:
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+            CatalogFragment.newInstance(), Constants.FragmentTag.CATALOG_FRAGMENT);
         break;
       case R.id.nav_news:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,

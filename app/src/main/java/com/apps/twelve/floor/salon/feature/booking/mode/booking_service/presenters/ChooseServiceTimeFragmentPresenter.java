@@ -34,7 +34,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getInfFromRxBus();
+    fetchDaysData();
   }
 
   @Override public void onDestroy() {
@@ -42,7 +42,7 @@ import timber.log.Timber;
     mBookingEntity.setDateId("");
   }
 
-  private void getInfFromRxBus() {
+  private void fetchDaysData() {
     Subscription subscription = mDataManager.fetchDaysData(mBookingEntity.getServiceId())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(dataServiceEntities -> {

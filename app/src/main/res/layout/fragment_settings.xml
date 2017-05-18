@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSettingsBackground"
+    android:clickable="true"
     >
 
   <android.support.v4.widget.NestedScrollView
@@ -31,7 +32,6 @@
             android:layout_height="96dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:src="@drawable/hair33"
             app:civ_border_color="@color/colorWhite"
             app:civ_border_width="2dp"
             />

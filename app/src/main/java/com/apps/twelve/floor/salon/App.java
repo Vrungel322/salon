@@ -6,6 +6,8 @@ import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import com.apps.twelve.floor.salon.utils.JobsCreator;
 import com.evernote.android.job.JobManager;
 import shortbread.Shortbread;
@@ -28,16 +30,9 @@ public class App extends Application {
     return sBookingComponent;
   }
 
-  public static void initBookingComponent() {
-    sBookingComponent = sAppComponent.plusBookingComponent(new BookingModule());
-  }
-
-  public static void destroyBookingComponent() {
-    sBookingComponent = null;
-  }
-
   @Override public void onCreate() {
     super.onCreate();
+    Fabric.with(this, new Crashlytics());
 
     Shortbread.create(this);
     JobManager.create(this).addJobCreator(new JobsCreator());
@@ -47,5 +42,13 @@ public class App extends Application {
     }
 
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+  }
+
+  public static void initBookingComponent() {
+    sBookingComponent = sAppComponent.plusBookingComponent(new BookingModule());
+  }
+
+  public static void destroyBookingComponent() {
+    sBookingComponent = null;
   }
 }

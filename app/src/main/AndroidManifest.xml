@@ -38,8 +38,7 @@
     </activity>
     <activity
         android:name=".feature.booking.activities.BookingActivity"
-        android:parentActivityName=".feature.start_point.activities.StartActivity"
-        android:windowSoftInputMode="adjustNothing">
+        android:parentActivityName=".feature.start_point.activities.StartActivity">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
           android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"/>
@@ -47,6 +46,9 @@
     <activity
         android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
         android:theme="@style/Base.Theme.AppCompat"/>
-  </application>
+      <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3006e1fddbc8e54ba561fd00fd583b69151ad9e4" />
+    </application>
 
 </manifest>

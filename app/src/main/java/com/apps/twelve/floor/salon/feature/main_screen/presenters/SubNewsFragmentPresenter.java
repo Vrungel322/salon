@@ -29,7 +29,7 @@ import timber.log.Timber;
     super.onFirstViewAttach();
     fetchNewsEntities();
     //RxBus
-    updateNews();
+    subscribeUpdateNews();
   }
 
   private void fetchNewsEntities() {
@@ -45,7 +45,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void updateNews() {
+  private void subscribeUpdateNews() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateNews.class)
         .concatMap(updateNews -> mDataManager.fetchNewsPreview())
         .compose(ThreadSchedulers.applySchedulers())
@@ -54,6 +54,7 @@ import timber.log.Timber;
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
         }, throwable -> {
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+          subscribeUpdateNews();
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);

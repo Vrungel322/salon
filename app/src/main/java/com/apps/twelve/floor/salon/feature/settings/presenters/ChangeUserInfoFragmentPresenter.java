@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
@@ -39,17 +40,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
   }
 
   public void saveInfo(int field, String value) {
-    Subscription subscription = Observable.just(200)
-        .doOnNext(voidResponse -> {
+    Subscription subscription =
+        Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
           }
-        })
-        .delay(1, TimeUnit.SECONDS)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(response -> {
+        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
           if (response == 200) {
             setUserInfo(field, value);
             mRxBus.post(new RxBusHelper.UpdateUserInfo());

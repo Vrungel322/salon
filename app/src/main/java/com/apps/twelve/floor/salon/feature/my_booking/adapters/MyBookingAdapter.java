@@ -2,6 +2,8 @@ package com.apps.twelve.floor.salon.feature.my_booking.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
@@ -73,6 +75,13 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
           ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(),
               R.color.colorMainScreenBookingPressed));
       holder.view.setVisibility(View.VISIBLE);
+    } else {
+      int[] attrs = new int[] { R.attr.selectableItemBackground };
+      TypedArray ta = mContext.obtainStyledAttributes(attrs);
+      Drawable drawableFromTheme = ta.getDrawable(0);
+      ta.recycle();
+      holder.mConstraintLayoutBooking.setBackground(drawableFromTheme);
+      holder.view.setVisibility(View.INVISIBLE);
     }
     Picasso.with(holder.mImageViewServicePhoto.getContext())
         .load(mBookingEntities.get(position).getImageUri())
@@ -111,12 +120,6 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   @Override public int getItemCount() {
     return mBookingEntities.size();
-  }
-
-  @Override public void removeBookedServiceFromList(int position) {
-    mBookingEntities.remove(position);
-    notifyItemRemoved(position);
-    notifyItemRangeChanged(position, mBookingEntities.size());
   }
 
   @Override public void openPostponeFragment(int position) {
