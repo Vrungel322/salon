@@ -177,6 +177,8 @@
   <color name="colorStaffButton">#ededed</color>
   <color name="colorBackgroundStaffList">#ededed</color>
   <color name="colorStaffPrice">#EB3472</color>
+  <color name="colorStaffDescriptionText">#969394</color>
+  <color name="colorStaffCustomViewPager">#d1d0d0</color>
 
 
   <!--transparent colors-->

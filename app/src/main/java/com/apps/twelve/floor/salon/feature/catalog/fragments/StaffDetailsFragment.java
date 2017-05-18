@@ -1,0 +1,185 @@
+package com.apps.twelve.floor.salon.feature.catalog.fragments;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.OnClick;
+import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
+import com.apps.twelve.floor.salon.data.model.StaffEntity;
+import com.apps.twelve.floor.salon.feature.catalog.adapters.ImageStaffViewPagerAdapter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.StaffDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.views.IStaffDetailsFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.mzelzoghbi.zgallery.CustomViewPager;
+import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
+import java.util.ArrayList;
+
+/**
+ * Created by Vrungel on 18.05.2017.
+ */
+
+public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
+  @InjectPresenter StaffDetailsFragmentPresenter mStaffDetailsFragmentPresenter;
+
+  @BindView(R.id.tvStaffTitle) TextView mTextViewTitle;
+
+  @BindView(R.id.tvStaffDescription) TextView mTextViewDescription;
+  @BindView(R.id.tvMore) TextView mTextViewMore;
+  @BindView(R.id.viewPagerImages) CustomViewPager mViewPagerImages;
+  @BindView(R.id.recyclerViewImages) RecyclerView mRecyclerViewImages;
+  @BindView(R.id.bPrevStaffImg) ImageButton mImageButtonPrevious;
+  @BindView(R.id.bNextStaffImg) ImageButton mImageButtonNext;
+  @BindView(R.id.tvPrice) TextView mTextViewPrice;
+
+  private ImageStaffViewPagerAdapter mViewPagerAdapter;
+
+  private HorizontalListAdapters mHorizontalListAdapter;
+  private StaffDetailContent mStaffDetail;
+
+  public StaffDetailsFragment() {
+    super(R.layout.fragment_catalog_item_detail);
+  }
+
+  public static StaffDetailsFragment newInstance(StaffEntity entity) {
+    Bundle args = new Bundle();
+    args.putParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY, entity);
+    StaffDetailsFragment fragment = new StaffDetailsFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    StaffEntity staffEntity =
+        getArguments().getParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY);
+
+    /* turn off scrolling */
+    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    AppBarLayout.LayoutParams toolbarLayoutParams =
+        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+    toolbarLayoutParams.setScrollFlags(0);
+    mToolbar.setLayoutParams(toolbarLayoutParams);
+
+    LinearLayoutManager mLayoutManager =
+        new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+    if (staffEntity != null) {
+      //some TV (title and gallery description)
+      mTextViewTitle.setText(staffEntity.getTitle());
+      mTextViewDescription.setText(staffEntity.getShortDescription());
+      mTextViewPrice.setText(staffEntity.getPrice());
+
+      // pager adapter
+      mViewPagerAdapter =
+          new ImageStaffViewPagerAdapter(getActivity(), staffEntity.getStaffDetailContents());
+      mViewPagerImages.setAdapter(mViewPagerAdapter);
+
+      // horizontal list adapter
+      ArrayList<String> listUrlPhotos = new ArrayList<>();
+      for (StaffDetailContent staffDetailContent : staffEntity.getStaffDetailContents()) {
+        listUrlPhotos.add(staffDetailContent.getUrlPhoto());
+      }
+      mHorizontalListAdapter = new HorizontalListAdapters(getActivity(), listUrlPhotos,
+          pos -> mViewPagerImages.setCurrentItem(pos, true));
+      mRecyclerViewImages.setLayoutManager(mLayoutManager);
+      mRecyclerViewImages.setAdapter(mHorizontalListAdapter);
+      mHorizontalListAdapter.notifyDataSetChanged();
+
+      int currentPos = 0;
+      mStaffDetail = mViewPagerAdapter.getEntity(currentPos);
+      mHorizontalListAdapter.setSelectedItem(currentPos);
+      mViewPagerImages.setCurrentItem(currentPos);
+
+
+      updateImageInfoAndButtons();
+    }
+
+    mTextViewDescription.getViewTreeObserver()
+        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+          @Override public void onGlobalLayout() {
+            if (mTextViewDescription.getLineCount() > 3) {
+              mTextViewMore.setVisibility(View.VISIBLE);
+              mTextViewDescription.setMaxLines(3);
+              mTextViewDescription.setEllipsize(TextUtils.TruncateAt.END);
+              mTextViewDescription.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            } else {
+              mTextViewDescription.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+          }
+        });
+
+    mViewPagerImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+      @Override
+      public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+      }
+
+      @Override public void onPageSelected(int position) {
+        mStaffDetail = mViewPagerAdapter.getEntity(position);
+
+        mRecyclerViewImages.smoothScrollToPosition(position);
+        mHorizontalListAdapter.setSelectedItem(position);
+      }
+
+      @Override public void onPageScrollStateChanged(int state) {
+        updateImageInfoAndButtons();
+      }
+    });
+  }
+
+  private void updateImageInfoAndButtons() {
+    if (mViewPagerImages.getCurrentItem() == mViewPagerAdapter.getCount() - 1) {
+      mImageButtonNext.setVisibility(View.INVISIBLE);
+    } else {
+      mImageButtonNext.setVisibility(View.VISIBLE);
+    }
+    if (mViewPagerImages.getCurrentItem() == 0) {
+      mImageButtonPrevious.setVisibility(View.INVISIBLE);
+    } else {
+      mImageButtonPrevious.setVisibility(View.VISIBLE);
+    }
+  }
+
+  @OnClick(R.id.tvMore) public void onClick() {
+    if (mTextViewDescription.getMaxLines() == 3) {
+      mTextViewDescription.setMaxLines(Integer.MAX_VALUE);
+      mTextViewDescription.setEllipsize(null);
+    } else {
+      mTextViewDescription.setMaxLines(3);
+      mTextViewDescription.setEllipsize(TextUtils.TruncateAt.END);
+    }
+  }
+
+  @OnClick(R.id.bPrevStaffImg) public void nextPicture() {
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() + 1, true);
+  }
+
+  @OnClick(R.id.bNextStaffImg) public void previousPicture() {
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
+  }
+
+  @Override public void onDestroy() {
+    /* turn on scrolling */
+    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    AppBarLayout.LayoutParams toolbarLayoutParams =
+        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+    toolbarLayoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+        | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+    mToolbar.setLayoutParams(toolbarLayoutParams);
+
+    super.onDestroy();
+  }
+
+}

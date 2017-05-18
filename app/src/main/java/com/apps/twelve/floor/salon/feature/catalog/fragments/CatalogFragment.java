@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.StaffListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
+import com.apps.twelve.floor.salon.feature.our_works.fragments.WorkDetailsFragment;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -53,7 +54,9 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(),2));
     mRecyclerViewStaff.setAdapter(mStaffListAdapter);
     ItemClickSupport.addTo(mRecyclerViewStaff).setOnItemClickListener((recyclerView, position, v) -> {
-      // TODO: 18.05.2017  openDetail
+        mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+            StaffDetailsFragment.newInstance(mStaffListAdapter.getEntity(position)));
+
     });
   }
 

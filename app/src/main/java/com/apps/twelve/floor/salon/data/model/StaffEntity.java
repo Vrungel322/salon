@@ -1,12 +1,14 @@
 package com.apps.twelve.floor.salon.data.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
  * Created by Vrungel on 18.05.2017.
  */
 
-public class StaffEntity {
+public class StaffEntity implements Parcelable {
   private String mTitle;
   private String mShortDescription;
   private String mPrice;
@@ -25,6 +27,36 @@ public class StaffEntity {
     mImageURL = imageURL;
     mStaffDetailContents = staffDetailContents;
   }
+
+  protected StaffEntity(Parcel in) {
+    mTitle = in.readString();
+    mShortDescription = in.readString();
+    mPrice = in.readString();
+    mIsNew = in.readByte() != 0;
+    mImageURL = in.readString();
+  }
+
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(mTitle);
+    dest.writeString(mShortDescription);
+    dest.writeString(mPrice);
+    dest.writeByte((byte) (mIsNew ? 1 : 0));
+    dest.writeString(mImageURL);
+  }
+
+  @Override public int describeContents() {
+    return 0;
+  }
+
+  public static final Creator<StaffEntity> CREATOR = new Creator<StaffEntity>() {
+    @Override public StaffEntity createFromParcel(Parcel in) {
+      return new StaffEntity(in);
+    }
+
+    @Override public StaffEntity[] newArray(int size) {
+      return new StaffEntity[size];
+    }
+  };
 
   public String getTitle() {
     return mTitle;

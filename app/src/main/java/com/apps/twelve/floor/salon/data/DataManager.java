@@ -165,7 +165,6 @@ public class DataManager {
     ArrayList<StaffDetailContent> details = new ArrayList<>();
     for (int i = 0; i < 5; i++) {
       details.add(new StaffDetailContent(i,
-          "Some BIG description,Some BIG description,Some BIG description",
           "https://look.tm/statics/images/post/2648909-13243182.jpg"));
     }
     for (int i = 0; i < 33; i++) {

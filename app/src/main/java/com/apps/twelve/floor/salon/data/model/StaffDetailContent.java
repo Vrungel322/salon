@@ -6,12 +6,10 @@ package com.apps.twelve.floor.salon.data.model;
 
 public class StaffDetailContent {
   private int id;
-  private String mDescriptionStaff;
   private String mUrlPhoto;
 
-  public StaffDetailContent(int id, String descriptionStaff, String urlPhoto) {
+  public StaffDetailContent(int id, String urlPhoto) {
     this.id = id;
-    mDescriptionStaff = descriptionStaff;
     mUrlPhoto = urlPhoto;
   }
 
@@ -21,14 +19,6 @@ public class StaffDetailContent {
 
   public void setId(int id) {
     this.id = id;
-  }
-
-  public String getDescriptionStaff() {
-    return mDescriptionStaff;
-  }
-
-  public void setDescriptionStaff(String descriptionStaff) {
-    mDescriptionStaff = descriptionStaff;
   }
 
   public String getUrlPhoto() {
