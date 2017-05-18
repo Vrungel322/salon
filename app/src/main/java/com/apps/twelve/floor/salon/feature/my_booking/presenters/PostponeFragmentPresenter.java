@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentVie
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -26,17 +27,18 @@ import timber.log.Timber;
     extends BasePresenter<IPostponeFragmentView> {
 
   @Inject DataManager mDataManager;
+  @Inject JobsCreator mJobsCreator;
   @Inject RxBus mRxBus;
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
   private int timePosition = -1;
 
-  @Override protected void inject() {
-    App.getAppComponent().inject(this);
-  }
-
   public PostponeFragmentPresenter(String masterId) {
     getAvailableTime(masterId);
+  }
+
+  @Override protected void inject() {
+    App.getAppComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {
@@ -70,6 +72,12 @@ import timber.log.Timber;
             switch (voidResponse.code()) {
               case 200: // updated
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                mJobsCreator.cancelJob(entryId);
+                mJobsCreator.createNotification(entryId, Integer.parseInt(
+                    mDataServiceEntity.get(dayPosition)
+                        .getScheduleEntities()
+                        .get(timePosition)
+                        .getTimeInSec()) * 1000L - System.currentTimeMillis());
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked

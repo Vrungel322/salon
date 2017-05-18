@@ -34,15 +34,15 @@ public class ChooseServiceContactFragment extends BaseFragment
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
+  public ChooseServiceContactFragment() {
+    super(R.layout.fragment_choose_service_contact);
+  }
+
   public static ChooseServiceContactFragment newInstance() {
     Bundle args = new Bundle();
     ChooseServiceContactFragment fragment = new ChooseServiceContactFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseServiceContactFragment() {
-    super(R.layout.fragment_choose_service_contact);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -81,5 +81,4 @@ public class ChooseServiceContactFragment extends BaseFragment
   @Override public void showAlert() {
     showAlertMessage("Error", "Warning");
   }
-
 }

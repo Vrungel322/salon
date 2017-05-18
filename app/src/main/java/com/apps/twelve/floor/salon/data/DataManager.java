@@ -135,7 +135,7 @@ public class DataManager {
     mPref.setProfileGender(gender);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       BookingServerEntity bookingServerEntity) {
     return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
   }
@@ -170,6 +170,22 @@ public class DataManager {
 
   public Observable<Response<Void>> removeFromFavorite(int photoId) {
     return mRestApi.removeFromFavorite(photoId, mPref.getToken());
+  }
+
+  public boolean isHourlyNotificationsEnabled() {
+    return mPref.isHourlyNotificationsEnabled();
+  }
+
+  public void setHourlyNotificationsEnabled(boolean enabled) {
+    mPref.setHourlyNotificationsEnabled(enabled);
+  }
+
+  public boolean isDailyNotificationsEnabled() {
+    return mPref.isDailyNotificationsEnabled();
+  }
+
+  public void setDailyNotificationsEnabled(boolean enabled) {
+    mPref.setDailyNotificationsEnabled(enabled);
   }
 
   public Observable<List<StaffEntity>> fetchStaff() {

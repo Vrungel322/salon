@@ -67,6 +67,8 @@ import timber.log.Timber;
       mBookingEntity.setServiceTime(String.valueOf(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTime()));
       getViewState().setSelectedTime(position);
+      mBookingEntity.setRemainTimeInSec(
+          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getTimeInSec());
       mRxBus.post(
           new RxBusHelper.EventForNextStep(Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT));
     } else {

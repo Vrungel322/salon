@@ -60,7 +60,7 @@ public class RestApi {
     return api.fetchDaysDataWithMasterId(masterId);
   }
 
-  public Observable<retrofit2.Response<Void>> checkInService(String token,
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String token,
       BookingServerEntity bookingServerEntity) {
     return api.checkInService(Integer.parseInt(token), bookingServerEntity);
   }

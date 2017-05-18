@@ -22,15 +22,15 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
 
   @BindView(R.id.swipeRefreshMainFragment) SwipeRefreshLayout mSwipeRefreshMainFragment;
 
+  public MainFragment() {
+    super(R.layout.fragment_main);
+  }
+
   public static MainFragment newInstance() {
     Bundle args = new Bundle();
     MainFragment fragment = new MainFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public MainFragment() {
-    super(R.layout.fragment_main);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

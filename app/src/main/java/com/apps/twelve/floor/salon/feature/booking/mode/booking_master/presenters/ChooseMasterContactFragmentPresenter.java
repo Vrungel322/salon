@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.ICh
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import timber.log.Timber;
   @Inject BookingEntity mBookingEntity;
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
+  @Inject JobsCreator mJobsCreator;
   @Inject BookingToBookingServerEntityMapper mapper;
 
   @Override protected void inject() {
@@ -47,9 +49,12 @@ import timber.log.Timber;
     Subscription subscription =
         mDataManager.checkInService(mapper.transform(mBookingEntity))
             .compose(ThreadSchedulers.applySchedulers())
-            .doOnNext(voidResponse -> {
-              if (voidResponse.code() == 200) {
+            .doOnNext(response -> {
+              if (response.code() == 200) {
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+            mJobsCreator.createNotification(String.valueOf(response.body().getId()),
+                Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
+                    - System.currentTimeMillis());
                 getViewState().stopAnimation();
               } else {
                 getViewState().showAlert();

@@ -44,7 +44,7 @@ public interface SalonApi {
   @GET("api/v1/masters/{masterId}/schedules")
   Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Path("masterId") String masterId);
 
-  @POST("api/v1/entry") Observable<retrofit2.Response<Void>> checkInService(
+  @POST("api/v1/entry") Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       @Header("User") int token, @Body BookingServerEntity bookingServerEntity);
 
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(

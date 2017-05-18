@@ -51,11 +51,6 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @InjectPresenter PostponeFragmentPresenter mPostponeFragmentPresenter;
-
-  @ProvidePresenter PostponeFragmentPresenter providePostponeFragmentPresenter() {
-    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(MASTER_ID)));
-  }
-
   @BindView(R.id.tv_service_description) TextView mTextViewServiceName;
   @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
@@ -71,13 +66,15 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
   @BindView(R.id.btnConfirmPostpone) CircularProgressButton mBtnConfirmPostpone;
-
   private List<DataServiceEntity> mDays = new ArrayList<>();
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
-
   private Integer mEntityId;
+
+  public PostponeFragment() {
+    super(R.layout.fragment_postpone);
+  }
 
   public static PostponeFragment newInstance(String serviceName, String masterName,
       Integer masterId, Integer entityId) {
@@ -91,8 +88,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     return fragment;
   }
 
-  public PostponeFragment() {
-    super(R.layout.fragment_postpone);
+  @ProvidePresenter PostponeFragmentPresenter providePostponeFragmentPresenter() {
+    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(MASTER_ID)));
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

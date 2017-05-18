@@ -45,8 +45,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp"
-      android:textSize="12sp"
       android:textColor="@color/colorGray"
+      android:textSize="12sp"
       app:layout_constraintBottom_toBottomOf="@+id/ivThumbNews"
       app:layout_constraintLeft_toRightOf="@+id/ivThumbNews"
       />

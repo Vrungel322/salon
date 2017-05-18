@@ -33,15 +33,15 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
   private OurWorkAdapter mOurWorkAdapter;
 
+  public OurWorkFragment() {
+    super(R.layout.fragment_our_work);
+  }
+
   public static OurWorkFragment newInstance() {
     Bundle args = new Bundle();
     OurWorkFragment fragment = new OurWorkFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public OurWorkFragment() {
-    super(R.layout.fragment_our_work);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

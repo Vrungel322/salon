@@ -5,6 +5,7 @@ import android.content.Context;
 import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import dagger.Module;
 import dagger.Provides;
 
@@ -26,6 +27,10 @@ import dagger.Provides;
 
   @Provides @AppScope public RxBus provideRxBus() {
     return new RxBus();
+  }
+
+  @Provides @AppScope public JobsCreator provideJobsCreator() {
+    return new JobsCreator();
   }
 
   @Provides @AppScope public Navigator provideNavigator() {

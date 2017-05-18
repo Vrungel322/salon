@@ -3,10 +3,10 @@
     android:id="@+id/llParent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
     android:layout_marginLeft="3dp"
     android:layout_marginStart="3dp"
+    android:orientation="vertical"
+    android:padding="12dp"
     >
   <TextView
       android:id="@+id/tvDate"
@@ -25,8 +25,8 @@
       android:id="@+id/tvStartTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="2dp"
       android:layout_gravity="center_horizontal"
+      android:layout_marginTop="2dp"
       android:textSize="11sp"
       />
   <TextView

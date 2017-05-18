@@ -39,5 +39,4 @@ import dagger.Subcomponent;
   void inject(BookingDetailMasterFragmentPresenter presenter);
 
   void inject(BookingDetailServiceFragmentPresenter presenter);
-
 }

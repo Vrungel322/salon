@@ -31,15 +31,15 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
   private MyBookingAdapter mMyBookingAdapter;
 
+  public MyBookFragment() {
+    super(R.layout.fragment_my_book);
+  }
+
   public static MyBookFragment newInstance() {
     Bundle args = new Bundle();
     MyBookFragment fragment = new MyBookFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public MyBookFragment() {
-    super(R.layout.fragment_my_book);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

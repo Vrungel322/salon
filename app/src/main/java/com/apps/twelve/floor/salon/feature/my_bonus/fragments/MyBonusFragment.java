@@ -23,15 +23,15 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
 
   @BindView(R.id.tvCountBonus) TextView mTvCountBonus;
 
+  public MyBonusFragment() {
+    super(R.layout.fragment_my_bonus);
+  }
+
   public static MyBonusFragment newInstance() {
     Bundle args = new Bundle();
     MyBonusFragment fragment = new MyBonusFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public MyBonusFragment() {
-    super(R.layout.fragment_my_bonus);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

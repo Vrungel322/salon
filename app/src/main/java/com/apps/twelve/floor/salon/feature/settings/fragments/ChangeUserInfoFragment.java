@@ -40,6 +40,10 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
   @BindView(R.id.etNewField) EditText mEditTextNewField;
   @BindView(R.id.btnSave) CircularProgressButton mButtonSave;
 
+  public ChangeUserInfoFragment() {
+    super(R.layout.fragment_change_user_info);
+  }
+
   public static ChangeUserInfoFragment newInstance(int changingField, CharSequence currentValue) {
     Bundle args = new Bundle();
     args.putInt(CHANGING_FIELD, changingField);
@@ -47,10 +51,6 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
     ChangeUserInfoFragment fragment = new ChangeUserInfoFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChangeUserInfoFragment() {
-    super(R.layout.fragment_change_user_info);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -37,15 +37,15 @@ public class ChooseServiceMasterFragment extends BaseFragment
 
   private MastersVerticalAdapter mMastersVerticalAdapter;
 
+  public ChooseServiceMasterFragment() {
+    super(R.layout.fragment_choose_service_master);
+  }
+
   public static ChooseServiceMasterFragment newInstance() {
     Bundle args = new Bundle();
     ChooseServiceMasterFragment fragment = new ChooseServiceMasterFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ChooseServiceMasterFragment() {
-    super(R.layout.fragment_choose_service_master);
   }
 
   @Override public void setUpUi() {

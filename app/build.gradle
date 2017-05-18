@@ -127,4 +127,7 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
+
+  //Alarm
+  compile 'com.evernote:android-job:1.1.10'
 }

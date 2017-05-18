@@ -13,6 +13,7 @@ public class BookingEntity {
   private String mServiceTime;
   private String mMasterName;
   private String mDurationServices;
+  private String mRemainTimeInSec;
 
   public BookingEntity(String serviceId, String userName, String userPhone, String dateId,
       String masterId, String serviceName, String serviceTime, String masterName,
@@ -98,5 +99,13 @@ public class BookingEntity {
 
   public void setMasterName(String masterName) {
     mMasterName = masterName;
+  }
+
+  public String getRemainTimeInSec() {
+    return mRemainTimeInSec;
+  }
+
+  public void setRemainTimeInSec(String timeInSec) {
+    this.mRemainTimeInSec = timeInSec;
   }
 }

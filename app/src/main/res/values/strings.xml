@@ -36,6 +36,10 @@
   <string name="cancel_booking">Отмена записи</string>
   <string name="confirm_cancel_booking">Подтвердите удаление записи.</string>
   <string name="confirm">Подтвердить</string>
+  <string name="notification_title">Напоминание</string>
+  <string name="notification_text">Ждем Вас в нашем салоне</string>
+  <string name="notification_hourly">через час</string>
+  <string name="notification_daily">через день</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Alfoginio\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
@@ -110,6 +114,9 @@
   <string name="button_save">Сохранить</string>
   <string name="report_problem_description">Опишите Вашу проблему:</string>
   <string name="report_problem_hint">Мой кот меня не любит</string>
+  <string name="settings_notifications_title">Присылать мне уведомления:</string>
+  <string name="settings_notifications_hourly">За час до начала услуги</string>
+  <string name="settings_notifications_daily">За день до начала услуги</string>
   <string name="report_problem_button">Отправить</string>
   <string name="menu_catalog">Каталог</string>
   <string name="choose_staff">Выбор продукции</string>

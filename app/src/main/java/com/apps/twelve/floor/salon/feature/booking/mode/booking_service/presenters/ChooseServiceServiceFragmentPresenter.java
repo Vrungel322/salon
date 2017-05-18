@@ -26,16 +26,14 @@ import timber.log.Timber;
 @InjectViewState public class ChooseServiceServiceFragmentPresenter
     extends BasePresenter<IChooseServiceServiceFragmentView> {
 
+  private static final String SLASH = "/";
   @Inject DataManager mDataManager;
   @Inject BookingEntity mBookingEntity;
   @Inject RxBus mRxBus;
-
   private List<ServiceEntity> mServiceAllEntities = new ArrayList<>();
   private List<List<CategoryEntity>> mListListCategories = new ArrayList<>();
   private List<String> mPathList = new ArrayList<>();
   private StringBuilder mPath = new StringBuilder();
-
-  private static final String SLASH = "/";
 
   @Override protected void inject() {
     App.getBookingComponent().inject(this);

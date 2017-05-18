@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookingAdapterVie
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
@@ -20,18 +21,20 @@ import timber.log.Timber;
     extends BasePresenter<IMyBookingAdapterView> {
 
   @Inject DataManager mDataManager;
+  @Inject JobsCreator mJobsCreator;
   @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
-  public void cancelOrder(int position, Integer serviceId) {
-    Subscription subscription = mDataManager.cancelOrder(serviceId)
+  public void cancelOrder(int position, Integer entityId) {
+    Subscription subscription = mDataManager.cancelOrder(entityId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+            mJobsCreator.cancelJob(String.valueOf(entityId));
           }
         }, Timber::e);
     addToUnsubscription(subscription);

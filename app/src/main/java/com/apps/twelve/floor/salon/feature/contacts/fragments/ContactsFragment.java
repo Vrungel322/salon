@@ -30,15 +30,15 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
 
   @BindView(R.id.tv_map) TextView mTvMap;
 
+  public ContactsFragment() {
+    super(R.layout.fragment_contacts);
+  }
+
   public static ContactsFragment newInstance() {
     Bundle args = new Bundle();
     ContactsFragment fragment = new ContactsFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public ContactsFragment() {
-    super(R.layout.fragment_contacts);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

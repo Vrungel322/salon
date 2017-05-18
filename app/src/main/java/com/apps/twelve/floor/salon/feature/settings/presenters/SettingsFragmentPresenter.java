@@ -20,12 +20,12 @@ import timber.log.Timber;
 @InjectViewState public class SettingsFragmentPresenter
     extends BasePresenter<ISettingsFragmentView> {
 
+  @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
-
-  @Inject DataManager mDataManager;
-  @Inject RxBus mRxBus;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();

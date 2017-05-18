@@ -9,6 +9,17 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LastBookingEntity implements Parcelable {
+  @SuppressWarnings({
+      "unchecked"
+  }) public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
+    @Override public LastBookingEntity createFromParcel(Parcel in) {
+      return new LastBookingEntity(in);
+    }
+
+    @Override public LastBookingEntity[] newArray(int size) {
+      return new LastBookingEntity[size];
+    }
+  };
   @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
@@ -52,18 +63,6 @@ public class LastBookingEntity implements Parcelable {
   @Override public int describeContents() {
     return 0;
   }
-
-  @SuppressWarnings({
-      "unchecked"
-  }) public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
-    @Override public LastBookingEntity createFromParcel(Parcel in) {
-      return new LastBookingEntity(in);
-    }
-
-    @Override public LastBookingEntity[] newArray(int size) {
-      return new LastBookingEntity[size];
-    }
-  };
 
   public Integer getId() {
     return id;

@@ -10,6 +10,15 @@ import java.util.ArrayList;
  */
 
 public class OurWorkEntity implements Parcelable {
+  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
+    @Override public OurWorkEntity createFromParcel(Parcel in) {
+      return new OurWorkEntity(in);
+    }
+
+    @Override public OurWorkEntity[] newArray(int size) {
+      return new OurWorkEntity[size];
+    }
+  };
   @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("description") private String mShortDescription;
@@ -56,16 +65,6 @@ public class OurWorkEntity implements Parcelable {
   @Override public int describeContents() {
     return 0;
   }
-
-  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
-    @Override public OurWorkEntity createFromParcel(Parcel in) {
-      return new OurWorkEntity(in);
-    }
-
-    @Override public OurWorkEntity[] newArray(int size) {
-      return new OurWorkEntity[size];
-    }
-  };
 
   public int getId() {
     return id;

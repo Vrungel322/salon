@@ -32,15 +32,15 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
 
   private MyLastBookingAdapter mMyLastBookingAdapter;
 
+  public SubBookingFragment() {
+    super(R.layout.fragment_sub_booking);
+  }
+
   public static SubBookingFragment newInstance() {
     Bundle args = new Bundle();
     SubBookingFragment fragment = new SubBookingFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public SubBookingFragment() {
-    super(R.layout.fragment_sub_booking);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

@@ -46,6 +46,12 @@ public final class Constants {
     public static final String CHANGING_FIELD_VALUE = "CHANGING_FIELD_VALUE";
   }
 
+  public class Notifications {
+    public static final String NOTIFICATION_TYPE = "NOTIFICATION_TYPE";
+    public static final String DAILY = "DAILY";
+    public static final String HOURLY = "HOURLY";
+  }
+
   public class FragmentToShow {
     public static final String BONUS = "BONUS";
     public static final String REGISTRATION = "REGISTRATION";
