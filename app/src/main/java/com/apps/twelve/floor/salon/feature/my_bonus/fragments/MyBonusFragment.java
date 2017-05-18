@@ -7,6 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IMyBonusFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
@@ -36,12 +37,24 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ((StartActivity) getActivity()).setTitleAppBar(R.string.bonus);
+    if (getActivity() instanceof StartActivity) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.bonus);
+    }
+
+    if (getActivity() instanceof BookingActivity) {
+      ((BookingActivity) getActivity()).setTitleAppBar(R.string.bonus);
+    }
   }
 
   @Override public void onDestroyView() {
     super.onDestroyView();
-    ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+    if (getActivity() instanceof StartActivity) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+    }
+
+    if (getActivity() instanceof BookingActivity) {
+      ((BookingActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+    }
   }
 
   @Override public void setBonusCount(Integer count) {

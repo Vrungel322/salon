@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
+import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
@@ -57,8 +58,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_my_bonus:
-        /*mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this, R.id.container_main,
-            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);*/
+        mNavigator.addFragmentTagBackStackNotCopy(BookingActivity.this, R.id.container_booking,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
       default:
         return super.onOptionsItemSelected(item);
