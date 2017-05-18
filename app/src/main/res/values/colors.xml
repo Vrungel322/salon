@@ -63,6 +63,7 @@
   <!--screen booking-->
   <color name="colorBookingText">#80000000</color>
   <color name="colorBookingBackground">#f9fafa</color>
+  <color name="colorNotifications">#FF2972</color>
 
   <!--screen BookingInfo-->
   <color name="colorBookingInfoBackground">#1AEB3472</color>

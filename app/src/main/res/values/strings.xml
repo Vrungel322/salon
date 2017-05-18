@@ -35,6 +35,10 @@
   <string name="cancel_booking">Отмена записи</string>
   <string name="confirm_cancel_booking">Подтвердите удаление записи.</string>
   <string name="confirm">Подтвердить</string>
+  <string name="notification_title">Напоминание</string>
+  <string name="notification_text">Ждем Вас в нашем салоне</string>
+  <string name="notification_hourly">через час</string>
+  <string name="notification_daily">через день</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Alfoginio\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>

@@ -6,7 +6,6 @@ import com.evernote.android.job.JobManager;
 import com.evernote.android.job.JobRequest;
 import com.evernote.android.job.util.support.PersistableBundleCompat;
 import java.util.concurrent.TimeUnit;
-import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
@@ -23,8 +22,8 @@ public class JobsCreator implements JobCreator {
   }
 
   public void createNotification(String tag, Long millis) {
-    if (millis - TimeUnit.HOURS.toMillis(1) > 0) {
-      createHourly(tag, millis - TimeUnit.HOURS.toMillis(1));
+    if (millis - TimeUnit.SECONDS.toMillis(3) > 0) {
+      createHourly(tag, millis - TimeUnit.SECONDS.toMillis(3));
     }
     if (millis - TimeUnit.HOURS.toMillis(24) > 0) {
       createDaily(tag, millis - TimeUnit.HOURS.toMillis(24));
@@ -32,7 +31,6 @@ public class JobsCreator implements JobCreator {
   }
 
   private void createHourly(String tag, Long millis) {
-    Timber.e(millis + "");
     PersistableBundleCompat bundle = new PersistableBundleCompat();
     bundle.putString(NOTIFICATION_TYPE, HOURLY);
     new JobRequest.Builder(tag).setExact(millis).setRequiresCharging(false).setExtras(bundle)
