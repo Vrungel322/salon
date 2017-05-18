@@ -113,6 +113,9 @@
   <string name="button_save">Сохранить</string>
   <string name="report_problem_description">Опишите Вашу проблему:</string>
   <string name="report_problem_hint">Мой кот меня не любит</string>
+  <string name="settings_notifications_title">Присылать мне уведомления:</string>
+  <string name="settings_notifications_hourly">За час до начала услуги</string>
+  <string name="settings_notifications_daily">За день до начала услуги</string>
   <string name="report_problem_button">Отправить</string>
   <string name="menu_catalog">Каталог</string>
   <string-array name="gender">

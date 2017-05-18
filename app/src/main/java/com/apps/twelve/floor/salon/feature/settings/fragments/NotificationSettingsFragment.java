@@ -3,6 +3,8 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Switch;
+import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
@@ -18,6 +20,9 @@ public class NotificationSettingsFragment extends BaseFragment
     implements INotificationSettingsFragmentView {
 
   @InjectPresenter NotificationSettingsFragmentPresenter mNotificationSettingsFragmentPresenter;
+
+  @BindView(R.id.switchHourly) Switch mSwithHourly;
+  @BindView(R.id.switchDaily) Switch mSwitchDaily;
 
   public NotificationSettingsFragment() {
     super(R.layout.fragment_notification_settings);
