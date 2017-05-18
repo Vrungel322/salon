@@ -38,10 +38,17 @@ public class StaffListAdapter extends RecyclerView.Adapter<StaffListAdapter.Staf
         .load(Uri.parse(mStaffEntities.get(position).getImageURL()))
         .into(holder.mImageViewStaffPhoto);
 
+    if (mStaffEntities.get(position).isNew()) {
+      holder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_face);
+    } else {
+      holder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_notifications);
+    }
+
+    // TODO: 18.05.2017 set mImageViewType depending mStaffEntities.get(position).getType()
+
     holder.mTextViewStaffName.setText(mStaffEntities.get(position).getTitle());
     holder.mTextViewShortDescription.setText(mStaffEntities.get(position).getShortDescription());
     holder.mTextViewPrice.setText(mStaffEntities.get(position).getPrice());
-
   }
 
   @Override public int getItemCount() {
@@ -53,6 +60,8 @@ public class StaffListAdapter extends RecyclerView.Adapter<StaffListAdapter.Staf
   }
 
   static class StaffListViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.ivIsNew) ImageView mImageViewIsNew;
+    @BindView(R.id.ivType) ImageView mImageViewType;
     @BindView(R.id.ivStaffPhoto) ImageView mImageViewStaffPhoto;
     @BindView(R.id.tvStaffName) TextView mTextViewStaffName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
