@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+  <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
+      card_view:cardCornerRadius="1dp"
+      card_view:cardElevation="3dp"
+      card_view:cardUseCompatPadding="true"
+      >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        >
+
+      <ImageView
+          android:id="@+id/ivStaffPhoto"
+          android:layout_width="match_parent"
+          android:layout_height="150dp"
+          android:layout_alignParentTop="true"
+          android:scaleType="centerCrop"
+          tools:background="@color/colorAccent"
+          />
+
+      <TextView
+          android:id="@+id/tvStaffName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/ivStaffPhoto"
+          android:layout_marginBottom="8dp"
+          android:layout_marginLeft="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:ellipsize="end"
+          android:maxLines="3"
+          android:text="name"
+          android:textColor="@color/colorOurWorksTitile"
+          android:textSize="24sp"
+          />
+      <TextView
+          android:id="@+id/tvShortDescription"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/tvStaffName"
+          android:layout_below="@+id/tvStaffName"
+          android:text="Description"
+          />
+      <TextView
+          android:id="@+id/tvPrice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/tvStaffName"
+          android:layout_below="@+id/tvShortDescription"
+          android:layout_gravity="bottom"
+          android:layout_marginBottom="3dp"
+          android:layout_marginTop="3dp"
+          android:text="100$"
+          android:textColor="@color/colorStaffPrice"
+          android:textSize="18sp"
+          />
+    </RelativeLayout>
+  </android.support.v7.widget.CardView>
+</RelativeLayout>

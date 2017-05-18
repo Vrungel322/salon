@@ -9,7 +9,10 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
+import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -155,5 +158,26 @@ public class DataManager {
 
   public Observable<Response<Void>> removeFromFavorite(int photoId) {
     return mRestApi.removeFromFavorite(photoId, mPref.getToken());
+  }
+
+  public Observable<List<StaffEntity>> fetchStaff() {
+    List<StaffEntity> staffEntities = new ArrayList<>();
+    ArrayList<StaffDetailContent> details = new ArrayList<>();
+    for (int i = 0; i < 5; i++) {
+      details.add(new StaffDetailContent(i,
+          "Some BIG description,Some BIG description,Some BIG description",
+          "https://look.tm/statics/images/post/2648909-13243182.jpg"));
+    }
+    for (int i = 0; i < 33; i++) {
+      staffEntities.add(new StaffEntity("title " + i,
+          "Some short description,Some short description,Some short description", "100$", true, 1,
+          "https://look.tm/statics/images/post/2648909-13243182.jpg", details));
+    }
+
+    staffEntities.add(3,new StaffEntity("title " + 3,
+        "Some short description", "100$", true, 1,
+        "https://look.tm/statics/images/post/2648909-13243182.jpg", details));
+
+    return Observable.just(staffEntities);
   }
 }

@@ -111,6 +111,8 @@
   <string name="report_problem_hint">Мой кот меня не любит</string>
   <string name="report_problem_button">Отправить</string>
   <string name="menu_catalog">Каталог</string>
+  <string name="choose_staff">Выбор продукции</string>
+  <string name="choose_categotry">Выбрать категорию</string>
   <string-array name="gender">
     <item>Женский</item>
     <item>Мужской</item>
