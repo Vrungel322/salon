@@ -37,7 +37,6 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
   @BindView(R.id.tvStaffTitle) TextView mTextViewTitle;
 
   @BindView(R.id.tvStaffDescription) TextView mTextViewDescription;
-  @BindView(R.id.tvMore) TextView mTextViewMore;
   @BindView(R.id.viewPagerImages) CustomViewPager mViewPagerImages;
   @BindView(R.id.recyclerViewImages) RecyclerView mRecyclerViewImages;
   @BindView(R.id.bPrevStaffImg) ImageButton mImageButtonPrevious;
@@ -47,7 +46,6 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
   private ImageStaffViewPagerAdapter mViewPagerAdapter;
 
   private HorizontalListAdapters mHorizontalListAdapter;
-  private StaffDetailContent mStaffDetail;
 
   public StaffDetailsFragment() {
     super(R.layout.fragment_catalog_item_detail);
@@ -99,7 +97,6 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
       mHorizontalListAdapter.notifyDataSetChanged();
 
       int currentPos = 0;
-      mStaffDetail = mViewPagerAdapter.getEntity(currentPos);
       mHorizontalListAdapter.setSelectedItem(currentPos);
       mViewPagerImages.setCurrentItem(currentPos);
 
@@ -107,27 +104,12 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
       updateImageInfoAndButtons();
     }
 
-    mTextViewDescription.getViewTreeObserver()
-        .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-          @Override public void onGlobalLayout() {
-            if (mTextViewDescription.getLineCount() > 3) {
-              mTextViewMore.setVisibility(View.VISIBLE);
-              mTextViewDescription.setMaxLines(3);
-              mTextViewDescription.setEllipsize(TextUtils.TruncateAt.END);
-              mTextViewDescription.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            } else {
-              mTextViewDescription.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-          }
-        });
-
     mViewPagerImages.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
       @Override
       public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
       }
 
       @Override public void onPageSelected(int position) {
-        mStaffDetail = mViewPagerAdapter.getEntity(position);
 
         mRecyclerViewImages.smoothScrollToPosition(position);
         mHorizontalListAdapter.setSelectedItem(position);
@@ -152,22 +134,14 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
     }
   }
 
-  @OnClick(R.id.tvMore) public void onClick() {
-    if (mTextViewDescription.getMaxLines() == 3) {
-      mTextViewDescription.setMaxLines(Integer.MAX_VALUE);
-      mTextViewDescription.setEllipsize(null);
-    } else {
-      mTextViewDescription.setMaxLines(3);
-      mTextViewDescription.setEllipsize(TextUtils.TruncateAt.END);
-    }
-  }
+
 
   @OnClick(R.id.bPrevStaffImg) public void nextPicture() {
-    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() + 1, true);
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
   }
 
   @OnClick(R.id.bNextStaffImg) public void previousPicture() {
-    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
+    mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() + 1, true);
   }
 
   @Override public void onDestroy() {
