@@ -390,6 +390,17 @@
             android:layout_below="@id/separatorAdditionalSettings"
             android:background="?attr/selectableItemBackground"
             >
+          <android.support.v7.widget.AppCompatImageView
+              android:id="@+id/ivNotifications"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:layout_marginRight="8dp"
+              android:layout_marginEnd="8dp"
+              android:layout_marginTop="14dp"
+              app:srcCompat="@drawable/ic_date_next_24dp"
+              />
           <TextView
               android:id="@+id/tvNotifications"
               android:layout_width="match_parent"
@@ -400,8 +411,6 @@
               android:layout_marginRight="8dp"
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
-              android:drawableEnd="@drawable/ic_date_next_24dp"
-              android:drawableRight="@drawable/ic_date_next_24dp"
               android:text="@string/settings_notifications"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"
@@ -422,6 +431,17 @@
             android:layout_below="@id/rlNotifications"
             android:background="?attr/selectableItemBackground"
             >
+          <android.support.v7.widget.AppCompatImageView
+              android:id="@+id/ivProblem"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:layout_marginRight="8dp"
+              android:layout_marginEnd="8dp"
+              android:layout_marginTop="14dp"
+              app:srcCompat="@drawable/ic_date_next_24dp"
+              />
           <TextView
               android:id="@+id/tvProblem"
               android:layout_width="match_parent"
@@ -432,8 +452,6 @@
               android:layout_marginRight="8dp"
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
-              android:drawableEnd="@drawable/ic_date_next_24dp"
-              android:drawableRight="@drawable/ic_date_next_24dp"
               android:text="@string/settings_problem"
               android:textColor="@color/colorSettingsGeneralText"
               android:textSize="16sp"

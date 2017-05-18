@@ -3,8 +3,8 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Switch;
 import butterknife.BindView;
+import butterknife.OnCheckedChanged;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
@@ -21,8 +21,8 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @InjectPresenter NotificationSettingsFragmentPresenter mNotificationSettingsFragmentPresenter;
 
-  @BindView(R.id.switchHourly) Switch mSwithHourly;
-  @BindView(R.id.switchDaily) Switch mSwitchDaily;
+  @BindView(R.id.switchHourly) android.support.v7.widget.SwitchCompat mSwitchHourly;
+  @BindView(R.id.switchDaily) android.support.v7.widget.SwitchCompat mSwitchDaily;
 
   public NotificationSettingsFragment() {
     super(R.layout.fragment_notification_settings);
@@ -39,5 +39,18 @@ public class NotificationSettingsFragment extends BaseFragment
     super.onViewCreated(view, savedInstanceState);
 
     ((SettingsActivity) getActivity()).setTitleAppBar(R.string.settings_notifications);
+  }
+
+  @OnCheckedChanged(R.id.switchHourly) void switchHourly(boolean checked) {
+    mNotificationSettingsFragmentPresenter.setHourlyNotificationsEnabled(checked);
+  }
+
+  @OnCheckedChanged(R.id.switchDaily) void switchDaily(boolean checked) {
+    mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
+  }
+
+  @Override public void setUpSwitchers(boolean hourly, boolean daily) {
+    mSwitchHourly.setChecked(hourly);
+    mSwitchDaily.setChecked(daily);
   }
 }

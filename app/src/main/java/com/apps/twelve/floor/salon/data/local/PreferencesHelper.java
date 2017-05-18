@@ -20,6 +20,8 @@ public class PreferencesHelper {
   private static final String PREF_PROFILE_PHONE = "PREF_PROFILE_PHONE";
   private static final String PREF_PROFILE_GENDER = "PREF_PROFILE_GENDER";
   private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
+  private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
+  private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_TOKEN = "PREF_TOKEN";
 
   private final SharedPreferences mPreferences;
@@ -94,6 +96,22 @@ public class PreferencesHelper {
 
   public void setProfileGender(int gender) {
     mPreferences.edit().putInt(PREF_PROFILE_GENDER, gender).apply();
+  }
+
+  public boolean isHourlyNotificationsEnabled() {
+    return mPreferences.getBoolean(PREF_NOTIF_HOURLY_ENABLED, true);
+  }
+
+  public void setHourlyNotificationsEnabled(boolean enabled) {
+    mPreferences.edit().putBoolean(PREF_NOTIF_HOURLY_ENABLED, enabled).apply();
+  }
+
+  public boolean isDailyNotificationsEnabled() {
+    return mPreferences.getBoolean(PREF_NOTIF_DAILY_ENABLED, true);
+  }
+
+  public void setDailyNotificationsEnabled(boolean enabled) {
+    mPreferences.edit().putBoolean(PREF_NOTIF_DAILY_ENABLED, enabled).apply();
   }
 
   public String getToken() {

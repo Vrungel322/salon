@@ -40,7 +40,7 @@
         android:textColor="@color/colorSettingsGeneralText"
         android:textSize="16sp"
         />
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/switchHourly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,6 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
-        android:checked="true"
         />
     <View
         android:id="@+id/separatorHourly"
@@ -80,7 +79,7 @@
         android:textColor="@color/colorSettingsGeneralText"
         android:textSize="16sp"
         />
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/switchDaily"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +88,6 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
-        android:checked="true"
         />
     <View
         android:id="@+id/separatorDaily"
