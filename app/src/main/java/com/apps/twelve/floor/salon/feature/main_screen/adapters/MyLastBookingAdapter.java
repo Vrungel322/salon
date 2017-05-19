@@ -74,7 +74,7 @@ public class MyLastBookingAdapter
     if (position == 0) {
       holder.mConstraintLayoutLastBooking.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
-              R.color.colorLLightPink));
+              R.color.colorLightPink));
       holder.view.setVisibility(View.VISIBLE);
     } else {
       int[] attrs = new int[] { R.attr.selectableItemBackground };

@@ -24,7 +24,7 @@
 
       <com.mzelzoghbi.zgallery.CustomViewPager
           android:id="@+id/viewPagerImages"
-          android:background="@color/colorLLLLightGray"
+          android:background="@color/colorLLLightGray"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_alignParentBottom="true"

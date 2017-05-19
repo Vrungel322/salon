@@ -45,7 +45,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     } else {
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorLLLLightGray));
+              R.color.colorLLLightGray));
     }
     Picasso.with(holder.mImageViewServiceImg.getContext())
         .load(mServiceEntities.get(position).getImage())

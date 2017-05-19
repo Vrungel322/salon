@@ -9,14 +9,12 @@
   <color name="colorGray">#404141</color>
   <color name="colorLightGray">#727272</color>
   <color name="colorLLightGray">#a4a4a4</color>
-  <color name="colorLLLLightGray">#fdf7f7f7</color>
-  <color name="colorLightPink">#FAD0DE</color>
-  <color name="colorLLightPink">#fbe9f0</color>
+  <color name="colorLLLightGray">#fdf7f7f7</color>
+  <color name="colorLightPink">#fbe9f0</color>
   <color name="colorRed">#f50834</color>
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
-  <color name="colorTransparentPink">#B3EB3472</color>
   <color name="colorTransparentGray">#7be4e4e4</color>
   <color name="colorTransparentBlack">#80000000</color>
 

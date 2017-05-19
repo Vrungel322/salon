@@ -116,9 +116,13 @@
           android:layout_width="match_parent"
           android:layout_height="100dp"
           android:layout_alignBottom="@+id/viewPagerImages"
-          android:background="@color/colorTransparentPink"
           >
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:alpha=".6"
+            />
         <CheckBox
             android:id="@+id/checkBoxFavorite"
             android:layout_width="wrap_content"
