@@ -6,7 +6,7 @@
     android:width="24dp">
 
   <path
-      android:fillColor="@color/colorChooseDateArrow"
+      android:fillColor="@color/colorLLightGray"
       android:pathData="M7.9,12l9-9c0.2-0.2,0.2-0.6,0-0.8s-0.6-0.2-0.8,0l-9.4,9.4c-0.2,0.2-0.2,0.6,0,0.8l9.4,9.4c0.1,0.1,0.3,0.2,0.4,0.2
 s0.3-0.1,0.4-0.2c0.2-0.2,0.2-0.6,0-0.8L7.9,12z"/>
 </vector>

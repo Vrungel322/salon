@@ -76,8 +76,7 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
   }
 
   @Override public void stopAnimation() {
-    mButtonSave.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
+    mButtonSave.doneLoadingAnimation(ContextCompat.getColor(getContext(), R.color.colorAccent),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 

@@ -4,188 +4,21 @@
   <color name="colorPrimaryDark">#FF2972</color>
   <color name="colorAccent">#ff4081</color>
 
+  <color name="colorWhite">#ffffff</color>
+  <color name="colorBlack">#000000</color>
   <color name="colorGray">#404141</color>
   <color name="colorLightGray">#727272</color>
-  <color name="colorLLightGray">#939393</color>
-  <color name="colorLLLightGray">#bdbdbd</color>
-  <color name="colorLLLLightGray">#f7f7f7</color>
-  <color name="colorWhite">#ffffff</color>
-  <color name="colorBlack">#000001</color>
+  <color name="colorLLightGray">#a4a4a4</color>
+  <color name="colorLLLLightGray">#fdf7f7f7</color>
   <color name="colorDarkPink">#FFCA1050</color>
   <color name="colorLightPink">#FAD0DE</color>
-  <color name="colorLLightPink">#FFFBE9F0</color>
-
-  <!--screen main-->
-  <color name="colorNavigationText">#ffffff</color>
-  <color name="colorNavigationIcon">#ffffff</color>
-  <!--sub news-->
-  <color name="colorMainScreenText">#a7a8a8</color>
-  <color name="colorMainScreenTextAllNews">#ff4081</color>
-  <color name="colorMainScreenTextNews">#000000</color>
-  <color name="colorMainScreenTextNewsDate">#a7a8a8</color>
-  <color name="colorMainScreenNewsBackground">#ffffff</color>
-  <!--sub bonus-->
-  <color name="colorMainScreenBonusBackground">#e4336f</color>
-  <color name="colorMainScreenBonusIconInfo">#ffffff</color>
-  <color name="colorMainScreenBonusIconUser">#ffffff</color>>
-  <color name="colorMainScreenBonusText">#ffffff</color>
-  <!--sub booking-->
-  <color name="colorMainScreenBookingName">#000000</color>
-  <color name="colorMainScreenBookingDate">#a7a8a8</color>
-  <color name="colorMainScreenBookingDuration">#f50834</color>
-  <color name="colorMainScreenBookingLeftLine">#f50834</color>
-  <color name="colorMainScreenBookingRecall">#a7a8a8</color>
-  <color name="colorMainScreenBookingCancel">#a7a8a8</color>
-  <color name="colorMainScreenBookingPressed">#fbe9f0</color>
-
-  <!--screen OurWorks-->
-  <color name="colorOurWorksBackground">#FFFFFF</color>
-  <color name="colorOurWorksIcon">#FFC6C5C1</color>
-  <color name="colorOurWorksTitile">#000000</color>
-  <color name="colorOurWorksText">#c6c5c1</color>
-  <color name="colorOurWorksPressed">#1AEB3472</color>
-
-  <!--screen WorkDetails-->
-  <color name="colorIconHeart">#FFFFFF</color>
-  <color name="colorIconArrowLeft">#80ffffff</color>
-  <color name="colorIconArrowRight">#FFFFFF</color>
-  <color name="colorWorkDetailsTitle">#8C000000</color>
-  <color name="colorWorkDetailsText">#E6000000</color>
-  <color name="colorWorkDetailsTextHover">#ffffff</color>
-  <color name="colorWorkDetailsTextMore">#8C000000</color>
-  <color name="colorWorkDetailsTextCount">#FFFFFF</color>
-  <color name="colorWorkDetailsHover">#B3EB3472</color>
-
-  <!--news screens-->
-  <color name="colorDetailNewsTitle">#8C000000</color>
-  <color name="colorDetailNewsText">#000000</color>
-
-  <!--screen booking-->
-  <color name="colorBookingText">#80000000</color>
-  <color name="colorBookingBackground">#f9fafa</color>
-  <color name="colorNotifications">#FF2972</color>
-
-  <!--screen BookingInfo-->
-  <color name="colorBookingInfoBackground">#1AEB3472</color>
-  <color name="colorBookingInfoTitleService">#a09498</color>
-  <color name="colorBookingInfoDescriptionService">#000000</color>
-  <color name="colorBookingInfoTitleTime">#a09498</color>
-  <color name="colorBookingInfoDescriptionTime">#000000</color>
-  <color name="colorBookingInfoDetailsTime">#80000000</color>
-  <color name="colorBookingInfoIconTime">#80000000</color>
-  <color name="colorBookingInfoTitleMaster">#a09498</color>
-  <color name="colorBookingInfoDescriptionMaster">#000000</color>
-  <color name="colorBookingInfoDetailsMaster">#80000000</color>
-
-  <!--screen ChooseService-->
-  <color name="colorChooseServiceEditTextBackground">#f9f2f2f2</color>
-  <color name="colorChooseServiceTextPath">#FFA2A2A2</color>
-  <color name="colorChooseServiceBackground">#FFFFFF</color>
-  <color name="colorChooseServiceNotPressedBackground">#f8f8f8</color>
-  <color name="colorChooseServicePressedBackground">#f9d5e2</color>
-  <color name="colorChooseServiceName">#000000</color>
-  <color name="colorChooseServiceDescription">#B3000000</color>
-  <color name="colorChooseServicePrice">#000000</color>
-  <color name="colorChooseServiceDuration">#B3000000</color>
-
-  <!--screen ChooseTime-->
-  <color name="colorChooseDateBackground">#f5f5f5</color>
-  <color name="colorChooseDateText">#000000</color>
-  <color name="colorChooseDateArrow">#919191</color>
-  <color name="colorChooseDateNotTime">#EB3472</color>
-  <color name="colorChooseDateNotTimeBackground">#edf2f6</color>
-  <color name="colorChooseDateNotTimeText">#FFFFFF</color>
-  <color name="colorChooseDateNotTimeIcon">#FFFFFF</color>
-  <color name="colorChooseDateTimeBackground">#ececec</color>
-  <color name="colorChooseDateTimeTextFreeTime">#000000</color>
-  <color name="colorChooseDateTimeTextCurrentDay">#EB3472</color>
-  <color name="colorChooseDateTimeTextDayInMonth">#000000</color>
-  <color name="colorChooseDateChosenTimeBackground">#EB3472</color>
-  <color name="colorChooseDateChosenTimeText">#FFFFFF</color>
-  <color name="colorChooseDateNotChosenTimeBackground">#FFFFFF</color>
-  <color name="colorChooseDateNotChosenTimeText">#000000</color>
-  <color name="colorChooseDateNotActiveTimeBackground">#00000000</color>
-  <color name="colorChooseDateNotActiveTimeText">#4D000000</color>
-  <color name="colorChooseDateChosenDayBg">#EB3472</color>
-  <color name="colorChooseDateChosenDayText">#FFFFFF</color>
-  <color name="colorChooseDateChosenDayStartTime">#FFFFFF</color>
-  <color name="colorChooseDateChosenDayEndTime">#FFFFFF</color>
-  <color name="colorChooseDateChosenDayLine">#FFFFFF</color>
-  <color name="colorChooseDateNotChosenDayBg">#FFFFFF</color>
-  <color name="colorChooseDateNotChosenDayText">#000000</color>
-  <color name="colorChooseDateNotChosenDayStartTime">#000000</color>
-  <color name="colorChooseDateNotChosenDayEndTime">#000000</color>
-  <color name="colorChooseDateNotChosenDayLine">#EB3472</color>
-  <color name="colorChooseDateNotActiveDayBg">#4DFFFFFF</color>
-  <color name="colorChooseDateNotActiveDayText">#4D000000</color>
-  <color name="colorChooseDateNotActiveDayStartTime">#4D000000</color>
-  <color name="colorChooseDateNotActiveDayEndTime">#4D000000</color>
-  <color name="colorChooseDateNotActiveDayLine">#4DEB3472</color>
-
-  <!--screen ChooseMaster-->
-  <color name="colorChooseMasterBackground">#ededed</color>
-  <color name="colorChooseMasterTitle">#EB3472</color>
-  <color name="colorChooseMasterTextAnyMaster">#000000</color>
-  <color name="colorChooseMasterTextMasterName">#000000</color>
-  <color name="colorChooseMasterTextMasterDescription">#80000000</color>
-  <color name="colorChooseMasterChosen">#fbe9f0</color>
-  <color name="colorChooseMasterNotChosen">#FFFFFF</color>
-  <color name="colorChooseMasterAnyMasterBackground">#e4336f</color>
-
-  <!--screen BookingContacts-->
-  <color name="colorBookingContactsTitleName">#000000</color>
-  <color name="colorBookingContactsHintName">#80000000</color>
-  <color name="colorBookingContactsTitlePhone">#000000</color>
-  <color name="colorBookingContactsHintPhone">#80000000</color>
-  <color name="colorBookingContactsEditTextBg">#f9f5f5f5</color>
-  <color name="colorBookingContactsButton">#EB3472</color>
-  <color name="colorBookingContactsButtonText">#FFFFFF</color>
-
-  <!--screen contacts-->
-  <color name="colorIconContacts">#FFC6C5C1</color>
-  <color name="colorTitleBase">#FFA2A2A2</color>
-  <color name="colorPhone">#FFEA3472</color>
-  <color name="colorTitlePhone">#FF737373</color>
-  <color name="colorAddress">#FFEA3472</color>
-  <color name="colorTitleAddress">#FF737373</color>
-  <color name="colorMail">#FFEA3472</color>
-  <color name="colorTitleMail">#FF737373</color>
-  <color name="colorTime">#FFEA3472</color>
-  <color name="colorTitleTime">#FF737373</color>
-  <color name="colorTitleAbout">#FFEA3472</color>
-  <color name="colorTitleWeb">#FFEA3472</color>
-
-  <!--screen settings-->
-  <color name="colorSettingsBackground">#f9fafa</color>
-  <color name="colorSettingsBlockBackground">#ffffff</color>
-  <color name="colorSettingsSeparator">#7be4e4e4</color>
-  <color name="colorSettingsIcons">#7c7c7c</color>
-  <color name="colorSettingsChangePhotoText">#FFEA3472</color>
-  <color name="colorSettingsGeneralText">#000000</color>
-  <color name="colorSettingsBlockHeaderText">#9f9f9f</color>
-  <color name="colorSettingsFinalBlockText">#FFEA3472</color>
-  <color name="colorSettingEditText">#7be4e4e4</color>
-  <color name="colorSettingsSaveButton">#EB3472</color>
-  <color name="colorSettingsSaveButtonText">#ffffff</color>
-  <color name="colorSettingsReportProblemBackground">#f7ececec</color>
-  <color name="colorSettingsReportProblemText">#000000</color>
-  <color name="colorSettingsReportProblemHint">#9f9f9f</color>
-  <color name="colorSettingsReportProblemButton">#EB3472</color>
-  <color name="colorSettingsReportProblemButtonText">#ffffff</color>
-
-  <!--screen choose staff-->
-  <color name="colorStaffText">#a09498</color>
-  <color name="colorStaffButton">#ededed</color>
-  <color name="colorBackgroundStaffList">#ededed</color>
-  <color name="colorStaffPrice">#EB3472</color>
-  <color name="colorStaffDescriptionText">#969394</color>
-  <color name="colorStaffCustomViewPager">#d1d0d0</color>
-
+  <color name="colorLLightPink">#fbe9f0</color>
+  <color name="colorRed">#f50834</color>
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
-  <color name="colorPinkTransparent">#b1ca1050</color>
-  <color name="colorPinkGrayTransparent">#ce875664</color>
-  <color name="colorGrayTransparent">#4ab6b6b6</color>
+  <color name="colorTransparentPink">#B3EB3472</color>
+  <color name="colorTransparentGray">#7be4e4e4</color>
+  <color name="colorTransparentBlack">#80000000</color>
 
 </resources>

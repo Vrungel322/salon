@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSettingsBackground"
+    android:background="@color/colorLLLLightGray"
     android:clickable="true"
     android:orientation="vertical"
     >
@@ -18,7 +18,7 @@
       android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
-      android:textColor="@color/colorSettingsBlockHeaderText"
+      android:textColor="@color/colorLLightGray"
       android:textSize="16sp"
       />
   <TextView
@@ -31,7 +31,7 @@
       android:layout_marginTop="10dp"
       android:paddingLeft="5dp"
       android:paddingStart="5dp"
-      android:textColor="@color/colorSettingsGeneralText"
+      android:textColor="@color/colorBlack"
       android:textSize="16sp"
       android:textStyle="bold"
       />
@@ -43,7 +43,7 @@
       android:layout_alignStart="@+id/tvCurrentField"
       android:layout_below="@+id/tvCurrentField"
       android:layout_marginTop="16dp"
-      android:textColor="@color/colorSettingsBlockHeaderText"
+      android:textColor="@color/colorLLightGray"
       android:textSize="16sp"
       />
   <EditText
@@ -55,7 +55,7 @@
       android:padding="5dp"
       android:layout_marginEnd="16dp"
       android:layout_marginStart="16dp"
-      android:background="@color/colorSettingEditText"
+      android:background="@color/colorWhite"
       android:ems="10"
       android:inputType="textPersonName"
       />
@@ -63,16 +63,16 @@
       android:id="@+id/btnSave"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/colorSettingsSaveButton"
+      android:background="@color/colorAccent"
       android:layout_centerHorizontal="true"
       app:spinning_bar_padding="10dp"
-      app:spinning_bar_color="@color/colorSettingsSaveButtonText"
+      app:spinning_bar_color="@color/colorWhite"
       app:spinning_bar_width="2dp"
       app:initialCornerAngle="0dp"
       app:finalCornerAngle="50dp"
       android:textSize="14sp"
       android:text="@string/button_save"
-      android:textColor="@color/colorSettingsSaveButtonText"
+      android:textColor="@color/colorWhite"
       android:layout_below="@+id/etNewField"
       android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"

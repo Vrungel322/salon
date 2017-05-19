@@ -25,7 +25,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginTop="16dp"
-          android:background="@color/colorBookingInfoBackground"
+          android:background="@color/colorLLightPink"
           app:layout_constraintHorizontal_bias="0.0"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
@@ -40,7 +40,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/booking_master"
-            android:textColor="@color/colorBookingInfoTitleMaster"
+            android:textColor="@color/colorLLightGray"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +55,7 @@
             android:layout_marginStart="24dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/colorBookingInfoDescriptionMaster"
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/tv_master"
             app:layout_constraintRight_toRightOf="parent"
@@ -69,7 +69,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/booking_service"
-            android:textColor="@color/colorBookingInfoTitleService"
+            android:textColor="@color/colorLLightGray"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_master"
@@ -83,7 +83,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingBottom="16dp"
-            android:textColor="@color/colorBookingInfoDescriptionService"
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@+id/tv_master_description"
             app:layout_constraintRight_toRightOf="parent"
@@ -96,7 +96,7 @@
           android:layout_width="match_parent"
           android:layout_height="60dp"
           android:layout_margin="16dp"
-          android:background="@color/colorChooseDateBackground"
+          android:background="@color/colorLLLLightGray"
           >
 
         <TextView
@@ -105,8 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Текущая дата"
-            android:textColor="@color/colorChooseDateText"
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:visibility="gone"
             />
@@ -142,14 +141,14 @@
           android:id="@+id/relativeLayoutNotTime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/colorChooseDateNotTimeBackground"
+          android:background="@color/colorLLLLightGray"
           android:padding="16dp"
           android:visibility="gone"
           >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorChooseDateNotTime"
+            android:background="@color/colorAccent"
             >
 
           <TextView
@@ -165,7 +164,7 @@
               android:layout_marginTop="32dp"
               android:gravity="center"
               android:text="@string/time_empty"
-              android:textColor="@color/colorChooseDateNotTimeText"
+              android:textColor="@color/colorWhite"
               />
           <TextView
               android:id="@+id/textView8"
@@ -180,7 +179,7 @@
               android:layout_marginTop="16dp"
               android:gravity="center"
               android:text="@string/booking_phone"
-              android:textColor="@color/colorChooseDateNotTimeText"
+              android:textColor="@color/colorWhite"
               />
           <Button
               android:id="@+id/buttonBookingPhone"
@@ -194,7 +193,7 @@
               android:drawablePadding="5dp"
               android:drawableStart="@drawable/ic_phone_white"
               android:text="80996753872"
-              android:textColor="@color/colorChooseDateNotTimeText"
+              android:textColor="@color/colorWhite"
               />
         </RelativeLayout>
       </RelativeLayout>
@@ -202,7 +201,7 @@
           android:id="@+id/linearLayoutTime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/colorChooseDateTimeBackground"
+          android:background="@color/colorLLLLightGray"
           android:orientation="vertical"
           android:padding="16dp"
           android:visibility="gone"
@@ -227,7 +226,7 @@
               android:ellipsize="end"
               android:lines="1"
               android:text="@string/spare_time"
-              android:textColor="@color/colorChooseDateTimeTextFreeTime"
+              android:textColor="@color/colorBlack"
               android:textSize="11sp"
               />
           <TextView
@@ -240,7 +239,7 @@
               android:layout_toRightOf="@+id/textView4"
               android:ellipsize="end"
               android:lines="1"
-              android:textColor="@color/colorChooseDateTimeTextCurrentDay"
+              android:textColor="@color/colorAccent"
               android:textSize="11sp"
               />
         </RelativeLayout>

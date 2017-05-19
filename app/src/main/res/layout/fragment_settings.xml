@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSettingsBackground"
+    android:background="@color/colorLLLLightGray"
     android:clickable="true"
     >
 
@@ -22,7 +22,7 @@
           android:id="@+id/block_top"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/colorSettingsBlockBackground"
+          android:background="@color/colorWhite"
           android:visibility="visible"
           >
 
@@ -44,7 +44,7 @@
             android:layout_marginBottom="16dp"
             android:paddingTop="8dp"
             android:text="@string/change_photo"
-            android:textColor="@color/colorSettingsChangePhotoText"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             />
         <View
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
             android:layout_below="@+id/btnChangePhoto"
-            android:background="@color/colorSettingsSeparator"
+            android:background="@color/colorTransparentGray"
             />
         <!--name-->
         <RelativeLayout
@@ -83,7 +83,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivName"
               android:layout_toRightOf="@+id/ivName"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -91,7 +91,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvName"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--login-->
@@ -123,7 +123,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivLogin"
               android:layout_toRightOf="@+id/ivLogin"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -131,7 +131,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvLogin"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--password-->
@@ -164,7 +164,7 @@
               android:layout_toEndOf="@+id/ivPassword"
               android:layout_toRightOf="@+id/ivPassword"
               android:inputType="textPassword"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -172,7 +172,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvPassword"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
       </RelativeLayout>
@@ -190,7 +190,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/private_information"
-          android:textColor="@color/colorSettingsBlockHeaderText"
+          android:textColor="@color/colorLLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -200,13 +200,13 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
           android:layout_below="@+id/tvPrivateInformation"
-          android:background="@color/colorSettingsBlockBackground"
+          android:background="@color/colorWhite"
           >
         <View
             android:id="@+id/separatorPrivateInformation"
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
-            android:background="@color/colorSettingsSeparator"
+            android:background="@color/colorTransparentGray"
             />
         <!--email-->
         <RelativeLayout
@@ -237,7 +237,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivEmail"
               android:layout_toRightOf="@+id/ivEmail"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -247,7 +247,7 @@
               android:layout_alignLeft="@+id/tvEmail"
               android:layout_alignStart="@+id/tvEmail"
               android:layout_below="@+id/tvEmail"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--phone-->
@@ -279,7 +279,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivPhone"
               android:layout_toRightOf="@+id/ivPhone"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -289,7 +289,7 @@
               android:layout_alignLeft="@+id/tvPhone"
               android:layout_alignStart="@+id/tvPhone"
               android:layout_below="@+id/tvPhone"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--gender-->
@@ -323,8 +323,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivGender"
               android:layout_toRightOf="@+id/ivGender"
-              android:text="Женский"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               android:visibility="invisible"
               />
@@ -346,7 +345,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvGender"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
       </RelativeLayout>
@@ -364,7 +363,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/additional_settings"
-          android:textColor="@color/colorSettingsBlockHeaderText"
+          android:textColor="@color/colorLLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -374,13 +373,13 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
           android:layout_below="@+id/tvAdditionalSettings"
-          android:background="@color/colorSettingsBlockBackground"
+          android:background="@color/colorWhite"
           >
         <View
             android:id="@+id/separatorAdditionalSettings"
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
-            android:background="@color/colorSettingsSeparator"
+            android:background="@color/colorTransparentGray"
             />
         <!--notifications-->
         <RelativeLayout
@@ -412,7 +411,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/settings_notifications"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -420,7 +419,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvNotifications"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--problems-->
@@ -453,7 +452,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/settings_problem"
-              android:textColor="@color/colorSettingsGeneralText"
+              android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
           <View
@@ -461,7 +460,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvProblem"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
       </RelativeLayout>
@@ -482,7 +481,7 @@
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
-          android:textColor="@color/colorSettingsBlockHeaderText"
+          android:textColor="@color/colorLLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -493,13 +492,13 @@
           android:layout_alignParentStart="true"
           android:layout_below="@+id/tvFinalSpace"
           android:layout_marginBottom="72dp"
-          android:background="@color/colorSettingsBlockBackground"
+          android:background="@color/colorWhite"
           >
         <View
             android:id="@+id/separatorFinalSpace"
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
-            android:background="@color/colorSettingsSeparator"
+            android:background="@color/colorTransparentGray"
             />
         <!--clear history-->
         <RelativeLayout
@@ -518,7 +517,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/clear_history"
-              android:textColor="@color/colorSettingsFinalBlockText"
+              android:textColor="@color/colorPrimaryDark"
               android:textSize="16sp"
               />
           <View
@@ -526,7 +525,7 @@
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
               android:layout_below="@+id/tvClearHistory"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
         <!--exit-->
@@ -546,7 +545,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/exit"
-              android:textColor="@color/colorSettingsFinalBlockText"
+              android:textColor="@color/colorPrimaryDark"
               android:textSize="16sp"
               />
           <View
@@ -556,7 +555,7 @@
               android:layout_alignLeft="@+id/tvExit"
               android:layout_alignStart="@+id/tvExit"
               android:layout_below="@+id/tvExit"
-              android:background="@color/colorSettingsSeparator"
+              android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
       </RelativeLayout>

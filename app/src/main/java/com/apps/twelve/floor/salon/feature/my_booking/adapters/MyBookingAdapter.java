@@ -73,7 +73,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     if (position == 0) {
       holder.mConstraintLayoutBooking.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(),
-              R.color.colorMainScreenBookingPressed));
+              R.color.colorLLightPink));
       holder.view.setVisibility(View.VISIBLE);
     } else {
       int[] attrs = new int[] { R.attr.selectableItemBackground };

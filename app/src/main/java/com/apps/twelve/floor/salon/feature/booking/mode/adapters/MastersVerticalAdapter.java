@@ -66,10 +66,10 @@ public class MastersVerticalAdapter
 
     if (this.mSelectedItem == position) {
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterChosen));
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorLLightPink));
     } else {
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterNotChosen));
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorWhite));
     }
   }
 

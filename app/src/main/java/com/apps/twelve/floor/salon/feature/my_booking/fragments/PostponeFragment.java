@@ -116,7 +116,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @Override public void stopAnimation() {
     mBtnConfirmPostpone.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+        ContextCompat.getColor(getContext(), R.color.colorAccent),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 

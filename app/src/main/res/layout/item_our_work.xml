@@ -38,7 +38,7 @@
           android:layout_marginTop="8dp"
           android:ellipsize="end"
           android:maxLines="3"
-          android:textColor="@color/colorOurWorksTitile"
+          android:textColor="@color/colorBlack"
           />
       <LinearLayout
           android:id="@+id/linearLayout"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:textColor="@color/colorOurWorksText"
+            android:textColor="@color/colorLLightGray"
             android:textSize="11sp"
             />
       </LinearLayout>

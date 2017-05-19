@@ -30,7 +30,7 @@
       android:text="Beauty Room"
       android:textSize="24sp"
       android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-      android:textColor="@color/colorNavigationText"
+      android:textColor="@color/colorWhite"
       />
 
 </LinearLayout>

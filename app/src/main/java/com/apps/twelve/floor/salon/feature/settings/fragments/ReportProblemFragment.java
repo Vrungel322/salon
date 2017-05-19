@@ -63,8 +63,7 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   }
 
   @Override public void stopAnimation() {
-    mBtnSend.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorSettingsSaveButton),
+    mBtnSend.doneLoadingAnimation(ContextCompat.getColor(getContext(), R.color.colorAccent),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 

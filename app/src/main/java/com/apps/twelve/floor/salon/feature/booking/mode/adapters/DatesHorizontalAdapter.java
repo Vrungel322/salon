@@ -47,32 +47,26 @@ public class DatesHorizontalAdapter
 
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateChosenDayBg));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorAccent));
       holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
-          R.color.colorChooseDateChosenDayLine));
+          R.color.colorWhite));
       holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
-          R.color.colorChooseDateChosenDayText));
+          R.color.colorWhite));
       holder.mTextViewStartTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewStartTime.getContext(),
-              R.color.colorChooseDateChosenDayStartTime));
+          ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorWhite));
       holder.mTextViewEndTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewEndTime.getContext(),
-              R.color.colorChooseDateChosenDayEndTime));
+          ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorWhite));
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),
-              R.color.colorChooseDateNotChosenDayBg));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
       holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
-          R.color.colorChooseDateNotChosenDayLine));
+          R.color.colorAccent));
       holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
-          R.color.colorChooseDateNotChosenDayText));
+          R.color.colorBlack));
       holder.mTextViewStartTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewStartTime.getContext(),
-              R.color.colorChooseDateNotChosenDayStartTime));
+          ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorBlack));
       holder.mTextViewEndTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewEndTime.getContext(),
-              R.color.colorChooseDateNotChosenDayEndTime));
+          ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorBlack));
     }
   }
 

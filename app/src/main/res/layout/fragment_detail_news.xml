@@ -45,7 +45,7 @@
           android:layout_height="wrap_content"
           android:maxLines="5"
           android:padding="8dp"
-          android:textColor="@color/colorDetailNewsTitle"
+          android:textColor="@color/colorTransparentBlack"
           android:textSize="20sp"
           />
       <TextView
@@ -56,7 +56,7 @@
           android:layout_marginTop="8dp"
           android:background="@color/colorWhite"
           android:padding="8dp"
-          android:textColor="@color/colorDetailNewsText"
+          android:textColor="@color/colorBlack"
           android:textSize="14sp"
           />
     </RelativeLayout>

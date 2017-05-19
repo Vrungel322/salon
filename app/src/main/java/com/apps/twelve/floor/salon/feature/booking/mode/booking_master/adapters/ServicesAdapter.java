@@ -41,11 +41,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     if (this.selectedItem == position) {
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorChooseServicePressedBackground));
+              R.color.colorLightPink));
     } else {
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorChooseServiceNotPressedBackground));
+              R.color.colorLLLLightGray));
     }
     Picasso.with(holder.mImageViewServiceImg.getContext())
         .load(mServiceEntities.get(position).getImage())

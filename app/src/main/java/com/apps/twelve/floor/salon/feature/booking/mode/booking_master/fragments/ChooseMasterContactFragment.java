@@ -54,7 +54,7 @@ public class ChooseMasterContactFragment extends BaseFragment
 
   @Override public void stopAnimation() {
     mBtnCreateBooking.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+        ContextCompat.getColor(getContext(), R.color.colorAccent),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 
