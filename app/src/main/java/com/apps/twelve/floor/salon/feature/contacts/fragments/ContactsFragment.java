@@ -88,6 +88,7 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
   @Override public void onDestroy() {
     /* turn on scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
     AppBarLayout.LayoutParams toolbarLayoutParams =
         (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
 

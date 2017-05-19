@@ -19,6 +19,7 @@ import berlin.volders.badger.BadgeShape;
 import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
 import butterknife.BindView;
+import com.afollestad.aesthetic.Aesthetic;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
@@ -52,7 +53,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    //Aesthetic.attach(this);
+    Aesthetic.attach(this);
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();
@@ -65,10 +66,12 @@ public class StartActivity extends BaseActivity
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
 
-    //Aesthetic.get()
-    //.colorPrimaryRes(R.color.colorBlack)
-    //.colorAccentRes(R.color.colorGray)
-    //   .apply();
+    Aesthetic.get()
+        .colorPrimaryRes(R.color.colorPrimary)
+        .colorAccentRes(R.color.colorAccent)
+        .colorStatusBarRes(R.color.colorPrimaryDark)
+        .apply();
+
   }
 
   private void setUpUI() {
@@ -92,12 +95,12 @@ public class StartActivity extends BaseActivity
 
   @Override protected void onResume() {
     super.onResume();
-    //Aesthetic.resume(this);
+    Aesthetic.resume(this);
     mStartActivityPresenter.fetchBonusCount();
   }
 
   @Override protected void onPause() {
-    //Aesthetic.pause(this);
+    Aesthetic.pause(this);
     super.onPause();
   }
 

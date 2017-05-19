@@ -40,8 +40,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
   @Override public void onBindViewHolder(ServiceViewHolder holder, int position) {
     if (this.selectedItem == position) {
       holder.mConstraintLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorLightPink));
+          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(), R.color.colorAccent));
+      holder.mConstraintLayoutParent.getBackground().setAlpha(30);
     } else {
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),

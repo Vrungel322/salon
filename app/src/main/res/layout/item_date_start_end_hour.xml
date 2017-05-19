@@ -14,6 +14,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:textSize="14sp"
+      android:tag=":aesthetic_ignore"
       />
   <View
       android:id="@+id/vLine"
@@ -28,6 +29,7 @@
       android:layout_gravity="center_horizontal"
       android:layout_marginTop="2dp"
       android:textSize="11sp"
+      android:tag=":aesthetic_ignore"
       />
   <TextView
       android:id="@+id/tvEndTime"
@@ -35,6 +37,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:textSize="11sp"
+      android:tag=":aesthetic_ignore"
       />
 
 </LinearLayout>

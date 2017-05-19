@@ -41,11 +41,16 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
         ContextCompat.getColor(this, R.color.colorRed),
         ContextCompat.getColor(this, R.color.colorWhite));
+
   }
 
   @Override protected void onResume() {
     super.onResume();
     mBookingActivityPresenter.fetchBonusCount();
+  }
+
+  @Override protected void onPause() {
+    super.onPause();
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
