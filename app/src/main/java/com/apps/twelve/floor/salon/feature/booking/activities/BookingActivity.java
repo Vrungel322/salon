@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import berlin.volders.badger.BadgeShape;
 import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
+import com.afollestad.aesthetic.Aesthetic;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
@@ -32,6 +33,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    Aesthetic.attach(this);
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
@@ -46,10 +48,12 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @Override protected void onResume() {
     super.onResume();
+    //Aesthetic.resume(this);
     mBookingActivityPresenter.fetchBonusCount();
   }
 
   @Override protected void onPause() {
+    //Aesthetic.pause(this);
     super.onPause();
   }
 

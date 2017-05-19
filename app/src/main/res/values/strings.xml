@@ -96,6 +96,7 @@
   <string name="private_information">Личная информация</string>
   <string name="additional_settings">Доп. настройки</string>
   <string name="settings_problem">Сообщить о проблеме</string>
+  <string name="settings_change_theme">Тема приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>

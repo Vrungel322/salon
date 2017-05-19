@@ -66,11 +66,6 @@ public class StartActivity extends BaseActivity
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
 
-    Aesthetic.get()
-        .colorPrimaryRes(R.color.colorPrimary)
-        .colorAccentRes(R.color.colorAccent)
-        .colorStatusBarRes(R.color.colorPrimaryDark)
-        .apply();
 
   }
 

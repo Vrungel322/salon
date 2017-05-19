@@ -463,6 +463,36 @@
               android:background="@color/colorTransparentGray"
               />
         </RelativeLayout>
+        <!--change theme-->
+        <RelativeLayout
+            android:id="@+id/rlTheme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rlProblem"
+            android:background="?attr/selectableItemBackground"
+            >
+          <TextView
+              android:id="@+id/tvTheme"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="16dp"
+              android:layout_marginEnd="8dp"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="8dp"
+              android:layout_marginStart="16dp"
+              android:layout_marginTop="16dp"
+              android:text="@string/settings_change_theme"
+              android:textColor="@color/colorBlack"
+              android:textSize="16sp"
+              />
+          <View
+              android:id="@+id/separatorTheme"
+              android:layout_width="match_parent"
+              android:layout_height="0.25dp"
+              android:layout_below="@+id/tvTheme"
+              android:background="@color/colorTransparentGray"
+              />
+        </RelativeLayout>
       </RelativeLayout>
 
       <!--information-->
