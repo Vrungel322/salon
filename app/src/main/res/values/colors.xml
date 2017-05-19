@@ -17,9 +17,19 @@
   <color name="colorTransparentBlack">#80000000</color>
 
   <!--blue theme-->
-  <color name="colorPrimaryBlue">#f06292</color>
-  <color name="colorPrimaryDarkBlue">#e91e63</color>
-  <color name="colorAccentBlue">#ff4081</color>
+  <color name="colorPrimaryBlue">#629df0</color>
+  <color name="colorPrimaryDarkBlue">#1e7de9</color>
+  <color name="colorAccentBlue">#408cff</color>
+
+  <!--green theme-->
+  <color name="colorPrimaryGreen">#70f062</color>
+  <color name="colorPrimaryDarkGreen">#2fe91e</color>
+  <color name="colorAccentGreen">#4dff40</color>
+
+  <!--yellow theme-->
+  <color name="colorPrimaryYellow">#f0d662</color>
+  <color name="colorPrimaryDarkYellow">#e9c41e</color>
+  <color name="colorAccentYellow">#ffd640</color>
 
 
 </resources>
