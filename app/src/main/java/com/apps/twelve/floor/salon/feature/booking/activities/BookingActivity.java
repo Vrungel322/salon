@@ -38,8 +38,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     setTitleAppBar(R.string.book_create);
     setIconAppBar(R.drawable.ic_home_white_24dp);
 
-    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
-        ContextCompat.getColor(this, R.color.colorDarkPink),
+    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
+        ContextCompat.getColor(this, R.color.colorRed),
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 

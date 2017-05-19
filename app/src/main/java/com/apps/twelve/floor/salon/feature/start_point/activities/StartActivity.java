@@ -79,8 +79,8 @@ public class StartActivity extends BaseActivity
     // disable checking share item
     mNavViewTopPart.getMenu().getItem(4).setCheckable(false);
 
-    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
-        ContextCompat.getColor(this, R.color.colorDarkPink),
+    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
+        ContextCompat.getColor(this, R.color.colorRed),
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 

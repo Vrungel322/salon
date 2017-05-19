@@ -130,4 +130,7 @@ dependencies {
 
   //Alarm
   compile 'com.evernote:android-job:1.1.10'
+
+  //Colors changer
+  compile 'com.afollestad:aesthetic:0.4.0'
 }
