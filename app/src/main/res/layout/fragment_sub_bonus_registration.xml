@@ -18,7 +18,7 @@
       android:paddingStart="8dp"
       android:paddingTop="8dp"
       android:text="@string/bonus"
-      android:textColor="@color/colorLLightGray"
+      android:textColor="@color/colorLightGray"
       android:textSize="20sp"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"

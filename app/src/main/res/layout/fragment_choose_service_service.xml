@@ -22,7 +22,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorLLLightGray"
+        android:background="@color/colorLLightGray"
         android:gravity="center"
         android:hint="@string/search_service"
         android:inputType="textPersonName"
@@ -49,7 +49,7 @@
       android:layout_marginLeft="16dp"
       android:layout_marginRight="16dp"
       android:layout_marginStart="16dp"
-      android:textColor="@color/colorLLightGray"
+      android:textColor="@color/colorLightGray"
       android:visibility="gone"
       />
   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,7 +96,7 @@
           android:id="@+id/rvTreeOfServices"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="@color/colorLLLightGray"
+          android:background="@color/colorLLightGray"
           android:visibility="visible"
           />
     </LinearLayout>

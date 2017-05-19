@@ -18,7 +18,7 @@
       android:paddingStart="8dp"
       android:paddingTop="8dp"
       android:text="@string/menu_my_booking"
-      android:textColor="@color/colorLLightGray"
+      android:textColor="@color/colorLightGray"
       android:textSize="20sp"
       />
   <TextView

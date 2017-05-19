@@ -52,6 +52,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    //Aesthetic.attach(this);
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();
@@ -63,6 +64,11 @@ public class StartActivity extends BaseActivity
         () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
+
+    //Aesthetic.get()
+    //.colorPrimaryRes(R.color.colorBlack)
+    //.colorAccentRes(R.color.colorGray)
+    //   .apply();
   }
 
   private void setUpUI() {
@@ -86,7 +92,13 @@ public class StartActivity extends BaseActivity
 
   @Override protected void onResume() {
     super.onResume();
+    //Aesthetic.resume(this);
     mStartActivityPresenter.fetchBonusCount();
+  }
+
+  @Override protected void onPause() {
+    //Aesthetic.pause(this);
+    super.onPause();
   }
 
   @Override public void setMyBooksItemInMenu() {

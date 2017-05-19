@@ -39,7 +39,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/booking_service"
-            android:textColor="@color/colorLLightGray"
+            android:textColor="@color/colorLightGray"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +67,7 @@
           android:layout_width="match_parent"
           android:layout_height="60dp"
           android:layout_margin="16dp"
-          android:background="@color/colorLLLightGray"
+          android:background="@color/colorLLightGray"
           >
 
         <TextView
@@ -169,7 +169,7 @@
           android:id="@+id/linearLayoutTime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="@color/colorLLLightGray"
+          android:background="@color/colorLLightGray"
           android:orientation="vertical"
           android:padding="16dp"
           android:visibility="gone"

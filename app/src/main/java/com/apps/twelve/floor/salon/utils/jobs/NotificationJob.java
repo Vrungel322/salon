@@ -72,8 +72,7 @@ public class NotificationJob extends Job {
           .setContentIntent(pendingIntent)
           .setSmallIcon(R.drawable.ic_create_booking)
           .setShowWhen(true)
-          .setSound(uriSound)
-          .setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark))
+          .setSound(uriSound).setColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
           .setLocalOnly(true)
           .build();
 

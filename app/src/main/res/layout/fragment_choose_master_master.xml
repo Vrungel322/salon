@@ -48,7 +48,7 @@
           android:layout_height="match_parent"
           android:layout_marginBottom="8dp"
           android:layout_marginTop="8dp"
-          android:background="@color/colorLLLightGray"
+          android:background="@color/colorLLightGray"
           />
     </LinearLayout>
   </android.support.v4.widget.NestedScrollView>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLLLightGray"
+    android:background="@color/colorLLightGray"
     android:clickable="true"
     android:orientation="vertical"
     >
@@ -18,7 +18,7 @@
       android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
-      android:textColor="@color/colorLLightGray"
+      android:textColor="@color/colorLightGray"
       android:textSize="16sp"
       />
   <TextView
@@ -43,7 +43,7 @@
       android:layout_alignStart="@+id/tvCurrentField"
       android:layout_below="@+id/tvCurrentField"
       android:layout_marginTop="16dp"
-      android:textColor="@color/colorLLightGray"
+      android:textColor="@color/colorLightGray"
       android:textSize="16sp"
       />
   <EditText

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLLLightGray"
+    android:background="@color/colorLLightGray"
     android:clickable="true"
     >
 
@@ -44,7 +44,7 @@
             android:layout_marginBottom="16dp"
             android:paddingTop="8dp"
             android:text="@string/change_photo"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
             android:textSize="16sp"
             />
         <View
@@ -190,7 +190,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/private_information"
-          android:textColor="@color/colorLLightGray"
+          android:textColor="@color/colorLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -363,7 +363,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/additional_settings"
-          android:textColor="@color/colorLLightGray"
+          android:textColor="@color/colorLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -481,7 +481,7 @@
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
-          android:textColor="@color/colorLLightGray"
+          android:textColor="@color/colorLightGray"
           android:textSize="18sp"
           />
       <RelativeLayout
@@ -517,7 +517,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/clear_history"
-              android:textColor="@color/colorPrimaryDark"
+              android:textColor="@color/colorAccent"
               android:textSize="16sp"
               />
           <View
@@ -545,7 +545,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/exit"
-              android:textColor="@color/colorPrimaryDark"
+              android:textColor="@color/colorAccent"
               android:textSize="16sp"
               />
           <View

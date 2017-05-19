@@ -7,11 +7,11 @@
   <color name="colorWhite">#ffffff</color>
   <color name="colorBlack">#000000</color>
   <color name="colorGray">#404141</color>
-  <color name="colorLightGray">#727272</color>
-  <color name="colorLLightGray">#a4a4a4</color>
-  <color name="colorLLLightGray">#fdf7f7f7</color>
+  <color name="colorLightGray">#9c9c9c</color>
+  <color name="colorLLightGray">#fdf7f7f7</color>
   <color name="colorLightPink">#fbe9f0</color>
   <color name="colorRed">#f50834</color>
+
 
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>

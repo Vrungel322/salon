@@ -24,7 +24,7 @@
 
       <com.mzelzoghbi.zgallery.CustomViewPager
           android:id="@+id/viewPagerImages"
-          android:background="@color/colorLLLightGray"
+          android:background="@color/colorLLightGray"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_alignParentBottom="true"
@@ -96,7 +96,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="zdlfibhzfvbhzIn order to create a ScrollView "
-        android:textColor="@color/colorLLightGray"
+        android:textColor="@color/colorLightGray"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
