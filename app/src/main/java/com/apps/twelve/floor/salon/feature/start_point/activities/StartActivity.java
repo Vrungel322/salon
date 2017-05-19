@@ -66,7 +66,6 @@ public class StartActivity extends BaseActivity
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
 
-
   }
 
   private void setUpUI() {

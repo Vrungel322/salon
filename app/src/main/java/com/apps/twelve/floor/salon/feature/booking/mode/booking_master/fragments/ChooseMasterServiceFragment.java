@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
+import com.afollestad.aesthetic.Aesthetic;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
@@ -68,6 +69,10 @@ public class ChooseMasterServiceFragment extends BaseFragment
       @Override public void afterTextChanged(Editable s) {
 
       }
+    });
+
+    Aesthetic.get().colorPrimary().subscribe(color -> {
+      mRecyclerViewServices.setBackgroundColor(color);
     });
   }
 
