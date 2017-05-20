@@ -97,8 +97,8 @@ public class StartActivity extends BaseActivity
     mNavViewTopPart.getMenu().getItem(7).setChecked(true);
   }
 
-  @Override public void setCatalogItemInMenu() {
-    mNavViewTopPart.getMenu().getItem(6).setChecked(true);
+  @Override public void setBonusItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(3).setChecked(true);
   }
 
   @Override public void setBonusCount(int count) {

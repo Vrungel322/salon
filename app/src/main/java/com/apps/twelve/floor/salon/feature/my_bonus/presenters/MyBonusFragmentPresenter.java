@@ -27,7 +27,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    mRxBus.post(new RxBusHelper.SetCatalogItemInMenu());
+    mRxBus.post(new RxBusHelper.SetBonusItemInMenu());
     getBonusCount();
   }
 
