@@ -1,8 +1,10 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.adapters;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,11 @@ public class MastersVerticalAdapter
   private List<MasterEntity> mMasterEntities = new ArrayList<>();
 
   private int mSelectedItem = -1;
+  private Context mContext;
+
+  public MastersVerticalAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void addListMasterEntity(List<MasterEntity> masterEntities) {
     mMasterEntities.clear();
@@ -65,11 +72,14 @@ public class MastersVerticalAdapter
     }
 
     if (this.mSelectedItem == position) {
+      TypedValue value = new TypedValue();
+      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterChosen));
+          ContextCompat.getColor(holder.itemView.getContext(), value.resourceId));
+      holder.mRelativeLayoutParent.getBackground().setAlpha(30);
     } else {
       holder.mRelativeLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorChooseMasterNotChosen));
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorWhite));
     }
   }
 

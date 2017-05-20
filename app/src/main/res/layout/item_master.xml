@@ -40,7 +40,7 @@
           android:layout_marginTop="8dp"
           android:ellipsize="end"
           android:maxLines="3"
-          android:textColor="@color/colorChooseMasterTextMasterName"
+          android:textColor="@color/colorBlack"
           android:textSize="16sp"
           />
       <LinearLayout
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:textColor="@color/colorChooseMasterTextMasterDescription"
+            android:textColor="@color/colorTransparentBlack"
             android:textSize="12sp"
             />
       </LinearLayout>

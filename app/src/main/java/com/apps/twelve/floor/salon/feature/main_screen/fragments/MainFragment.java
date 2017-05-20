@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.TypedValue;
 import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
@@ -36,7 +37,9 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mSwipeRefreshMainFragment.setColorSchemeResources(R.color.colorAccent);
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshMainFragment.setColorSchemeResources(value.resourceId);
     mSwipeRefreshMainFragment.setOnRefreshListener(
         () -> mMainFragmentPresenter.updateBookingAndNews());
   }

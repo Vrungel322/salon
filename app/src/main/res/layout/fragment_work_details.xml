@@ -20,8 +20,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Glam classic"
-        android:textColor="@color/colorWorkDetailsTitle"
+        android:textColor="@color/colorTransparentBlack"
         android:textSize="20sp"
         />
     <TextView
@@ -33,8 +32,7 @@
         android:layout_below="@+id/textViewTitleWork"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="zdlfibhzfvbhzIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appIn order to create a ScrollView or ListView with a maxHeight you just need to create a Transparent LinearLayout around it with a height of what you want the maxHeight to be. You then set the ScrollView's Height to wrap_content. This creates a ScrollView that appears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.ears to grow until its height is equal to the parent LinearLayout.dkjlfvbhzdsiotjhsioggidrgkjfbhvsdgvzsdfgvbasdjvbi"
-        android:textColor="@color/colorWorkDetailsText"
+        android:textColor="@color/colorTransparentBlack"
         android:textSize="14sp"
         />
     <TextView
@@ -50,7 +48,7 @@
         android:background="?attr/selectableItemBackground"
         android:padding="3dp"
         android:text="@string/more"
-        android:textColor="@color/colorWorkDetailsTextMore"
+        android:textColor="@color/colorTransparentBlack"
         android:visibility="gone"
         />
     <RelativeLayout
@@ -82,19 +80,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="TextView"
-            android:textColor="@color/colorWorkDetailsTextCount"
+            android:textColor="@color/colorWhite"
             />
         <ImageButton
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:background="@null"
             app:srcCompat="@drawable/ic_gallery_next_24dp"
             />
@@ -103,7 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:background="@null"
             app:srcCompat="@drawable/ic_gallery_previous_24dp"
@@ -113,9 +116,13 @@
           android:layout_width="match_parent"
           android:layout_height="100dp"
           android:layout_alignBottom="@+id/viewPagerImages"
-          android:background="@color/colorWorkDetailsHover"
           >
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?colorAccent"
+            android:alpha=".6"
+            />
         <CheckBox
             android:id="@+id/checkBoxFavorite"
             android:layout_width="wrap_content"
@@ -144,8 +151,7 @@
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="3"
-            android:text="TextVisdfgvsdgvbasersdrgsergsdgsdfgvsdfgvgvasdfgvasdgvasldfnvASJKLDNgvSJKLnvklndvlkSNDvklsnDvklsdnvklsdnvklsdnvklsndvndvknsew"
-            android:textColor="@color/colorWorkDetailsTextHover"
+            android:textColor="@color/colorWhite"
             android:textSize="14sp"
             />
       </RelativeLayout>

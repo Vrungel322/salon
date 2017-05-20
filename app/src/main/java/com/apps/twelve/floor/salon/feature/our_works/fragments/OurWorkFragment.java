@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -64,7 +65,9 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
         });
     mOurWorkFragmentPresenter.fetchListOfWorks();
 
-    mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
     mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchListOfWorks());
   }
 

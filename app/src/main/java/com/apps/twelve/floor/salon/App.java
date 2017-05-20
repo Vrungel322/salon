@@ -33,7 +33,6 @@ public class App extends Application {
   @Override public void onCreate() {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
-
     Shortbread.create(this);
     JobManager.create(this).addJobCreator(new JobsCreator());
 

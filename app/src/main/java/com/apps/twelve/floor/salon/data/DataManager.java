@@ -76,7 +76,7 @@ public class DataManager {
   }
 
   public Observable<Integer> getBonusCount() {
-    return mPref.getBonusCaunt();
+    return mPref.getBonusCount();
   }
 
   public Observable<String> getProfileImage() {
@@ -85,6 +85,14 @@ public class DataManager {
 
   public void setProfileImage(String uri) {
     mPref.setProfileImage(uri);
+  }
+
+  public void setThemeSelected(int themeSelected) {
+    mPref.setThemeSelected(themeSelected);
+  }
+
+  public int getThemeSelected() {
+    return mPref.getThemeSelected();
   }
 
   public Observable<String> getProfileName() {

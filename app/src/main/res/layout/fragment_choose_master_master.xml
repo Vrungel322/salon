@@ -38,7 +38,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="8dp"
           android:text="@string/choose_master"
-          android:textColor="@color/colorChooseMasterTitle"
+          android:textColor="?colorAccent"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/view2"
           />
@@ -48,7 +48,7 @@
           android:layout_height="match_parent"
           android:layout_marginBottom="8dp"
           android:layout_marginTop="8dp"
-          android:background="@color/colorChooseMasterBackground"
+          android:background="@color/colorLLightGray"
           />
     </LinearLayout>
   </android.support.v4.widget.NestedScrollView>
