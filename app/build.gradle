@@ -128,9 +128,6 @@ dependencies {
   //CircularProgressButton
   compile 'br.com.simplepass:loading-button-android:1.7.0'
 
-  //Theme color
-  compile 'com.afollestad:aesthetic:0.4.0'
-
   //crashlitics
   compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
     transitive = true;
@@ -139,5 +136,4 @@ dependencies {
   //Alarm
   compile 'com.evernote:android-job:1.1.10'
 
-  //Colors changer
 }

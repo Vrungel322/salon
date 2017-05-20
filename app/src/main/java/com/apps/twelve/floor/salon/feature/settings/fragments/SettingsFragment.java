@@ -9,8 +9,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
-import com.afollestad.aesthetic.Aesthetic;
-import com.afollestad.aesthetic.NavigationViewMode;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
@@ -122,14 +120,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @OnClick(R.id.rlTheme) void changeTheme() {
 
-    Aesthetic.get()
-        .colorPrimaryRes(R.color.colorPrimaryBlue)
-        .colorAccentRes(R.color.colorAccentBlue)
-        .colorNavigationBarAuto()
-        .colorStatusBarAuto()
-        .colorNavigationBarAuto()
-        .navigationViewMode(NavigationViewMode.SELECTED_PRIMARY)
-        .apply();
   }
 
   @OnClick(R.id.rlClearHistory) void clearHistory() {

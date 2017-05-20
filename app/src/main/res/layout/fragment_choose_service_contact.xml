@@ -40,7 +40,7 @@
             android:layout_marginRight="0dp"
             android:layout_marginTop="0dp"
             android:alpha=".1"
-            android:background="@color/colorAccent"
+            android:background="?colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -198,7 +198,6 @@
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tv_name_description"
-          android:tag=":aesthetic_ignore"
           />
       <TextView
           android:id="@+id/tv_phone"
@@ -242,7 +241,6 @@
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/tv_phone_description"
-          android:tag=":aesthetic_ignore"
           />
       <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
           android:id="@+id/btn_booking_contact"

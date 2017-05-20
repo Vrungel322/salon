@@ -19,7 +19,6 @@ import berlin.volders.badger.BadgeShape;
 import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
 import butterknife.BindView;
-import com.afollestad.aesthetic.Aesthetic;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
@@ -53,7 +52,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    Aesthetic.attach(this);
+    setTheme(R.style.AppThemeNoActionBarBlue);
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();
@@ -89,12 +88,12 @@ public class StartActivity extends BaseActivity
 
   @Override protected void onResume() {
     super.onResume();
-    Aesthetic.resume(this);
+    //Aesthetic.resume(this);
     mStartActivityPresenter.fetchBonusCount();
   }
 
   @Override protected void onPause() {
-    Aesthetic.pause(this);
+    //Aesthetic.pause(this);
     super.onPause();
   }
 

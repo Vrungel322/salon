@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.feature.settings.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import com.afollestad.aesthetic.Aesthetic;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.settings.fragments.SettingsFragment;
@@ -15,7 +14,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    Aesthetic.attach(this);
+    setTheme(R.style.AppThemeNoActionBarBlue);
     setContentView(R.layout.activity_settings);
     super.onCreate(savedInstanceState);
 

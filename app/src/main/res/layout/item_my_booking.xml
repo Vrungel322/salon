@@ -52,7 +52,6 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       tools:text="Парикмахер"
-      android:tag=":aesthetic_ignore"
       />
   <TextView
       android:id="@+id/tvServiceTime"
@@ -86,7 +85,6 @@
       app:layout_constraintLeft_toRightOf="@+id/tvServiceTime"
       app:layout_constraintTop_toBottomOf="@+id/tvServiceName"
       tools:text="1 h 50 min"
-      android:tag=":aesthetic_ignore"
       />
   <Button
       android:id="@+id/bPostpone"
@@ -107,7 +105,6 @@
       android:textSize="12sp"
       app:layout_constraintBottom_toBottomOf="@+id/ivServicePhoto"
       app:layout_constraintLeft_toRightOf="@+id/ivServicePhoto"
-      android:tag=":aesthetic_ignore"
       />
   <Button
       android:id="@+id/bCancel"
@@ -131,7 +128,6 @@
       app:layout_constraintHorizontal_bias="0.25"
       app:layout_constraintLeft_toRightOf="@+id/bPostpone"
       app:layout_constraintRight_toRightOf="parent"
-      android:tag=":aesthetic_ignore"
       />
 
 </android.support.constraint.ConstraintLayout>

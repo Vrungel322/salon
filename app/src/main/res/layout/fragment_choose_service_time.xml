@@ -33,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
+            android:background="?colorAccent"
             android:alpha=".1"
             />
         <TextView
@@ -121,7 +121,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="?colorAccent"
             >
 
           <TextView
@@ -212,7 +212,7 @@
               android:layout_toRightOf="@+id/textView4"
               android:ellipsize="end"
               android:lines="1"
-              android:textColor="@color/colorAccent"
+              android:textColor="?colorAccent"
               android:textSize="11sp"
               />
         </RelativeLayout>
