@@ -45,7 +45,7 @@ public class ChooseMasterServiceFragment extends BaseFragment
 
   @Override public void setUpRvServices() {
     mRecyclerViewServices.setLayoutManager(new LinearLayoutManager(getContext()));
-    mServicesAdapter = new ServicesAdapter();
+    mServicesAdapter = new ServicesAdapter(getContext());
     mRecyclerViewServices.setAdapter(mServicesAdapter);
 
     ItemClickSupport.addTo(mRecyclerViewServices)

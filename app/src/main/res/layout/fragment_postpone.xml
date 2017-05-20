@@ -243,7 +243,7 @@
               android:layout_toRightOf="@+id/textView4"
               android:ellipsize="end"
               android:lines="1"
-              android:textColor="@color/colorAccent"
+              android:textColor="?colorAccent"
               android:textSize="11sp"
               />
         </RelativeLayout>

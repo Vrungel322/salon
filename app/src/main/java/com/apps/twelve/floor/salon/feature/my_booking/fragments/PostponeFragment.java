@@ -13,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -115,8 +116,9 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   }
 
   @Override public void stopAnimation() {
-    mBtnConfirmPostpone.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorAccent),
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mBtnConfirmPostpone.doneLoadingAnimation(ContextCompat.getColor(getContext(), value.resourceId),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 
@@ -158,7 +160,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     //Horizontal RV
     mRecyclerViewHorizontalDates.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-    mDatesHorizontalAdapter = new DatesHorizontalAdapter();
+    mDatesHorizontalAdapter = new DatesHorizontalAdapter(getContext());
     mRecyclerViewHorizontalDates.setAdapter(mDatesHorizontalAdapter);
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
@@ -170,7 +172,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     //Schedule RV (hours)
     mRecyclerViewScheduleInDay.setLayoutManager(
         new GridLayoutManager(getContext(), SCHEDULE_SPAN_COUNT));
-    mScheduleAdapter = new ScheduleAdapter();
+    mScheduleAdapter = new ScheduleAdapter(getContext());
     mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(

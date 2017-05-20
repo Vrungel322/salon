@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.adapters;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
   private List<DataServiceEntity.ScheduleEntity> mTimes = new ArrayList<>();
   private int selectedItem = -1;
 
+  private Context mContext;
+
+  public ScheduleAdapter(Context context) {
+    this.mContext = context;
+  }
+
   public void setTimeSchedule(List<DataServiceEntity.ScheduleEntity> times) {
     selectedItem = -1;
     mTimes.clear();
@@ -39,8 +47,10 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     if (mTimes.get(position).getStatus()) {
       if (this.selectedItem == position) {
+        TypedValue value = new TypedValue();
+        mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
         holder.mLinearLayoutParent.setBackgroundColor(
-            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorAccent));
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), value.resourceId));
         holder.mTextViewTime.setTextColor(
             ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
       } else {

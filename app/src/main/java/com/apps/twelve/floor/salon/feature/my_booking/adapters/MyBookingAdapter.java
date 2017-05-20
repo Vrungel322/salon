@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,9 +72,10 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   @Override public void onBindViewHolder(MyBookingViewHolder holder, int position) {
     if (position == 0) {
+      TypedValue value = new TypedValue();
+      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
       holder.mConstraintLayoutBooking.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(),
-              R.color.colorAccent));
+          ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(), value.resourceId));
       holder.mConstraintLayoutBooking.getBackground().setAlpha(30);
       holder.view.setVisibility(View.VISIBLE);
     } else {
