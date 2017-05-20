@@ -5,8 +5,7 @@ import android.content.SharedPreferences;
 import com.apps.twelve.floor.salon.R;
 
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_FILE_NAME;
-import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_THEME_OTHER_ACTIVITY;
-import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_THEME_START_ACTIVITY;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_THEME_SELECTED;
 
 /**
  * Created by John on 20.05.2017.
@@ -17,7 +16,7 @@ public class ThemeUtils {
   public static int getThemeStartActivity(Context context) {
     SharedPreferences preferences =
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
-    switch (preferences.getInt(PREF_THEME_START_ACTIVITY, 0)) {
+    switch (preferences.getInt(PREF_THEME_SELECTED, 0)) {
       case 0:
         return R.style.AppTheme_NoActionBar;
       case 1:
@@ -40,7 +39,7 @@ public class ThemeUtils {
   public static int getThemeOtherActivity(Context context) {
     SharedPreferences preferences =
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
-    switch (preferences.getInt(PREF_THEME_OTHER_ACTIVITY, 0)) {
+    switch (preferences.getInt(PREF_THEME_SELECTED, 0)) {
       case 0:
         return R.style.AppTheme;
       case 1:

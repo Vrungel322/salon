@@ -48,8 +48,7 @@ import timber.log.Timber;
   }
 
   public void setThemeApp(int themeApp) {
-    mDataManager.setThemeStartActivity(themeApp);
-    mDataManager.setThemeOtherActivity(themeApp);
+    mDataManager.setThemeSelected(themeApp);
   }
 
   public void saveGender(int gender) {
@@ -114,5 +113,9 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserGender(s), Timber::e);
     addToUnsubscription(subscription);
+  }
+
+  public void showSetThemeDialog() {
+    getViewState().showSetThemeDialog(mDataManager.getThemeSelected());
   }
 }

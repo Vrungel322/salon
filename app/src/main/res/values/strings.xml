@@ -134,4 +134,15 @@
     <item>почту</item>
     <item>телефон</item>
   </string-array>
+
+  <string name="dialog_title_select_theme">Выберите тему</string>
+  <string-array name="dialog_theme">
+    <item>Розовая</item>
+    <item>Синяя</item>
+    <item>Зеленая</item>
+    <item>Желтая</item>
+    <item>Серая</item>
+    <item>Фиолетовая</item>
+    <item>Красная</item>
+  </string-array>
 </resources>

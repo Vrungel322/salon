@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.settings.views;
 import android.net.Uri;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
@@ -25,4 +26,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void setUserPhone(String phone);
 
   void setUserGender(int gender);
+
+  void showSetThemeDialog(int position);
+
+  @StateStrategyType(SingleStateStrategy.class) void closeSetThemeDialog();
 }

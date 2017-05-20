@@ -20,8 +20,7 @@ public class PreferencesHelper {
   private static final String PREF_PROFILE_PHONE = "PREF_PROFILE_PHONE";
   private static final String PREF_PROFILE_GENDER = "PREF_PROFILE_GENDER";
   private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
-  public static final String PREF_THEME_START_ACTIVITY = "PREF_THEME_START_ACTIVITY";
-  public static final String PREF_THEME_OTHER_ACTIVITY = "PREF_THEME_OTHER_ACTIVITY ";
+  public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
   private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_TOKEN = "PREF_TOKEN";
@@ -48,19 +47,19 @@ public class PreferencesHelper {
     return Observable.just(mPreferences.getString(PREF_PROFILE_NAME, "name"));
   }
 
-  public void setThemeStartActivity(int themeStartActivity) {
-    mPreferences.edit().putInt(PREF_THEME_START_ACTIVITY, themeStartActivity).apply();
+  public void setThemeSelected(int themeSelected) {
+    mPreferences.edit().putInt(PREF_THEME_SELECTED, themeSelected).apply();
   }
 
-  public void setThemeOtherActivity(int themeOtherActivity) {
-    mPreferences.edit().putInt(PREF_THEME_OTHER_ACTIVITY, themeOtherActivity).apply();
+  public int getThemeSelected() {
+    return mPreferences.getInt(PREF_THEME_SELECTED, 0);
   }
 
   public void setProfileName(String name) {
     mPreferences.edit().putString(PREF_PROFILE_NAME, name).apply();
   }
 
-  public Observable<Integer> getBonusCaunt() {
+  public Observable<Integer> getBonusCount() {
     return Observable.just(mPreferences.getInt(PREF_BONUS_COUNT, 0));
   }
 
