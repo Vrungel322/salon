@@ -52,16 +52,8 @@ public class PreferencesHelper {
     mPreferences.edit().putInt(PREF_THEME_START_ACTIVITY, themeStartActivity).apply();
   }
 
-  public int getThemeStartActivity() {
-    return mPreferences.getInt(PREF_THEME_START_ACTIVITY, 0);
-  }
-
   public void setThemeOtherActivity(int themeOtherActivity) {
     mPreferences.edit().putInt(PREF_THEME_OTHER_ACTIVITY, themeOtherActivity).apply();
-  }
-
-  public int getThemeOtherActivity() {
-    return mPreferences.getInt(PREF_THEME_OTHER_ACTIVITY, 0);
   }
 
   public void setProfileName(String name) {
