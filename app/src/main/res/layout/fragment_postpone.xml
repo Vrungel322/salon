@@ -33,10 +33,18 @@
           app:layout_constraintTop_toTopOf="parent"
           >
         <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
             android:alpha=".1"
+            android:background="?colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
         <TextView
             android:id="@+id/tv_master"
@@ -144,7 +152,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="?colorAccent"
             >
 
           <TextView
@@ -235,7 +243,7 @@
               android:layout_toRightOf="@+id/textView4"
               android:ellipsize="end"
               android:lines="1"
-              android:textColor="@color/colorAccent"
+              android:textColor="?colorAccent"
               android:textSize="11sp"
               />
         </RelativeLayout>
@@ -267,7 +275,7 @@
       android:layout_marginLeft="16dp"
       android:layout_marginRight="16dp"
       android:layout_marginStart="16dp"
-      android:background="@color/colorAccent"
+      android:background="?colorAccent"
       android:text="@string/postpone"
       android:textColor="@color/colorWhite"
       android:textSize="14sp"

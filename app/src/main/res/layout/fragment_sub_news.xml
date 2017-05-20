@@ -30,7 +30,7 @@
         android:background="?attr/selectableItemBackground"
         android:padding="5dp"
         android:text="@string/all_news"
-        android:textColor="@color/colorAccent"
+        android:textColor="?colorAccent"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintRight_toRightOf="parent"

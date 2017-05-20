@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.adapters;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,11 @@ public class DatesHorizontalAdapter
   private List<DataServiceEntity> mWorkStartEndEntityList = new ArrayList<>();
 
   private int selectedItem = -1;
+  private Context mContext;
+
+  public DatesHorizontalAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void addListWorkStartEndEntity(List<DataServiceEntity> workStartEndEntities) {
     mWorkStartEndEntityList.clear();
@@ -45,9 +52,12 @@ public class DatesHorizontalAdapter
     holder.mTextViewEndTime.setText(
         Converters.timeFromSeconds(mWorkStartEndEntityList.get(position).getEndTime().toString()));
 
+    TypedValue value = new TypedValue();
+    mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorAccent));
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), value.resourceId));
       holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
           R.color.colorWhite));
       holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
@@ -60,7 +70,7 @@ public class DatesHorizontalAdapter
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
       holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
-          R.color.colorAccent));
+          value.resourceId));
       holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
           R.color.colorBlack));
       holder.mTextViewStartTime.setTextColor(

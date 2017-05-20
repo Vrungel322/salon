@@ -41,7 +41,7 @@ public class ChooseMasterMasterFragment extends BaseFragment
 
   @Override public void setUpUi() {
     mRecyclerViewMasters.setLayoutManager(new GridLayoutManager(getContext(), 2));
-    mMastersVerticalAdapter = new MastersVerticalAdapter();
+    mMastersVerticalAdapter = new MastersVerticalAdapter(getContext());
     mRecyclerViewMasters.setAdapter(mMastersVerticalAdapter);
     mRecyclerViewMasters.setNestedScrollingEnabled(false);
     mRecyclerViewMasters.setFocusable(false);

@@ -21,7 +21,7 @@
     <item name="colorAccent">@color/colorAccentBlue</item>
   </style>
 
-  <style name="AppThemeNoActionBarBlue" parent="Theme.AppCompat.NoActionBar">
+  <style name="AppThemeNoActionBarBlue" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimaryBlue</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkBlue</item>

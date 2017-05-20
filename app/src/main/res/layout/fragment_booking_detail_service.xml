@@ -40,7 +40,7 @@
           android:id="@+id/viewAccentService"
           android:layout_width="match_parent"
           android:layout_height="5dp"
-          android:background="@color/colorAccent"
+          android:background="?colorAccent"
           />
     </LinearLayout>
     <LinearLayout
@@ -64,7 +64,7 @@
           android:id="@+id/viewAccentTime"
           android:layout_width="match_parent"
           android:layout_height="5dp"
-          android:background="@color/colorAccent"
+          android:background="?colorAccent"
           android:visibility="invisible"
           />
     </LinearLayout>
@@ -89,7 +89,7 @@
           android:id="@+id/viewAccentMaster"
           android:layout_width="match_parent"
           android:layout_height="5dp"
-          android:background="@color/colorAccent"
+          android:background="?colorAccent"
           android:visibility="invisible"
           />
     </LinearLayout>
@@ -114,7 +114,7 @@
           android:id="@+id/viewAccentData"
           android:layout_width="match_parent"
           android:layout_height="5dp"
-          android:background="@color/colorAccent"
+          android:background="?colorAccent"
           android:visibility="invisible"
           />
     </LinearLayout>

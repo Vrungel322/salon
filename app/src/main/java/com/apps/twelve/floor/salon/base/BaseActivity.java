@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
+import android.util.TypedValue;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
@@ -29,11 +30,11 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
   }
 
   protected void showAlertMessage(String message) {
-    //Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+    TypedValue value = new TypedValue();
+    mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     Alerter.create(this)
         .setTitle("Пройти регистрацию")
-        .setText(message)
-        .setBackgroundColor(R.color.colorAccent)
+        .setText(message).setBackgroundColor(value.resourceId)
         .setOnClickListener(view -> {
           // TODO: 22.02.2017 make registration activity
         })
