@@ -86,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="price"
-        android:textColor="@color/colorAccent"
+        android:textColor="?colorAccent"
         android:textSize="24sp"
         />
     <TextView

@@ -63,7 +63,7 @@
       android:id="@+id/btnSave"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/colorAccent"
+      android:background="?colorAccent"
       android:layout_centerHorizontal="true"
       app:spinning_bar_padding="10dp"
       app:spinning_bar_color="@color/colorWhite"

@@ -32,6 +32,7 @@
             android:layout_height="96dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
+            android:src="@drawable/ic_profile_24dp"
             app:civ_border_color="@color/colorWhite"
             app:civ_border_width="2dp"
             />
@@ -44,7 +45,7 @@
             android:layout_marginBottom="16dp"
             android:paddingTop="8dp"
             android:text="@string/change_photo"
-            android:textColor="@color/colorAccent"
+            android:textColor="?colorAccent"
             android:textSize="16sp"
             />
         <View
@@ -547,7 +548,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/clear_history"
-              android:textColor="@color/colorAccent"
+              android:textColor="?colorAccent"
               android:textSize="16sp"
               />
           <View
@@ -575,7 +576,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/exit"
-              android:textColor="@color/colorAccent"
+              android:textColor="?colorAccent"
               android:textSize="16sp"
               />
           <View

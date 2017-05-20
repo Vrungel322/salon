@@ -29,7 +29,7 @@
           android:layout_height="150dp"
           android:layout_alignParentTop="true"
           android:scaleType="centerCrop"
-          tools:background="@color/colorAccent"
+          tools:background="?colorAccent"
           />
 
       <TextView
@@ -65,7 +65,7 @@
           android:layout_marginBottom="3dp"
           android:layout_marginTop="3dp"
           android:text="100$"
-          android:textColor="@color/colorAccent"
+          android:textColor="?colorAccent"
           android:textSize="18sp"
           />
       <ImageView
