@@ -33,6 +33,7 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -52,7 +53,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    setTheme(R.style.AppThemeNoActionBarBlue);
+    setTheme(ThemeUtils.getThemeStartActivity(getBaseContext()));
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();

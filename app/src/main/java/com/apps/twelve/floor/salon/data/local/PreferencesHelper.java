@@ -10,7 +10,7 @@ import rx.Observable;
 
 public class PreferencesHelper {
 
-  private static final String PREF_FILE_NAME = "com.salon.Salon";
+  public static final String PREF_FILE_NAME = "com.salon.Salon";
 
   private static final String PREF_PROFILE_IMAGE = "PREF_PROFILE_IMAGE";
   private static final String PREF_PROFILE_NAME = "PREF_PROFILE_NAME";
@@ -20,6 +20,8 @@ public class PreferencesHelper {
   private static final String PREF_PROFILE_PHONE = "PREF_PROFILE_PHONE";
   private static final String PREF_PROFILE_GENDER = "PREF_PROFILE_GENDER";
   private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
+  public static final String PREF_THEME_START_ACTIVITY = "PREF_THEME_START_ACTIVITY";
+  public static final String PREF_THEME_OTHER_ACTIVITY = "PREF_THEME_OTHER_ACTIVITY ";
   private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_TOKEN = "PREF_TOKEN";
@@ -44,6 +46,22 @@ public class PreferencesHelper {
 
   public Observable<String> getProfileName() {
     return Observable.just(mPreferences.getString(PREF_PROFILE_NAME, "name"));
+  }
+
+  public void setThemeStartActivity(int themeStartActivity) {
+    mPreferences.edit().putInt(PREF_THEME_START_ACTIVITY, themeStartActivity).apply();
+  }
+
+  public int getThemeStartActivity() {
+    return mPreferences.getInt(PREF_THEME_START_ACTIVITY, 0);
+  }
+
+  public void setThemeOtherActivity(int themeOtherActivity) {
+    mPreferences.edit().putInt(PREF_THEME_OTHER_ACTIVITY, themeOtherActivity).apply();
+  }
+
+  public int getThemeOtherActivity() {
+    return mPreferences.getInt(PREF_THEME_OTHER_ACTIVITY, 0);
   }
 
   public void setProfileName(String name) {

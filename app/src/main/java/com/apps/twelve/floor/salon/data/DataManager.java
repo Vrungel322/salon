@@ -87,6 +87,14 @@ public class DataManager {
     mPref.setProfileImage(uri);
   }
 
+  public void setThemeStartActivity(int themeStartActivity) {
+    mPref.setThemeStartActivity(themeStartActivity);
+  }
+
+  public void setThemeOtherActivity(int themeOtherActivity) {
+    mPref.setThemeOtherActivity(themeOtherActivity);
+  }
+
   public Observable<String> getProfileName() {
     return mPref.getProfileName();
   }

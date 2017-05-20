@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsFragmentView;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -37,7 +38,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @BindView(R.id.tvPassword) TextView mTextViewPassword;
   @BindView(R.id.tvEmail) TextView mTextViewEmail;
   @BindView(R.id.tvPhone) TextView mTextViewPhone;
-  @BindView(R.id.tvTheme) TextView mTextViewTheme;
   @BindView(R.id.spinnerGender) Spinner mSpinnerGender;
 
   public SettingsFragment() {
@@ -119,7 +119,9 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @OnClick(R.id.rlTheme) void changeTheme() {
-
+    mSettingsFragmentPresenter.setThemeApp(1);
+    mNavigator.startActivityClearStack((AppCompatActivity) getActivity(),
+        new Intent(getActivity(), StartActivity.class));
   }
 
   @OnClick(R.id.rlClearHistory) void clearHistory() {

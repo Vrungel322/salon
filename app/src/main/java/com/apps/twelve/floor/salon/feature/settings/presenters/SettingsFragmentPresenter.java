@@ -47,6 +47,11 @@ import timber.log.Timber;
     setUpPhoto();
   }
 
+  public void setThemeApp(int themeApp) {
+    mDataManager.setThemeStartActivity(themeApp);
+    mDataManager.setThemeOtherActivity(themeApp);
+  }
+
   public void saveGender(int gender) {
     mDataManager.setProfileGender(gender);
   }

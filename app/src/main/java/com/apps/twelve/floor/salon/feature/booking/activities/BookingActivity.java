@@ -15,6 +15,7 @@ import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPre
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
 
@@ -32,7 +33,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    setTheme(R.style.AppThemeBlue);
+    setTheme(ThemeUtils.getThemeOtherActivity(getBaseContext()));
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
