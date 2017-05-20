@@ -17,19 +17,34 @@
   <color name="colorTransparentBlack">#80000000</color>
 
   <!--blue theme-->
-  <color name="colorPrimaryBlue">#629df0</color>
-  <color name="colorPrimaryDarkBlue">#1e7de9</color>
-  <color name="colorAccentBlue">#408cff</color>
+  <color name="colorPrimaryBlue">#2196F3</color>
+  <color name="colorPrimaryDarkBlue">#1976D2</color>
+  <color name="colorAccentBlue">#03A9F4</color>
 
   <!--green theme-->
-  <color name="colorPrimaryGreen">#70f062</color>
-  <color name="colorPrimaryDarkGreen">#2fe91e</color>
-  <color name="colorAccentGreen">#4dff40</color>
+  <color name="colorPrimaryGreen">#7cb342</color>
+  <color name="colorPrimaryDarkGreen">#689F38</color>
+  <color name="colorAccentGreen">#8BC34A</color>
 
   <!--yellow theme-->
-  <color name="colorPrimaryYellow">#f0d662</color>
-  <color name="colorPrimaryDarkYellow">#e9c41e</color>
-  <color name="colorAccentYellow">#ffd640</color>
+  <color name="colorPrimaryYellow">#FF9800</color>
+  <color name="colorPrimaryDarkYellow">#F57C00</color>
+  <color name="colorAccentYellow">#FFC107</color>
+
+  <!--gray theme-->
+  <color name="colorPrimaryGray">#546e7a</color>
+  <color name="colorPrimaryDarkGray">#455A64</color>
+  <color name="colorAccentGray">#607D8B</color>
+
+  <!--purple theme-->
+  <color name="colorPrimaryPurple">#9C27B0</color>
+  <color name="colorPrimaryDarkPurple">#7B1FA2</color>
+  <color name="colorAccentPurple">#ab47bc</color>
+
+  <!--red theme-->
+  <color name="colorPrimaryRed">#d32f2f</color>
+  <color name="colorPrimaryDarkRed">#c62828</color>
+  <color name="colorAccentRed">#d50000</color>
 
 
 </resources>

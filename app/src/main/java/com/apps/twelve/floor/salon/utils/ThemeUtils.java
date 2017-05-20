@@ -22,6 +22,16 @@ public class ThemeUtils {
         return R.style.AppTheme_NoActionBar;
       case 1:
         return R.style.AppThemeNoActionBarBlue;
+      case 2:
+        return R.style.AppThemeNoActionBarGreen;
+      case 3:
+        return R.style.AppThemeNoActionBarYellow;
+      case 4:
+        return R.style.AppThemeNoActionBarGray;
+      case 5:
+        return R.style.AppThemeNoActionBarPurple;
+      case 6:
+        return R.style.AppThemeNoActionBarRed;
       default:
         return R.style.AppTheme_NoActionBar;
     }
@@ -32,11 +42,21 @@ public class ThemeUtils {
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     switch (preferences.getInt(PREF_THEME_OTHER_ACTIVITY, 0)) {
       case 0:
-        return R.style.AppTheme_NoActionBar;
+        return R.style.AppTheme;
       case 1:
-        return R.style.AppThemeNoActionBarBlue;
+        return R.style.AppThemeBlue;
+      case 2:
+        return R.style.AppThemeGreen;
+      case 3:
+        return R.style.AppThemeYellow;
+      case 4:
+        return R.style.AppThemeGray;
+      case 5:
+        return R.style.AppThemePurple;
+      case 6:
+        return R.style.AppThemeRed;
       default:
-        return R.style.AppTheme_NoActionBar;
+        return R.style.AppTheme;
     }
   }
 }
