@@ -6,7 +6,7 @@
     android:width="24dp">
 
   <path
-      android:fillColor="@color/colorSettingsIcons"
+      android:fillColor="@color/colorLightGray"
       android:pathData="M17.7,19.7H7.3V2.7h10.5V19.7z
 M11.7,21.4c0-0.5,0.4-0.8,0.8-0.8c0.5,0,0.8,0.4,0.8,0.8c0,0.5-0.4,0.8-0.8,0.8
 C12,22.2,11.7,21.9,11.7,21.4

@@ -96,7 +96,7 @@ public class ChooseMasterTimeFragment extends BaseFragment
     //Horizontal RV
     mRecyclerViewHorizontalDates.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-    mDatesHorizontalAdapter = new DatesHorizontalAdapter();
+    mDatesHorizontalAdapter = new DatesHorizontalAdapter(getContext());
     mRecyclerViewHorizontalDates.setAdapter(mDatesHorizontalAdapter);
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
@@ -108,7 +108,7 @@ public class ChooseMasterTimeFragment extends BaseFragment
     //Schedule RV (hours)
     mRecyclerViewScheduleInDay.setLayoutManager(
         new GridLayoutManager(getContext(), SCHEDULE_SPAN_COUNT));
-    mScheduleAdapter = new ScheduleAdapter();
+    mScheduleAdapter = new ScheduleAdapter(getContext());
     mRecyclerViewScheduleInDay.setAdapter(mScheduleAdapter);
     ItemClickSupport.addTo(mRecyclerViewScheduleInDay)
         .setOnItemClickListener(

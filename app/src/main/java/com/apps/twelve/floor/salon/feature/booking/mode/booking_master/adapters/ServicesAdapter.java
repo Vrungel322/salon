@@ -1,8 +1,10 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.adapters;
 
+import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
   private List<ServiceEntity> mServiceEntities = new ArrayList<>();
 
   private int selectedItem = -1;
+  private Context mContext;
+
+  public ServicesAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void setServiceEntity(List<ServiceEntity> serviceEntities) {
     mServiceEntities.clear();
@@ -39,13 +46,15 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
   @Override public void onBindViewHolder(ServiceViewHolder holder, int position) {
     if (this.selectedItem == position) {
+      TypedValue value = new TypedValue();
+      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
       holder.mConstraintLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorChooseServicePressedBackground));
+          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(), value.resourceId));
+      holder.mConstraintLayoutParent.getBackground().setAlpha(30);
     } else {
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorChooseServiceNotPressedBackground));
+              R.color.colorLLightGray));
     }
     Picasso.with(holder.mImageViewServiceImg.getContext())
         .load(mServiceEntities.get(position).getImage())

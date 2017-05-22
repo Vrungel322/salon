@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -13,6 +14,8 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsFragmentView;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -38,6 +41,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @BindView(R.id.tvEmail) TextView mTextViewEmail;
   @BindView(R.id.tvPhone) TextView mTextViewPhone;
   @BindView(R.id.spinnerGender) Spinner mSpinnerGender;
+
+  private AlertDialog mChooseThemeDialog;
 
   public SettingsFragment() {
     super(R.layout.fragment_settings);
@@ -72,6 +77,25 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @Override public void setUserGender(int gender) {
     mSpinnerGender.setSelection(gender);
+  }
+
+  @Override public void showSetThemeDialog(int position) {
+    String[] themes = getResources().getStringArray(R.array.dialog_theme);
+    mChooseThemeDialog = DialogFactory.createAlertDialogBuilder(getActivity(),
+        getString(R.string.dialog_title_select_theme))
+        .setSingleChoiceItems(themes, position, (dialog, which) -> {
+          mSettingsFragmentPresenter.setThemeApp(which);
+          mNavigator.startActivityClearStack((AppCompatActivity) getActivity(),
+              new Intent(getActivity(), StartActivity.class));
+        })
+        .create();
+    mChooseThemeDialog.show();
+  }
+
+  @Override public void closeSetThemeDialog() {
+    if (mChooseThemeDialog != null) {
+      mChooseThemeDialog.dismiss();
+    }
   }
 
   /** edit user info stuff */
@@ -117,6 +141,10 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
         ReportProblemFragment.newInstance());
   }
 
+  @OnClick(R.id.rlTheme) void changeTheme() {
+    mSettingsFragmentPresenter.showSetThemeDialog();
+  }
+
   @OnClick(R.id.rlClearHistory) void clearHistory() {
     showToastMessage("clear history");
   }
@@ -148,6 +176,13 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
       } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
         Timber.e(result.getError());
       }
+    }
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    if (mChooseThemeDialog != null) {
+      mChooseThemeDialog.dismiss();
     }
   }
 }

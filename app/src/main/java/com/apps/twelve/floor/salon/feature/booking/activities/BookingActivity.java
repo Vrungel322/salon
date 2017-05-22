@@ -15,6 +15,7 @@ import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPre
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
 
@@ -32,20 +33,26 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    setTheme(ThemeUtils.getThemeOtherActivity(getBaseContext()));
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
     setTitleAppBar(R.string.book_create);
     setIconAppBar(R.drawable.ic_home_white_24dp);
 
-    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
-        ContextCompat.getColor(this, R.color.colorDarkPink),
+    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
+        ContextCompat.getColor(this, R.color.colorRed),
         ContextCompat.getColor(this, R.color.colorWhite));
+
   }
 
   @Override protected void onResume() {
     super.onResume();
     mBookingActivityPresenter.fetchBonusCount();
+  }
+
+  @Override protected void onPause() {
+    super.onPause();
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

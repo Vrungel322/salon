@@ -57,4 +57,8 @@ public final class DialogFactory {
       @StringRes int messageResource) {
     return createProgressDialog(context, context.getString(messageResource));
   }
+
+  public static AlertDialog.Builder createAlertDialogBuilder(Context context, String title) {
+    return new AlertDialog.Builder(context).setTitle(title);
+  }
 }

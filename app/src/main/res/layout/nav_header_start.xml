@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@color/colorAccent"
+    android:background="?colorAccent"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -30,7 +30,7 @@
       android:text="Beauty Room"
       android:textSize="24sp"
       android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-      android:textColor="@color/colorNavigationText"
+      android:textColor="@color/colorWhite"
       />
 
 </LinearLayout>

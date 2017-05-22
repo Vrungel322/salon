@@ -45,9 +45,9 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().setNewsItemInMenu(), Timber::e);
     addToUnsubscription(subscription);
-    subscription = mRxBus.filteredObservable(RxBusHelper.SetCatalogItemInMenu.class)
+    subscription = mRxBus.filteredObservable(RxBusHelper.SetBonusItemInMenu.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(event -> getViewState().setCatalogItemInMenu(), Timber::e);
+        .subscribe(event -> getViewState().setBonusItemInMenu(), Timber::e);
     addToUnsubscription(subscription);
     subscription = mRxBus.filteredObservable(RxBusHelper.HideFloatingButton.class)
         .compose(ThreadSchedulers.applySchedulers())

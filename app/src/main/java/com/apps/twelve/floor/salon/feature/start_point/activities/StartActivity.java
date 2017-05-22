@@ -33,6 +33,7 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class StartActivity extends BaseActivity
@@ -52,6 +53,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    setTheme(ThemeUtils.getThemeStartActivity(getBaseContext()));
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();
@@ -63,6 +65,7 @@ public class StartActivity extends BaseActivity
         () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
+
   }
 
   private void setUpUI() {
@@ -79,14 +82,20 @@ public class StartActivity extends BaseActivity
     // disable checking share item
     mNavViewTopPart.getMenu().getItem(4).setCheckable(false);
 
-    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.5f, Gravity.END | Gravity.TOP),
-        ContextCompat.getColor(this, R.color.colorDarkPink),
+    mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
+        ContextCompat.getColor(this, R.color.colorRed),
         ContextCompat.getColor(this, R.color.colorWhite));
   }
 
   @Override protected void onResume() {
     super.onResume();
+    //Aesthetic.resume(this);
     mStartActivityPresenter.fetchBonusCount();
+  }
+
+  @Override protected void onPause() {
+    //Aesthetic.pause(this);
+    super.onPause();
   }
 
   @Override public void setMyBooksItemInMenu() {
@@ -97,8 +106,8 @@ public class StartActivity extends BaseActivity
     mNavViewTopPart.getMenu().getItem(7).setChecked(true);
   }
 
-  @Override public void setCatalogItemInMenu() {
-    mNavViewTopPart.getMenu().getItem(6).setChecked(true);
+  @Override public void setBonusItemInMenu() {
+    mNavViewTopPart.getMenu().getItem(3).setChecked(true);
   }
 
   @Override public void setBonusCount(int count) {

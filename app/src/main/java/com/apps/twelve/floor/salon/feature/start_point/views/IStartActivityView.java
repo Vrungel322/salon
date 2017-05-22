@@ -26,7 +26,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void setNewsItemInMenu();
 
-  @StateStrategyType(SkipStrategy.class) void setCatalogItemInMenu();
+  @StateStrategyType(SkipStrategy.class) void setBonusItemInMenu();
 
   void setBonusCount(int integer);
 }

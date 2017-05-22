@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,8 +54,9 @@ public class ChooseMasterContactFragment extends BaseFragment
   }
 
   @Override public void stopAnimation() {
-    mBtnCreateBooking.doneLoadingAnimation(
-        ContextCompat.getColor(getContext(), R.color.colorBookingContactsButton),
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mBtnCreateBooking.doneLoadingAnimation(ContextCompat.getColor(getContext(), value.resourceId),
         BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
   }
 

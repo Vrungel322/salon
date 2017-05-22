@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,9 +73,12 @@ public class MyLastBookingAdapter
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
     if (position == 0) {
+      TypedValue value = new TypedValue();
+      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
       holder.mConstraintLayoutLastBooking.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
-              R.color.colorMainScreenBookingPressed));
+              value.resourceId));
+      holder.mConstraintLayoutLastBooking.getBackground().setAlpha(30);
       holder.view.setVisibility(View.VISIBLE);
     } else {
       int[] attrs = new int[] { R.attr.selectableItemBackground };

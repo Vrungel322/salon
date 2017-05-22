@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.settings.fragments.SettingsFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 public class SettingsActivity extends BaseActivity implements ISettingsActivityView {
@@ -14,6 +15,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    setTheme(ThemeUtils.getThemeOtherActivity(getBaseContext()));
     setContentView(R.layout.activity_settings);
     super.onCreate(savedInstanceState);
 

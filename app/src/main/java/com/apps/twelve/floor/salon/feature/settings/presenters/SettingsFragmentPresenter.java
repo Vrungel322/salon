@@ -47,6 +47,10 @@ import timber.log.Timber;
     setUpPhoto();
   }
 
+  public void setThemeApp(int themeApp) {
+    mDataManager.setThemeSelected(themeApp);
+  }
+
   public void saveGender(int gender) {
     mDataManager.setProfileGender(gender);
   }
@@ -109,5 +113,9 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserGender(s), Timber::e);
     addToUnsubscription(subscription);
+  }
+
+  public void showSetThemeDialog() {
+    getViewState().showSetThemeDialog(mDataManager.getThemeSelected());
   }
 }
