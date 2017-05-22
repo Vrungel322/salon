@@ -133,7 +133,8 @@ dependencies {
     transitive = true;
   }
 
-  //Alarm
+  //Notifications
   compile 'com.evernote:android-job:1.1.10'
+  compile 'com.wdullaer:materialdatetimepicker:3.2.1'
 
 }

@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.ContextCompat;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
@@ -50,13 +49,13 @@ public class NotificationJob extends Job {
       String message = "";
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
-          message = String.format(message,
-              getContext().getResources().getString(R.string.notification_hourly),
+          message = getContext().getString(R.string.notification_text,
+              getContext().getString(R.string.notification_hourly),
               params.getExtras().getString(SERVICE_NAME, ""));
           break;
         case DAILY:
-          message = String.format(message,
-              getContext().getResources().getString(R.string.notification_daily),
+          message = getContext().getString(R.string.notification_text,
+              getContext().getString(R.string.notification_daily),
               params.getExtras().getString(SERVICE_NAME, ""));
           break;
       }
@@ -76,7 +75,6 @@ public class NotificationJob extends Job {
           .setSmallIcon(R.drawable.ic_create_booking)
           .setShowWhen(true)
           .setSound(uriSound)
-          .setColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
           .setLocalOnly(true)
           .build();
 

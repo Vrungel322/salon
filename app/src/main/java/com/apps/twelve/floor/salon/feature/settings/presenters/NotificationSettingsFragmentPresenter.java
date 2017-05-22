@@ -16,17 +16,34 @@ import javax.inject.Inject;
 
   @Inject DataManager mDataManager;
 
+  private int mLastPickedDays;
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    mLastPickedDays = mDataManager.getNotificationDays();
   }
 
   public void setUpSwitches() {
     getViewState().setUpSwitchers(mDataManager.isHourlyNotificationsEnabled(),
         mDataManager.isDailyNotificationsEnabled());
+  }
+
+  public void setUpStrings() {
+    getViewState().setUpDaysString(getDays());
+    getViewState().setUpHoursString(getHours());
+  }
+
+  public int getDays() {
+    mDataManager.getNotificationDays();
+    return mDataManager.getNotificationDays();
+  }
+
+  public long getHours() {
+    return mDataManager.getNotificationHours();
   }
 
   public void setHourlyNotificationsEnabled(boolean checked) {
@@ -35,5 +52,32 @@ import javax.inject.Inject;
 
   public void setDailyNotificationsEnabled(boolean checked) {
     mDataManager.setDailyNotificationsEnabled(checked);
+  }
+
+  public void setHours(long millis) {
+    mDataManager.setNotificationHours(millis);
+    getViewState().setUpHoursString(mDataManager.getNotificationHours());
+  }
+
+  public int getLastPickedDays() {
+    return mLastPickedDays;
+  }
+
+  public void setLastPickedDays(int days) {
+    mLastPickedDays = days;
+  }
+
+  public void saveDays() {
+    mDataManager.setNotificationDays(mLastPickedDays);
+    getViewState().setUpDaysString(mLastPickedDays);
+  }
+
+  public void showPickDayDialog() {
+    getViewState().showPickDayDialog();
+  }
+
+  public void cancelPickDayDialog() {
+    getViewState().cancelPickDayDialog();
+    mLastPickedDays = mDataManager.getNotificationDays();
   }
 }

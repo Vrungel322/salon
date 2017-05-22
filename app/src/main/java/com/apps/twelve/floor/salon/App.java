@@ -34,13 +34,14 @@ public class App extends Application {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     Shortbread.create(this);
-    JobManager.create(this).addJobCreator(new JobsCreator());
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
     }
 
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+
+    JobManager.create(this).addJobCreator(new JobsCreator());
   }
 
   public static void initBookingComponent() {

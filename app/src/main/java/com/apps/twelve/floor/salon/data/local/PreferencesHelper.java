@@ -23,6 +23,8 @@ public class PreferencesHelper {
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
   private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
+  private static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
+  private static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
   private static final String PREF_TOKEN = "PREF_TOKEN";
 
   private final SharedPreferences mPreferences;
@@ -121,6 +123,22 @@ public class PreferencesHelper {
 
   public void setDailyNotificationsEnabled(boolean enabled) {
     mPreferences.edit().putBoolean(PREF_NOTIF_DAILY_ENABLED, enabled).apply();
+  }
+
+  public int getNotificationDays() {
+    return mPreferences.getInt(PREF_NOTIF_DAYS, 1);
+  }
+
+  public void setNotificationDays(int days) {
+    mPreferences.edit().putInt(PREF_NOTIF_DAYS, days).apply();
+  }
+
+  public long getNotificationHours() {
+    return mPreferences.getLong(PREF_NOTIF_HOURS, 3600000);
+  }
+
+  public void setNotificationHours(long millis) {
+    mPreferences.edit().putLong(PREF_NOTIF_HOURS, millis).apply();
   }
 
   public String getToken() {
