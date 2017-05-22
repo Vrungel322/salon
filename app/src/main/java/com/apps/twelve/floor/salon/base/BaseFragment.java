@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.AppBarLayout;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,10 +57,11 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   }
 
   protected void showAlertMessage(String title, String message) {
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     Alerter.create(getActivity())
         .setTitle(title)
-        .setText(message)
-        .setBackgroundColor(R.color.colorAccent)
+        .setText(message).setBackgroundColor(value.resourceId)
         .setOnClickListener(view -> {
         })
         .show();

@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 /**
  * Created by John on 27.01.2017.
@@ -31,7 +32,8 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
   protected void showAlertMessage(String message) {
     TypedValue value = new TypedValue();
-    mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    Timber.e(mContext.toString());
     Alerter.create(this)
         .setTitle("Пройти регистрацию")
         .setText(message).setBackgroundColor(value.resourceId)
