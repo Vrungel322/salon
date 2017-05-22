@@ -30,6 +30,7 @@ import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityP
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.apps.twelve.floor.salon.utils.jobs.NotificationJob;
 import dagger.Component;
 
@@ -100,4 +101,6 @@ import dagger.Component;
 
   //job
   void inject(NotificationJob notificationJob);
+
+  void inject(JobsCreator jobsCreator);
 }

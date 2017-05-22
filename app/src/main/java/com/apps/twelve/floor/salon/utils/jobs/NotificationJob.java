@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.ContextCompat;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
@@ -16,6 +15,7 @@ import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
 
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICATION_TYPE;
@@ -46,15 +46,17 @@ public class NotificationJob extends Job {
 
     if (showNotification) {
 
-      StringBuilder message =
-          new StringBuilder(getContext().getResources().getString(R.string.notification_text));
-      message.append(" ");
+      String message = "";
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
-          message.append(getContext().getResources().getString(R.string.notification_hourly));
+          message = getContext().getString(R.string.notification_text,
+              getContext().getString(R.string.notification_hourly),
+              params.getExtras().getString(SERVICE_NAME, ""));
           break;
         case DAILY:
-          message.append(getContext().getResources().getString(R.string.notification_daily));
+          message = getContext().getString(R.string.notification_text,
+              getContext().getString(R.string.notification_daily),
+              params.getExtras().getString(SERVICE_NAME, ""));
           break;
       }
 
@@ -67,12 +69,12 @@ public class NotificationJob extends Job {
 
       Notification notification = new NotificationCompat.Builder(getContext()).setContentTitle(
           getContext().getResources().getString(R.string.notification_title))
-          .setContentText(message.toString())
+          .setContentText(message)
           .setAutoCancel(true)
           .setContentIntent(pendingIntent)
           .setSmallIcon(R.drawable.ic_create_booking)
           .setShowWhen(true)
-          .setSound(uriSound).setColor(ContextCompat.getColor(getContext(), R.color.colorAccent))
+          .setSound(uriSound)
           .setLocalOnly(true)
           .build();
 

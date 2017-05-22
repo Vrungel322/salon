@@ -35,7 +35,7 @@
       android:layout_marginStart="8dp"
       android:layout_marginTop="8dp"
       android:background="@color/colorLLightGray"
-      android:text="@string/choose_categotry"
+      android:text="@string/choose_category"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView2"

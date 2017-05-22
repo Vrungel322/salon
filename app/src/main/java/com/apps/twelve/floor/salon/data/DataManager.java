@@ -196,6 +196,22 @@ public class DataManager {
     mPref.setDailyNotificationsEnabled(enabled);
   }
 
+  public int getNotificationDays() {
+    return mPref.getNotificationDays();
+  }
+
+  public void setNotificationDays(int days) {
+    mPref.setNotificationDays(days);
+  }
+
+  public long getNotificationHours() {
+    return mPref.getNotificationHours();
+  }
+
+  public void setNotificationHours(long millis) {
+    mPref.setNotificationHours(millis);
+  }
+
   public Observable<List<StaffEntity>> fetchStaff() {
     List<StaffEntity> staffEntities = new ArrayList<>();
     ArrayList<StaffDetailContent> details = new ArrayList<>();

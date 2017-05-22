@@ -63,7 +63,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void saveNewTime(String entryId) {
+  public void saveNewTime(String entryId, String serviceName) {
     if (timePosition != -1) {
       Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
           mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
@@ -76,8 +76,8 @@ import timber.log.Timber;
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
                     mDataServiceEntity.get(dayPosition)
                         .getScheduleEntities()
-                        .get(timePosition)
-                        .getTimeInSec()) * 1000L - System.currentTimeMillis());
+                        .get(timePosition).getTimeInSec()) * 1000L - System.currentTimeMillis(),
+                    serviceName);
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked
