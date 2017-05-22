@@ -112,7 +112,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
     mBtnConfirmPostpone.startAnimation();
-    mPostponeFragmentPresenter.saveNewTime(String.valueOf(mEntityId));
+    mPostponeFragmentPresenter.saveNewTime(String.valueOf(mEntityId),
+        String.valueOf(getArguments().getString(SERVICE_NAME)));
   }
 
   @Override public void stopAnimation() {

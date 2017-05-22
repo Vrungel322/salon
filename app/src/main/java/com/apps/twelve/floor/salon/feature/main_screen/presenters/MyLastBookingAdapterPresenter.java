@@ -28,7 +28,7 @@ import timber.log.Timber;
     App.getAppComponent().inject(this);
   }
 
-  public void cancelOrder(int position, Integer entityId) {
+  public void cancelOrder(Integer entityId) {
     Subscription subscription = mDataManager.cancelOrder(entityId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {

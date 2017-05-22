@@ -58,7 +58,7 @@ import timber.log.Timber;
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             mJobsCreator.createNotification(String.valueOf(response.body().getId()),
                 Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
-                    - System.currentTimeMillis());
+                    - System.currentTimeMillis(), mBookingEntity.getServiceName());
                 getViewState().stopAnimation();
               } else {
                 getViewState().showAlert();

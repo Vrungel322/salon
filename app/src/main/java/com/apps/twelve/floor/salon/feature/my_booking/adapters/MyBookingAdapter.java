@@ -137,7 +137,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     mRemoveBookingDialog = DialogFactory.createAlertDialogBuilder(mContext, R.string.cancel_booking,
         R.string.confirm_cancel_booking, R.drawable.ic_report_problem)
         .setPositiveButton(R.string.confirm, (dialog, which) -> {
-          mMyBookingAdapterPresenter.cancelOrder(position, mBookingEntities.get(position).getId());
+          mMyBookingAdapterPresenter.cancelOrder(mBookingEntities.get(position).getId());
           mMyBookingAdapterPresenter.cancelAlertDialog();
         })
         .setNegativeButton(R.string.cancel,

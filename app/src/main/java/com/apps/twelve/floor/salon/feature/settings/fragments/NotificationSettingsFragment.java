@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
@@ -49,6 +50,18 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @OnCheckedChanged(R.id.switchDaily) void switchDaily(boolean checked) {
     mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
+  }
+
+  @OnClick(R.id.rlHourly) void setHourly() {
+    boolean checked = !mSwitchHourly.isChecked();
+    mNotificationSettingsFragmentPresenter.setHourlyNotificationsEnabled(checked);
+    mSwitchHourly.setChecked(checked);
+  }
+
+  @OnClick(R.id.rlDaily) void setDaily() {
+    boolean checked = !mSwitchDaily.isChecked();
+    mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
+    mSwitchDaily.setChecked(checked);
   }
 
   @Override public void setUpSwitchers(boolean hourly, boolean daily) {
