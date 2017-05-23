@@ -41,14 +41,13 @@
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/ic_date_next_24dp"
       />
-  <ImageView
+  <de.hdodenhof.circleimageview.CircleImageView
       android:id="@+id/ivCategoryIcon"
       android:layout_width="60dp"
       android:layout_height="60dp"
       android:layout_marginBottom="8dp"
       android:layout_marginLeft="8dp"
       android:layout_marginTop="8dp"
-      android:maxHeight="100dp"
       android:scaleType="centerCrop"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"

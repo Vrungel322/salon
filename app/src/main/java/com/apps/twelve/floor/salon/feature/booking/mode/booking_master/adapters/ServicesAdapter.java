@@ -8,13 +8,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.squareup.picasso.Picasso;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
               R.color.colorLLightGray));
     }
-    Picasso.with(holder.mImageViewServiceImg.getContext())
+    Picasso.with(mContext)
         .load(mServiceEntities.get(position).getImage())
         .into(holder.mImageViewServiceImg);
 
@@ -78,7 +78,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
   static class ServiceViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.clParent) ConstraintLayout mConstraintLayoutParent;
-    @BindView(R.id.ivServiceImg) ImageView mImageViewServiceImg;
+    @BindView(R.id.ivServiceImg) CircleImageView mImageViewServiceImg;
     @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
     @BindView(R.id.tvAboutService) TextView mTextViewAboutService;
     @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;

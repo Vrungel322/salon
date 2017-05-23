@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.squareup.picasso.Picasso;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class ServiceCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
   class ParentViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tvServiceTitle) TextView mTextViewServiceTitle;
-    @BindView(R.id.ivCategoryIcon) ImageView mImageViewCategoryIcon;
+    @BindView(R.id.ivCategoryIcon) CircleImageView mImageViewCategoryIcon;
 
     public ParentViewHolder(View itemView) {
       super(itemView);

@@ -89,12 +89,10 @@ public class StartActivity extends BaseActivity
 
   @Override protected void onResume() {
     super.onResume();
-    //Aesthetic.resume(this);
     mStartActivityPresenter.fetchBonusCount();
   }
 
   @Override protected void onPause() {
-    //Aesthetic.pause(this);
     super.onPause();
   }
 
