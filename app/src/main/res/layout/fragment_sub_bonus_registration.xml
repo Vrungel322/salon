@@ -29,6 +29,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_margin="16dp"
+      android:alpha=".7"
       app:cardBackgroundColor="?colorAccent"
       app:cardCornerRadius="5dp"
       app:cardElevation="3dp"
