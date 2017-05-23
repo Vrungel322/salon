@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -51,8 +52,10 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
 
     ((StartActivity) getActivity()).setTitleAppBar(R.string.news);
 
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeColors(
-        ContextCompat.getColor(getContext(), R.color.colorAccent));
+        ContextCompat.getColor(getContext(), value.resourceId));
 
     mAllNewsAdapter = new AllNewsAdapter();
     mRecyclerViewAllNews.setLayoutManager(new LinearLayoutManager(getContext()));
