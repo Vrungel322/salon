@@ -26,6 +26,7 @@ import timber.log.Timber;
     getViewState().addFragmentBooking();
     //RxBus
     subscribeCloseBookingService();
+    subscribeConnectException();
   }
 
   @Override protected void inject() {
@@ -48,7 +49,10 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.fetchBonusCount()
         .doOnNext(count -> mDataManager.setBonusCount(count))
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
+        .subscribe(count -> getViewState().setBonusCount(count), throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
@@ -56,6 +60,13 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.CloseBookingService.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(closeBookingService -> getViewState().closeBookingService(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeConnectException() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageConnectException.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().showConnectErrorMessage(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

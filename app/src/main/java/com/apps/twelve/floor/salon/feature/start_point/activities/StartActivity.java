@@ -114,6 +114,11 @@ public class StartActivity extends BaseActivity
     }
   }
 
+  @Override public void showConnectErrorMessage() {
+    showAlertMessage(getString(R.string.error_connection),
+        getString(R.string.сheck_internet_connection));
+  }
+
   @Override public void hideFloatingButton() {
     mFabBooking.setVisibility(View.INVISIBLE);
   }
@@ -178,9 +183,6 @@ public class StartActivity extends BaseActivity
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
-      /*case R.id.nav_share:
-        mStartActivityPresenter.share();
-        break;*/
       case R.id.nav_our_work:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);

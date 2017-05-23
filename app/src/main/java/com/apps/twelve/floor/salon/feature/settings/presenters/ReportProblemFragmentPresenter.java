@@ -32,22 +32,24 @@ import timber.log.Timber;
   }
 
   public void sendProblem(String problem) {
-    Subscription subscription = Observable.just(200).compose(ThreadSchedulers.applySchedulers())
-        .doOnNext(voidResponse -> {
+    Subscription subscription =
+        Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             mRxBus.post(new RxBusHelper.UpdateUserInfo());
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();
           }
-        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-        .subscribe(response -> {
+        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
           if (response == 200) {
             getViewState().closeFragment();
           } else {
             getViewState().revertAnimation();
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 }

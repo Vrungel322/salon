@@ -36,7 +36,10 @@ import timber.log.Timber;
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             mJobsCreator.cancelJob(String.valueOf(entityId));
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 

@@ -35,4 +35,9 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @Override public void addFragmentSettings() {
     mNavigator.addFragment(this, R.id.container_settings, SettingsFragment.newInstance());
   }
+
+  @Override public void showConnectErrorMessage() {
+    showAlertMessage(getString(R.string.error_connection),
+        getString(R.string.сheck_internet_connection));
+  }
 }

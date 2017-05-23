@@ -27,8 +27,6 @@ import java.util.List;
 
   void hideProgressBarAllServices();
 
-  void showErrorMsg(String s);
-
   void hideProgressBar();
 
   void showProgressBar();

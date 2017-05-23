@@ -90,6 +90,11 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     }
   }
 
+  @Override public void showConnectErrorMessage() {
+    showAlertMessage(getString(R.string.error_connection),
+        getString(R.string.сheck_internet_connection));
+  }
+
   @Override public void onBackPressed() {
     if (mNavigator.isFragmentTag(this, Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT)) {
       if (mNavigator.getCountBackStack(this) == 2) {

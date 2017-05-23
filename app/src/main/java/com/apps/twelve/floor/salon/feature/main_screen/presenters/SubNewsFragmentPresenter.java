@@ -41,6 +41,7 @@ import timber.log.Timber;
         }, throwable -> {
           Timber.e(throwable);
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -56,6 +57,7 @@ import timber.log.Timber;
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
           subscribeUpdateNews();
           Timber.e(throwable);
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }

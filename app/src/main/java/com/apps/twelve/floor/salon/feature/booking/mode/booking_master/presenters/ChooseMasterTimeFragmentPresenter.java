@@ -53,7 +53,10 @@ import timber.log.Timber;
           } else {
             getViewState().showNotTime();
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
