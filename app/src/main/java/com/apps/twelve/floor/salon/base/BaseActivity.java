@@ -44,7 +44,6 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
           ContextCompat.getColor(this, value.resourceId));
       setTaskDescription(taskDesc);
     }
-
   }
 
   protected void showAlertMessage(String title, String message) {
