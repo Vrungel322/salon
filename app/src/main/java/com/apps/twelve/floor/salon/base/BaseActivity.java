@@ -1,9 +1,13 @@
 package com.apps.twelve.floor.salon.base;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -13,7 +17,8 @@ import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
-import timber.log.Timber;
+
+import static com.apps.twelve.floor.salon.R.mipmap.ic_launcher;
 
 /**
  * Created by John on 27.01.2017.
@@ -28,12 +33,23 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     super.onCreate(savedInstanceState);
     ButterKnife.bind(this);
     App.getAppComponent().inject(this);
+
+    /* app color in recent-apps */
+    Bitmap bm = BitmapFactory.decodeResource(getResources(), ic_launcher);
+    TypedValue value = new TypedValue();
+    getTheme().resolveAttribute(R.attr.colorPrimary, value, true);
+    ActivityManager.TaskDescription taskDesc = null;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+      taskDesc = new ActivityManager.TaskDescription(getString(R.string.app_name), bm,
+          ContextCompat.getColor(this, value.resourceId));
+      setTaskDescription(taskDesc);
+    }
+
   }
 
   protected void showAlertMessage(String message) {
     TypedValue value = new TypedValue();
     getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-    Timber.e(mContext.toString());
     Alerter.create(this)
         .setTitle("Пройти регистрацию")
         .setText(message).setBackgroundColor(value.resourceId)
