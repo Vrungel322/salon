@@ -65,7 +65,6 @@ public class StartActivity extends BaseActivity
         () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
-
   }
 
   private void setUpUI() {
@@ -101,7 +100,7 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void setNewsItemInMenu() {
-    mNavViewTopPart.getMenu().getItem(7).setChecked(true);
+    mNavViewTopPart.getMenu().getItem(6).setChecked(true);
   }
 
   @Override public void setBonusItemInMenu() {
@@ -150,7 +149,7 @@ public class StartActivity extends BaseActivity
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_favourite:
-        showAlertMessage(getString(R.string.menu_favourite));
+        mStartActivityPresenter.share();
         return true;
       case R.id.action_my_bonus:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
@@ -179,9 +178,9 @@ public class StartActivity extends BaseActivity
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
-      case R.id.nav_share:
+      /*case R.id.nav_share:
         mStartActivityPresenter.share();
-        break;
+        break;*/
       case R.id.nav_our_work:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
             OurWorkFragment.newInstance(), Constants.FragmentTag.OUR_WORK_FRAGMENT);
