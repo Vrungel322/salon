@@ -28,8 +28,8 @@ android {
     applicationId "com.apps.twelve.floor.salon"
     minSdkVersion 16
     targetSdkVersion 25
-    versionCode 16
-    versionName "1.1.6"
+    versionCode 17
+    versionName "1.1.7"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
   }
@@ -42,11 +42,6 @@ android {
 
   lintOptions {
     abortOnError false
-  }
-
-  //for remove conflict RxJava1 with RxJava2
-  packagingOptions {
-    exclude 'META-INF/rxjava.properties'
   }
 }
 
@@ -61,18 +56,12 @@ dependencies {
   compile 'com.android.support:design:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-  //ORM Storio
-  compile 'com.pushtorefresh.storio:sqlite:1.12.3'
-  compile 'com.pushtorefresh.storio:content-resolver:1.12.3'
-  compile 'com.pushtorefresh.storio:sqlite-annotations:1.12.3'
-  apt 'com.pushtorefresh.storio:sqlite-annotations-processor:1.12.3'
-
   //GSON
   compile 'com.google.code.gson:gson:2.8.0'
 
   //Butterknife
-  compile 'com.jakewharton:butterknife:8.5.1'
-  apt 'com.jakewharton:butterknife-compiler:8.5.1'
+  compile 'com.jakewharton:butterknife:8.6.0'
+  apt 'com.jakewharton:butterknife-compiler:8.6.0'
 
   //Retrofit2
   compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -103,10 +92,10 @@ dependencies {
   apt "com.google.dagger:dagger-compiler:2.11-rc2"
 
   //Moxy
-  compile 'com.arello-mobile:moxy:1.5.2'
-  compile 'com.arello-mobile:moxy-app-compat:1.5.2'
-  compile 'com.arello-mobile:moxy-android:1.5.2'
-  apt 'com.arello-mobile:moxy-compiler:1.5.2'
+  compile 'com.arello-mobile:moxy:1.5.3'
+  compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+  compile 'com.arello-mobile:moxy-android:1.5.3'
+  apt 'com.arello-mobile:moxy-compiler:1.5.3'
 
   //Timber
   compile 'com.jakewharton.timber:timber:4.5.1'
