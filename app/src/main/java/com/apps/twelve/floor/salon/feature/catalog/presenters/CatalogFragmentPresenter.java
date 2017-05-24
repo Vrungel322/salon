@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by John on 17.05.2017.
@@ -29,8 +30,9 @@ import rx.Subscription;
   private void fetchStaffList() {
     Subscription subscription = mDataManager.fetchStaff()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(staffEntities -> {
-          getViewState().updateStaffList(staffEntities);
+        .subscribe(staffEntities -> getViewState().updateStaffList(staffEntities), throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }

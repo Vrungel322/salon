@@ -204,8 +204,4 @@ public class ChooseServiceServiceFragment extends BaseFragment
   @Override public void hideProgressBarAllServices() {
     mProgressBarLoadServices.setVisibility(View.GONE);
   }
-
-  @Override public void showErrorMsg(String s) {
-    showAlertMessage(s, "Try again later");
-  }
 }

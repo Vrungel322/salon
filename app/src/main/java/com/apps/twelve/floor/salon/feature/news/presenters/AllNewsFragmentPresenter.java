@@ -41,6 +41,7 @@ import timber.log.Timber;
         }, throwable -> {
           Timber.e(throwable);
           getViewState().stopRefreshingView();
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }

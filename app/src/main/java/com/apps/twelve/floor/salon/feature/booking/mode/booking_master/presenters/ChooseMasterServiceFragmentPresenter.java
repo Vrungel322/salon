@@ -51,7 +51,10 @@ import timber.log.Timber;
               getViewState().updateRvServices(serviceEntities);
               mServiceEntities.clear();
               mServiceEntities.addAll(serviceEntities);
-            }, Timber::e);
+            }, throwable -> {
+              Timber.e(throwable);
+              showMessageConnectException(throwable);
+            });
     addToUnsubscription(subscription);
   }
 

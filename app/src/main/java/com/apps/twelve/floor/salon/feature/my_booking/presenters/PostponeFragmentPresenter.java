@@ -59,7 +59,10 @@ import timber.log.Timber;
           } else {
             getViewState().showNotTime();
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
@@ -75,9 +78,8 @@ import timber.log.Timber;
                 mJobsCreator.cancelJob(entryId);
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
                     mDataServiceEntity.get(dayPosition)
-                        .getScheduleEntities()
-                        .get(timePosition).getTimeInSec()) * 1000L - System.currentTimeMillis(),
-                    serviceName);
+                        .getScheduleEntities().get(timePosition).getTimeInSec()) * 1000L
+                    - System.currentTimeMillis(), serviceName);
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked
@@ -96,7 +98,10 @@ import timber.log.Timber;
             } else {
               getViewState().revertAnimation();
             }
-          }, Timber::e);
+          }, throwable -> {
+            Timber.e(throwable);
+            showMessageConnectException(throwable);
+          });
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);

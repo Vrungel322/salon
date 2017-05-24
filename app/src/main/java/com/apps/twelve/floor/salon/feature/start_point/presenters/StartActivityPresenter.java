@@ -26,6 +26,7 @@ import timber.log.Timber;
     getViewState().addFragmentMain();
     //RxBus
     subscribeOnEvents();
+    subscribeConnectException();
   }
 
   @Override protected void inject() {
@@ -59,11 +60,21 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  private void subscribeConnectException() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageConnectException.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().showConnectErrorMessage(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
   public void fetchBonusCount() {
     Subscription subscription = mDataManager.fetchBonusCount()
         .doOnNext(count -> mDataManager.setBonusCount(count))
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
+        .subscribe(count -> getViewState().setBonusCount(count), throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 

@@ -56,7 +56,10 @@ import timber.log.Timber;
                   mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
               getViewState().showMasters(masterEntities);
               getViewState().hideProgressBar();
-            }, Timber::e);
+            }, throwable -> {
+              Timber.e(throwable);
+              showMessageConnectException(throwable);
+            });
     addToUnsubscription(subscription);
   }
 

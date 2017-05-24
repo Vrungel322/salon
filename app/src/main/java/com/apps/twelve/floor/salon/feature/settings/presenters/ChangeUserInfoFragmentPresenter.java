@@ -55,7 +55,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
           } else {
             getViewState().revertAnimation();
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 

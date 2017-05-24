@@ -17,4 +17,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   @StateStrategyType(SkipStrategy.class) void closeBookingService();
 
   void setBonusCount(int count);
+
+  @StateStrategyType(SkipStrategy.class) void showConnectErrorMessage();
+
 }

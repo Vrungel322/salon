@@ -34,7 +34,10 @@ import timber.log.Timber;
             getViewState().setStatusFavorite(true);
             mRxBus.post(new RxBusHelper.UpdateOurWorkList());
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
@@ -46,7 +49,10 @@ import timber.log.Timber;
             getViewState().setStatusFavorite(false);
             mRxBus.post(new RxBusHelper.UpdateOurWorkList());
           }
-        }, Timber::e);
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
     addToUnsubscription(subscription);
   }
 }

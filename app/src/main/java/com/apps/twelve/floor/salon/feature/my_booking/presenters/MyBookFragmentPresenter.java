@@ -43,6 +43,7 @@ import timber.log.Timber;
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -53,12 +54,13 @@ import timber.log.Timber;
             .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers())
             .subscribe(lastBookingEntities -> {
-          getViewState().showAllBooking(lastBookingEntities);
-          getViewState().stopRefreshingView();
-        }, throwable -> {
-          getViewState().stopRefreshingView();
-          Timber.e(throwable);
-        });
+              getViewState().showAllBooking(lastBookingEntities);
+              getViewState().stopRefreshingView();
+            }, throwable -> {
+              getViewState().stopRefreshingView();
+              Timber.e(throwable);
+              showMessageConnectException(throwable);
+            });
     addToUnsubscription(subscription);
   }
 

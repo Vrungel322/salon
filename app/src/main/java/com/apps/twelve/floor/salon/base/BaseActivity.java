@@ -38,23 +38,19 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     Bitmap bm = BitmapFactory.decodeResource(getResources(), ic_launcher);
     TypedValue value = new TypedValue();
     getTheme().resolveAttribute(R.attr.colorPrimary, value, true);
-    ActivityManager.TaskDescription taskDesc = null;
+    ActivityManager.TaskDescription taskDesc;
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
       taskDesc = new ActivityManager.TaskDescription(getString(R.string.app_name), bm,
           ContextCompat.getColor(this, value.resourceId));
       setTaskDescription(taskDesc);
     }
-
   }
 
-  protected void showAlertMessage(String message) {
+  protected void showAlertMessage(String title, String message) {
     TypedValue value = new TypedValue();
     getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-    Alerter.create(this)
-        .setTitle("Пройти регистрацию")
-        .setText(message).setBackgroundColor(value.resourceId)
+    Alerter.create(this).setTitle(title).setText(message).setBackgroundColor(value.resourceId)
         .setOnClickListener(view -> {
-          // TODO: 22.02.2017 make registration activity
         })
         .show();
   }

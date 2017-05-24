@@ -51,11 +51,17 @@ public final class RxBusHelper {
   }
 
   public static class SetNewsItemInMenu {
+
   }
 
   public static class SetBonusItemInMenu {
+
   }
 
   public static class UpdateOurWorkList {
+
+  }
+
+  public static class MessageConnectException {
   }
 }
