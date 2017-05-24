@@ -38,7 +38,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     Bitmap bm = BitmapFactory.decodeResource(getResources(), ic_launcher);
     TypedValue value = new TypedValue();
     getTheme().resolveAttribute(R.attr.colorPrimary, value, true);
-    ActivityManager.TaskDescription taskDesc = null;
+    ActivityManager.TaskDescription taskDesc;
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
       taskDesc = new ActivityManager.TaskDescription(getString(R.string.app_name), bm,
           ContextCompat.getColor(this, value.resourceId));
