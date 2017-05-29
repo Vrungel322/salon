@@ -64,10 +64,10 @@ public interface SalonApi {
   @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
       @Header("User") String token);
 
-  @POST("api/v1/favorite") @FormUrlEncoded Observable<Response<Void>> addToFavorite(
+  @POST("api/v1/users/favorite/photos") @FormUrlEncoded Observable<Response<Void>> addToFavorite(
       @Field("photo_id") int photoId, @Header("User") String token);
 
-  @DELETE("api/v1/favorite/{photoId}") Observable<Response<Void>> removeFromFavorite(
+  @DELETE("api/v1/users/favorite/photos/{photoId}") Observable<Response<Void>> removeFromFavorite(
       @Path("photoId") int photoId, @Header("User") String token);
 
   //@POST("signin") Observable<TokenEntity> login(
