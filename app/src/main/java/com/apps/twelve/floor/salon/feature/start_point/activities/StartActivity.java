@@ -78,8 +78,6 @@ public class StartActivity extends BaseActivity
 
     mNavViewTopPart.setNavigationItemSelectedListener(this);
     mNavViewBottomPart.setNavigationItemSelectedListener(this);
-    // disable checking share item
-    mNavViewTopPart.getMenu().getItem(4).setCheckable(false);
 
     mCircleFactory = new CountBadge.Factory(BadgeShape.circle(.6f, Gravity.END | Gravity.TOP),
         ContextCompat.getColor(this, R.color.colorRed),
