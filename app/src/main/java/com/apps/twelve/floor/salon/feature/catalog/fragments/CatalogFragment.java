@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.catalog.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.StaffListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
-import com.apps.twelve.floor.salon.feature.our_works.fragments.WorkDetailsFragment;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -55,7 +53,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     mRecyclerViewStaff.setAdapter(mStaffListAdapter);
     ItemClickSupport.addTo(mRecyclerViewStaff).setOnItemClickListener((recyclerView, position, v) -> {
         mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
-            StaffDetailsFragment.newInstance(mStaffListAdapter.getEntity(position)));
+            GoodsDetailsFragment.newInstance(mStaffListAdapter.getEntity(position)));
 
     });
   }

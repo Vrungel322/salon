@@ -200,6 +200,5 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @Override public void setStatusFavorite(boolean statusFavorite) {
     mPhotoWorksEntity.setFavorite(statusFavorite);
-    mCheckBoxFavorite.setChecked(statusFavorite);
   }
 }

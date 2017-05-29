@@ -7,9 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -31,7 +29,7 @@ import java.util.ArrayList;
  * Created by Vrungel on 18.05.2017.
  */
 
-public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
+public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
   @InjectPresenter StaffDetailsFragmentPresenter mStaffDetailsFragmentPresenter;
 
   @BindView(R.id.tvStaffTitle) TextView mTextViewTitle;
@@ -47,14 +45,14 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
 
   private HorizontalListAdapters mHorizontalListAdapter;
 
-  public StaffDetailsFragment() {
+  public GoodsDetailsFragment() {
     super(R.layout.fragment_catalog_item_detail);
   }
 
-  public static StaffDetailsFragment newInstance(StaffEntity entity) {
+  public static GoodsDetailsFragment newInstance(StaffEntity entity) {
     Bundle args = new Bundle();
     args.putParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY, entity);
-    StaffDetailsFragment fragment = new StaffDetailsFragment();
+    GoodsDetailsFragment fragment = new GoodsDetailsFragment();
     fragment.setArguments(args);
     return fragment;
   }
