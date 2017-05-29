@@ -22,7 +22,7 @@ public class PhotoWorksEntity implements Parcelable {
   @SerializedName("gallery_id") private int galleryId;
   @SerializedName("image") private String mUrlPhoto;
   @SerializedName("description") private String mDescriptionPhoto;
-  @SerializedName("in_favorite") private boolean mFavorite;
+  @SerializedName("favorite") private boolean mFavorite;
 
   public PhotoWorksEntity(int id, int galleryId, String urlPhoto, String descriptionPhoto,
       boolean favorite) {
