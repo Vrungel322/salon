@@ -1,16 +1,28 @@
 package com.apps.twelve.floor.salon.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Vrungel on 18.05.2017.
  */
 
 public class StaffDetailContent {
-  private int id;
-  private String mUrlPhoto;
+  @SerializedName("id") private int id;
+  @SerializedName("product_id") private int mProductId;
+  @SerializedName("image") private String mUrlPhoto;
 
-  public StaffDetailContent(int id, String urlPhoto) {
+  public StaffDetailContent(int id, int productId, String urlPhoto) {
     this.id = id;
+    mProductId = productId;
     mUrlPhoto = urlPhoto;
+  }
+
+  public int getProductId() {
+    return mProductId;
+  }
+
+  public void setProductId(int productId) {
+    mProductId = productId;
   }
 
   public int getId() {

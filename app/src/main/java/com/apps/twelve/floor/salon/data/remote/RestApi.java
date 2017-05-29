@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -95,6 +96,10 @@ public class RestApi {
 
   public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
     return api.removeFromFavorite(photoId, token);
+  }
+
+  public Observable<List<StaffEntity>> fetchAllProducts() {
+    return api.fetchAllProducts();
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {
