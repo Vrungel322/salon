@@ -15,6 +15,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingA
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubFragmentBookingPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHowFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
@@ -87,6 +88,8 @@ import dagger.Component;
   void inject(CatalogFragmentPresenter presenter);
 
   void inject(StaffDetailsFragmentPresenter presenter);
+
+  void inject(BonusHowFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

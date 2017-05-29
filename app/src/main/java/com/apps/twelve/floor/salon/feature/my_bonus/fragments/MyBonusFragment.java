@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
@@ -22,6 +23,9 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   @InjectPresenter MyBonusFragmentPresenter mMyBonusFragmentPresenter;
 
   @BindView(R.id.tvCountBonus) TextView mTvCountBonus;
+  @BindView(R.id.btnHowBonusWorks) Button mButtonHowBonusWorks;
+  @BindView(R.id.btnSendCode) Button mButtonSendCode;
+  @BindView(R.id.tvYour) TextView mTextViewYourCode;
 
   public MyBonusFragment() {
     super(R.layout.fragment_my_bonus);
@@ -44,6 +48,20 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     if (getActivity() instanceof BookingActivity) {
       ((BookingActivity) getActivity()).setTitleAppBar(R.string.bonus);
     }
+
+    mButtonHowBonusWorks.setOnClickListener(c -> {
+      if (getActivity() instanceof StartActivity) {
+        mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+            BonusHowFragment.newInstance());
+      } else {
+        mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_main,
+            BonusHowFragment.newInstance());
+      }
+    });
+
+    mButtonSendCode.setOnClickListener(c -> showToastMessage("Send"));
+
+    mTextViewYourCode.setText("007");
   }
 
   @Override public void onDestroyView() {
