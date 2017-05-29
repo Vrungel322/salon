@@ -80,17 +80,42 @@
         android:textColor="@color/colorTransparentBlack"
         android:textSize="24sp"
         />
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="price"
-        android:textColor="?colorAccent"
-        android:textSize="24sp"
-        />
+        >
+      <TextView
+          android:id="@+id/tvPrice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_toLeftOf="@+id/checkBoxFavoriteGoods"
+          android:layout_toStartOf="@+id/checkBoxFavoriteGoods"
+          android:ellipsize="end"
+          android:lines="1"
+          android:text="price"
+          android:textColor="?colorAccent"
+          android:textSize="24sp"
+          />
+
+      <android.support.v7.widget.AppCompatCheckBox
+          android:id="@+id/checkBoxFavoriteGoods"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_marginEnd="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginStart="16dp"
+          android:button="@drawable/check_heart_goods"
+          />
+    </RelativeLayout>
     <TextView
         android:id="@+id/tvStaffDescription"
         android:layout_width="match_parent"

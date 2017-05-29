@@ -52,7 +52,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   private PhotoWorksEntity mPhotoWorksEntity;
 
   public WorkDetailsFragment() {
-    super(R.layout.fragment_work_details);
+    super(R.layout.fragment_our_work_details);
   }
 
   public static WorkDetailsFragment newInstance(OurWorkEntity entity) {

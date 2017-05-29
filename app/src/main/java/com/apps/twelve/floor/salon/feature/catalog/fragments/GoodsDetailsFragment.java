@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +41,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
   @BindView(R.id.bPrevStaffImg) ImageButton mImageButtonPrevious;
   @BindView(R.id.bNextStaffImg) ImageButton mImageButtonNext;
   @BindView(R.id.tvPrice) TextView mTextViewPrice;
+  @BindView(R.id.checkBoxFavoriteGoods) AppCompatCheckBox mCheckBoxFavoriteGoods;
 
   private ImageStaffViewPagerAdapter mViewPagerAdapter;
 
@@ -98,7 +100,6 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mHorizontalListAdapter.setSelectedItem(currentPos);
       mViewPagerImages.setCurrentItem(currentPos);
 
-
       updateImageInfoAndButtons();
     }
 
@@ -132,8 +133,6 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
     }
   }
 
-
-
   @OnClick(R.id.bPrevStaffImg) public void nextPicture() {
     mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
   }
@@ -153,5 +152,4 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
     super.onDestroy();
   }
-
 }
