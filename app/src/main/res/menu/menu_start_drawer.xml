@@ -19,15 +19,10 @@
         android:id="@+id/nav_my_bonus"
         android:icon="@drawable/ic_bonus_24dp"
         android:title="@string/menu_my_bonus"/>
-    <!--<item
-        android:id="@+id/nav_share"
-        android:icon="@drawable/ic_share_24dp"
-        android:title="@string/menu_share"/>-->
     <item
         android:id="@+id/nav_our_work"
         android:icon="@drawable/ic_our_works_24dp"
         android:title="@string/menu_our_work"/>
-
     <item
         android:id="@+id/nav_catalog"
         android:icon="@drawable/ic_news_24dp"

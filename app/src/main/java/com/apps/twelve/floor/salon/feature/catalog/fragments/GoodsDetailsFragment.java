@@ -46,7 +46,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
   private HorizontalListAdapters mHorizontalListAdapter;
 
   public GoodsDetailsFragment() {
-    super(R.layout.fragment_catalog_item_detail);
+    super(R.layout.fragment_catalog_detail);
   }
 
   public static GoodsDetailsFragment newInstance(StaffEntity entity) {
