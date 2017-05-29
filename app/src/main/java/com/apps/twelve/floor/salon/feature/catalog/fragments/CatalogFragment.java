@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
+import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.StaffEntity;
@@ -56,6 +57,11 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
             GoodsDetailsFragment.newInstance(mStaffListAdapter.getEntity(position)));
 
     });
+  }
+
+  @OnClick(R.id.bChooseCategory) public void showCategoryDialog(){
+    CategoryDialogFragment categoryDialog = new CategoryDialogFragment();
+    categoryDialog.show(getActivity().getFragmentManager(),"");
   }
 
   @Override public void updateStaffList(List<StaffEntity> staffEntities) {

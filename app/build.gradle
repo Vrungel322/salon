@@ -126,4 +126,7 @@ dependencies {
   compile 'com.evernote:android-job:1.1.10'
   compile 'com.wdullaer:materialdatetimepicker:3.2.1'
 
+  //expandable RV
+  compile 'com.thoughtbot:expandablerecyclerview:1.3'
+
 }

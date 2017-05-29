@@ -22,13 +22,13 @@ public class StaffEntity implements Parcelable {
   @SerializedName("images_count") private int mImgCount;
   @SerializedName("images") private ArrayList<StaffDetailContent> mStaffDetailContents;
   @SerializedName("favorite") private boolean mFavorite;
-  private boolean mIsNew;
-  private Integer mType;
+  @SerializedName("is_new") private boolean mIsNew;
+  @SerializedName("for_sale")private boolean mType;
 
   public StaffEntity(int id, String title, String shortDescription, String price, String newPrice,
       int categoryId, String createDate, String updateDate, String imageURL, int imgCount,
       ArrayList<StaffDetailContent> staffDetailContents, boolean favorite, boolean isNew,
-      Integer type) {
+      boolean type) {
     this.id = id;
     mTitle = title;
     mShortDescription = shortDescription;
@@ -149,11 +149,11 @@ public class StaffEntity implements Parcelable {
     mIsNew = aNew;
   }
 
-  public Integer getType() {
+  public boolean getType() {
     return mType;
   }
 
-  public void setType(Integer type) {
+  public void setType(boolean type) {
     mType = type;
   }
 
