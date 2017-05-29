@@ -61,6 +61,14 @@
   <string name="next_step">Вперед</string>
   <string name="prev_step">Назад</string>
 
+  <string name="bonus_how_works">Как работают бонусы</string>
+  <string name="promo_your">Ваш промо-код</string>
+  <string name="promo_your_descr">(ваш уникальный код, который может ввести приглашенный друг)</string>
+  <string name="promo_friend">Промо-код друга</string>
+  <string name="promo_friend_descr">(введите промо-код, который хотите использовать)</string>
+  <string name="promo_send">Отправить другу</string>
+  <string name="promo_fill">ввести промо-код друга</string>
+
   <!--For tabs-->
   <string name="tab_services">Выбор\nуслуги</string>
   <string name="tab_time">Выбор\nвремени</string>
