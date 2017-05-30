@@ -52,11 +52,6 @@ public final class Constants {
     public static final String HOURLY = "HOURLY";
   }
 
-  public class FragmentToShow {
-    public static final String BONUS = "BONUS";
-    public static final String REGISTRATION = "REGISTRATION";
-  }
-
   public class ChangingUserInfoField {
     public static final int NAME = 0;
     public static final int LOGIN = 1;

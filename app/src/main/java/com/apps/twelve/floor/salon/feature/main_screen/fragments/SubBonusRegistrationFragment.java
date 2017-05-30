@@ -1,11 +1,11 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +18,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrati
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -38,9 +39,8 @@ public class SubBonusRegistrationFragment extends BaseFragment
     super(R.layout.fragment_sub_bonus_registration);
   }
 
-  public static SubBonusRegistrationFragment newInstance(String mode) {
+  public static SubBonusRegistrationFragment newInstance() {
     Bundle args = new Bundle();
-    args.putString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY, mode);
     SubBonusRegistrationFragment fragment = new SubBonusRegistrationFragment();
     fragment.setArguments(args);
     return fragment;
@@ -48,35 +48,41 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
-        .equals(Constants.FragmentToShow.REGISTRATION)) {
-      mTextViewBonusRegistration.setText(
-          Html.fromHtml(getString(R.string.bonus_registration_text)));
-      mButtonRegistration.setText(getString(R.string.registration));
-    } else {
-      Picasso.with(getContext())
-          .load(Uri.parse(
-              "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117"))
-          .into(mImageViewUserAvatar);
-      mTextViewBonusRegistration.setTextSize(32);
-      mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
-      mButtonRegistration.setText("100 баллов");
-    }
   }
 
   @OnClick(R.id.ivInfo) public void ivInfoClicked() {
     showAlertMessage("Info", "Some useful info");
   }
 
+  @Override public void onResume() {
+    super.onResume();
+    if (!mAuthManager.isAuthorized()) {
+      mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
+      mButtonRegistration.setText(getString(R.string.registration));
+    } else {
+      mSubBonusRegistrationFragmentPresenter.fetchBonusCount();
+      mSubBonusRegistrationFragmentPresenter.fetchUserPhoto();
+    }
+  }
+
+  @Override public void setBonusCount(String bonusCount) {
+    mTextViewBonusRegistration.setTextSize(32);
+    mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
+    mButtonRegistration.setText(getString(R.string.bonus_measure, bonusCount));
+  }
+
+  @Override public void setUserPhoto(String photoUri) {
+    Picasso.with(getContext()).load(Uri.parse(photoUri)).into(mImageViewUserAvatar);
+  }
+
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
-    if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
-        .equals(Constants.FragmentToShow.BONUS)) {
+    if (!mAuthManager.isAuthorized()) {
+      mNavigator.startActivity((AppCompatActivity) getActivity(),
+          new Intent(getActivity(), ModuleSignInActivity.class));
+    } else {
       mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance(),
           Constants.FragmentTag.MY_BONUS_FRAGMENT);
-    } else {
-      //mNavigator.startActivity((AppCompatActivity) getActivity(),
-      //    new Intent(getActivity(), RegistrationActivity.class));
     }
   }
 }

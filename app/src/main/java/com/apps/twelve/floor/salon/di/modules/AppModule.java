@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -35,5 +36,9 @@ import dagger.Provides;
 
   @Provides @AppScope public Navigator provideNavigator() {
     return new Navigator();
+  }
+
+  @Provides @AppScope public AuthorizationManager provideAuthorizationManager() {
+    return AuthorizationManager.getInstance();
   }
 }
