@@ -12,6 +12,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -74,6 +75,9 @@ public interface SalonApi {
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts();
 
   @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
+
+  @GET("api/v1/products")
+  Observable<List<GoodsEntity>> fetchGoodsByCatalogId(@Query("category") Integer id);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

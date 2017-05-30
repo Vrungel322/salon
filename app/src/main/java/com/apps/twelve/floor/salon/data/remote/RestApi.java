@@ -107,6 +107,10 @@ public class RestApi {
     return api.fetchCategories();
   }
 
+  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
+    return api.fetchGoodsByCatalogId(id);
+  }
+
   //public Observable<TokenEntity> login(LoginBody credentials) {
   //  return api.login(credentials);
   //}

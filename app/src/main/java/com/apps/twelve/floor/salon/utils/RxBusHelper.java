@@ -64,4 +64,12 @@ public final class RxBusHelper {
 
   public static class MessageConnectException {
   }
+
+  public static class ReloadCatalogByCategory {
+    public Integer id;
+
+    public ReloadCatalogByCategory(Integer id) {
+      this.id = id;
+    }
+  }
 }

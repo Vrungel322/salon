@@ -5,6 +5,8 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import rx.Subscription;
 @InjectViewState public class CategoryDialogFragmentPresenter
     extends BasePresenter<ICategoryDialogFragmentView> {
   @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
+
   private ArrayList<Genre> mGenres = new ArrayList<Genre>();
 
   @Override protected void inject() {
@@ -43,5 +47,9 @@ import rx.Subscription;
           getViewState().fillCategories(genres);
         });
     addToUnsubscription(subscription);
+  }
+
+  public void postEventToReloadList(Integer id) {
+    mRxBus.post(new RxBusHelper.ReloadCatalogByCategory(id));
   }
 }

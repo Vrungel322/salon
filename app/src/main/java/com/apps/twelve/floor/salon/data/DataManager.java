@@ -216,4 +216,8 @@ public class DataManager {
   }
 
   public Observable<List<GoodsCategoryEntity>> fetchCategories(){return mRestApi.fetchCategories();}
+
+  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
+    return mRestApi.fetchGoodsByCatalogId( id);
+  }
 }

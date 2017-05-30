@@ -52,12 +52,6 @@ public class CategoryDialogFragment extends MvpDialogFragment
       ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
     }
     mRecyclerViewCategories.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-  }
-
-  @Override public void onDestroyView() {
-    super.onDestroyView();
-    mUnbinder.unbind();
   }
 
   @Override public void fillCategories(ArrayList<Genre> genres) {
@@ -66,14 +60,16 @@ public class CategoryDialogFragment extends MvpDialogFragment
     mRecyclerViewCategories.setAdapter(mAdapter);
 
     mAdapter.setChildClickListener((v, checked, group, childIndex) -> {
-      Timber.e(((GoodsSubCategoryEntity)group.getItems().get(childIndex)).getTitle());
+      Timber.e(String.valueOf(((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId()));
+
+      mCategoryDialogFragmentPresenter.postEventToReloadList(
+          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId());
+      this.dismiss();
     });
-
-
   }
 
-  @Override public void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    mAdapter.onSaveInstanceState(outState);
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    mUnbinder.unbind();
   }
 }
