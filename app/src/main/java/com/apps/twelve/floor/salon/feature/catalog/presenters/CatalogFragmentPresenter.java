@@ -9,7 +9,6 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -38,9 +37,7 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ReloadCatalogByCategory.class)
         .doOnNext(reloadCatalogByCategory -> getViewState().startRefreshingView())
         .concatMap(reloadCatalogByCategory -> mDataManager.fetchGoodsByCatalogId(
-            reloadCatalogByCategory.id)
-            .compose(ThreadSchedulers.applySchedulers())
-            .concatMap(Observable::just))
+            reloadCatalogByCategory.id))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
           getViewState().updateGoodsList(goodsEntities);
