@@ -22,6 +22,19 @@
       android:layout_marginStart="8dp"
       />
   <TextView
+      android:id="@+id/tvHistory"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/history"
+      android:textColor="?colorAccent"
+      android:textSize="16sp"
+      android:layout_marginTop="0dp"
+      android:layout_marginRight="8dp"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBaseline_toBaselineOf="@+id/tvTitle"
+      android:layout_marginBottom="0dp"
+      />
+  <TextView
       android:id="@+id/tvCountBonus"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -103,7 +116,7 @@
   <Button
       android:id="@+id/btnSendCode"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="35dp"
       android:text="@string/promo_send"
       android:textColor="@color/colorWhite"
       android:textSize="12sp"
