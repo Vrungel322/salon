@@ -4,21 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
-import com.apps.twelve.floor.salon.data.model.StaffEntity;
-import com.apps.twelve.floor.salon.feature.catalog.adapters.ImageStaffViewPagerAdapter;
+import com.apps.twelve.floor.salon.data.model.GoodsDetailContent;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
+import com.apps.twelve.floor.salon.feature.catalog.adapters.ImageGoodsViewPagerAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.StaffDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.IStaffDetailsFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
@@ -31,7 +30,7 @@ import java.util.ArrayList;
  * Created by Vrungel on 18.05.2017.
  */
 
-public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
+public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
   @InjectPresenter StaffDetailsFragmentPresenter mStaffDetailsFragmentPresenter;
 
   @BindView(R.id.tvStaffTitle) TextView mTextViewTitle;
@@ -42,26 +41,27 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
   @BindView(R.id.bPrevStaffImg) ImageButton mImageButtonPrevious;
   @BindView(R.id.bNextStaffImg) ImageButton mImageButtonNext;
   @BindView(R.id.tvPrice) TextView mTextViewPrice;
+  @BindView(R.id.checkBoxFavoriteGoods) AppCompatCheckBox mCheckBoxFavoriteGoods;
 
-  private ImageStaffViewPagerAdapter mViewPagerAdapter;
+  private ImageGoodsViewPagerAdapter mViewPagerAdapter;
 
   private HorizontalListAdapters mHorizontalListAdapter;
 
-  public StaffDetailsFragment() {
-    super(R.layout.fragment_catalog_item_detail);
+  public GoodsDetailsFragment() {
+    super(R.layout.fragment_catalog_detail);
   }
 
-  public static StaffDetailsFragment newInstance(StaffEntity entity) {
+  public static GoodsDetailsFragment newInstance(GoodsEntity entity) {
     Bundle args = new Bundle();
     args.putParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY, entity);
-    StaffDetailsFragment fragment = new StaffDetailsFragment();
+    GoodsDetailsFragment fragment = new GoodsDetailsFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    StaffEntity staffEntity =
+    GoodsEntity goodsEntity =
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY);
 
     /* turn off scrolling */
@@ -74,21 +74,21 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
     LinearLayoutManager mLayoutManager =
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-    if (staffEntity != null) {
+    if (goodsEntity != null) {
       //some TV (title and gallery description)
-      mTextViewTitle.setText(staffEntity.getTitle());
-      mTextViewDescription.setText(staffEntity.getShortDescription());
-      mTextViewPrice.setText(staffEntity.getPrice());
+      mTextViewTitle.setText(goodsEntity.getTitle());
+      mTextViewDescription.setText(goodsEntity.getShortDescription());
+      mTextViewPrice.setText(goodsEntity.getPrice());
 
       // pager adapter
       mViewPagerAdapter =
-          new ImageStaffViewPagerAdapter(getActivity(), staffEntity.getStaffDetailContents());
+          new ImageGoodsViewPagerAdapter(getActivity(), goodsEntity.getGoodsDetailContents());
       mViewPagerImages.setAdapter(mViewPagerAdapter);
 
       // horizontal list adapter
       ArrayList<String> listUrlPhotos = new ArrayList<>();
-      for (StaffDetailContent staffDetailContent : staffEntity.getStaffDetailContents()) {
-        listUrlPhotos.add(staffDetailContent.getUrlPhoto());
+      for (GoodsDetailContent goodsDetailContent : goodsEntity.getGoodsDetailContents()) {
+        listUrlPhotos.add(goodsDetailContent.getUrlPhoto());
       }
       mHorizontalListAdapter = new HorizontalListAdapters(getActivity(), listUrlPhotos,
           pos -> mViewPagerImages.setCurrentItem(pos, true));
@@ -99,7 +99,6 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
       int currentPos = 0;
       mHorizontalListAdapter.setSelectedItem(currentPos);
       mViewPagerImages.setCurrentItem(currentPos);
-
 
       updateImageInfoAndButtons();
     }
@@ -134,8 +133,6 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
     }
   }
 
-
-
   @OnClick(R.id.bPrevStaffImg) public void nextPicture() {
     mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() - 1, true);
   }
@@ -155,5 +152,4 @@ public class StaffDetailsFragment extends BaseFragment implements IStaffDetailsF
 
     super.onDestroy();
   }
-
 }

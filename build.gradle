@@ -13,9 +13,6 @@ buildscript {
     //for retrolambda
     classpath 'me.tatarka:gradle-retrolambda:3.6.1'
 
-    //for dagger
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
     //for updating dependencies
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.14.0'
 

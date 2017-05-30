@@ -4,15 +4,13 @@ import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
-import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -212,22 +210,7 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
-  public Observable<List<StaffEntity>> fetchStaff() {
-    List<StaffEntity> staffEntities = new ArrayList<>();
-    ArrayList<StaffDetailContent> details = new ArrayList<>();
-    for (int i = 0; i < 15; i++) {
-      details.add(
-          new StaffDetailContent(i, "https://look.tm/statics/images/post/2648909-13243182.jpg"));
-    }
-    for (int i = 0; i < 33; i++) {
-      staffEntities.add(new StaffEntity("title " + i,
-          "Some short description,Some short description,Some short descriptionSome short description,Some short description,Some short descriptionSome short description,Some short description,Some short descriptionSome short description,Some short description,Some short description",
-          "100$", false, 1, "https://look.tm/statics/images/post/2648909-13243182.jpg", details));
-    }
-
-    staffEntities.add(3, new StaffEntity("title " + 3, "Some short description", "100$", true, 1,
-        "https://look.tm/statics/images/post/2648909-13243182.jpg", details));
-
-    return Observable.just(staffEntities);
+  public Observable<List<GoodsEntity>> fetchGoods() {
+    return mRestApi.fetchAllProducts();
   }
 }

@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.StaffDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
@@ -89,6 +90,8 @@ import dagger.Component;
   void inject(CatalogFragmentPresenter presenter);
 
   void inject(StaffDetailsFragmentPresenter presenter);
+
+  void inject(CategoryDialogFragmentPresenter presenter);
 
   void inject(BonusHowFragmentPresenter presenter);
 

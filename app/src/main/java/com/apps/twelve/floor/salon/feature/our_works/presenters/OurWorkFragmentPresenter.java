@@ -36,7 +36,7 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.fetchListOfWorks()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(ourWorkEntities -> {
-          //getViewState().addListOfWorks(ourWorkEntities);
+          getViewState().addListOfWorks(ourWorkEntities);
           getViewState().stopRefreshingView();
         }, throwable -> {
           getViewState().stopRefreshingView();
@@ -51,7 +51,7 @@ import timber.log.Timber;
         .concatMap(updateOurWorkList -> mDataManager.fetchListOfWorks())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(ourWorkEntities -> {
-          //getViewState().addListOfWorks(ourWorkEntities);
+          getViewState().addListOfWorks(ourWorkEntities);
           getViewState().stopRefreshingView();
         }, throwable -> {
           getViewState().stopRefreshingView();

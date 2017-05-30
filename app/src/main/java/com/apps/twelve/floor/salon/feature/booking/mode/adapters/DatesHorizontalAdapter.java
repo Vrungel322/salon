@@ -58,10 +58,10 @@ public class DatesHorizontalAdapter
     if (this.selectedItem == position) {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), value.resourceId));
-      holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
-          R.color.colorWhite));
-      holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
-          R.color.colorWhite));
+      holder.mViewLine.setBackgroundColor(
+          ContextCompat.getColor(holder.mViewLine.getContext(), R.color.colorWhite));
+      holder.mTextViewDate.setTextColor(
+          ContextCompat.getColor(holder.mTextViewDate.getContext(), R.color.colorWhite));
       holder.mTextViewStartTime.setTextColor(
           ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorWhite));
       holder.mTextViewEndTime.setTextColor(
@@ -69,10 +69,10 @@ public class DatesHorizontalAdapter
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
-      holder.mViewLine.setBackgroundColor(ContextCompat.getColor(holder.mViewLine.getContext(),
-          value.resourceId));
-      holder.mTextViewDate.setTextColor(ContextCompat.getColor(holder.mTextViewDate.getContext(),
-          R.color.colorBlack));
+      holder.mViewLine.setBackgroundColor(
+          ContextCompat.getColor(holder.mViewLine.getContext(), value.resourceId));
+      holder.mTextViewDate.setTextColor(
+          ContextCompat.getColor(holder.mTextViewDate.getContext(), R.color.colorBlack));
       holder.mTextViewStartTime.setTextColor(
           ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorBlack));
       holder.mTextViewEndTime.setTextColor(

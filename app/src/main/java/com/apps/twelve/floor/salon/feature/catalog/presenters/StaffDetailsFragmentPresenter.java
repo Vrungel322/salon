@@ -8,8 +8,8 @@ import com.arellomobile.mvp.InjectViewState;
 /**
  * Created by Vrungel on 18.05.2017.
  */
-@InjectViewState
-public class StaffDetailsFragmentPresenter extends BasePresenter<IStaffDetailsFragmentView> {
+@InjectViewState public class StaffDetailsFragmentPresenter
+    extends BasePresenter<IStaffDetailsFragmentView> {
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }

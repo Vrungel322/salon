@@ -2,29 +2,26 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:clickable="true"
     >
   <LinearLayout
-      android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:orientation="vertical"
       >
 
     <RelativeLayout
         android:id="@+id/rlImages"
         android:layout_width="match_parent"
         android:layout_height="330dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
         >
 
       <com.mzelzoghbi.zgallery.CustomViewPager
           android:id="@+id/viewPagerImages"
-          android:background="@color/colorLLightGray"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_alignParentBottom="true"
@@ -32,6 +29,7 @@
           android:layout_alignParentStart="true"
           android:layout_alignParentTop="true"
           android:layout_marginBottom="3dp"
+          android:background="@color/colorLLightGray"
           />
 
       <RelativeLayout
@@ -43,8 +41,10 @@
             android:id="@+id/bNextStaffImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:background="@null"
             app:srcCompat="@drawable/ic_gallery_next_24dp"
@@ -54,8 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:background="@null"
             app:srcCompat="@drawable/ic_gallery_previous_24dp"
             />
@@ -78,45 +80,54 @@
         android:textColor="@color/colorTransparentBlack"
         android:textSize="24sp"
         />
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="price"
-        android:textColor="?colorAccent"
-        android:textSize="24sp"
-        />
+        >
+      <TextView
+          android:id="@+id/tvPrice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_marginLeft="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_toLeftOf="@+id/checkBoxFavoriteGoods"
+          android:layout_toStartOf="@+id/checkBoxFavoriteGoods"
+          android:ellipsize="end"
+          android:lines="1"
+          android:text="price"
+          android:textColor="?colorAccent"
+          android:textSize="24sp"
+          />
+
+      <android.support.v7.widget.AppCompatCheckBox
+          android:id="@+id/checkBoxFavoriteGoods"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_marginEnd="16dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:layout_marginStart="16dp"
+          android:button="@drawable/check_heart_goods"
+          />
+    </RelativeLayout>
     <TextView
         android:id="@+id/tvStaffDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="zdlfibhzfvbhzIn order to create a ScrollView "
         android:textColor="@color/colorLightGray"
         android:textSize="14sp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        />
-    <TextView
-        android:id="@+id/tvMore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvStaffDescription"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:background="?attr/selectableItemBackground"
-        android:padding="3dp"
-        android:text="@string/more"
-        android:textColor="@color/colorTransparentBlack"
-        android:visibility="gone"
         />
 
   </LinearLayout>

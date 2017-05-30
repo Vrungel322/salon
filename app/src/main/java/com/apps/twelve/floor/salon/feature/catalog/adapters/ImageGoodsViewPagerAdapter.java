@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
+import com.apps.twelve.floor.salon.data.model.GoodsDetailContent;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * Created by Vrungel on 18.05.2017.
  */
 
-public class ImageStaffViewPagerAdapter extends PagerAdapter {
+public class ImageGoodsViewPagerAdapter extends PagerAdapter {
   private Activity mActivity;
   private LayoutInflater mLayoutInflater;
-  private ArrayList<StaffDetailContent> mPhotoStaff;
+  private ArrayList<GoodsDetailContent> mPhotoStaff;
 
-  public ImageStaffViewPagerAdapter(Activity activity, ArrayList<StaffDetailContent> photoStaff) {
+  public ImageGoodsViewPagerAdapter(Activity activity, ArrayList<GoodsDetailContent> photoStaff) {
     this.mActivity = activity;
     mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoStaff = photoStaff;
@@ -44,7 +44,7 @@ public class ImageStaffViewPagerAdapter extends PagerAdapter {
     return itemView;
   }
 
-  public StaffDetailContent getEntity(int position) {
+  public GoodsDetailContent getEntity(int position) {
     return mPhotoStaff.get(position);
   }
 

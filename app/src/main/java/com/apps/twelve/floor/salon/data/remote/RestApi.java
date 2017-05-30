@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.data.remote;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
@@ -95,6 +96,10 @@ public class RestApi {
 
   public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
     return api.removeFromFavorite(photoId, token);
+  }
+
+  public Observable<List<GoodsEntity>> fetchAllProducts() {
+    return api.fetchAllProducts();
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {
