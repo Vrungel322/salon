@@ -19,5 +19,4 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void showPickDayDialog();
 
   void cancelPickDayDialog();
-
 }

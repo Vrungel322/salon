@@ -78,8 +78,9 @@ import timber.log.Timber;
                 mJobsCreator.cancelJob(entryId);
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
                     mDataServiceEntity.get(dayPosition)
-                        .getScheduleEntities().get(timePosition).getTimeInSec()) * 1000L
-                    - System.currentTimeMillis(), serviceName);
+                        .getScheduleEntities()
+                        .get(timePosition)
+                        .getTimeInSec()) * 1000L - System.currentTimeMillis(), serviceName);
                 getViewState().stopAnimation();
                 break;
               case 400: // this time has already been picked

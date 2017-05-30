@@ -6,12 +6,12 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vrungel on 18.05.2017.
  */
 
-public class StaffDetailContent {
+public class GoodsDetailContent {
   @SerializedName("id") private int id;
   @SerializedName("product_id") private int mProductId;
   @SerializedName("image") private String mUrlPhoto;
 
-  public StaffDetailContent(int id, int productId, String urlPhoto) {
+  public GoodsDetailContent(int id, int productId, String urlPhoto) {
     this.id = id;
     mProductId = productId;
     mUrlPhoto = urlPhoto;

@@ -4,15 +4,13 @@ import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.data.model.StaffDetailContent;
-import com.apps.twelve.floor.salon.data.model.StaffEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -212,7 +210,7 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
-  public Observable<List<StaffEntity>> fetchStaff() {
+  public Observable<List<GoodsEntity>> fetchGoods() {
     return mRestApi.fetchAllProducts();
   }
 }

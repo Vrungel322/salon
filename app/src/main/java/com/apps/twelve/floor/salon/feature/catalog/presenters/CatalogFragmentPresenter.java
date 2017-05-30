@@ -24,13 +24,13 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpUi();
-    fetchStaffList();
+    fetchGoodsList();
   }
 
-  private void fetchStaffList() {
-    Subscription subscription = mDataManager.fetchStaff()
+  private void fetchGoodsList() {
+    Subscription subscription = mDataManager.fetchGoods()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(staffEntities -> getViewState().updateStaffList(staffEntities), throwable -> {
+        .subscribe(goodsEntities -> getViewState().updateStaffList(goodsEntities), throwable -> {
           Timber.e(throwable);
           showMessageConnectException(throwable);
         });

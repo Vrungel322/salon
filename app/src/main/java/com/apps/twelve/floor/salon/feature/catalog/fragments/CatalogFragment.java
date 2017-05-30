@@ -10,8 +10,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
-import com.apps.twelve.floor.salon.data.model.StaffEntity;
-import com.apps.twelve.floor.salon.feature.catalog.adapters.StaffListAdapter;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
+import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
@@ -30,7 +30,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @BindView(R.id.bChooseCategory) Button mButtonChooseCategory;
   @BindView(R.id.rvStaff) RecyclerView mRecyclerViewStaff;
 
-  private StaffListAdapter mStaffListAdapter;
+  private GoodsListAdapter mGoodsListAdapter;
 
   public CatalogFragment() {
     super(R.layout.fragment_catalog);
@@ -49,23 +49,22 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   }
 
   @Override public void setUpUi() {
-    mStaffListAdapter = new StaffListAdapter();
-    mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(),2));
-    mRecyclerViewStaff.setAdapter(mStaffListAdapter);
-    ItemClickSupport.addTo(mRecyclerViewStaff).setOnItemClickListener((recyclerView, position, v) -> {
-        mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
-            GoodsDetailsFragment.newInstance(mStaffListAdapter.getEntity(position)));
-
-    });
+    mGoodsListAdapter = new GoodsListAdapter();
+    mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRecyclerViewStaff.setAdapter(mGoodsListAdapter);
+    ItemClickSupport.addTo(mRecyclerViewStaff)
+        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
+            (StartActivity) getActivity(), R.id.container_main,
+            GoodsDetailsFragment.newInstance(mGoodsListAdapter.getEntity(position))));
   }
 
-  @OnClick(R.id.bChooseCategory) public void showCategoryDialog(){
+  @OnClick(R.id.bChooseCategory) public void showCategoryDialog() {
     CategoryDialogFragment categoryDialog = new CategoryDialogFragment();
-    categoryDialog.show(getActivity().getFragmentManager(),"");
+    categoryDialog.show(getActivity().getFragmentManager(), "");
   }
 
-  @Override public void updateStaffList(List<StaffEntity> staffEntities) {
-    mStaffListAdapter.addListStaffEntity(staffEntities);
+  @Override public void updateStaffList(List<GoodsEntity> staffEntities) {
+    mGoodsListAdapter.addListStaffEntity(staffEntities);
   }
 
   @Override public void onDestroyView() {

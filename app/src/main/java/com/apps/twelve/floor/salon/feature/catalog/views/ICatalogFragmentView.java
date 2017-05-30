@@ -1,6 +1,6 @@
 package com.apps.twelve.floor.salon.feature.catalog.views;
 
-import com.apps.twelve.floor.salon.data.model.StaffEntity;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -14,5 +14,5 @@ import java.util.List;
     extends MvpView {
   void setUpUi();
 
-  void updateStaffList(List<StaffEntity> staffEntities);
+  void updateStaffList(List<GoodsEntity> staffEntities);
 }

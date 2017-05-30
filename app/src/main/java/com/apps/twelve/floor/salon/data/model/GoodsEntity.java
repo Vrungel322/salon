@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by Vrungel on 18.05.2017.
  */
 
-public class StaffEntity implements Parcelable {
+public class GoodsEntity implements Parcelable {
   @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("text") private String mShortDescription;
@@ -20,14 +20,14 @@ public class StaffEntity implements Parcelable {
   @SerializedName("updated_at") private String mUpdateDate;
   @SerializedName("image") private String mImageURL;
   @SerializedName("images_count") private int mImgCount;
-  @SerializedName("images") private ArrayList<StaffDetailContent> mStaffDetailContents;
+  @SerializedName("images") private ArrayList<GoodsDetailContent> mGoodsDetailContents;
   @SerializedName("favorite") private boolean mFavorite;
   @SerializedName("is_new") private boolean mIsNew;
-  @SerializedName("for_sale")private boolean mType;
+  @SerializedName("for_sale") private boolean mType;
 
-  public StaffEntity(int id, String title, String shortDescription, String price, String newPrice,
+  public GoodsEntity(int id, String title, String shortDescription, String price, String newPrice,
       int categoryId, String createDate, String updateDate, String imageURL, int imgCount,
-      ArrayList<StaffDetailContent> staffDetailContents, boolean favorite, boolean isNew,
+      ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite, boolean isNew,
       boolean type) {
     this.id = id;
     mTitle = title;
@@ -39,7 +39,7 @@ public class StaffEntity implements Parcelable {
     mUpdateDate = updateDate;
     mImageURL = imageURL;
     mImgCount = imgCount;
-    mStaffDetailContents = staffDetailContents;
+    mGoodsDetailContents = goodsDetailContents;
     mFavorite = favorite;
     mIsNew = isNew;
     mType = type;
@@ -125,12 +125,12 @@ public class StaffEntity implements Parcelable {
     mImgCount = imgCount;
   }
 
-  public ArrayList<StaffDetailContent> getStaffDetailContents() {
-    return mStaffDetailContents;
+  public ArrayList<GoodsDetailContent> getGoodsDetailContents() {
+    return mGoodsDetailContents;
   }
 
-  public void setStaffDetailContents(ArrayList<StaffDetailContent> staffDetailContents) {
-    mStaffDetailContents = staffDetailContents;
+  public void setGoodsDetailContents(ArrayList<GoodsDetailContent> goodsDetailContents) {
+    mGoodsDetailContents = goodsDetailContents;
   }
 
   public boolean isFavorite() {
@@ -157,11 +157,11 @@ public class StaffEntity implements Parcelable {
     mType = type;
   }
 
-  public static Creator<StaffEntity> getCREATOR() {
+  public static Creator<GoodsEntity> getCREATOR() {
     return CREATOR;
   }
 
-  protected StaffEntity(Parcel in) {
+  protected GoodsEntity(Parcel in) {
     id = in.readInt();
     mTitle = in.readString();
     mShortDescription = in.readString();
@@ -195,13 +195,13 @@ public class StaffEntity implements Parcelable {
     return 0;
   }
 
-  public static final Creator<StaffEntity> CREATOR = new Creator<StaffEntity>() {
-    @Override public StaffEntity createFromParcel(Parcel in) {
-      return new StaffEntity(in);
+  public static final Creator<GoodsEntity> CREATOR = new Creator<GoodsEntity>() {
+    @Override public GoodsEntity createFromParcel(Parcel in) {
+      return new GoodsEntity(in);
     }
 
-    @Override public StaffEntity[] newArray(int size) {
-      return new StaffEntity[size];
+    @Override public GoodsEntity[] newArray(int size) {
+      return new GoodsEntity[size];
     }
   };
 }

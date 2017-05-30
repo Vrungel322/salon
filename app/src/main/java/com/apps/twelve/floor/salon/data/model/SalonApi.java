@@ -70,7 +70,7 @@ public interface SalonApi {
   @DELETE("api/v1/users/favorite/photos/{photoId}") Observable<Response<Void>> removeFromFavorite(
       @Path("photoId") int photoId, @Header("User") String token);
 
-  @GET("api/v1/products") Observable<List<StaffEntity>> fetchAllProducts();
+  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts();
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials
