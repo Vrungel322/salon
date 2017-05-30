@@ -13,12 +13,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
+import com.apps.twelve.floor.salon.data.model.category.GoodsSubCategoryEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.CategoryAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
 import com.arellomobile.mvp.MvpDialogFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.05.2017.
@@ -45,13 +47,12 @@ public class CategoryDialogFragment extends MvpDialogFragment
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-
     RecyclerView.ItemAnimator animator = mRecyclerViewCategories.getItemAnimator();
     if (animator instanceof DefaultItemAnimator) {
       ((DefaultItemAnimator) animator).setSupportsChangeAnimations(false);
     }
-
     mRecyclerViewCategories.setLayoutManager(new LinearLayoutManager(getActivity()));
+
   }
 
   @Override public void onDestroyView() {
@@ -63,6 +64,10 @@ public class CategoryDialogFragment extends MvpDialogFragment
 
     mAdapter = new CategoryAdapter(genres);
     mRecyclerViewCategories.setAdapter(mAdapter);
+
+    mAdapter.setChildClickListener((v, checked, group, childIndex) -> {
+      Timber.e(((GoodsSubCategoryEntity)group.getItems().get(childIndex)).getTitle());
+    });
 
 
   }

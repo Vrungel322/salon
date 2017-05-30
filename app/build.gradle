@@ -128,5 +128,6 @@ dependencies {
 
   //expandable RV
   compile 'com.thoughtbot:expandablerecyclerview:1.3'
+  compile 'com.thoughtbot:expandablecheckrecyclerview:1.4'
 
 }
