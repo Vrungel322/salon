@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,8 @@ import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrati
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.authorization.floor12.authorization.AuthorizationManager;
+import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -34,13 +37,14 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
 
+  AuthorizationManager mManager = AuthorizationManager.getInstance();
+
   public SubBonusRegistrationFragment() {
     super(R.layout.fragment_sub_bonus_registration);
   }
 
-  public static SubBonusRegistrationFragment newInstance(String mode) {
+  public static SubBonusRegistrationFragment newInstance() {
     Bundle args = new Bundle();
-    args.putString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY, mode);
     SubBonusRegistrationFragment fragment = new SubBonusRegistrationFragment();
     fragment.setArguments(args);
     return fragment;
@@ -48,8 +52,20 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
-        .equals(Constants.FragmentToShow.REGISTRATION)) {
+  }
+
+  @OnClick(R.id.ivInfo) public void ivInfoClicked() {
+    showAlertMessage("Info", "Some useful info");
+  }
+
+  @OnClick(R.id.bRegistration) void registration() {
+    mNavigator.startActivity((AppCompatActivity) getActivity(),
+        new Intent(getActivity(), ModuleSignInActivity.class));
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    if (!mManager.isAuthorized()) {
       mTextViewBonusRegistration.setText(
           Html.fromHtml(getString(R.string.bonus_registration_text)));
       mButtonRegistration.setText(getString(R.string.registration));
@@ -62,10 +78,6 @@ public class SubBonusRegistrationFragment extends BaseFragment
       mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
       mButtonRegistration.setText("100 баллов");
     }
-  }
-
-  @OnClick(R.id.ivInfo) public void ivInfoClicked() {
-    showAlertMessage("Info", "Some useful info");
   }
 
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {

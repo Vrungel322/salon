@@ -10,7 +10,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMainFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -47,7 +46,7 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
   @Override public void addSubFragments() {
     mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubNewsFragment.newInstance());
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBonusRegistration,
-        SubBonusRegistrationFragment.newInstance(Constants.FragmentToShow.REGISTRATION));
+        SubBonusRegistrationFragment.newInstance());
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBooking,
         SubBookingFragment.newInstance());
   }
