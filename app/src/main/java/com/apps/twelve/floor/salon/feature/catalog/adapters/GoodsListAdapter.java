@@ -22,7 +22,7 @@ import java.util.List;
 public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.GoodsListViewHolder> {
   private ArrayList<GoodsEntity> mGoodsEntities = new ArrayList<>();
 
-  public void addListStaffEntity(List<GoodsEntity> goodsEntities) {
+  public void addListGoodsEntity(List<GoodsEntity> goodsEntities) {
     mGoodsEntities.clear();
     mGoodsEntities.addAll(goodsEntities);
     notifyDataSetChanged();
@@ -30,7 +30,7 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.Good
 
   @Override public GoodsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     return new GoodsListViewHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_staff, parent, false));
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_goods, parent, false));
   }
 
   @Override public void onBindViewHolder(GoodsListViewHolder holder, int position) {
@@ -62,8 +62,8 @@ public class GoodsListAdapter extends RecyclerView.Adapter<GoodsListAdapter.Good
   static class GoodsListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivIsNew) ImageView mImageViewIsNew;
     @BindView(R.id.ivType) ImageView mImageViewType;
-    @BindView(R.id.ivStaffPhoto) ImageView mImageViewGoodsPhoto;
-    @BindView(R.id.tvStaffName) TextView mTextViewGoodsName;
+    @BindView(R.id.ivGoodsPhoto) ImageView mImageViewGoodsPhoto;
+    @BindView(R.id.tvGoodsName) TextView mTextViewGoodsName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
     @BindView(R.id.tvPrice) TextView mTextViewPrice;
 

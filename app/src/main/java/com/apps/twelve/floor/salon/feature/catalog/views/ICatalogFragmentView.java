@@ -14,5 +14,5 @@ import java.util.List;
     extends MvpView {
   void setUpUi();
 
-  void updateStaffList(List<GoodsEntity> staffEntities);
+  void updateGoodsList(List<GoodsEntity> goodsEntities);
 }

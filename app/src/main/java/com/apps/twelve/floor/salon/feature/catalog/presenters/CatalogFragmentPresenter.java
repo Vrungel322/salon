@@ -30,7 +30,7 @@ import timber.log.Timber;
   private void fetchGoodsList() {
     Subscription subscription = mDataManager.fetchGoods()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(goodsEntities -> getViewState().updateStaffList(goodsEntities), throwable -> {
+        .subscribe(goodsEntities -> getViewState().updateGoodsList(goodsEntities), throwable -> {
           Timber.e(throwable);
           showMessageConnectException(throwable);
         });

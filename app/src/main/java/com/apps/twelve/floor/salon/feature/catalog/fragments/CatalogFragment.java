@@ -63,8 +63,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     categoryDialog.show(getActivity().getFragmentManager(), "");
   }
 
-  @Override public void updateStaffList(List<GoodsEntity> staffEntities) {
-    mGoodsListAdapter.addListStaffEntity(staffEntities);
+  @Override public void updateGoodsList(List<GoodsEntity> staffEntities) {
+    mGoodsListAdapter.addListGoodsEntity(staffEntities);
   }
 
   @Override public void onDestroyView() {
