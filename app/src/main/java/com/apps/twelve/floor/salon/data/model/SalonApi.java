@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data.model;
 
+import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import java.util.List;
 import retrofit2.Response;
 import retrofit2.http.Body;
@@ -71,6 +72,8 @@ public interface SalonApi {
       @Path("photoId") int photoId, @Header("User") String token);
 
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts();
+
+  @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.List;
 import retrofit2.Response;
@@ -213,4 +214,6 @@ public class DataManager {
   public Observable<List<GoodsEntity>> fetchGoods() {
     return mRestApi.fetchAllProducts();
   }
+
+  public Observable<List<GoodsCategoryEntity>> fetchCategories(){return mRestApi.fetchCategories();}
 }
