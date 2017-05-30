@@ -72,7 +72,7 @@
   <string name="promo_fill">ввести промо-код друга</string>
   <string name="history_title">Накопленные бонусы</string>
   <string name="history_description">(расплачивайтесь бонусами за услуги)</string>
-  <string name="bonus_measure"> бонусов</string>
+  <string name="bonus_measure">%s бонусов</string>
 
   <!--For tabs-->
   <string name="tab_services">Выбор\nуслуги</string>

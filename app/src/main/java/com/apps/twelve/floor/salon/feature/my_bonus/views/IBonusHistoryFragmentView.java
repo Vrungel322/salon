@@ -11,4 +11,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBonusHistoryFragmentView
     extends MvpView {
 
+  void setBonusCount(Integer count);
 }

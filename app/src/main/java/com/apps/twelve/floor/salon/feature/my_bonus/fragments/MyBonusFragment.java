@@ -47,7 +47,7 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
         mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
             BonusHowFragment.newInstance());
       } else {
-        mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_main,
+        mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_booking,
             BonusHowFragment.newInstance());
       }
     });
@@ -77,7 +77,7 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
       mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
           BonusHistoryFragment.newInstance());
     } else {
-      mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_main,
+      mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_booking,
           BonusHistoryFragment.newInstance());
     }
   }
