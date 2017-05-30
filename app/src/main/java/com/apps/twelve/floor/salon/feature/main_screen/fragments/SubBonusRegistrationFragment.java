@@ -20,7 +20,6 @@ import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 27.02.2017.
@@ -63,19 +62,16 @@ public class SubBonusRegistrationFragment extends BaseFragment
     } else {
       mSubBonusRegistrationFragmentPresenter.fetchBonusCount();
       mSubBonusRegistrationFragmentPresenter.fetchUserPhoto();
-      Timber.e("onResume");
     }
   }
 
   @Override public void setBonusCount(String bonusCount) {
-    Timber.e("bonusCount " + bonusCount);
     mTextViewBonusRegistration.setTextSize(32);
     mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
     mButtonRegistration.setText(getString(R.string.bonus_measure, bonusCount));
   }
 
   @Override public void setUserPhoto(String photoUri) {
-    Timber.e("photoUri " + photoUri);
     Picasso.with(getContext()).load(Uri.parse(photoUri)).into(mImageViewUserAvatar);
   }
 
