@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 27.02.2017.
@@ -55,37 +55,38 @@ public class SubBonusRegistrationFragment extends BaseFragment
     showAlertMessage("Info", "Some useful info");
   }
 
-  @OnClick(R.id.bRegistration) void registration() {
-    mNavigator.startActivity((AppCompatActivity) getActivity(),
-        new Intent(getActivity(), ModuleSignInActivity.class));
-  }
-
   @Override public void onResume() {
     super.onResume();
     if (!mAuthManager.isAuthorized()) {
-      mTextViewBonusRegistration.setText(
-          Html.fromHtml(getString(R.string.bonus_registration_text)));
+      mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
       mButtonRegistration.setText(getString(R.string.registration));
     } else {
-      Picasso.with(getContext())
-          .load(Uri.parse(
-              "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117"))
-          .into(mImageViewUserAvatar);
-      mTextViewBonusRegistration.setTextSize(32);
-      mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
-      mButtonRegistration.setText("100 баллов");
+      mSubBonusRegistrationFragmentPresenter.fetchBonusCount();
+      mSubBonusRegistrationFragmentPresenter.fetchUserPhoto();
+      Timber.e("onResume");
     }
   }
 
+  @Override public void setBonusCount(String bonusCount) {
+    Timber.e("bonusCount " + bonusCount);
+    mTextViewBonusRegistration.setTextSize(32);
+    mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
+    mButtonRegistration.setText(getString(R.string.bonus_measure, bonusCount));
+  }
+
+  @Override public void setUserPhoto(String photoUri) {
+    Timber.e("photoUri " + photoUri);
+    Picasso.with(getContext()).load(Uri.parse(photoUri)).into(mImageViewUserAvatar);
+  }
+
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
-    if (getArguments().getString(Constants.FragmentsArgumentKeys.BONUS_REGISTRATION_KEY)
-        .equals(Constants.FragmentToShow.BONUS)) {
+    if (!mAuthManager.isAuthorized()) {
+      mNavigator.startActivity((AppCompatActivity) getActivity(),
+          new Intent(getActivity(), ModuleSignInActivity.class));
+    } else {
       mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance(),
           Constants.FragmentTag.MY_BONUS_FRAGMENT);
-    } else {
-      //mNavigator.startActivity((AppCompatActivity) getActivity(),
-      //    new Intent(getActivity(), RegistrationActivity.class));
     }
   }
 }
