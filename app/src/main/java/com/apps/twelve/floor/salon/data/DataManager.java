@@ -170,12 +170,20 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
-  public Observable<Response<Void>> addToFavorite(int photoId) {
-    return mRestApi.addToFavorite(photoId, mPref.getToken());
+  public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
+    return mRestApi.addToFavoritePhoto(photoId, mPref.getToken());
   }
 
-  public Observable<Response<Void>> removeFromFavorite(int photoId) {
-    return mRestApi.removeFromFavorite(photoId, mPref.getToken());
+  public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
+    return mRestApi.removeFromFavoritePhoto(photoId, mPref.getToken());
+  }
+
+  public Observable<Integer> addToFavoriteGoods(int goodsId) {
+    return Observable.just(200);
+  }
+
+  public Observable<Integer> removeFromFavoriteGoods(int goodsId) {
+    return Observable.just(200);
   }
 
   public boolean isHourlyNotificationsEnabled() {

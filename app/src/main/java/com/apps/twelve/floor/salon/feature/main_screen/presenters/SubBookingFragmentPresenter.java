@@ -17,7 +17,7 @@ import timber.log.Timber;
  * Created by Vrungel on 28.02.2017.
  */
 
-@InjectViewState public class SubFragmentBookingPresenter
+@InjectViewState public class SubBookingFragmentPresenter
     extends BasePresenter<ISubFragmentBookingView> {
 
   @Inject DataManager mDataManager;

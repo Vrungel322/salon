@@ -12,7 +12,10 @@ import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ICatalogFragmentView
     extends MvpView {
-  void setUpUi();
 
   void updateGoodsList(List<GoodsEntity> goodsEntities);
+
+  void startRefreshingView();
+
+  void stopRefreshingView();
 }
