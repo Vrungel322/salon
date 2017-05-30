@@ -9,13 +9,15 @@ import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPre
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.catalog.presenters.StaffDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.GoodsDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubFragmentBookingPresenter;
+import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHistoryFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHowFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
@@ -71,7 +73,7 @@ import dagger.Component;
 
   void inject(SubBonusRegistrationFragmentPresenter presenter);
 
-  void inject(SubFragmentBookingPresenter presenter);
+  void inject(SubBookingFragmentPresenter presenter);
 
   void inject(SettingsActivityPresenter presenter);
 
@@ -87,9 +89,13 @@ import dagger.Component;
 
   void inject(CatalogFragmentPresenter presenter);
 
-  void inject(StaffDetailsFragmentPresenter presenter);
+  void inject(GoodsDetailsFragmentPresenter presenter);
 
   void inject(CategoryDialogFragmentPresenter presenter);
+
+  void inject(BonusHowFragmentPresenter presenter);
+
+  void inject(BonusHistoryFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

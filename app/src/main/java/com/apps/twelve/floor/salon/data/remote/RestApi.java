@@ -91,12 +91,12 @@ public class RestApi {
     return api.fetchListOfWorks(token);
   }
 
-  public Observable<Response<Void>> addToFavorite(int photoId, String token) {
-    return api.addToFavorite(photoId, token);
+  public Observable<Response<Void>> addToFavoritePhoto(int photoId, String token) {
+    return api.addToFavoritePhoto(photoId, token);
   }
 
-  public Observable<Response<Void>> removeFromFavorite(int photoId, String token) {
-    return api.removeFromFavorite(photoId, token);
+  public Observable<Response<Void>> removeFromFavoritePhoto(int photoId, String token) {
+    return api.removeFromFavoritePhoto(photoId, token);
   }
 
   public Observable<List<GoodsEntity>> fetchAllProducts() {

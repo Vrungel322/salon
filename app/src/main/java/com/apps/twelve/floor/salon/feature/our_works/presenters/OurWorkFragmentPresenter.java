@@ -33,6 +33,7 @@ import timber.log.Timber;
   }
 
   public void fetchListOfWorks() {
+    getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(ourWorkEntities -> {
@@ -48,15 +49,8 @@ import timber.log.Timber;
 
   private void subscribeUpdateWorkList() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
-        .concatMap(updateOurWorkList -> mDataManager.fetchListOfWorks())
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> {
-          getViewState().addListOfWorks(ourWorkEntities);
-          getViewState().stopRefreshingView();
-        }, throwable -> {
-          getViewState().stopRefreshingView();
-          Timber.e(throwable);
-        });
+        .subscribe(ourWorkEntities -> fetchListOfWorks(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

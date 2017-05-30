@@ -18,6 +18,7 @@ import timber.log.Timber;
  */
 
 @InjectViewState public class CatalogFragmentPresenter extends BasePresenter<ICatalogFragmentView> {
+
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
 
@@ -27,8 +28,9 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getViewState().setUpUi();
     fetchGoodsList();
+    //RxBus
+    subscribeGoodsList();
     getRxBusInfoToReloadListByCetegory();
   }
 
@@ -45,13 +47,25 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void fetchGoodsList() {
+  public void fetchGoodsList() {
+    getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchGoods()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(goodsEntities -> getViewState().updateGoodsList(goodsEntities), throwable -> {
+        .subscribe(goodsEntities -> {
+          getViewState().updateGoodsList(goodsEntities);
+          getViewState().stopRefreshingView();
+        }, throwable -> {
+          getViewState().stopRefreshingView();
           Timber.e(throwable);
           showMessageConnectException(throwable);
         });
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeGoodsList() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateGoodsList.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(goodsEntities -> fetchGoodsList(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

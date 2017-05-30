@@ -7,6 +7,8 @@ import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
+import com.arellomobile.mvp.RegisterMoxyReflectorPackages;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import com.crashlytics.android.Crashlytics;
 import com.evernote.android.job.JobManager;
 import io.fabric.sdk.android.Fabric;
@@ -17,6 +19,7 @@ import timber.log.Timber;
  * Created by Vrungel on 25.01.2017.
  */
 
+@RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" })
 public class App extends Application {
 
   private static AppComponent sAppComponent;
@@ -42,6 +45,8 @@ public class App extends Application {
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
     JobManager.create(this).addJobCreator(new JobsCreator());
+
+    AuthorizationManager.init(this, "https://jwt.floor12apps.com/");
   }
 
   public static void initBookingComponent() {

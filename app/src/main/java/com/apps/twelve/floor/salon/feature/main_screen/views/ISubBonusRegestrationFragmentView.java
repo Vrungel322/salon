@@ -10,4 +10,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ISubBonusRegestrationFragmentView
     extends MvpView {
+
+  void setBonusCount(String bonusCount);
+
+  void setUserPhoto(String photoUri);
+
 }

@@ -2,8 +2,10 @@ package com.apps.twelve.floor.salon.feature.catalog.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import butterknife.BindView;
@@ -29,6 +31,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
 
   @BindView(R.id.bChooseCategory) Button mButtonChooseCategory;
   @BindView(R.id.rvStaff) RecyclerView mRecyclerViewStaff;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private GoodsListAdapter mGoodsListAdapter;
 
@@ -46,9 +49,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     ((StartActivity) getActivity()).setTitleAppBar(R.string.catalog);
-  }
 
-  @Override public void setUpUi() {
     mGoodsListAdapter = new GoodsListAdapter();
     mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRecyclerViewStaff.setAdapter(mGoodsListAdapter);
@@ -56,6 +57,11 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
         .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
             (StartActivity) getActivity(), R.id.container_main,
             GoodsDetailsFragment.newInstance(mGoodsListAdapter.getEntity(position))));
+
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mCatalogFragmentPresenter.fetchGoodsList());
   }
 
   @OnClick(R.id.bChooseCategory) public void showCategoryDialog() {
@@ -65,6 +71,14 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
 
   @Override public void updateGoodsList(List<GoodsEntity> staffEntities) {
     mGoodsListAdapter.addListGoodsEntity(staffEntities);
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 
   @Override public void onDestroyView() {

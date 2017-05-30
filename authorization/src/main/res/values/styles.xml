@@ -1,0 +1,116 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="ModuleAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="ModuleAppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
+  </style>
+
+  <style name="ModuleAppThemeBlue" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryBlue</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkBlue</item>
+    <item name="colorAccent">@color/colorAccentBlue</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarBlue" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryBlue</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkBlue</item>
+    <item name="colorAccent">@color/colorAccentBlue</item>
+  </style>
+
+  <style name="ModuleAppThemeGreen" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryGreen</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkGreen</item>
+    <item name="colorAccent">@color/colorAccentGreen</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarGreen" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryGreen</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkGreen</item>
+    <item name="colorAccent">@color/colorAccentGreen</item>
+  </style>
+
+  <style name="ModuleAppThemeYellow" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryYellow</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkYellow</item>
+    <item name="colorAccent">@color/colorAccentYellow</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarYellow" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryYellow</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkYellow</item>
+    <item name="colorAccent">@color/colorAccentYellow</item>
+  </style>
+
+  <style name="ModuleAppThemeGray" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryGray</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkGray</item>
+    <item name="colorAccent">@color/colorAccentGray</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarGray" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryGray</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkGray</item>
+    <item name="colorAccent">@color/colorAccentGray</item>
+  </style>
+
+  <style name="ModuleAppThemePurple" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryPurple</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkPurple</item>
+    <item name="colorAccent">@color/colorAccentPurple</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarPurple" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryPurple</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkPurple</item>
+    <item name="colorAccent">@color/colorAccentPurple</item>
+  </style>
+
+  <style name="ModuleAppThemeRed" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryRed</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
+    <item name="colorAccent">@color/colorAccentRed</item>
+  </style>
+
+  <style name="ModuleAppThemeNoActionBarRed" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="drawerArrowStyle">@style/ModuleMyDrawerArrowToggle</item>
+    <item name="colorPrimary">@color/colorPrimaryRed</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
+    <item name="colorAccent">@color/colorAccentRed</item>
+  </style>
+
+  <style name="ModuleAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  <style name="ModuleAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
+
+  <style name="ModuleMyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="color">@color/colorWhite</item>
+  </style>
+
+</resources>

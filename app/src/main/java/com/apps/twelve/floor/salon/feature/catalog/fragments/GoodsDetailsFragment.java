@@ -18,7 +18,7 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.GoodsDetailContent;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.ImageGoodsViewPagerAdapter;
-import com.apps.twelve.floor.salon.feature.catalog.presenters.StaffDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.GoodsDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.IStaffDetailsFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -31,7 +31,8 @@ import java.util.ArrayList;
  */
 
 public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsFragmentView {
-  @InjectPresenter StaffDetailsFragmentPresenter mStaffDetailsFragmentPresenter;
+
+  @InjectPresenter GoodsDetailsFragmentPresenter mGoodsDetailsFragmentPresenter;
 
   @BindView(R.id.tvStaffTitle) TextView mTextViewTitle;
 
@@ -44,8 +45,9 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
   @BindView(R.id.checkBoxFavoriteGoods) AppCompatCheckBox mCheckBoxFavoriteGoods;
 
   private ImageGoodsViewPagerAdapter mViewPagerAdapter;
-
   private HorizontalListAdapters mHorizontalListAdapter;
+
+  private GoodsEntity mGoodsEntity;
 
   public GoodsDetailsFragment() {
     super(R.layout.fragment_catalog_detail);
@@ -53,7 +55,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
   public static GoodsDetailsFragment newInstance(GoodsEntity entity) {
     Bundle args = new Bundle();
-    args.putParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY, entity);
+    args.putParcelable(Constants.FragmentsArgumentKeys.GOODS_ENTITY_KEY, entity);
     GoodsDetailsFragment fragment = new GoodsDetailsFragment();
     fragment.setArguments(args);
     return fragment;
@@ -61,8 +63,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    GoodsEntity goodsEntity =
-        getArguments().getParcelable(Constants.FragmentsArgumentKeys.STAFF_ENTITY_KEY);
+    mGoodsEntity = getArguments().getParcelable(Constants.FragmentsArgumentKeys.GOODS_ENTITY_KEY);
 
     /* turn off scrolling */
     Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
@@ -74,20 +75,20 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
     LinearLayoutManager mLayoutManager =
         new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-    if (goodsEntity != null) {
+    if (mGoodsEntity != null) {
       //some TV (title and gallery description)
-      mTextViewTitle.setText(goodsEntity.getTitle());
-      mTextViewDescription.setText(goodsEntity.getShortDescription());
-      mTextViewPrice.setText(goodsEntity.getPrice());
+      mTextViewTitle.setText(mGoodsEntity.getTitle());
+      mTextViewDescription.setText(mGoodsEntity.getShortDescription());
+      mTextViewPrice.setText(mGoodsEntity.getPrice());
 
       // pager adapter
       mViewPagerAdapter =
-          new ImageGoodsViewPagerAdapter(getActivity(), goodsEntity.getGoodsDetailContents());
+          new ImageGoodsViewPagerAdapter(getActivity(), mGoodsEntity.getGoodsDetailContents());
       mViewPagerImages.setAdapter(mViewPagerAdapter);
 
       // horizontal list adapter
       ArrayList<String> listUrlPhotos = new ArrayList<>();
-      for (GoodsDetailContent goodsDetailContent : goodsEntity.getGoodsDetailContents()) {
+      for (GoodsDetailContent goodsDetailContent : mGoodsEntity.getGoodsDetailContents()) {
         listUrlPhotos.add(goodsDetailContent.getUrlPhoto());
       }
       mHorizontalListAdapter = new HorizontalListAdapters(getActivity(), listUrlPhotos,
@@ -99,6 +100,8 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       int currentPos = 0;
       mHorizontalListAdapter.setSelectedItem(currentPos);
       mViewPagerImages.setCurrentItem(currentPos);
+
+      mCheckBoxFavoriteGoods.setChecked(mGoodsEntity.isFavorite());
 
       updateImageInfoAndButtons();
     }
@@ -139,6 +142,18 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
   @OnClick(R.id.bNextStaffImg) public void previousPicture() {
     mViewPagerImages.setCurrentItem(mViewPagerImages.getCurrentItem() + 1, true);
+  }
+
+  @OnClick(R.id.checkBoxFavoriteGoods) public void onCheckFavorite() {
+    if (mCheckBoxFavoriteGoods.isChecked()) {
+      mGoodsDetailsFragmentPresenter.addFavorite(mGoodsEntity.getId());
+    } else {
+      mGoodsDetailsFragmentPresenter.deleteFavorite(mGoodsEntity.getId());
+    }
+  }
+
+  @Override public void setStatusFavorite(boolean statusFavorite) {
+    mGoodsEntity.setFavorite(statusFavorite);
   }
 
   @Override public void onDestroy() {

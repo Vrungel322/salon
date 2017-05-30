@@ -27,7 +27,7 @@ import timber.log.Timber;
   }
 
   public void addFavorite(int idPhoto) {
-    Subscription subscription = mDataManager.addToFavorite(idPhoto)
+    Subscription subscription = mDataManager.addToFavoritePhoto(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
@@ -42,7 +42,7 @@ import timber.log.Timber;
   }
 
   public void deleteFavorite(int idPhoto) {
-    Subscription subscription = mDataManager.removeFromFavorite(idPhoto)
+    Subscription subscription = mDataManager.removeFromFavoritePhoto(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
           if (voidResponse.code() == 200) {
