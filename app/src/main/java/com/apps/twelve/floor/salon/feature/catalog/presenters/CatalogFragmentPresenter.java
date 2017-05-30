@@ -31,18 +31,24 @@ import timber.log.Timber;
     fetchGoodsList();
     //RxBus
     subscribeGoodsList();
-    getRxBusInfoToReloadListByCetegory();
+    subscribeReloadListByCategory();
   }
 
-  private void getRxBusInfoToReloadListByCetegory() {
+  private void subscribeReloadListByCategory() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ReloadCatalogByCategory.class)
-        .compose(ThreadSchedulers.applySchedulers())
+        .doOnNext(reloadCatalogByCategory -> getViewState().startRefreshingView())
         .concatMap(reloadCatalogByCategory -> mDataManager.fetchGoodsByCatalogId(
             reloadCatalogByCategory.id)
             .compose(ThreadSchedulers.applySchedulers())
             .concatMap(Observable::just))
+        .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
           getViewState().updateGoodsList(goodsEntities);
+          getViewState().stopRefreshingView();
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
   }
