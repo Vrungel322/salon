@@ -19,7 +19,6 @@ import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrati
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
 
@@ -36,8 +35,6 @@ public class SubBonusRegistrationFragment extends BaseFragment
   @BindView(R.id.cvBonusRegistration) CardView mCardViewBonusRegistration;
 
   @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
-
-  AuthorizationManager mManager = AuthorizationManager.getInstance();
 
   public SubBonusRegistrationFragment() {
     super(R.layout.fragment_sub_bonus_registration);
@@ -65,7 +62,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onResume() {
     super.onResume();
-    if (!mManager.isAuthorized()) {
+    if (!mAuthManager.isAuthorized()) {
       mTextViewBonusRegistration.setText(
           Html.fromHtml(getString(R.string.bonus_registration_text)));
       mButtonRegistration.setText(getString(R.string.registration));
