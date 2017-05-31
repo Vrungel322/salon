@@ -9,7 +9,6 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import javax.inject.Inject;
-import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -36,23 +35,22 @@ import timber.log.Timber;
 
   public void updateBookingAndNews() {
     getViewState().startRefreshingView();
-    mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
     mRxBus.post(new RxBusHelper.UpdateNews());
     if (mDataManager.isAuthorized()) {
       mRxBus.post(new RxBusHelper.UpdateBonusSwipe());
+      mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
     }
   }
 
   private void subscribeStopRefreshMainFragment() {
     Subscription subscription =
-        Observable.zip(mRxBus.filteredObservable(RxBusHelper.StopRefreshBookingMainFragment.class),
-            mRxBus.filteredObservable(RxBusHelper.StopRefreshNewsMainFragment.class),
-            (stopRefreshBookingMainFragment, stopRefreshNewsMainFragment) -> true)
+        mRxBus.filteredObservable(RxBusHelper.StopRefreshNewsMainFragment.class)
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(aBoolean -> getViewState().stopRefreshingView(), throwable -> {
-              Timber.e(throwable);
-              getViewState().stopRefreshingView();
-            });
+            .subscribe(stopRefreshNewsMainFragment -> getViewState().stopRefreshingView(),
+                throwable -> {
+                  Timber.e(throwable);
+                  getViewState().stopRefreshingView();
+                });
     addToUnsubscription(subscription);
   }
 }
