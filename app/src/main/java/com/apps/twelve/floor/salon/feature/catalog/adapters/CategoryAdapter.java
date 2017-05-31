@@ -76,7 +76,7 @@ public class CategoryAdapter extends
 
     @Override public void collapse() {
       mTextViewCatogoryName.setTextColor(
-          ContextCompat.getColor(mTextViewCatogoryName.getContext(), R.color.colorLightGray));
+          ContextCompat.getColor(mTextViewCatogoryName.getContext(), R.color.colorGray));
       animateCollapse();
     }
 

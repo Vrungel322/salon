@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.05.2017.
@@ -49,6 +50,7 @@ import rx.Subscription;
         }, throwable -> {
           showMessageConnectException(throwable);
           getViewState().stopProgressBar();
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
