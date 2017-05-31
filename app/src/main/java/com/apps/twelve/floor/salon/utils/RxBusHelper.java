@@ -41,9 +41,6 @@ public final class RxBusHelper {
   public static class UpdateBonusSwipe {
   }
 
-  public static class StopRefreshBookingMainFragment {
-  }
-
   public static class UpdateUserInfo {
   }
 

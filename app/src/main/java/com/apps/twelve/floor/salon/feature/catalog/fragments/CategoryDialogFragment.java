@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -32,6 +33,7 @@ public class CategoryDialogFragment extends MvpDialogFragment
   @InjectPresenter CategoryDialogFragmentPresenter mCategoryDialogFragmentPresenter;
 
   @BindView(R.id.rvCategories) RecyclerView mRecyclerViewCategories;
+  @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
   private Unbinder mUnbinder;
   private CategoryAdapter mAdapter;
@@ -67,6 +69,14 @@ public class CategoryDialogFragment extends MvpDialogFragment
           ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
       this.dismiss();
     });
+  }
+
+  @Override public void stopProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
+  }
+
+  @Override public void startProgressBar() {
+    mProgressBar.setVisibility(View.VISIBLE);
   }
 
   @Override public void onDestroyView() {

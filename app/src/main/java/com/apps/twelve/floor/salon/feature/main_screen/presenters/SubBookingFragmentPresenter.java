@@ -35,20 +35,19 @@ import timber.log.Timber;
   }
 
   private void fetchBookingEntities() {
-    Subscription subscription = mDataManager.fetchLastBooking()
-        .concatMap(Observable::from)
-        .take(2)
-        .toList()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(lastBookingEntities -> {
-          getViewState().showLastBookings(lastBookingEntities);
-          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-        }, throwable -> {
-          Timber.e(throwable);
-          mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-          showMessageConnectException(throwable);
-        });
-    addToUnsubscription(subscription);
+    if (mDataManager.isAuthorized()) {
+      Subscription subscription = mDataManager.fetchLastBooking()
+          .concatMap(Observable::from)
+          .take(2)
+          .toList()
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
+              throwable -> {
+                Timber.e(throwable);
+                showMessageConnectException(throwable);
+              });
+      addToUnsubscription(subscription);
+    }
   }
 
   private void subscribeUpdateSubBooking() {
@@ -59,15 +58,12 @@ import timber.log.Timber;
                 .take(2)
                 .toList())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(lastBookingEntities -> {
-              getViewState().showLastBookings(lastBookingEntities);
-              mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-            }, throwable -> {
-              mRxBus.post(new RxBusHelper.StopRefreshBookingMainFragment());
-              subscribeUpdateSubBooking();
-              Timber.e(throwable);
-              showMessageConnectException(throwable);
-            });
+            .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
+                throwable -> {
+                  subscribeUpdateSubBooking();
+                  Timber.e(throwable);
+                  showMessageConnectException(throwable);
+                });
     addToUnsubscription(subscription);
   }
 }

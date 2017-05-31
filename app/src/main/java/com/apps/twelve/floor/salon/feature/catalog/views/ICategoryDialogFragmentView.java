@@ -12,4 +12,8 @@ import java.util.ArrayList;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ICategoryDialogFragmentView
     extends MvpView {
   void fillCategories(ArrayList<Genre> goodsCategoryEntities);
+
+  void stopProgressBar();
+
+  void startProgressBar();
 }
