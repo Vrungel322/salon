@@ -35,6 +35,7 @@ import rx.Subscription;
 
   private void fetchCategories() {
     mGenres.clear();
+    getViewState().startProgressBar();
     Subscription subscription = mDataManager.fetchCategories()
         .compose(ThreadSchedulers.applySchedulers())
         .concatMap(Observable::from)
@@ -43,8 +44,11 @@ import rx.Subscription;
           return Observable.just(mGenres);
         })
         .subscribe(genres -> {
-
+          getViewState().stopProgressBar();
           getViewState().fillCategories(genres);
+        }, throwable -> {
+          showMessageConnectException(throwable);
+          getViewState().stopProgressBar();
         });
     addToUnsubscription(subscription);
   }
