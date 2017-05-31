@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,6 +84,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @BindView(R.id.tvAboutService) TextView mTextViewAboutService;
     @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
     @BindView(R.id.tvServiceDuration) TextView mTextViewSServiceDuration;
+    @BindView(R.id.ivServiceBadge) ImageView mImageViewServiceBadge;
+    @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonuse;
 
     ServiceViewHolder(View view) {
       super(view);
