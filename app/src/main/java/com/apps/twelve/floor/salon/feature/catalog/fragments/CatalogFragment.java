@@ -81,6 +81,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 
+  @Override public void setCategoryTitle(String title) {
+    mButtonChooseCategory.setText(title);
+  }
+
   @Override public void onDestroyView() {
     super.onDestroyView();
     ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);

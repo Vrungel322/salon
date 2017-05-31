@@ -71,9 +71,11 @@ public final class RxBusHelper {
 
   public static class ReloadCatalogByCategory {
     public Integer id;
+    public String title;
 
-    public ReloadCatalogByCategory(Integer id) {
+    public ReloadCatalogByCategory(Integer id, String title) {
       this.id = id;
+      this.title = title;
     }
   }
 }
