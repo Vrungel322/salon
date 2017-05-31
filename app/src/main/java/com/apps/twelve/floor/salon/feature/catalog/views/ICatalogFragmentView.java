@@ -20,4 +20,6 @@ import java.util.List;
   void stopRefreshingView();
 
   void setCategoryTitle(String title);
+
+  void setButtonDefaultText();
 }

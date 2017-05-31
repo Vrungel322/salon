@@ -61,6 +61,7 @@ import timber.log.Timber;
         .subscribe(goodsEntities -> {
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();
+          getViewState().setButtonDefaultText();
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);

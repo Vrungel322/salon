@@ -85,6 +85,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     mButtonChooseCategory.setText(title);
   }
 
+  @Override public void setButtonDefaultText() {
+    mButtonChooseCategory.setText(getString(R.string.choose_category));
+  }
+
   @Override public void onDestroyView() {
     super.onDestroyView();
     ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
