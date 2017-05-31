@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 
 public class SubBonusRegistrationFragment extends BaseFragment
     implements ISubBonusRegestrationFragmentView {
+
   @BindView(R.id.ivUserAvatar) ImageView mImageViewUserAvatar;
   @BindView(R.id.ivInfo) ImageView mImageViewInfo;
   @BindView(R.id.bRegistration) TextView mButtonRegistration;
@@ -56,13 +57,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onResume() {
     super.onResume();
-    if (!mAuthManager.isAuthorized()) {
-      mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
-      mButtonRegistration.setText(getString(R.string.registration));
-    } else {
-      mSubBonusRegistrationFragmentPresenter.fetchBonusCount();
-      mSubBonusRegistrationFragmentPresenter.fetchUserPhoto();
-    }
+    mSubBonusRegistrationFragmentPresenter.showCardBonusOrRegistration();
   }
 
   @Override public void setBonusCount(String bonusCount) {
@@ -75,8 +70,8 @@ public class SubBonusRegistrationFragment extends BaseFragment
     Picasso.with(getContext()).load(Uri.parse(photoUri)).into(mImageViewUserAvatar);
   }
 
-  @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
-    if (!mAuthManager.isAuthorized()) {
+  @Override public void openRegistrationOrBonus(boolean authorized) {
+    if (!authorized) {
       mNavigator.startActivity((AppCompatActivity) getActivity(),
           new Intent(getActivity(), ModuleSignInActivity.class));
     } else {
@@ -84,5 +79,14 @@ public class SubBonusRegistrationFragment extends BaseFragment
           R.id.container_main, MyBonusFragment.newInstance(),
           Constants.FragmentTag.MY_BONUS_FRAGMENT);
     }
+  }
+
+  @Override public void showCardRegistration() {
+    mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
+    mButtonRegistration.setText(getString(R.string.registration));
+  }
+
+  @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
+    mSubBonusRegistrationFragmentPresenter.openRegistrationOrBonus();
   }
 }

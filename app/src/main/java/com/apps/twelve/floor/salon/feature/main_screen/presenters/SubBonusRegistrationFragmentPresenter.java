@@ -4,9 +4,10 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBus;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -18,15 +19,22 @@ import timber.log.Timber;
 @InjectViewState public class SubBonusRegistrationFragmentPresenter
     extends BasePresenter<ISubBonusRegestrationFragmentView> {
 
-  @Inject AuthorizationManager mAuthManager;
   @Inject DataManager mDataManager;
+  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
 
-  public void fetchBonusCount() {
-    Subscription subscription = mDataManager.fetchBonusCount()
+  @Override protected void onFirstViewAttach() {
+    super.onFirstViewAttach();
+    //RxBus
+    subscribeUpdateBonusFromParent();
+    subscribeUpdateBonusSwipe();
+  }
+
+  private void fetchBonusCount() {
+    Subscription subscription = mDataManager.getBonusCountObservable()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(String.valueOf(count)), throwable -> {
           Timber.e(throwable);
@@ -35,8 +43,8 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void fetchUserPhoto() {
-    Subscription subscription = mAuthManager.getUserPhoto()
+  private void fetchUserPhoto() {
+    Subscription subscription = mDataManager.getUserPhoto()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(photo -> getViewState().setUserPhoto(photo), throwable -> {
           Timber.e(throwable);
@@ -45,4 +53,41 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  public void openRegistrationOrBonus() {
+    getViewState().openRegistrationOrBonus(mDataManager.isAuthorized());
+  }
+
+  public void showCardBonusOrRegistration() {
+    if (!mDataManager.isAuthorized()) {
+      getViewState().showCardRegistration();
+    } else {
+      fetchBonusCount();
+      fetchUserPhoto();
+    }
+  }
+
+  private void subscribeUpdateBonusSwipe() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusSwipe.class)
+        .concatMap(updateBonusSwipe -> mDataManager.fetchBonusCount())
+        .doOnNext(count -> mDataManager.setBonusCount(count))
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(count -> {
+          getViewState().setBonusCount(String.valueOf(count));
+          mRxBus.post(new RxBusHelper.UpdateBonusFromChildren());
+        }, throwable -> {
+          getViewState().setBonusCount(String.valueOf(mDataManager.getBonusCountInt()));
+          subscribeUpdateBonusFromParent();
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeUpdateBonusFromParent() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusFromParent.class)
+        .concatMap(updateBonusSwipe -> mDataManager.getBonusCountObservable())
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(count -> getViewState().setBonusCount(String.valueOf(count)), Timber::e);
+    addToUnsubscription(subscription);
+  }
 }

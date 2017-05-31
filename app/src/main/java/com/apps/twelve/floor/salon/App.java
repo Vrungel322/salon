@@ -19,8 +19,8 @@ import timber.log.Timber;
  * Created by Vrungel on 25.01.2017.
  */
 
-@RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" })
-public class App extends Application {
+@RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" }) public class App
+    extends Application {
 
   private static AppComponent sAppComponent;
   private static BookingComponent sBookingComponent;
@@ -37,6 +37,7 @@ public class App extends Application {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     Shortbread.create(this);
+    AuthorizationManager.init(this, "https://jwt.floor12apps.com/");
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
@@ -44,9 +45,8 @@ public class App extends Application {
 
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
+    //after initialize modules dagger
     JobManager.create(this).addJobCreator(new JobsCreator());
-
-    AuthorizationManager.init(this, "https://jwt.floor12apps.com/");
   }
 
   public static void initBookingComponent() {
