@@ -63,7 +63,8 @@ public class CategoryDialogFragment extends MvpDialogFragment
       Timber.e(String.valueOf(((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId()));
 
       mCategoryDialogFragmentPresenter.postEventToReloadList(
-          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId());
+          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
+          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
       this.dismiss();
     });
   }

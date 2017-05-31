@@ -18,4 +18,6 @@ import java.util.List;
   void startRefreshingView();
 
   void stopRefreshingView();
+
+  void setCategoryTitle(String title);
 }

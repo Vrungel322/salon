@@ -20,6 +20,7 @@ import timber.log.Timber;
 
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
+  private String mTitle;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -36,12 +37,15 @@ import timber.log.Timber;
   private void subscribeReloadListByCategory() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ReloadCatalogByCategory.class)
         .doOnNext(reloadCatalogByCategory -> getViewState().startRefreshingView())
-        .concatMap(reloadCatalogByCategory -> mDataManager.fetchGoodsByCatalogId(
-            reloadCatalogByCategory.id))
+        .concatMap(reloadCatalogByCategory -> {
+          mTitle = reloadCatalogByCategory.title;
+          return mDataManager.fetchGoodsByCatalogId(reloadCatalogByCategory.id);
+        })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();
+          getViewState().setCategoryTitle(mTitle);
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);

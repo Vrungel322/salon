@@ -49,7 +49,7 @@ import rx.Subscription;
     addToUnsubscription(subscription);
   }
 
-  public void postEventToReloadList(Integer id) {
-    mRxBus.post(new RxBusHelper.ReloadCatalogByCategory(id));
+  public void postEventToReloadList(Integer id, String title) {
+    mRxBus.post(new RxBusHelper.ReloadCatalogByCategory(id, title));
   }
 }
