@@ -78,8 +78,12 @@ public class DataManager {
     mPref.setBonusCount(bonusCount);
   }
 
-  public Observable<Integer> getBonusCount() {
-    return mPref.getBonusCount();
+  public int getBonusCountInt() {
+    return mPref.getBonusCounInt();
+  }
+
+  public Observable<Integer> getBonusCountObservable() {
+    return mPref.getBonusCounObservable();
   }
 
   public Observable<String> getProfileImage() {

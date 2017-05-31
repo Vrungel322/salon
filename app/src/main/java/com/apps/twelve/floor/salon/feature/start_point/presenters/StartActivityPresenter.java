@@ -27,6 +27,7 @@ import timber.log.Timber;
     //RxBus
     subscribeOnEvents();
     subscribeConnectException();
+    subscribeUpdateBonusFromChildren();
   }
 
   @Override protected void inject() {
@@ -68,13 +69,27 @@ import timber.log.Timber;
   }
 
   public void fetchBonusCount() {
-    Subscription subscription = mDataManager.fetchBonusCount()
-        .doOnNext(count -> mDataManager.setBonusCount(count))
+    if (mDataManager.isAuthorized()) {
+      Subscription subscription = mDataManager.fetchBonusCount()
+          .doOnNext(count -> mDataManager.setBonusCount(count))
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(count -> {
+            getViewState().setBonusCount(count);
+            mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
+          }, throwable -> {
+            Timber.e(throwable);
+            getViewState().setBonusCount(mDataManager.getBonusCountInt());
+            showMessageConnectException(throwable);
+          });
+      addToUnsubscription(subscription);
+    }
+  }
+
+  private void subscribeUpdateBonusFromChildren() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusFromChildren.class)
+        .concatMap(updateBonusSwipe -> mDataManager.getBonusCountObservable())
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(count -> getViewState().setBonusCount(count), throwable -> {
-          Timber.e(throwable);
-          showMessageConnectException(throwable);
-        });
+        .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
 

@@ -61,7 +61,11 @@ public class PreferencesHelper {
     mPreferences.edit().putString(PREF_PROFILE_NAME, name).apply();
   }
 
-  public Observable<Integer> getBonusCount() {
+  public int getBonusCounInt() {
+    return mPreferences.getInt(PREF_BONUS_COUNT, 0);
+  }
+
+  public Observable<Integer> getBonusCounObservable() {
     return Observable.just(mPreferences.getInt(PREF_BONUS_COUNT, 0));
   }
 

@@ -32,6 +32,15 @@ public final class RxBusHelper {
   public static class UpdateNews {
   }
 
+  public static class UpdateBonusFromChildren {
+  }
+
+  public static class UpdateBonusFromParent {
+  }
+
+  public static class UpdateBonusSwipe {
+  }
+
   public static class StopRefreshBookingMainFragment {
   }
 

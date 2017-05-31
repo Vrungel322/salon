@@ -32,7 +32,7 @@ import timber.log.Timber;
   }
 
   private void getBonusCount() {
-    Subscription subscription = mDataManager.getBonusCount()
+    Subscription subscription = mDataManager.getBonusCountObservable()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
