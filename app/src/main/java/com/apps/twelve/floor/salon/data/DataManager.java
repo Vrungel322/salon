@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -24,10 +25,13 @@ public class DataManager {
 
   private RestApi mRestApi;
   private PreferencesHelper mPref;
+  private AuthorizationManager mAuthorizationManager;
 
-  public DataManager(RestApi restApi, PreferencesHelper preferencesHelper) {
+  public DataManager(RestApi restApi, PreferencesHelper preferencesHelper,
+      AuthorizationManager authorizationManager) {
     this.mRestApi = restApi;
     this.mPref = preferencesHelper;
+    this.mAuthorizationManager = authorizationManager;
   }
 
   public Observable<List<CategoryEntity>> fetchCategory() {
@@ -223,9 +227,19 @@ public class DataManager {
     return mRestApi.fetchAllProducts();
   }
 
-  public Observable<List<GoodsCategoryEntity>> fetchCategories(){return mRestApi.fetchCategories();}
+  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
+    return mRestApi.fetchCategories();
+  }
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
-    return mRestApi.fetchGoodsByCatalogId( id);
+    return mRestApi.fetchGoodsByCatalogId(id);
+  }
+
+  public boolean isAuthorized() {
+    return mAuthorizationManager.isAuthorized();
+  }
+
+  public Observable<String> getUserPhoto() {
+    return mAuthorizationManager.getUserPhoto();
   }
 }

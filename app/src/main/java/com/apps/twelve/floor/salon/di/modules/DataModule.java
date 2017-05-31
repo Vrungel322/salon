@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -25,11 +26,15 @@ import retrofit2.Retrofit;
   }
 
   @Provides @AppScope DataManager provideDataManager(RestApi restApi,
-      PreferencesHelper preferencesHelper) {
-    return new DataManager(restApi, preferencesHelper);
+      PreferencesHelper preferencesHelper, AuthorizationManager authorizationManager) {
+    return new DataManager(restApi, preferencesHelper, authorizationManager);
   }
 
   @Provides @AppScope PreferencesHelper providePreferencesHelper(Context context) {
     return new PreferencesHelper(context);
+  }
+
+  @Provides @AppScope AuthorizationManager provideAuthorizationManager() {
+    return AuthorizationManager.getInstance();
   }
 }
