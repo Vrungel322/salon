@@ -88,8 +88,8 @@ public class RestApi {
     return api.fetchNewsPreview();
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks(String token) {
-    return api.fetchListOfWorks(token);
+  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
+    return api.fetchListOfWorks();
   }
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId, String token) {
@@ -112,7 +112,7 @@ public class RestApi {
     return api.fetchGoodsByCatalogId(id);
   }
 
-  public Observable<List<PhotoWorksEntity>> fetchFavoritePhotos(String token) {
+  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(String token) {
     return api.fetchFavoritePhotos(token);
   }
 

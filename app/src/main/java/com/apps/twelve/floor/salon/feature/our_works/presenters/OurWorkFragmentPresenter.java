@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.our_works.presenters;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
@@ -10,8 +11,10 @@ import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -42,15 +45,24 @@ import timber.log.Timber;
     subscribeUpdateWorkList();
   }
 
-  public void fetchListOfFavoriteWorks() {
+  @SuppressWarnings("ConstantConditions") public void fetchListOfFavoriteWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription =
-        Observable.zip(mDataManager.fetchFavoritePhotos(), mDataManager.fetchListOfWorks(),
-            (photoWorksEntities, ourWorkEntities) -> {
-              mOurWorkEntities.add(0,
-                  new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
-                      photoWorksEntities.size(), photoWorksEntities));
+        Observable.zip(mDataManager.fetchListOfWorks(), mDataManager.fetchFavoritePhotos(),
+            (ourWorkEntities, photoWorksEntities) -> {
+              if (photoWorksEntities.code() != 400 && photoWorksEntities.code() != 401) {
+                mOurWorkEntities.add(0,
+                    new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
+                        photoWorksEntities.body().size(), photoWorksEntities.body()));
+              } else {
+                Timber.e("no Auth or need to refresh token");
+                mDataManager.refreshToken();
+              }
+              if (photoWorksEntities.code() == 500) {
+                mDataManager.clearToken();
+                getViewState().startLoginActivity();
+              }
               mOurWorkEntities.addAll(ourWorkEntities);
               return mOurWorkEntities;
             }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {

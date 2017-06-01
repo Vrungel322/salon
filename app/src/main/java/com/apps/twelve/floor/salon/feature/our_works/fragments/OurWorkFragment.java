@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.our_works.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -17,6 +18,7 @@ import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentP
 import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -85,5 +87,10 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
   @Override public void stopRefreshingView() {
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
+  }
+
+  @Override public void startLoginActivity() {
+    mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
+        ThemeUtils.getThemeActionBar(getContext()));
   }
 }

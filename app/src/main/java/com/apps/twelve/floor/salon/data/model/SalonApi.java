@@ -63,8 +63,7 @@ public interface SalonApi {
 
   @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
 
-  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
-      @Header("authorization") String token);
+  @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks();
 
   @POST("api/v1/users/favorite/photos") @FormUrlEncoded
   Observable<Response<Void>> addToFavoritePhoto(@Field("photo_id") int photoId,
@@ -81,7 +80,7 @@ public interface SalonApi {
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchGoodsByCatalogId(
       @Query("category") Integer id);
 
-  @GET("api/v1/users/favorite/photos") Observable<List<PhotoWorksEntity>> fetchFavoritePhotos(
+  @GET("api/v1/users/favorite/photos") Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(
       @Header("authorization") String token);
 
   //@POST("signin") Observable<TokenEntity> login(

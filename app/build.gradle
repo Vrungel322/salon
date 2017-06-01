@@ -137,4 +137,5 @@ dependencies {
 
   //multidex
   compile 'com.android.support:multidex:1.0.1'
+  compile 'com.github.floor12apps:Authorization:0.0.5'
 }

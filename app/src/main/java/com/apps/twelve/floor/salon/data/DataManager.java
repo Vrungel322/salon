@@ -185,10 +185,10 @@ public class DataManager {
   //---------ourWorks
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
+    return mRestApi.fetchListOfWorks();
   }
 
-  public Observable<List<PhotoWorksEntity>> fetchFavoritePhotos() {
+  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
     return mRestApi.fetchFavoritePhotos(mAuthorizationManager.getToken());
     //return mRestApi.fetchFavoritePhotos(
     //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTU3MDQ0NzEsImV4cCI6MTUwNzcwNDQ3MSwibmJmIjoxNDk1NzA0NDcxLCJqdGkiOiJDcjBMcWJLbzNlWWduWjBqIn0.vRvG5GZBOWomDX_gBN74Z9rvzCJsqH24E0xQ3GYZi4I");
@@ -276,6 +276,19 @@ public class DataManager {
 
   public boolean isAuthorized() {
     return mAuthorizationManager.isAuthorized();
+  }
+
+  public void refreshToken() {
+    mAuthorizationManager.refreshToken1();
+  }
+
+  public void clearToken() {
+    mAuthorizationManager.clear();
+  }
+
+  public void logout() {
+    mPref.clear();
+    mAuthorizationManager.logout();
   }
 }
 
