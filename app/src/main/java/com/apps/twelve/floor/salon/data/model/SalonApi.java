@@ -47,13 +47,13 @@ public interface SalonApi {
   Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Path("masterId") String masterId);
 
   @POST("api/v1/entry") Observable<retrofit2.Response<LastBookingEntity>> checkInService(
-      @Header("User") int token, @Body BookingServerEntity bookingServerEntity);
+      @Header("authorization") String token, @Body BookingServerEntity bookingServerEntity);
 
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
-      @Header("User") int token);
+      @Header("authorization") String token);
 
   @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(@Path("id") String serviceId,
-      @Header("User") String token);
+      @Header("authorization") String token);
 
   @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
       @Path("entryId") String entryId, @Header("user") String token,
@@ -64,15 +64,15 @@ public interface SalonApi {
   @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
 
   @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
-      @Header("User") String token);
+      @Header("authorization") String token);
 
   @POST("api/v1/users/favorite/photos") @FormUrlEncoded
   Observable<Response<Void>> addToFavoritePhoto(@Field("photo_id") int photoId,
-      @Header("User") String token);
+      @Header("authorization") String token);
 
   @DELETE("api/v1/users/favorite/photos/{photoId}")
   Observable<Response<Void>> removeFromFavoritePhoto(@Path("photoId") int photoId,
-      @Header("User") String token);
+      @Header("authorization") String token);
 
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts();
 

@@ -152,23 +152,23 @@ public class DataManager {
 
   public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
+    return mRestApi.checkInService(mAuthorizationManager.getToken(), bookingServerEntity);
   }
 
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
-    return mRestApi.fetchLastBooking(mPref.getToken());
+    return mRestApi.fetchLastBooking(mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(serviceId, mPref.getToken());
+    return mRestApi.cancelOrder(serviceId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
-    return mRestApi.postponeService(entryId, mPref.getToken(), scheduleId);
+    return mRestApi.postponeService(entryId, mAuthorizationManager.getToken(), scheduleId);
   }
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks(mPref.getToken());
+    return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
   }
 
   public Observable<NewsEntity> fetchNewsPreview() {
@@ -180,11 +180,11 @@ public class DataManager {
   }
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
-    return mRestApi.addToFavoritePhoto(photoId, mPref.getToken());
+    return mRestApi.addToFavoritePhoto(photoId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
-    return mRestApi.removeFromFavoritePhoto(photoId, mPref.getToken());
+    return mRestApi.removeFromFavoritePhoto(photoId, mAuthorizationManager.getToken());
   }
 
   public Observable<Integer> addToFavoriteGoods(int goodsId) {

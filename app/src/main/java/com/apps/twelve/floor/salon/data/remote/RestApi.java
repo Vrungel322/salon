@@ -64,11 +64,11 @@ public class RestApi {
 
   public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String token,
       BookingServerEntity bookingServerEntity) {
-    return api.checkInService(Integer.parseInt(token), bookingServerEntity);
+    return api.checkInService(token, bookingServerEntity);
   }
 
   public Observable<List<LastBookingEntity>> fetchLastBooking(String token) {
-    return api.fetchLastBooking(Integer.parseInt(token));
+    return api.fetchLastBooking(token);
   }
 
   public Observable<Response<Void>> cancelOrder(Integer serviceId, String token) {
