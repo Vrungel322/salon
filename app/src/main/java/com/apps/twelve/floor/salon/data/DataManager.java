@@ -244,6 +244,6 @@ public class DataManager {
   }
 
   public Observable<String> getUserPhoto() {
-    return mAuthorizationManager.getUserPhoto();
+    return mAuthorizationManager.getObsevableUserPhoto();
   }
 }

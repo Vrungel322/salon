@@ -13,7 +13,7 @@ import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_THEM
 
 public class ThemeUtils {
 
-  public static int getThemeStartActivity(Context context) {
+  public static int getThemeNoActionBar(Context context) {
     SharedPreferences preferences =
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     switch (preferences.getInt(PREF_THEME_SELECTED, 0)) {
@@ -36,7 +36,7 @@ public class ThemeUtils {
     }
   }
 
-  public static int getThemeOtherActivity(Context context) {
+  public static int getThemeActionBar(Context context) {
     SharedPreferences preferences =
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     switch (preferences.getInt(PREF_THEME_SELECTED, 0)) {

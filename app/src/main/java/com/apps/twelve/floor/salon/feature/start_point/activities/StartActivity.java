@@ -53,7 +53,7 @@ public class StartActivity extends BaseActivity
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    setTheme(ThemeUtils.getThemeStartActivity(getBaseContext()));
+    setTheme(ThemeUtils.getThemeNoActionBar(getBaseContext()));
     setContentView(R.layout.activity_start);
     super.onCreate(savedInstanceState);
     setUpUI();
