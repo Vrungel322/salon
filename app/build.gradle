@@ -133,6 +133,5 @@ dependencies {
   compile 'com.thoughtbot:expandablecheckrecyclerview:1.4'
 
   //authorization
-  compile 'com.github.floor12apps:Authorization:0.0.2'
-
+  compile 'com.github.floor12apps:Authorization:0.0.4'
 }

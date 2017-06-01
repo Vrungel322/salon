@@ -96,7 +96,7 @@ public class DataManager {
   }
 
   public Observable<String> getUserPhoto() {
-    return Observable.just(mAuthorizationManager.getUserPhoto());
+    return mAuthorizationManager.getObsevableUserPhoto();
   }
 
   //---------settings
@@ -203,7 +203,6 @@ public class DataManager {
     return mRestApi.fetchNewsPreview();
   }
 
-
   public Observable<List<NewsEntity>> fetchAllNews() {
     return mRestApi.fetchAllNews();
   }
@@ -272,3 +271,4 @@ public class DataManager {
     return mAuthorizationManager.isAuthorized();
   }
 }
+
