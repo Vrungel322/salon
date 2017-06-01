@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Vrungel on 22.02.2017.
@@ -26,11 +27,10 @@ public class OurWorkEntity implements Parcelable {
   @SerializedName("service_id") private int serviceId;
   @SerializedName("image") private String mImageURL;
   @SerializedName("photos_count") private int mImageCount;
-  @SerializedName("photos") private ArrayList<PhotoWorksEntity> mListPhotoWorks;
+  @SerializedName("photos") private List<PhotoWorksEntity> mListPhotoWorks;
 
-  public OurWorkEntity(String title, String imageURL, int imageCount,
-      ArrayList<PhotoWorksEntity> listPhotoWorks) {
-    mTitle = title;
+  public OurWorkEntity(String imageURL, int imageCount,
+      List<PhotoWorksEntity> listPhotoWorks) {
     mImageURL = imageURL;
     mImageCount = imageCount;
     mListPhotoWorks = listPhotoWorks;
@@ -130,7 +130,7 @@ public class OurWorkEntity implements Parcelable {
     mImageCount = imageCount;
   }
 
-  public ArrayList<PhotoWorksEntity> getListPhotoWorks() {
+  public List<PhotoWorksEntity> getListPhotoWorks() {
     return mListPhotoWorks;
   }
 

@@ -63,12 +63,11 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
             showToastMessage(R.string.error_empty_gallery);
           }
         });
-    mOurWorkFragmentPresenter.fetchListOfWorks();
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
-    mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchListOfWorks());
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchListOfFavoriteWorks());
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {

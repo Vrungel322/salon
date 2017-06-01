@@ -78,8 +78,11 @@ public interface SalonApi {
 
   @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
 
-  @GET("api/v1/products")
-  Observable<List<GoodsEntity>> fetchGoodsByCatalogId(@Query("category") Integer id);
+  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchGoodsByCatalogId(
+      @Query("category") Integer id);
+
+  @GET("api/v1/users/favorite/photos") Observable<List<PhotoWorksEntity>> fetchFavoritePhotos(
+      @Header("authorization") String token);
 
   //@POST("signin") Observable<TokenEntity> login(
   //    @Body LoginBody credentials

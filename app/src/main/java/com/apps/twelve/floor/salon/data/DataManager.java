@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
@@ -185,6 +186,12 @@ public class DataManager {
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
+  }
+
+  public Observable<List<PhotoWorksEntity>> fetchFavoritePhotos() {
+    return mRestApi.fetchFavoritePhotos(mAuthorizationManager.getToken());
+    //return mRestApi.fetchFavoritePhotos(
+    //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTU3MDQ0NzEsImV4cCI6MTUwNzcwNDQ3MSwibmJmIjoxNDk1NzA0NDcxLCJqdGkiOiJDcjBMcWJLbzNlWWduWjBqIn0.vRvG5GZBOWomDX_gBN74Z9rvzCJsqH24E0xQ3GYZi4I");
   }
 
   //--------- like/dislike ourWork photo

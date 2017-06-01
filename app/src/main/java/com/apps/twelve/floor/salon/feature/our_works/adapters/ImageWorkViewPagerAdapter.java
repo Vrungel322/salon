@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by John on 07.03.2017.
@@ -21,9 +22,9 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
 
   private Activity mActivity;
   private LayoutInflater mLayoutInflater;
-  private ArrayList<PhotoWorksEntity> mPhotoWorks;
+  private List<PhotoWorksEntity> mPhotoWorks;
 
-  public ImageWorkViewPagerAdapter(Activity activity, ArrayList<PhotoWorksEntity> photoWorks) {
+  public ImageWorkViewPagerAdapter(Activity activity, List<PhotoWorksEntity> photoWorks) {
     this.mActivity = activity;
     mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoWorks = photoWorks;
