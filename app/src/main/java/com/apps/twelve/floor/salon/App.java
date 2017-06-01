@@ -1,6 +1,6 @@
 package com.apps.twelve.floor.salon;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
@@ -20,7 +20,7 @@ import timber.log.Timber;
  */
 
 @RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" }) public class App
-    extends Application {
+    extends MultiDexApplication {
 
   private static AppComponent sAppComponent;
   private static BookingComponent sBookingComponent;

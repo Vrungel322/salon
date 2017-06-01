@@ -34,6 +34,7 @@ android {
     versionName "1.1.9"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
+    multiDexEnabled true
   }
   buildTypes {
     release {
@@ -134,4 +135,7 @@ dependencies {
 
   //authorization
   compile 'com.github.floor12apps:Authorization:0.0.4'
+
+  //multidex
+  compile 'com.android.support:multidex:1.0.1'
 }
