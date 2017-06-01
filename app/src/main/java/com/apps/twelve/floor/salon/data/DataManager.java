@@ -34,6 +34,8 @@ public class DataManager {
     this.mAuthorizationManager = authorizationManager;
   }
 
+  //---------checkin service.
+  
   public Observable<List<CategoryEntity>> fetchCategory() {
     return mRestApi.fetchCategory();
   }
@@ -70,6 +72,13 @@ public class DataManager {
     return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
+      BookingServerEntity bookingServerEntity) {
+    return mRestApi.checkInService(mAuthorizationManager.getToken(), bookingServerEntity);
+  }
+
+  //---------bonus
+
   public Observable<Integer> fetchBonusCount() {
     return Observable.just(100);
   }
@@ -86,20 +95,18 @@ public class DataManager {
     return mPref.getBonusCounObservable();
   }
 
+  public Observable<String> getUserPhoto() {
+    return Observable.just(mAuthorizationManager.getUserPhoto());
+  }
+
+  //---------settings
+
   public Observable<String> getProfileImage() {
     return mPref.getProfileImage().filter((s) -> !s.isEmpty());
   }
 
   public void setProfileImage(String uri) {
     mPref.setProfileImage(uri);
-  }
-
-  public void setThemeSelected(int themeSelected) {
-    mPref.setThemeSelected(themeSelected);
-  }
-
-  public int getThemeSelected() {
-    return mPref.getThemeSelected();
   }
 
   public Observable<String> getProfileName() {
@@ -150,10 +157,17 @@ public class DataManager {
     mPref.setProfileGender(gender);
   }
 
-  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
-      BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(mAuthorizationManager.getToken(), bookingServerEntity);
+  //---------theme
+
+  public void setThemeSelected(int themeSelected) {
+    mPref.setThemeSelected(themeSelected);
   }
+
+  public int getThemeSelected() {
+    return mPref.getThemeSelected();
+  }
+
+  //---------main screen
 
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
     return mRestApi.fetchLastBooking(mAuthorizationManager.getToken());
@@ -167,17 +181,13 @@ public class DataManager {
     return mRestApi.postponeService(entryId, mAuthorizationManager.getToken(), scheduleId);
   }
 
+  //---------ourWorks
+
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
   }
 
-  public Observable<NewsEntity> fetchNewsPreview() {
-    return mRestApi.fetchNewsPreview();
-  }
-
-  public Observable<List<NewsEntity>> fetchAllNews() {
-    return mRestApi.fetchAllNews();
-  }
+  //--------- like/dislike ourWork photo
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
     return mRestApi.addToFavoritePhoto(photoId, mAuthorizationManager.getToken());
@@ -187,6 +197,33 @@ public class DataManager {
     return mRestApi.removeFromFavoritePhoto(photoId, mAuthorizationManager.getToken());
   }
 
+  //---------News
+
+  public Observable<NewsEntity> fetchNewsPreview() {
+    return mRestApi.fetchNewsPreview();
+  }
+
+
+  public Observable<List<NewsEntity>> fetchAllNews() {
+    return mRestApi.fetchAllNews();
+  }
+
+  //---------Goods
+
+  public Observable<List<GoodsEntity>> fetchGoods() {
+    return mRestApi.fetchAllProducts();
+  }
+
+  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
+    return mRestApi.fetchGoodsByCatalogId(id);
+  }
+
+  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
+    return mRestApi.fetchCategories();
+  }
+
+  //---------like/dislike goods
+
   public Observable<Integer> addToFavoriteGoods(int goodsId) {
     return Observable.just(200);
   }
@@ -194,6 +231,8 @@ public class DataManager {
   public Observable<Integer> removeFromFavoriteGoods(int goodsId) {
     return Observable.just(200);
   }
+
+  //---------Notification
 
   public boolean isHourlyNotificationsEnabled() {
     return mPref.isHourlyNotificationsEnabled();
@@ -227,23 +266,9 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
-  public Observable<List<GoodsEntity>> fetchGoods() {
-    return mRestApi.fetchAllProducts();
-  }
-
-  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
-    return mRestApi.fetchCategories();
-  }
-
-  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
-    return mRestApi.fetchGoodsByCatalogId(id);
-  }
+  //---------Auth
 
   public boolean isAuthorized() {
     return mAuthorizationManager.isAuthorized();
-  }
-
-  public Observable<String> getUserPhoto() {
-    return mAuthorizationManager.getUserPhoto();
   }
 }
