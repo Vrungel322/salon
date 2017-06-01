@@ -67,7 +67,7 @@
           android:layout_marginRight="8dp"
           android:layout_marginStart="8dp"
           android:ellipsize="end"
-          android:maxLines="5"
+          android:maxLines="3"
           android:text="Description"
           />
       <TextView
