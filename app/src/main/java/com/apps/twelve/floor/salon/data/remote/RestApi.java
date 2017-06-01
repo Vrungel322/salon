@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
@@ -109,6 +110,10 @@ public class RestApi {
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
     return api.fetchGoodsByCatalogId(id);
+  }
+
+  public Observable<List<PhotoWorksEntity>> fetchFavoritePhotos(String token) {
+    return api.fetchFavoritePhotos(token);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.utils;
 
+import android.net.Uri;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -104,5 +105,9 @@ public final class Converters {
       return dateResult;
     }
     return "";
+  }
+
+  public static String getUrl(int res){
+    return Uri.parse("android.resource://com.apps.twelve.floor.salon/" + res).toString();
   }
 }
