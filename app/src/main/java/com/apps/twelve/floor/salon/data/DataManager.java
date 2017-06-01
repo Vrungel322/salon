@@ -35,7 +35,7 @@ public class DataManager {
   }
 
   //---------checkin service.
-  
+
   public Observable<List<CategoryEntity>> fetchCategory() {
     return mRestApi.fetchCategory();
   }
