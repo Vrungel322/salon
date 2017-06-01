@@ -29,9 +29,8 @@ public class OurWorkEntity implements Parcelable {
   @SerializedName("photos_count") private int mImageCount;
   @SerializedName("photos") private List<PhotoWorksEntity> mListPhotoWorks;
 
-  public OurWorkEntity(String title, String imageURL, int imageCount,
+  public OurWorkEntity(String imageURL, int imageCount,
       List<PhotoWorksEntity> listPhotoWorks) {
-    mTitle = title;
     mImageURL = imageURL;
     mImageCount = imageCount;
     mListPhotoWorks = listPhotoWorks;

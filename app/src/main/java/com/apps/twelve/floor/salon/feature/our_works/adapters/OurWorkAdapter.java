@@ -38,7 +38,12 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
         .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
         .into(holder.mImageViewWorkPreview);
 
-    holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
+    if (position == 0) {
+      holder.mTextViewShortDescription.setText(
+          holder.mTextViewShortDescription.getContext().getString(R.string.menu_favourite));
+    } else {
+      holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
+    }
 
     holder.mTextViewNumOfImgToPreview.setText(
         String.valueOf(mOurWorkEntities.get(position).getImageCount()));

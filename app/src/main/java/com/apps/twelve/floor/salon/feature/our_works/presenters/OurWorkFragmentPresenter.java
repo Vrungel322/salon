@@ -45,32 +45,17 @@ import timber.log.Timber;
   public void fetchListOfFavoriteWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
-    Subscription subscription = mDataManager.fetchFavoritePhotos()
-        .compose(ThreadSchedulers.applySchedulers())
-        .concatMap(photoWorksEntities -> {
-          mOurWorkEntities.add(0, new OurWorkEntity(mContext.getString(R.string.menu_favourite),
-              Converters.getUrl(R.drawable.booking_bonus_background),
-              photoWorksEntities.size(), photoWorksEntities));
-          return Observable.just("");
-        })
-        .subscribe(r -> {
+    Subscription subscription =
+        Observable.zip(mDataManager.fetchFavoritePhotos(), mDataManager.fetchListOfWorks(),
+            (photoWorksEntities, ourWorkEntities) -> {
+              mOurWorkEntities.add(0,
+                  new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
+                      photoWorksEntities.size(), photoWorksEntities));
+              mOurWorkEntities.addAll(ourWorkEntities);
+              return mOurWorkEntities;
+            }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {
           getViewState().stopRefreshingView();
-
-          fetchListOfWorks();
-        }, throwable -> {
-          getViewState().stopRefreshingView();
-          Timber.e(throwable);
-          showMessageConnectException(throwable);
-        }); addToUnsubscription(subscription);
-  }
-
-  private void fetchListOfWorks() {
-    Subscription subscription = mDataManager.fetchListOfWorks()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> {
-          mOurWorkEntities.addAll(ourWorkEntities);
-          getViewState().addListOfWorks(mOurWorkEntities);
-          getViewState().stopRefreshingView();
+          getViewState().addListOfWorks(ourWorkEntities);
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
