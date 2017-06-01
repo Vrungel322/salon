@@ -45,7 +45,7 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.removeFromFavoritePhoto(idPhoto)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse.code() == 200) {
+          if (voidResponse.code() == 204) {
             getViewState().setStatusFavorite(false);
             mRxBus.post(new RxBusHelper.UpdateOurWorkList());
           }
