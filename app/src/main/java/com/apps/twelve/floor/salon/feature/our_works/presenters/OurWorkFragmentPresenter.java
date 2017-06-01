@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.our_works.presenters;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
@@ -10,6 +11,7 @@ import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import com.authorization.floor12.authorization.AuthorizationManager;
@@ -43,7 +45,7 @@ import timber.log.Timber;
     subscribeUpdateWorkList();
   }
 
-  public void fetchListOfFavoriteWorks() {
+  @SuppressWarnings("ConstantConditions") public void fetchListOfFavoriteWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription =
@@ -56,7 +58,10 @@ import timber.log.Timber;
               } else {
                 Timber.e("no Auth or need to refresh token");
                 mDataManager.refreshToken();
-
+              }
+              if (photoWorksEntities.code() == 500) {
+                mDataManager.clearToken();
+                getViewState().startLoginActivity();
               }
               mOurWorkEntities.addAll(ourWorkEntities);
               return mOurWorkEntities;

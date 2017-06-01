@@ -281,5 +281,14 @@ public class DataManager {
   public void refreshToken() {
     mAuthorizationManager.refreshToken1();
   }
+
+  public void clearToken() {
+    mAuthorizationManager.clear();
+  }
+
+  public void logout() {
+    mPref.clear();
+    mAuthorizationManager.logout();
+  }
 }
 
