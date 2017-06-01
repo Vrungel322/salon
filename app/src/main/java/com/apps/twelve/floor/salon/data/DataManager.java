@@ -277,5 +277,9 @@ public class DataManager {
   public boolean isAuthorized() {
     return mAuthorizationManager.isAuthorized();
   }
+
+  public void refreshToken() {
+    mAuthorizationManager.refreshToken1();
+  }
 }
 

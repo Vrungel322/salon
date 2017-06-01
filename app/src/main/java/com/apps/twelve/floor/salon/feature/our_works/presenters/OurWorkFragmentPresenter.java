@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -48,12 +49,14 @@ import timber.log.Timber;
     Subscription subscription =
         Observable.zip(mDataManager.fetchListOfWorks(), mDataManager.fetchFavoritePhotos(),
             (ourWorkEntities, photoWorksEntities) -> {
-              if (photoWorksEntities.body() != null && photoWorksEntities.code() != 401) {
+              if (photoWorksEntities.code() != 400 && photoWorksEntities.code() != 401) {
                 mOurWorkEntities.add(0,
                     new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
                         photoWorksEntities.body().size(), photoWorksEntities.body()));
               } else {
                 Timber.e("no Auth or need to refresh token");
+                mDataManager.refreshToken();
+
               }
               mOurWorkEntities.addAll(ourWorkEntities);
               return mOurWorkEntities;
