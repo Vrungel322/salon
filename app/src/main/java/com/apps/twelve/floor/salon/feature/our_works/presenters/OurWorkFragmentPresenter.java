@@ -37,6 +37,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    fetchListOfFavoriteWorks();
     //RxBus
     subscribeUpdateWorkList();
   }
@@ -54,12 +55,13 @@ import timber.log.Timber;
         })
         .subscribe(r -> {
           getViewState().stopRefreshingView();
+
+          fetchListOfWorks();
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
           showMessageConnectException(throwable);
         }); addToUnsubscription(subscription);
-    fetchListOfWorks();
   }
 
   private void fetchListOfWorks() {
@@ -80,7 +82,7 @@ import timber.log.Timber;
   private void subscribeUpdateWorkList() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> fetchListOfWorks(), Timber::e);
+        .subscribe(ourWorkEntities -> fetchListOfFavoriteWorks(), Timber::e);
     addToUnsubscription(subscription);
   }
 }

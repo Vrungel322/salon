@@ -63,7 +63,6 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
             showToastMessage(R.string.error_empty_gallery);
           }
         });
-    mOurWorkFragmentPresenter.fetchListOfFavoriteWorks();
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
