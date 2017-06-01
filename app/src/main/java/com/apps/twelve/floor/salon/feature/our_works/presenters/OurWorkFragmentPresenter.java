@@ -46,11 +46,15 @@ import timber.log.Timber;
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription =
-        Observable.zip(mDataManager.fetchFavoritePhotos(), mDataManager.fetchListOfWorks(),
-            (photoWorksEntities, ourWorkEntities) -> {
-              mOurWorkEntities.add(0,
-                  new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
-                      photoWorksEntities.size(), photoWorksEntities));
+        Observable.zip(mDataManager.fetchListOfWorks(), mDataManager.fetchFavoritePhotos(),
+            (ourWorkEntities, photoWorksEntities) -> {
+              if (photoWorksEntities.body() != null && photoWorksEntities.code() != 401) {
+                mOurWorkEntities.add(0,
+                    new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
+                        photoWorksEntities.body().size(), photoWorksEntities.body()));
+              } else {
+                Timber.e("no Auth or need to refresh token");
+              }
               mOurWorkEntities.addAll(ourWorkEntities);
               return mOurWorkEntities;
             }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {
