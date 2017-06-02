@@ -28,6 +28,7 @@ import timber.log.Timber;
     subscribeCloseBookingService();
     subscribeConnectException();
     subscribeUpdateBonusFromChildren();
+    subscribeShowDialog();
   }
 
   @Override protected void inject() {
@@ -82,6 +83,13 @@ import timber.log.Timber;
         .concatMap(updateBonusSwipe -> mDataManager.getBonusCountObservable())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeShowDialog() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialogBooking.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(show -> showAlertDialog(), Timber::e);
     addToUnsubscription(subscription);
   }
 

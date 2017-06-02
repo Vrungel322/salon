@@ -102,7 +102,7 @@ import timber.log.Timber;
   private void subscribeShowDialog() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialog.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(count -> getViewState().showAlertDialog(), Timber::e);
+        .subscribe(show -> showAlertDialog(), Timber::e);
     addToUnsubscription(subscription);
   }
 

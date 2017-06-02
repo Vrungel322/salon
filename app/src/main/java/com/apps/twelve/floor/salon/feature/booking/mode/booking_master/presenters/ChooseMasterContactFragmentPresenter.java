@@ -46,30 +46,35 @@ import timber.log.Timber;
   }
 
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
-    Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
-        .compose(ThreadSchedulers.applySchedulers())
-        .doOnNext(response -> {
-          if (response.code() == 200) {
-            mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-            mJobsCreator.createNotification(String.valueOf(response.body().getId()),
-                Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
-                    - System.currentTimeMillis(), mBookingEntity.getServiceName());
-            getViewState().stopAnimation();
-          } else {
-            getViewState().showAlert();
-          }
-        })
-        .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-        .subscribe(response -> {
-          if (response.code() == 200) {
-            getViewState().closeBooking();
-          } else {
-            getViewState().revertAnimation();
-          }
-        }, throwable -> {
-          Timber.e(throwable);
-          showMessageConnectException(throwable);
-        });
-    addToUnsubscription(subscription);
+    if (mDataManager.isAuthorized()) {
+      Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
+          .compose(ThreadSchedulers.applySchedulers())
+          .doOnNext(response -> {
+            if (response.code() == 200) {
+              mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+              mJobsCreator.createNotification(String.valueOf(response.body().getId()),
+                  Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
+                      - System.currentTimeMillis(), mBookingEntity.getServiceName());
+              getViewState().stopAnimation();
+            } else {
+              getViewState().showAlert();
+            }
+          })
+          .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+          .subscribe(response -> {
+            if (response.code() == 200) {
+              getViewState().closeBooking();
+            } else {
+              getViewState().revertAnimation();
+            }
+          }, throwable -> {
+            Timber.e(throwable);
+            showMessageConnectException(throwable);
+          });
+      addToUnsubscription(subscription);
+    } else {
+      mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
+      getViewState().revertAnimation();
+    }
   }
 }
