@@ -17,8 +17,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setUserName(String name);
 
-  void setUserPassword(String password);
-
   void setUserEmail(String email);
 
   void setUserPhone(String phone);

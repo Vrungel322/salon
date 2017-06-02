@@ -35,7 +35,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @BindView(R.id.ivProfilePhoto) CircleImageView mProfileImage;
   @BindView(R.id.tvName) TextView mTextViewName;
-  @BindView(R.id.tvPassword) TextView mTextViewPassword;
   @BindView(R.id.tvEmail) TextView mTextViewEmail;
   @BindView(R.id.tvPhone) TextView mTextViewPhone;
   @BindView(R.id.spinnerGender) Spinner mSpinnerGender;
@@ -55,10 +54,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @Override public void setUserName(String name) {
     mTextViewName.setText(name);
-  }
-
-  @Override public void setUserPassword(String password) {
-    mTextViewPassword.setText(password);
   }
 
   @Override public void setUserEmail(String email) {
@@ -105,7 +100,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @OnClick(R.id.rlPassword) void changePassword() {
     mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
-        ChangeUserInfoFragment.newInstance(PASSWORD, mTextViewPassword.getText()));
+        ChangeUserInfoFragment.newInstance(PASSWORD, getString(R.string.password_not_available)));
   }
 
   @OnClick(R.id.rlEmail) void changeEmail() {

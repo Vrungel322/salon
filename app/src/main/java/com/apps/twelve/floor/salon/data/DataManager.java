@@ -122,11 +122,6 @@ public class DataManager {
   }
 
   // TODO: 02.06.2017 remove
-  public Observable<String> getProfilePassword() {
-    return mPref.getProfilePassword();
-  }
-
-  // TODO: 02.06.2017 remove
   public void setProfilePassword(String password) {
     mPref.setProfilePassword(password);
   }

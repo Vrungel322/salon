@@ -124,7 +124,7 @@
               android:layout_marginTop="16dp"
               android:layout_toEndOf="@+id/ivPassword"
               android:layout_toRightOf="@+id/ivPassword"
-              android:inputType="textPassword"
+              android:text="@string/field_password"
               android:textColor="@color/colorBlack"
               android:textSize="16sp"
               />
