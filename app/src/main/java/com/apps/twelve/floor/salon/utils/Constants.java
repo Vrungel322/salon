@@ -54,9 +54,8 @@ public final class Constants {
 
   public class ChangingUserInfoField {
     public static final int NAME = 0;
-    public static final int LOGIN = 1;
-    public static final int PASSWORD = 2;
-    public static final int EMAIL = 3;
-    public static final int PHONE = 4;
+    public static final int PASSWORD = 1;
+    public static final int EMAIL = 2;
+    public static final int PHONE = 3;
   }
 }

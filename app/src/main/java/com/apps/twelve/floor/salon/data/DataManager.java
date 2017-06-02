@@ -114,31 +114,25 @@ public class DataManager {
   }
 
   public Observable<String> getProfileName() {
-    return mPref.getProfileName();
+    return mAuthorizationManager.getObsevableUserName();
   }
 
   public void setProfileName(String name) {
     mPref.setProfileName(name);
   }
 
-  public Observable<String> getProfileLogin() {
-    return mPref.getProfileLogin();
-  }
-
-  public void setProfileLogin(String login) {
-    mPref.setProfileLogin(login);
-  }
-
+  // TODO: 02.06.2017 remove
   public Observable<String> getProfilePassword() {
     return mPref.getProfilePassword();
   }
 
+  // TODO: 02.06.2017 remove
   public void setProfilePassword(String password) {
     mPref.setProfilePassword(password);
   }
 
   public Observable<String> getProfileEmail() {
-    return mPref.getProfileEmail();
+    return mAuthorizationManager.getObsevableUserEmail();
   }
 
   public void setProfileEmail(String email) {
@@ -146,15 +140,15 @@ public class DataManager {
   }
 
   public Observable<String> getProfilePhone() {
-    return mPref.getProfilePhone();
+    return mAuthorizationManager.getObsevableUserPhone();
   }
 
   public void setProfilePhone(String phone) {
     mPref.setProfilePhone(phone);
   }
 
-  public Observable<Integer> getProfileGender() {
-    return mPref.getProfileGender();
+  public Observable<String> getProfileGender() {
+    return mAuthorizationManager.getObsevableUserGender();
   }
 
   public void setProfileGender(int gender) {

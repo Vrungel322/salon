@@ -25,7 +25,6 @@ import timber.log.Timber;
 
 import static android.app.Activity.RESULT_OK;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
-import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.LOGIN;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PASSWORD;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PHONE;
@@ -36,7 +35,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @BindView(R.id.ivProfilePhoto) CircleImageView mProfileImage;
   @BindView(R.id.tvName) TextView mTextViewName;
-  @BindView(R.id.tvLogin) TextView mTextViewLogin;
   @BindView(R.id.tvPassword) TextView mTextViewPassword;
   @BindView(R.id.tvEmail) TextView mTextViewEmail;
   @BindView(R.id.tvPhone) TextView mTextViewPhone;
@@ -59,10 +57,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     mTextViewName.setText(name);
   }
 
-  @Override public void setUserLogin(String login) {
-    mTextViewLogin.setText(login);
-  }
-
   @Override public void setUserPassword(String password) {
     mTextViewPassword.setText(password);
   }
@@ -75,8 +69,12 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     mTextViewPhone.setText(phone);
   }
 
-  @Override public void setUserGender(int gender) {
-    mSpinnerGender.setSelection(gender);
+  @Override public void setUserGender(String gender) {
+    if (gender.equals("")) {
+      mSpinnerGender.setSelection(2);
+    } else {
+      mSpinnerGender.setSelection(Integer.parseInt(gender));
+    }
   }
 
   @Override public void showSetThemeDialog(int position) {
@@ -103,11 +101,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @OnClick(R.id.rlName) void changeName() {
     mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
         ChangeUserInfoFragment.newInstance(NAME, mTextViewName.getText()));
-  }
-
-  @OnClick(R.id.rlLogin) void changeLogin() {
-    mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
-        ChangeUserInfoFragment.newInstance(LOGIN, mTextViewLogin.getText()));
   }
 
   @OnClick(R.id.rlPassword) void changePassword() {

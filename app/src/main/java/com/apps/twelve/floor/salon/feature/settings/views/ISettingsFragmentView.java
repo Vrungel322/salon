@@ -17,15 +17,13 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setUserName(String name);
 
-  void setUserLogin(String login);
-
   void setUserPassword(String password);
 
   void setUserEmail(String email);
 
   void setUserPhone(String phone);
 
-  void setUserGender(int gender);
+  void setUserGender(String gender);
 
   void showSetThemeDialog(int position);
 

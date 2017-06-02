@@ -20,7 +20,6 @@ import com.apps.twelve.floor.salon.feature.settings.views.IChangeUserInfoFragmen
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
-import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.LOGIN;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PASSWORD;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PHONE;
@@ -105,10 +104,6 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
       case NAME:
         mCurrentFieldText.setText(R.string.current_field_name);
         mNewFieldText.setText(R.string.new_field_name);
-        break;
-      case LOGIN:
-        mCurrentFieldText.setText(R.string.current_field_login);
-        mNewFieldText.setText(R.string.new_field_login);
         break;
       case PASSWORD:
         mCurrentFieldText.setText(R.string.current_field_password);

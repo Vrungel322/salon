@@ -16,7 +16,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
-import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.LOGIN;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PASSWORD;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PHONE;
@@ -66,9 +65,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
     switch (field) {
       case NAME:
         mDataManager.setProfileName(value);
-        break;
-      case LOGIN:
-        mDataManager.setProfileLogin(value);
         break;
       case PASSWORD:
         mDataManager.setProfilePassword(value);

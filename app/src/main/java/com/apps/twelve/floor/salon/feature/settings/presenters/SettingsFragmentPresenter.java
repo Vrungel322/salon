@@ -60,10 +60,6 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserName(s), Timber::e);
     addToUnsubscription(subscription);
-    subscription = mDataManager.getProfileLogin()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserLogin(s), Timber::e);
-    addToUnsubscription(subscription);
     subscription = mDataManager.getProfilePassword()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserPassword(s), Timber::e);
@@ -87,11 +83,6 @@ import timber.log.Timber;
         .concatMap(updateUserInfo -> mDataManager.getProfileName())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserName(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getProfileLogin())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserLogin(s), Timber::e);
     addToUnsubscription(subscription);
     subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
         .concatMap(updateUserInfo -> mDataManager.getProfilePassword())
