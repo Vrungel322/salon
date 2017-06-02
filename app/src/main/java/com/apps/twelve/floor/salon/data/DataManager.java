@@ -284,6 +284,7 @@ public class DataManager {
 
   public void logout() {
     mPref.clear();
+    mAuthorizationManager.clear();
     mAuthorizationManager.logout();
   }
 }
