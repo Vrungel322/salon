@@ -76,6 +76,11 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  public void logOut() {
+    mDataManager.logout();
+    getViewState().hideUserSettings();
+  }
+
   private void subscribeUpdateUserInfo() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
         .concatMap(updateUserInfo -> mDataManager.getProfileName())

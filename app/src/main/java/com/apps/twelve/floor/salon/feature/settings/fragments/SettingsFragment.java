@@ -150,7 +150,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @OnClick(R.id.rlExit) void exit() {
-    showToastMessage("Exit");
+    mSettingsFragmentPresenter.logOut();
   }
 
   /** change user image stuff */
