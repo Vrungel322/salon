@@ -29,10 +29,12 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    setUpPhoto();
-    setUserInfo();
-    //RxBus
-    subscribeUpdateUserInfo();
+    if (mDataManager.isAuthorized()) {
+      setUpPhoto();
+      setUserInfo();
+      //RxBus
+      subscribeUpdateUserInfo();
+    }
   }
 
   private void setUpPhoto() {

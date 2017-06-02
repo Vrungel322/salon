@@ -106,11 +106,11 @@ public class DataManager {
   //---------settings
 
   public Observable<String> getProfileImage() {
-    return mPref.getProfileImage().filter((s) -> !s.isEmpty());
+    return mAuthorizationManager.getObsevableUserPhoto();
   }
 
   public void setProfileImage(String uri) {
-    mPref.setProfileImage(uri);
+    mAuthorizationManager.saveUserPhoto(uri);
   }
 
   public Observable<String> getProfileName() {
@@ -118,7 +118,7 @@ public class DataManager {
   }
 
   public void setProfileName(String name) {
-    mPref.setProfileName(name);
+    mAuthorizationManager.saveUserName(name);
   }
 
   // TODO: 02.06.2017 remove
@@ -131,7 +131,7 @@ public class DataManager {
   }
 
   public void setProfileEmail(String email) {
-    mPref.setProfileEmail(email);
+    mAuthorizationManager.saveUserEmail(email);
   }
 
   public Observable<String> getProfilePhone() {
@@ -139,7 +139,7 @@ public class DataManager {
   }
 
   public void setProfilePhone(String phone) {
-    mPref.setProfilePhone(phone);
+    mAuthorizationManager.saveUserPhone(phone);
   }
 
   public Observable<String> getProfileGender() {
@@ -147,7 +147,7 @@ public class DataManager {
   }
 
   public void setProfileGender(int gender) {
-    mPref.setProfileGender(gender);
+    mAuthorizationManager.saveUserGender(String.valueOf(gender));
   }
 
   //---------theme

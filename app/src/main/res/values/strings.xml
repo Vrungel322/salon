@@ -113,6 +113,7 @@
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
+  <string name="info_unknown">Информация не указана</string>
   <string name="error_empty_gallery">Список пуст …</string>
   <string name="change_user_info">Изменить %s</string>
   <string name="current_field_name">Текущее имя:</string>
@@ -121,7 +122,7 @@
   <string name="new_field_login">Новый логин:</string>
   <string name="current_field_password">Текущий пароль:</string>
   <string name="new_field_password">Новый пароль:</string>
-  <string name="field_password">Пароль</string>
+  <string name="field_password">Изменить пароль</string>
   <string name="password_not_available">Информация недоступна</string>
   <string name="current_field_email">Текущая почта:</string>
   <string name="new_field_email">Новая почта:</string>
