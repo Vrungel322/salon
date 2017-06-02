@@ -60,6 +60,7 @@ import timber.log.Timber;
   public void showCardBonusOrRegistration() {
     if (!mDataManager.isAuthorized()) {
       getViewState().showCardRegistration();
+      getViewState().setUserPhoto("");
     } else {
       fetchBonusCount();
       fetchUserPhoto();
