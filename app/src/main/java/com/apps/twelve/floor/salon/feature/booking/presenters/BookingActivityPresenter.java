@@ -84,4 +84,12 @@ import timber.log.Timber;
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
+
+  public void showAlertDialog() {
+    getViewState().showAlertDialog();
+  }
+
+  public void cancelAlertDialog() {
+    getViewState().cancelAlertDialog();
+  }
 }

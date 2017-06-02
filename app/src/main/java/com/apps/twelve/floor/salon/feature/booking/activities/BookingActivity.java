@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.activities;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPre
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
@@ -31,6 +33,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private CountBadge.Factory mCircleFactory;
   private CountBadge mBadge;
   private int mCountBonus;
+  private AlertDialog mAuthorizationDialog;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setTheme(ThemeUtils.getThemeActionBar(getBaseContext()));
@@ -64,8 +67,13 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_my_bonus:
-        mNavigator.addFragmentTagBackStackNotCopy(BookingActivity.this, R.id.container_booking,
-            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        if (mDataManager.isAuthorized()) {
+          mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this,
+              R.id.container_booking, MyBonusFragment.newInstance(),
+              Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        } else {
+          mBookingActivityPresenter.showAlertDialog();
+        }
         return true;
       default:
         return super.onOptionsItemSelected(item);
@@ -92,6 +100,29 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public void showConnectErrorMessage() {
     showAlertMessage(getString(R.string.error_connection),
         getString(R.string.сheck_internet_connection));
+  }
+
+  @Override public void showAlertDialog() {
+    mAuthorizationDialog = DialogFactory.createAuthorizationDialogBuilder(this)
+        .setNegativeButton(R.string.dialog_cancel,
+            (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
+        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+          mDataManager.startSignInActivity(this, mContext);
+          mBookingActivityPresenter.cancelAlertDialog();
+        })
+        .create();
+    mAuthorizationDialog.show();
+  }
+
+  @Override public void cancelAlertDialog() {
+    if (mAuthorizationDialog != null) {
+      mAuthorizationDialog.dismiss();
+    }
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    cancelAlertDialog();
   }
 
   @Override public void onBackPressed() {
