@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.our_works.adapters;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,13 @@ import java.util.List;
 public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkViewHolder> {
   private ArrayList<OurWorkEntity> mOurWorkEntities = new ArrayList<>();
 
+  private final Activity mActivity;
+
+  public OurWorkAdapter(Activity activity) {
+    super();
+    this.mActivity = activity;
+  }
+
   public void addListWorkEntities(List<OurWorkEntity> ourWorkEntities) {
     mOurWorkEntities.clear();
     mOurWorkEntities.addAll(ourWorkEntities);
@@ -34,15 +42,19 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
   }
 
   @Override public void onBindViewHolder(OurWorkViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewWorkPreview.getContext())
-        .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
-        .into(holder.mImageViewWorkPreview);
-
     if (position == 0) {
       holder.mTextViewShortDescription.setText(
           holder.mTextViewShortDescription.getContext().getString(R.string.menu_favourite));
+      holder.mImageViewWorkPreview.setPadding(100, 100, 100, 100);
+      Picasso.with(holder.mImageViewWorkPreview.getContext())
+          .load(R.drawable.ic_favorite_goods_full_24dp)
+          .error(R.drawable.ic_favorite_goods_full_24dp)
+          .into(holder.mImageViewWorkPreview);
     } else {
       holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
+      Picasso.with(holder.mImageViewWorkPreview.getContext())
+          .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
+          .into(holder.mImageViewWorkPreview);
     }
 
     holder.mTextViewNumOfImgToPreview.setText(
