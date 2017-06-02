@@ -97,6 +97,10 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  public void hideUserSettings() {
+    getViewState().hideUserSettings();
+  }
+
   public void showSetThemeDialog() {
     getViewState().showSetThemeDialog(mDataManager.getThemeSelected());
   }

@@ -17,300 +17,309 @@
         android:layout_height="match_parent"
         >
 
-      <!--top block-->
       <RelativeLayout
-          android:id="@+id/block_top"
+          android:id="@+id/hidingBlockTop"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@color/colorWhite"
+          android:layout_height="match_parent"
           android:visibility="visible"
           >
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivProfilePhoto"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/booking_bonus_background"
-            app:civ_border_color="@color/colorWhite"
-            app:civ_border_width="2dp"
-            />
+        <!--top block-->
+        <RelativeLayout
+            android:id="@+id/block_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:visibility="visible"
+            >
+
+          <de.hdodenhof.circleimageview.CircleImageView
+              android:id="@+id/ivProfilePhoto"
+              android:layout_width="96dp"
+              android:layout_height="96dp"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="32dp"
+              android:src="@drawable/booking_bonus_background"
+              app:civ_border_color="@color/colorWhite"
+              app:civ_border_width="2dp"
+              />
+          <TextView
+              android:id="@+id/btnChangePhoto"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/ivProfilePhoto"
+              android:layout_centerHorizontal="true"
+              android:layout_marginBottom="16dp"
+              android:paddingTop="8dp"
+              android:text="@string/change_photo"
+              android:textColor="?colorAccent"
+              android:textSize="16sp"
+              />
+          <View
+              android:id="@+id/separatorChangePhoto"
+              android:layout_width="match_parent"
+              android:layout_height="0.25dp"
+              android:layout_below="@+id/btnChangePhoto"
+              android:background="@color/colorTransparentGray"
+              />
+          <!--name-->
+          <RelativeLayout
+              android:id="@+id/rlName"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@+id/separatorChangePhoto"
+              android:background="?attr/selectableItemBackground"
+              android:visibility="visible"
+              >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/ic_profile_24dp"
+                />
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivName"
+                android:layout_toRightOf="@+id/ivName"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorTvName"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_below="@+id/tvName"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
+          <!--password-->
+          <RelativeLayout
+              android:id="@+id/rlPassword"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@+id/rlName"
+              android:background="?attr/selectableItemBackground"
+              >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/ic_password_24dp"
+                />
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivPassword"
+                android:layout_toRightOf="@+id/ivPassword"
+                android:text="@string/field_password"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorPassword"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_below="@+id/tvPassword"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
+        </RelativeLayout>
+
+        <!--private information-->
         <TextView
-            android:id="@+id/btnChangePhoto"
+            android:id="@+id/tvPrivateInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivProfilePhoto"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/block_top"
             android:layout_marginBottom="16dp"
-            android:paddingTop="8dp"
-            android:text="@string/change_photo"
-            android:textColor="?colorAccent"
-            android:textSize="16sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/private_information"
+            android:textColor="@color/colorLightGray"
+            android:textSize="18sp"
             />
-        <View
-            android:id="@+id/separatorChangePhoto"
-            android:layout_width="match_parent"
-            android:layout_height="0.25dp"
-            android:layout_below="@+id/btnChangePhoto"
-            android:background="@color/colorTransparentGray"
-            />
-        <!--name-->
         <RelativeLayout
-            android:id="@+id/rlName"
+            android:id="@+id/block_private_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/separatorChangePhoto"
-            android:background="?attr/selectableItemBackground"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvPrivateInformation"
+            android:background="@color/colorWhite"
             >
-          <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivName"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_profile_24dp"
-              />
-          <TextView
-              android:id="@+id/tvName"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivName"
-              android:layout_toRightOf="@+id/ivName"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              />
           <View
-              android:id="@+id/separatorTvName"
+              android:id="@+id/separatorPrivateInformation"
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
-              android:layout_below="@+id/tvName"
               android:background="@color/colorTransparentGray"
               />
-        </RelativeLayout>
-        <!--password-->
-        <RelativeLayout
-            android:id="@+id/rlPassword"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/rlName"
-            android:background="?attr/selectableItemBackground"
-            >
-          <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivPassword"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_password_24dp"
-              />
-          <TextView
-              android:id="@+id/tvPassword"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivPassword"
-              android:layout_toRightOf="@+id/ivPassword"
-              android:text="@string/field_password"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              />
-          <View
-              android:id="@+id/separatorPassword"
+          <!--email-->
+          <RelativeLayout
+              android:id="@+id/rlEmail"
               android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_below="@+id/tvPassword"
-              android:background="@color/colorTransparentGray"
-              />
+              android:layout_height="match_parent"
+              android:layout_below="@id/separatorPrivateInformation"
+              android:background="?attr/selectableItemBackground"
+              >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/ic_email_settings_24dp"
+                />
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivEmail"
+                android:layout_toRightOf="@+id/ivEmail"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorEmail"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_alignLeft="@+id/tvEmail"
+                android:layout_alignStart="@+id/tvEmail"
+                android:layout_below="@+id/tvEmail"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
+          <!--phone-->
+          <RelativeLayout
+              android:id="@+id/rlPhone"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@id/rlEmail"
+              android:background="?attr/selectableItemBackground"
+              >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/ic_phone_settings_24dp"
+                />
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivPhone"
+                android:layout_toRightOf="@+id/ivPhone"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorPhone"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_alignLeft="@+id/tvPhone"
+                android:layout_alignStart="@+id/tvPhone"
+                android:layout_below="@+id/tvPhone"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
+          <!--gender-->
+          <RelativeLayout
+              android:id="@+id/rlGender"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@id/rlPhone"
+              android:background="?attr/selectableItemBackground"
+              >
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/ic_gender_24dp"
+                />
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivGender"
+                android:layout_toRightOf="@+id/ivGender"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:visibility="invisible"
+                />
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvGender"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/ivGender"
+                android:layout_toRightOf="@+id/ivGender"
+                android:entries="@array/gender"
+                />
+            <View
+                android:id="@+id/separatorGender"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_below="@+id/tvGender"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
         </RelativeLayout>
-      </RelativeLayout>
 
-      <!--private information-->
-      <TextView
-          android:id="@+id/tvPrivateInformation"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/block_top"
-          android:layout_marginBottom="16dp"
-          android:layout_marginLeft="16dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="16dp"
-          android:text="@string/private_information"
-          android:textColor="@color/colorLightGray"
-          android:textSize="18sp"
-          />
-      <RelativeLayout
-          android:id="@+id/block_private_info"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/tvPrivateInformation"
-          android:background="@color/colorWhite"
-          >
-        <View
-            android:id="@+id/separatorPrivateInformation"
-            android:layout_width="match_parent"
-            android:layout_height="0.25dp"
-            android:background="@color/colorTransparentGray"
-            />
-        <!--email-->
-        <RelativeLayout
-            android:id="@+id/rlEmail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/separatorPrivateInformation"
-            android:background="?attr/selectableItemBackground"
-            >
-          <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivEmail"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_email_settings_24dp"
-              />
-          <TextView
-              android:id="@+id/tvEmail"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivEmail"
-              android:layout_toRightOf="@+id/ivEmail"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              />
-          <View
-              android:id="@+id/separatorEmail"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_alignLeft="@+id/tvEmail"
-              android:layout_alignStart="@+id/tvEmail"
-              android:layout_below="@+id/tvEmail"
-              android:background="@color/colorTransparentGray"
-              />
-        </RelativeLayout>
-        <!--phone-->
-        <RelativeLayout
-            android:id="@+id/rlPhone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rlEmail"
-            android:background="?attr/selectableItemBackground"
-            >
-          <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivPhone"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_phone_settings_24dp"
-              />
-          <TextView
-              android:id="@+id/tvPhone"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivPhone"
-              android:layout_toRightOf="@+id/ivPhone"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              />
-          <View
-              android:id="@+id/separatorPhone"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_alignLeft="@+id/tvPhone"
-              android:layout_alignStart="@+id/tvPhone"
-              android:layout_below="@+id/tvPhone"
-              android:background="@color/colorTransparentGray"
-              />
-        </RelativeLayout>
-        <!--gender-->
-        <RelativeLayout
-            android:id="@+id/rlGender"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rlPhone"
-            android:background="?attr/selectableItemBackground"
-            >
-          <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivGender"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_gender_24dp"
-              />
-          <TextView
-              android:id="@+id/tvGender"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginEnd="8dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivGender"
-              android:layout_toRightOf="@+id/ivGender"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              android:visibility="invisible"
-              />
-          <Spinner
-              android:id="@+id/spinnerGender"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_alignBaseline="@+id/tvGender"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:layout_toEndOf="@+id/ivGender"
-              android:layout_toRightOf="@+id/ivGender"
-              android:entries="@array/gender"
-              />
-          <View
-              android:id="@+id/separatorGender"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_below="@+id/tvGender"
-              android:background="@color/colorTransparentGray"
-              />
-        </RelativeLayout>
       </RelativeLayout>
-
       <!--additional settings-->
       <TextView
           android:id="@+id/tvAdditionalSettings"
@@ -318,7 +327,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
-          android:layout_below="@+id/block_private_info"
+          android:layout_below="@+id/hidingBlockTop"
           android:layout_marginBottom="16dp"
           android:layout_marginLeft="16dp"
           android:layout_marginStart="16dp"
@@ -354,10 +363,10 @@
               android:id="@+id/ivNotifications"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
               android:layout_alignParentEnd="true"
-              android:layout_marginRight="8dp"
+              android:layout_alignParentRight="true"
               android:layout_marginEnd="8dp"
+              android:layout_marginRight="8dp"
               android:layout_marginTop="14dp"
               app:srcCompat="@drawable/ic_date_next_24dp"
               />
@@ -395,10 +404,10 @@
               android:id="@+id/ivProblem"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
               android:layout_alignParentEnd="true"
-              android:layout_marginRight="8dp"
+              android:layout_alignParentRight="true"
               android:layout_marginEnd="8dp"
+              android:layout_marginRight="8dp"
               android:layout_marginTop="14dp"
               app:srcCompat="@drawable/ic_date_next_24dp"
               />
@@ -461,93 +470,101 @@
       <!--social networks-->
 
       <!--final block-->
-      <TextView
-          android:id="@+id/tvFinalSpace"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/block_additional_settings"
-          android:layout_marginBottom="16dp"
-          android:layout_marginLeft="16dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="16dp"
-          android:textColor="@color/colorLightGray"
-          android:textSize="18sp"
-          />
+
       <RelativeLayout
-          android:id="@+id/block_final"
+          android:id="@+id/hidingBlockBottom"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/tvFinalSpace"
-          android:layout_marginBottom="72dp"
-          android:background="@color/colorWhite"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/block_additional_settings"
+          android:visibility="visible"
           >
-        <View
-            android:id="@+id/separatorFinalSpace"
-            android:layout_width="match_parent"
-            android:layout_height="0.25dp"
-            android:background="@color/colorTransparentGray"
+        <TextView
+            android:id="@+id/tvFinalSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorLightGray"
+            android:textSize="18sp"
             />
-        <!--clear history-->
         <RelativeLayout
-            android:id="@+id/rlClearHistory"
+            android:id="@+id/block_final"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/separatorFinalSpace"
-            android:background="?attr/selectableItemBackground"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvFinalSpace"
+            android:layout_marginBottom="72dp"
+            android:background="@color/colorWhite"
             >
-          <TextView
-              android:id="@+id/tvClearHistory"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:text="@string/clear_history"
-              android:textColor="?colorAccent"
-              android:textSize="16sp"
-              />
           <View
-              android:id="@+id/separatorClearHistory"
+              android:id="@+id/separatorFinalSpace"
               android:layout_width="match_parent"
               android:layout_height="0.25dp"
-              android:layout_below="@+id/tvClearHistory"
               android:background="@color/colorTransparentGray"
               />
-        </RelativeLayout>
-        <!--exit-->
-        <RelativeLayout
-            android:id="@+id/rlExit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rlClearHistory"
-            android:background="?attr/selectableItemBackground"
-            >
-          <TextView
-              android:id="@+id/tvExit"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:text="@string/exit"
-              android:textColor="?colorAccent"
-              android:textSize="16sp"
-              />
-          <View
-              android:id="@+id/separatorExit"
+          <!--clear history-->
+          <RelativeLayout
+              android:id="@+id/rlClearHistory"
               android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_alignLeft="@+id/tvExit"
-              android:layout_alignStart="@+id/tvExit"
-              android:layout_below="@+id/tvExit"
-              android:background="@color/colorTransparentGray"
-              />
+              android:layout_height="match_parent"
+              android:layout_below="@id/separatorFinalSpace"
+              android:background="?attr/selectableItemBackground"
+              >
+            <TextView
+                android:id="@+id/tvClearHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/clear_history"
+                android:textColor="?colorAccent"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorClearHistory"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_below="@+id/tvClearHistory"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
+          <!--exit-->
+          <RelativeLayout
+              android:id="@+id/rlExit"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@id/rlClearHistory"
+              android:background="?attr/selectableItemBackground"
+              >
+            <TextView
+                android:id="@+id/tvExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/exit"
+                android:textColor="?colorAccent"
+                android:textSize="16sp"
+                />
+            <View
+                android:id="@+id/separatorExit"
+                android:layout_width="match_parent"
+                android:layout_height="0.25dp"
+                android:layout_alignLeft="@+id/tvExit"
+                android:layout_alignStart="@+id/tvExit"
+                android:layout_below="@+id/tvExit"
+                android:background="@color/colorTransparentGray"
+                />
+          </RelativeLayout>
         </RelativeLayout>
       </RelativeLayout>
     </RelativeLayout>

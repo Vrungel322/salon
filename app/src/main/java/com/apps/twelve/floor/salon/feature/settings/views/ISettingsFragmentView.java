@@ -25,5 +25,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void showSetThemeDialog(int position);
 
+  void hideUserSettings();
+
   @StateStrategyType(SingleStateStrategy.class) void closeSetThemeDialog();
 }

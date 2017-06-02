@@ -3,8 +3,11 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -38,6 +41,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @BindView(R.id.tvEmail) TextView mTextViewEmail;
   @BindView(R.id.tvPhone) TextView mTextViewPhone;
   @BindView(R.id.spinnerGender) Spinner mSpinnerGender;
+  @BindView(R.id.hidingBlockTop) RelativeLayout mRelativeLayoutHidingBlockTop;
+  @BindView(R.id.hidingBlockBottom) RelativeLayout mRelativeLayoutHidingBlockBottom;
 
   private AlertDialog mChooseThemeDialog;
 
@@ -50,6 +55,13 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     SettingsFragment fragment = new SettingsFragment();
     fragment.setArguments(args);
     return fragment;
+  }
+
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    if (!mDataManager.isAuthorized()) mSettingsFragmentPresenter.hideUserSettings();
+
   }
 
   @Override public void setUserName(String name) {
@@ -165,6 +177,11 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
         Timber.e(result.getError());
       }
     }
+  }
+
+  @Override public void hideUserSettings() {
+    mRelativeLayoutHidingBlockTop.setVisibility(View.GONE);
+    mRelativeLayoutHidingBlockBottom.setVisibility(View.GONE);
   }
 
   @Override public void onDestroy() {
