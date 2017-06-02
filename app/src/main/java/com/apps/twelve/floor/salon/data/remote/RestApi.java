@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
@@ -64,11 +65,11 @@ public class RestApi {
 
   public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String token,
       BookingServerEntity bookingServerEntity) {
-    return api.checkInService(Integer.parseInt(token), bookingServerEntity);
+    return api.checkInService(token, bookingServerEntity);
   }
 
   public Observable<List<LastBookingEntity>> fetchLastBooking(String token) {
-    return api.fetchLastBooking(Integer.parseInt(token));
+    return api.fetchLastBooking(token);
   }
 
   public Observable<Response<Void>> cancelOrder(Integer serviceId, String token) {
@@ -87,8 +88,8 @@ public class RestApi {
     return api.fetchNewsPreview();
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks(String token) {
-    return api.fetchListOfWorks(token);
+  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
+    return api.fetchListOfWorks();
   }
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId, String token) {
@@ -109,6 +110,10 @@ public class RestApi {
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
     return api.fetchGoodsByCatalogId(id);
+  }
+
+  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(String token) {
+    return api.fetchFavoritePhotos(token);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

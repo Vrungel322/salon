@@ -28,6 +28,11 @@ import timber.log.Timber;
     subscribeOnEvents();
     subscribeConnectException();
     subscribeUpdateBonusFromChildren();
+    subscribeUnathorizedError();
+  }
+
+  private void subscribeUnathorizedError() {
+    // TODO: 01.06.2017 handle unauthorize bux 
   }
 
   @Override protected void inject() {

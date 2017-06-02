@@ -1,11 +1,12 @@
 package com.apps.twelve.floor.salon;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
 import com.apps.twelve.floor.salon.di.modules.AppModule;
 import com.apps.twelve.floor.salon.di.modules.BookingModule;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.RegisterMoxyReflectorPackages;
 import com.authorization.floor12.authorization.AuthorizationManager;
@@ -20,7 +21,7 @@ import timber.log.Timber;
  */
 
 @RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" }) public class App
-    extends Application {
+    extends MultiDexApplication {
 
   private static AppComponent sAppComponent;
   private static BookingComponent sBookingComponent;
@@ -37,7 +38,7 @@ import timber.log.Timber;
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     Shortbread.create(this);
-    AuthorizationManager.init(this, "https://jwt.floor12apps.com/");
+    AuthorizationManager.init(this, Constants.Remote.BASE_URL);
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());

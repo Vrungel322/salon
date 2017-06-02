@@ -15,7 +15,7 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @InjectPresenter SettingsActivityPresenter mSettingsActivityPresenter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    setTheme(ThemeUtils.getThemeOtherActivity(getBaseContext()));
+    setTheme(ThemeUtils.getThemeActionBar(getBaseContext()));
     setContentView(R.layout.activity_settings);
     super.onCreate(savedInstanceState);
 

@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
@@ -33,6 +34,8 @@ public class DataManager {
     this.mPref = preferencesHelper;
     this.mAuthorizationManager = authorizationManager;
   }
+
+  //---------checkin service.
 
   public Observable<List<CategoryEntity>> fetchCategory() {
     return mRestApi.fetchCategory();
@@ -70,6 +73,13 @@ public class DataManager {
     return mRestApi.fetchDaysDataWithMasterId(masterId);
   }
 
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
+      BookingServerEntity bookingServerEntity) {
+    return mRestApi.checkInService(mAuthorizationManager.getToken(), bookingServerEntity);
+  }
+
+  //---------bonus
+
   public Observable<Integer> fetchBonusCount() {
     return Observable.just(100);
   }
@@ -86,20 +96,18 @@ public class DataManager {
     return mPref.getBonusCounObservable();
   }
 
+  public Observable<String> getUserPhoto() {
+    return mAuthorizationManager.getObsevableUserPhoto();
+  }
+
+  //---------settings
+
   public Observable<String> getProfileImage() {
     return mPref.getProfileImage().filter((s) -> !s.isEmpty());
   }
 
   public void setProfileImage(String uri) {
     mPref.setProfileImage(uri);
-  }
-
-  public void setThemeSelected(int themeSelected) {
-    mPref.setThemeSelected(themeSelected);
-  }
-
-  public int getThemeSelected() {
-    return mPref.getThemeSelected();
   }
 
   public Observable<String> getProfileName() {
@@ -150,26 +158,53 @@ public class DataManager {
     mPref.setProfileGender(gender);
   }
 
-  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
-      BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(mPref.getToken(), bookingServerEntity);
+  //---------theme
+
+  public void setThemeSelected(int themeSelected) {
+    mPref.setThemeSelected(themeSelected);
   }
 
+  public int getThemeSelected() {
+    return mPref.getThemeSelected();
+  }
+
+  //---------main screen
+
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
-    return mRestApi.fetchLastBooking(mPref.getToken());
+    return mRestApi.fetchLastBooking(mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(serviceId, mPref.getToken());
+    return mRestApi.cancelOrder(serviceId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
-    return mRestApi.postponeService(entryId, mPref.getToken(), scheduleId);
+    return mRestApi.postponeService(entryId, mAuthorizationManager.getToken(), scheduleId);
   }
 
+  //---------ourWorks
+
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks(mPref.getToken());
+    return mRestApi.fetchListOfWorks();
   }
+
+  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
+    return mRestApi.fetchFavoritePhotos(mAuthorizationManager.getToken());
+    //return mRestApi.fetchFavoritePhotos(
+    //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTU3MDQ0NzEsImV4cCI6MTUwNzcwNDQ3MSwibmJmIjoxNDk1NzA0NDcxLCJqdGkiOiJDcjBMcWJLbzNlWWduWjBqIn0.vRvG5GZBOWomDX_gBN74Z9rvzCJsqH24E0xQ3GYZi4I");
+  }
+
+  //--------- like/dislike ourWork photo
+
+  public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
+    return mRestApi.addToFavoritePhoto(photoId, mAuthorizationManager.getToken());
+  }
+
+  public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
+    return mRestApi.removeFromFavoritePhoto(photoId, mAuthorizationManager.getToken());
+  }
+
+  //---------News
 
   public Observable<NewsEntity> fetchNewsPreview() {
     return mRestApi.fetchNewsPreview();
@@ -179,13 +214,21 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
-  public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
-    return mRestApi.addToFavoritePhoto(photoId, mPref.getToken());
+  //---------Goods
+
+  public Observable<List<GoodsEntity>> fetchGoods() {
+    return mRestApi.fetchAllProducts();
   }
 
-  public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
-    return mRestApi.removeFromFavoritePhoto(photoId, mPref.getToken());
+  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
+    return mRestApi.fetchGoodsByCatalogId(id);
   }
+
+  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
+    return mRestApi.fetchCategories();
+  }
+
+  //---------like/dislike goods
 
   public Observable<Integer> addToFavoriteGoods(int goodsId) {
     return Observable.just(200);
@@ -194,6 +237,8 @@ public class DataManager {
   public Observable<Integer> removeFromFavoriteGoods(int goodsId) {
     return Observable.just(200);
   }
+
+  //---------Notification
 
   public boolean isHourlyNotificationsEnabled() {
     return mPref.isHourlyNotificationsEnabled();
@@ -227,23 +272,23 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
-  public Observable<List<GoodsEntity>> fetchGoods() {
-    return mRestApi.fetchAllProducts();
-  }
-
-  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
-    return mRestApi.fetchCategories();
-  }
-
-  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
-    return mRestApi.fetchGoodsByCatalogId(id);
-  }
+  //---------Auth
 
   public boolean isAuthorized() {
     return mAuthorizationManager.isAuthorized();
   }
 
-  public Observable<String> getUserPhoto() {
-    return mAuthorizationManager.getUserPhoto();
+  public void refreshToken() {
+    mAuthorizationManager.refreshToken1();
+  }
+
+  public void clearToken() {
+    mAuthorizationManager.clear();
+  }
+
+  public void logout() {
+    mPref.clear();
+    mAuthorizationManager.logout();
   }
 }
+

@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,8 +16,8 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegist
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -72,8 +71,8 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void openRegistrationOrBonus(boolean authorized) {
     if (!authorized) {
-      mNavigator.startActivity((AppCompatActivity) getActivity(),
-          new Intent(getActivity(), ModuleSignInActivity.class));
+      mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
+          ThemeUtils.getThemeActionBar(getContext()));
     } else {
       mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance(),

@@ -33,7 +33,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private int mCountBonus;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
-    setTheme(ThemeUtils.getThemeOtherActivity(getBaseContext()));
+    setTheme(ThemeUtils.getThemeActionBar(getBaseContext()));
     setContentView(R.layout.activity_booking);
     super.onCreate(savedInstanceState);
 
