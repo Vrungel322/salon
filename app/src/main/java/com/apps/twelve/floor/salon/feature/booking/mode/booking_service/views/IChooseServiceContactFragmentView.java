@@ -16,6 +16,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void showAlert();
 
+  void startAnimation();
+
   void stopAnimation();
 
   void revertAnimation();

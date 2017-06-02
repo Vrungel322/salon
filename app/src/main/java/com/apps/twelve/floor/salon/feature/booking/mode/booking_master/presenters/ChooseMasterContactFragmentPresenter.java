@@ -47,6 +47,7 @@ import timber.log.Timber;
 
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
     if (mDataManager.isAuthorized()) {
+      getViewState().startAnimation();
       Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
           .compose(ThreadSchedulers.applySchedulers())
           .doOnNext(response -> {
@@ -74,7 +75,6 @@ import timber.log.Timber;
       addToUnsubscription(subscription);
     } else {
       mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
-      getViewState().revertAnimation();
     }
   }
 }

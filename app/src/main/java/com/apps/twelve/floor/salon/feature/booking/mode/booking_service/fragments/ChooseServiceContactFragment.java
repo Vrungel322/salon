@@ -51,10 +51,13 @@ public class ChooseServiceContactFragment extends BaseFragment
   }
 
   @OnClick(R.id.btn_booking_contact) void animate() {
-    mBtnCreateBooking.startAnimation();
     mChooseServiceContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseServiceContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mChooseServiceContactFragmentPresenter.sendBookingEntity();
+  }
+
+  @Override public void startAnimation() {
+    mBtnCreateBooking.startAnimation();
   }
 
   @Override public void stopAnimation() {

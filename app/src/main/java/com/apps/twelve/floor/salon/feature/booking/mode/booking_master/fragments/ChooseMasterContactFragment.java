@@ -47,10 +47,13 @@ public class ChooseMasterContactFragment extends BaseFragment
   }
 
   @OnClick(R.id.btn_booking_contact) void animate() {
-    mBtnCreateBooking.startAnimation();
     mChooseMasterContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseMasterContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mChooseMasterContactFragmentPresenter.sendBookingEntity();
+  }
+
+  @Override public void startAnimation() {
+    mBtnCreateBooking.startAnimation();
   }
 
   @Override public void stopAnimation() {
