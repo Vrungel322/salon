@@ -65,7 +65,11 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @Override public void setUserName(String name) {
-    mTextViewName.setText(name);
+    if (name.equals("")) {
+      mTextViewName.setText(R.string.info_unknown);
+    } else {
+      mTextViewName.setText(name);
+    }
   }
 
   @Override public void setUserEmail(String email) {
@@ -73,7 +77,11 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @Override public void setUserPhone(String phone) {
-    mTextViewPhone.setText(phone);
+    if (phone.equals("")) {
+      mTextViewPhone.setText(R.string.info_unknown);
+    } else {
+      mTextViewPhone.setText(phone);
+    }
   }
 
   @Override public void setUserGender(String gender) {
