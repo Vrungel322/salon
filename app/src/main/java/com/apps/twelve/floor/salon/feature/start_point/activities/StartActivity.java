@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -51,6 +53,7 @@ public class StartActivity extends BaseActivity
   private CountBadge.Factory mCircleFactory;
   private CountBadge mBadge;
   private int mCountBonus;
+  private AlertDialog mAuthorizationDialog;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setTheme(ThemeUtils.getThemeNoActionBar(getBaseContext()));
@@ -155,8 +158,12 @@ public class StartActivity extends BaseActivity
         mStartActivityPresenter.share();
         return true;
       case R.id.action_my_bonus:
-        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
-            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        if (mDataManager.isAuthorized()) {
+          mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+              MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        } else {
+          mStartActivityPresenter.showAlertDialog();
+        }
         return true;
       default:
         return super.onOptionsItemSelected(item);
@@ -228,5 +235,28 @@ public class StartActivity extends BaseActivity
   @Override public void addFragmentMain() {
     mNavigator.addFragmentTag(StartActivity.this, R.id.container_main, new MainFragment(),
         Constants.FragmentTag.MAIN_FRAGMENT);
+  }
+
+  @Override public void showAlertDialog() {
+    mAuthorizationDialog = DialogFactory.createAuthorizationDialogBuilder(this)
+        .setNegativeButton(R.string.dialog_cancel,
+            (dialog, which) -> mStartActivityPresenter.cancelAlertDialog())
+        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+          mDataManager.startSignInActivity(this, mContext);
+          mStartActivityPresenter.cancelAlertDialog();
+        })
+        .create();
+    mAuthorizationDialog.show();
+  }
+
+  @Override public void cancelAlertDialog() {
+    if (mAuthorizationDialog != null) {
+      mAuthorizationDialog.dismiss();
+    }
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    cancelAlertDialog();
   }
 }

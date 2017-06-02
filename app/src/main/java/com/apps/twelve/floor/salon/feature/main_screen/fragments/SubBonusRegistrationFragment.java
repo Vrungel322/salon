@@ -16,7 +16,6 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegist
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
-import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 
@@ -71,8 +70,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void openRegistrationOrBonus(boolean authorized) {
     if (!authorized) {
-      mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
-          ThemeUtils.getThemeActionBar(getContext()));
+      mDataManager.startSignInActivity((AppCompatActivity) getActivity(), getContext());
     } else {
       mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance(),

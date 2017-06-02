@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.data;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -13,6 +15,7 @@ import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.List;
 import retrofit2.Response;
@@ -284,6 +287,10 @@ public class DataManager {
 
   public void clearToken() {
     mAuthorizationManager.clear();
+  }
+
+  public void startSignInActivity(AppCompatActivity activity, Context context) {
+    mAuthorizationManager.startSignInActivity(activity, ThemeUtils.getThemeActionBar(context));
   }
 
   public void logout() {

@@ -18,7 +18,6 @@ import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentP
 import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
-import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -90,7 +89,6 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
   }
 
   @Override public void startLoginActivity() {
-    mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
-        ThemeUtils.getThemeActionBar(getContext()));
+    mDataManager.startSignInActivity((AppCompatActivity) getActivity(), getContext());
   }
 }

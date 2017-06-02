@@ -61,4 +61,9 @@ public final class DialogFactory {
   public static AlertDialog.Builder createAlertDialogBuilder(Context context, String title) {
     return new AlertDialog.Builder(context).setTitle(title);
   }
+
+  public static AlertDialog.Builder createAuthorizationDialogBuilder(Context context) {
+    return new AlertDialog.Builder(context).setTitle(context.getString(R.string.dialog_error_title))
+        .setMessage(context.getString(R.string.dialog_authorization_title));
+  }
 }

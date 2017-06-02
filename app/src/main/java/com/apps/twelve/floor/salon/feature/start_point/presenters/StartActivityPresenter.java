@@ -101,4 +101,12 @@ import timber.log.Timber;
   public void setDrawerIndicator() {
     getViewState().setDrawerIndicator();
   }
+
+  public void showAlertDialog() {
+    getViewState().showAlertDialog();
+  }
+
+  public void cancelAlertDialog() {
+    getViewState().cancelAlertDialog();
+  }
 }

@@ -31,4 +31,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void setBonusCount(int integer);
 
   @StateStrategyType(SkipStrategy.class) void showConnectErrorMessage();
+
+  @StateStrategyType(AddToEndSingleStrategy.class) void showAlertDialog();
+
+  @StateStrategyType(AddToEndSingleStrategy.class) void cancelAlertDialog();
 }

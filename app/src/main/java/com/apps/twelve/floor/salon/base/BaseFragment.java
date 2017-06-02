@@ -14,9 +14,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 
@@ -29,7 +29,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   private final int mLayoutId;
   @Inject protected Context mContext;
   @Inject protected Navigator mNavigator;
-  @Inject protected AuthorizationManager mAuthorizationManager;
+  @Inject protected DataManager mDataManager;
   private Unbinder mUnbinder;
 
   public BaseFragment(int mLayoutId) {
