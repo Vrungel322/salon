@@ -61,11 +61,10 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     super.onViewCreated(view, savedInstanceState);
 
     if (!mDataManager.isAuthorized()) mSettingsFragmentPresenter.hideUserSettings();
-
   }
 
   @Override public void setUserName(String name) {
-    if (name.equals("")) {
+    if (name.isEmpty()) {
       mTextViewName.setText(R.string.info_unknown);
     } else {
       mTextViewName.setText(name);
@@ -77,7 +76,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @Override public void setUserPhone(String phone) {
-    if (phone.equals("")) {
+    if (phone.isEmpty()) {
       mTextViewPhone.setText(R.string.info_unknown);
     } else {
       mTextViewPhone.setText(phone);
