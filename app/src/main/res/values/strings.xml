@@ -123,7 +123,6 @@
   <string name="current_field_password">Текущий пароль:</string>
   <string name="new_field_password">Новый пароль:</string>
   <string name="field_password">Изменить пароль</string>
-  <string name="password_not_available">Информация недоступна</string>
   <string name="current_field_email">Текущая почта:</string>
   <string name="new_field_email">Новая почта:</string>
   <string name="current_field_phone">Текущий телефон:</string>

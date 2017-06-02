@@ -112,7 +112,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @OnClick(R.id.rlPassword) void changePassword() {
     mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
-        ChangeUserInfoFragment.newInstance(PASSWORD, getString(R.string.password_not_available)));
+        ChangeUserInfoFragment.newInstance(PASSWORD, getString(R.string.info_unknown)));
   }
 
   @OnClick(R.id.rlEmail) void changeEmail() {
@@ -156,7 +156,10 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   /** change user image stuff */
 
   public void setUserPhoto(Uri uri) {
-    Picasso.with(getActivity()).load(uri).into(mProfileImage);
+    Picasso.with(getActivity())
+        .load(uri)
+        .error(R.drawable.ic_user_female_settings)
+        .into(mProfileImage);
   }
 
   @OnClick(R.id.btnChangePhoto) void getNewImage() {
