@@ -69,7 +69,10 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @Override public void setUserPhoto(String photoUri) {
-    Picasso.with(getContext()).load(Uri.parse(photoUri)).into(mImageViewUserAvatar);
+    Picasso.with(getContext())
+        .load(Uri.parse(photoUri))
+        .error(R.drawable.ic_user_female)
+        .into(mImageViewUserAvatar);
   }
 
   @Override public void openRegistrationOrBonus(boolean authorized) {
@@ -83,6 +86,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @Override public void showCardRegistration() {
+    mTextViewBonusRegistration.setTextSize(14);
     mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
     mButtonRegistration.setText(getString(R.string.registration));
   }
