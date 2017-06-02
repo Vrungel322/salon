@@ -24,8 +24,8 @@
   <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed justo augue. Aenean eros lacus, scelerisque in nisi eget, auctor elementum erat. Suspendisse at mi mauris. In finibus vel urna sed scelerisque. Donec ut tortor rutrum, ullamcorper nunc tristique, placerat arcu. Praesent vitae diam enim. Mauris mi nunc, lacinia quis enim eu, varius auctor lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed egestas bibendum eros vel pulvinar. Sed tempor dui at posuere varius. Ut efficitur mauris vel tincidunt eleifend. Maecenas gravida nec metus et lobortis.</string>
   <string name="news">Новости</string>
   <string name="catalog">Каталог</string>
-  <string name="registration">Регистрация</string>
-  <string name="bonus_registration_text">Зарегистрируйтесь и получите бонусы</string>
+  <string name="registration">Вход / Регистрация</string>
+  <string name="bonus_registration_text">Зарегистрируйтесь и получите бонусы!</string>
   <string name="bonus_card">Бонусная карта</string>
   <string name="all_news">ВСЕ НОВОСТИ</string>
   <string name="all_books">Все записи</string>
