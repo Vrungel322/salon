@@ -119,7 +119,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @OnClick(R.id.rlPassword) void changePassword() {
     mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
-        ChangeUserInfoFragment.newInstance(PASSWORD, getString(R.string.info_unknown)));
+        ChangeUserInfoFragment.newInstance(PASSWORD, null));
   }
 
   @OnClick(R.id.rlEmail) void changeEmail() {

@@ -39,6 +39,7 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
   @BindView(R.id.tvNewFieldText) TextView mNewFieldText;
   @BindView(R.id.etNewField) EditText mEditTextNewField;
   @BindView(R.id.btnSave) CircularProgressButton mButtonSave;
+  @BindView(R.id.etCurrentField) EditText mEditTextCurrent;
 
   public ChangeUserInfoFragment() {
     super(R.layout.fragment_change_user_info);
@@ -66,13 +67,23 @@ public class ChangeUserInfoFragment extends BaseFragment implements IChangeUserI
 
     setTextViews(getArguments().getInt(CHANGING_FIELD));
 
-    mCurrentField.setText(getArguments().getCharSequence(CHANGING_FIELD_VALUE));
+    if (getArguments().getInt(CHANGING_FIELD) == PASSWORD) {
+      mCurrentField.setVisibility(View.INVISIBLE);
+      mEditTextCurrent.setVisibility(View.VISIBLE);
+    } else {
+      mCurrentField.setText(getArguments().getCharSequence(CHANGING_FIELD_VALUE));
+    }
   }
 
   @OnClick(R.id.btnSave) void save() {
     mButtonSave.startAnimation();
-    mChangeUserInfoFragmentPresenter.saveInfo(getArguments().getInt(CHANGING_FIELD),
-        mEditTextNewField.getText().toString());
+    if (getArguments().getInt(CHANGING_FIELD) == PASSWORD) {
+      mChangeUserInfoFragmentPresenter.savePassword(mEditTextCurrent.toString(),
+          mEditTextNewField.toString());
+    } else {
+      mChangeUserInfoFragmentPresenter.saveInfo(getArguments().getInt(CHANGING_FIELD),
+          mEditTextNewField.getText().toString());
+    }
   }
 
   @Override public void stopAnimation() {

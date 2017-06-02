@@ -17,7 +17,6 @@ import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.EMAIL;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.NAME;
-import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PASSWORD;
 import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.PHONE;
 
 /**
@@ -61,13 +60,32 @@ import static com.apps.twelve.floor.salon.utils.Constants.ChangingUserInfoField.
     addToUnsubscription(subscription);
   }
 
+  public void savePassword(String oldPassword, String newPassword) {
+    Subscription subscription =
+        Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
+          if (voidResponse == 200) {
+            getViewState().stopAnimation();
+          } else {
+            getViewState().showAlert();
+          }
+        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
+          if (response == 200) {
+            mDataManager.updatePassword(oldPassword, newPassword);
+            getViewState().closeFragment();
+          } else {
+            getViewState().revertAnimation();
+          }
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
+    addToUnsubscription(subscription);
+  }
+
   private void setUserInfo(int field, String value) {
     switch (field) {
       case NAME:
         mDataManager.setProfileName(value);
-        break;
-      case PASSWORD:
-        mDataManager.setProfilePassword(value);
         break;
       case EMAIL:
         mDataManager.setProfileEmail(value);

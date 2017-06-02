@@ -121,9 +121,8 @@ public class DataManager {
     mAuthorizationManager.saveUserName(name);
   }
 
-  // TODO: 02.06.2017 remove
-  public void setProfilePassword(String password) {
-    mPref.setProfilePassword(password);
+  public void updatePassword(String oldPassword, String newPassword) {
+    mAuthorizationManager.changePassword(oldPassword, newPassword);
   }
 
   public Observable<String> getProfileEmail() {

@@ -35,6 +35,20 @@
       android:textSize="16sp"
       android:textStyle="bold"
       />
+  <EditText
+      android:id="@+id/etCurrentField"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/tvCurrentFieldText"
+      android:layout_marginTop="16dp"
+      android:padding="5dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp"
+      android:background="@color/colorWhite"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:visibility="gone"
+      />
   <TextView
       android:id="@+id/tvNewFieldText"
       android:layout_width="wrap_content"
@@ -42,7 +56,7 @@
       android:layout_alignLeft="@+id/tvCurrentField"
       android:layout_alignStart="@+id/tvCurrentField"
       android:layout_below="@+id/tvCurrentField"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="24dp"
       android:textColor="@color/colorLightGray"
       android:textSize="16sp"
       />
