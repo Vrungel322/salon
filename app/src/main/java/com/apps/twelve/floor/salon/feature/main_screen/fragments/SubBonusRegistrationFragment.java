@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,6 +48,9 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    mButtonRegistration.setPaintFlags(
+        mButtonRegistration.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
   }
 
   @OnClick(R.id.ivInfo) public void ivInfoClicked() {
