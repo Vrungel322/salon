@@ -53,10 +53,15 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
     mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
     mRecyclerViewMyLastBooking.setFocusable(false);
 
-    mTextViewAllBooks.setOnClickListener(
-        c -> mNavigator.addFragmentTagClearBackStackNotCopy((StartActivity) getActivity(),
+    mTextViewAllBooks.setOnClickListener(c -> {
+      if (mDataManager.isAuthorized()) {
+        mNavigator.addFragmentTagClearBackStackNotCopy((StartActivity) getActivity(),
             R.id.container_main, MyBookFragment.newInstance(),
-            Constants.FragmentTag.MY_BOOK_FRAGMENT));
+            Constants.FragmentTag.MY_BOOK_FRAGMENT);
+      } else {
+        mSubBookingFragmentPresenter.showAlertDialog();
+      }
+    });
   }
 
   @Override public void showLastBookings(List<LastBookingEntity> lastBookingEntities) {

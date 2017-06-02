@@ -29,6 +29,7 @@ import timber.log.Timber;
     subscribeConnectException();
     subscribeUpdateBonusFromChildren();
     subscribeUnathorizedError();
+    subscribeShowDialog();
   }
 
   private void subscribeUnathorizedError() {
@@ -95,6 +96,13 @@ import timber.log.Timber;
         .concatMap(updateBonusSwipe -> mDataManager.getBonusCountObservable())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeShowDialog() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialog.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(count -> getViewState().showAlertDialog(), Timber::e);
     addToUnsubscription(subscription);
   }
 

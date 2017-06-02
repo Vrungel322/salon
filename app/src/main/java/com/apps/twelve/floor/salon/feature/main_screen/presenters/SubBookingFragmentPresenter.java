@@ -34,6 +34,10 @@ import timber.log.Timber;
     subscribeUpdateSubBooking();
   }
 
+  public void showAlertDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
+
   private void fetchBookingEntities() {
     if (mDataManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchLastBooking()

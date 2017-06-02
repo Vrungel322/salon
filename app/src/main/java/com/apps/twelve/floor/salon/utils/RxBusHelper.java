@@ -72,6 +72,10 @@ public final class RxBusHelper {
 
   }
 
+  public static class ShowAuthDialog {
+
+  }
+
   public static class MessageConnectException {
   }
 

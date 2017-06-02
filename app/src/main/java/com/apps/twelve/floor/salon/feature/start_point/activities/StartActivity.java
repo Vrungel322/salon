@@ -181,12 +181,20 @@ public class StartActivity extends BaseActivity
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
-        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
-            MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
+        if (mDataManager.isAuthorized()) {
+          mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+              MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
+        } else {
+          mStartActivityPresenter.showAlertDialog();
+        }
         break;
       case R.id.nav_my_bonus:
-        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
-            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        if (mDataManager.isAuthorized()) {
+          mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+              MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
+        } else {
+          mStartActivityPresenter.showAlertDialog();
+        }
         break;
       case R.id.nav_our_work:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
