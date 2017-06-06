@@ -30,7 +30,7 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -86,7 +86,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
       holder.mConstraintLayoutBooking.setBackground(drawableFromTheme);
       holder.view.setVisibility(View.INVISIBLE);
     }
-    Picasso.with(holder.mImageViewServicePhoto.getContext())
+    Glide.with(holder.mImageViewServicePhoto.getContext())
         .load(mBookingEntities.get(position).getImageUri())
         .into(holder.mImageViewServicePhoto);
 

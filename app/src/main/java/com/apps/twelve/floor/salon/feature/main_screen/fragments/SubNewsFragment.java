@@ -15,7 +15,7 @@ import com.apps.twelve.floor.salon.feature.news.fragments.AllNewsViewFragment;
 import com.apps.twelve.floor.salon.feature.news.fragments.NewsDetailFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import static com.apps.twelve.floor.salon.utils.Converters.dateFromSeconds;
 
@@ -46,7 +46,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
 
   @Override public void updateNewsPreview(NewsEntity newsEntity) {
     mNewsEntity = newsEntity;
-    Picasso.with(getContext()).load(newsEntity.getImg()).into(mImageViewNewsPreview);
+    Glide.with(getContext()).load(newsEntity.getImg()).into(mImageViewNewsPreview);
     mTextViewNewsShortDescription.setText(newsEntity.getTitle());
     mTextViewNewsData.setText(dateFromSeconds(newsEntity.getCreatedAt()));
   }

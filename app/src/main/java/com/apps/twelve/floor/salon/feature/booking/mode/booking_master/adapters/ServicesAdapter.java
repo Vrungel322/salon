@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
               R.color.colorLLightGray));
     }
-    Picasso.with(mContext)
+    Glide.with(mContext)
         .load(mServiceEntities.get(position).getImage())
         .into(holder.mImageViewServiceImg);
 

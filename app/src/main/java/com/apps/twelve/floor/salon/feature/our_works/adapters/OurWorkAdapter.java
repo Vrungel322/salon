@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +46,10 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
       holder.mTextViewShortDescription.setText(
           holder.mTextViewShortDescription.getContext().getString(R.string.menu_favourite));
       holder.mImageViewWorkPreview.setPadding(100, 100, 100, 100);
-      Picasso.with(holder.mImageViewWorkPreview.getContext())
-          .load(R.drawable.ic_favorite_goods_full_24dp)
-          .error(R.drawable.ic_favorite_goods_full_24dp)
-          .into(holder.mImageViewWorkPreview);
+      holder.mImageViewWorkPreview.setImageResource(R.drawable.ic_favorite_goods_full_24dp);
     } else {
       holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
-      Picasso.with(holder.mImageViewWorkPreview.getContext())
+      Glide.with(holder.mImageViewWorkPreview.getContext())
           .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
           .into(holder.mImageViewWorkPreview);
     }

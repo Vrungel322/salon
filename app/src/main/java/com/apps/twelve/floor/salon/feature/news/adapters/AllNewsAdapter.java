@@ -10,7 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   @Override public void onBindViewHolder(AllNewsViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewThumbNews.getContext())
+    Glide.with(holder.mImageViewThumbNews.getContext())
         .load(mNewsEntities.get(position).getImg())
         .into(holder.mImageViewThumbNews);
 

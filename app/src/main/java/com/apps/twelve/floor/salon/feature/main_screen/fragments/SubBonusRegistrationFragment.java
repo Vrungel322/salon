@@ -19,7 +19,7 @@ import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 /**
  * Created by Vrungel on 27.02.2017.
@@ -71,7 +71,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @Override public void setUserPhoto(String photoUri) {
-    Picasso.with(getContext()).load(Uri.parse(photoUri)).error(R.drawable.ic_user_female_64dp)
+    Glide.with(getContext()).load(Uri.parse(photoUri)).error(R.drawable.ic_user_female_64dp)
         .into(mImageViewUserAvatar);
   }
 

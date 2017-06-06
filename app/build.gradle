@@ -71,9 +71,6 @@ dependencies {
   compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
   compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
-  //Picasso
-  compile 'com.squareup.picasso:picasso:2.5.2'
-
   //Alerter
   compile 'com.tapadoo.android:alerter:1.0.8'
 

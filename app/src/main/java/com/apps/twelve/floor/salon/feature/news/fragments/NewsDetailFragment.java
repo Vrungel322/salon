@@ -15,7 +15,7 @@ import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 /**
  * Created by Vrungel on 23.02.2017.
@@ -50,7 +50,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
 
     if (newsEntity != null) {
-      Picasso.with(mContext).load(newsEntity.getImg()).into(mImageViewPhotoNews);
+      Glide.with(mContext).load(newsEntity.getImg()).into(mImageViewPhotoNews);
       mTextViewTitleNews.setText(newsEntity.getTitle());
       mTextViewDescriptionNews.setText(newsEntity.getText());
     }

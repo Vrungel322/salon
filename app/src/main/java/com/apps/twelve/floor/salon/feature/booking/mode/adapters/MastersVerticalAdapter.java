@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class MastersVerticalAdapter
 
   @Override public void onBindViewHolder(MastersViewHolder holder, int position) {
     if (position > 0) {
-      Picasso.with(holder.mImageViewMasterImg.getContext())
+      Glide.with(holder.mImageViewMasterImg.getContext())
           .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
           .into(holder.mImageViewMasterImg);
       holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());

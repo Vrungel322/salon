@@ -20,7 +20,7 @@ import com.apps.twelve.floor.salon.feature.settings.views.ISettingsFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -163,7 +163,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   /** change user image stuff */
 
   public void setUserPhoto(Uri uri) {
-    Picasso.with(getActivity())
+    Glide.with(getActivity())
         .load(uri)
         .error(R.drawable.ic_user_female_settings)
         .into(mProfileImage);
