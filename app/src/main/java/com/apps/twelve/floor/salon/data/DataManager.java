@@ -182,7 +182,7 @@ public class DataManager {
   public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
     return mRestApi.fetchFavoritePhotos(mAuthorizationManager.getToken());
     //return mRestApi.fetchFavoritePhotos(
-    //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQsImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTU3MDQ0NzEsImV4cCI6MTUwNzcwNDQ3MSwibmJmIjoxNDk1NzA0NDcxLCJqdGkiOiJDcjBMcWJLbzNlWWduWjBqIn0.vRvG5GZBOWomDX_gBN74Z9rvzCJsqH24E0xQ3GYZi4I");
+    //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   //--------- like/dislike ourWork photo
@@ -208,7 +208,13 @@ public class DataManager {
   //---------Goods
 
   public Observable<List<GoodsEntity>> fetchGoods() {
-    return mRestApi.fetchAllProducts();
+    return mRestApi.fetchAllProducts(mAuthorizationManager.getToken());
+    //return mRestApi.fetchAllProducts("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
+  }
+
+  public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods() {
+    return mRestApi.fetchFavoriteGoods(mAuthorizationManager.getToken());
+    //return mRestApi.fetchFavoriteGoods("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
@@ -221,12 +227,12 @@ public class DataManager {
 
   //---------like/dislike goods
 
-  public Observable<Integer> addToFavoriteGoods(int goodsId) {
-    return Observable.just(200);
+  public Observable<Response<Void>> addToFavoriteGoods(int goodsId) {
+    return mRestApi.addToFavoriteGoods(goodsId,mAuthorizationManager.getToken());
   }
 
-  public Observable<Integer> removeFromFavoriteGoods(int goodsId) {
-    return Observable.just(200);
+  public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId) {
+    return mRestApi.removeFromFavoriteGoods(goodsId,mAuthorizationManager.getToken());
   }
 
   //---------Notification

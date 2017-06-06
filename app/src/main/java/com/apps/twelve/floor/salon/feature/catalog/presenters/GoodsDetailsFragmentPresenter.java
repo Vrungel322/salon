@@ -29,7 +29,7 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.addToFavoriteGoods(idGoods)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse == 200) {
+          if (voidResponse.code() == 200) {
             getViewState().setStatusFavorite(true);
             mRxBus.post(new RxBusHelper.UpdateGoodsList());
           }
@@ -44,7 +44,7 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.removeFromFavoriteGoods(idGoods)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse == 200) {
+          if (voidResponse.code() == 200) {
             getViewState().setStatusFavorite(false);
             mRxBus.post(new RxBusHelper.UpdateGoodsList());
           }

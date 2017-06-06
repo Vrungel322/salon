@@ -100,8 +100,8 @@ public class RestApi {
     return api.removeFromFavoritePhoto(photoId, token);
   }
 
-  public Observable<List<GoodsEntity>> fetchAllProducts() {
-    return api.fetchAllProducts();
+  public Observable<List<GoodsEntity>> fetchAllProducts(String token) {
+    return api.fetchAllProducts(token);
   }
 
   public Observable<List<GoodsCategoryEntity>> fetchCategories() {
@@ -114,6 +114,18 @@ public class RestApi {
 
   public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(String token) {
     return api.fetchFavoritePhotos(token);
+  }
+
+  public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods(String token) {
+    return api.fetchFavoriteGoods(token);
+  }
+
+  public Observable<Response<Void>> addToFavoriteGoods(int goodsId,String token) {
+    return api.addToFavoriteGoods(goodsId, token);
+  }
+
+  public Observable<Response<Void> > removeFromFavoriteGoods(int goodsId, String token) {
+    return api.removeFromFavoriteGoods(goodsId, token);
   }
 
   //public Observable<TokenEntity> login(LoginBody credentials) {

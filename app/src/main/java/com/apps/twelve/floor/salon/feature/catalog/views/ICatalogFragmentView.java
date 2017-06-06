@@ -22,4 +22,6 @@ import java.util.List;
   void setCategoryTitle(String title);
 
   void setButtonDefaultText();
+
+  void startLoginActivity();
 }

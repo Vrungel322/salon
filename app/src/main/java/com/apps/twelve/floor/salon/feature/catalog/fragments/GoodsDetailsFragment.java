@@ -25,6 +25,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mzelzoghbi.zgallery.CustomViewPager;
 import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 import java.util.ArrayList;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 18.05.2017.
@@ -102,6 +103,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mViewPagerImages.setCurrentItem(currentPos);
 
       mCheckBoxFavoriteGoods.setChecked(mGoodsEntity.isFavorite());
+      Timber.e(""+mGoodsEntity.isFavorite());
 
       updateImageInfoAndButtons();
     }

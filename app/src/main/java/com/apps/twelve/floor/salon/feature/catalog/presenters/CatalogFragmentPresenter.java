@@ -3,11 +3,14 @@ package com.apps.twelve.floor.salon.feature.catalog.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.DataManager;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
@@ -21,6 +24,7 @@ import timber.log.Timber;
   @Inject DataManager mDataManager;
   @Inject RxBus mRxBus;
   private String mTitle;
+
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -50,6 +54,24 @@ import timber.log.Timber;
           getViewState().stopRefreshingView();
           Timber.e(throwable);
           showMessageConnectException(throwable);
+        });
+    addToUnsubscription(subscription);
+  }
+
+  public void fetchFavoriteGoodsList() {
+    Subscription subscription = mDataManager.fetchFavoriteGoods()
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(listResponse -> {
+          if (listResponse.code()!=400 && listResponse.code()!=401){
+            getViewState().updateGoodsList(listResponse.body());
+          }else {
+            Timber.e("no Auth or need to refresh token");
+            mDataManager.refreshToken();
+          }
+          if (listResponse.code() == 500) {
+            mDataManager.clearToken();
+            getViewState().startLoginActivity();
+          }
         });
     addToUnsubscription(subscription);
   }

@@ -73,14 +73,26 @@ public interface SalonApi {
   Observable<Response<Void>> removeFromFavoritePhoto(@Path("photoId") int photoId,
       @Header("authorization") String token);
 
-  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts();
+  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts(@Header("authorization") String token);
 
   @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
 
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchGoodsByCatalogId(
       @Query("category") Integer id);
 
-  @GET("api/v1/users/favorite/photos") Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(
+  @GET("api/v1/users/favorite/photos")
+  Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(
+      @Header("authorization") String token);
+
+  @GET("api/v1/users/favorite/products") Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods(
+      @Header("authorization") String token);
+
+  @POST("api/v1/users/favorite/products") @FormUrlEncoded
+  Observable<Response<Void>> addToFavoriteGoods(@Field("product_id") int goodsId,
+      @Header("authorization") String token);
+
+  @DELETE("api/v1/users/favorite/products/{product_id}")
+  Observable<Response<Void>> removeFromFavoriteGoods(@Path("product_id") int goodsId,
       @Header("authorization") String token);
 
   //@POST("signin") Observable<TokenEntity> login(

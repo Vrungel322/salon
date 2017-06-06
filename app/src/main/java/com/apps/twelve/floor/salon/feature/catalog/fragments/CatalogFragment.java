@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.catalog.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -17,8 +18,10 @@ import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +37,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private GoodsListAdapter mGoodsListAdapter;
+
+  private List<GoodsEntity> mGoodsEntities = new ArrayList<>();
 
   public CatalogFragment() {
     super(R.layout.fragment_catalog);
@@ -54,9 +59,14 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRecyclerViewStaff.setAdapter(mGoodsListAdapter);
     ItemClickSupport.addTo(mRecyclerViewStaff)
-        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
-            (StartActivity) getActivity(), R.id.container_main,
-            GoodsDetailsFragment.newInstance(mGoodsListAdapter.getEntity(position))));
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          if (position == 0) {
+            mCatalogFragmentPresenter.fetchFavoriteGoodsList();
+          } else {
+            mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+                GoodsDetailsFragment.newInstance(mGoodsListAdapter.getEntity(position)));
+          }
+        });
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
@@ -70,7 +80,12 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   }
 
   @Override public void updateGoodsList(List<GoodsEntity> staffEntities) {
-    mGoodsListAdapter.addListGoodsEntity(staffEntities);
+    mGoodsEntities.clear();
+    mGoodsEntities.add(0,
+        new GoodsEntity(0, getString(R.string.menu_favourite), "", "", "", 0, "", "",
+            Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false, false));
+    mGoodsEntities.addAll(staffEntities);
+    mGoodsListAdapter.addListGoodsEntity(mGoodsEntities);
   }
 
   @Override public void startRefreshingView() {
@@ -87,6 +102,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
 
   @Override public void setButtonDefaultText() {
     mButtonChooseCategory.setText(getString(R.string.choose_category));
+  }
+
+  @Override public void startLoginActivity() {
+    mDataManager.startSignInActivity((AppCompatActivity) getActivity(), getContext());
   }
 
   @Override public void onDestroyView() {
