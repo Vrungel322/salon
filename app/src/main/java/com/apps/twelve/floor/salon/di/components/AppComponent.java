@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFavoriteFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.GoodsDetailsFragmentPresenter;
@@ -96,6 +97,8 @@ import dagger.Component;
   void inject(BonusHowFragmentPresenter presenter);
 
   void inject(BonusHistoryFragmentPresenter presenter);
+
+  void inject(CatalogFavoriteFragmentPresenter presenter);
 
   //activities
   void inject(BaseActivity activity);

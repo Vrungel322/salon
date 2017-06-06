@@ -29,6 +29,10 @@ import timber.log.Timber;
     subscribeReloadListByCategory();
   }
 
+  public void showAlertDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
+
   private void subscribeReloadListByCategory() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ReloadCatalogByCategory.class)
         .doOnNext(reloadCatalogByCategory -> getViewState().startRefreshingView())
@@ -49,7 +53,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void fetchFavoriteGoodsList() {
+  /*public void fetchFavoriteGoodsList() {
     Subscription subscription = mDataManager.fetchFavoriteGoods()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(listResponse -> {
@@ -65,7 +69,7 @@ import timber.log.Timber;
           }
         });
     addToUnsubscription(subscription);
-  }
+  }*/
 
   public void fetchGoodsList() {
     getViewState().startRefreshingView();
