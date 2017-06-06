@@ -47,12 +47,8 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void openRegistrationOrBonus() {
-    getViewState().openRegistrationOrBonus(mDataManager.isAuthorized());
-  }
-
   public void showCardBonusOrRegistration() {
-    if (!mDataManager.isAuthorized()) {
+    if (!mAuthorizationManager.isAuthorized()) {
       getViewState().showCardRegistration();
       getViewState().setUserPhoto("");
     } else {

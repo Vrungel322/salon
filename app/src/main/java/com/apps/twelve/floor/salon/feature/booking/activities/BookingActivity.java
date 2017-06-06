@@ -67,7 +67,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_my_bonus:
-        if (mDataManager.isAuthorized()) {
+        if (mAuthorizationManager.isAuthorized()) {
           mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this,
               R.id.container_booking, MyBonusFragment.newInstance(),
               Constants.FragmentTag.MY_BONUS_FRAGMENT);
@@ -107,7 +107,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         .setNegativeButton(R.string.dialog_cancel,
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
         .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
-          mDataManager.startSignInActivity(this, mContext);
+          mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
           mBookingActivityPresenter.cancelAlertDialog();
         })
         .create();

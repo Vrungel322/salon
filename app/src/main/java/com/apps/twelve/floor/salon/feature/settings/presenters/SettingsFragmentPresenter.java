@@ -23,7 +23,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    if (mDataManager.isAuthorized()) {
+    if (mAuthorizationManager.isAuthorized()) {
       setUpPhoto();
       setUserInfo();
       //RxBus

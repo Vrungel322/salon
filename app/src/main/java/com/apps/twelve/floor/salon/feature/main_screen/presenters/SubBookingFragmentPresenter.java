@@ -33,7 +33,7 @@ import timber.log.Timber;
   }
 
   private void fetchBookingEntities() {
-    if (mDataManager.isAuthorized()) {
+    if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchLastBooking()
           .concatMap(Observable::from)
           .take(2)

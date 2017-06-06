@@ -33,8 +33,4 @@ import retrofit2.Retrofit;
   @Provides @AppScope PreferencesHelper providePreferencesHelper(Context context) {
     return new PreferencesHelper(context);
   }
-
-  @Provides @AppScope AuthorizationManager provideAuthorizationManager() {
-    return AuthorizationManager.getInstance();
-  }
 }

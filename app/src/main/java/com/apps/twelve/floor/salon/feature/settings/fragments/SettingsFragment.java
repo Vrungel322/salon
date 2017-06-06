@@ -60,7 +60,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    if (!mDataManager.isAuthorized()) mSettingsFragmentPresenter.hideUserSettings();
+    if (!mAuthorizationManager.isAuthorized()) mSettingsFragmentPresenter.hideUserSettings();
   }
 
   @Override public void setUserName(String name) {

@@ -17,6 +17,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegist
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.squareup.picasso.Picasso;
 
@@ -27,13 +28,14 @@ import com.squareup.picasso.Picasso;
 public class SubBonusRegistrationFragment extends BaseFragment
     implements ISubBonusRegestrationFragmentView {
 
+  @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
+
   @BindView(R.id.ivUserAvatar) ImageView mImageViewUserAvatar;
   @BindView(R.id.ivInfo) ImageView mImageViewInfo;
   @BindView(R.id.bRegistration) TextView mButtonRegistration;
   @BindView(R.id.tvBonusRegistration) TextView mTextViewBonusRegistration;
-  @BindView(R.id.cvBonusRegistration) CardView mCardViewBonusRegistration;
 
-  @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
+  @BindView(R.id.cvBonusRegistration) CardView mCardViewBonusRegistration;
 
   public SubBonusRegistrationFragment() {
     super(R.layout.fragment_sub_bonus_registration);
@@ -73,16 +75,6 @@ public class SubBonusRegistrationFragment extends BaseFragment
         .into(mImageViewUserAvatar);
   }
 
-  @Override public void openRegistrationOrBonus(boolean authorized) {
-    if (!authorized) {
-      mDataManager.startSignInActivity((AppCompatActivity) getActivity(), getContext());
-    } else {
-      mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
-          R.id.container_main, MyBonusFragment.newInstance(),
-          Constants.FragmentTag.MY_BONUS_FRAGMENT);
-    }
-  }
-
   @Override public void showCardRegistration() {
     mTextViewBonusRegistration.setTextSize(14);
     mTextViewBonusRegistration.setText(getString(R.string.bonus_registration_text));
@@ -90,6 +82,13 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
-    mSubBonusRegistrationFragmentPresenter.openRegistrationOrBonus();
+    if (!mAuthorizationManager.isAuthorized()) {
+      mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
+          ThemeUtils.getThemeActionBar(getContext()));
+    } else {
+      mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
+          R.id.container_main, MyBonusFragment.newInstance(),
+          Constants.FragmentTag.MY_BONUS_FRAGMENT);
+    }
   }
 }

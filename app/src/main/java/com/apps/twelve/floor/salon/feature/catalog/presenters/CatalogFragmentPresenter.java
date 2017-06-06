@@ -57,10 +57,10 @@ import timber.log.Timber;
             getViewState().updateGoodsList(listResponse.body());
           } else {
             Timber.e("no Auth or need to refresh token");
-            mDataManager.refreshToken();
+            mAuthorizationManager.refreshToken();
           }
           if (listResponse.code() == 500) {
-            mDataManager.clearToken();
+            mAuthorizationManager.clear();
             getViewState().startLoginActivity();
           }
         });

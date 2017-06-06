@@ -14,8 +14,8 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 
@@ -29,7 +29,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
   @Inject protected Context mContext;
   @Inject protected Navigator mNavigator;
-  @Inject protected DataManager mDataManager;
+  @Inject protected AuthorizationManager mAuthorizationManager;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

@@ -42,7 +42,7 @@ import timber.log.Timber;
   }
 
   public void fetchBonusCount() {
-    if (mDataManager.isAuthorized()) {
+    if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusCount()
           .doOnNext(count -> mDataManager.setBonusCount(count))
           .compose(ThreadSchedulers.applySchedulers())

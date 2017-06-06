@@ -30,7 +30,7 @@ import timber.log.Timber;
   public void updateBookingAndNews() {
     getViewState().startRefreshingView();
     mRxBus.post(new RxBusHelper.UpdateNews());
-    if (mDataManager.isAuthorized()) {
+    if (mAuthorizationManager.isAuthorized()) {
       mRxBus.post(new RxBusHelper.UpdateBonusSwipe());
       mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
     }

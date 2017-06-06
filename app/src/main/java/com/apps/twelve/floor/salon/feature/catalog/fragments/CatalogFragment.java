@@ -20,6 +20,7 @@ import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
+import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +106,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   }
 
   @Override public void startLoginActivity() {
-    mDataManager.startSignInActivity((AppCompatActivity) getActivity(), getContext());
+    mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
+        ThemeUtils.getThemeActionBar(getContext()));
   }
 
   @Override public void onDestroyView() {

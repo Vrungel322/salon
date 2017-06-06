@@ -2,7 +2,6 @@ package com.apps.twelve.floor.salon.feature.main_screen.views;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
-import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
@@ -15,8 +14,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void setBonusCount(String bonusCount);
 
   void setUserPhoto(String photoUri);
-
-  @StateStrategyType(SkipStrategy.class) void openRegistrationOrBonus(boolean authorized);
 
   void showCardRegistration();
 }

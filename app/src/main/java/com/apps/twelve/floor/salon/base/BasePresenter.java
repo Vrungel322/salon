@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
   @Inject protected RxBus mRxBus;
   @Inject protected DataManager mDataManager;
   @Inject protected Context mContext;
+  @Inject protected AuthorizationManager mAuthorizationManager;
 
   private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 

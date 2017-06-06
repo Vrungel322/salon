@@ -46,10 +46,10 @@ import timber.log.Timber;
                         photoWorksEntities.body().size(), photoWorksEntities.body()));
               } else {
                 Timber.e("no Auth or need to refresh token");
-                mDataManager.refreshToken();
+                mAuthorizationManager.refreshToken();
               }
               if (photoWorksEntities.code() == 500) {
-                mDataManager.clearToken();
+                mAuthorizationManager.clear();
                 getViewState().startLoginActivity();
               }
               mOurWorkEntities.addAll(ourWorkEntities);

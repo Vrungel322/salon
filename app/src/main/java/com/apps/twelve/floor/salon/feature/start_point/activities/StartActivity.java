@@ -158,7 +158,7 @@ public class StartActivity extends BaseActivity
         mStartActivityPresenter.share();
         return true;
       case R.id.action_my_bonus:
-        if (mDataManager.isAuthorized()) {
+        if (mAuthorizationManager.isAuthorized()) {
           mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
               MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         } else {
@@ -181,7 +181,7 @@ public class StartActivity extends BaseActivity
             new Intent(StartActivity.this, BookingActivity.class));
         break;
       case R.id.nav_my_book:
-        if (mDataManager.isAuthorized()) {
+        if (mAuthorizationManager.isAuthorized()) {
           mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
               MyBookFragment.newInstance(), Constants.FragmentTag.MY_BOOK_FRAGMENT);
         } else {
@@ -189,7 +189,7 @@ public class StartActivity extends BaseActivity
         }
         break;
       case R.id.nav_my_bonus:
-        if (mDataManager.isAuthorized()) {
+        if (mAuthorizationManager.isAuthorized()) {
           mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
               MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         } else {
@@ -250,7 +250,7 @@ public class StartActivity extends BaseActivity
         .setNegativeButton(R.string.dialog_cancel,
             (dialog, which) -> mStartActivityPresenter.cancelAlertDialog())
         .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
-          mDataManager.startSignInActivity(this, mContext);
+          mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
           mStartActivityPresenter.cancelAlertDialog();
         })
         .create();

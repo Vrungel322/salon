@@ -46,7 +46,7 @@ import timber.log.Timber;
   }
 
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
-    if (mDataManager.isAuthorized()) {
+    if (mAuthorizationManager.isAuthorized()) {
       getViewState().startAnimation();
       Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
           .compose(ThreadSchedulers.applySchedulers())
