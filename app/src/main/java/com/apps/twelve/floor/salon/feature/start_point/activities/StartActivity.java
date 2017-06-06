@@ -247,9 +247,9 @@ public class StartActivity extends BaseActivity
 
   @Override public void showAlertDialog() {
     mAuthorizationDialog = DialogFactory.createAuthorizationDialogBuilder(this)
-        .setNegativeButton(R.string.dialog_cancel,
+        .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> mStartActivityPresenter.cancelAlertDialog())
-        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+        .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
           mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
           mStartActivityPresenter.cancelAlertDialog();
         })
