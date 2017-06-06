@@ -58,6 +58,9 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          if (position == 0 && !mAuthorizationManager.isAuthorized()) {
+            mOurWorkFragmentPresenter.showAlertDialog();
+          } else
           if (mOurWorkAdapter.getEntity(position).getImageCount() != 0) {
             mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
                 WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position)));
@@ -69,8 +72,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
-    mSwipeRefreshLayout.setOnRefreshListener(
-        () -> mOurWorkFragmentPresenter.fetchListOfFavoriteWorks());
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchWorksCondition());
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {
