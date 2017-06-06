@@ -104,9 +104,9 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @Override public void showAlertDialog() {
     mAuthorizationDialog = DialogFactory.createAuthorizationDialogBuilder(this)
-        .setNegativeButton(R.string.dialog_cancel,
+        .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
-        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+        .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
           mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
           mBookingActivityPresenter.cancelAlertDialog();
         })
