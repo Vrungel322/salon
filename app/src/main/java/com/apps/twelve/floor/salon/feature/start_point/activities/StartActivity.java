@@ -90,6 +90,14 @@ public class StartActivity extends BaseActivity
   @Override protected void onResume() {
     super.onResume();
     mStartActivityPresenter.fetchBonusCount();
+
+    if (mAuthorizationManager.isAuthorized()) {
+      mNavViewTopPart.getMenu().getItem(2).setCheckable(true);
+      mNavViewTopPart.getMenu().getItem(3).setCheckable(true);
+    } else {
+      mNavViewTopPart.getMenu().getItem(2).setCheckable(false);
+      mNavViewTopPart.getMenu().getItem(3).setCheckable(false);
+    }
   }
 
   @Override protected void onPause() {
