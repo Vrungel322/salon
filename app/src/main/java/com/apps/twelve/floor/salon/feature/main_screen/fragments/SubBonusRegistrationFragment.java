@@ -69,8 +69,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @Override public void setUserPhoto(String photoUri) {
-    Picasso.with(getContext())
-        .load(Uri.parse(photoUri)).error(R.drawable.ic_user_female_64dp)
+    Picasso.with(getContext()).load(Uri.parse(photoUri)).error(R.drawable.ic_user_female_64dp)
         .into(mImageViewUserAvatar);
   }
 

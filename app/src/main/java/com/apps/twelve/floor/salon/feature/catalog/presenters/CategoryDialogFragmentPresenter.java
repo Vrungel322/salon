@@ -2,15 +2,12 @@ package com.apps.twelve.floor.salon.feature.catalog.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.ArrayList;
-import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -20,8 +17,6 @@ import timber.log.Timber;
  */
 @InjectViewState public class CategoryDialogFragmentPresenter
     extends BasePresenter<ICategoryDialogFragmentView> {
-  @Inject DataManager mDataManager;
-  @Inject RxBus mRxBus;
 
   private ArrayList<Genre> mGenres = new ArrayList<Genre>();
 

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by vrungel on 30.05.17.
  */
 
-public class Genre extends SingleCheckExpandableGroup{
+public class Genre extends SingleCheckExpandableGroup {
   private Integer id;
   private String title;
   private String text;

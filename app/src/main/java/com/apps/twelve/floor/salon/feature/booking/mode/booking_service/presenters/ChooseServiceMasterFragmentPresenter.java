@@ -1,16 +1,13 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters;
 
-import android.content.Context;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.Randomizer;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -25,10 +22,8 @@ import timber.log.Timber;
 
 @InjectViewState public class ChooseServiceMasterFragmentPresenter
     extends BasePresenter<IChooseServiceMasterFragmentView> {
-  @Inject DataManager mDataManager;
-  @Inject RxBus mRxBus;
+
   @Inject BookingEntity mBookingEntity;
-  @Inject Context mContext;
   private List<MasterEntity> mMasterEntities;
 
   @Override protected void inject() {

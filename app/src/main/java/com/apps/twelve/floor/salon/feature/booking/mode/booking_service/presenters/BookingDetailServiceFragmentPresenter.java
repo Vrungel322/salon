@@ -6,7 +6,6 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IBookingDetailServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -22,7 +21,6 @@ import timber.log.Timber;
     extends BasePresenter<IBookingDetailServiceFragmentView> {
 
   @Inject BookingEntity mBookingEntity;
-  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.initBookingComponent();

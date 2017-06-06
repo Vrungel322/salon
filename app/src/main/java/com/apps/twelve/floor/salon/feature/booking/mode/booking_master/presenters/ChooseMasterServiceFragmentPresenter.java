@@ -2,12 +2,10 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presente
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterServiceFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -20,9 +18,8 @@ import timber.log.Timber;
 
 @InjectViewState public class ChooseMasterServiceFragmentPresenter
     extends BasePresenter<IChooseMasterServiceFragmentView> {
-  @Inject DataManager mDataManager;
+
   @Inject BookingEntity mBookingEntity;
-  @Inject RxBus mRxBus;
 
   private List<ServiceEntity> mServiceEntities = new ArrayList<>();
 

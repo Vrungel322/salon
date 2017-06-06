@@ -51,7 +51,8 @@ public class CategoryAdapter extends
     categoryViewHolder.mTextViewCatogoryName.setText(expandableGroup.getTitle());
   }
 
-  @Override public void onBindCheckChildViewHolder(SubCategoryViewHolder subCategoryViewHolder, int i,
+  @Override
+  public void onBindCheckChildViewHolder(SubCategoryViewHolder subCategoryViewHolder, int i,
       CheckedExpandableGroup expandableGroup, int childIndex) {
     final GoodsSubCategoryEntity subCategoryEntity =
         (GoodsSubCategoryEntity) expandableGroup.getItems().get(childIndex);

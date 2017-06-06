@@ -107,7 +107,7 @@ public final class Converters {
     return "";
   }
 
-  public static String getUrl(int res){
+  public static String getUrl(int res) {
     return Uri.parse("android.resource://com.apps.twelve.floor.salon/" + res).toString();
   }
 }

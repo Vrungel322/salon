@@ -2,10 +2,8 @@ package com.apps.twelve.floor.salon.feature.settings.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
 import com.arellomobile.mvp.InjectViewState;
-import javax.inject.Inject;
 
 /**
  * Created by Alexandra on 05.05.2017.
@@ -13,8 +11,6 @@ import javax.inject.Inject;
 
 @InjectViewState public class NotificationSettingsFragmentPresenter
     extends BasePresenter<INotificationSettingsFragmentView> {
-
-  @Inject DataManager mDataManager;
 
   private int mLastPickedDays;
 

@@ -73,7 +73,8 @@ public interface SalonApi {
   Observable<Response<Void>> removeFromFavoritePhoto(@Path("photoId") int photoId,
       @Header("authorization") String token);
 
-  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts(@Header("authorization") String token);
+  @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts(
+      @Header("authorization") String token);
 
   @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
 

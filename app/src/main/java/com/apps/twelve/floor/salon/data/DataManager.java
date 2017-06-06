@@ -228,11 +228,11 @@ public class DataManager {
   //---------like/dislike goods
 
   public Observable<Response<Void>> addToFavoriteGoods(int goodsId) {
-    return mRestApi.addToFavoriteGoods(goodsId,mAuthorizationManager.getToken());
+    return mRestApi.addToFavoriteGoods(goodsId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId) {
-    return mRestApi.removeFromFavoriteGoods(goodsId,mAuthorizationManager.getToken());
+    return mRestApi.removeFromFavoriteGoods(goodsId, mAuthorizationManager.getToken());
   }
 
   //---------Notification

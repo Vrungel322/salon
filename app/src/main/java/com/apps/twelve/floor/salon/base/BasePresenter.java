@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.base;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.MvpPresenter;
@@ -16,7 +18,9 @@ import rx.subscriptions.CompositeSubscription;
  */
 public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
-  @Inject RxBus mRxBus;
+  @Inject protected RxBus mRxBus;
+  @Inject protected DataManager mDataManager;
+  @Inject protected Context mContext;
 
   private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 

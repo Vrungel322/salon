@@ -68,7 +68,8 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
-    mSwipeRefreshLayout.setOnRefreshListener(() -> mOurWorkFragmentPresenter.fetchListOfFavoriteWorks());
+    mSwipeRefreshLayout.setOnRefreshListener(
+        () -> mOurWorkFragmentPresenter.fetchListOfFavoriteWorks());
   }
 
   @Override public void addListOfWorks(List<OurWorkEntity> ourWorkEntities) {

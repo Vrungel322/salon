@@ -2,13 +2,10 @@ package com.apps.twelve.floor.salon.feature.start_point.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -17,9 +14,6 @@ import timber.log.Timber;
  */
 
 @InjectViewState public class StartActivityPresenter extends BasePresenter<IStartActivityView> {
-
-  @Inject RxBus mRxBus;
-  @Inject DataManager mDataManager;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();

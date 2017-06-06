@@ -120,11 +120,11 @@ public class RestApi {
     return api.fetchFavoriteGoods(token);
   }
 
-  public Observable<Response<Void>> addToFavoriteGoods(int goodsId,String token) {
+  public Observable<Response<Void>> addToFavoriteGoods(int goodsId, String token) {
     return api.addToFavoriteGoods(goodsId, token);
   }
 
-  public Observable<Response<Void> > removeFromFavoriteGoods(int goodsId, String token) {
+  public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId, String token) {
     return api.removeFromFavoriteGoods(goodsId, token);
   }
 

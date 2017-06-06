@@ -103,7 +103,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mViewPagerImages.setCurrentItem(currentPos);
 
       mCheckBoxFavoriteGoods.setChecked(mGoodsEntity.isFavorite());
-      Timber.e(""+mGoodsEntity.isFavorite());
+      Timber.e("" + mGoodsEntity.isFavorite());
 
       updateImageInfoAndButtons();
     }

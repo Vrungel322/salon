@@ -2,13 +2,10 @@ package com.apps.twelve.floor.salon.feature.catalog.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.catalog.views.IStaffDetailsFragmentView;
-import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -17,9 +14,6 @@ import timber.log.Timber;
  */
 @InjectViewState public class GoodsDetailsFragmentPresenter
     extends BasePresenter<IStaffDetailsFragmentView> {
-
-  @Inject DataManager mDataManager;
-  @Inject RxBus mRxBus;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);

@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.bumptech.glide.Glide;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
