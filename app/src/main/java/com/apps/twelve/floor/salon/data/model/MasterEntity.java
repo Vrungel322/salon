@@ -11,13 +11,15 @@ public class MasterEntity {
   @SerializedName("name") private String masterName;
   @SerializedName("photo") private String masterImg;
   @SerializedName("description") private String masterDescription;
+  @SerializedName("gender") private String masterGender;
 
   public MasterEntity(String masterName, String masterImg, String masterDescription,
-      String masterId) {
+      String masterId, String masterGender) {
     this.masterName = masterName;
     this.masterImg = masterImg;
     this.masterDescription = masterDescription;
     this.masterId = masterId;
+    this.masterGender = masterGender;
   }
 
   public String getMasterName() {
@@ -50,5 +52,13 @@ public class MasterEntity {
 
   public void setMasterId(String masterId) {
     this.masterId = masterId;
+  }
+
+  public String getMasterGender() {
+    return masterGender;
+  }
+
+  public void setMasterGender(String masterGender) {
+    this.masterGender = masterGender;
   }
 }
