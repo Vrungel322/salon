@@ -56,7 +56,7 @@ public interface SalonApi {
       @Header("authorization") String token);
 
   @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
-      @Path("entryId") String entryId, @Header("user") String token,
+      @Path("entryId") String entryId, @Header("authorization") String token,
       @Field("schedule_id") int scheduleId);
 
   @GET("api/v1/pages") Observable<List<NewsEntity>> fetchAllNews();
