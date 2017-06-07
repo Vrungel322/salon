@@ -3,46 +3,24 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import timber.log.Timber;
 
 /**
  * Created by John on 09.03.2017.
  */
 
 public class PhotoWorksEntity implements Parcelable {
-  public static final Creator<PhotoWorksEntity> CREATOR = new Creator<PhotoWorksEntity>() {
-    @Override public PhotoWorksEntity createFromParcel(Parcel in) {
-      return new PhotoWorksEntity(in);
-    }
-
-    @Override public PhotoWorksEntity[] newArray(int size) {
-      return new PhotoWorksEntity[size];
-    }
-  };
   @SerializedName("id") private int id;
-  @SerializedName("gallery_id") private int galleryId;
+  //@SerializedName("gallery_id") private int galleryId;
   @SerializedName("image") private String mUrlPhoto;
   @SerializedName("description") private String mDescriptionPhoto;
   @SerializedName("favorite") private boolean mFavorite;
 
-  public PhotoWorksEntity(int id, int galleryId, String urlPhoto, String descriptionPhoto,
-      boolean favorite) {
+  public PhotoWorksEntity(int id, String urlPhoto, String descriptionPhoto, boolean favorite) {
     this.id = id;
-    this.galleryId = galleryId;
     mUrlPhoto = urlPhoto;
     mDescriptionPhoto = descriptionPhoto;
     mFavorite = favorite;
-  }
-
-  protected PhotoWorksEntity(Parcel in) {
-    id = in.readInt();
-    galleryId = in.readInt();
-    mUrlPhoto = in.readString();
-    mDescriptionPhoto = in.readString();
-    mFavorite = in.readByte() != 0;
-  }
-
-  public static Creator<PhotoWorksEntity> getCREATOR() {
-    return CREATOR;
   }
 
   public int getId() {
@@ -51,14 +29,6 @@ public class PhotoWorksEntity implements Parcelable {
 
   public void setId(int id) {
     this.id = id;
-  }
-
-  public int getGalleryId() {
-    return galleryId;
-  }
-
-  public void setGalleryId(int galleryId) {
-    this.galleryId = galleryId;
   }
 
   public String getUrlPhoto() {
@@ -85,9 +55,19 @@ public class PhotoWorksEntity implements Parcelable {
     mFavorite = favorite;
   }
 
+  public static Creator<PhotoWorksEntity> getCREATOR() {
+    return CREATOR;
+  }
+
+  protected PhotoWorksEntity(Parcel in) {
+    id = in.readInt();
+    mUrlPhoto = in.readString();
+    mDescriptionPhoto = in.readString();
+    mFavorite = in.readByte() != 0;
+  }
+
   @Override public void writeToParcel(Parcel dest, int flags) {
     dest.writeInt(id);
-    dest.writeInt(galleryId);
     dest.writeString(mUrlPhoto);
     dest.writeString(mDescriptionPhoto);
     dest.writeByte((byte) (mFavorite ? 1 : 0));
@@ -96,4 +76,14 @@ public class PhotoWorksEntity implements Parcelable {
   @Override public int describeContents() {
     return 0;
   }
+
+  public static final Creator<PhotoWorksEntity> CREATOR = new Creator<PhotoWorksEntity>() {
+    @Override public PhotoWorksEntity createFromParcel(Parcel in) {
+      return new PhotoWorksEntity(in);
+    }
+
+    @Override public PhotoWorksEntity[] newArray(int size) {
+      return new PhotoWorksEntity[size];
+    }
+  };
 }
