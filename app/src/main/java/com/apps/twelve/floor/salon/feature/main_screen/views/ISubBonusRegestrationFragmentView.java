@@ -13,7 +13,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setBonusCount(String bonusCount);
 
-  void setUserPhoto(String photoUri);
-
   void showCardRegistration();
 }

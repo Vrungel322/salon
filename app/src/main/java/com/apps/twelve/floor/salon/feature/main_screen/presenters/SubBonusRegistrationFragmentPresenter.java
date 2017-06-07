@@ -37,23 +37,11 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  private void fetchUserPhoto() {
-    Subscription subscription = mDataManager.getUserPhoto()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(photo -> getViewState().setUserPhoto(photo), throwable -> {
-          Timber.e(throwable);
-          showMessageConnectException(throwable);
-        });
-    addToUnsubscription(subscription);
-  }
-
   public void showCardBonusOrRegistration() {
     if (!mAuthorizationManager.isAuthorized()) {
       getViewState().showCardRegistration();
-      getViewState().setUserPhoto("");
     } else {
       fetchBonusCount();
-      fetchUserPhoto();
     }
   }
 

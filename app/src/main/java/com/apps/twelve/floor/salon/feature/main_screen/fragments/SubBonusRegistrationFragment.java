@@ -18,7 +18,6 @@ import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.bumptech.glide.Glide;
 
 /**
  * Created by Vrungel on 27.02.2017.
@@ -29,7 +28,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
 
   @InjectPresenter SubBonusRegistrationFragmentPresenter mSubBonusRegistrationFragmentPresenter;
 
-  @BindView(R.id.ivUserAvatar) ImageView mImageViewUserAvatar;
+  @BindView(R.id.ivGift) ImageView mImageViewUserAvatar;
   @BindView(R.id.ivInfo) ImageView mImageViewInfo;
   @BindView(R.id.bRegistration) TextView mButtonRegistration;
   @BindView(R.id.tvBonusRegistration) TextView mTextViewBonusRegistration;
@@ -67,13 +66,6 @@ public class SubBonusRegistrationFragment extends BaseFragment
     mTextViewBonusRegistration.setTextSize(32);
     mTextViewBonusRegistration.setText(getString(R.string.bonus_card));
     mButtonRegistration.setText(getString(R.string.bonus_measure, bonusCount));
-  }
-
-  @Override public void setUserPhoto(String photoUri) {
-    Glide.with(getContext())
-        .load(R.drawable.ic_user_female_64dp)
-        .error(R.drawable.ic_user_female_64dp)
-        .into(mImageViewUserAvatar);
   }
 
   @Override public void showCardRegistration() {
