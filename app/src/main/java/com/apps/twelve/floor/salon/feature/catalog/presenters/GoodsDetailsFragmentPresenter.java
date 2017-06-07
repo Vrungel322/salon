@@ -26,6 +26,7 @@ import timber.log.Timber;
           if (voidResponse.code() == 200) {
             getViewState().setStatusFavorite(true);
             mRxBus.post(new RxBusHelper.UpdateGoodsList());
+            mRxBus.post(new RxBusHelper.UpdateFavoriteGoodsList());
           }
         }, throwable -> {
           Timber.e(throwable);
@@ -38,14 +39,19 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.removeFromFavoriteGoods(idGoods)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse.code() == 200) {
+          if (voidResponse.code() == 204) {
             getViewState().setStatusFavorite(false);
             mRxBus.post(new RxBusHelper.UpdateGoodsList());
+            mRxBus.post(new RxBusHelper.UpdateFavoriteGoodsList());
           }
         }, throwable -> {
           Timber.e(throwable);
           showMessageConnectException(throwable);
         });
     addToUnsubscription(subscription);
+  }
+
+  public void showAlertDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
   }
 }

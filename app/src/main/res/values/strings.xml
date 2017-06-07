@@ -114,7 +114,6 @@
   <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
   <string name="info_unknown">Информация не указана</string>
-  <string name="error_empty_gallery">Список пуст …</string>
   <string name="change_user_info">Изменить %s</string>
   <string name="current_field_name">Текущее имя:</string>
   <string name="new_field_name">Новое имя:</string>

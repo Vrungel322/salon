@@ -18,11 +18,9 @@ import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
-import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,8 +36,6 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private GoodsListAdapter mGoodsListAdapter;
-
-  private List<GoodsEntity> mGoodsEntities = new ArrayList<>();
 
   public CatalogFragment() {
     super(R.layout.fragment_catalog);
@@ -62,7 +58,12 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     ItemClickSupport.addTo(mRecyclerViewStaff)
         .setOnItemClickListener((recyclerView, position, v) -> {
           if (position == 0) {
-            mCatalogFragmentPresenter.fetchFavoriteGoodsList();
+            if (mAuthorizationManager.isAuthorized()) {
+              mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+                  CatalogFavoriteFragment.newInstance());
+            } else {
+              mCatalogFragmentPresenter.showAlertDialog();
+            }
           } else {
             mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
                 GoodsDetailsFragment.newInstance(mGoodsListAdapter.getEntity(position)));
@@ -80,13 +81,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     categoryDialog.show(getActivity().getFragmentManager(), "");
   }
 
-  @Override public void updateGoodsList(List<GoodsEntity> staffEntities) {
-    mGoodsEntities.clear();
-    mGoodsEntities.add(0,
-        new GoodsEntity(0, getString(R.string.menu_favourite), "", "", "", 0, "", "",
-            Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false, false));
-    mGoodsEntities.addAll(staffEntities);
-    mGoodsListAdapter.addListGoodsEntity(mGoodsEntities);
+  @Override public void updateGoodsList(List<GoodsEntity> goodsEntities) {
+    mGoodsListAdapter.addListGoodsEntity(goodsEntities);
   }
 
   @Override public void startRefreshingView() {

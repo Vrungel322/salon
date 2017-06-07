@@ -26,8 +26,8 @@ import java.util.List;
 public class MastersVerticalAdapter
     extends RecyclerView.Adapter<MastersVerticalAdapter.MastersViewHolder> {
 
-  public static final int ANY_MASTER = 0;
-  public static final int OTHER_MASTER = 1;
+  private static final int ANY_MASTER = 0;
+  private static final int OTHER_MASTER = 1;
 
   private List<MasterEntity> mMasterEntities = new ArrayList<>();
 

@@ -28,7 +28,7 @@ import timber.log.Timber;
     Subscription subscription = mDataManager.cancelOrder(entityId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse.code() == 200) {
+          if (voidResponse.code() == 204) {
             mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
             mJobsCreator.cancelJob(String.valueOf(entityId));
           }
