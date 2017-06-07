@@ -191,10 +191,15 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   }
 
   @OnClick(R.id.checkBoxFavorite) public void onCheckFavorite() {
-    if (mCheckBoxFavorite.isChecked()) {
-      mWorkDetailsFragmentPresenter.addFavorite(mPhotoWorksEntity.getId());
+    if (mAuthorizationManager.isAuthorized()) {
+      if (mCheckBoxFavorite.isChecked()) {
+        mWorkDetailsFragmentPresenter.addFavorite(mPhotoWorksEntity.getId());
+      } else {
+        mWorkDetailsFragmentPresenter.deleteFavorite(mPhotoWorksEntity.getId());
+      }
     } else {
-      mWorkDetailsFragmentPresenter.deleteFavorite(mPhotoWorksEntity.getId());
+      mWorkDetailsFragmentPresenter.showAlertDialog();
+      mCheckBoxFavorite.setChecked(false);
     }
   }
 

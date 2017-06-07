@@ -29,12 +29,41 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    fetchListOfFavoriteWorks();
+    fetchWorksCondition();
     //RxBus
     subscribeUpdateWorkList();
   }
 
-  @SuppressWarnings("ConstantConditions") public void fetchListOfFavoriteWorks() {
+  public void fetchWorksCondition() {
+    if (mAuthorizationManager.isAuthorized()) {
+      fetchListOfFavoriteWorks();
+    } else {
+      fetchListOfWorks();
+    }
+  }
+
+  @SuppressWarnings("ConstantConditions") private void fetchListOfWorks() {
+    Timber.e("fetchListOfWorks");
+    mOurWorkEntities.clear();
+    getViewState().startRefreshingView();
+    Subscription subscription = mDataManager.fetchListOfWorks()
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(ourWorkEntities -> {
+          mOurWorkEntities.add(0,
+              new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background), 0, null));
+          mOurWorkEntities.addAll(ourWorkEntities);
+          getViewState().stopRefreshingView();
+          getViewState().addListOfWorks(mOurWorkEntities);
+        }, throwable -> {
+          getViewState().stopRefreshingView();
+          Timber.e(throwable);
+          showMessageConnectException(throwable);
+        });
+    addToUnsubscription(subscription);
+  }
+
+  @SuppressWarnings("ConstantConditions") private void fetchListOfFavoriteWorks() {
+    Timber.e("fetchListOfFavoriteWorks");
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription =
@@ -68,7 +97,11 @@ import timber.log.Timber;
   private void subscribeUpdateWorkList() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateOurWorkList.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> fetchListOfFavoriteWorks(), Timber::e);
+        .subscribe(ourWorkEntities -> fetchWorksCondition(), Timber::e);
     addToUnsubscription(subscription);
+  }
+
+  public void showAlertDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
   }
 }

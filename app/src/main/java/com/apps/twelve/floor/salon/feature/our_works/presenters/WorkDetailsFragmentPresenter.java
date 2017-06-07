@@ -49,4 +49,8 @@ import timber.log.Timber;
         });
     addToUnsubscription(subscription);
   }
+
+  public void showAlertDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
 }
