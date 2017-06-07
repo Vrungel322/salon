@@ -173,7 +173,7 @@ public class DataManager {
   //---------ourWorks
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks();
+    return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
