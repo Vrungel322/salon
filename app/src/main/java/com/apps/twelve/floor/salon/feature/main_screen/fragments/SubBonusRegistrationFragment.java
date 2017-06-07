@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
 import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -71,7 +70,9 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @Override public void setUserPhoto(String photoUri) {
-    Glide.with(getContext()).load(Uri.parse(photoUri)).error(R.drawable.ic_user_female_64dp)
+    Glide.with(getContext())
+        .load(R.drawable.ic_user_female_64dp)
+        .error(R.drawable.ic_user_female_64dp)
         .into(mImageViewUserAvatar);
   }
 

@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.authorization.floor12.authorization.AuthorizationManager;
 import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
@@ -27,6 +28,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICA
 public class NotificationJob extends Job {
 
   @Inject DataManager mDataManager;
+  @Inject AuthorizationManager mAuthManager;
 
   public NotificationJob() {
     App.getAppComponent().inject(this);
@@ -34,7 +36,8 @@ public class NotificationJob extends Job {
 
   @Override @NonNull protected Result onRunJob(Params params) {
 
-    boolean showNotification = true;
+    boolean showNotification = mAuthManager.isAuthorized();
+    if (showNotification)
     switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
       case HOURLY:
         showNotification = mDataManager.isHourlyNotificationsEnabled();
