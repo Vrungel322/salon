@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.catalog.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICataloFavoriteFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import rx.Subscription;
@@ -22,6 +23,8 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     fetchFavoriteGoodsList();
+    //RxBus
+    subscribeFavoriteGoodsList();
   }
 
   private void fetchFavoriteGoodsList() {
@@ -29,9 +32,9 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(listResponse -> {
           if (listResponse.code() != 401) {
+            getViewState().stopProgressBar();
             getViewState().updateGoodsFavoriteList(listResponse.body());
           } else {
-            Timber.e("no Auth or need to refresh token");
             mAuthorizationManager.refreshToken();
           }
           if (listResponse.code() == 500) {
@@ -43,6 +46,13 @@ import timber.log.Timber;
           Timber.e(throwable);
           showMessageConnectException(throwable);
         });
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeFavoriteGoodsList() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateFavoriteGoodsList.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(updateFavoriteGoodsList -> fetchFavoriteGoodsList(), Timber::e);
     addToUnsubscription(subscription);
   }
 }
