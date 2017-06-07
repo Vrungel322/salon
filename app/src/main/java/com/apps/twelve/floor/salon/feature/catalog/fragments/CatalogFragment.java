@@ -18,7 +18,6 @@ import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
-import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -83,9 +82,6 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   }
 
   @Override public void updateGoodsList(List<GoodsEntity> goodsEntities) {
-    goodsEntities.add(0,
-        new GoodsEntity(0, getString(R.string.menu_favourite), "", "", "", 0, "", "",
-            Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false, false));
     mGoodsListAdapter.addListGoodsEntity(goodsEntities);
   }
 

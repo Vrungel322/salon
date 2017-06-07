@@ -14,6 +14,8 @@ import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsFavoriteListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFavoriteFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICataloFavoriteFragmentView;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
@@ -48,6 +50,10 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
     mGoodsFavoriteListAdapter = new GoodsFavoriteListAdapter();
     mRvCatalogFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRvCatalogFavorite.setAdapter(mGoodsFavoriteListAdapter);
+    ItemClickSupport.addTo(mRvCatalogFavorite)
+        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
+            (StartActivity) getActivity(), R.id.container_main,
+            GoodsDetailsFragment.newInstance(mGoodsFavoriteListAdapter.getEntity(position))));
   }
 
   @Override public void stopProgressBar() {

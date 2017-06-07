@@ -43,7 +43,6 @@ import timber.log.Timber;
   }
 
   @SuppressWarnings("ConstantConditions") private void fetchListOfWorks() {
-    Timber.e("fetchListOfWorks");
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
@@ -63,7 +62,6 @@ import timber.log.Timber;
   }
 
   @SuppressWarnings("ConstantConditions") private void fetchListOfFavoriteWorks() {
-    Timber.e("fetchListOfFavoriteWorks");
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription =
@@ -74,7 +72,6 @@ import timber.log.Timber;
                     new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
                         photoWorksEntities.body().size(), photoWorksEntities.body()));
               } else {
-                Timber.e("no Auth or need to refresh token");
                 mAuthorizationManager.refreshToken();
               }
               if (photoWorksEntities.code() == 500) {
