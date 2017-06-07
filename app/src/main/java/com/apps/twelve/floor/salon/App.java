@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon;
 
 import android.support.multidex.MultiDexApplication;
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
@@ -9,7 +10,6 @@ import com.apps.twelve.floor.salon.di.modules.BookingModule;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.RegisterMoxyReflectorPackages;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import com.crashlytics.android.Crashlytics;
 import com.evernote.android.job.JobManager;
 import io.fabric.sdk.android.Fabric;
@@ -20,7 +20,7 @@ import timber.log.Timber;
  * Created by Vrungel on 25.01.2017.
  */
 
-@RegisterMoxyReflectorPackages({ "com.authorization.floor12.authorization" }) public class App
+@RegisterMoxyReflectorPackages({ "com.apps.twelve.floor.authorization" }) public class App
     extends MultiDexApplication {
 
   private static AppComponent sAppComponent;

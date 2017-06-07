@@ -182,7 +182,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
       CropImage.ActivityResult result = CropImage.getActivityResult(data);
       if (resultCode == RESULT_OK) {
         Uri uri = result.getUri();
-        mSettingsFragmentPresenter.savePhoto(uri.toString());
+        //mSettingsFragmentPresenter.savePhoto(uri.toString());
       } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
         Timber.e(result.getError());
       }

@@ -76,25 +76,25 @@
     </activity>
 
     <activity
-        android:name="com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity"
+        android:name="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity"
         android:parentActivityName=".feature.start_point.activities.StartActivity">
     </activity>
 
     <activity
-        android:name="com.authorization.floor12.authorization.logic.registration.activities.ModuleRegistrationActivity"
-        android:parentActivityName="com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity"
+        android:name="com.apps.twelve.floor.authorization.logic.registration.activities.ModuleRegistrationActivity"
+        android:parentActivityName="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity"
         android:windowSoftInputMode="adjustResize|stateHidden">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity"/>
+          android:value="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity"/>
     </activity>
 
     <activity
-        android:name="com.authorization.floor12.authorization.logic.recoverypassword.activities.ModuleRecoveryPasswordActivity"
-        android:parentActivityName="com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity">
+        android:name="com.apps.twelve.floor.authorization.logic.recoverypassword.activities.ModuleRecoveryPasswordActivity"
+        android:parentActivityName="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value="com.authorization.floor12.authorization.logic.authorization.activities.ModuleSignInActivity"/>
+          android:value="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity"/>
     </activity>
 
   </application>

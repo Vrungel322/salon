@@ -2,12 +2,12 @@ package com.apps.twelve.floor.salon.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import javax.inject.Inject;

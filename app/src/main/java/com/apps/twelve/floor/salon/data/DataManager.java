@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data;
 
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -13,7 +14,6 @@ import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -96,23 +96,19 @@ public class DataManager {
     return mPref.getBonusCounObservable();
   }
 
-  public Observable<String> getUserPhoto() {
-    return mAuthorizationManager.getObsevableUserPhoto();
-  }
-
   //---------settings
 
-  public Observable<String> getProfileImage() {
+  /*public Observable<String> getProfileImage() {
     return mAuthorizationManager.getObsevableUserPhoto();
-  }
+  }*/
 
   public void setProfileImage(String uri) {
     mAuthorizationManager.saveUserPhoto(uri);
   }
 
-  public Observable<String> getProfileName() {
+  /*public Observable<String> getProfileName() {
     return mAuthorizationManager.getObsevableUserName();
-  }
+  }*/
 
   public void setProfileName(String name) {
     mAuthorizationManager.saveUserName(name);
@@ -122,25 +118,25 @@ public class DataManager {
     mAuthorizationManager.changePassword(oldPassword, newPassword);
   }
 
-  public Observable<String> getProfileEmail() {
+  /*public Observable<String> getProfileEmail() {
     return mAuthorizationManager.getObsevableUserEmail();
-  }
+  }*/
 
   public void setProfileEmail(String email) {
     mAuthorizationManager.saveUserEmail(email);
   }
 
-  public Observable<String> getProfilePhone() {
+  /*public Observable<String> getProfilePhone() {
     return mAuthorizationManager.getObsevableUserPhone();
-  }
+  }*/
 
   public void setProfilePhone(String phone) {
     mAuthorizationManager.saveUserPhone(phone);
   }
 
-  public Observable<String> getProfileGender() {
+  /*public Observable<String> getProfileGender() {
     return mAuthorizationManager.getObsevableUserGender();
-  }
+  }*/
 
   public void setProfileGender(int gender) {
     mAuthorizationManager.saveUserGender(String.valueOf(gender));
@@ -206,12 +202,10 @@ public class DataManager {
 
   public Observable<List<GoodsEntity>> fetchGoods() {
     return mRestApi.fetchAllProducts(mAuthorizationManager.getToken());
-    //return mRestApi.fetchAllProducts("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods() {
     return mRestApi.fetchFavoriteGoods(mAuthorizationManager.getToken());
-    //return mRestApi.fetchFavoriteGoods("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
