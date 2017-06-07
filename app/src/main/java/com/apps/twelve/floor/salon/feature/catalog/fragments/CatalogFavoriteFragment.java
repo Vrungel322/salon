@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
@@ -30,6 +31,8 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
 
   @BindView(R.id.progressBar2) ProgressBar mProgressBar;
   @BindView(R.id.rvCatalogFavorite) RecyclerView mRvCatalogFavorite;
+  @BindView(R.id.textViewTitle) TextView mTextViewTitle;
+  @BindView(R.id.tvFavoriteEmptyList) TextView mTvFavoriteEmptyList;
 
   private GoodsFavoriteListAdapter mGoodsFavoriteListAdapter;
 
@@ -61,6 +64,13 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
   }
 
   @Override public void updateGoodsFavoriteList(List<GoodsEntity> goodsEntities) {
+    if (goodsEntities.isEmpty()) {
+      mTextViewTitle.setVisibility(View.GONE);
+      mTvFavoriteEmptyList.setVisibility(View.VISIBLE);
+    } else {
+      mTextViewTitle.setVisibility(View.VISIBLE);
+      mTvFavoriteEmptyList.setVisibility(View.GONE);
+    }
     mGoodsFavoriteListAdapter.addListGoodsEntity(goodsEntities);
   }
 

@@ -65,7 +65,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
             mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
                 WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position)));
           } else {
-            showToastMessage(R.string.error_empty_gallery);
+            showToastMessage(R.string.list_is_empty);
           }
         });
 
