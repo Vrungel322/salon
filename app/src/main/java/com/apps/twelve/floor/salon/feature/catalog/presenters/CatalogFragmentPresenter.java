@@ -1,8 +1,11 @@
 package com.apps.twelve.floor.salon.feature.catalog.presenters;
 
 import com.apps.twelve.floor.salon.App;
+import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICatalogFragmentView;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -42,6 +45,10 @@ import timber.log.Timber;
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
+          goodsEntities.add(0,
+              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
+                  Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false,
+                  false));
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();
           getViewState().setCategoryTitle(mTitle);
@@ -53,29 +60,15 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  /*public void fetchFavoriteGoodsList() {
-    Subscription subscription = mDataManager.fetchFavoriteGoods()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(listResponse -> {
-          if (listResponse.code() != 400 && listResponse.code() != 401) {
-            getViewState().updateGoodsList(listResponse.body());
-          } else {
-            Timber.e("no Auth or need to refresh token");
-            mAuthorizationManager.refreshToken();
-          }
-          if (listResponse.code() == 500) {
-            mAuthorizationManager.clear();
-            getViewState().startLoginActivity();
-          }
-        });
-    addToUnsubscription(subscription);
-  }*/
-
   public void fetchGoodsList() {
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchGoods()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
+          goodsEntities.add(0,
+              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
+                  Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false,
+                  false));
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();
           getViewState().setButtonDefaultText();

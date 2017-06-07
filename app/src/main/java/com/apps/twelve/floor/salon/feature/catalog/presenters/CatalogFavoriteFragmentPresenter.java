@@ -24,7 +24,7 @@ import timber.log.Timber;
     fetchFavoriteGoodsList();
   }
 
-  public void fetchFavoriteGoodsList() {
+  private void fetchFavoriteGoodsList() {
     Subscription subscription = mDataManager.fetchFavoriteGoods()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(listResponse -> {
