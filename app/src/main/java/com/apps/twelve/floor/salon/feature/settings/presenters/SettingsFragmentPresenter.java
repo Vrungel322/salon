@@ -19,82 +19,12 @@ import com.arellomobile.mvp.InjectViewState;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     if (mAuthorizationManager.isAuthorized()) {
-      //setUpPhoto();
-      //setUserInfo();
-      //RxBus
-      //subscribeUpdateUserInfo();
+      getViewState().openUserProfileFragment();
     }
   }
 
-  /*private void setUpPhoto() {
-    Subscription subscription = mDataManager.getProfileImage()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserPhoto(Uri.parse(s)), Timber::e);
-    addToUnsubscription(subscription);
-  }*/
-
-  /*public void savePhoto(String uri) {
-    mDataManager.setProfileImage(uri);
-    setUpPhoto();
-  }*/
-
   public void setThemeApp(int themeApp) {
     mDataManager.setThemeSelected(themeApp);
-  }
-
-  public void saveGender(int gender) {
-    mDataManager.setProfileGender(gender);
-  }
-
-  /*private void setUserInfo() {
-    Subscription subscription = mDataManager.getProfileName()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserName(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mDataManager.getProfileEmail()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserEmail(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mDataManager.getProfilePhone()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserPhone(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mDataManager.getProfileGender()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserGender(s), Timber::e);
-    addToUnsubscription(subscription);
-  }*/
-
-  public void logOut() {
-    mDataManager.logout();
-    getViewState().hideUserSettings();
-  }
-
-  /*private void subscribeUpdateUserInfo() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getProfileName())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserName(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getProfileEmail())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserEmail(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getProfilePhone())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserPhone(s), Timber::e);
-    addToUnsubscription(subscription);
-    subscription = mRxBus.filteredObservable(RxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getProfileGender())
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(s -> getViewState().setUserGender(s), Timber::e);
-    addToUnsubscription(subscription);
-  }*/
-
-  public void hideUserSettings() {
-    getViewState().hideUserSettings();
   }
 
   public void showSetThemeDialog() {
