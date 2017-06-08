@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import butterknife.OnClick;
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
@@ -56,7 +57,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @Override public void openUserProfileFragment() {
-    //mAuthorizationManager......
+    mNavigator.addChildFragmentBackStack(this, R.id.container_info_user,
+        AuthorizationManager.getInstance().openUserProfileFragment(R.id.container_settings));
   }
 
   @OnClick(R.id.rlNotifications) void editNotifications() {
