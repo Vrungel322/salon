@@ -209,6 +209,18 @@ public class Navigator {
         .commit();
   }
 
+  public void addChildFragmentTagNotCopy(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child, @NonNull String fragmentTag) {
+    FragmentManager fragmentManager = parent.getChildFragmentManager();
+    Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);
+    if (fragmentCopy == null) {
+      parent.getChildFragmentManager()
+          .beginTransaction()
+          .add(containerId, child, fragmentTag)
+          .commit();
+    }
+  }
+
   public boolean isChildFragmentTag(@NonNull Fragment parent, @NonNull String fragmentTag) {
     FragmentManager fragmentManager = parent.getChildFragmentManager();
     Fragment fragmentCopy = fragmentManager.findFragmentByTag(fragmentTag);

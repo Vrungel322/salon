@@ -12,6 +12,8 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPr
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMainFragmentView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.SUB_BOOKING_FRAGMENT;
+
 /**
  * Created by Vrungel on 20.02.2017.
  */
@@ -43,12 +45,18 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
         () -> mMainFragmentPresenter.updateBookingAndNews());
   }
 
-  @Override public void addSubFragments() {
-    mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubNewsFragment.newInstance());
+  @Override public void onResume() {
+    super.onResume();
+    if (mAuthorizationManager.isAuthorized()) {
+      mNavigator.addChildFragmentTagNotCopy(this, R.id.subFragmentContainerBooking,
+          SubBookingFragment.newInstance(), SUB_BOOKING_FRAGMENT);
+    }
+  }
+
+  @Override public void addSubNewsAndBonus() {
     mNavigator.addChildFragment(this, R.id.subFragmentContainerBonusRegistration,
         SubBonusRegistrationFragment.newInstance());
-    mNavigator.addChildFragment(this, R.id.subFragmentContainerBooking,
-        SubBookingFragment.newInstance());
+    mNavigator.addChildFragment(this, R.id.subFragmentContainerNews, SubNewsFragment.newInstance());
   }
 
   @Override public void stopRefreshingView() {

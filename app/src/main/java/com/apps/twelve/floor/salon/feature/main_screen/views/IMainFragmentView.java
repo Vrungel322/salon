@@ -12,7 +12,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IMainFragmentView
     extends MvpView {
 
-  @StateStrategyType(SkipStrategy.class) void addSubFragments();
+  @StateStrategyType(SkipStrategy.class) void addSubNewsAndBonus();
 
   void stopRefreshingView();
 

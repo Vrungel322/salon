@@ -21,7 +21,7 @@ import timber.log.Timber;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
-    getViewState().addSubFragments();
+    getViewState().addSubNewsAndBonus();
     getViewState().startRefreshingView();
     //RxBus
     subscribeStopRefreshMainFragment();
