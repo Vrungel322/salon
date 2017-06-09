@@ -112,6 +112,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         })
         .create();
     mAuthorizationDialog.show();
+    mAuthorizationDialog.setOnCancelListener(
+        dialog -> mBookingActivityPresenter.cancelAlertDialog());
   }
 
   @Override public void cancelAlertDialog() {

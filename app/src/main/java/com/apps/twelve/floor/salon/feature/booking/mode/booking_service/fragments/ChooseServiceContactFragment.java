@@ -48,6 +48,10 @@ public class ChooseServiceContactFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    if (mAuthorizationManager.isAuthorized()) {
+      mEditTextName.setText(mAuthorizationManager.getUserName());
+      mEditTextPhone.setText(mAuthorizationManager.getUserPhone());
+    }
   }
 
   @OnClick(R.id.btn_booking_contact) void animate() {

@@ -12,10 +12,10 @@ import android.support.v7.app.ActionBar;
 import android.util.TypedValue;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 

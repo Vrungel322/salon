@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data;
 
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
@@ -13,7 +14,6 @@ import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -35,7 +35,7 @@ public class DataManager {
     this.mAuthorizationManager = authorizationManager;
   }
 
-  //---------checkin service.
+  //checkin service.
 
   public Observable<List<CategoryEntity>> fetchCategory() {
     return mRestApi.fetchCategory();
@@ -78,7 +78,7 @@ public class DataManager {
     return mRestApi.checkInService(mAuthorizationManager.getToken(), bookingServerEntity);
   }
 
-  //---------bonus
+  //bonus
 
   public Observable<Integer> fetchBonusCount() {
     return Observable.just(100);
@@ -96,57 +96,7 @@ public class DataManager {
     return mPref.getBonusCounObservable();
   }
 
-  public Observable<String> getUserPhoto() {
-    return mAuthorizationManager.getObsevableUserPhoto();
-  }
-
-  //---------settings
-
-  public Observable<String> getProfileImage() {
-    return mAuthorizationManager.getObsevableUserPhoto();
-  }
-
-  public void setProfileImage(String uri) {
-    mAuthorizationManager.saveUserPhoto(uri);
-  }
-
-  public Observable<String> getProfileName() {
-    return mAuthorizationManager.getObsevableUserName();
-  }
-
-  public void setProfileName(String name) {
-    mAuthorizationManager.saveUserName(name);
-  }
-
-  public void updatePassword(String oldPassword, String newPassword) {
-    mAuthorizationManager.changePassword(oldPassword, newPassword);
-  }
-
-  public Observable<String> getProfileEmail() {
-    return mAuthorizationManager.getObsevableUserEmail();
-  }
-
-  public void setProfileEmail(String email) {
-    mAuthorizationManager.saveUserEmail(email);
-  }
-
-  public Observable<String> getProfilePhone() {
-    return mAuthorizationManager.getObsevableUserPhone();
-  }
-
-  public void setProfilePhone(String phone) {
-    mAuthorizationManager.saveUserPhone(phone);
-  }
-
-  public Observable<String> getProfileGender() {
-    return mAuthorizationManager.getObsevableUserGender();
-  }
-
-  public void setProfileGender(int gender) {
-    mAuthorizationManager.saveUserGender(String.valueOf(gender));
-  }
-
-  //---------theme
+  //theme
 
   public void setThemeSelected(int themeSelected) {
     mPref.setThemeSelected(themeSelected);
@@ -156,7 +106,7 @@ public class DataManager {
     return mPref.getThemeSelected();
   }
 
-  //---------main screen
+  //main screen
 
   public Observable<List<LastBookingEntity>> fetchLastBooking() {
     return mRestApi.fetchLastBooking(mAuthorizationManager.getToken());
@@ -170,7 +120,7 @@ public class DataManager {
     return mRestApi.postponeService(entryId, mAuthorizationManager.getToken(), scheduleId);
   }
 
-  //---------ourWorks
+  //ourWorks
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
     return mRestApi.fetchListOfWorks(mAuthorizationManager.getToken());
@@ -182,7 +132,7 @@ public class DataManager {
     //    "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
-  //--------- like/dislike ourWork photo
+  //like/dislike ourWork photo
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
     return mRestApi.addToFavoritePhoto(photoId, mAuthorizationManager.getToken());
@@ -192,7 +142,7 @@ public class DataManager {
     return mRestApi.removeFromFavoritePhoto(photoId, mAuthorizationManager.getToken());
   }
 
-  //---------News
+  //News
 
   public Observable<NewsEntity> fetchNewsPreview() {
     return mRestApi.fetchNewsPreview();
@@ -202,16 +152,14 @@ public class DataManager {
     return mRestApi.fetchAllNews();
   }
 
-  //---------Goods
+  //Goods
 
   public Observable<List<GoodsEntity>> fetchGoods() {
     return mRestApi.fetchAllProducts(mAuthorizationManager.getToken());
-    //return mRestApi.fetchAllProducts("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods() {
     return mRestApi.fetchFavoriteGoods(mAuthorizationManager.getToken());
-    //return mRestApi.fetchFavoriteGoods("bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjksImlzcyI6Imh0dHBzOlwvXC9iZWF1dHkuYXBpLmZsb29yMTJhcHBzLmNvbVwvYXBpXC92MVwvdXNlcnMiLCJpYXQiOjE0OTY3MzU4NjEsImV4cCI6MTUwODczNTg2MSwibmJmIjoxNDk2NzM1ODYxLCJqdGkiOiJPdURCa050TEt0VWw0Q2RMIn0.GZwHT_o22OWVT6gSm1PFoLqhMAzx1RwK5IOUB1LS3gA");
   }
 
   public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
@@ -222,7 +170,7 @@ public class DataManager {
     return mRestApi.fetchCategories();
   }
 
-  //---------like/dislike goods
+  //like/dislike goods
 
   public Observable<Response<Void>> addToFavoriteGoods(int goodsId) {
     return mRestApi.addToFavoriteGoods(goodsId, mAuthorizationManager.getToken());
@@ -232,7 +180,7 @@ public class DataManager {
     return mRestApi.removeFromFavoriteGoods(goodsId, mAuthorizationManager.getToken());
   }
 
-  //---------Notification
+  //Notification
 
   public boolean isHourlyNotificationsEnabled() {
     return mPref.isHourlyNotificationsEnabled();
@@ -264,14 +212,6 @@ public class DataManager {
 
   public void setNotificationHours(long millis) {
     mPref.setNotificationHours(millis);
-  }
-
-  //---------Auth
-
-  public void logout() {
-    mPref.clear();
-    mAuthorizationManager.clear();
-    mAuthorizationManager.logout();
   }
 }
 

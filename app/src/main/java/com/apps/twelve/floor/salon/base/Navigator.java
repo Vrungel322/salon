@@ -192,6 +192,15 @@ public class Navigator {
     parent.getChildFragmentManager().beginTransaction().add(containerId, child).commit();
   }
 
+  public void addChildFragmentBackStack(@NonNull Fragment parent, @IdRes int containerId,
+      @NonNull Fragment child) {
+    parent.getChildFragmentManager()
+        .beginTransaction()
+        .addToBackStack(null)
+        .add(containerId, child)
+        .commit();
+  }
+
   public void addChildFragmentTag(@NonNull Fragment parent, @IdRes int containerId,
       @NonNull Fragment child, @NonNull String fragmentTag) {
     parent.getChildFragmentManager()

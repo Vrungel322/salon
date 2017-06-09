@@ -12,9 +12,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IMyBookingAdapterView
     extends MvpView {
 
-  @StateStrategyType(AddToEndSingleStrategy.class) void showConfirmationDialog(int position);
+  void showConfirmationDialog(int position);
 
-  @StateStrategyType(AddToEndSingleStrategy.class) void cancelAlertDialog();
+  void cancelAlertDialog();
 
   @StateStrategyType(SkipStrategy.class) void openPostponeFragment(int position);
 }

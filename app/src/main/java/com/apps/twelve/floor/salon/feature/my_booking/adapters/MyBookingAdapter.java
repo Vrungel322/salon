@@ -144,6 +144,8 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
             (dialog, which) -> mMyBookingAdapterPresenter.cancelAlertDialog())
         .create();
     mRemoveBookingDialog.show();
+    mRemoveBookingDialog.setOnCancelListener(
+        dialog -> mMyBookingAdapterPresenter.cancelAlertDialog());
   }
 
   @Override public void cancelAlertDialog() {

@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.settings.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.IReportProblemFragmentView;
-import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,6 @@ import timber.log.Timber;
     Subscription subscription =
         Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
           if (voidResponse == 200) {
-            mRxBus.post(new RxBusHelper.UpdateUserInfo());
             getViewState().stopAnimation();
           } else {
             getViewState().showAlert();

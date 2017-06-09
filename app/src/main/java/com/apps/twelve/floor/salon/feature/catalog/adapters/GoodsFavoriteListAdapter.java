@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class GoodsFavoriteListAdapter
   }
 
   @Override public void onBindViewHolder(GoodsFavoriteListViewHolder holder, int position) {
-    Picasso.with(holder.mImageViewGoodsPhoto.getContext())
+    Glide.with(holder.mImageViewGoodsPhoto.getContext())
         .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
         .into(holder.mImageViewGoodsPhoto);
 

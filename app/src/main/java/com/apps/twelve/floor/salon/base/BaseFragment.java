@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.authorization.floor12.authorization.AuthorizationManager;
 import com.tapadoo.alerter.Alerter;
 import javax.inject.Inject;
 
