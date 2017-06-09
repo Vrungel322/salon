@@ -263,6 +263,7 @@ public class StartActivity extends BaseActivity
         })
         .create();
     mAuthorizationDialog.show();
+    mAuthorizationDialog.setOnCancelListener(dialog -> mStartActivityPresenter.cancelAlertDialog());
   }
 
   @Override public void cancelAlertDialog() {

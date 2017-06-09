@@ -146,6 +146,8 @@ public class MyLastBookingAdapter
             (dialog, which) -> mMyLastBookingAdapterPresenter.cancelAlertDialog())
         .create();
     mRemoveBookingDialog.show();
+    mRemoveBookingDialog.setOnCancelListener(
+        dialog -> mMyLastBookingAdapterPresenter.cancelAlertDialog());
   }
 
   @Override public void cancelAlertDialog() {

@@ -48,6 +48,14 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
         })
         .create();
     mChooseThemeDialog.show();
+    mChooseThemeDialog.setOnCancelListener(
+        dialog -> mSettingsFragmentPresenter.cancelAlertDialog());
+  }
+
+  @Override public void cancelAlertDialog() {
+    if (mChooseThemeDialog != null) {
+      mChooseThemeDialog.dismiss();
+    }
   }
 
   @Override public void closeSetThemeDialog() {

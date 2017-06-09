@@ -30,4 +30,8 @@ import com.arellomobile.mvp.InjectViewState;
   public void showSetThemeDialog() {
     getViewState().showSetThemeDialog(mDataManager.getThemeSelected());
   }
+
+  public void cancelAlertDialog() {
+    getViewState().cancelAlertDialog();
+  }
 }

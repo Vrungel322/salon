@@ -15,6 +15,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void showSetThemeDialog(int position);
 
+  void cancelAlertDialog();
+
   @StateStrategyType(SingleStateStrategy.class) void closeSetThemeDialog();
 
   @StateStrategyType(SkipStrategy.class) void openUserProfileFragment();
