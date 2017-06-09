@@ -89,11 +89,11 @@ public class DataManager {
   }
 
   public int getBonusCountInt() {
-    return mPref.getBonusCounInt();
+    return mPref.getBonusCountInt();
   }
 
   public Observable<Integer> getBonusCountObservable() {
-    return mPref.getBonusCounObservable();
+    return mPref.getBonusCountObservable();
   }
 
   //theme
@@ -212,6 +212,12 @@ public class DataManager {
 
   public void setNotificationHours(long millis) {
     mPref.setNotificationHours(millis);
+  }
+
+  //user
+
+  public void logoutUser() {
+    mPref.logoutUser();
   }
 }
 

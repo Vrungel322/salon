@@ -22,12 +22,8 @@ import timber.log.Timber;
     subscribeOnEvents();
     subscribeConnectException();
     subscribeUpdateBonusFromChildren();
-    subscribeUnathorizedError();
+    subscribeLogoutUser();
     subscribeShowDialog();
-  }
-
-  private void subscribeUnathorizedError() {
-    // TODO: 01.06.2017 handle unauthorize bux 
   }
 
   @Override protected void inject() {
@@ -99,6 +95,17 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialog.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(show -> showAlertDialog(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeLogoutUser() {
+    Subscription subscription = mRxBus.filteredObservable(
+        com.apps.twelve.floor.authorization.utils.RxBusHelper.LogoutEvent.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> {
+          getViewState().logoutUser();
+          mDataManager.logoutUser();
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 

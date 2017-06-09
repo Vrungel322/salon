@@ -128,6 +128,10 @@ public class StartActivity extends BaseActivity
         getString(R.string.сheck_internet_connection));
   }
 
+  @Override public void logoutUser() {
+    mNavigator.startActivityClearStack(this, new Intent(this, StartActivity.class));
+  }
+
   @Override public void hideFloatingButton() {
     mFabBooking.setVisibility(View.INVISIBLE);
   }

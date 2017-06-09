@@ -129,7 +129,7 @@ dependencies {
   compile 'com.thoughtbot:expandablecheckrecyclerview:1.4'
 
   //authorization
-  compile 'com.github.floor12apps:Authorization:0.2.5'
+  compile 'com.github.floor12apps:Authorization:0.2.6'
 
   //multidex
   compile 'com.android.support:multidex:1.0.1'
