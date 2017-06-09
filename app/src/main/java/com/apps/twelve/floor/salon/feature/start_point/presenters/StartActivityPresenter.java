@@ -82,6 +82,8 @@ import timber.log.Timber;
             showMessageConnectException(throwable);
           });
       addToUnsubscription(subscription);
+    } else {
+      getViewState().setBonusCount(0);
     }
   }
 
