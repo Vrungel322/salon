@@ -100,10 +100,6 @@ public class StartActivity extends BaseActivity
     }
   }
 
-  @Override protected void onPause() {
-    super.onPause();
-  }
-
   @Override public void setMyBooksItemInMenu() {
     mNavViewTopPart.getMenu().getItem(2).setChecked(true);
   }
@@ -274,6 +270,10 @@ public class StartActivity extends BaseActivity
     if (mAuthorizationDialog != null) {
       mAuthorizationDialog.dismiss();
     }
+  }
+
+  @Override public void startSignInActivity() {
+    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
   }
 
   @Override public void onDestroy() {

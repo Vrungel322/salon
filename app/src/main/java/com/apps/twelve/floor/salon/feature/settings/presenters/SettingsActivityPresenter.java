@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.settings.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
@@ -25,12 +26,33 @@ import timber.log.Timber;
     getViewState().addFragmentSettings();
     //RxBus
     subscribeConnectException();
+    subscribeLogoutUser();
+    subscribeUnauthorizedUser();
   }
 
   private void subscribeConnectException() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageConnectException.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().showConnectErrorMessage(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeLogoutUser() {
+    Subscription subscription = mAuthorizationManager.getAuthRxBus()
+        .filteredObservable(AuthRxBusHelper.LogoutEvent.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> {
+          getViewState().logoutUser();
+          mDataManager.logoutUser();
+        }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeUnauthorizedUser() {
+    Subscription subscription = mAuthorizationManager.getAuthRxBus()
+        .filteredObservable(AuthRxBusHelper.UnauthorizedEvent.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().startSignInActivity(), Timber::e);
     addToUnsubscription(subscription);
   }
 }
