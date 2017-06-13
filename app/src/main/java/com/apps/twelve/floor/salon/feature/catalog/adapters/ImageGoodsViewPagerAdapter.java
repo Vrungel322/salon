@@ -39,7 +39,11 @@ public class ImageGoodsViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_page, container, false);
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
-    Glide.with(mActivity).load(mPhotoStaff.get(position).getUrlPhoto()).into(imageView);
+    Glide.with(mActivity)
+        .load(mPhotoStaff.get(position).getUrlPhoto())
+        .placeholder(R.drawable.ic_catalog_placeholder)
+        .error(R.drawable.ic_catalog_placeholder)
+        .into(imageView);
     container.addView(itemView);
     return itemView;
   }

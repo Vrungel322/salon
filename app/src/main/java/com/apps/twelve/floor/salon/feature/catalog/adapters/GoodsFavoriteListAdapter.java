@@ -37,6 +37,8 @@ public class GoodsFavoriteListAdapter
   @Override public void onBindViewHolder(GoodsFavoriteListViewHolder holder, int position) {
     Glide.with(holder.mImageViewGoodsPhoto.getContext())
         .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
+        .placeholder(R.drawable.ic_catalog_placeholder)
+        .error(R.drawable.ic_catalog_placeholder)
         .into(holder.mImageViewGoodsPhoto);
 
     if (mGoodsEntities.get(position).isNew()) {
