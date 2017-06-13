@@ -218,6 +218,7 @@ public class DataManager {
 
   public void logoutUser() {
     mPref.logoutUser();
+    mAuthorizationManager.clear();
   }
 }
 

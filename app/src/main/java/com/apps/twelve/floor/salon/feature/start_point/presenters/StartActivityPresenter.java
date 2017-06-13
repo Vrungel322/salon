@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.start_point.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
@@ -24,6 +25,7 @@ import timber.log.Timber;
     subscribeUpdateBonusFromChildren();
     subscribeLogoutUser();
     subscribeShowDialog();
+    subscribeUnauthorizedUser();
   }
 
   @Override protected void inject() {
@@ -99,13 +101,21 @@ import timber.log.Timber;
   }
 
   private void subscribeLogoutUser() {
-    Subscription subscription = mRxBus.filteredObservable(
-        com.apps.twelve.floor.authorization.utils.RxBusHelper.LogoutEvent.class)
+    Subscription subscription = mAuthorizationManager.getAuthRxBus()
+        .filteredObservable(AuthRxBusHelper.LogoutEvent.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> {
           getViewState().logoutUser();
           mDataManager.logoutUser();
         }, Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeUnauthorizedUser() {
+    Subscription subscription = mAuthorizationManager.getAuthRxBus()
+        .filteredObservable(AuthRxBusHelper.UnauthorizedEvent.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().startSignInActivity(), Timber::e);
     addToUnsubscription(subscription);
   }
 

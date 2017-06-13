@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.booking.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
@@ -120,6 +122,14 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     if (mAuthorizationDialog != null) {
       mAuthorizationDialog.dismiss();
     }
+  }
+
+  @Override public void logoutUser() {
+    mNavigator.startActivityClearStack(this, new Intent(this, StartActivity.class));
+  }
+
+  @Override public void startSignInActivity() {
+    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
   }
 
   @Override protected void onDestroy() {
