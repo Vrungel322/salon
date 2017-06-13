@@ -58,7 +58,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
               R.color.colorLLightGray));
     }
     Glide.with(mContext)
-        .load(mServiceEntities.get(position).getImage())
+        .load(mServiceEntities.get(position).getImage()).centerCrop()
         .placeholder(R.drawable.ic_service_placeholder_24dp)
         .error(R.drawable.ic_service_placeholder_24dp)
         .into(holder.mImageViewServiceImg);
