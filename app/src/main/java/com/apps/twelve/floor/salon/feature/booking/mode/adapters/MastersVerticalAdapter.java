@@ -65,6 +65,8 @@ public class MastersVerticalAdapter
     if (position > 0) {
       Glide.with(holder.mImageViewMasterImg.getContext())
           .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
+          .error(mMasterEntities.get(position).getMasterGender().equals("male")
+              ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp)
           .into(holder.mImageViewMasterImg);
       holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
       holder.mTextViewMasterDescription.setText(
