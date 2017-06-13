@@ -56,6 +56,8 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         Glide.with(goodsFavoriteListViewHolder.mImageViewGoodsPhoto.getContext())
             .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
+            .placeholder(R.drawable.ic_catalog_placeholder)
+            .error(R.drawable.ic_catalog_placeholder)
             .into(goodsFavoriteListViewHolder.mImageViewGoodsPhoto);
         break;
       case OTHER:
