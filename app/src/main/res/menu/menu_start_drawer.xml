@@ -25,7 +25,7 @@
         android:title="@string/menu_our_work"/>
     <item
         android:id="@+id/nav_catalog"
-        android:icon="@drawable/ic_news_24dp"
+        android:icon="@drawable/ic_catalog_24dp"
         android:title="@string/menu_catalog"/>
     <item
         android:id="@+id/nav_news"
