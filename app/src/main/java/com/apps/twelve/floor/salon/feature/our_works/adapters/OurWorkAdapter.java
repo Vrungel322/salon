@@ -46,7 +46,7 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
       holder.mTextViewShortDescription.setText(
           holder.mTextViewShortDescription.getContext().getString(R.string.menu_favourite));
       holder.mImageViewWorkPreview.setPadding(100, 100, 100, 100);
-      holder.mImageViewWorkPreview.setImageResource(R.drawable.ic_favorite_goods_full_24dp);
+      holder.mImageViewWorkPreview.setImageResource(R.drawable.ic_favorite_works_32dp);
     } else {
       holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
       Glide.with(holder.mImageViewWorkPreview.getContext())
