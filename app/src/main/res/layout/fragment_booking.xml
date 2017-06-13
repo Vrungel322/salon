@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,75 +7,83 @@
     android:orientation="vertical"
     >
 
-  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      android:id="@+id/rl_choose_service"
+  <android.support.constraint.ConstraintLayout
+      android:id="@+id/clChooseMaser"
       android:layout_width="match_parent"
-      android:layout_height="50dp"
-      android:layout_marginTop="4dp"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginTop="16dp"
       android:background="@color/colorWhite"
-      android:orientation="vertical"
-      android:visibility="visible"
       >
-    <TextView
-        android:id="@+id/tv_service"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:paddingEnd="14dp"
-        android:paddingLeft="14dp"
-        android:paddingStart="14dp"
-        android:text="@string/book_choose_service"
-        android:textColor="@color/colorTransparentBlack"
-        android:textSize="16sp"
-        />
     <ImageView
-        android:id="@+id/iv_next1"
+        android:id="@+id/ivMaser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/choose_master"
+        />
+    <TextView
+        android:id="@+id/tvChooseMaser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:contentDescription="@string/book_choose_service"
-        app:srcCompat="@drawable/ic_date_next_24dp"
-        />
-  </RelativeLayout>
-
-  <RelativeLayout
-      android:id="@+id/rl_choose_specialist"
-      android:layout_width="match_parent"
-      android:layout_height="50dp"
-      android:layout_marginTop="4dp"
-      android:background="@color/colorWhite"
-      android:orientation="vertical"
-      >
-    <TextView
-        android:id="@+id/tv_specialist"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?attr/selectableItemBackground"
-        android:gravity="center_vertical"
-        android:paddingEnd="14dp"
-        android:paddingLeft="14dp"
-        android:paddingStart="14dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMaser"
+        app:layout_constraintVertical_bias="0.0"
         android:text="@string/book_choose_specialist"
-        android:textColor="@color/colorTransparentBlack"
-        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp"
         />
+  </android.support.constraint.ConstraintLayout>
+  <android.support.constraint.ConstraintLayout
+      android:id="@+id/clChooseService"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_marginTop="16dp"
+      android:layout_below="@id/clChooseMaser"
+      android:background="@color/colorWhite"
+      >
     <ImageView
-        android:id="@+id/iv_next2"
+        android:id="@+id/ivService"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/choose_service"
+        />
+    <TextView
+        android:id="@+id/tvChooseService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
-        android:contentDescription="@string/book_choose_specialist"
-        app:srcCompat="@drawable/ic_date_next_24dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivService"
+        app:layout_constraintVertical_bias="0.0"
+        android:text="@string/book_choose_service"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp"
         />
-  </RelativeLayout>
+  </android.support.constraint.ConstraintLayout>
 
-</LinearLayout>
+</RelativeLayout>

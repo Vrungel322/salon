@@ -36,13 +36,13 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
     super.onViewCreated(view, savedInstanceState);
   }
 
-  @OnClick(R.id.rl_choose_service) void chooseService() {
+  @OnClick(R.id.clChooseService) void chooseService() {
     mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
         BookingDetailServiceFragment.newInstance(),
         Constants.FragmentTag.BOOKING_DETAIL_SERVICE_FRAGMENT);
   }
 
-  @OnClick(R.id.rl_choose_specialist) void chooseMasters() {
+  @OnClick(R.id.clChooseMaser) void chooseMasters() {
     mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
         BookingDetailMasterFragment.newInstance(),
         Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT);
