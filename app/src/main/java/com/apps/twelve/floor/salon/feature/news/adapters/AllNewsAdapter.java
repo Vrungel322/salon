@@ -51,6 +51,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   @Override public void onBindViewHolder(AllNewsViewHolder holder, int position) {
     Glide.with(holder.mImageViewThumbNews.getContext())
         .load(mNewsEntities.get(position).getImg())
+        .placeholder(R.drawable.ic_news_placeholder_130dp)
         .into(holder.mImageViewThumbNews);
 
     holder.mTextViewItemNewsShortDescription.setText(mNewsEntities.get(position).getTitle());
