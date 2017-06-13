@@ -43,6 +43,8 @@ public class ServiceCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     currentHolder.mTextViewServiceTitle.setText(mServiceEntities.get(position).getTitle());
     Glide.with(mContext)
         .load(mServiceEntities.get(position).getImage())
+        .placeholder(R.drawable.ic_service_placeholder_24dp)
+        .error(R.drawable.ic_service_placeholder_24dp)
         .into(currentHolder.mImageViewCategoryIcon);
   }
 

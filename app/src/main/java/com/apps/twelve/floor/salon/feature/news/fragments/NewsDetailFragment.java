@@ -50,7 +50,10 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);
 
     if (newsEntity != null) {
-      Glide.with(mContext).load(newsEntity.getImg()).into(mImageViewPhotoNews);
+      Glide.with(mContext)
+          .load(newsEntity.getImg())
+          .placeholder(R.drawable.ic_news_placeholder_130dp)
+          .into(mImageViewPhotoNews);
       mTextViewTitleNews.setText(newsEntity.getTitle());
       mTextViewDescriptionNews.setText(newsEntity.getText());
     }

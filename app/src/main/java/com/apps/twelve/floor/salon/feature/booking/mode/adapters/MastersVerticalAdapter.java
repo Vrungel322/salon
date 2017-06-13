@@ -69,6 +69,9 @@ public class MastersVerticalAdapter
           .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
           .error(mMasterEntities.get(position).getMasterGender().equals(MASTER_MALE_PLACEHOLDER)
               ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp)
+          .placeholder(
+              mMasterEntities.get(position).getMasterGender().equals(MASTER_MALE_PLACEHOLDER)
+                  ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp)
           .into(holder.mImageViewMasterImg);
       holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
       holder.mTextViewMasterDescription.setText(
