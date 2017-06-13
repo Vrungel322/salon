@@ -48,7 +48,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
     final View fragmentView = inflater.inflate(mLayoutId, container, false);
     mUnbinder = ButterKnife.bind(this, fragmentView);
     if (getActivity() instanceof StartActivity) {
-      AppBarLayout appBarLayout = (AppBarLayout) getActivity().findViewById(R.id.appBar);
+      AppBarLayout appBarLayout = getActivity().findViewById(R.id.appBar);
       appBarLayout.setExpanded(true, false);
     }
     return fragmentView;
@@ -62,7 +62,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   protected void showAlertMessage(String title, String message) {
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-    Alerter.create(getActivity())
+    Alerter.create(getActivity()).setDuration(3000)
         .setTitle(title)
         .setText(message)
         .setBackgroundColor(value.resourceId)
