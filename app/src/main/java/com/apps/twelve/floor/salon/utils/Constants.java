@@ -53,10 +53,6 @@ public final class Constants {
     public static final String HOURLY = "HOURLY";
   }
 
-  public class ChangingUserInfoField {
-    public static final int NAME = 0;
-    public static final int PASSWORD = 1;
-    public static final int EMAIL = 2;
-    public static final int PHONE = 3;
-  }
+  public static final String MASTER_MALE_PLACEHOLDER = "male";
+
 }

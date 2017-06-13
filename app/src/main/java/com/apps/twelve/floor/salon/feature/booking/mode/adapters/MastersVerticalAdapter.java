@@ -19,6 +19,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Constants.MASTER_MALE_PLACEHOLDER;
+
 /**
  * Created by Vrungel on 28.03.2017.
  */
@@ -65,7 +67,7 @@ public class MastersVerticalAdapter
     if (position > 0) {
       Glide.with(holder.mImageViewMasterImg.getContext())
           .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
-          .error(mMasterEntities.get(position).getMasterGender().equals("male")
+          .error(mMasterEntities.get(position).getMasterGender().equals(MASTER_MALE_PLACEHOLDER)
               ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp)
           .into(holder.mImageViewMasterImg);
       holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
