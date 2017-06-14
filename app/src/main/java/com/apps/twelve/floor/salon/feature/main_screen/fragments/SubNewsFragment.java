@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.main_screen.fragments;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.content.res.AppCompatResources;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -48,7 +49,10 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
     mNewsEntity = newsEntity;
     Glide.with(getContext())
         .load(newsEntity.getImg())
-        .placeholder(R.drawable.ic_news_placeholder_130dp).dontAnimate()
+        .placeholder(
+            AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
+        .error(AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
+        .dontAnimate()
         .into(mImageViewNewsPreview);
     mTextViewNewsShortDescription.setText(newsEntity.getTitle());
     mTextViewNewsData.setText(dateFromSeconds(newsEntity.getCreatedAt()));

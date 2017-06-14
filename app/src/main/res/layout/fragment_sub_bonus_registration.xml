@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/booking_bonus_background"
     android:clickable="true"
+    android:background="@color/colorWhite"
     >
 
   <TextView
@@ -44,6 +44,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bonus_pattern"
         >
 
       <ImageView
@@ -80,7 +81,7 @@
           android:layout_marginRight="16dp"
           android:layout_marginStart="16dp"
           android:layout_marginTop="8dp"
-          android:textColor="@color/colorWhite"
+          android:textColor="?colorPrimaryDark"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/ivGift"
@@ -97,7 +98,7 @@
           android:layout_marginTop="8dp"
           android:text="@string/registration"
           android:textSize="16sp"
-          android:textColor="@color/colorWhite"
+          android:textColor="?colorPrimaryDark"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"

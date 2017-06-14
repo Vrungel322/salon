@@ -122,7 +122,7 @@
           android:id="@+id/relativeLayoutNotTime"
           android:layout_width="match_parent"
           android:layout_height="200dp"
-          android:background="@drawable/booking_bonus_background"
+          android:background="@drawable/no_time_background"
           android:padding="16dp"
           android:visibility="gone"
           >

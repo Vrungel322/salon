@@ -49,7 +49,7 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(ourWorkEntities -> {
           mOurWorkEntities.add(0,
-              new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background), 0, null));
+              new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0, null));
           mOurWorkEntities.addAll(ourWorkEntities);
           getViewState().stopRefreshingView();
           getViewState().addListOfWorks(mOurWorkEntities);
@@ -69,7 +69,7 @@ import timber.log.Timber;
             (ourWorkEntities, photoWorksEntities) -> {
               if (photoWorksEntities.code() != 400 && photoWorksEntities.code() != 401) {
                 mOurWorkEntities.add(0,
-                    new OurWorkEntity(Converters.getUrl(R.drawable.booking_bonus_background),
+                    new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp),
                         photoWorksEntities.body().size(), photoWorksEntities.body()));
               } else {
                 mAuthorizationManager.refreshToken();
