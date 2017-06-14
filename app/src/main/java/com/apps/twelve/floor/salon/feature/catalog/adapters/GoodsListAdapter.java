@@ -54,10 +54,12 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         GoodsFavoriteListViewHolder goodsFavoriteListViewHolder =
             (GoodsFavoriteListViewHolder) holder;
 
+        goodsFavoriteListViewHolder.mImageViewGoodsPhoto.setPadding(50, 50, 50, 50);
         Glide.with(goodsFavoriteListViewHolder.mImageViewGoodsPhoto.getContext())
             .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
-            .placeholder(R.drawable.ic_catalog_placeholder)
-            .error(R.drawable.ic_catalog_placeholder)
+            .placeholder(R.drawable.ic_favorite_catalog_32dp)
+            .error(R.drawable.ic_favorite_catalog_32dp)
+            .dontAnimate()
             .into(goodsFavoriteListViewHolder.mImageViewGoodsPhoto);
         break;
       case OTHER:
@@ -66,7 +68,7 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         Glide.with(goodsListViewHolder.mImageViewGoodsPhoto.getContext())
             .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
             .placeholder(R.drawable.ic_catalog_placeholder)
-            .error(R.drawable.ic_catalog_placeholder)
+            .error(R.drawable.ic_catalog_placeholder).dontAnimate()
             .into(goodsListViewHolder.mImageViewGoodsPhoto);
 
         if (mGoodsEntities.get(position).isNew()) {

@@ -42,7 +42,7 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
     Glide.with(mActivity)
         .load(mPhotoWorks.get(position).getUrlPhoto())
-        .placeholder(R.drawable.ic_our_work_placeholder_130dp)
+        .placeholder(R.drawable.ic_our_work_placeholder_130dp).dontAnimate()
         .into(imageView);
     container.addView(itemView);
     return itemView;

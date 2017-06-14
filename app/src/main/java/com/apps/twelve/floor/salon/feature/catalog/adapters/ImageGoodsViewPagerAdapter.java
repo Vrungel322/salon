@@ -42,7 +42,7 @@ public class ImageGoodsViewPagerAdapter extends PagerAdapter {
     Glide.with(mActivity)
         .load(mPhotoStaff.get(position).getUrlPhoto())
         .placeholder(R.drawable.ic_catalog_placeholder)
-        .error(R.drawable.ic_catalog_placeholder)
+        .error(R.drawable.ic_catalog_placeholder).dontAnimate()
         .into(imageView);
     container.addView(itemView);
     return itemView;

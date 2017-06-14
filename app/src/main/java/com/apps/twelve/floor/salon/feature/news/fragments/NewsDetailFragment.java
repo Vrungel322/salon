@@ -52,7 +52,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
     if (newsEntity != null) {
       Glide.with(mContext)
           .load(newsEntity.getImg())
-          .placeholder(R.drawable.ic_news_placeholder_130dp)
+          .placeholder(R.drawable.ic_news_placeholder_130dp).dontAnimate()
           .into(mImageViewPhotoNews);
       mTextViewTitleNews.setText(newsEntity.getTitle());
       mTextViewDescriptionNews.setText(newsEntity.getText());

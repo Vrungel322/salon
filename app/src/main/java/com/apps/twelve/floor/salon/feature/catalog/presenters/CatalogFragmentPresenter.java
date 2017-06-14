@@ -47,7 +47,7 @@ import timber.log.Timber;
         .subscribe(goodsEntities -> {
           goodsEntities.add(0,
               new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
-                  Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false,
+                  Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0, null, false, false,
                   false));
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();
@@ -67,7 +67,7 @@ import timber.log.Timber;
         .subscribe(goodsEntities -> {
           goodsEntities.add(0,
               new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
-                  Converters.getUrl(R.drawable.booking_bonus_background), 0, null, false, false,
+                  Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0, null, false, false,
                   false));
           getViewState().updateGoodsList(goodsEntities);
           getViewState().stopRefreshingView();

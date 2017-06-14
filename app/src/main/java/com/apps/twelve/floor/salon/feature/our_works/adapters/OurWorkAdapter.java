@@ -45,13 +45,13 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
     if (position == 0) {
       holder.mTextViewShortDescription.setText(
           holder.mTextViewShortDescription.getContext().getString(R.string.menu_favourite));
-      holder.mImageViewWorkPreview.setPadding(100, 100, 100, 100);
-      holder.mImageViewWorkPreview.setImageResource(R.drawable.ic_favorite_works_32dp);
+      holder.mImageViewWorkPreview.setPadding(50, 50, 50, 50);
+      holder.mImageViewWorkPreview.setImageResource(R.drawable.ic_favorite_our_work_32dp);
     } else {
       holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
       Glide.with(holder.mImageViewWorkPreview.getContext())
           .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
-          .placeholder(R.drawable.ic_our_work_placeholder_130dp)
+          .placeholder(R.drawable.ic_our_work_placeholder_130dp).dontAnimate()
           .into(holder.mImageViewWorkPreview);
     }
 

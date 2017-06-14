@@ -38,7 +38,7 @@ public class GoodsFavoriteListAdapter
     Glide.with(holder.mImageViewGoodsPhoto.getContext())
         .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
         .placeholder(R.drawable.ic_catalog_placeholder)
-        .error(R.drawable.ic_catalog_placeholder)
+        .error(R.drawable.ic_catalog_placeholder).dontAnimate()
         .into(holder.mImageViewGoodsPhoto);
 
     if (mGoodsEntities.get(position).isNew()) {

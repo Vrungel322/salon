@@ -48,7 +48,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
     mNewsEntity = newsEntity;
     Glide.with(getContext())
         .load(newsEntity.getImg())
-        .placeholder(R.drawable.ic_news_placeholder_130dp)
+        .placeholder(R.drawable.ic_news_placeholder_130dp).dontAnimate()
         .into(mImageViewNewsPreview);
     mTextViewNewsShortDescription.setText(newsEntity.getTitle());
     mTextViewNewsData.setText(dateFromSeconds(newsEntity.getCreatedAt()));
