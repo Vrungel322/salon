@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.catalog.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +42,9 @@ public class ImageGoodsViewPagerAdapter extends PagerAdapter {
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
     Glide.with(mActivity)
         .load(mPhotoStaff.get(position).getUrlPhoto())
-        .placeholder(R.drawable.ic_catalog_placeholder)
-        .error(R.drawable.ic_catalog_placeholder).dontAnimate()
+        .placeholder(AppCompatResources.getDrawable(mActivity, R.drawable.ic_catalog_placeholder))
+        .error(AppCompatResources.getDrawable(mActivity, R.drawable.ic_catalog_placeholder))
+        .dontAnimate()
         .into(imageView);
     container.addView(itemView);
     return itemView;

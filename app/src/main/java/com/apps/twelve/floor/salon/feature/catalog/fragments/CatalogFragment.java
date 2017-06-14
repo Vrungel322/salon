@@ -52,7 +52,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
     super.onViewCreated(view, savedInstanceState);
     ((StartActivity) getActivity()).setTitleAppBar(R.string.catalog);
 
-    mGoodsListAdapter = new GoodsListAdapter();
+    mGoodsListAdapter = new GoodsListAdapter(getContext());
     mRecyclerViewStaff.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRecyclerViewStaff.setAdapter(mGoodsListAdapter);
     ItemClickSupport.addTo(mRecyclerViewStaff)

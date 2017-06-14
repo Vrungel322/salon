@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.our_works.adapters;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,9 @@ public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkV
       holder.mTextViewShortDescription.setText(mOurWorkEntities.get(position).getTitle());
       Glide.with(holder.mImageViewWorkPreview.getContext())
           .load(Uri.parse(mOurWorkEntities.get(position).getImageURL()))
-          .placeholder(R.drawable.ic_our_work_placeholder_130dp).dontAnimate()
+          .placeholder(AppCompatResources.getDrawable(holder.mImageViewWorkPreview.getContext(),
+              R.drawable.ic_our_work_placeholder_130dp))
+          .dontAnimate()
           .into(holder.mImageViewWorkPreview);
     }
 

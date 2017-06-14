@@ -57,7 +57,7 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
     mSwipeRefreshLayout.setColorSchemeColors(
         ContextCompat.getColor(getContext(), value.resourceId));
 
-    mAllNewsAdapter = new AllNewsAdapter();
+    mAllNewsAdapter = new AllNewsAdapter(getContext());
     mRecyclerViewAllNews.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
     ItemClickSupport.addTo(mRecyclerViewAllNews)

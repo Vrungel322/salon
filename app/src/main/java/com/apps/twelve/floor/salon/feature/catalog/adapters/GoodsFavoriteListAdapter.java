@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
+import android.content.Context;
 import android.net.Uri;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,13 @@ import java.util.List;
 
 public class GoodsFavoriteListAdapter
     extends RecyclerView.Adapter<GoodsFavoriteListAdapter.GoodsFavoriteListViewHolder> {
+
   private ArrayList<GoodsEntity> mGoodsEntities = new ArrayList<>();
+  private Context mContext;
+
+  public GoodsFavoriteListAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void addListGoodsEntity(List<GoodsEntity> goodsEntities) {
     mGoodsEntities.clear();
@@ -37,8 +45,9 @@ public class GoodsFavoriteListAdapter
   @Override public void onBindViewHolder(GoodsFavoriteListViewHolder holder, int position) {
     Glide.with(holder.mImageViewGoodsPhoto.getContext())
         .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
-        .placeholder(R.drawable.ic_catalog_placeholder)
-        .error(R.drawable.ic_catalog_placeholder).dontAnimate()
+        .placeholder(AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
+        .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
+        .dontAnimate()
         .into(holder.mImageViewGoodsPhoto);
 
     if (mGoodsEntities.get(position).isNew()) {

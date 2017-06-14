@@ -50,7 +50,7 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mGoodsFavoriteListAdapter = new GoodsFavoriteListAdapter();
+    mGoodsFavoriteListAdapter = new GoodsFavoriteListAdapter(getContext());
     mRvCatalogFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRvCatalogFavorite.setAdapter(mGoodsFavoriteListAdapter);
     ItemClickSupport.addTo(mRvCatalogFavorite)

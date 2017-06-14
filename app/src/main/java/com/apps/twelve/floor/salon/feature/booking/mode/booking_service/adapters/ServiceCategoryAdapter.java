@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.adapters;
 
 import android.content.Context;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +44,11 @@ public class ServiceCategoryAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     currentHolder.mTextViewServiceTitle.setText(mServiceEntities.get(position).getTitle());
     Glide.with(mContext)
         .load(mServiceEntities.get(position).getImage())
-        .placeholder(R.drawable.ic_service_placeholder_24dp)
-        .error(R.drawable.ic_service_placeholder_24dp).dontAnimate()
+        .placeholder(
+            AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .
+            dontAnimate()
         .into(currentHolder.mImageViewCategoryIcon);
   }
 

@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.adapters
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -59,8 +60,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     }
     Glide.with(mContext)
         .load(mServiceEntities.get(position).getImage()).centerCrop()
-        .placeholder(R.drawable.ic_service_placeholder_24dp)
-        .error(R.drawable.ic_service_placeholder_24dp).dontAnimate()
+        .placeholder(
+            AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .
+            dontAnimate()
         .into(holder.mImageViewServiceImg);
 
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());

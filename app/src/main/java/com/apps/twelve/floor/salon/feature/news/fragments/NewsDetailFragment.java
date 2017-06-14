@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.news.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,7 +53,9 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
     if (newsEntity != null) {
       Glide.with(mContext)
           .load(newsEntity.getImg())
-          .placeholder(R.drawable.ic_news_placeholder_130dp).dontAnimate()
+          .placeholder(
+              AppCompatResources.getDrawable(mContext, R.drawable.ic_news_placeholder_130dp))
+          .dontAnimate()
           .into(mImageViewPhotoNews);
       mTextViewTitleNews.setText(newsEntity.getTitle());
       mTextViewDescriptionNews.setText(newsEntity.getText());

@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
+import android.content.Context;
 import android.net.Uri;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,12 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
   private static final int OTHER = 1;
 
   private ArrayList<GoodsEntity> mGoodsEntities = new ArrayList<>();
+
+  private Context mContext;
+
+  public GoodsListAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void addListGoodsEntity(List<GoodsEntity> goodsEntities) {
     mGoodsEntities.clear();
@@ -57,8 +65,9 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         goodsFavoriteListViewHolder.mImageViewGoodsPhoto.setPadding(50, 50, 50, 50);
         Glide.with(goodsFavoriteListViewHolder.mImageViewGoodsPhoto.getContext())
             .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
-            .placeholder(R.drawable.ic_favorite_catalog_32dp)
-            .error(R.drawable.ic_favorite_catalog_32dp)
+            .placeholder(
+                AppCompatResources.getDrawable(mContext, R.drawable.ic_favorite_catalog_32dp))
+            .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_favorite_catalog_32dp))
             .dontAnimate()
             .into(goodsFavoriteListViewHolder.mImageViewGoodsPhoto);
         break;
@@ -67,8 +76,10 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         Glide.with(goodsListViewHolder.mImageViewGoodsPhoto.getContext())
             .load(Uri.parse(mGoodsEntities.get(position).getImageURL()))
-            .placeholder(R.drawable.ic_catalog_placeholder)
-            .error(R.drawable.ic_catalog_placeholder).dontAnimate()
+            .placeholder(
+                AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
+            .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
+            .dontAnimate()
             .into(goodsListViewHolder.mImageViewGoodsPhoto);
 
         if (mGoodsEntities.get(position).isNew()) {

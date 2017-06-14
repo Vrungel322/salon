@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.feature.news.adapters;
 
+import android.content.Context;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,11 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   public static final int LAST_NEWS = 1;
   public static final int DEFAULT_NEWS = 0;
   private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
+  private Context mContext;
+
+  public AllNewsAdapter(Context context) {
+    this.mContext = context;
+  }
 
   public void addListNewsEntity(List<NewsEntity> newsEntities) {
     mNewsEntities.addAll(newsEntities);
@@ -51,7 +58,8 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   @Override public void onBindViewHolder(AllNewsViewHolder holder, int position) {
     Glide.with(holder.mImageViewThumbNews.getContext())
         .load(mNewsEntities.get(position).getImg())
-        .placeholder(R.drawable.ic_news_placeholder_130dp).dontAnimate()
+        .placeholder(AppCompatResources.getDrawable(mContext, R.drawable.ic_news_placeholder_130dp))
+        .dontAnimate()
         .into(holder.mImageViewThumbNews);
 
     holder.mTextViewItemNewsShortDescription.setText(mNewsEntities.get(position).getTitle());

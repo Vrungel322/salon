@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.our_works.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,9 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
     Glide.with(mActivity)
         .load(mPhotoWorks.get(position).getUrlPhoto())
-        .placeholder(R.drawable.ic_our_work_placeholder_130dp).dontAnimate()
+        .placeholder(
+            AppCompatResources.getDrawable(mActivity, R.drawable.ic_our_work_placeholder_130dp))
+        .dontAnimate()
         .into(imageView);
     container.addView(itemView);
     return itemView;

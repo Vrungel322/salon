@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -68,10 +69,13 @@ public class MastersVerticalAdapter
       Glide.with(holder.mImageViewMasterImg.getContext())
           .load(Uri.parse(mMasterEntities.get(position).getMasterImg()))
           .error(mMasterEntities.get(position).getMasterGender().equals(MASTER_MALE_PLACEHOLDER)
-              ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp)
+              ? AppCompatResources.getDrawable(mContext, R.drawable.ic_master_male_24dp)
+              : AppCompatResources.getDrawable(mContext, R.drawable.ic_master_female_24dp))
           .placeholder(
               mMasterEntities.get(position).getMasterGender().equals(MASTER_MALE_PLACEHOLDER)
-                  ? R.drawable.ic_master_male_24dp : R.drawable.ic_master_female_24dp).dontAnimate()
+                  ? AppCompatResources.getDrawable(mContext, R.drawable.ic_master_male_24dp)
+                  : AppCompatResources.getDrawable(mContext, R.drawable.ic_master_female_24dp))
+          .dontAnimate()
           .into(holder.mImageViewMasterImg);
       holder.mTextViewMasterName.setText(mMasterEntities.get(position).getMasterName());
       holder.mTextViewMasterDescription.setText(
