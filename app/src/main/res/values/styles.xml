@@ -14,7 +14,6 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
@@ -27,10 +26,10 @@
 
   <style name="AppThemeNoActionBarBlue" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryBlue</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkBlue</item>
     <item name="colorAccent">@color/colorAccentBlue</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppThemeGreen" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -42,10 +41,10 @@
 
   <style name="AppThemeNoActionBarGreen" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryGreen</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkGreen</item>
     <item name="colorAccent">@color/colorAccentGreen</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppThemeYellow" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -57,10 +56,10 @@
 
   <style name="AppThemeNoActionBarYellow" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryYellow</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkYellow</item>
     <item name="colorAccent">@color/colorAccentYellow</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppThemeGray" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -72,10 +71,10 @@
 
   <style name="AppThemeNoActionBarGray" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryGray</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkGray</item>
     <item name="colorAccent">@color/colorAccentGray</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppThemePurple" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -87,10 +86,10 @@
 
   <style name="AppThemeNoActionBarPurple" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryPurple</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkPurple</item>
     <item name="colorAccent">@color/colorAccentPurple</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppThemeRed" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -102,10 +101,10 @@
 
   <style name="AppThemeNoActionBarRed" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
-    <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
     <item name="colorPrimary">@color/colorPrimaryRed</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
     <item name="colorAccent">@color/colorAccentRed</item>
+    <item name="colorControlNormal">@color/colorWhite</item>
   </style>
 
   <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -114,10 +113,6 @@
 
   <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
     <item name="android:windowBackground">@drawable/background_splash</item>
-  </style>
-
-  <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
-    <item name="color">@color/colorWhite</item>
   </style>
 
 </resources>
