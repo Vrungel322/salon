@@ -21,83 +21,88 @@ import rx.Observable;
 
 public interface SalonApi {
 
-  @GET("api/v1/categories/") Observable<List<CategoryEntity>> fetchCategory();
+  @GET("api/v1/categories/") Observable<List<CategoryEntity>> fetchCategory(
+      @Header("lng") String language);
 
-  @GET("api/v1/services/") Observable<List<ServiceEntity>> fetchAllServices();
+  @GET("api/v1/services/") Observable<List<ServiceEntity>> fetchAllServices(
+      @Header("lng") String language);
 
   @GET("api/v1/categories/{id}/services")
-  Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(@Path("id") int categoryId);
+  Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(@Header("lng") String language,
+      @Path("id") int categoryId);
 
   @GET("api/v1/categories/{id}") Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(
-      @Path("id") int parentId);
+      @Header("lng") String language, @Path("id") int parentId);
 
   @GET("api/v1/schedules/{id}") Observable<List<DataServiceEntity>> fetchDaysData(
-      @Path("id") String serviceIdAtData);
+      @Header("lng") String language, @Path("id") String serviceIdAtData);
 
   @GET("api/v1/services/{serviceId}/schedules/{dataID}/masters")
-  Observable<List<MasterEntity>> fetchMasters(@Path("serviceId") String serviceId,
-      @Path("dataID") String dataID);
+  Observable<List<MasterEntity>> fetchMasters(@Header("lng") String language,
+      @Path("serviceId") String serviceId, @Path("dataID") String dataID);
 
-  @GET("api/v1/masters") Observable<List<MasterEntity>> fetchAllMasters();
+  @GET("api/v1/masters") Observable<List<MasterEntity>> fetchAllMasters(
+      @Header("lng") String language);
 
   @GET("api/v1/masters/{masterId}") Observable<List<ServiceEntity>> fetchAllServicesByMasterId(
-      @Path("masterId") String masterId);
+      @Header("lng") String language, @Path("masterId") String masterId);
 
   @GET("api/v1/masters/{masterId}/schedules")
-  Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Path("masterId") String masterId);
+  Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Header("lng") String language,
+      @Path("masterId") String masterId);
 
   @POST("api/v1/entry") Observable<retrofit2.Response<LastBookingEntity>> checkInService(
-      @Header("authorization") String token, @Body BookingServerEntity bookingServerEntity);
+      @Header("lng") String language, @Header("authorization") String token,
+      @Body BookingServerEntity bookingServerEntity);
 
   @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
-      @Header("authorization") String token);
+      @Header("lng") String language, @Header("authorization") String token);
 
-  @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(@Path("id") String serviceId,
+  @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(
+      @Header("lng") String language, @Path("id") String serviceId,
       @Header("authorization") String token);
 
   @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
-      @Path("entryId") String entryId, @Header("authorization") String token,
-      @Field("schedule_id") int scheduleId);
+      @Header("lng") String language, @Path("entryId") String entryId,
+      @Header("authorization") String token, @Field("schedule_id") int scheduleId);
 
-  @GET("api/v1/pages") Observable<List<NewsEntity>> fetchAllNews();
+  @GET("api/v1/pages") Observable<List<NewsEntity>> fetchAllNews(@Header("lng") String language);
 
-  @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview();
+  @GET("api/v1/pages?last=1") Observable<NewsEntity> fetchNewsPreview(
+      @Header("lng") String language);
 
   @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
-      @Header("authorization") String token);
+      @Header("lng") String language, @Header("authorization") String token);
 
   @POST("api/v1/users/favorite/photos") @FormUrlEncoded
-  Observable<Response<Void>> addToFavoritePhoto(@Field("photo_id") int photoId,
-      @Header("authorization") String token);
+  Observable<Response<Void>> addToFavoritePhoto(@Header("lng") String language,
+      @Field("photo_id") int photoId, @Header("authorization") String token);
 
   @DELETE("api/v1/users/favorite/photos/{photoId}")
-  Observable<Response<Void>> removeFromFavoritePhoto(@Path("photoId") int photoId,
-      @Header("authorization") String token);
+  Observable<Response<Void>> removeFromFavoritePhoto(@Header("lng") String language,
+      @Path("photoId") int photoId, @Header("authorization") String token);
 
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchAllProducts(
-      @Header("authorization") String token);
+      @Header("lng") String language, @Header("authorization") String token);
 
-  @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories();
+  @GET("api/v1/products/categories") Observable<List<GoodsCategoryEntity>> fetchCategories(
+      @Header("lng") String language);
 
   @GET("api/v1/products") Observable<List<GoodsEntity>> fetchGoodsByCatalogId(
-      @Query("category") Integer id);
+      @Header("lng") String language, @Query("category") Integer id);
 
   @GET("api/v1/users/favorite/photos")
-  Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(
+  Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(@Header("lng") String language,
       @Header("authorization") String token);
 
   @GET("api/v1/users/favorite/products") Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods(
-      @Header("authorization") String token);
+      @Header("lng") String language, @Header("authorization") String token);
 
   @POST("api/v1/users/favorite/products") @FormUrlEncoded
-  Observable<Response<Void>> addToFavoriteGoods(@Field("product_id") int goodsId,
-      @Header("authorization") String token);
+  Observable<Response<Void>> addToFavoriteGoods(@Header("lng") String language,
+      @Field("product_id") int goodsId, @Header("authorization") String token);
 
   @DELETE("api/v1/users/favorite/products/{product_id}")
-  Observable<Response<Void>> removeFromFavoriteGoods(@Path("product_id") int goodsId,
-      @Header("authorization") String token);
-
-  //@POST("signin") Observable<TokenEntity> login(
-  //    @Body LoginBody credentials
-  //);
+  Observable<Response<Void>> removeFromFavoriteGoods(@Header("lng") String language,
+      @Path("product_id") int goodsId, @Header("authorization") String token);
 }

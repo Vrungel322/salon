@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
-import timber.log.Timber;
 
 /**
  * Created by John on 09.03.2017.

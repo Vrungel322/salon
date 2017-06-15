@@ -27,108 +27,112 @@ public class RestApi {
     this.api = api;
   }
 
-  public Observable<List<CategoryEntity>> fetchCategory() {
-    return api.fetchCategory();
+  public Observable<List<CategoryEntity>> fetchCategory(String language) {
+    return api.fetchCategory(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServices() {
-    return api.fetchAllServices();
+  public Observable<List<ServiceEntity>> fetchAllServices(String language) {
+    return api.fetchAllServices(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
-    return api.fetchServicesOfCategoryWithId(id);
+  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(String language, int id) {
+    return api.fetchServicesOfCategoryWithId(language, id);
   }
 
-  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
-    return api.fetchCategoriesOfCategoryWithId(parentId);
+  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(String language,
+      int parentId) {
+    return api.fetchCategoriesOfCategoryWithId(language, parentId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
-    return api.fetchDaysData(serviceId);
+  public Observable<List<DataServiceEntity>> fetchDaysData(String language, String serviceId) {
+    return api.fetchDaysData(language, serviceId);
   }
 
-  public Observable<List<MasterEntity>> fetchMasters(String serviceId, String dataID) {
-    return api.fetchMasters(serviceId, dataID);
+  public Observable<List<MasterEntity>> fetchMasters(String language, String serviceId,
+      String dataID) {
+    return api.fetchMasters(language, serviceId, dataID);
   }
 
-  public Observable<List<MasterEntity>> fetchAllMasters() {
-    return api.fetchAllMasters();
+  public Observable<List<MasterEntity>> fetchAllMasters(String language) {
+    return api.fetchAllMasters(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(String masterId) {
-    return api.fetchAllServicesByMasterId(masterId);
+  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(String language,
+      String masterId) {
+    return api.fetchAllServicesByMasterId(language, masterId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
-    return api.fetchDaysDataWithMasterId(masterId);
+  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String language,
+      String masterId) {
+    return api.fetchDaysDataWithMasterId(language, masterId);
   }
 
-  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String token,
-      BookingServerEntity bookingServerEntity) {
-    return api.checkInService(token, bookingServerEntity);
+  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String language,
+      String token, BookingServerEntity bookingServerEntity) {
+    return api.checkInService(language, token, bookingServerEntity);
   }
 
-  public Observable<List<LastBookingEntity>> fetchLastBooking(String token) {
-    return api.fetchLastBooking(token);
+  public Observable<List<LastBookingEntity>> fetchLastBooking(String language, String token) {
+    return api.fetchLastBooking(language, token);
   }
 
-  public Observable<Response<Void>> cancelOrder(Integer serviceId, String token) {
-    return api.cancelOrder(String.valueOf(serviceId), token);
+  public Observable<Response<Void>> cancelOrder(String language, Integer serviceId, String token) {
+    return api.cancelOrder(language, String.valueOf(serviceId), token);
   }
 
-  public Observable<Response<Void>> postponeService(String entryId, String userId, int scheduleId) {
-    return api.postponeService(entryId, userId, scheduleId);
+  public Observable<Response<Void>> postponeService(String language, String entryId, String userId,
+      int scheduleId) {
+    return api.postponeService(language, entryId, userId, scheduleId);
   }
 
-  public Observable<List<NewsEntity>> fetchAllNews() {
-    return api.fetchAllNews();
+  public Observable<List<NewsEntity>> fetchAllNews(String language) {
+    return api.fetchAllNews(language);
   }
 
-  public Observable<NewsEntity> fetchNewsPreview() {
-    return api.fetchNewsPreview();
+  public Observable<NewsEntity> fetchNewsPreview(String language) {
+    return api.fetchNewsPreview(language);
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks(String token) {
-    return api.fetchListOfWorks(token);
+  public Observable<List<OurWorkEntity>> fetchListOfWorks(String language, String token) {
+    return api.fetchListOfWorks(language, token);
   }
 
-  public Observable<Response<Void>> addToFavoritePhoto(int photoId, String token) {
-    return api.addToFavoritePhoto(photoId, token);
+  public Observable<Response<Void>> addToFavoritePhoto(String language, int photoId, String token) {
+    return api.addToFavoritePhoto(language, photoId, token);
   }
 
-  public Observable<Response<Void>> removeFromFavoritePhoto(int photoId, String token) {
-    return api.removeFromFavoritePhoto(photoId, token);
+  public Observable<Response<Void>> removeFromFavoritePhoto(String language, int photoId,
+      String token) {
+    return api.removeFromFavoritePhoto(language, photoId, token);
   }
 
-  public Observable<List<GoodsEntity>> fetchAllProducts(String token) {
-    return api.fetchAllProducts(token);
+  public Observable<List<GoodsEntity>> fetchAllProducts(String language, String token) {
+    return api.fetchAllProducts(language, token);
   }
 
-  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
-    return api.fetchCategories();
+  public Observable<List<GoodsCategoryEntity>> fetchCategories(String language) {
+    return api.fetchCategories(language);
   }
 
-  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
-    return api.fetchGoodsByCatalogId(id);
+  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(String language, Integer id) {
+    return api.fetchGoodsByCatalogId(language, id);
   }
 
-  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(String token) {
-    return api.fetchFavoritePhotos(token);
+  public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos(String language,
+      String token) {
+    return api.fetchFavoritePhotos(language, token);
   }
 
-  public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods(String token) {
-    return api.fetchFavoriteGoods(token);
+  public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods(String language, String token) {
+    return api.fetchFavoriteGoods(language, token);
   }
 
-  public Observable<Response<Void>> addToFavoriteGoods(int goodsId, String token) {
-    return api.addToFavoriteGoods(goodsId, token);
+  public Observable<Response<Void>> addToFavoriteGoods(String language, int goodsId, String token) {
+    return api.addToFavoriteGoods(language, goodsId, token);
   }
 
-  public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId, String token) {
-    return api.removeFromFavoriteGoods(goodsId, token);
+  public Observable<Response<Void>> removeFromFavoriteGoods(String language, int goodsId,
+      String token) {
+    return api.removeFromFavoriteGoods(language, goodsId, token);
   }
-
-  //public Observable<TokenEntity> login(LoginBody credentials) {
-  //  return api.login(credentials);
-  //}
 }

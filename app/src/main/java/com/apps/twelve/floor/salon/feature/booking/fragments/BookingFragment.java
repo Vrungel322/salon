@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
-import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
@@ -15,7 +13,6 @@ import com.apps.twelve.floor.salon.feature.booking.presenters.BookingFragmentPre
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.bumptech.glide.Glide;
 
 /**
  * Created by Vrungel on 20.02.2017.
@@ -24,9 +21,6 @@ import com.bumptech.glide.Glide;
 public class BookingFragment extends BaseFragment implements IBookingFragmentView {
 
   @InjectPresenter BookingFragmentPresenter mBookingFragmentPresenter;
-
-  @BindView(R.id.ivMaser) ImageView mIvMaser;
-  @BindView(R.id.ivService) ImageView mIvService;
 
   public BookingFragment() {
     super(R.layout.fragment_booking);
@@ -41,9 +35,6 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
-    Glide.with(this).load(R.drawable.choose_master).into(mIvMaser);
-    Glide.with(this).load(R.drawable.choose_service).into(mIvService);
   }
 
   @OnClick(R.id.clChooseService) void chooseService() {
