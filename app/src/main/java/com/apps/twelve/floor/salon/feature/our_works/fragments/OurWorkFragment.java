@@ -60,8 +60,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
         .setOnItemClickListener((recyclerView, position, v) -> {
           if (position == 0 && !mAuthorizationManager.isAuthorized()) {
             mOurWorkFragmentPresenter.showAlertDialog();
-          } else
-          if (mOurWorkAdapter.getEntity(position).getImageCount() != 0) {
+          } else if (mOurWorkAdapter.getEntity(position).getImageCount() != 0) {
             mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
                 WorkDetailsFragment.newInstance(mOurWorkAdapter.getEntity(position)));
           } else {

@@ -134,7 +134,7 @@ import timber.log.Timber;
   public void setItemSelected(int position) {
     mBookingEntity.setServiceId(String.valueOf(mServiceAllEntities.get(position).getServiceId()));
     mBookingEntity.setServiceName(String.valueOf(mServiceAllEntities.get(position).getTitle()));
-    mBookingEntity.setDurationServices(String.valueOf(mServiceAllEntities.get(position).getTime()));
+    mBookingEntity.setDurationServices(mServiceAllEntities.get(position).getTime());
     getViewState().setItemSelected(position);
     mRxBus.post(
         new RxBusHelper.EventForNextStep(Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT));

@@ -37,14 +37,15 @@ public class NotificationJob extends Job {
   @Override @NonNull protected Result onRunJob(Params params) {
 
     boolean showNotification = mAuthManager.isAuthorized();
-    if (showNotification)
-    switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
-      case HOURLY:
-        showNotification = mDataManager.isHourlyNotificationsEnabled();
-        break;
-      case DAILY:
-        showNotification = mDataManager.isDailyNotificationsEnabled();
-        break;
+    if (showNotification) {
+      switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
+        case HOURLY:
+          showNotification = mDataManager.isHourlyNotificationsEnabled();
+          break;
+        case DAILY:
+          showNotification = mDataManager.isDailyNotificationsEnabled();
+          break;
+      }
     }
 
     if (showNotification) {

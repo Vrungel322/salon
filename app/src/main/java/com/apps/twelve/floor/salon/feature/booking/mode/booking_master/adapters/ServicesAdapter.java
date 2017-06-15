@@ -58,8 +58,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
               R.color.colorLLightGray));
     }
-    Glide.with(mContext)
-        .load(mServiceEntities.get(position).getImage()).centerCrop()
+    Glide.with(mContext).load(mServiceEntities.get(position).getImage()).centerCrop()
         .placeholder(
             AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
         .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
@@ -70,8 +69,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());
     holder.mTextViewAboutService.setText(mServiceEntities.get(position).getDescription());
     holder.mTextViewServicePrice.setText(mServiceEntities.get(position).getPrice());
-    holder.mTextViewSServiceDuration.setText(
-        String.valueOf(mServiceEntities.get(position).getTime()));
+    holder.mTextViewSServiceDuration.setText(mServiceEntities.get(position).getTime());
   }
 
   @Override public int getItemCount() {
