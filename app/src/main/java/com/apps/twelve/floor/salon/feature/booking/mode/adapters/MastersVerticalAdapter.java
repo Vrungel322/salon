@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.apps.twelve.floor.salon.utils.Constants.MASTER_MALE_PLACEHOLDER;
+import static com.apps.twelve.floor.salon.utils.Constants.Other.MASTER_MALE_PLACEHOLDER;
 
 /**
  * Created by Vrungel on 28.03.2017.
