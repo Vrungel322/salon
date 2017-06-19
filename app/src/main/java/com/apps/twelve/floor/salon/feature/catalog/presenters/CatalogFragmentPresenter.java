@@ -46,7 +46,8 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
           goodsEntities.add(0,
-              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
+              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", "", 0, "",
+                  "",
                   Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0, null, false, false,
                   false));
           getViewState().updateGoodsList(goodsEntities);
@@ -66,7 +67,8 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {
           goodsEntities.add(0,
-              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", 0, "", "",
+              new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", "", 0, "",
+                  "",
                   Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0, null, false, false,
                   false));
           getViewState().updateGoodsList(goodsEntities);

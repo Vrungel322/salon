@@ -15,6 +15,7 @@ public class GoodsEntity implements Parcelable {
   @SerializedName("text") private String mShortDescription;
   @SerializedName("price") private String mPrice;
   @SerializedName("new_price") private String mNewPrice;
+  @SerializedName("bonus_price") private String mBonusPrice;
   @SerializedName("products_category_id") private int mCategoryId;
   @SerializedName("created_at") private String mCreateDate;
   @SerializedName("updated_at") private String mUpdateDate;
@@ -26,7 +27,8 @@ public class GoodsEntity implements Parcelable {
   @SerializedName("for_sale") private boolean mType;
 
   public GoodsEntity(int id, String title, String shortDescription, String price, String newPrice,
-      int categoryId, String createDate, String updateDate, String imageURL, int imgCount,
+      String bonusPrice, int categoryId, String createDate, String updateDate, String imageURL,
+      int imgCount,
       ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite, boolean isNew,
       boolean type) {
     this.id = id;
@@ -34,6 +36,7 @@ public class GoodsEntity implements Parcelable {
     mShortDescription = shortDescription;
     mPrice = price;
     mNewPrice = newPrice;
+    mBonusPrice = bonusPrice;
     mCategoryId = categoryId;
     mCreateDate = createDate;
     mUpdateDate = updateDate;
@@ -83,6 +86,14 @@ public class GoodsEntity implements Parcelable {
 
   public void setNewPrice(String newPrice) {
     mNewPrice = newPrice;
+  }
+
+  public String getBonusPrice() {
+    return mBonusPrice;
+  }
+
+  public void setBonusPrice(String bonusPrice) {
+    mBonusPrice = bonusPrice;
   }
 
   public int getCategoryId() {
@@ -167,6 +178,7 @@ public class GoodsEntity implements Parcelable {
     mShortDescription = in.readString();
     mPrice = in.readString();
     mNewPrice = in.readString();
+    mBonusPrice = in.readString();
     mCategoryId = in.readInt();
     mCreateDate = in.readString();
     mUpdateDate = in.readString();
@@ -182,6 +194,7 @@ public class GoodsEntity implements Parcelable {
     dest.writeString(mShortDescription);
     dest.writeString(mPrice);
     dest.writeString(mNewPrice);
+    dest.writeString(mBonusPrice);
     dest.writeInt(mCategoryId);
     dest.writeString(mCreateDate);
     dest.writeString(mUpdateDate);

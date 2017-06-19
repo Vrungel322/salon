@@ -17,6 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Other.SERVER_ANSWER_EMPTY_STRING;
+
 /**
  * Created by John on 06.06.2017.
  */
@@ -59,6 +61,12 @@ public class GoodsFavoriteListAdapter
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
     holder.mTextViewShortDescription.setText(mGoodsEntities.get(position).getShortDescription());
     holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
+    if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+      holder.mTextViewPriceBonus.setVisibility(View.GONE);
+      holder.mImageViewBonusPrice.setVisibility(View.GONE);
+    } else {
+      holder.mTextViewPriceBonus.setText(mGoodsEntities.get(position).getBonusPrice());
+    }
   }
 
   @Override public int getItemCount() {
@@ -76,6 +84,8 @@ public class GoodsFavoriteListAdapter
     @BindView(R.id.tvGoodsName) TextView mTextViewGoodsName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
     @BindView(R.id.tvPrice) TextView mTextViewPrice;
+    @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
+    @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
 
     GoodsFavoriteListViewHolder(View view) {
       super(view);

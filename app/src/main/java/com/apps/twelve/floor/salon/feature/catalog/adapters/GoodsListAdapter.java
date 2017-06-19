@@ -17,6 +17,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Other.SERVER_ANSWER_EMPTY_STRING;
+
 /**
  * Created by Vrungel on 18.05.2017.
  */
@@ -92,6 +94,13 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         goodsListViewHolder.mTextViewShortDescription.setText(
             mGoodsEntities.get(position).getShortDescription());
         goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
+        if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+          goodsListViewHolder.mTextViewPriceBonus.setVisibility(View.GONE);
+          goodsListViewHolder.mImageViewBonusPrice.setVisibility(View.GONE);
+        } else {
+          goodsListViewHolder.mTextViewPriceBonus.setText(
+              mGoodsEntities.get(position).getBonusPrice());
+        }
         break;
     }
   }
@@ -115,6 +124,8 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @BindView(R.id.tvGoodsName) TextView mTextViewGoodsName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
     @BindView(R.id.tvPrice) TextView mTextViewPrice;
+    @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
+    @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
 
     GoodsListViewHolder(View view) {
       super(view);
