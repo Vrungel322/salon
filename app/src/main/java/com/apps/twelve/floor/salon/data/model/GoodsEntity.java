@@ -24,13 +24,13 @@ public class GoodsEntity implements Parcelable {
   @SerializedName("images") private ArrayList<GoodsDetailContent> mGoodsDetailContents;
   @SerializedName("favorite") private boolean mFavorite;
   @SerializedName("is_new") private boolean mIsNew;
-  @SerializedName("for_sale") private boolean mType;
+  @SerializedName("for_sale") private boolean mIsForSale;
 
   public GoodsEntity(int id, String title, String shortDescription, String price, String newPrice,
       String bonusPrice, int categoryId, String createDate, String updateDate, String imageURL,
       int imgCount,
       ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite, boolean isNew,
-      boolean type) {
+      boolean isForSale) {
     this.id = id;
     mTitle = title;
     mShortDescription = shortDescription;
@@ -45,7 +45,7 @@ public class GoodsEntity implements Parcelable {
     mGoodsDetailContents = goodsDetailContents;
     mFavorite = favorite;
     mIsNew = isNew;
-    mType = type;
+    mIsForSale = isForSale;
   }
 
   public int getId() {
@@ -160,12 +160,12 @@ public class GoodsEntity implements Parcelable {
     mIsNew = aNew;
   }
 
-  public boolean getType() {
-    return mType;
+  public boolean isForSale() {
+    return mIsForSale;
   }
 
-  public void setType(boolean type) {
-    mType = type;
+  public void setForSale(boolean forSale) {
+    mIsForSale = forSale;
   }
 
   public static Creator<GoodsEntity> getCREATOR() {
@@ -186,6 +186,7 @@ public class GoodsEntity implements Parcelable {
     mImgCount = in.readInt();
     mFavorite = in.readByte() != 0;
     mIsNew = in.readByte() != 0;
+    mIsForSale = in.readByte() != 0;
   }
 
   @Override public void writeToParcel(Parcel dest, int flags) {
@@ -202,6 +203,7 @@ public class GoodsEntity implements Parcelable {
     dest.writeInt(mImgCount);
     dest.writeByte((byte) (mFavorite ? 1 : 0));
     dest.writeByte((byte) (mIsNew ? 1 : 0));
+    dest.writeByte((byte) (mIsForSale ? 1 : 0));
   }
 
   @Override public int describeContents() {

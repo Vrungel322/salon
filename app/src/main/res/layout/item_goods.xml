@@ -121,7 +121,7 @@
           card_view:srcCompat="@drawable/alerter_ic_face"
           />
       <ImageView
-          android:id="@+id/ivType"
+          android:id="@+id/ivForSale"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentEnd="true"

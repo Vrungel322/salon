@@ -84,10 +84,17 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             .dontAnimate()
             .into(goodsListViewHolder.mImageViewGoodsPhoto);
 
+        /* check if good is new */
         if (mGoodsEntities.get(position).isNew()) {
-          goodsListViewHolder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_face);
+          goodsListViewHolder.mImageViewIsNew.setImageResource(R.drawable.ic_badge_new_32dp);
         } else {
-          goodsListViewHolder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_notifications);
+          goodsListViewHolder.mImageViewIsNew.setVisibility(View.GONE);
+        }
+        /* check if for sale */
+        if (mGoodsEntities.get(position).isForSale()) {
+          goodsListViewHolder.mImageViewForSale.setImageResource(R.drawable.ic_badge_sale_32dp);
+        } else {
+          goodsListViewHolder.mImageViewForSale.setVisibility(View.GONE);
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
@@ -119,7 +126,7 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
   static class GoodsListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivIsNew) ImageView mImageViewIsNew;
-    @BindView(R.id.ivType) ImageView mImageViewType;
+    @BindView(R.id.ivForSale) ImageView mImageViewForSale;
     @BindView(R.id.ivGoodsPhoto) ImageView mImageViewGoodsPhoto;
     @BindView(R.id.tvGoodsName) TextView mTextViewGoodsName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;

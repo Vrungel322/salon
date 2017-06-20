@@ -52,11 +52,19 @@ public class GoodsFavoriteListAdapter
         .dontAnimate()
         .into(holder.mImageViewGoodsPhoto);
 
+        /* check if good is new */
     if (mGoodsEntities.get(position).isNew()) {
-      holder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_face);
+      holder.mImageViewIsNew.setImageResource(R.drawable.ic_badge_new_32dp);
     } else {
-      holder.mImageViewIsNew.setImageResource(R.drawable.alerter_ic_notifications);
+      holder.mImageViewIsNew.setVisibility(View.GONE);
     }
+        /* check if for sale */
+    if (mGoodsEntities.get(position).isForSale()) {
+      holder.mImageViewForSale.setImageResource(R.drawable.ic_badge_sale_32dp);
+    } else {
+      holder.mImageViewForSale.setVisibility(View.GONE);
+    }
+
 
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
     holder.mTextViewShortDescription.setText(mGoodsEntities.get(position).getShortDescription());
@@ -79,7 +87,7 @@ public class GoodsFavoriteListAdapter
 
   static class GoodsFavoriteListViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivIsNew) ImageView mImageViewIsNew;
-    @BindView(R.id.ivType) ImageView mImageViewType;
+    @BindView(R.id.ivForSale) ImageView mImageViewForSale;
     @BindView(R.id.ivGoodsPhoto) ImageView mImageViewGoodsPhoto;
     @BindView(R.id.tvGoodsName) TextView mTextViewGoodsName;
     @BindView(R.id.tvShortDescription) TextView mTextViewShortDescription;
