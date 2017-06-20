@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clParent"
     android:layout_width="match_parent"
     android:layout_height="80dp"
@@ -37,6 +38,16 @@
       app:layout_constraintLeft_toRightOf="@+id/ivServiceImg"
       app:layout_constraintTop_toTopOf="@+id/ivServiceImg"
       />
+  <ImageView
+      android:id="@+id/ivServiceBadge"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginRight="4dp"
+      android:layout_marginTop="4dp"
+      app:layout_constraintRight_toLeftOf="@+id/tvServiceName"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/alerter_ic_face"
+      />
   <TextView
       android:id="@+id/tvAboutService"
       android:layout_width="0dp"
@@ -63,64 +74,76 @@
       android:orientation="vertical"
       app:layout_constraintGuide_percent="0.67"
       />
-  <TextView
-      android:id="@+id/tvServicePrice"
-      android:layout_width="wrap_content"
+  <android.support.constraint.ConstraintLayout
+      android:id="@+id/clInfo"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="8dp"
-      android:layout_marginTop="0dp"
-      android:ellipsize="end"
-      android:textColor="@color/colorBlack"
-      android:textSize="16sp"
-      app:layout_constraintHorizontal_bias="0.8"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="@+id/guideline"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/tvServiceName"
-      />
-  <ImageView
-      android:id="@+id/iv_duration"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="0dp"
-      android:layout_marginEnd="4dp"
-      android:layout_marginRight="4dp"
-      android:layout_marginTop="0dp"
-      app:layout_constraintBottom_toBottomOf="@+id/tvServiceDuration"
-      app:layout_constraintRight_toLeftOf="@+id/tvServiceDuration"
-      app:layout_constraintTop_toTopOf="@+id/tvServiceDuration"
-      app:srcCompat="@drawable/ic_work_time_14dp"
-      />
-  <TextView
-      android:id="@+id/tvServiceDuration"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="0dp"
-      android:layout_marginRight="0dp"
-      android:layout_marginTop="4dp"
-      android:textColor="@color/colorTransparentBlack"
-      android:textSize="12sp"
-      app:layout_constraintRight_toRightOf="@+id/tvServicePrice"
-      app:layout_constraintTop_toBottomOf="@+id/tvServicePrice"
-      />
-  <TextView
-      android:id="@+id/tvPriceBonus"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginRight="0dp"
-      android:layout_marginTop="4dp"
-      android:textColor="?colorAccent"
-      app:layout_constraintRight_toRightOf="@+id/tvServicePrice"
-      app:layout_constraintTop_toBottomOf="@+id/iv_duration"
-      />
-  <ImageView
-      android:id="@+id/ivServiceBadge"
-      android:layout_width="20dp"
-      android:layout_height="20dp"
-      android:layout_marginRight="4dp"
-      android:layout_marginTop="4dp"
-      app:layout_constraintRight_toLeftOf="@+id/tvServiceName"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/alerter_ic_face"
-      />
+      >
+    <TextView
+        android:id="@+id/tvServicePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:ellipsize="end"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <ImageView
+        android:id="@+id/iv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvServiceDuration"
+        app:layout_constraintRight_toLeftOf="@+id/tvServiceDuration"
+        app:layout_constraintTop_toTopOf="@+id/tvServiceDuration"
+        app:srcCompat="@drawable/ic_work_time_14dp"
+        />
+    <TextView
+        android:id="@+id/tvServiceDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorTransparentBlack"
+        android:textSize="12sp"
+        app:layout_constraintRight_toRightOf="@+id/tvServicePrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvServicePrice"
+        />
+    <ImageView
+        android:id="@+id/ivBonusPrice"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_toLeftOf="@+id/tvPriceBonus"
+        android:layout_toStartOf="@+id/tvPriceBonus"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPriceBonus"
+        app:layout_constraintRight_toLeftOf="@+id/tvPriceBonus"
+        app:layout_constraintTop_toTopOf="@+id/tvPriceBonus"
+        app:srcCompat="@drawable/ic_bonus_24dp"
+        />
+    <TextView
+        android:id="@+id/tvPriceBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="4dp"
+        android:textColor="?colorAccent"
+        app:layout_constraintRight_toRightOf="@+id/tvServicePrice"
+        app:layout_constraintTop_toBottomOf="@+id/iv_duration"
+        tools:text="100"
+        />
+  </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -15,19 +15,21 @@ public class ServiceEntity {
   @SerializedName("image") @Expose private String image;
   @SerializedName("duration") @Expose private String time;
   @SerializedName("price") @Expose private String price;
+  @SerializedName("bonus_price") @Expose private String bonusPrice;
   @SerializedName("category_id") @Expose private String categoryId;
 
   public ServiceEntity() {
   }
 
   public ServiceEntity(Integer serviceId, String title, String description, String image,
-      String time, String price, String categoryId) {
+      String time, String price, String bonusPrice, String categoryId) {
     this.serviceId = serviceId;
     this.title = title;
     this.description = description;
     this.image = image;
     this.time = time;
     this.price = price;
+    this.bonusPrice = bonusPrice;
     this.categoryId = categoryId;
   }
 
@@ -77,6 +79,14 @@ public class ServiceEntity {
 
   public void setPrice(String price) {
     this.price = price;
+  }
+
+  public String getBonusPrice() {
+    return bonusPrice;
+  }
+
+  public void setBonusPrice(String bonusPrice) {
+    this.bonusPrice = bonusPrice;
   }
 
   public String getCategoryId() {

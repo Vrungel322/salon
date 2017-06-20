@@ -20,6 +20,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Other.SERVER_ANSWER_EMPTY_STRING;
+
 /**
  * Created by Vrungel on 29.03.2017.
  */
@@ -69,6 +71,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     holder.mTextViewAboutService.setText(mServiceEntities.get(position).getDescription());
     holder.mTextViewServicePrice.setText(mServiceEntities.get(position).getPrice());
     holder.mTextViewSServiceDuration.setText(mServiceEntities.get(position).getTime());
+
+    if (!mServiceEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+      holder.mTextViewPriceBonus.setText(mServiceEntities.get(position).getBonusPrice());
+    } else {
+      holder.mTextViewPriceBonus.setVisibility(View.GONE);
+      holder.mImageViewPriceBonus.setVisibility(View.GONE);
+    }
   }
 
   @Override public int getItemCount() {
@@ -88,7 +97,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
     @BindView(R.id.tvServiceDuration) TextView mTextViewSServiceDuration;
     @BindView(R.id.ivServiceBadge) ImageView mImageViewServiceBadge;
-    @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonuse;
+    @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
+    @BindView(R.id.ivBonusPrice) ImageView mImageViewPriceBonus;
 
     ServiceViewHolder(View view) {
       super(view);
