@@ -55,8 +55,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
       holder.mConstraintLayoutParent.getBackground().setAlpha(30);
     } else {
       holder.mConstraintLayoutParent.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(),
-              R.color.colorLLightGray));
+          ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(), R.color.colorWhite));
     }
     Glide.with(mContext).load(mServiceEntities.get(position).getImage()).centerCrop()
         .placeholder(

@@ -13,7 +13,7 @@
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"
       card_view:cardCornerRadius="1dp"
-      card_view:cardElevation="3dp"
+      card_view:cardElevation="0dp"
       card_view:cardUseCompatPadding="true"
       >
 
@@ -118,6 +118,9 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentStart="true"
           android:layout_alignParentTop="true"
+          android:layout_marginTop="4dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
           card_view:srcCompat="@drawable/alerter_ic_face"
           />
       <ImageView
@@ -127,6 +130,9 @@
           android:layout_alignParentEnd="true"
           android:layout_alignParentRight="true"
           android:layout_alignParentTop="true"
+          android:layout_marginEnd="4dp"
+          android:layout_marginRight="4dp"
+          android:layout_marginTop="4dp"
           card_view:srcCompat="@drawable/alerter_ic_face"
           />
     </RelativeLayout>
