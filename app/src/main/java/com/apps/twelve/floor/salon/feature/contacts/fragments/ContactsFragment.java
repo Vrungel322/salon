@@ -59,7 +59,8 @@ public class ContactsFragment extends BaseFragment implements IContactsFragmentV
   }
 
   @OnClick(R.id.tv_about) void showAbout() {
-    showToastMessage("Show about");
+    mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+        ContactsAboutFragment.newInstance());
   }
 
   @OnClick(R.id.tv_website) void openWebsite() {

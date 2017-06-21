@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFavoriteFra
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.GoodsDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsAboutFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.contacts.presenters.ContactsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MainFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
@@ -64,6 +65,8 @@ import dagger.Component;
   void inject(WorkDetailsFragmentPresenter presenter);
 
   void inject(ContactsFragmentPresenter presenter);
+
+  void inject(ContactsAboutFragmentPresenter presenter);
 
   void inject(SubNewsFragmentPresenter presenter);
 
