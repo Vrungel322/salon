@@ -72,11 +72,11 @@ public class DatesHorizontalAdapter
       holder.mViewLine.setBackgroundColor(
           ContextCompat.getColor(holder.mViewLine.getContext(), value.resourceId));
       holder.mTextViewDate.setTextColor(
-          ContextCompat.getColor(holder.mTextViewDate.getContext(), R.color.colorBlack));
+          ContextCompat.getColor(holder.mTextViewDate.getContext(), R.color.colorGray));
       holder.mTextViewStartTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorBlack));
+          ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorGray));
       holder.mTextViewEndTime.setTextColor(
-          ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorBlack));
+          ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorGray));
     }
   }
 

@@ -18,7 +18,7 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="16dp"
       android:text="@string/report_problem_description"
-      android:textColor="@color/colorBlack"
+      android:textColor="@color/colorGray"
       android:textSize="17sp"
       />
   <EditText

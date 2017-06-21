@@ -86,7 +86,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/settings_notifications"
-              android:textColor="@color/colorBlack"
+              android:textColor="@color/colorGray"
               android:textSize="16sp"
               />
           <View
@@ -127,7 +127,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/settings_problem"
-              android:textColor="@color/colorBlack"
+              android:textColor="@color/colorGray"
               android:textSize="16sp"
               />
           <View
@@ -157,7 +157,7 @@
               android:layout_marginStart="16dp"
               android:layout_marginTop="16dp"
               android:text="@string/settings_change_theme"
-              android:textColor="@color/colorBlack"
+              android:textColor="@color/colorGray"
               android:textSize="16sp"
               />
           <View

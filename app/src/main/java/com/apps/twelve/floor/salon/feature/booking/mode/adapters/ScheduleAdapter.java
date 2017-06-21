@@ -57,7 +57,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         holder.mLinearLayoutParent.setBackgroundColor(
             ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));
         holder.mTextViewTime.setTextColor(
-            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorBlack));
+            ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorGray));
       }
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(

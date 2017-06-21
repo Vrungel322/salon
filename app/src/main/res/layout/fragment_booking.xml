@@ -43,7 +43,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/book_choose_specialist"
-          android:textColor="@color/colorBlack"
+          android:textColor="@color/colorGray"
           android:textSize="18sp"
           />
     </RelativeLayout>
@@ -76,7 +76,7 @@
           android:layout_marginStart="16dp"
           android:layout_marginTop="16dp"
           android:text="@string/book_choose_service"
-          android:textColor="@color/colorBlack"
+          android:textColor="@color/colorGray"
           android:textSize="18sp"
           />
     </RelativeLayout>

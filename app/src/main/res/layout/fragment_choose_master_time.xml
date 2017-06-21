@@ -67,7 +67,7 @@
             android:layout_marginStart="24dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorGray"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/tv_master"
             app:layout_constraintRight_toRightOf="parent"
@@ -95,7 +95,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingBottom="16dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorGray"
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="@+id/tv_master_description"
             app:layout_constraintRight_toRightOf="parent"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorGray"
             android:textSize="16sp"
             android:visibility="gone"
             />
@@ -238,7 +238,7 @@
               android:ellipsize="end"
               android:lines="1"
               android:text="@string/spare_time"
-              android:textColor="@color/colorBlack"
+              android:textColor="@color/colorGray"
               android:textSize="11sp"
               />
           <TextView

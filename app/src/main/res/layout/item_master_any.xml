@@ -43,7 +43,7 @@
           android:ellipsize="end"
           android:maxLines="3"
           android:text="@string/any_master"
-          android:textColor="@color/colorBlack"
+          android:textColor="@color/colorGray"
           android:textSize="16sp"
           />
       <LinearLayout
