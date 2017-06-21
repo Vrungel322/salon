@@ -43,7 +43,7 @@ import timber.log.Timber;
           getViewState().stopProgressBar();
           getViewState().fillCategories(genres);
         }, throwable -> {
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
           getViewState().stopProgressBar();
           Timber.e(throwable);
         });

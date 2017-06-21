@@ -50,4 +50,9 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @Override public void startSignInActivity() {
     mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
   }
+
+  @Override public void showWrongMessage() {
+    showAlertMessage(getResources().getString(R.string.dialog_error_title),
+        getResources().getString(R.string.wrong));
+  }
 }

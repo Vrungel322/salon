@@ -11,9 +11,14 @@ import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
+
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -48,29 +53,43 @@ import timber.log.Timber;
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
     if (mAuthorizationManager.isAuthorized()) {
       getViewState().startAnimation();
-      Subscription subscription = mDataManager.checkInService(mapper.transform(mBookingEntity))
+      Subscription subscription = mAuthorizationManager.checkToken(
+          mDataManager.checkInService(mapper.transform(mBookingEntity)))
+          .concatMap(lastBookingEntityResponse -> {
+            if (lastBookingEntityResponse.code() == RESPONSE_TOKEN_EXPIRED) {
+              return mAuthorizationManager.checkToken(
+                  mDataManager.checkInService(mapper.transform(mBookingEntity)));
+            }
+            return Observable.just(lastBookingEntityResponse);
+          })
           .compose(ThreadSchedulers.applySchedulers())
           .doOnNext(response -> {
-            if (response.code() == 200) {
-              mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-              mJobsCreator.createNotification(String.valueOf(response.body().getId()),
-                  Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
-                      - System.currentTimeMillis(), mBookingEntity.getServiceName());
+            if (response.code() == RESPONSE_200) {
               getViewState().stopAnimation();
-            } else {
-              getViewState().showAlert();
             }
           })
           .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
           .subscribe(response -> {
-            if (response.code() == 200) {
-              getViewState().closeBooking();
-            } else {
-              getViewState().revertAnimation();
+            switch (response.code()) {
+              case RESPONSE_200:
+                mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                mJobsCreator.createNotification(String.valueOf(response.body().getId()),
+                    Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
+                        - System.currentTimeMillis(), mBookingEntity.getServiceName());
+                getViewState().closeBooking();
+                break;
+              case RESPONSE_UNAUTHORIZED:
+                getViewState().revertAnimation();
+                break;
+              default:
+                getViewState().revertAnimation();
+                showMessageException();
+                break;
             }
           }, throwable -> {
             Timber.e(throwable);
-            showMessageConnectException(throwable);
+            getViewState().revertAnimation();
+            showMessageException(throwable);
           });
       addToUnsubscription(subscription);
     } else {

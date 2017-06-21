@@ -32,6 +32,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void showConnectErrorMessage();
 
+  @StateStrategyType(SkipStrategy.class) void showWrongMessage();
+
   @StateStrategyType(SkipStrategy.class) void logoutUser();
 
   @StateStrategyType(AddToEndSingleStrategy.class) void showAlertDialog();

@@ -32,7 +32,7 @@ import timber.log.Timber;
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(String.valueOf(count)), throwable -> {
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -57,7 +57,7 @@ import timber.log.Timber;
           getViewState().setBonusCount(String.valueOf(mDataManager.getBonusCountInt()));
           subscribeUpdateBonusFromParent();
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }

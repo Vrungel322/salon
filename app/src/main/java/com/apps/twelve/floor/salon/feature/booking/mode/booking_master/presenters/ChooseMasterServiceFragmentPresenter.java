@@ -50,7 +50,7 @@ import timber.log.Timber;
               mServiceEntities.addAll(serviceEntities);
             }, throwable -> {
               Timber.e(throwable);
-              showMessageConnectException(throwable);
+              showMessageException(throwable);
             });
     addToUnsubscription(subscription);
   }

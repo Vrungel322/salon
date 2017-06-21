@@ -84,6 +84,9 @@ public final class RxBusHelper {
   public static class MessageConnectException {
   }
 
+  public static class MessageWrongException {
+  }
+
   public static class ReloadCatalogByCategory {
     public Integer id;
     public String title;

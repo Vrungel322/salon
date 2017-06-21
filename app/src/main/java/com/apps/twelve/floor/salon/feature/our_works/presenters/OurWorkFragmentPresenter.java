@@ -56,7 +56,7 @@ import timber.log.Timber;
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -72,7 +72,7 @@ import timber.log.Timber;
                     new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp),
                         photoWorksEntities.body().size(), photoWorksEntities.body()));
               } else {
-                mAuthorizationManager.refreshToken();
+                //mAuthorizationManager.refreshToken();
               }
               if (photoWorksEntities.code() == 500) {
                 mAuthorizationManager.clear();
@@ -86,7 +86,7 @@ import timber.log.Timber;
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }

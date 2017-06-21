@@ -42,7 +42,7 @@ import timber.log.Timber;
           .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
               throwable -> {
                 Timber.e(throwable);
-                showMessageConnectException(throwable);
+                showMessageException(throwable);
               });
       addToUnsubscription(subscription);
     }
@@ -60,7 +60,7 @@ import timber.log.Timber;
                 throwable -> {
                   subscribeUpdateSubBooking();
                   Timber.e(throwable);
-                  showMessageConnectException(throwable);
+                  showMessageException(throwable);
                 });
     addToUnsubscription(subscription);
   }

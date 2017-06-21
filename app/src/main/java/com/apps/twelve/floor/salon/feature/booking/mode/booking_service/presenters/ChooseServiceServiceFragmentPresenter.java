@@ -55,7 +55,7 @@ import timber.log.Timber;
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBar();
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -73,7 +73,7 @@ import timber.log.Timber;
           getViewState().stateCategoriesServices(true);
         }, throwable -> {
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -89,7 +89,7 @@ import timber.log.Timber;
           getViewState().stateCategoriesServices(true);
         }, throwable -> {
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -106,7 +106,7 @@ import timber.log.Timber;
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBarAllServices();
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }

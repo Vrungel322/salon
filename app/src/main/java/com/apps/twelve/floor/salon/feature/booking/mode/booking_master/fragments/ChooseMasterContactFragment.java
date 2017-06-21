@@ -82,8 +82,4 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewDuration.setText(serviceDuration);
     mTextViewMaster.setText(masterName);
   }
-
-  @Override public void showAlert() {
-    showAlertMessage("Error", "Warning");
-  }
 }

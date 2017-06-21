@@ -53,6 +53,10 @@ public final class Constants {
     public static final String HOURLY = "HOURLY";
   }
 
+  public class StatusCode {
+    public static final int RESPONSE_200 = 200;
+  }
+
   public class Other {
     public static final String MASTER_MALE_PLACEHOLDER = "male";
     public static final String SERVER_ANSWER_EMPTY_STRING = "---";

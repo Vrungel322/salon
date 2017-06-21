@@ -35,7 +35,7 @@ import timber.log.Timber;
             getViewState().stopProgressBar();
             getViewState().updateGoodsFavoriteList(listResponse.body());
           } else {
-            mAuthorizationManager.refreshToken();
+            //mAuthorizationManager.refreshToken();
           }
           if (listResponse.code() == 500) {
             mAuthorizationManager.clear();
@@ -44,7 +44,7 @@ import timber.log.Timber;
         }, throwable -> {
           getViewState().stopProgressBar();
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }

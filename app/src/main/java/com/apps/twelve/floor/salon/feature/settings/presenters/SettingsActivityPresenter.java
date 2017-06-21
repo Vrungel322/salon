@@ -26,6 +26,7 @@ import timber.log.Timber;
     getViewState().addFragmentSettings();
     //RxBus
     subscribeConnectException();
+    subscribeWrongException();
     subscribeLogoutUser();
     subscribeUnauthorizedUser();
   }
@@ -34,6 +35,13 @@ import timber.log.Timber;
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageConnectException.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().showConnectErrorMessage(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeWrongException() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageWrongException.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().showWrongMessage(), Timber::e);
     addToUnsubscription(subscription);
   }
 

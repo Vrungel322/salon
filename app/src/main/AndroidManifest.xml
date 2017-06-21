@@ -50,8 +50,7 @@
         android:value="3006e1fddbc8e54ba561fd00fd583b69151ad9e4"/>
 
     <activity
-        android:name="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity"
-        android:parentActivityName=".feature.start_point.activities.StartActivity">
+        android:name="com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity">
     </activity>
 
     <activity

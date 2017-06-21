@@ -141,6 +141,7 @@
   <string name="menu_catalog">Каталог</string>
   <string name="choose_staff">Выбор продукции</string>
   <string name="choose_category">Выбрать категорию</string>
+  <string name="wrong">Что то пошло не так!"</string>
 
   <string-array name="changing_field">
     <item>имя</item>

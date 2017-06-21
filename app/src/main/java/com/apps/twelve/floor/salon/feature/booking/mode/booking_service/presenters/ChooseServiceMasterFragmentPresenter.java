@@ -53,7 +53,7 @@ import timber.log.Timber;
               getViewState().hideProgressBar();
             }, throwable -> {
               Timber.e(throwable);
-              showMessageConnectException(throwable);
+              showMessageException(throwable);
             });
     addToUnsubscription(subscription);
   }

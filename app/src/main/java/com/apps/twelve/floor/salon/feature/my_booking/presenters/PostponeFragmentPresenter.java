@@ -58,7 +58,7 @@ import timber.log.Timber;
           }
         }, throwable -> {
           Timber.e(throwable);
-          showMessageConnectException(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -98,7 +98,7 @@ import timber.log.Timber;
             }
           }, throwable -> {
             Timber.e(throwable);
-            showMessageConnectException(throwable);
+            showMessageException(throwable);
           });
       addToUnsubscription(subscription);
     } else {

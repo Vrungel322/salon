@@ -41,11 +41,19 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
   protected abstract void inject();
 
-  protected void showMessageConnectException(Throwable throwable) {
+  protected void showMessageException(Throwable throwable) {
     if (throwable instanceof SocketTimeoutException) {
       mRxBus.post(new RxBusHelper.MessageConnectException());
-    } else if (throwable instanceof UnknownHostException) {
-      mRxBus.post(new RxBusHelper.MessageConnectException());
+    } else {
+      if (throwable instanceof UnknownHostException) {
+        mRxBus.post(new RxBusHelper.MessageConnectException());
+      } else {
+        mRxBus.post(new RxBusHelper.MessageWrongException());
+      }
     }
+  }
+
+  protected void showMessageException() {
+    mRxBus.post(new RxBusHelper.MessageWrongException());
   }
 }

@@ -124,6 +124,11 @@ public class StartActivity extends BaseActivity
         getString(R.string.сheck_internet_connection));
   }
 
+  @Override public void showWrongMessage() {
+    showAlertMessage(getResources().getString(R.string.dialog_error_title),
+        getResources().getString(R.string.wrong));
+  }
+
   @Override public void logoutUser() {
     mNavigator.startActivityClearStack(this, new Intent(this, StartActivity.class));
   }

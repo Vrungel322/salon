@@ -22,6 +22,7 @@ import timber.log.Timber;
     //RxBus
     subscribeOnEvents();
     subscribeConnectException();
+    subscribeWrongException();
     subscribeUpdateBonusFromChildren();
     subscribeLogoutUser();
     subscribeShowDialog();
@@ -66,6 +67,13 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
+  private void subscribeWrongException() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.MessageWrongException.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(event -> getViewState().showWrongMessage(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
   public void fetchBonusCount() {
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusCount()
@@ -77,7 +85,7 @@ import timber.log.Timber;
           }, throwable -> {
             Timber.e(throwable);
             getViewState().setBonusCount(mDataManager.getBonusCountInt());
-            showMessageConnectException(throwable);
+            showMessageException(throwable);
           });
       addToUnsubscription(subscription);
     } else {

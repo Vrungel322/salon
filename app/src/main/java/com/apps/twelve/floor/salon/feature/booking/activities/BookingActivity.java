@@ -132,6 +132,11 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
   }
 
+  @Override public void showWrongMessage() {
+    showAlertMessage(getResources().getString(R.string.dialog_error_title),
+        getResources().getString(R.string.wrong));
+  }
+
   @Override protected void onDestroy() {
     super.onDestroy();
     cancelAlertDialog();
