@@ -2,8 +2,10 @@ package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -28,6 +30,7 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
   @BindView(R.id.tvNoTransactions) TextView mTextViewNoTransactions;
   @BindView(R.id.rvHistory) RecyclerView mRecyclerViewHistory;
   @BindView(R.id.viewNoTransSeparator) View mViewNoTransSeparator;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   private BonusHistoryAdapter mBonusHistoryAdapter;
 
@@ -48,6 +51,14 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
     mBonusHistoryAdapter = new BonusHistoryAdapter(getActivity());
     mRecyclerViewHistory.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewHistory.setAdapter(mBonusHistoryAdapter);
+
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
+    mSwipeRefreshLayout.setOnRefreshListener(() -> {
+      mBonusHistoryFragmentPresenter.getBonusCount();
+      mBonusHistoryFragmentPresenter.getBonusHistory();
+    });
   }
 
   @Override public void addBonusHistoryList(List<BonusHistoryEntity> historyEntities) {
@@ -70,5 +81,13 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
     mTextViewNoTransactions.setText(getString(R.string.history_no_items));
     mTextViewNoTransactions.setVisibility(View.VISIBLE);
     mViewNoTransSeparator.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 }

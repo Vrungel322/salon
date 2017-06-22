@@ -19,4 +19,8 @@ import java.util.List;
 
   void setHistoryNotAuth();
 
+  void startRefreshingView();
+
+  void stopRefreshingView();
+
 }

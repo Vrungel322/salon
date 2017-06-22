@@ -54,7 +54,7 @@ public class BonusHistoryAdapter
                 : AppCompatResources.getDrawable(mContext, R.drawable.ic_bonus_history_out_24dp))
         .into(holder.mImageViewHistoryItem);
 
-    holder.mTextViewServiceName.setText(mBonusHistoryEntities.get(position).getBonusDescription());
+    holder.mTextViewServiceName.setText(mBonusHistoryEntities.get(position).getBonusType());
     holder.mTextViewBonusCost.setText(
         String.valueOf(mBonusHistoryEntities.get(position).getPoints()));
     holder.mTransTime.setText(mBonusHistoryEntities.get(position).getCreatedAt());
