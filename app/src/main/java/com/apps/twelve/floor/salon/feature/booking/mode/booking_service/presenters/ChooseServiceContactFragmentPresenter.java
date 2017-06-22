@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
@@ -80,6 +81,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 break;
               case RESPONSE_UNAUTHORIZED:
                 getViewState().revertAnimation();
+                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
                 break;
               default:
                 getViewState().revertAnimation();

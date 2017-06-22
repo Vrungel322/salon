@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBookingView;
@@ -11,6 +12,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -43,8 +45,14 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
                   return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
                 }
                 return Observable.just(response);
-              })
-              .filter(response -> response.body() != null)
+              }).concatMap(response -> {
+            if (response.code() == RESPONSE_UNAUTHORIZED) {
+              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              return Observable.empty();
+            } else {
+              return Observable.just(response);
+            }
+          })
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()
