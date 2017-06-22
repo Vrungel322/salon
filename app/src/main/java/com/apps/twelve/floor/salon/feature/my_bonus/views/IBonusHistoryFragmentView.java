@@ -17,4 +17,6 @@ import java.util.List;
 
   void addBonusHistoryList(List<BonusHistoryEntity> entities);
 
+  void setHistoryNotAuth();
+
 }

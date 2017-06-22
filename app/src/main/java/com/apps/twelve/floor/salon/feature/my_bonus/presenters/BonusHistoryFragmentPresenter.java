@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.my_bonus.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IBonusHistoryFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import rx.Subscription;
@@ -32,7 +33,7 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  /*private void getBonusHistory() {
+  private void getBonusHistory() {
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusHistory()
           .compose(ThreadSchedulers.applySchedulers()).subscribe(bonusHistoryEntity -> {
@@ -44,8 +45,8 @@ import timber.log.Timber;
           });
       addToUnsubscription(subscription);
     } else {
-      getViewState().setBonusCount(0);
+      getViewState().setHistoryNotAuth();
     }
-  }*/
+  }
 
 }
