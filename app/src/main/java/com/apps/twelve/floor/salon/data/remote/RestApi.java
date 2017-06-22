@@ -67,12 +67,13 @@ public class RestApi {
     return api.fetchDaysDataWithMasterId(language, masterId);
   }
 
-  public Observable<retrofit2.Response<LastBookingEntity>> checkInService(String language,
-      String token, BookingServerEntity bookingServerEntity) {
+  public Observable<Response<LastBookingEntity>> checkInService(String language, String token,
+      BookingServerEntity bookingServerEntity) {
     return api.checkInService(language, token, bookingServerEntity);
   }
 
-  public Observable<List<LastBookingEntity>> fetchLastBooking(String language, String token) {
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBooking(String language,
+      String token) {
     return api.fetchLastBooking(language, token);
   }
 

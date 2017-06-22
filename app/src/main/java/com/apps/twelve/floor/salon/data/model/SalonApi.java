@@ -51,11 +51,11 @@ public interface SalonApi {
   Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(@Header("lng") String language,
       @Path("masterId") String masterId);
 
-  @POST("api/v1/entry") Observable<retrofit2.Response<LastBookingEntity>> checkInService(
+  @POST("api/v1/entry") Observable<Response<LastBookingEntity>> checkInService(
       @Header("lng") String language, @Header("authorization") String token,
       @Body BookingServerEntity bookingServerEntity);
 
-  @GET("api/v1/users/entries") Observable<List<LastBookingEntity>> fetchLastBooking(
+  @GET("api/v1/users/entries") Observable<Response<List<LastBookingEntity>>> fetchLastBooking(
       @Header("lng") String language, @Header("authorization") String token);
 
   @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(

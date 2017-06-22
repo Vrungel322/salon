@@ -1,13 +1,19 @@
 package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
+
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -29,11 +35,27 @@ import timber.log.Timber;
 
   private void fetchBookingEntities() {
     getViewState().startRefreshingView();
-    Subscription subscription = mDataManager.fetchLastBooking()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(lastBookingEntities -> {
-          getViewState().showAllBooking(lastBookingEntities);
-          getViewState().stopRefreshingView();
+    Subscription subscription =
+        mAuthorizationManager.checkToken(mDataManager.fetchLastBooking()).concatMap(response -> {
+          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+            return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
+          }
+          return Observable.just(response);
+        }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          switch (response.code()) {
+            case RESPONSE_200:
+              getViewState().showAllBooking(response.body());
+              getViewState().stopRefreshingView();
+              break;
+            case RESPONSE_UNAUTHORIZED:
+              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              getViewState().stopRefreshingView();
+              break;
+            default:
+              getViewState().stopRefreshingView();
+              showMessageException();
+              break;
+          }
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);
@@ -45,13 +67,8 @@ import timber.log.Timber;
   private void subscribeUpdateBooking() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
-            .flatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(lastBookingEntities -> {
-              getViewState().showAllBooking(lastBookingEntities);
-              getViewState().stopRefreshingView();
-            }, throwable -> {
-              getViewState().stopRefreshingView();
+            .subscribe(updateLastBookingListEvent -> fetchBookingEntities(), throwable -> {
               Timber.e(throwable);
               showMessageException(throwable);
             });

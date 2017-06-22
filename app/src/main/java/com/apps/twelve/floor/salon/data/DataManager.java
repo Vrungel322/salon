@@ -110,7 +110,7 @@ public class DataManager {
 
   //main screen
 
-  public Observable<List<LastBookingEntity>> fetchLastBooking() {
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBooking() {
     return mRestApi.fetchLastBooking(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }

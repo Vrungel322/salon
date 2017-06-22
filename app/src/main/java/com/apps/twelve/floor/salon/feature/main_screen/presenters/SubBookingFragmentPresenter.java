@@ -10,6 +10,8 @@ import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+
 /**
  * Created by Vrungel on 28.02.2017.
  */
@@ -32,18 +34,27 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.ShowAuthDialog());
   }
 
-  private void fetchBookingEntities() {
+  @SuppressWarnings("ConstantConditions") private void fetchBookingEntities() {
     if (mAuthorizationManager.isAuthorized()) {
-      Subscription subscription = mDataManager.fetchLastBooking()
-          .concatMap(Observable::from)
-          .take(2)
-          .toList()
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
-              throwable -> {
-                Timber.e(throwable);
-                showMessageException(throwable);
-              });
+      Subscription subscription =
+          mAuthorizationManager.checkToken(mDataManager.fetchLastBooking())
+              .concatMap(response -> {
+                if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+                  return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
+                }
+                return Observable.just(response);
+              })
+              .filter(response -> response.body() != null)
+              .concatMap(response -> Observable.from(response.body()))
+              .take(2)
+              .toList()
+              .compose(ThreadSchedulers.applySchedulers())
+              .subscribe(
+                  lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
+                  throwable -> {
+                    Timber.e(throwable);
+                    showMessageException(throwable);
+                  });
       addToUnsubscription(subscription);
     }
   }
@@ -51,17 +62,12 @@ import timber.log.Timber;
   private void subscribeUpdateSubBooking() {
     Subscription subscription =
         mRxBus.filteredObservable(RxBusHelper.UpdateLastBookingListEvent.class)
-            .concatMap(updateLastBookingListEvent -> mDataManager.fetchLastBooking()
-                .concatMap(Observable::from)
-                .take(2)
-                .toList())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
-                throwable -> {
-                  subscribeUpdateSubBooking();
-                  Timber.e(throwable);
-                  showMessageException(throwable);
-                });
+            .subscribe(updateLastBookingListEvent -> fetchBookingEntities(), throwable -> {
+              subscribeUpdateSubBooking();
+              Timber.e(throwable);
+              showMessageException(throwable);
+            });
     addToUnsubscription(subscription);
   }
 }
