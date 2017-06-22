@@ -8,13 +8,13 @@ import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +31,7 @@ import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.MvpDelegate;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
+import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -88,6 +89,11 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     }
     Glide.with(holder.mImageViewServicePhoto.getContext())
         .load(mBookingEntities.get(position).getImageUri())
+        .centerCrop()
+        .placeholder(
+            AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
+        .dontAnimate()
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mBookingEntities.get(position).getServiceName());
@@ -157,7 +163,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   public static class MyBookingViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.view) TextView view;
     @BindView(R.id.clLastBooking) ConstraintLayout mConstraintLayoutBooking;
-    @BindView(R.id.ivServicePhoto) ImageView mImageViewServicePhoto;
+    @BindView(R.id.ivServicePhoto) CircleImageView mImageViewServicePhoto;
     @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
     @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;

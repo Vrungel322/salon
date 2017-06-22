@@ -22,7 +22,7 @@
       tools:layout_constraintBottom_creator="1"
       tools:layout_constraintTop_creator="1"
       />
-  <ImageView
+  <de.hdodenhof.circleimageview.CircleImageView
       android:id="@+id/ivServicePhoto"
       android:layout_width="100dp"
       android:layout_height="100dp"

@@ -59,12 +59,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
       holder.mConstraintLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mConstraintLayoutParent.getContext(), R.color.colorWhite));
     }
-    Glide.with(mContext).load(mServiceEntities.get(position).getImage()).centerCrop()
+    Glide.with(mContext)
+        .load(mServiceEntities.get(position).getImage())
+        .centerCrop()
         .placeholder(
             AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
         .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
-        .
-            dontAnimate()
+        .dontAnimate()
         .into(holder.mImageViewServiceImg);
 
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());
