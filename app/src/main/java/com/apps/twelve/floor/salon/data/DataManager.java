@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.data;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BonusEntity;
+import com.apps.twelve.floor.salon.data.model.BonusHistoryEntity;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
@@ -13,7 +14,6 @@ import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
-import com.apps.twelve.floor.salon.data.model.category.BonusHistoryEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.List;
@@ -89,7 +89,7 @@ public class DataManager {
         mAuthorizationManager.getToken());
   }
 
-  public Observable<BonusHistoryEntity> fetchBonusHistory() {
+  public Observable<List<BonusHistoryEntity>> fetchBonusHistory() {
     return mRestApi.fetchBonusHistory(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }

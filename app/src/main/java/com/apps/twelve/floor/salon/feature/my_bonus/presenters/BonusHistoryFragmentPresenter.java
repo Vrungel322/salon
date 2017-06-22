@@ -23,7 +23,7 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getBonusCount();
-    //getBonusHistory();
+    getBonusHistory();
   }
 
   private void getBonusCount() {
@@ -36,14 +36,11 @@ import timber.log.Timber;
   private void getBonusHistory() {
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusHistory()
-          .doOnNext(count -> mDataManager.setBonusCount(count))
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(count -> {
-            getViewState().setBonusCount(count);
+          .compose(ThreadSchedulers.applySchedulers()).subscribe(bonusHistoryEntity -> {
+            getViewState().addBonusHistoryList(bonusHistoryEntity);
             mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
           }, throwable -> {
             Timber.e(throwable);
-            getViewState().setBonusCount(mDataManager.getBonusCountInt());
             showMessageException(throwable);
           });
       addToUnsubscription(subscription);
