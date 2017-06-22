@@ -77,10 +77,10 @@ import timber.log.Timber;
   public void fetchBonusCount() {
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusCount()
-          .doOnNext(count -> mDataManager.setBonusCount(count))
+          .doOnNext(bonusEntity -> mDataManager.setBonusCount(bonusEntity.getBonusesCount()))
           .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(count -> {
-            getViewState().setBonusCount(count);
+          .subscribe(bonusEntity -> {
+            getViewState().setBonusCount(bonusEntity.getBonusesCount());
             mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
           }, throwable -> {
             Timber.e(throwable);

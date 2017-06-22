@@ -21,8 +21,8 @@ public class Navigator {
 
   public void startActivityClearStack(@NonNull AppCompatActivity appCompatActivity,
       @NonNull Intent intent) {
-    appCompatActivity.startActivity(intent);
     appCompatActivity.finishAffinity();
+    appCompatActivity.startActivity(intent);
   }
 
   public void startActivity(@NonNull AppCompatActivity appCompatActivity, @NonNull Intent intent) {

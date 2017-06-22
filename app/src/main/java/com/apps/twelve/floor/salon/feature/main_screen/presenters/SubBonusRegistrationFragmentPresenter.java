@@ -48,7 +48,7 @@ import timber.log.Timber;
   private void subscribeUpdateBonusSwipe() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusSwipe.class)
         .concatMap(updateBonusSwipe -> mDataManager.fetchBonusCount())
-        .doOnNext(count -> mDataManager.setBonusCount(count))
+        .doOnNext(bonusEntity -> mDataManager.setBonusCount(bonusEntity.getBonusesCount()))
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> {
           getViewState().setBonusCount(String.valueOf(count));
