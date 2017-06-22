@@ -78,6 +78,20 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
       holder.mTextViewPriceBonus.setVisibility(View.GONE);
       holder.mImageViewPriceBonus.setVisibility(View.GONE);
     }
+
+    /* check if service is new */
+    if (mServiceEntities.get(position).isNew()) {
+      holder.mImageViewServiceBadgeNew.setImageResource(R.drawable.ic_badge_new_32dp);
+    } else {
+      holder.mImageViewServiceBadgeNew.setVisibility(View.GONE);
+    }
+        /* check if for sale */
+    if (mServiceEntities.get(position).isForSale()) {
+      holder.mImageViewServiceBadgeSale.setImageResource(R.drawable.ic_badge_sale_32dp);
+    } else {
+      holder.mImageViewServiceBadgeSale.setVisibility(View.GONE);
+    }
+
   }
 
   @Override public int getItemCount() {
@@ -96,7 +110,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @BindView(R.id.tvAboutService) TextView mTextViewAboutService;
     @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
     @BindView(R.id.tvServiceDuration) TextView mTextViewSServiceDuration;
-    @BindView(R.id.ivServiceBadge) ImageView mImageViewServiceBadge;
+    @BindView(R.id.ivServiceBadgeNew) ImageView mImageViewServiceBadgeNew;
+    @BindView(R.id.ivServiceBadgeSale) ImageView mImageViewServiceBadgeSale;
     @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
     @BindView(R.id.ivBonusPrice) ImageView mImageViewPriceBonus;
 
