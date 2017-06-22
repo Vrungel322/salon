@@ -17,12 +17,15 @@ public class ServiceEntity {
   @SerializedName("price") @Expose private String price;
   @SerializedName("bonus_price") @Expose private String bonusPrice;
   @SerializedName("category_id") @Expose private String categoryId;
+  @SerializedName("is_new") private boolean mIsNew;
+  @SerializedName("for_sale") private boolean mIsForSale;
 
   public ServiceEntity() {
   }
 
   public ServiceEntity(Integer serviceId, String title, String description, String image,
-      String time, String price, String bonusPrice, String categoryId) {
+      String time, String price, String bonusPrice, String categoryId, boolean isNew,
+      boolean isForSale) {
     this.serviceId = serviceId;
     this.title = title;
     this.description = description;
@@ -31,6 +34,8 @@ public class ServiceEntity {
     this.price = price;
     this.bonusPrice = bonusPrice;
     this.categoryId = categoryId;
+    mIsNew = isNew;
+    mIsForSale = isForSale;
   }
 
   public String getImage() {
@@ -95,5 +100,21 @@ public class ServiceEntity {
 
   public void setCategoryId(String categoryId) {
     this.categoryId = categoryId;
+  }
+
+  public boolean isNew() {
+    return mIsNew;
+  }
+
+  public void setNew(boolean aNew) {
+    mIsNew = aNew;
+  }
+
+  public boolean isForSale() {
+    return mIsForSale;
+  }
+
+  public void setForSale(boolean forSale) {
+    mIsForSale = forSale;
   }
 }

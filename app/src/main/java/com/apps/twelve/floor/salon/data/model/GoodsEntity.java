@@ -28,9 +28,8 @@ public class GoodsEntity implements Parcelable {
 
   public GoodsEntity(int id, String title, String shortDescription, String price, String newPrice,
       String bonusPrice, int categoryId, String createDate, String updateDate, String imageURL,
-      int imgCount,
-      ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite, boolean isNew,
-      boolean isForSale) {
+      int imgCount, ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite,
+      boolean isNew, boolean isForSale) {
     this.id = id;
     mTitle = title;
     mShortDescription = shortDescription;
