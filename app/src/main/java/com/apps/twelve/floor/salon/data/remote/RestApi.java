@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data.remote;
 
+import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
@@ -11,6 +12,7 @@ import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.category.BonusHistoryEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import java.util.List;
 import retrofit2.Response;
@@ -135,5 +137,13 @@ public class RestApi {
   public Observable<Response<Void>> removeFromFavoriteGoods(String language, int goodsId,
       String token) {
     return api.removeFromFavoriteGoods(language, goodsId, token);
+  }
+
+  public Observable<BonusEntity> fetchBonusCount(String language, String token) {
+    return api.fetchBonusCount(language, token);
+  }
+
+  public Observable<BonusHistoryEntity> fetchBonusHistory(String language, String token) {
+    return api.fetchBonusHistory(language, token);
   }
 }

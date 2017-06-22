@@ -26,7 +26,7 @@
         android:name=".feature.start_point.activities.StartActivity"
         android:alwaysRetainTaskState="true"
         android:label="@string/title_activity_start"
-        android:launchMode="singleTop"
+        android:launchMode="singleTask"
         android:theme="@style/AppTheme.NoActionBar">
     </activity>
     <activity

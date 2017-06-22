@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data.model;
 
+import com.apps.twelve.floor.salon.data.model.category.BonusHistoryEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import java.util.List;
 import retrofit2.Response;
@@ -105,4 +106,10 @@ public interface SalonApi {
   @DELETE("api/v1/users/favorite/products/{product_id}")
   Observable<Response<Void>> removeFromFavoriteGoods(@Header("lng") String language,
       @Path("product_id") int goodsId, @Header("authorization") String token);
+
+  @GET("api/v1/users/me/bonuses") Observable<BonusEntity> fetchBonusCount(
+      @Header("lng") String language, @Header("authorization") String token);
+
+  @GET("api/v1/users/me/bonuses_history") Observable<BonusHistoryEntity> fetchBonusHistory(
+      @Header("lng") String language, @Header("authorization") String token);
 }

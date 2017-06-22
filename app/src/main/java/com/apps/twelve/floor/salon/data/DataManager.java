@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.data;
 
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
+import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
@@ -12,6 +13,7 @@ import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.category.BonusHistoryEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.List;
@@ -82,8 +84,14 @@ public class DataManager {
 
   //bonus
 
-  public Observable<Integer> fetchBonusCount() {
-    return Observable.just(100);
+  public Observable<BonusEntity> fetchBonusCount() {
+    return mRestApi.fetchBonusCount(Locale.getDefault().getLanguage(),
+        mAuthorizationManager.getToken());
+  }
+
+  public Observable<BonusHistoryEntity> fetchBonusHistory() {
+    return mRestApi.fetchBonusHistory(Locale.getDefault().getLanguage(),
+        mAuthorizationManager.getToken());
   }
 
   public void setBonusCount(int bonusCount) {
