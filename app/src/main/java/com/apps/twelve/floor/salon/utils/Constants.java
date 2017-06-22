@@ -55,6 +55,7 @@ public final class Constants {
 
   public class StatusCode {
     public static final int RESPONSE_200 = 200;
+    public static final int RESPONSE_204 = 204;
   }
 
   public class Other {
