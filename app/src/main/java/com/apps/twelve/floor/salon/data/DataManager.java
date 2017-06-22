@@ -136,7 +136,11 @@ public class DataManager {
   //ourWorks
 
   public Observable<List<OurWorkEntity>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchListOfWorks(Locale.getDefault().getLanguage());
+  }
+
+  public Observable<Response<List<OurWorkEntity>>> fetchListOfWorksAuth() {
+    return mRestApi.fetchListOfWorksAuth(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }
 

@@ -73,6 +73,9 @@ public interface SalonApi {
       @Header("lng") String language);
 
   @GET("api/v1/galleries") Observable<List<OurWorkEntity>> fetchListOfWorks(
+      @Header("lng") String language);
+
+  @GET("api/v1/galleries") Observable<Response<List<OurWorkEntity>>> fetchListOfWorksAuth(
       @Header("lng") String language, @Header("authorization") String token);
 
   @POST("api/v1/users/favorite/photos") @FormUrlEncoded

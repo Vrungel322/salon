@@ -96,8 +96,13 @@ public class RestApi {
     return api.fetchNewsPreview(language);
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks(String language, String token) {
-    return api.fetchListOfWorks(language, token);
+  public Observable<List<OurWorkEntity>> fetchListOfWorks(String language) {
+    return api.fetchListOfWorks(language);
+  }
+
+  public Observable<Response<List<OurWorkEntity>>> fetchListOfWorksAuth(String language,
+      String token) {
+    return api.fetchListOfWorksAuth(language, token);
   }
 
   public Observable<Response<Void>> addToFavoritePhoto(String language, int photoId, String token) {
