@@ -75,6 +75,8 @@
   <string name="promo_fill">ввести промо-код друга</string>
   <string name="history_title">Накопленные бонусы</string>
   <string name="history_description">(расплачивайтесь бонусами за услуги)</string>
+  <string name="history_no_items">Вы еще не совершали транзакций</string>
+  <string name="history_no_auth">Авторизуйтесь, чтобы увидеть историю своих транзакций</string>
   <string name="bonus_measure">%s бонусов</string>
 
   <!--For tabs-->

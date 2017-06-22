@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.my_bonus.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IBonusHistoryFragmentView;
+import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import rx.Subscription;
@@ -22,33 +23,34 @@ import timber.log.Timber;
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getBonusCount();
-    //getBonusHistory();
+    getBonusHistory();
   }
 
-  private void getBonusCount() {
+  public void getBonusCount() {
     Subscription subscription = mDataManager.getBonusCountObservable()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
 
-  /*private void getBonusHistory() {
+  public void getBonusHistory() {
+    getViewState().startRefreshingView();
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription = mDataManager.fetchBonusHistory()
-          .doOnNext(count -> mDataManager.setBonusCount(count))
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(count -> {
-            getViewState().setBonusCount(count);
+          .compose(ThreadSchedulers.applySchedulers()).subscribe(bonusHistoryEntity -> {
+            getViewState().addBonusHistoryList(bonusHistoryEntity);
             mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
+            getViewState().stopRefreshingView();
           }, throwable -> {
             Timber.e(throwable);
-            getViewState().setBonusCount(mDataManager.getBonusCountInt());
             showMessageException(throwable);
+            getViewState().stopRefreshingView();
           });
       addToUnsubscription(subscription);
     } else {
-      getViewState().setBonusCount(0);
+      getViewState().setHistoryNotAuth();
+      getViewState().stopRefreshingView();
     }
-  }*/
+  }
 
 }
