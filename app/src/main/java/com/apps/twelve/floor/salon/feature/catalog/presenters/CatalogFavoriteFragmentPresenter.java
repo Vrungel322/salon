@@ -27,12 +27,12 @@ import timber.log.Timber;
     subscribeFavoriteGoodsList();
   }
 
-  private void fetchFavoriteGoodsList() {
+  public void fetchFavoriteGoodsList() {
     Subscription subscription = mDataManager.fetchFavoriteGoods()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(listResponse -> {
           if (listResponse.code() != 401) {
-            getViewState().stopProgressBar();
+            getViewState().stopRefreshingView();
             getViewState().updateGoodsFavoriteList(listResponse.body());
           } else {
             //mAuthorizationManager.refreshToken();
@@ -42,7 +42,7 @@ import timber.log.Timber;
             getViewState().startLoginActivity();
           }
         }, throwable -> {
-          getViewState().stopProgressBar();
+          getViewState().stopRefreshingView();
           Timber.e(throwable);
           showMessageException(throwable);
         });
