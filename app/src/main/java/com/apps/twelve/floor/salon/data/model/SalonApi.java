@@ -62,6 +62,7 @@ public interface SalonApi {
       @Header("lng") String language, @Path("id") String serviceId,
       @Header("authorization") String token);
 
+  // TODO: fix response code
   @PUT("api/v1/entry/{entryId}") @FormUrlEncoded Observable<Response<Void>> postponeService(
       @Header("lng") String language, @Path("entryId") String entryId,
       @Header("authorization") String token, @Field("schedule_id") int scheduleId);
