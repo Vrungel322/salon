@@ -14,7 +14,9 @@ import java.util.List;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface ICataloFavoriteFragmentView
     extends MvpView {
 
-  void stopProgressBar();
+  void startRefreshingView();
+
+  void stopRefreshingView();
 
   void updateGoodsFavoriteList(List<GoodsEntity> body);
 

@@ -7,13 +7,8 @@ import com.apps.twelve.floor.salon.feature.catalog.views.ICataloFavoriteFragment
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
-
-import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
-import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
-import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**
  * Created by John on 06.06.2017.
@@ -56,7 +51,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          getViewState().stopProgressBar();
+          getViewState().stopRefreshingView();
           Timber.e(throwable);
           showMessageException(throwable);
         });

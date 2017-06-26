@@ -2,11 +2,12 @@ package com.apps.twelve.floor.salon.feature.catalog.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
@@ -29,7 +30,7 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
 
   @InjectPresenter CatalogFavoriteFragmentPresenter mCatalogFavoriteFragmentPresenter;
 
-  @BindView(R.id.progressBar2) ProgressBar mProgressBar;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.rvCatalogFavorite) RecyclerView mRvCatalogFavorite;
   @BindView(R.id.textViewTitle) TextView mTextViewTitle;
   @BindView(R.id.tvFavoriteEmptyList) TextView mTvFavoriteEmptyList;
@@ -57,10 +58,12 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
         .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
             (StartActivity) getActivity(), R.id.container_main,
             GoodsDetailsFragment.newInstance(mGoodsFavoriteListAdapter.getEntity(position))));
-  }
 
-  @Override public void stopProgressBar() {
-    mProgressBar.setVisibility(View.GONE);
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
+    mSwipeRefreshLayout.setOnRefreshListener(
+        () -> mCatalogFavoriteFragmentPresenter.fetchFavoriteGoodsList());
   }
 
   @Override public void updateGoodsFavoriteList(List<GoodsEntity> goodsEntities) {
@@ -72,6 +75,14 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
       mTvFavoriteEmptyList.setVisibility(View.GONE);
     }
     mGoodsFavoriteListAdapter.addListGoodsEntity(goodsEntities);
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 
   @Override public void startLoginActivity() {
