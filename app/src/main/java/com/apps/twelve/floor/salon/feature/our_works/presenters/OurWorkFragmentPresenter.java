@@ -48,7 +48,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     }
   }
 
-  @SuppressWarnings("ConstantConditions") private void fetchListOfWorks() {
+  private void fetchListOfWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
@@ -67,7 +67,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
-  @SuppressWarnings("ConstantConditions") private void fetchListOfFavoriteWorks() {
+  private void fetchListOfFavoriteWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = Observable.zip(fetchListOfWorksAuth(), fetchFavoritePhotos(),

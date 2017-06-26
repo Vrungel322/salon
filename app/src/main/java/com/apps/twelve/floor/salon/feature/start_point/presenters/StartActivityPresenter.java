@@ -7,8 +7,13 @@ import com.apps.twelve.floor.salon.feature.start_point.views.IStartActivityView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
+
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**
  * Created by Vrungel on 20.02.2017.
@@ -74,17 +79,36 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void fetchBonusCount() {
+  @SuppressWarnings("ConstantConditions") public void fetchBonusCount() {
     if (mAuthorizationManager.isAuthorized()) {
-      Subscription subscription = mDataManager.fetchBonusCount()
-          .doOnNext(bonusEntity -> mDataManager.setBonusCount(bonusEntity.getBonusesCount()))
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(bonusEntity -> {
-            getViewState().setBonusCount(bonusEntity.getBonusesCount());
-            mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
+      Subscription subscription =
+          mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()).concatMap(response -> {
+            if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+              return mAuthorizationManager.checkToken(mDataManager.fetchBonusCount());
+            }
+            return Observable.just(response);
+          }).doOnNext(response -> {
+            if (response.code() == RESPONSE_200) {
+              mDataManager.setBonusCount(response.body().getBonusesCount());
+            }
+          }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+            switch (response.code()) {
+              case RESPONSE_200:
+                getViewState().setBonusCount(response.body().getBonusesCount());
+                mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
+                break;
+              case RESPONSE_UNAUTHORIZED:
+                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+                getViewState().setBonusCount(mDataManager.getBonusCountInt());
+                break;
+              default:
+                showMessageException();
+                getViewState().setBonusCount(mDataManager.getBonusCountInt());
+                break;
+            }
           }, throwable -> {
-            Timber.e(throwable);
             getViewState().setBonusCount(mDataManager.getBonusCountInt());
+            Timber.e(throwable);
             showMessageException(throwable);
           });
       addToUnsubscription(subscription);
