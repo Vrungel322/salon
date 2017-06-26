@@ -109,9 +109,10 @@ public interface SalonApi {
   Observable<Response<Void>> removeFromFavoriteGoods(@Header("lng") String language,
       @Path("product_id") int goodsId, @Header("authorization") String token);
 
-  @GET("api/v1/users/me/bonuses") Observable<BonusEntity> fetchBonusCount(
+  @GET("api/v1/users/me/bonuses") Observable<Response<BonusEntity>> fetchBonusCount(
       @Header("lng") String language, @Header("authorization") String token);
 
-  @GET("api/v1/users/me/bonuses_history") Observable<List<BonusHistoryEntity>> fetchBonusHistory(
+  @GET("api/v1/users/me/bonuses_history")
+  Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory(
       @Header("lng") String language, @Header("authorization") String token);
 }

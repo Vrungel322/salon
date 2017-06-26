@@ -144,11 +144,12 @@ public class RestApi {
     return api.removeFromFavoriteGoods(language, goodsId, token);
   }
 
-  public Observable<BonusEntity> fetchBonusCount(String language, String token) {
+  public Observable<Response<BonusEntity>> fetchBonusCount(String language, String token) {
     return api.fetchBonusCount(language, token);
   }
 
-  public Observable<List<BonusHistoryEntity>> fetchBonusHistory(String language, String token) {
+  public Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory(String language,
+      String token) {
     return api.fetchBonusHistory(language, token);
   }
 }

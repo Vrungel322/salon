@@ -84,12 +84,12 @@ public class DataManager {
 
   //bonus
 
-  public Observable<BonusEntity> fetchBonusCount() {
+  public Observable<Response<BonusEntity>> fetchBonusCount() {
     return mRestApi.fetchBonusCount(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }
 
-  public Observable<List<BonusHistoryEntity>> fetchBonusHistory() {
+  public Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory() {
     return mRestApi.fetchBonusHistory(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }
