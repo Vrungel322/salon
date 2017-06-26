@@ -7,8 +7,13 @@ import com.apps.twelve.floor.salon.feature.catalog.views.ICataloFavoriteFragment
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
+
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**
  * Created by John on 06.06.2017.
@@ -28,7 +33,8 @@ import timber.log.Timber;
     subscribeFavoriteGoodsList();
   }
 
-  private void fetchFavoriteGoodsList() {
+  public void fetchFavoriteGoodsList() {
+    getViewState().startRefreshingView();
     Subscription subscription =
         mAuthorizationManager.checkToken(mDataManager.fetchFavoriteGoods()).concatMap(response -> {
           if (response.code() == RESPONSE_TOKEN_EXPIRED) {
@@ -38,15 +44,15 @@ import timber.log.Timber;
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
-              getViewState().stopProgressBar();
+              getViewState().stopRefreshingView();
               getViewState().updateGoodsFavoriteList(response.body());
               break;
             case RESPONSE_UNAUTHORIZED:
               mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              getViewState().stopProgressBar();
+              getViewState().stopRefreshingView();
               break;
             default:
-              getViewState().stopProgressBar();
+              getViewState().stopRefreshingView();
               showMessageException();
               break;
           }
