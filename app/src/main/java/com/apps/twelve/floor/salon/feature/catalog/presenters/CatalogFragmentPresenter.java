@@ -48,6 +48,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .concatMap(reloadCatalogByCategory -> {
           mTitle = reloadCatalogByCategory.title;
           return mDataManager.fetchGoodsByCatalogId(reloadCatalogByCategory.id);
+        }).concatMap(response -> {
+          if (response.code() == RESPONSE_200) {
+            return Observable.just(response.body());
+          } else {
+            return Observable.error(new Exception("Not response 200"));
+          }
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(goodsEntities -> {

@@ -17,6 +17,8 @@ import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 29.03.2017.
  */
@@ -47,11 +49,12 @@ import timber.log.Timber;
   private void fetchCategory() {
     getViewState().showProgressBar();
     Subscription subscription = mDataManager.fetchCategory()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(parentServices -> {
-          getViewState().hideProgressBar();
-          getViewState().updateRvCategory(parentServices);
-          mListListCategories.add(parentServices);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().hideProgressBar();
+            getViewState().updateRvCategory(response.body());
+            mListListCategories.add(response.body());
+          }
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBar();
@@ -60,17 +63,18 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void getServiceWithParentId(int parentId) {
+  @SuppressWarnings("ConstantConditions") public void getServiceWithParentId(int parentId) {
     getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchServicesOfCategoryWithId(parentId)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(serviceEntities -> {
-          getViewState().setServicesWithParentId(serviceEntities);
-          mServiceAllEntities.clear();
-          mServiceAllEntities.addAll(serviceEntities);
-          mListListCategories.add(new ArrayList<>());
-          getViewState().showTextPath(String.valueOf(mPath));
-          getViewState().stateCategoriesServices(true);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().setServicesWithParentId(response.body());
+            mServiceAllEntities.clear();
+            mServiceAllEntities.addAll(response.body());
+            mListListCategories.add(new ArrayList<>());
+            getViewState().showTextPath(String.valueOf(mPath));
+            getViewState().stateCategoriesServices(true);
+          }
         }, throwable -> {
           Timber.e(throwable);
           showMessageException(throwable);
@@ -81,12 +85,13 @@ import timber.log.Timber;
   public void getCategoriesWithParentId(int parentId) {
     getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchCategoriesOfCategoryWithId(parentId)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(categoryEntities -> {
-          getViewState().setCategoriesWithParentId(categoryEntities);
-          mListListCategories.add(categoryEntities);
-          getViewState().showTextPath(String.valueOf(mPath));
-          getViewState().stateCategoriesServices(true);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().setCategoriesWithParentId(response.body());
+            mListListCategories.add(response.body());
+            getViewState().showTextPath(String.valueOf(mPath));
+            getViewState().stateCategoriesServices(true);
+          }
         }, throwable -> {
           Timber.e(throwable);
           showMessageException(throwable);
@@ -94,15 +99,16 @@ import timber.log.Timber;
     addToUnsubscription(subscription);
   }
 
-  public void fetchAllServices() {
+  @SuppressWarnings("ConstantConditions") public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
     Subscription subscription = mDataManager.fetchAllServices()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(serviceEntities -> {
-          getViewState().updateRvAllServices(serviceEntities);
-          mServiceAllEntities.clear();
-          mServiceAllEntities.addAll(serviceEntities);
-          getViewState().hideProgressBarAllServices();
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().updateRvAllServices(response.body());
+            mServiceAllEntities.clear();
+            mServiceAllEntities.addAll(response.body());
+            getViewState().hideProgressBarAllServices();
+          }
         }, throwable -> {
           Timber.e(throwable);
           getViewState().hideProgressBarAllServices();

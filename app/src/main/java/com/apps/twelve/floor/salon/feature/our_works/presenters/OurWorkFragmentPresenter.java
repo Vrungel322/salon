@@ -48,17 +48,19 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     }
   }
 
-  private void fetchListOfWorks() {
+  @SuppressWarnings("ConstantConditions") private void fetchListOfWorks() {
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(ourWorkEntities -> {
-          mOurWorkEntities.add(0,
-              new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0, null));
-          mOurWorkEntities.addAll(ourWorkEntities);
-          getViewState().stopRefreshingView();
-          getViewState().addListOfWorks(mOurWorkEntities);
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            mOurWorkEntities.add(0,
+                new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0,
+                    null));
+            mOurWorkEntities.addAll(response.body());
+            getViewState().stopRefreshingView();
+            getViewState().addListOfWorks(mOurWorkEntities);
+          }
         }, throwable -> {
           getViewState().stopRefreshingView();
           Timber.e(throwable);

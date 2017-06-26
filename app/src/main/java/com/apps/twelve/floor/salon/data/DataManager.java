@@ -40,39 +40,39 @@ public class DataManager {
 
   //checkin service.
 
-  public Observable<List<CategoryEntity>> fetchCategory() {
+  public Observable<Response<List<CategoryEntity>>> fetchCategory() {
     return mRestApi.fetchCategory(Locale.getDefault().getLanguage());
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServices() {
+  public Observable<Response<List<ServiceEntity>>> fetchAllServices() {
     return mRestApi.fetchAllServices(Locale.getDefault().getLanguage());
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(String masterId) {
+  public Observable<Response<List<ServiceEntity>>> fetchAllServicesByMasterId(String masterId) {
     return mRestApi.fetchAllServicesByMasterId(Locale.getDefault().getLanguage(), masterId);
   }
 
-  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(int id) {
+  public Observable<Response<List<ServiceEntity>>> fetchServicesOfCategoryWithId(int id) {
     return mRestApi.fetchServicesOfCategoryWithId(Locale.getDefault().getLanguage(), id);
   }
 
-  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(int parentId) {
+  public Observable<Response<List<CategoryEntity>>> fetchCategoriesOfCategoryWithId(int parentId) {
     return mRestApi.fetchCategoriesOfCategoryWithId(Locale.getDefault().getLanguage(), parentId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysData(String serviceId) {
+  public Observable<Response<List<DataServiceEntity>>> fetchDaysData(String serviceId) {
     return mRestApi.fetchDaysData(Locale.getDefault().getLanguage(), serviceId);
   }
 
-  public Observable<List<MasterEntity>> fetchMasters(String serviceId, String dataID) {
+  public Observable<Response<List<MasterEntity>>> fetchMasters(String serviceId, String dataID) {
     return mRestApi.fetchMasters(Locale.getDefault().getLanguage(), serviceId, dataID);
   }
 
-  public Observable<List<MasterEntity>> fetchAllMasters() {
+  public Observable<Response<List<MasterEntity>>> fetchAllMasters() {
     return mRestApi.fetchAllMasters(Locale.getDefault().getLanguage());
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String masterId) {
+  public Observable<Response<List<DataServiceEntity>>> fetchDaysDataWithMasterId(String masterId) {
     return mRestApi.fetchDaysDataWithMasterId(Locale.getDefault().getLanguage(), masterId);
   }
 
@@ -135,7 +135,7 @@ public class DataManager {
 
   //ourWorks
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks() {
+  public Observable<Response<List<OurWorkEntity>>> fetchListOfWorks() {
     return mRestApi.fetchListOfWorks(Locale.getDefault().getLanguage());
   }
 
@@ -163,11 +163,11 @@ public class DataManager {
 
   //News
 
-  public Observable<NewsEntity> fetchNewsPreview() {
+  public Observable<Response<NewsEntity>> fetchNewsPreview() {
     return mRestApi.fetchNewsPreview(Locale.getDefault().getLanguage());
   }
 
-  public Observable<List<NewsEntity>> fetchAllNews() {
+  public Observable<Response<List<NewsEntity>>> fetchAllNews() {
     return mRestApi.fetchAllNews(Locale.getDefault().getLanguage());
   }
 
@@ -183,11 +183,11 @@ public class DataManager {
         mAuthorizationManager.getToken());
   }
 
-  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(Integer id) {
+  public Observable<Response<List<GoodsEntity>>> fetchGoodsByCatalogId(Integer id) {
     return mRestApi.fetchGoodsByCatalogId(Locale.getDefault().getLanguage(), id);
   }
 
-  public Observable<List<GoodsCategoryEntity>> fetchCategories() {
+  public Observable<Response<List<GoodsCategoryEntity>>> fetchCategories() {
     return mRestApi.fetchCategories(Locale.getDefault().getLanguage());
   }
 

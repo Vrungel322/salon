@@ -9,6 +9,8 @@ import com.arellomobile.mvp.InjectViewState;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 24.02.2017.
  */
@@ -28,10 +30,11 @@ import timber.log.Timber;
   public void fetchListOfNews() {
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(newsEntities -> {
-          getViewState().addListOfNews(newsEntities);
-          getViewState().stopRefreshingView();
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().addListOfNews(response.body());
+            getViewState().stopRefreshingView();
+          }
         }, throwable -> {
           Timber.e(throwable);
           getViewState().stopRefreshingView();

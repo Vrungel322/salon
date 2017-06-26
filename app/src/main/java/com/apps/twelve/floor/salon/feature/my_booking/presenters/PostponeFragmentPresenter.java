@@ -17,6 +17,8 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Alexandra on 25.04.2017.
  */
@@ -43,18 +45,19 @@ import timber.log.Timber;
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  private void getAvailableTime(String masterId) {
+  @SuppressWarnings("ConstantConditions") private void getAvailableTime(String masterId) {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(dataServiceEntities -> {
-          mDataServiceEntity = dataServiceEntities;
-          getViewState().hideProgressBarBookingTime();
-          if (!dataServiceEntities.isEmpty()) {
-            getViewState().setUpUi(dataServiceEntities);
-            setDateToTv();
-            getViewState().showTimeBooking();
-          } else {
-            getViewState().showNotTime();
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            mDataServiceEntity = response.body();
+            getViewState().hideProgressBarBookingTime();
+            if (!response.body().isEmpty()) {
+              getViewState().setUpUi(response.body());
+              setDateToTv();
+              getViewState().showTimeBooking();
+            } else {
+              getViewState().showNotTime();
+            }
           }
         }, throwable -> {
           Timber.e(throwable);

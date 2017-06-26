@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
     extends BasePresenter<IChooseMasterMasterFragmentView> {
 
@@ -34,11 +36,12 @@ import timber.log.Timber;
 
   private void fetchAllMasters() {
     Subscription subscription = mDataManager.fetchAllMasters()
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(masterEntities -> {
-          mMasterEntities = masterEntities;
-          getViewState().showMasters(masterEntities);
-          getViewState().hideProgressBar();
+        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            mMasterEntities = response.body();
+            getViewState().showMasters(response.body());
+            getViewState().hideProgressBar();
+          }
         }, throwable -> {
           Timber.e(throwable);
           showMessageException(throwable);
