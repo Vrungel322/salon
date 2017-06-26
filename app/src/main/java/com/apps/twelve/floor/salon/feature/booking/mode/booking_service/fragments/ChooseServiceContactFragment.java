@@ -33,6 +33,7 @@ public class ChooseServiceContactFragment extends BaseFragment
   @BindView(R.id.tv_master_description) TextView mTextViewMaster;
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
+  @BindView(R.id.tvEmptyPhone) TextView mTextViewEmptyPhone;
   @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
   public ChooseServiceContactFragment() {
@@ -48,16 +49,20 @@ public class ChooseServiceContactFragment extends BaseFragment
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    if (mAuthorizationManager.isAuthorized()) {
-      mEditTextName.setText(mAuthorizationManager.getUserName());
-      mEditTextPhone.setText(mAuthorizationManager.getUserPhone());
-    }
   }
 
   @OnClick(R.id.btn_booking_contact) void animate() {
     mChooseServiceContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseServiceContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
     mChooseServiceContactFragmentPresenter.sendBookingEntity();
+  }
+
+  @Override public void onResume() {
+    super.onResume();
+    if (mAuthorizationManager.isAuthorized()) {
+      mEditTextName.setText(mAuthorizationManager.getUserName());
+      mEditTextPhone.setText(mAuthorizationManager.getUserPhone());
+    }
   }
 
   @Override public void startAnimation() {
@@ -73,6 +78,10 @@ public class ChooseServiceContactFragment extends BaseFragment
 
   @Override public void revertAnimation() {
     mBtnCreateBooking.revertAnimation();
+  }
+
+  @Override public void showEmptyPhoneError() {
+    mTextViewEmptyPhone.setVisibility(View.VISIBLE);
   }
 
   @Override public void closeBooking() {

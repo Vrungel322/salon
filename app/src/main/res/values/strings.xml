@@ -63,6 +63,8 @@
   <string name="book_choose_specialist">Начать выбор специалиста</string>
   <string name="next_step">Вперед</string>
   <string name="prev_step">Назад</string>
+  <string name="empty_name_error">Введите имя</string>
+  <string name="empty_phone_error">Введите телефон</string>
 
   <string name="your_bonus">Ваши бонусы:</string>
   <string name="history">История</string>

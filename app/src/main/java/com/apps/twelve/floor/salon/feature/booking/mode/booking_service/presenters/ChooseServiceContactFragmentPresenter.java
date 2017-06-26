@@ -54,46 +54,52 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
     if (mAuthorizationManager.isAuthorized()) {
       getViewState().startAnimation();
-      Subscription subscription = mAuthorizationManager.checkToken(
-          mDataManager.checkInService(mapper.transform(mBookingEntity)))
-          .concatMap(lastBookingEntityResponse -> {
-            if (lastBookingEntityResponse.code() == RESPONSE_TOKEN_EXPIRED) {
-              return mAuthorizationManager.checkToken(
-                  mDataManager.checkInService(mapper.transform(mBookingEntity)));
-            }
-            return Observable.just(lastBookingEntityResponse);
-          })
-          .compose(ThreadSchedulers.applySchedulers())
-          .doOnNext(response -> {
-            if (response.code() == RESPONSE_200) {
-              getViewState().stopAnimation();
-            }
-          })
-          .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-          .subscribe(response -> {
-            switch (response.code()) {
-              case RESPONSE_200:
-                mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
-                mJobsCreator.createNotification(String.valueOf(response.body().getId()),
-                    Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
-                        - System.currentTimeMillis(), mBookingEntity.getServiceName());
-                getViewState().closeBooking();
-                break;
-              case RESPONSE_UNAUTHORIZED:
-                getViewState().revertAnimation();
-                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-                break;
-              default:
-                getViewState().revertAnimation();
-                showMessageException();
-                break;
-            }
-          }, throwable -> {
-            Timber.e(throwable);
-            getViewState().revertAnimation();
-            showMessageException(throwable);
-          });
-      addToUnsubscription(subscription);
+      if (!mBookingEntity.getUserPhone().equals("")) {
+        Subscription subscription = mAuthorizationManager.checkToken(
+            mDataManager.checkInService(mapper.transform(mBookingEntity)))
+            .concatMap(lastBookingEntityResponse -> {
+              if (lastBookingEntityResponse.code() == RESPONSE_TOKEN_EXPIRED) {
+                return mAuthorizationManager.checkToken(
+                    mDataManager.checkInService(mapper.transform(mBookingEntity)));
+              }
+              return Observable.just(lastBookingEntityResponse);
+            })
+            .compose(ThreadSchedulers.applySchedulers())
+            .doOnNext(response -> {
+              if (response.code() == RESPONSE_200) {
+                getViewState().stopAnimation();
+              }
+            })
+            .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+            .subscribe(response -> {
+              switch (response.code()) {
+                case RESPONSE_200:
+                  mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
+                  mJobsCreator.createNotification(String.valueOf(response.body().getId()),
+                      Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
+                          - System.currentTimeMillis(), mBookingEntity.getServiceName());
+                  getViewState().closeBooking();
+                  break;
+                case RESPONSE_UNAUTHORIZED:
+                  getViewState().revertAnimation();
+                  mAuthorizationManager.getAuthRxBus()
+                      .post(new AuthRxBusHelper.UnauthorizedEvent());
+                  break;
+                default:
+                  getViewState().revertAnimation();
+                  showMessageException();
+                  break;
+              }
+            }, throwable -> {
+              Timber.e(throwable);
+              getViewState().revertAnimation();
+              showMessageException(throwable);
+            });
+        addToUnsubscription(subscription);
+      } else {
+        getViewState().revertAnimation();
+        getViewState().showEmptyPhoneError();
+      }
     } else {
       mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
     }
