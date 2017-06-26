@@ -163,7 +163,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
   @Override public void onDestroy() {
     /* turn on scrolling */
-    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    Toolbar mToolbar = getActivity().findViewById(R.id.toolbar);
     AppBarLayout.LayoutParams toolbarLayoutParams =
         (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
     toolbarLayoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
