@@ -114,7 +114,7 @@ public class RestApi {
     return api.removeFromFavoritePhoto(language, photoId, token);
   }
 
-  public Observable<List<GoodsEntity>> fetchAllProducts(String language, String token) {
+  public Observable<Response<List<GoodsEntity>>> fetchAllProducts(String language, String token) {
     return api.fetchAllProducts(language, token);
   }
 

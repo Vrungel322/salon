@@ -173,7 +173,7 @@ public class DataManager {
 
   //Goods
 
-  public Observable<List<GoodsEntity>> fetchGoods() {
+  public Observable<Response<List<GoodsEntity>>> fetchAllProducts() {
     return mRestApi.fetchAllProducts(Locale.getDefault().getLanguage(),
         mAuthorizationManager.getToken());
   }
