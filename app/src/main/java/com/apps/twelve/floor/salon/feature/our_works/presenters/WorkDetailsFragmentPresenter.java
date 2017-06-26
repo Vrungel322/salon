@@ -13,6 +13,7 @@ import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_204;
 
 /**
@@ -38,7 +39,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
             .compose(ThreadSchedulers.applySchedulers())
             .subscribe(response -> {
               switch (response.code()) {
-                case RESPONSE_204:
+                case RESPONSE_200:
                   getViewState().setStatusFavorite(true);
                   mRxBus.post(new RxBusHelper.UpdateOurWorkList());
                   break;
