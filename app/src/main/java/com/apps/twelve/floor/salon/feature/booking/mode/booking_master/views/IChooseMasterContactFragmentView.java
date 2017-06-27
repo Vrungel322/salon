@@ -18,5 +18,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void showEmptyPhoneError();
 
+  void showErrorMessage(int message);
+
   @StateStrategyType(SkipStrategy.class) void closeBooking();
 }

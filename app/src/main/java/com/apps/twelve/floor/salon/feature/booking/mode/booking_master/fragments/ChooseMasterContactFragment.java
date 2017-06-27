@@ -80,6 +80,10 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewEmptyPhone.setVisibility(View.VISIBLE);
   }
 
+  @Override public void showErrorMessage(int message) {
+    showAlertMessage(getString(R.string.title_write_error), getString(message));
+  }
+
   @Override public void closeBooking() {
     mNavigator.finishActivity((AppCompatActivity) getActivity());
   }
