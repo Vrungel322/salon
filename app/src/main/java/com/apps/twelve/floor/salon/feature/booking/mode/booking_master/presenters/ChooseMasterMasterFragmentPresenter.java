@@ -36,7 +36,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   private void fetchAllMasters() {
     Subscription subscription = mDataManager.fetchAllMasters()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             mMasterEntities = response.body();
             getViewState().showMasters(response.body());

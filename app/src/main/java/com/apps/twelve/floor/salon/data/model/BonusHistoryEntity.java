@@ -83,6 +83,5 @@ public class BonusHistoryEntity {
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
-
 }
 

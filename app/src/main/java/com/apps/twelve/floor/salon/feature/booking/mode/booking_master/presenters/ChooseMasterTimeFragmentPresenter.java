@@ -39,7 +39,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   @SuppressWarnings("ConstantConditions") private void getTimeMaster() {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(mBookingEntity.getMasterId())
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             mDataServiceEntity = response.body();
             getViewState().hideProgressBarBookingTime();

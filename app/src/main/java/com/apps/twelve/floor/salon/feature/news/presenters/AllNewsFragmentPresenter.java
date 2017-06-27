@@ -30,7 +30,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void fetchListOfNews() {
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().addListOfNews(response.body());
             getViewState().stopRefreshingView();

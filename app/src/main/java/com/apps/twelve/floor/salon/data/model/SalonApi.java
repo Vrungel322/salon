@@ -51,8 +51,7 @@ public interface SalonApi {
 
   @GET("api/v1/masters/{masterId}/schedules")
   Observable<Response<List<DataServiceEntity>>> fetchDaysDataWithMasterId(
-      @Header("lng") String language,
-      @Path("masterId") String masterId);
+      @Header("lng") String language, @Path("masterId") String masterId);
 
   @POST("api/v1/entry") Observable<Response<LastBookingEntity>> checkInService(
       @Header("lng") String language, @Header("authorization") String token,
@@ -93,8 +92,7 @@ public interface SalonApi {
       @Header("lng") String language, @Header("authorization") String token);
 
   @GET("api/v1/products/categories")
-  Observable<Response<List<GoodsCategoryEntity>>> fetchCategories(
-      @Header("lng") String language);
+  Observable<Response<List<GoodsCategoryEntity>>> fetchCategories(@Header("lng") String language);
 
   @GET("api/v1/products") Observable<Response<List<GoodsEntity>>> fetchGoodsByCatalogId(
       @Header("lng") String language, @Query("category") Integer id);

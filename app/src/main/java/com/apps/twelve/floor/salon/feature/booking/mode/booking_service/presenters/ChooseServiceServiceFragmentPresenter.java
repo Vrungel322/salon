@@ -49,7 +49,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   private void fetchCategory() {
     getViewState().showProgressBar();
     Subscription subscription = mDataManager.fetchCategory()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().hideProgressBar();
             getViewState().updateRvCategory(response.body());
@@ -66,7 +67,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   @SuppressWarnings("ConstantConditions") public void getServiceWithParentId(int parentId) {
     getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchServicesOfCategoryWithId(parentId)
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().setServicesWithParentId(response.body());
             mServiceAllEntities.clear();
@@ -85,7 +87,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void getCategoriesWithParentId(int parentId) {
     getViewState().stateCategoriesServices(false);
     Subscription subscription = mDataManager.fetchCategoriesOfCategoryWithId(parentId)
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().setCategoriesWithParentId(response.body());
             mListListCategories.add(response.body());
@@ -102,7 +105,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   @SuppressWarnings("ConstantConditions") public void fetchAllServices() {
     getViewState().showProgressBarAllServices();
     Subscription subscription = mDataManager.fetchAllServices()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().updateRvAllServices(response.body());
             mServiceAllEntities.clear();

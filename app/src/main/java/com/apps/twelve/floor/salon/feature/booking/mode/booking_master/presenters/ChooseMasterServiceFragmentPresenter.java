@@ -44,13 +44,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getViewState().setMasterName(mBookingEntity.getMasterName());
     Subscription subscription =
         mDataManager.fetchAllServicesByMasterId(mBookingEntity.getMasterId())
-            .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
-          if (response.code() == RESPONSE_200) {
-            getViewState().hideProgressBar();
-            getViewState().updateRvServices(response.body());
-            mServiceEntities.clear();
-            mServiceEntities.addAll(response.body());
-          }
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(response -> {
+              if (response.code() == RESPONSE_200) {
+                getViewState().hideProgressBar();
+                getViewState().updateRvServices(response.body());
+                mServiceEntities.clear();
+                mServiceEntities.addAll(response.body());
+              }
             }, throwable -> {
               Timber.e(throwable);
               showMessageException(throwable);

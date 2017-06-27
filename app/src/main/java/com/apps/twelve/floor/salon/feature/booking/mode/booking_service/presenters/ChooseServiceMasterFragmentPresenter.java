@@ -46,14 +46,15 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   private void fetchMasters() {
     Subscription subscription =
         mDataManager.fetchMasters(mBookingEntity.getServiceId(), mBookingEntity.getDateId())
-            .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
-          if (response.code() == RESPONSE_200) {
-            mMasterEntities = response.body();
-            getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
-                mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
-            getViewState().showMasters(response.body());
-            getViewState().hideProgressBar();
-          }
+            .compose(ThreadSchedulers.applySchedulers())
+            .subscribe(response -> {
+              if (response.code() == RESPONSE_200) {
+                mMasterEntities = response.body();
+                getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
+                    mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
+                getViewState().showMasters(response.body());
+                getViewState().hideProgressBar();
+              }
             }, throwable -> {
               Timber.e(throwable);
               showMessageException(throwable);

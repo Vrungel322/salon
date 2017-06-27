@@ -40,19 +40,17 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
       } else {
         return Observable.error(new Exception("Not response 200"));
       }
-    })
-        .concatMap(goodsCategoryEntity -> {
-          mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
-          return Observable.just(mGenres);
-        }).compose(ThreadSchedulers.applySchedulers())
-        .subscribe(genres -> {
-          getViewState().stopProgressBar();
-          getViewState().fillCategories(genres);
-        }, throwable -> {
-          showMessageException(throwable);
-          getViewState().stopProgressBar();
-          Timber.e(throwable);
-        });
+    }).concatMap(goodsCategoryEntity -> {
+      mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
+      return Observable.just(mGenres);
+    }).compose(ThreadSchedulers.applySchedulers()).subscribe(genres -> {
+      getViewState().stopProgressBar();
+      getViewState().fillCategories(genres);
+    }, throwable -> {
+      showMessageException(throwable);
+      getViewState().stopProgressBar();
+      Timber.e(throwable);
+    });
     addToUnsubscription(subscription);
   }
 

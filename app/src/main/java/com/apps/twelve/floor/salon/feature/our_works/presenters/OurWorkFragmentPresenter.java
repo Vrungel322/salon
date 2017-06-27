@@ -52,7 +52,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             mOurWorkEntities.add(0,
                 new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0,
