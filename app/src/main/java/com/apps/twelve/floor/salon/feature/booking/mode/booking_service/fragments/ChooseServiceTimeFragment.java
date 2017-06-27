@@ -169,7 +169,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
   }
 
   @Override public void timeIsNotAvailable() {
-    showToastMessage("Time is not Available");
+    showToastMessage(R.string.error_time_not_available);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

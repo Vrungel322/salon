@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.my_booking.presenters;
 
+import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
@@ -17,7 +18,11 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_400;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_404;
 
 /**
  * Created by Alexandra on 25.04.2017.
@@ -47,7 +52,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   @SuppressWarnings("ConstantConditions") private void getAvailableTime(String masterId) {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             mDataServiceEntity = response.body();
             getViewState().hideProgressBarBookingTime();
@@ -68,12 +74,29 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   public void saveNewTime(String entryId, String serviceName) {
     if (timePosition != -1) {
-      Subscription subscription = mDataManager.postponeService(entryId, Integer.parseInt(
-          mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId()))
+      Subscription subscription = mAuthorizationManager.checkToken(
+          mDataManager.postponeService(entryId, Integer.parseInt(
+              mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId())))
+          .concatMap(response -> {
+            if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+              return mAuthorizationManager.checkToken(mDataManager.postponeService(entryId,
+                  Integer.parseInt(mDataServiceEntity.get(dayPosition)
+                      .getScheduleEntities()
+                      .get(timePosition)
+                      .getId())));
+            }
+            return Observable.just(response);
+          })
           .compose(ThreadSchedulers.applySchedulers())
-          .doOnNext(voidResponse -> {
-            switch (voidResponse.code()) {
-              case 200: // updated
+          .doOnNext(response -> {
+            if (response.code() == RESPONSE_200) {
+              getViewState().stopAnimation();
+            }
+          })
+          .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+          .subscribe(response -> {
+            switch (response.code()) {
+              case RESPONSE_200:
                 mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                 mJobsCreator.cancelJob(entryId);
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
@@ -81,23 +104,24 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                         .getScheduleEntities()
                         .get(timePosition)
                         .getTimeInSec()) * 1000L - System.currentTimeMillis(), serviceName);
-                getViewState().stopAnimation();
+                getViewState().closeTheFragment();
                 break;
-              case 400: // this time has already been picked
+              case RESPONSE_UNAUTHORIZED:
+                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+                getViewState().revertAnimation();
+                break;
+              case RESPONSE_400:
                 getViewState().showErrorMessage(R.string.error_time_not_available);
+                getViewState().revertAnimation();
                 break;
-              case 404: // this booking entity does not exist
+              case RESPONSE_404:
                 getViewState().showErrorMessage(R.string.error_booking_entity_not_exist);
+                getViewState().revertAnimation();
                 break;
               default:
+                showMessageException();
+                getViewState().revertAnimation();
                 break;
-            }
-          }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-          .subscribe(response -> {
-            if (response.code() == 200) {
-              getViewState().closeTheFragment();
-            } else {
-              getViewState().revertAnimation();
             }
           }, throwable -> {
             Timber.e(throwable);
