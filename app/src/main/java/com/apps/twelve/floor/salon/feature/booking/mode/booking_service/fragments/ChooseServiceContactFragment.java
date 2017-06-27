@@ -61,7 +61,11 @@ public class ChooseServiceContactFragment extends BaseFragment
     super.onResume();
     if (mAuthorizationManager.isAuthorized()) {
       mEditTextName.setText(mAuthorizationManager.getUserName());
-      mEditTextPhone.setText(mAuthorizationManager.getUserPhone());
+      if (mAuthorizationManager.getUserPhone().equals("")) {
+        mChooseServiceContactFragmentPresenter.setPersonPhone();
+      } else {
+        mChooseServiceContactFragmentPresenter.setPersonPhone(mAuthorizationManager.getUserPhone());
+      }
     }
   }
 
@@ -82,6 +86,10 @@ public class ChooseServiceContactFragment extends BaseFragment
 
   @Override public void showEmptyPhoneError() {
     mTextViewEmptyPhone.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void setLastPhone(String lastPhone) {
+    mEditTextPhone.setText(lastPhone);
   }
 
   @Override public void showErrorMessage(int message) {

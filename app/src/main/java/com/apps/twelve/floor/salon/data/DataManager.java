@@ -239,6 +239,14 @@ public class DataManager {
 
   //user
 
+  public void setLastPhoneForBooking(String lastPhone) {
+    mPref.setLastPhoneForBooking(lastPhone);
+  }
+
+  public String getLastPhoneForBooking() {
+    return mPref.getLastPhoneForBooking();
+  }
+
   public void logoutUser() {
     mPref.logoutUser();
     mAuthorizationManager.clear();

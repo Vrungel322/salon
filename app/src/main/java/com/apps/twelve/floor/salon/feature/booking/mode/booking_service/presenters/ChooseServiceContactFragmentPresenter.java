@@ -53,6 +53,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
 
   public void setPersonPhone(String s) {
     mBookingEntity.setUserPhone(s);
+    getViewState().setLastPhone(s);
+  }
+
+  public void setPersonPhone() {
+    mBookingEntity.setUserPhone(mDataManager.getLastPhoneForBooking());
+    getViewState().setLastPhone(mDataManager.getLastPhoneForBooking());
   }
 
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
@@ -78,6 +84,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             .subscribe(response -> {
               switch (response.code()) {
                 case RESPONSE_200:
+                  mDataManager.setLastPhoneForBooking(mBookingEntity.getUserPhone());
                   mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                   mJobsCreator.createNotification(String.valueOf(response.body().getId()),
                       Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
