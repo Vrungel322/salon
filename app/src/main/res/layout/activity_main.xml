@@ -14,5 +14,6 @@
       android:layout_height="match_parent"
       android:layout_centerHorizontal="true"
       android:scaleType="centerCrop"
+      android:background="@drawable/splash"
       />
 </RelativeLayout>
