@@ -30,10 +30,11 @@
       android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp"
       android:layout_marginTop="8dp"
-      android:scaleType="centerCrop"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@+id/view"
       app:layout_constraintTop_toTopOf="parent"
+      app:civ_border_width="2dp"
+      app:civ_border_color="?colorAccent"
       />
   <TextView
       android:id="@+id/tvServiceName"
@@ -127,6 +128,21 @@
       app:layout_constraintBottom_toBottomOf="@+id/bPostpone"
       app:layout_constraintHorizontal_bias="0.25"
       app:layout_constraintLeft_toRightOf="@+id/bPostpone"
+      app:layout_constraintRight_toRightOf="parent"
+      />
+  <ProgressBar
+      android:id="@+id/pbCancelBooking"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_marginLeft="8dp"
+      android:visibility="gone"
+      app:layout_constraintLeft_toRightOf="@+id/tvRemainTime"
+      style="?android:attr/progressBarStyle"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginTop="8dp"
+      android:layout_marginRight="8dp"
       app:layout_constraintRight_toRightOf="parent"
       />
 

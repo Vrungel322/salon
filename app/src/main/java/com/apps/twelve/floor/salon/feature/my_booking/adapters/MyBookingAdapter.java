@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +52,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   private ArrayList<LastBookingEntity> mBookingEntities = new ArrayList<>();
   private AlertDialog mRemoveBookingDialog;
+  private ProgressBar mProgressBarCancel;
 
   public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
       Navigator navigator) {
@@ -123,8 +125,10 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
     holder.mButtonPostpone.setOnClickListener(
         v -> mMyBookingAdapterPresenter.openPostponeFragment(position));
-    holder.mButtonCancel.setOnClickListener(
-        v -> mMyBookingAdapterPresenter.showConfirmationDialog(position));
+    holder.mButtonCancel.setOnClickListener(v -> {
+      mMyBookingAdapterPresenter.showConfirmationDialog(position);
+      mProgressBarCancel = holder.mProgressBarCancel;
+    });
   }
 
   @Override public int getItemCount() {
@@ -160,6 +164,14 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     }
   }
 
+  @Override public void showProgressBarCancel() {
+    mProgressBarCancel.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideProgressBarCancel() {
+    mProgressBarCancel.setVisibility(View.GONE);
+  }
+
   public static class MyBookingViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.view) TextView view;
     @BindView(R.id.clLastBooking) ConstraintLayout mConstraintLayoutBooking;
@@ -169,6 +181,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;
     @BindView(R.id.bPostpone) Button mButtonPostpone;
     @BindView(R.id.bCancel) Button mButtonCancel;
+    @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;
 
     private CountDownTimer mDownTimer;
 

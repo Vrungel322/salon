@@ -16,5 +16,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(AddToEndSingleStrategy.class) void cancelAlertDialog();
 
+  void showProgressBarCancel();
+
+  void hideProgressBarCancel();
+
   @StateStrategyType(SkipStrategy.class) void openPostponeFragment(int position);
 }

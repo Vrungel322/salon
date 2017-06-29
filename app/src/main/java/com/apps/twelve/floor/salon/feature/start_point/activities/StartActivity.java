@@ -68,6 +68,8 @@ public class StartActivity extends BaseActivity
         () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
+
+    mStartActivityPresenter.fetchBonusCount();
   }
 
   private void setUpUI() {
@@ -89,7 +91,6 @@ public class StartActivity extends BaseActivity
 
   @Override protected void onResume() {
     super.onResume();
-    mStartActivityPresenter.fetchBonusCount();
 
     if (mAuthorizationManager.isAuthorized()) {
       mNavViewTopPart.getMenu().getItem(2).setCheckable(true);

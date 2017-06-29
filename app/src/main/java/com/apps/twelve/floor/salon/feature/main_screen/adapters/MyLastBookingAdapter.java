@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +53,7 @@ public class MyLastBookingAdapter
 
   private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
   private AlertDialog mRemoveBookingDialog;
+  private ProgressBar mProgressBarCancel;
 
   public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
       Navigator navigator) {
@@ -125,8 +127,10 @@ public class MyLastBookingAdapter
 
     holder.mButtonPostpone.setOnClickListener(
         v -> mMyLastBookingAdapterPresenter.openPostponeFragment(position));
-    holder.mButtonCancel.setOnClickListener(
-        v -> mMyLastBookingAdapterPresenter.showConfirmationDialog(position));
+    holder.mButtonCancel.setOnClickListener(v -> {
+      mMyLastBookingAdapterPresenter.showConfirmationDialog(position);
+      mProgressBarCancel = holder.mProgressBarCancel;
+    });
   }
 
   @Override public int getItemCount() {
@@ -162,6 +166,14 @@ public class MyLastBookingAdapter
     }
   }
 
+  @Override public void showProgressBarCancel() {
+    mProgressBarCancel.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideProgressBarCancel() {
+    mProgressBarCancel.setVisibility(View.GONE);
+  }
+
   public static class MyLastBookingViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.view) TextView view;
     @BindView(R.id.clLastBooking) ConstraintLayout mConstraintLayoutLastBooking;
@@ -171,6 +183,7 @@ public class MyLastBookingAdapter
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;
     @BindView(R.id.bPostpone) Button mButtonPostpone;
     @BindView(R.id.bCancel) Button mButtonCancel;
+    @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;
 
     private CountDownTimer mDownTimer;
 
