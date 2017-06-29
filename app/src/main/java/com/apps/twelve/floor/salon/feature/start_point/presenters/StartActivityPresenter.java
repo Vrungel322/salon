@@ -24,6 +24,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().addFragmentMain();
+    fetchBonusCount();
     //RxBus
     subscribeOnEvents();
     subscribeConnectException();
@@ -79,7 +80,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
-  @SuppressWarnings("ConstantConditions") public void fetchBonusCount() {
+  @SuppressWarnings("ConstantConditions") private void fetchBonusCount() {
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription =
           mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()).concatMap(response -> {

@@ -42,6 +42,14 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    if (getActivity() instanceof StartActivity) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.bonus);
+    }
+
+    if (getActivity() instanceof BookingActivity) {
+      ((BookingActivity) getActivity()).setTitleAppBar(R.string.bonus);
+    }
+
     mButtonHowBonusWorks.setOnClickListener(c -> {
       if (getActivity() instanceof StartActivity) {
         mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
@@ -64,7 +72,7 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     }
 
     if (getActivity() instanceof BookingActivity) {
-      ((BookingActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
+      ((BookingActivity) getActivity()).setTitleAppBar(R.string.book_create);
     }
   }
 

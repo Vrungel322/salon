@@ -68,8 +68,6 @@ public class StartActivity extends BaseActivity
         () -> mStartActivityPresenter.setDrawerIndicator());
 
     mToggle.setToolbarNavigationClickListener(v -> onBackPressed());
-
-    mStartActivityPresenter.fetchBonusCount();
   }
 
   private void setUpUI() {
