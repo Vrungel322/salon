@@ -16,6 +16,8 @@ import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 @InjectViewState public class ChooseMasterServiceFragmentPresenter
     extends BasePresenter<IChooseMasterServiceFragmentView> {
 
@@ -38,16 +40,18 @@ import timber.log.Timber;
     mBookingEntity.setServiceId("");
   }
 
-  private void fetchAllServicesByMasterId() {
+  @SuppressWarnings("ConstantConditions") private void fetchAllServicesByMasterId() {
     getViewState().setMasterName(mBookingEntity.getMasterName());
     Subscription subscription =
         mDataManager.fetchAllServicesByMasterId(mBookingEntity.getMasterId())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(serviceEntities -> {
-              getViewState().hideProgressBar();
-              getViewState().updateRvServices(serviceEntities);
-              mServiceEntities.clear();
-              mServiceEntities.addAll(serviceEntities);
+            .subscribe(response -> {
+              if (response.code() == RESPONSE_200) {
+                getViewState().hideProgressBar();
+                getViewState().updateRvServices(response.body());
+                mServiceEntities.clear();
+                mServiceEntities.addAll(response.body());
+              }
             }, throwable -> {
               Timber.e(throwable);
               showMessageException(throwable);

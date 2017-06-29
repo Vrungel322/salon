@@ -53,14 +53,14 @@
           app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/textView2"
           >
-      <Button
-          android:id="@+id/bChooseCategory"
-          android:layout_width="match_parent"
-          android:layout_height="48dp"
-          android:background="?attr/selectableItemBackground"
-          android:text="@string/choose_category"
-          android:textColor="@color/colorTransparentBlack"
-          />
+        <Button
+            android:id="@+id/bChooseCategory"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/choose_category"
+            android:textColor="@color/colorTransparentBlack"
+            />
       </LinearLayout>
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvStaff"

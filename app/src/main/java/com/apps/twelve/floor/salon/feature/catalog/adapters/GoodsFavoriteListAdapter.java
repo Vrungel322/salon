@@ -65,7 +65,6 @@ public class GoodsFavoriteListAdapter
       holder.mImageViewForSale.setVisibility(View.GONE);
     }
 
-
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
     holder.mTextViewShortDescription.setText(mGoodsEntities.get(position).getShortDescription());
     holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());

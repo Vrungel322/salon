@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 28.03.2017.
  */
@@ -45,12 +47,14 @@ import timber.log.Timber;
     Subscription subscription =
         mDataManager.fetchMasters(mBookingEntity.getServiceId(), mBookingEntity.getDateId())
             .compose(ThreadSchedulers.applySchedulers())
-            .subscribe(masterEntities -> {
-              mMasterEntities = masterEntities;
-              getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
-                  mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
-              getViewState().showMasters(masterEntities);
-              getViewState().hideProgressBar();
+            .subscribe(response -> {
+              if (response.code() == RESPONSE_200) {
+                mMasterEntities = response.body();
+                getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
+                    mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
+                getViewState().showMasters(response.body());
+                getViewState().hideProgressBar();
+              }
             }, throwable -> {
               Timber.e(throwable);
               showMessageException(throwable);

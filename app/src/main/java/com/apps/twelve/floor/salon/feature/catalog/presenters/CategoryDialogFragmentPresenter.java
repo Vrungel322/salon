@@ -12,6 +12,8 @@ import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 29.05.2017.
  */
@@ -29,24 +31,26 @@ import timber.log.Timber;
     fetchCategories();
   }
 
-  private void fetchCategories() {
+  @SuppressWarnings("ConstantConditions") private void fetchCategories() {
     mGenres.clear();
     getViewState().startProgressBar();
-    Subscription subscription = mDataManager.fetchCategories()
-        .compose(ThreadSchedulers.applySchedulers())
-        .concatMap(Observable::from)
-        .concatMap(goodsCategoryEntity -> {
-          mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
-          return Observable.just(mGenres);
-        })
-        .subscribe(genres -> {
-          getViewState().stopProgressBar();
-          getViewState().fillCategories(genres);
-        }, throwable -> {
-          showMessageException(throwable);
-          getViewState().stopProgressBar();
-          Timber.e(throwable);
-        });
+    Subscription subscription = mDataManager.fetchCategories().concatMap(response -> {
+      if (response.code() == RESPONSE_200) {
+        return Observable.from(response.body());
+      } else {
+        return Observable.error(new Exception("Not response 200"));
+      }
+    }).concatMap(goodsCategoryEntity -> {
+      mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
+      return Observable.just(mGenres);
+    }).compose(ThreadSchedulers.applySchedulers()).subscribe(genres -> {
+      getViewState().stopProgressBar();
+      getViewState().fillCategories(genres);
+    }, throwable -> {
+      showMessageException(throwable);
+      getViewState().stopProgressBar();
+      Timber.e(throwable);
+    });
     addToUnsubscription(subscription);
   }
 

@@ -48,10 +48,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.
  */
 
 public class PostponeFragment extends BaseFragment implements IPostponeFragmentView {
+
   private static final int SCHEDULE_SPAN_COUNT = 6;
   private static final int SELECTED_ITEM_DEFAULT = -1;
 
   @InjectPresenter PostponeFragmentPresenter mPostponeFragmentPresenter;
+
   @BindView(R.id.tv_service_description) TextView mTextViewServiceName;
   @BindView(R.id.tv_master_description) TextView mTextViewMasterDescription;
   @BindView(R.id.bPrevDay) ImageView mImageViewPrevDay;
@@ -226,7 +228,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   }
 
   @Override public void timeIsNotAvailable() {
-    showToastMessage("Time is not Available");
+    showToastMessage(R.string.error_time_not_available);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

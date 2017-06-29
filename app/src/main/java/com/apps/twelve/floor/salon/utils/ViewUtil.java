@@ -7,6 +7,8 @@ import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by John on 26.01.2017.
@@ -34,6 +36,12 @@ public final class ViewUtil {
     InputMethodManager imm =
         (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+  }
+
+  public static boolean checkPhone(String value) {
+    Pattern pattern = Pattern.compile("^[+][0-9]{12}$");
+    Matcher matcher = pattern.matcher(value);
+    return matcher.matches();
   }
 
   public static class TabLayoutUtils {

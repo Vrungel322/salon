@@ -7,7 +7,6 @@ package com.apps.twelve.floor.salon.utils;
 public final class Constants {
   public class Remote {
     private static final String DOMEN = "beauty.api.floor12apps.com";
-    // TODO: do not forget to paste base url
     public static final String BASE_URL = "https://" + DOMEN + "/";
   }
 
@@ -56,6 +55,8 @@ public final class Constants {
   public class StatusCode {
     public static final int RESPONSE_200 = 200;
     public static final int RESPONSE_204 = 204;
+    public static final int RESPONSE_400 = 400;
+    public static final int RESPONSE_404 = 404;
   }
 
   public class Other {

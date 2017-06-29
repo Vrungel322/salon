@@ -18,6 +18,7 @@ public class PreferencesHelper {
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
   private static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
+  private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
 
   private final SharedPreferences mPreferences;
 
@@ -47,6 +48,14 @@ public class PreferencesHelper {
 
   public void setBonusCount(int bonusCount) {
     mPreferences.edit().putInt(PREF_BONUS_COUNT, bonusCount).apply();
+  }
+
+  public void setLastPhoneForBooking(String lastPhone) {
+    mPreferences.edit().putString(PREF_LAST_PHONE_FOR_BOOKING, lastPhone).apply();
+  }
+
+  public String getLastPhoneForBooking() {
+    return mPreferences.getString(PREF_LAST_PHONE_FOR_BOOKING, "");
   }
 
   public boolean isHourlyNotificationsEnabled() {
@@ -83,5 +92,6 @@ public class PreferencesHelper {
 
   public void logoutUser() {
     setBonusCount(0);
+    setLastPhoneForBooking("");
   }
 }

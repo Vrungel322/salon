@@ -57,7 +57,11 @@ public class ChooseMasterContactFragment extends BaseFragment
     super.onResume();
     if (mAuthorizationManager.isAuthorized()) {
       mEditTextName.setText(mAuthorizationManager.getUserName());
-      mEditTextPhone.setText(mAuthorizationManager.getUserPhone());
+      if (mAuthorizationManager.getUserPhone().equals("")) {
+        mChooseMasterContactFragmentPresenter.setPersonPhone();
+      } else {
+        mChooseMasterContactFragmentPresenter.setPersonPhone(mAuthorizationManager.getUserPhone());
+      }
     }
   }
 
@@ -80,8 +84,16 @@ public class ChooseMasterContactFragment extends BaseFragment
     mTextViewEmptyPhone.setVisibility(View.VISIBLE);
   }
 
+  @Override public void showErrorMessage(int message) {
+    showAlertMessage(getString(R.string.title_write_error), getString(message));
+  }
+
   @Override public void closeBooking() {
     mNavigator.finishActivity((AppCompatActivity) getActivity());
+  }
+
+  @Override public void setLastPhone(String lastPhone) {
+    mEditTextPhone.setText(lastPhone);
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,

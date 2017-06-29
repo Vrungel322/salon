@@ -157,7 +157,7 @@ public class ChooseMasterTimeFragment extends BaseFragment
   }
 
   @Override public void timeIsNotAvailable() {
-    showToastMessage("Time is not Available");
+    showToastMessage(R.string.error_time_not_available);
   }
 
   @Override public void clearSelectedTime() {

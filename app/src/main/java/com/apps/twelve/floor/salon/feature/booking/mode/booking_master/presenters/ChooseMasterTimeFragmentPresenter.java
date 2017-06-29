@@ -14,6 +14,8 @@ import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 @InjectViewState public class ChooseMasterTimeFragmentPresenter
     extends BasePresenter<IChooseMasterTimeFragmentView> {
 
@@ -35,20 +37,22 @@ import timber.log.Timber;
     mBookingEntity.setDateId("");
   }
 
-  private void getTimeMaster() {
+  @SuppressWarnings("ConstantConditions") private void getTimeMaster() {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(mBookingEntity.getMasterId())
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(dataServiceEntities -> {
-          mDataServiceEntity = dataServiceEntities;
-          getViewState().hideProgressBarBookingTime();
-          getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
-              mBookingEntity.getMasterName());
-          if (!dataServiceEntities.isEmpty()) {
-            getViewState().setUpUi(dataServiceEntities);
-            setDateToTv();
-            getViewState().showTimeBooking();
-          } else {
-            getViewState().showNotTime();
+        .subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            mDataServiceEntity = response.body();
+            getViewState().hideProgressBarBookingTime();
+            getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
+                mBookingEntity.getMasterName());
+            if (!response.body().isEmpty()) {
+              getViewState().setUpUi(response.body());
+              setDateToTv();
+              getViewState().showTimeBooking();
+            } else {
+              getViewState().showNotTime();
+            }
           }
         }, throwable -> {
           Timber.e(throwable);

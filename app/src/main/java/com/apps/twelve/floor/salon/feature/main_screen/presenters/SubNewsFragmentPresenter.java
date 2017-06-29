@@ -9,6 +9,8 @@ import com.arellomobile.mvp.InjectViewState;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 23.02.2017.
  */
@@ -29,9 +31,11 @@ import timber.log.Timber;
   private void fetchNewsEntities() {
     Subscription subscription = mDataManager.fetchNewsPreview()
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(previewNewsEntity -> {
-          getViewState().updateNewsPreview(previewNewsEntity);
-          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+        .subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            getViewState().updateNewsPreview(response.body());
+            mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
+          }
         }, throwable -> {
           Timber.e(throwable);
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
@@ -42,12 +46,8 @@ import timber.log.Timber;
 
   private void subscribeUpdateNews() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateNews.class)
-        .concatMap(updateNews -> mDataManager.fetchNewsPreview())
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(newsEntity -> {
-          getViewState().updateNewsPreview(newsEntity);
-          mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
-        }, throwable -> {
+        .subscribe(newsEntity -> fetchNewsEntities(), throwable -> {
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
           subscribeUpdateNews();
           Timber.e(throwable);

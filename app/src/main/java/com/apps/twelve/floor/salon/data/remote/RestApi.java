@@ -29,42 +29,44 @@ public class RestApi {
     this.api = api;
   }
 
-  public Observable<List<CategoryEntity>> fetchCategory(String language) {
+  public Observable<Response<List<CategoryEntity>>> fetchCategory(String language) {
     return api.fetchCategory(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServices(String language) {
+  public Observable<Response<List<ServiceEntity>>> fetchAllServices(String language) {
     return api.fetchAllServices(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchServicesOfCategoryWithId(String language, int id) {
+  public Observable<Response<List<ServiceEntity>>> fetchServicesOfCategoryWithId(String language,
+      int id) {
     return api.fetchServicesOfCategoryWithId(language, id);
   }
 
-  public Observable<List<CategoryEntity>> fetchCategoriesOfCategoryWithId(String language,
+  public Observable<Response<List<CategoryEntity>>> fetchCategoriesOfCategoryWithId(String language,
       int parentId) {
     return api.fetchCategoriesOfCategoryWithId(language, parentId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysData(String language, String serviceId) {
+  public Observable<Response<List<DataServiceEntity>>> fetchDaysData(String language,
+      String serviceId) {
     return api.fetchDaysData(language, serviceId);
   }
 
-  public Observable<List<MasterEntity>> fetchMasters(String language, String serviceId,
+  public Observable<Response<List<MasterEntity>>> fetchMasters(String language, String serviceId,
       String dataID) {
     return api.fetchMasters(language, serviceId, dataID);
   }
 
-  public Observable<List<MasterEntity>> fetchAllMasters(String language) {
+  public Observable<Response<List<MasterEntity>>> fetchAllMasters(String language) {
     return api.fetchAllMasters(language);
   }
 
-  public Observable<List<ServiceEntity>> fetchAllServicesByMasterId(String language,
+  public Observable<Response<List<ServiceEntity>>> fetchAllServicesByMasterId(String language,
       String masterId) {
     return api.fetchAllServicesByMasterId(language, masterId);
   }
 
-  public Observable<List<DataServiceEntity>> fetchDaysDataWithMasterId(String language,
+  public Observable<Response<List<DataServiceEntity>>> fetchDaysDataWithMasterId(String language,
       String masterId) {
     return api.fetchDaysDataWithMasterId(language, masterId);
   }
@@ -88,15 +90,15 @@ public class RestApi {
     return api.postponeService(language, entryId, userId, scheduleId);
   }
 
-  public Observable<List<NewsEntity>> fetchAllNews(String language) {
+  public Observable<Response<List<NewsEntity>>> fetchAllNews(String language) {
     return api.fetchAllNews(language);
   }
 
-  public Observable<NewsEntity> fetchNewsPreview(String language) {
+  public Observable<Response<NewsEntity>> fetchNewsPreview(String language) {
     return api.fetchNewsPreview(language);
   }
 
-  public Observable<List<OurWorkEntity>> fetchListOfWorks(String language) {
+  public Observable<Response<List<OurWorkEntity>>> fetchListOfWorks(String language) {
     return api.fetchListOfWorks(language);
   }
 
@@ -114,15 +116,16 @@ public class RestApi {
     return api.removeFromFavoritePhoto(language, photoId, token);
   }
 
-  public Observable<List<GoodsEntity>> fetchAllProducts(String language, String token) {
+  public Observable<Response<List<GoodsEntity>>> fetchAllProducts(String language, String token) {
     return api.fetchAllProducts(language, token);
   }
 
-  public Observable<List<GoodsCategoryEntity>> fetchCategories(String language) {
+  public Observable<Response<List<GoodsCategoryEntity>>> fetchCategories(String language) {
     return api.fetchCategories(language);
   }
 
-  public Observable<List<GoodsEntity>> fetchGoodsByCatalogId(String language, Integer id) {
+  public Observable<Response<List<GoodsEntity>>> fetchGoodsByCatalogId(String language,
+      Integer id) {
     return api.fetchGoodsByCatalogId(language, id);
   }
 

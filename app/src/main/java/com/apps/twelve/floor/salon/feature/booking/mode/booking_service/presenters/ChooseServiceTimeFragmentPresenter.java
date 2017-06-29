@@ -14,6 +14,8 @@ import javax.inject.Inject;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+
 /**
  * Created by Vrungel on 27.03.2017.
  */
@@ -39,19 +41,21 @@ import timber.log.Timber;
     mBookingEntity.setDateId("");
   }
 
-  private void fetchDaysData() {
+  @SuppressWarnings("ConstantConditions") private void fetchDaysData() {
     Subscription subscription = mDataManager.fetchDaysData(mBookingEntity.getServiceId())
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(dataServiceEntities -> {
-          mDataServiceEntity = dataServiceEntities;
-          getViewState().setServiceName(mBookingEntity.getServiceName());
-          getViewState().hideProgressBarBookingTime();
-          if (!dataServiceEntities.isEmpty()) {
-            getViewState().setUpUi(dataServiceEntities);
-            setDateToTv();
-            getViewState().showTimeBooking();
-          } else {
-            getViewState().showNotTime();
+        .subscribe(response -> {
+          if (response.code() == RESPONSE_200) {
+            mDataServiceEntity = response.body();
+            getViewState().setServiceName(mBookingEntity.getServiceName());
+            getViewState().hideProgressBarBookingTime();
+            if (!response.body().isEmpty()) {
+              getViewState().setUpUi(response.body());
+              setDateToTv();
+              getViewState().showTimeBooking();
+            } else {
+              getViewState().showNotTime();
+            }
           }
         }, throwable -> {
           Timber.e(throwable);

@@ -92,7 +92,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     } else {
       holder.mImageViewServiceBadgeSale.setVisibility(View.GONE);
     }
-
   }
 
   @Override public int getItemCount() {
