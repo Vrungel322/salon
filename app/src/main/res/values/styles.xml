@@ -111,8 +111,4 @@
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
 
-  <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-    <item name="android:windowBackground">@drawable/background_splash</item>
-  </style>
-
 </resources>
