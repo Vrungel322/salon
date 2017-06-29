@@ -28,10 +28,12 @@ import com.apps.twelve.floor.salon.feature.news.presenters.AllNewsFragmentPresen
 import com.apps.twelve.floor.salon.feature.news.presenters.DetailNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.settings.fragments.ThemeDialogFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.ReportProblemFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.settings.presenters.ThemeDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
@@ -100,11 +102,16 @@ import dagger.Component;
 
   void inject(CatalogFavoriteFragmentPresenter presenter);
 
+  void inject(ThemeDialogFragmentPresenter presenter);
+
   //activities
   void inject(BaseActivity activity);
 
   //fragments
   void inject(BaseFragment fragment);
+
+  //dialog fragment
+  void inject(ThemeDialogFragment fragment);
 
   //adapters
   void inject(MyLastBookingAdapterPresenter presenter);

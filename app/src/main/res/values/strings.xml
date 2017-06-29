@@ -169,6 +169,14 @@
     <item>Красная</item>
   </string-array>
 
+  <string name="pink">Розовая</string>
+  <string name="blue">Синяя</string>
+  <string name="green">Зеленая</string>
+  <string name="yellow">Желтая</string>
+  <string name="gray">Серая</string>
+  <string name="purple">Фиолетовая</string>
+  <string name="red">Красная</string>
+
   <string name="dialog_auth_title">Предупреждение</string>
   <string name="dialog_auth_message">Данная функция доступна только для зарегистрированных пользователей.\nПерейти на экран авторизации?</string>
   <string name="dialog_auth_yes">Перейти</string>

@@ -22,16 +22,4 @@ import com.arellomobile.mvp.InjectViewState;
       getViewState().openUserProfileFragment();
     }
   }
-
-  public void setThemeApp(int themeApp) {
-    mDataManager.setThemeSelected(themeApp);
-  }
-
-  public void showSetThemeDialog() {
-    getViewState().showSetThemeDialog(mDataManager.getThemeSelected());
-  }
-
-  public void cancelAlertDialog() {
-    getViewState().cancelAlertDialog();
-  }
 }

@@ -115,4 +115,8 @@
     <item name="android:windowBackground">@drawable/background_splash</item>
   </style>
 
+  <style name="ThemeDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
 </resources>

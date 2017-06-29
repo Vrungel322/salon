@@ -59,6 +59,16 @@ public final class Constants {
     public static final int RESPONSE_404 = 404;
   }
 
+  public class Theme {
+    public static final int PINK = 0;
+    public static final int BLUE = 1;
+    public static final int GREEN = 2;
+    public static final int YELLOW = 3;
+    public static final int GRAY = 4;
+    public static final int PURPLE = 5;
+    public static final int RED = 6;
+  }
+
   public class Other {
     public static final String MASTER_MALE_PLACEHOLDER = "male";
     public static final String SERVER_ANSWER_EMPTY_STRING = "---";
