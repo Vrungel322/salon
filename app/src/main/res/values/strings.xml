@@ -78,7 +78,6 @@
   <string name="history_title">Накопленные бонусы</string>
   <string name="history_description">(расплачивайтесь бонусами за услуги)</string>
   <string name="history_no_items">Вы еще не совершали транзакций</string>
-  <string name="history_no_auth">Авторизуйтесь, чтобы увидеть историю своих транзакций</string>
   <string name="bonus_measure">%s бонусов</string>
 
   <!--For tabs-->
@@ -119,22 +118,6 @@
   <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_change_theme">Тема приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
-  <string name="clear_history">Очистить историю</string>
-  <string name="exit">Выйти</string>
-  <string name="info_unknown">Информация не указана</string>
-  <string name="change_user_info">Изменить %s</string>
-  <string name="current_field_name">Текущее имя:</string>
-  <string name="new_field_name">Новое имя:</string>
-  <string name="current_field_login">Текущий логин:</string>
-  <string name="new_field_login">Новый логин:</string>
-  <string name="current_field_password">Текущий пароль:</string>
-  <string name="new_field_password">Новый пароль:</string>
-  <string name="field_password">Изменить пароль</string>
-  <string name="current_field_email">Текущая почта:</string>
-  <string name="new_field_email">Новая почта:</string>
-  <string name="current_field_phone">Текущий телефон:</string>
-  <string name="new_field_phone">Новый телефон:</string>
-  <string name="button_save">Сохранить</string>
   <string name="report_problem_description">Опишите Вашу проблему:</string>
   <string name="report_problem_hint">Мой кот меня не любит</string>
   <string name="settings_notifications_title_daily">Дневное уведомление</string>
