@@ -121,7 +121,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   private void subscribeShowDialog() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialogBooking.class)
         .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(show -> showAlertDialog(), Timber::e);
+        .subscribe(show -> getViewState().showAlertDialog(), Timber::e);
     addToUnsubscription(subscription);
   }
 
@@ -142,10 +142,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(event -> getViewState().startSignInActivity(), Timber::e);
     addToUnsubscription(subscription);
-  }
-
-  public void showAlertDialog() {
-    getViewState().showAlertDialog();
   }
 
   public void cancelAlertDialog() {

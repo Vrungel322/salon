@@ -60,7 +60,17 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
       }
     });
 
-    mButtonSendCode.setOnClickListener(c -> showToastMessage("Send"));
+    mButtonSendCode.setOnClickListener(c -> {
+      if (mAuthorizationManager.isAuthorized()) {
+        showToastMessage("Send");
+      } else {
+        if (getActivity() instanceof StartActivity) {
+          mMyBonusFragmentPresenter.showAuthDialogBooking();
+        } else {
+          mMyBonusFragmentPresenter.showAuthDialog();
+        }
+      }
+    });
 
     mTextViewYourCode.setText("007");
   }
@@ -82,11 +92,19 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
 
   @OnClick(R.id.tvHistory) void openHistory() {
     if (getActivity() instanceof StartActivity) {
-      mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
-          BonusHistoryFragment.newInstance());
+      if (mAuthorizationManager.isAuthorized()) {
+        mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+            BonusHistoryFragment.newInstance());
+      } else {
+        mMyBonusFragmentPresenter.showAuthDialog();
+      }
     } else {
-      mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_booking,
-          BonusHistoryFragment.newInstance());
+      if (mAuthorizationManager.isAuthorized()) {
+        mNavigator.addFragmentBackStack((BookingActivity) getActivity(), R.id.container_booking,
+            BonusHistoryFragment.newInstance());
+      } else {
+        mMyBonusFragmentPresenter.showAuthDialogBooking();
+      }
     }
   }
 }

@@ -170,12 +170,8 @@ public class StartActivity extends BaseActivity
         mStartActivityPresenter.share();
         return true;
       case R.id.action_my_bonus:
-        if (mAuthorizationManager.isAuthorized()) {
-          mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
-              MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
-        } else {
-          mStartActivityPresenter.showAlertDialog();
-        }
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
       default:
         return super.onOptionsItemSelected(item);
@@ -201,12 +197,8 @@ public class StartActivity extends BaseActivity
         }
         break;
       case R.id.nav_my_bonus:
-        if (mAuthorizationManager.isAuthorized()) {
-          mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
-              MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
-        } else {
-          mStartActivityPresenter.showAlertDialog();
-        }
+        mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         break;
       case R.id.nav_our_work:
         mNavigator.addFragmentTagClearBackStackNotCopy(StartActivity.this, R.id.container_main,
