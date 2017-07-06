@@ -234,7 +234,7 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void share() {
-    String appUrl = "http://www.google.com";
+    String appUrl = getString(R.string.app_link);
     Intent intent = new Intent(Intent.ACTION_SEND);
     intent.setType("text/plain");
     intent.putExtra(Intent.EXTRA_SUBJECT, "Watch this cool app!");

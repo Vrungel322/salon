@@ -168,11 +168,26 @@ public class ChooseMasterTimeFragment extends BaseFragment
     if (mViewPagerDatesOfMonth.getCurrentItem() > 0) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() - 1);
     }
+    checkArrows();
   }
 
   @OnClick(R.id.bNextDay) public void bNextDayClicked() {
     if (mViewPagerDatesOfMonth.getCurrentItem() < mDays.size()) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() + 1);
+    }
+    checkArrows();
+  }
+
+  private void checkArrows() {
+    if (mViewPagerDatesOfMonth.getCurrentItem() == mDays.size() - 1) {
+      mImageViewNextDay.setVisibility(View.INVISIBLE);
+    } else {
+      mImageViewNextDay.setVisibility(View.VISIBLE);
+    }
+    if (mViewPagerDatesOfMonth.getCurrentItem() == 0) {
+      mImageViewPrevDay.setVisibility(View.INVISIBLE);
+    } else {
+      mImageViewPrevDay.setVisibility(View.VISIBLE);
     }
   }
 
