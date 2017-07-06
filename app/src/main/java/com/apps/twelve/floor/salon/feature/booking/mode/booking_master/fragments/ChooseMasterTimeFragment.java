@@ -180,12 +180,12 @@ public class ChooseMasterTimeFragment extends BaseFragment
 
   private void checkArrows() {
     if (mViewPagerDatesOfMonth.getCurrentItem() == mDays.size() - 1) {
-      mImageViewNextDay.setVisibility(View.INVISIBLE);
+      mImageViewNextDay.setVisibility(View.GONE);
     } else {
       mImageViewNextDay.setVisibility(View.VISIBLE);
     }
     if (mViewPagerDatesOfMonth.getCurrentItem() == 0) {
-      mImageViewPrevDay.setVisibility(View.INVISIBLE);
+      mImageViewPrevDay.setVisibility(View.GONE);
     } else {
       mImageViewPrevDay.setVisibility(View.VISIBLE);
     }
