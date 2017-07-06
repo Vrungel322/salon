@@ -1,5 +1,6 @@
 <resources>
   <string name="app_name">Salon</string>
+  <string name="app_link">https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon</string>
 
   <string name="dialog_action_ok">OK</string>
   <string name="dialog_error_title">Ошибка</string>
@@ -89,7 +90,7 @@
   <string name="booking_time">Время:</string>
   <string name="booking_master">Мастер:</string>
   <string name="booking_name">Ваше имя</string>
-  <string name="booking_name_description">(ваше имя или ФИО, не менее 5 символов)</string>
+  <string name="booking_name_description">(как к Вам обращаться)</string>
   <string name="booking_phone">Номер мобильного телефона</string>
   <string name="booking_phone_description">(формат +380501234455)</string>
   <string name="booking_button">ЗАПИСАТЬСЯ</string>
@@ -129,7 +130,6 @@
   <string name="menu_catalog">Каталог</string>
   <string name="choose_staff">Выбор продукции</string>
   <string name="choose_category">Выбрать категорию</string>
-  <string name="wrong">Что то пошло не так!"</string>
 
   <string-array name="changing_field">
     <item>имя</item>
@@ -142,6 +142,7 @@
   <string name="dialog_title_select_theme">Выберите тему</string>
   <string name="error_connection">Ошибка соеденения</string>
   <string name="сheck_internet_connection">Проверте подключение к интернету</string>
+  <string name="wrong">Что-то пошло не так!</string>
   <string-array name="dialog_theme">
     <item>Розовая</item>
     <item>Синяя</item>
