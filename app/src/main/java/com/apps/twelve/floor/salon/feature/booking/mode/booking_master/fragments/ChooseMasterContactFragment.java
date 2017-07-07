@@ -30,6 +30,7 @@ public class ChooseMasterContactFragment extends BaseFragment
   @BindView(R.id.edit_name) EditText mEditTextName;
   @BindView(R.id.edit_phone) EditText mEditTextPhone;
   @BindView(R.id.tvEmptyPhone) TextView mTextViewEmptyPhone;
+  @BindView(R.id.tvEmptyName) TextView mTextViewEmptyName;
   @BindView(R.id.btn_booking_contact) CircularProgressButton mBtnCreateBooking;
 
   public ChooseMasterContactFragment() {
@@ -80,8 +81,20 @@ public class ChooseMasterContactFragment extends BaseFragment
     mBtnCreateBooking.revertAnimation();
   }
 
-  @Override public void showEmptyPhoneError() {
-    mTextViewEmptyPhone.setVisibility(View.VISIBLE);
+  @Override public void showEmptyPhoneError(boolean show) {
+    if (show) {
+      mTextViewEmptyPhone.setVisibility(View.VISIBLE);
+    } else {
+      mTextViewEmptyPhone.setVisibility(View.GONE);
+    }
+  }
+
+  @Override public void showEmptyNameError(boolean show) {
+    if (show) {
+      mTextViewEmptyName.setVisibility(View.VISIBLE);
+    } else {
+      mTextViewEmptyName.setVisibility(View.GONE);
+    }
   }
 
   @Override public void showErrorMessage(int message) {
