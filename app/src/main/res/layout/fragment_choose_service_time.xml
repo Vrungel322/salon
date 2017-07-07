@@ -161,7 +161,7 @@
               android:layout_marginStart="8dp"
               android:layout_marginTop="16dp"
               android:gravity="center"
-              android:text="@string/booking_phone"
+              android:text="@string/time_empty_descr"
               android:textColor="@color/colorWhite"
               />
           <Button

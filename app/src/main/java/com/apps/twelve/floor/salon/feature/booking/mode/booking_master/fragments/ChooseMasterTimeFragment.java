@@ -145,6 +145,7 @@ public class ChooseMasterTimeFragment extends BaseFragment
   @Override public void showNotTime() {
     mRelativeLayoutNotTime.setVisibility(View.VISIBLE);
     mTextViewCurrentDate.setVisibility(View.VISIBLE);
+    mImageViewNextDay.setVisibility(View.GONE);
   }
 
   @Override public void hideProgressBarBookingTime() {
