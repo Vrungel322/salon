@@ -20,7 +20,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void revertAnimation();
 
-  void showEmptyPhoneError();
+  void showEmptyPhoneError(boolean show);
+
+  void showEmptyNameError(boolean show);
 
   void setLastPhone(String lastPhone);
 

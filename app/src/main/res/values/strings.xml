@@ -117,7 +117,7 @@
   <string name="error_empty_date">Время не выбрано</string>
   <string name="error_time_not_available">Выбранное время уже занято!</string>
   <string name="error_booking_entity_not_exist">Текущей записи не существует</string>
-  <string name="error_phone">Введите корректный телефон</string>
+  <string name="error_data_not_correct">Введенные данные не корректны.</string>
   <string name="done">Готово</string>
 
   <!--for settings-->
