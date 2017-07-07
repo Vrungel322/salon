@@ -4,11 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/srlRefreshLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:orientation="vertical"
     >
+  <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
   <android.support.constraint.ConstraintLayout
       xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -191,4 +195,5 @@
         />
 
   </android.support.constraint.ConstraintLayout>
+  </android.support.v4.widget.NestedScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>
