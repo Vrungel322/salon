@@ -17,7 +17,6 @@ import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.List;
-import java.util.Locale;
 import retrofit2.Response;
 import rx.Observable;
 
@@ -31,6 +30,8 @@ public class DataManager {
   private PreferencesHelper mPref;
   private AuthorizationManager mAuthorizationManager;
 
+  private String mLanguage = "ru"; // = Locale.getDefault().getLanguage();
+
   public DataManager(RestApi restApi, PreferencesHelper preferencesHelper,
       AuthorizationManager authorizationManager) {
     this.mRestApi = restApi;
@@ -41,56 +42,56 @@ public class DataManager {
   //checkin service.
 
   public Observable<Response<List<CategoryEntity>>> fetchCategory() {
-    return mRestApi.fetchCategory(Locale.getDefault().getLanguage());
+    return mRestApi.fetchCategory(mLanguage);
   }
 
   public Observable<Response<List<ServiceEntity>>> fetchAllServices() {
-    return mRestApi.fetchAllServices(Locale.getDefault().getLanguage());
+    return mRestApi.fetchAllServices(mLanguage);
   }
 
   public Observable<Response<List<ServiceEntity>>> fetchAllServicesByMasterId(String masterId) {
-    return mRestApi.fetchAllServicesByMasterId(Locale.getDefault().getLanguage(), masterId);
+    return mRestApi.fetchAllServicesByMasterId(mLanguage, masterId);
   }
 
   public Observable<Response<List<ServiceEntity>>> fetchServicesOfCategoryWithId(int id) {
-    return mRestApi.fetchServicesOfCategoryWithId(Locale.getDefault().getLanguage(), id);
+    return mRestApi.fetchServicesOfCategoryWithId(mLanguage, id);
   }
 
   public Observable<Response<List<CategoryEntity>>> fetchCategoriesOfCategoryWithId(int parentId) {
-    return mRestApi.fetchCategoriesOfCategoryWithId(Locale.getDefault().getLanguage(), parentId);
+    return mRestApi.fetchCategoriesOfCategoryWithId(mLanguage, parentId);
   }
 
   public Observable<Response<List<DataServiceEntity>>> fetchDaysData(String serviceId) {
-    return mRestApi.fetchDaysData(Locale.getDefault().getLanguage(), serviceId);
+    return mRestApi.fetchDaysData(mLanguage, serviceId);
   }
 
   public Observable<Response<List<MasterEntity>>> fetchMasters(String serviceId, String dataID) {
-    return mRestApi.fetchMasters(Locale.getDefault().getLanguage(), serviceId, dataID);
+    return mRestApi.fetchMasters(mLanguage, serviceId, dataID);
   }
 
   public Observable<Response<List<MasterEntity>>> fetchAllMasters() {
-    return mRestApi.fetchAllMasters(Locale.getDefault().getLanguage());
+    return mRestApi.fetchAllMasters(mLanguage);
   }
 
   public Observable<Response<List<DataServiceEntity>>> fetchDaysDataWithMasterId(String masterId) {
-    return mRestApi.fetchDaysDataWithMasterId(Locale.getDefault().getLanguage(), masterId);
+    return mRestApi.fetchDaysDataWithMasterId(mLanguage, masterId);
   }
 
   public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(Locale.getDefault().getLanguage(),
+    return mRestApi.checkInService(mLanguage,
         mAuthorizationManager.getToken(), bookingServerEntity);
   }
 
   //bonus
 
   public Observable<Response<BonusEntity>> fetchBonusCount() {
-    return mRestApi.fetchBonusCount(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchBonusCount(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory() {
-    return mRestApi.fetchBonusHistory(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchBonusHistory(mLanguage,
         mAuthorizationManager.getToken());
   }
 
@@ -119,87 +120,87 @@ public class DataManager {
   //main screen
 
   public Observable<Response<List<LastBookingEntity>>> fetchLastBooking() {
-    return mRestApi.fetchLastBooking(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchLastBooking(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(Locale.getDefault().getLanguage(), serviceId,
+    return mRestApi.cancelOrder(mLanguage, serviceId,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
-    return mRestApi.postponeService(Locale.getDefault().getLanguage(), entryId,
+    return mRestApi.postponeService(mLanguage, entryId,
         mAuthorizationManager.getToken(), scheduleId);
   }
 
   //ourWorks
 
   public Observable<Response<List<OurWorkEntity>>> fetchListOfWorks() {
-    return mRestApi.fetchListOfWorks(Locale.getDefault().getLanguage());
+    return mRestApi.fetchListOfWorks(mLanguage);
   }
 
   public Observable<Response<List<OurWorkEntity>>> fetchListOfWorksAuth() {
-    return mRestApi.fetchListOfWorksAuth(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchListOfWorksAuth(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
-    return mRestApi.fetchFavoritePhotos(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchFavoritePhotos(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   //like/dislike ourWork photo
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
-    return mRestApi.addToFavoritePhoto(Locale.getDefault().getLanguage(), photoId,
+    return mRestApi.addToFavoritePhoto(mLanguage, photoId,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
-    return mRestApi.removeFromFavoritePhoto(Locale.getDefault().getLanguage(), photoId,
+    return mRestApi.removeFromFavoritePhoto(mLanguage, photoId,
         mAuthorizationManager.getToken());
   }
 
   //News
 
   public Observable<Response<NewsEntity>> fetchNewsPreview() {
-    return mRestApi.fetchNewsPreview(Locale.getDefault().getLanguage());
+    return mRestApi.fetchNewsPreview(mLanguage);
   }
 
   public Observable<Response<List<NewsEntity>>> fetchAllNews() {
-    return mRestApi.fetchAllNews(Locale.getDefault().getLanguage());
+    return mRestApi.fetchAllNews(mLanguage);
   }
 
   //Goods
 
   public Observable<Response<List<GoodsEntity>>> fetchAllProducts() {
-    return mRestApi.fetchAllProducts(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchAllProducts(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods() {
-    return mRestApi.fetchFavoriteGoods(Locale.getDefault().getLanguage(),
+    return mRestApi.fetchFavoriteGoods(mLanguage,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchGoodsByCatalogId(Integer id) {
-    return mRestApi.fetchGoodsByCatalogId(Locale.getDefault().getLanguage(), id);
+    return mRestApi.fetchGoodsByCatalogId(mLanguage, id);
   }
 
   public Observable<Response<List<GoodsCategoryEntity>>> fetchCategories() {
-    return mRestApi.fetchCategories(Locale.getDefault().getLanguage());
+    return mRestApi.fetchCategories(mLanguage);
   }
 
   //like/dislike goods
 
   public Observable<Response<Void>> addToFavoriteGoods(int goodsId) {
-    return mRestApi.addToFavoriteGoods(Locale.getDefault().getLanguage(), goodsId,
+    return mRestApi.addToFavoriteGoods(mLanguage, goodsId,
         mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId) {
-    return mRestApi.removeFromFavoriteGoods(Locale.getDefault().getLanguage(), goodsId,
+    return mRestApi.removeFromFavoriteGoods(mLanguage, goodsId,
         mAuthorizationManager.getToken());
   }
 

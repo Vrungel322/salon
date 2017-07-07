@@ -102,6 +102,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_date_previous_24dp"
             />
         <ImageView
@@ -160,7 +161,7 @@
               android:layout_marginStart="8dp"
               android:layout_marginTop="16dp"
               android:gravity="center"
-              android:text="@string/booking_phone"
+              android:text="@string/time_empty_descr"
               android:textColor="@color/colorWhite"
               />
           <Button

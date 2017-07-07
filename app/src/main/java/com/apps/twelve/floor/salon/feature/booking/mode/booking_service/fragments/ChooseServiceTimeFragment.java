@@ -111,6 +111,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
         .setOnItemClickListener((recyclerView, position, v) -> {
           mChooseServiceTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
+          checkArrows();
         });
 
     //Schedule RV (hours)
@@ -153,6 +154,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
   @Override public void showNotTime() {
     mRelativeLayoutNotTime.setVisibility(View.VISIBLE);
     mTextViewCurrentDate.setVisibility(View.VISIBLE);
+    mImageViewNextDay.setVisibility(View.GONE);
   }
 
   @Override public void hideProgressBarBookingTime() {
