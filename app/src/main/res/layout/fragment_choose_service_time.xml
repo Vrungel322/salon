@@ -102,6 +102,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_date_previous_24dp"
             />
         <ImageView

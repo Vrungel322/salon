@@ -103,6 +103,7 @@ public class ChooseMasterTimeFragment extends BaseFragment
         .setOnItemClickListener((recyclerView, position, v) -> {
           mChooseTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
+          checkArrows();
         });
 
     //Schedule RV (hours)
