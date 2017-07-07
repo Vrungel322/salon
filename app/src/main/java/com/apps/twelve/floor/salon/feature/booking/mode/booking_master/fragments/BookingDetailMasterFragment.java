@@ -127,19 +127,19 @@ public class BookingDetailMasterFragment extends BaseFragment
     switch (fragmentTag) {
       case Constants.FragmentTag.CHOOSE_MASTER_MASTER_FRAGMENT:
         mViewAccentMaster.setVisibility(View.VISIBLE);
-        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentMaster);
+        YoYo.with(Techniques.FadeIn).duration(700).playOn(mViewAccentMaster);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT:
         mViewAccentService.setVisibility(View.VISIBLE);
-        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentService);
+        YoYo.with(Techniques.FadeIn).duration(700).playOn(mViewAccentService);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT:
         mViewAccentTime.setVisibility(View.VISIBLE);
-        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentTime);
+        YoYo.with(Techniques.FadeIn).duration(700).playOn(mViewAccentTime);
         break;
       case Constants.FragmentTag.CHOOSE_MASTER_CONTACT_FRAGMENT:
         mViewAccentData.setVisibility(View.VISIBLE);
-        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentData);
+        YoYo.with(Techniques.FadeIn).duration(700).playOn(mViewAccentData);
         break;
     }
   }
