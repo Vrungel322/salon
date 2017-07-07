@@ -68,13 +68,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_my_bonus:
-        if (mAuthorizationManager.isAuthorized()) {
-          mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this,
-              R.id.container_booking, MyBonusFragment.newInstance(),
-              Constants.FragmentTag.MY_BONUS_FRAGMENT);
-        } else {
-          mBookingActivityPresenter.showAlertDialog();
-        }
+        mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this, R.id.container_booking,
+            MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
       default:
         return super.onOptionsItemSelected(item);

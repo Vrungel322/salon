@@ -31,4 +31,12 @@ import timber.log.Timber;
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
+
+  public void showAuthDialogBooking() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
+  }
+
+  public void showAuthDialog() {
+    mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
 }

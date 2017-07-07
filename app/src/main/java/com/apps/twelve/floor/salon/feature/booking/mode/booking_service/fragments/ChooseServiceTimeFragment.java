@@ -111,6 +111,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
         .setOnItemClickListener((recyclerView, position, v) -> {
           mChooseServiceTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
+          checkArrows();
         });
 
     //Schedule RV (hours)
