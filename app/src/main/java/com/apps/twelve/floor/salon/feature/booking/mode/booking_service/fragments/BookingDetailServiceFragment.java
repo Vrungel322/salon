@@ -14,6 +14,8 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IB
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 /**
  * Created by John on 05.05.2017.
@@ -125,15 +127,19 @@ public class BookingDetailServiceFragment extends BaseFragment
     switch (fragmentTag) {
       case Constants.FragmentTag.CHOOSE_SERVICE_SERVICE_FRAGMENT:
         mViewAccentService.setVisibility(View.VISIBLE);
+        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentService);
         break;
       case Constants.FragmentTag.CHOOSE_SERVICE_TIME_FRAGMENT:
         mViewAccentTime.setVisibility(View.VISIBLE);
+        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentTime);
         break;
       case Constants.FragmentTag.CHOOSE_SERVICE_MASTER_FRAGMENT:
         mViewAccentMaster.setVisibility(View.VISIBLE);
+        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentMaster);
         break;
       case Constants.FragmentTag.CHOOSE_SERVICE_CONTACT_FRAGMENT:
         mViewAccentData.setVisibility(View.VISIBLE);
+        YoYo.with(Techniques.Wave).duration(700).playOn(mViewAccentData);
         break;
     }
   }
