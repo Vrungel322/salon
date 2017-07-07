@@ -67,9 +67,7 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
       mTextViewNoTransactions.setVisibility(View.GONE);
       mViewNoTransSeparator.setVisibility(View.GONE);
     } else {
-      mTextViewNoTransactions.setText(getString(R.string.history_no_items));
-      mTextViewNoTransactions.setVisibility(View.VISIBLE);
-      mViewNoTransSeparator.setVisibility(View.VISIBLE);
+      setHistoryNotAuth();
     }
   }
 
