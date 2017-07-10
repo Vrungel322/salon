@@ -235,10 +235,8 @@ public class StartActivity extends BaseActivity
   @Override public void share() {
     Intent intent = new Intent(Intent.ACTION_SEND);
     intent.setType("text/plain");
-    intent.putExtra(Intent.EXTRA_SUBJECT, "Рекомендую посетить мой любимый салон");
-    intent.putExtra(Intent.EXTRA_TEXT,
-        "Скачивай мобильное приложение салона и получай бонусы прямо сейчас: " + getString(
-            R.string.app_link));
+    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+    intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text));
     startActivity(Intent.createChooser(intent, "Share app URL"));
   }
 
