@@ -71,7 +71,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           });
       addToUnsubscription(subscription);
     } else {
-      getViewState().setHistoryNotAuth();
       getViewState().stopRefreshingView();
     }
   }
