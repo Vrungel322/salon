@@ -24,6 +24,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
 import com.apps.twelve.floor.salon.feature.catalog.fragments.CatalogFragment;
+import com.apps.twelve.floor.salon.feature.contacts.fragments.ContactsAboutFragment;
 import com.apps.twelve.floor.salon.feature.contacts.fragments.ContactsFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.fragments.MainFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
@@ -63,6 +64,12 @@ public class StartActivity extends BaseActivity
 
     mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
         new Intent(StartActivity.this, BookingActivity.class)));
+
+    mNavViewTopPart.getHeaderView(0).setOnClickListener(v -> {
+      mNavigator.addFragmentBackStack(this, R.id.container_main,
+          ContactsAboutFragment.newInstance());
+      mDrawerLayout.closeDrawers();
+    });
 
     getSupportFragmentManager().addOnBackStackChangedListener(
         () -> mStartActivityPresenter.setDrawerIndicator());
