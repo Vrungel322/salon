@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -61,13 +63,20 @@ public class GoodsFavoriteListAdapter
         /* check if for sale */
     if (mGoodsEntities.get(position).isForSale()) {
       holder.mImageViewForSale.setImageResource(R.drawable.ic_badge_sale_32dp);
+      holder.mTextViewOldPrice.setText(mGoodsEntities.get(position).getPrice());
+      holder.mTextViewOldPrice.setTextColor(
+          ContextCompat.getColor(mContext, R.color.colorLightGray));
+      holder.mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+      holder.mTextViewOldPrice.setVisibility(View.VISIBLE);
+      holder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
     } else {
       holder.mImageViewForSale.setVisibility(View.GONE);
+      holder.mTextViewOldPrice.setVisibility(View.GONE);
+      holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
     }
 
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
     holder.mTextViewShortDescription.setText(mGoodsEntities.get(position).getShortDescription());
-    holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
     if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
       holder.mTextViewPriceBonus.setVisibility(View.GONE);
       holder.mImageViewBonusPrice.setVisibility(View.GONE);
@@ -93,6 +102,7 @@ public class GoodsFavoriteListAdapter
     @BindView(R.id.tvPrice) TextView mTextViewPrice;
     @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
     @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
+    @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
 
     GoodsFavoriteListViewHolder(View view) {
       super(view);
