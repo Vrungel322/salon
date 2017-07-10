@@ -34,6 +34,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
   }
 
   public void addListNewsEntity(List<NewsEntity> newsEntities) {
+    mNewsEntities.clear();
     mNewsEntities.addAll(newsEntities);
     notifyDataSetChanged();
   }

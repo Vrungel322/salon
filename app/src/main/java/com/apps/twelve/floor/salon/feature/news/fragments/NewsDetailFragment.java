@@ -2,7 +2,9 @@ package com.apps.twelve.floor.salon.feature.news.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.content.res.AppCompatResources;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,6 +48,14 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
     super.onViewCreated(view, savedInstanceState);
 
     ((StartActivity) getActivity()).setTitleAppBar(R.string.news);
+
+    /* turn off scrolling */
+    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
+    AppBarLayout.LayoutParams toolbarLayoutParams =
+        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+    toolbarLayoutParams.setScrollFlags(0);
+    mToolbar.setLayoutParams(toolbarLayoutParams);
 
     NewsEntity newsEntity =
         getArguments().getParcelable(Constants.FragmentsArgumentKeys.NEWS_DETAIL_KEY);

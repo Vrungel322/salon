@@ -52,7 +52,7 @@
       <TextView
           android:id="@+id/textViewDescriptionNews"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
+          android:layout_height="wrap_content"
           android:layout_below="@id/textViewTitleNews"
           android:layout_marginTop="8dp"
           android:background="@color/colorWhite"
