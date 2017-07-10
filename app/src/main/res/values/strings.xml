@@ -81,7 +81,7 @@
   <string name="promo_fill">ввести промо-код друга</string>
   <string name="history_title">Накопленные бонусы</string>
   <string name="history_description">(расплачивайтесь бонусами за услуги)</string>
-  <string name="history_no_items">Вы еще не совершали транзакций</string>
+  <string name="history_no_items">Список транзакций пуст</string>
   <string name="bonus_measure">%s бонусов</string>
   <string name="bonus_description">Заказ услуг и товаров в новом мобильном приложении стали еще выгоднее! Получите приветственные 100 бонусов прямо сейчас!\n
     \nДля этого Вам нужно пройти регистрацию и стать участником программы лояльности.\n

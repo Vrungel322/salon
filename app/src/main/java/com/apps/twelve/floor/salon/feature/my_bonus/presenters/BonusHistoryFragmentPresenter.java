@@ -31,14 +31,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getBonusHistory();
   }
 
-  public void getBonusCount() {
+  private void getBonusCount() {
     Subscription subscription = mDataManager.getBonusCountObservable()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
 
-  public void getBonusHistory() {
+  private void getBonusHistory() {
     getViewState().startRefreshingView();
     Subscription subscription =
         mAuthorizationManager.checkToken(mDataManager.fetchBonusHistory()).concatMap(response -> {
@@ -67,5 +67,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           getViewState().stopRefreshingView();
         });
     addToUnsubscription(subscription);
+  }
+
+  public void startRefreshing() {
+    getBonusHistory();
   }
 }
