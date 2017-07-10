@@ -56,6 +56,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
   @BindView(R.id.textViewCurrentDate) TextView mTextViewCurrentDate;
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
+  @BindView(R.id.relativeLayoutDay) RelativeLayout mRelativeLayoutDay;
 
   private List<DataServiceEntity> mDays = new ArrayList<>();
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
@@ -155,6 +156,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
     mRelativeLayoutNotTime.setVisibility(View.VISIBLE);
     mTextViewCurrentDate.setVisibility(View.VISIBLE);
     mImageViewNextDay.setVisibility(View.GONE);
+    mRelativeLayoutDay.setVisibility(View.GONE);
   }
 
   @Override public void hideProgressBarBookingTime() {
