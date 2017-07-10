@@ -12,4 +12,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   void setBonusCount(Integer count);
+
+  void startRefreshingView();
+
+  void stopRefreshingView();
 }

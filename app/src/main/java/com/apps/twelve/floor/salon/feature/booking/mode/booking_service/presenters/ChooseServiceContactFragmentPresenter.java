@@ -64,7 +64,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
   @SuppressWarnings("ConstantConditions") public void sendBookingEntity() {
     if (mAuthorizationManager.isAuthorized()) {
       getViewState().startAnimation();
-      if (ViewUtil.checkPhone(mBookingEntity.getUserPhone())) {
+      getViewState().showEmptyPhoneError(false);
+      getViewState().showEmptyNameError(false);
+      if (ViewUtil.checkPhone(mBookingEntity.getUserPhone()) && !mBookingEntity.getUserName()
+          .equals("")) {
         Subscription subscription = mAuthorizationManager.checkToken(
             mDataManager.checkInService(mapper.transform(mBookingEntity)))
             .concatMap(lastBookingEntityResponse -> {
@@ -97,7 +100,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                       .post(new AuthRxBusHelper.UnauthorizedEvent());
                   break;
                 case RESPONSE_400:
-                  getViewState().showErrorMessage(R.string.error_phone);
+                  getViewState().showErrorMessage(R.string.error_data_not_correct);
                   getViewState().revertAnimation();
                   break;
                 case RESPONSE_404:
@@ -116,8 +119,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             });
         addToUnsubscription(subscription);
       } else {
-        getViewState().revertAnimation();
-        getViewState().showEmptyPhoneError();
+        if (!ViewUtil.checkPhone(mBookingEntity.getUserPhone())) {
+          getViewState().showEmptyPhoneError(true);
+          getViewState().revertAnimation();
+        }
+        if (mBookingEntity.getUserName().equals("")) {
+          getViewState().showEmptyNameError(true);
+          getViewState().revertAnimation();
+        }
       }
     } else {
       mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());

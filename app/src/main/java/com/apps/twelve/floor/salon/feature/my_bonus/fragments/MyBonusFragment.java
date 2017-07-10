@@ -2,6 +2,8 @@ package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   @BindView(R.id.btnHowBonusWorks) Button mButtonHowBonusWorks;
   @BindView(R.id.btnSendCode) Button mButtonSendCode;
   @BindView(R.id.tvYour) TextView mTextViewYourCode;
+  @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   public MyBonusFragment() {
     super(R.layout.fragment_my_bonus);
@@ -73,6 +76,11 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     });
 
     mTextViewYourCode.setText("007");
+
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
+    mSwipeRefreshLayout.setOnRefreshListener(() -> mMyBonusFragmentPresenter.getBonusCount());
   }
 
   @Override public void onDestroyView() {
@@ -106,5 +114,13 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
         mMyBonusFragmentPresenter.showAuthDialogBooking();
       }
     }
+  }
+
+  @Override public void startRefreshingView() {
+    if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopRefreshingView() {
+    if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 }

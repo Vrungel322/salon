@@ -36,6 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -111,9 +112,14 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
             - System.currentTimeMillis(), 1000) {
 
       public void onTick(long millisUntilFinished) {
-        holder.mTextViewRemainTime.setText(String.format(Locale.getDefault(), "%02d:%02d",
-            ((millisUntilFinished / (1000 * 60 * 60))),
-            ((millisUntilFinished / (1000 * 60)) % 60)));
+        if (TimeUnit.MILLISECONDS.toDays(millisUntilFinished) < 1) {
+          holder.mTextViewRemainTime.setText(String.format(Locale.getDefault(), "%02d:%02d",
+              ((millisUntilFinished / (1000 * 60 * 60))),
+              ((millisUntilFinished / (1000 * 60)) % 60)));
+        } else {
+          holder.mTextViewRemainTime.setText(mContext.getString(R.string.booking_days_left,
+              TimeUnit.MILLISECONDS.toDays(millisUntilFinished)));
+        }
       }
 
       public void onFinish() {

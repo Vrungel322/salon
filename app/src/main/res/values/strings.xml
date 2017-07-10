@@ -41,6 +41,7 @@
   <string name="notification_text">Ждем Вас в нашем салоне %1$s на услугу "%2$s"</string>
   <string name="notification_hourly">через час</string>
   <string name="notification_daily">через день</string>
+  <string name="booking_days_left">%1$d дн.</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
@@ -80,6 +81,12 @@
   <string name="history_description">(расплачивайтесь бонусами за услуги)</string>
   <string name="history_no_items">Вы еще не совершали транзакций</string>
   <string name="bonus_measure">%s бонусов</string>
+  <string name="bonus_description">Заказ услуг и товаров в новом мобильном приложении стали еще выгоднее! Получите приветственные 100 бонусов прямо сейчас!\n
+    \nДля этого Вам нужно пройти регистрацию и стать участником программы лояльности.\n
+    Все участники программы за каждую услугу или покупку товара получают бонусы (например, 5% от стоимости услуги или товара).
+    \n\nЧем больше Вы покупаете услуг и товаров, тем больше бонусов Вы получаете!
+    Рассчитываетесь накопленными бонусами за выбранные услуги, товары, когда Вам удобно, получайте сюрпризы и подарки.
+    \n\n* При оплате один бонус эквивалентен одной гривне. Минимальное количество бонусов, принимаемых к оплате - 1. Количество бонусов при расчетах кратно 1-му.</string>
 
   <!--For tabs-->
   <string name="tab_services">Выбор\nуслуги</string>
@@ -110,7 +117,7 @@
   <string name="error_empty_date">Время не выбрано</string>
   <string name="error_time_not_available">Выбранное время уже занято!</string>
   <string name="error_booking_entity_not_exist">Текущей записи не существует</string>
-  <string name="error_phone">Введите корректный телефон</string>
+  <string name="error_data_not_correct">Введенные данные не корректны.</string>
   <string name="done">Готово</string>
 
   <!--for settings-->
