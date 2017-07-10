@@ -51,6 +51,8 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
 
   private Unbinder mUnbinder;
 
+  private int positionTheme;
+
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     App.getAppComponent().inject(this);
@@ -79,25 +81,67 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
   }) public void onViewClicked(View view) {
     switch (view.getId()) {
       case R.id.radioButtonPink:
-        setThemeApp(PINK);
+        positionTheme = PINK;
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonBlue:
-        setThemeApp(BLUE);
+        positionTheme = BLUE;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonGreen:
-        setThemeApp(GREEN);
+        positionTheme = GREEN;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonYellow:
-        setThemeApp(YELLOW);
+        positionTheme = YELLOW;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonGray:
-        setThemeApp(GRAY);
+        positionTheme = GRAY;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonPurple:
-        setThemeApp(PURPLE);
+        positionTheme = PURPLE;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonRed.setChecked(false);
         break;
       case R.id.radioButtonRed:
-        setThemeApp(RED);
+        positionTheme = RED;
+        mRadioButtonPink.setChecked(false);
+        mRadioButtonBlue.setChecked(false);
+        mRadioButtonGreen.setChecked(false);
+        mRadioButtonYellow.setChecked(false);
+        mRadioButtonGray.setChecked(false);
+        mRadioButtonPurple.setChecked(false);
         break;
     }
   }
@@ -112,25 +156,40 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
     switch (position) {
       case PINK:
         mRadioButtonPink.setChecked(true);
+        positionTheme = PINK;
         break;
       case BLUE:
         mRadioButtonBlue.setChecked(true);
+        positionTheme = BLUE;
         break;
       case GREEN:
         mRadioButtonGreen.setChecked(true);
+        positionTheme = GREEN;
         break;
       case YELLOW:
         mRadioButtonYellow.setChecked(true);
+        positionTheme = YELLOW;
         break;
       case GRAY:
         mRadioButtonGray.setChecked(true);
+        positionTheme = GRAY;
         break;
       case PURPLE:
         mRadioButtonPurple.setChecked(true);
+        positionTheme = PURPLE;
         break;
       case RED:
         mRadioButtonRed.setChecked(true);
+        positionTheme = RED;
         break;
     }
+  }
+
+  @OnClick(R.id.textViewOk) public void onViewClickedOk() {
+    setThemeApp(positionTheme);
+  }
+
+  @OnClick(R.id.textViewCancel) public void onViewClickedCancel() {
+    dismiss();
   }
 }
