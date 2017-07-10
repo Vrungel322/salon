@@ -56,7 +56,6 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
     mSwipeRefreshLayout.setOnRefreshListener(() -> {
-      mBonusHistoryFragmentPresenter.getBonusCount();
       mBonusHistoryFragmentPresenter.getBonusHistory();
     });
   }

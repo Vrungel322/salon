@@ -84,14 +84,13 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   }
 
   @Override public void onDestroyView() {
-    super.onDestroyView();
     if (getActivity() instanceof StartActivity) {
       ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);
     }
-
     if (getActivity() instanceof BookingActivity) {
       ((BookingActivity) getActivity()).setTitleAppBar(R.string.book_create);
     }
+    super.onDestroyView();
   }
 
   @Override public void setBonusCount(Integer count) {
