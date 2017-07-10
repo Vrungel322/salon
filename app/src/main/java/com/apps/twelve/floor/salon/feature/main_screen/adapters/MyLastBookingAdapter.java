@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -47,7 +46,6 @@ public class MyLastBookingAdapter
     implements IMyLastBookingAdapterView {
 
   private final Context mContext;
-  private final Activity mActivity;
   private final Navigator mNavigator;
 
   @InjectPresenter MyLastBookingAdapterPresenter mMyLastBookingAdapterPresenter;
@@ -56,11 +54,9 @@ public class MyLastBookingAdapter
   private AlertDialog mRemoveBookingDialog;
   private ProgressBar mProgressBarCancel;
 
-  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
-      Navigator navigator) {
+  public MyLastBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Navigator navigator) {
     super(parentDelegate, "MyLastBookingAdapterPresenter");
     this.mContext = context;
-    this.mActivity = activity;
     this.mNavigator = navigator;
   }
 
@@ -144,7 +140,7 @@ public class MyLastBookingAdapter
   }
 
   @Override public void openPostponeFragment(int position) {
-    mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
+    mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
         PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
             mLastBookingEntities.get(position).getMasterName(),
             mLastBookingEntities.get(position).getServiceId(),

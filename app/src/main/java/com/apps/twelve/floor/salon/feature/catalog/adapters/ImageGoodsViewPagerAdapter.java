@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.content.res.AppCompatResources;
@@ -19,13 +18,13 @@ import java.util.ArrayList;
  */
 
 public class ImageGoodsViewPagerAdapter extends PagerAdapter {
-  private Activity mActivity;
+  private Context mContext;
   private LayoutInflater mLayoutInflater;
   private ArrayList<GoodsDetailContent> mPhotoStaff;
 
-  public ImageGoodsViewPagerAdapter(Activity activity, ArrayList<GoodsDetailContent> photoStaff) {
-    this.mActivity = activity;
-    mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  public ImageGoodsViewPagerAdapter(Context context, ArrayList<GoodsDetailContent> photoStaff) {
+    this.mContext = context;
+    mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoStaff = photoStaff;
   }
 
@@ -40,10 +39,10 @@ public class ImageGoodsViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_page, container, false);
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
-    Glide.with(mActivity)
+    Glide.with(mContext)
         .load(mPhotoStaff.get(position).getUrlPhoto())
-        .placeholder(AppCompatResources.getDrawable(mActivity, R.drawable.ic_catalog_placeholder))
-        .error(AppCompatResources.getDrawable(mActivity, R.drawable.ic_catalog_placeholder))
+        .placeholder(AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
+        .error(AppCompatResources.getDrawable(mContext, R.drawable.ic_catalog_placeholder))
         .dontAnimate()
         .into(imageView);
     container.addView(itemView);

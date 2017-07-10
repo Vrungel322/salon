@@ -52,7 +52,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_our_work);
 
-    mOurWorkAdapter = new OurWorkAdapter(getActivity());
+    mOurWorkAdapter = new OurWorkAdapter();
     mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
     mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
 

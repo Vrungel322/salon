@@ -48,8 +48,7 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
 
-    mMyBookingAdapter =
-        new MyBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
+    mMyBookingAdapter = new MyBookingAdapter(getMvpDelegate(), getContext(), mNavigator);
     mRecyclerViewMyBooks.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
     mRecyclerViewMyBooks.setNestedScrollingEnabled(false);

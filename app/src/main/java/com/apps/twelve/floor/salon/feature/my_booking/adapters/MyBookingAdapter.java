@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.my_booking.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -46,7 +45,6 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     implements IMyBookingAdapterView {
 
   private final Context mContext;
-  private final Activity mActivity;
   private final Navigator mNavigator;
 
   @InjectPresenter MyBookingAdapterPresenter mMyBookingAdapterPresenter;
@@ -55,11 +53,9 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   private AlertDialog mRemoveBookingDialog;
   private ProgressBar mProgressBarCancel;
 
-  public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Activity activity,
-      Navigator navigator) {
+  public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Navigator navigator) {
     super(parentDelegate, "MyBookingAdapterPresenter");
     this.mContext = context;
-    this.mActivity = activity;
     this.mNavigator = navigator;
   }
 
@@ -142,7 +138,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public void openPostponeFragment(int position) {
-    mNavigator.addFragmentBackStack((StartActivity) mActivity, R.id.container_main,
+    mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
         PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
             mBookingEntities.get(position).getMasterName(),
             mBookingEntities.get(position).getMasterId(),
