@@ -67,18 +67,14 @@ public class BonusHistoryFragment extends BaseFragment implements IBonusHistoryF
       mTextViewNoTransactions.setVisibility(View.GONE);
       mViewNoTransSeparator.setVisibility(View.GONE);
     } else {
-      setHistoryNotAuth();
+      mTextViewNoTransactions.setText(getString(R.string.history_no_items));
+      mTextViewNoTransactions.setVisibility(View.VISIBLE);
+      mViewNoTransSeparator.setVisibility(View.VISIBLE);
     }
   }
 
   @Override public void setBonusCount(Integer count) {
     mTextViewBonusCount.setText(getString(R.string.bonus_measure, String.valueOf(count)));
-  }
-
-  @Override public void setHistoryNotAuth() {
-    mTextViewNoTransactions.setText(getString(R.string.history_no_items));
-    mTextViewNoTransactions.setVisibility(View.VISIBLE);
-    mViewNoTransSeparator.setVisibility(View.VISIBLE);
   }
 
   @Override public void startRefreshingView() {
