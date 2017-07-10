@@ -107,7 +107,7 @@
         android:padding="3dp"
         android:textSize="16sp"
         android:text="@string/dialog_action_ok"
-        android:textColor="@color/colorGray"
+        android:textColor="?colorAccent"
         />
     <TextView
         android:id="@+id/textViewCancel"
@@ -123,7 +123,7 @@
         android:background="?attr/selectableItemBackground"
         android:padding="3dp"
         android:text="@string/dialog_auth_cancel"
-        android:textColor="@color/colorGray"
+        android:textColor="?colorAccent"
         />
   </RelativeLayout>
 </LinearLayout>

@@ -36,6 +36,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   private CountBadge mBadge;
   private int mCountBonus;
   private AlertDialog mAuthorizationDialog;
+  private AlertDialog mExitDialog;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     setTheme(ThemeUtils.getThemeActionBar(getBaseContext()));
@@ -71,6 +72,9 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         mNavigator.addFragmentTagClearBackStackNotCopy(BookingActivity.this, R.id.container_booking,
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
+      case android.R.id.home:
+        mBookingActivityPresenter.showExitAlertDialog();
+        return true;
       default:
         return super.onOptionsItemSelected(item);
     }
@@ -98,7 +102,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         getString(R.string.сheck_internet_connection));
   }
 
-  @Override public void showAlertDialog() {
+  @Override public void showAuthAlertDialog() {
     mAuthorizationDialog = DialogFactory.createAuthorizationDialogBuilder(this)
         .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
@@ -112,9 +116,28 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         dialog -> mBookingActivityPresenter.cancelAlertDialog());
   }
 
-  @Override public void cancelAlertDialog() {
+  @Override public void cancelAuthAlertDialog() {
     if (mAuthorizationDialog != null) {
       mAuthorizationDialog.dismiss();
+    }
+  }
+
+  @Override public void showExitAlertDialog() {
+    mExitDialog =
+        DialogFactory.createAlertDialogBuilder(this, getString(R.string.booking_not_finished))
+            .setMessage(R.string.booking_break)
+            .setNegativeButton(R.string.dialog_auth_cancel,
+                (dialogInterface, i) -> mBookingActivityPresenter.cancelExitAlertDialog())
+            .setPositiveButton(R.string.dialog_action_ok, (dialogInterface, i) -> finish())
+            .create();
+    mExitDialog.show();
+    mExitDialog.setOnCancelListener(
+        dialogInterface -> mBookingActivityPresenter.cancelExitAlertDialog());
+  }
+
+  @Override public void cancelExitAlertDialog() {
+    if (mExitDialog != null) {
+      mExitDialog.dismiss();
     }
   }
 
@@ -133,7 +156,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
 
   @Override protected void onDestroy() {
     super.onDestroy();
-    cancelAlertDialog();
+    cancelAuthAlertDialog();
+    cancelExitAlertDialog();
   }
 
   @Override public void onBackPressed() {

@@ -119,6 +119,8 @@
   <string name="error_booking_entity_not_exist">Текущей записи не существует</string>
   <string name="error_data_not_correct">Введенные данные не корректны.</string>
   <string name="done">Готово</string>
+  <string name="booking_not_finished">Запись не закончена</string>
+  <string name="booking_break">Вы точно хотите ее прервать?</string>
 
   <!--for settings-->
   <string name="change_photo">Сменить фото профиля</string>
