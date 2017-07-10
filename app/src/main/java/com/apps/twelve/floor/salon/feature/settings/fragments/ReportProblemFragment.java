@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.View;
@@ -72,5 +73,9 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
 
   @Override public void revertAnimation() {
     mBtnSend.revertAnimation();
+  }
+
+  @Override public void openSnackBarOK() {
+    Snackbar.make(mTextProblem, getString(R.string.sent_message), Snackbar.LENGTH_SHORT).show();
   }
 }
