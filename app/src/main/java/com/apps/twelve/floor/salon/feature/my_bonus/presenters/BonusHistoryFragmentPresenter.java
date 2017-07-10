@@ -4,7 +4,6 @@ import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IBonusHistoryFragmentView;
-import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import rx.Observable;
@@ -32,47 +31,45 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getBonusHistory();
   }
 
-  public void getBonusCount() {
+  private void getBonusCount() {
     Subscription subscription = mDataManager.getBonusCountObservable()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(count -> getViewState().setBonusCount(count), Timber::e);
     addToUnsubscription(subscription);
   }
 
-  public void getBonusHistory() {
+  private void getBonusHistory() {
     getViewState().startRefreshingView();
-    if (mAuthorizationManager.isAuthorized()) {
-      Subscription subscription =
-          mAuthorizationManager.checkToken(mDataManager.fetchBonusHistory()).concatMap(response -> {
-            if (response.code() == RESPONSE_TOKEN_EXPIRED) {
-              return mAuthorizationManager.checkToken(mDataManager.fetchBonusHistory());
-            }
-            return Observable.just(response);
-          }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
-            switch (response.code()) {
-              case RESPONSE_200:
-                getViewState().addBonusHistoryList(response.body());
-                mRxBus.post(new RxBusHelper.UpdateBonusFromParent());
-                getViewState().stopRefreshingView();
-                break;
-              case RESPONSE_UNAUTHORIZED:
-                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-                getViewState().stopRefreshingView();
-                break;
-              default:
-                getViewState().stopRefreshingView();
-                showMessageException();
-                break;
-            }
-          }, throwable -> {
-            Timber.e(throwable);
-            showMessageException(throwable);
-            getViewState().stopRefreshingView();
-          });
-      addToUnsubscription(subscription);
-    } else {
-      getViewState().setHistoryNotAuth();
-      getViewState().stopRefreshingView();
-    }
+    Subscription subscription =
+        mAuthorizationManager.checkToken(mDataManager.fetchBonusHistory()).concatMap(response -> {
+          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+            return mAuthorizationManager.checkToken(mDataManager.fetchBonusHistory());
+          }
+          return Observable.just(response);
+        }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+          switch (response.code()) {
+            case RESPONSE_200:
+              getViewState().addBonusHistoryList(response.body());
+              getViewState().stopRefreshingView();
+              break;
+            case RESPONSE_UNAUTHORIZED:
+              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              getViewState().stopRefreshingView();
+              break;
+            default:
+              getViewState().stopRefreshingView();
+              showMessageException();
+              break;
+          }
+        }, throwable -> {
+          Timber.e(throwable);
+          showMessageException(throwable);
+          getViewState().stopRefreshingView();
+        });
+    addToUnsubscription(subscription);
+  }
+
+  public void startRefreshing() {
+    getBonusHistory();
   }
 }

@@ -31,10 +31,11 @@ import timber.log.Timber;
         Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
           if (voidResponse == 200) {
             getViewState().stopAnimation();
+            getViewState().openSnackBarOK();
           } else {
             getViewState().showAlert();
           }
-        }).delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
+        }).delay(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
           if (response == 200) {
             getViewState().closeFragment();
           } else {

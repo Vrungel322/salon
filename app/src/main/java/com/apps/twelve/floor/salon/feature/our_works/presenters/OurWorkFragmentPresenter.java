@@ -57,7 +57,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           if (response.code() == RESPONSE_200) {
             mOurWorkEntities.add(0,
                 new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0,
-                    null));
+                    mContext.getString(R.string.menu_favourite), null));
             mOurWorkEntities.addAll(response.body());
             getViewState().stopRefreshingView();
             getViewState().addListOfWorks(mOurWorkEntities);
@@ -77,7 +77,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         (ourWorkEntities, photoWorksEntities) -> {
           mOurWorkEntities.add(0,
               new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp),
-                  photoWorksEntities.size(), photoWorksEntities));
+                  photoWorksEntities.size(), mContext.getString(R.string.menu_favourite),
+                  photoWorksEntities));
           mOurWorkEntities.addAll(ourWorkEntities);
           return mOurWorkEntities;
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {

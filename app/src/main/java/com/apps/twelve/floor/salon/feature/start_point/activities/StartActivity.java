@@ -80,6 +80,8 @@ public class StartActivity extends BaseActivity
   private void setUpUI() {
     setSupportActionBar(mToolbar);
 
+    mNavViewTopPart.getMenu().getItem(1).setCheckable(false);
+
     mToggle =
         new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
             R.string.navigation_drawer_close);
