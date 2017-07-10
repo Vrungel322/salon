@@ -47,7 +47,7 @@
           android:maxLines="5"
           android:padding="8dp"
           android:textColor="@color/colorTransparentBlack"
-          android:textSize="20sp"
+          android:textSize="24sp"
           />
       <TextView
           android:id="@+id/textViewDescriptionNews"
@@ -56,9 +56,10 @@
           android:layout_below="@id/textViewTitleNews"
           android:layout_marginTop="8dp"
           android:background="@color/colorWhite"
+          android:lineSpacingExtra="4sp"
           android:padding="8dp"
           android:textColor="@color/colorGray"
-          android:textSize="14sp"
+          android:textSize="18sp"
           />
     </RelativeLayout>
   </android.support.v4.widget.NestedScrollView>
