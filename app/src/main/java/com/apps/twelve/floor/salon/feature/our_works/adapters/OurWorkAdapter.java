@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.our_works.adapters;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
@@ -24,11 +23,8 @@ import java.util.List;
 public class OurWorkAdapter extends RecyclerView.Adapter<OurWorkAdapter.OurWorkViewHolder> {
   private ArrayList<OurWorkEntity> mOurWorkEntities = new ArrayList<>();
 
-  private final Activity mActivity;
-
-  public OurWorkAdapter(Activity activity) {
+  public OurWorkAdapter() {
     super();
-    this.mActivity = activity;
   }
 
   public void addListWorkEntities(List<OurWorkEntity> ourWorkEntities) {

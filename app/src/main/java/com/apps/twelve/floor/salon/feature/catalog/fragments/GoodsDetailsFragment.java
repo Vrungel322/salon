@@ -83,7 +83,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
 
       // pager adapter
       mViewPagerAdapter =
-          new ImageGoodsViewPagerAdapter(getActivity(), mGoodsEntity.getGoodsDetailContents());
+          new ImageGoodsViewPagerAdapter(getContext(), mGoodsEntity.getGoodsDetailContents());
       mViewPagerImages.setAdapter(mViewPagerAdapter);
 
       // horizontal list adapter

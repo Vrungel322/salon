@@ -46,8 +46,7 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mMyLastBookingAdapter =
-        new MyLastBookingAdapter(getMvpDelegate(), getContext(), getActivity(), mNavigator);
+    mMyLastBookingAdapter = new MyLastBookingAdapter(getMvpDelegate(), getContext(), mNavigator);
     mRecyclerViewMyLastBooking.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyLastBooking.setAdapter(mMyLastBookingAdapter);
     mRecyclerViewMyLastBooking.setNestedScrollingEnabled(false);
