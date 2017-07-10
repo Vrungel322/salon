@@ -29,21 +29,11 @@ public class OurWorkEntity implements Parcelable {
   @SerializedName("photos_count") private int mImageCount;
   @SerializedName("photos") private List<PhotoWorksEntity> mListPhotoWorks;
 
-  public OurWorkEntity(String imageURL, int imageCount, List<PhotoWorksEntity> listPhotoWorks) {
+  public OurWorkEntity(String imageURL, int imageCount, String title,
+      List<PhotoWorksEntity> listPhotoWorks) {
     mImageURL = imageURL;
     mImageCount = imageCount;
-    mListPhotoWorks = listPhotoWorks;
-  }
-
-  public OurWorkEntity(int id, String title, String shortDescription, int masterId, int serviceId,
-      String imageURL, int imageCount, ArrayList<PhotoWorksEntity> listPhotoWorks) {
-    this.id = id;
     mTitle = title;
-    mShortDescription = shortDescription;
-    this.masterId = masterId;
-    this.serviceId = serviceId;
-    mImageURL = imageURL;
-    mImageCount = imageCount;
     mListPhotoWorks = listPhotoWorks;
   }
 
