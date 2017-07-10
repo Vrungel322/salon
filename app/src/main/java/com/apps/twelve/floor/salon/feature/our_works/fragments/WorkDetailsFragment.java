@@ -85,7 +85,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
       // pager adapter
       mViewPagerAdapter =
-          new ImageWorkViewPagerAdapter(getActivity(), ourWorkEntity.getListPhotoWorks());
+          new ImageWorkViewPagerAdapter(getContext(), ourWorkEntity.getListPhotoWorks());
       mViewPagerImages.setAdapter(mViewPagerAdapter);
 
       // horizontal list adapter

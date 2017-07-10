@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RelativeLayout;
+import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.R;
@@ -15,6 +17,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class SettingsFragment extends BaseFragment implements ISettingsFragmentView {
 
   @InjectPresenter SettingsFragmentPresenter mSettingsFragmentPresenter;
+
+  @BindView(R.id.rlNotifications) RelativeLayout mRelativeLayoutNotifications;
 
   public SettingsFragment() {
     super(R.layout.fragment_settings);
@@ -29,6 +33,10 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    if (!mAuthorizationManager.isAuthorized()) {
+      mRelativeLayoutNotifications.setVisibility(View.GONE);
+    }
   }
 
   @Override public void openUserProfileFragment() {

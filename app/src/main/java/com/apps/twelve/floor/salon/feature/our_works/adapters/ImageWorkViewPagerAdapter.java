@@ -1,6 +1,5 @@
 package com.apps.twelve.floor.salon.feature.our_works.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.content.res.AppCompatResources;
@@ -20,13 +19,13 @@ import java.util.List;
 
 public class ImageWorkViewPagerAdapter extends PagerAdapter {
 
-  private Activity mActivity;
+  private Context mContext;
   private LayoutInflater mLayoutInflater;
   private List<PhotoWorksEntity> mPhotoWorks;
 
-  public ImageWorkViewPagerAdapter(Activity activity, List<PhotoWorksEntity> photoWorks) {
-    this.mActivity = activity;
-    mLayoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  public ImageWorkViewPagerAdapter(Context context, List<PhotoWorksEntity> photoWorks) {
+    this.mContext = context;
+    mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoWorks = photoWorks;
   }
 
@@ -41,10 +40,10 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_page, container, false);
     final ImageView imageView = (ImageView) itemView.findViewById(R.id.iv);
-    Glide.with(mActivity)
+    Glide.with(mContext)
         .load(mPhotoWorks.get(position).getUrlPhoto())
         .placeholder(
-            AppCompatResources.getDrawable(mActivity, R.drawable.ic_our_work_placeholder_130dp))
+            AppCompatResources.getDrawable(mContext, R.drawable.ic_our_work_placeholder_130dp))
         .dontAnimate()
         .into(imageView);
     container.addView(itemView);

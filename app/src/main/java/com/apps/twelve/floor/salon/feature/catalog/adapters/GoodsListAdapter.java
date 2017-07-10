@@ -1,7 +1,10 @@
 package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -93,14 +96,23 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         /* check if for sale */
         if (mGoodsEntities.get(position).isForSale()) {
           goodsListViewHolder.mImageViewForSale.setImageResource(R.drawable.ic_badge_sale_32dp);
+          goodsListViewHolder.mTextViewOldPrice.setText(mGoodsEntities.get(position).getPrice());
+          goodsListViewHolder.mTextViewOldPrice.setTextColor(
+              ContextCompat.getColor(mContext, R.color.colorLightGray));
+          goodsListViewHolder.mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+          goodsListViewHolder.mTextViewOldPrice.setVisibility(View.VISIBLE);
+          goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
+          goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.BOLD_ITALIC);
         } else {
           goodsListViewHolder.mImageViewForSale.setVisibility(View.GONE);
+          goodsListViewHolder.mTextViewOldPrice.setVisibility(View.GONE);
+          goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
+          goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.NORMAL);
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
         goodsListViewHolder.mTextViewShortDescription.setText(
             mGoodsEntities.get(position).getShortDescription());
-        goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
         if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
           goodsListViewHolder.mTextViewPriceBonus.setVisibility(View.GONE);
           goodsListViewHolder.mImageViewBonusPrice.setVisibility(View.GONE);
@@ -133,6 +145,7 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @BindView(R.id.tvPrice) TextView mTextViewPrice;
     @BindView(R.id.tvPriceBonus) TextView mTextViewPriceBonus;
     @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
+    @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
 
     GoodsListViewHolder(View view) {
       super(view);
