@@ -1,8 +1,8 @@
 <resources>
   <string name="app_name">Salon</string>
 
-  <string name="share_subject">Рекомендую посетить мой любимый салон</string>
-  <string name="share_text">Скачивай мобильное приложение салона и получай бонусы прямо сейчас: https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon</string>
+  <string name="share_subject">Рекомендую посетить мой любимый салон Шанти</string>
+  <string name="share_text">Скачивай мобильное приложение салона и получай бонусы прямо сейчас: https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon </string>
 
   <string name="dialog_action_ok">OK</string>
   <string name="dialog_error_title">Ошибка</string>
