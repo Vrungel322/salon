@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
@@ -101,10 +102,12 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
           goodsListViewHolder.mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
           goodsListViewHolder.mTextViewOldPrice.setVisibility(View.VISIBLE);
           goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
+          goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.BOLD_ITALIC);
         } else {
           goodsListViewHolder.mImageViewForSale.setVisibility(View.GONE);
           goodsListViewHolder.mTextViewOldPrice.setVisibility(View.GONE);
           goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
+          goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.NORMAL);
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());

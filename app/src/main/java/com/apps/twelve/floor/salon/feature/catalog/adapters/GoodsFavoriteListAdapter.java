@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.catalog.adapters;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
@@ -69,10 +70,12 @@ public class GoodsFavoriteListAdapter
       holder.mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
       holder.mTextViewOldPrice.setVisibility(View.VISIBLE);
       holder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
+      holder.mTextViewPrice.setTypeface(null, Typeface.BOLD_ITALIC);
     } else {
       holder.mImageViewForSale.setVisibility(View.GONE);
       holder.mTextViewOldPrice.setVisibility(View.GONE);
       holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
+      holder.mTextViewPrice.setTypeface(null, Typeface.NORMAL);
     }
 
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
