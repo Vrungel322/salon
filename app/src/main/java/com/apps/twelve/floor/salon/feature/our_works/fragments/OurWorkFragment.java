@@ -19,6 +19,7 @@ import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
+import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -53,7 +54,8 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_our_work);
 
     mOurWorkAdapter = new OurWorkAdapter();
-    mRecyclerViewOurWorks.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRecyclerViewOurWorks.setLayoutManager(
+        new GridLayoutManager(getContext(), ViewUtil.getRotation(getContext())));
     mRecyclerViewOurWorks.setAdapter(mOurWorkAdapter);
 
     ItemClickSupport.addTo(mRecyclerViewOurWorks)

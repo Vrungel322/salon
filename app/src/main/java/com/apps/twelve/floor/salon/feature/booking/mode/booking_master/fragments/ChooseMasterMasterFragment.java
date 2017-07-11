@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.feature.booking.mode.adapters.MastersVertical
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.presenters.ChooseMasterMasterFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
+import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -40,7 +41,8 @@ public class ChooseMasterMasterFragment extends BaseFragment
   }
 
   @Override public void setUpUi() {
-    mRecyclerViewMasters.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRecyclerViewMasters.setLayoutManager(
+        new GridLayoutManager(getContext(), ViewUtil.getRotation(getContext())));
     mMastersVerticalAdapter = new MastersVerticalAdapter(getContext());
     mRecyclerViewMasters.setAdapter(mMastersVerticalAdapter);
     mRecyclerViewMasters.setNestedScrollingEnabled(false);

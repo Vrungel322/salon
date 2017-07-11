@@ -69,6 +69,11 @@ public final class Constants {
     public static final int RED = 6;
   }
 
+  public class Rotation {
+    public static final int PORTRAIT = 2;
+    public static final int LANDSCAPE = 3;
+  }
+
   public class Other {
     public static final String MASTER_MALE_PLACEHOLDER = "male";
     public static final String SERVER_ANSWER_EMPTY_STRING = "---";
