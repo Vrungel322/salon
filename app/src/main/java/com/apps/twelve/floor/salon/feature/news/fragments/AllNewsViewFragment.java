@@ -61,10 +61,9 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
     mRecyclerViewAllNews.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewAllNews.setAdapter(mAllNewsAdapter);
     ItemClickSupport.addTo(mRecyclerViewAllNews)
-        .setOnItemClickListener((recyclerView, position, v) -> {
-          mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
-              NewsDetailFragment.newInstance(mAllNewsAdapter.getItem(position)));
-        });
+        .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
+            (AppCompatActivity) getActivity(), R.id.container_main,
+            ListNewsDetailFragment.newInstance(mAllNewsAdapter.getAllNewsList())));
     mSwipeRefreshLayout.setOnRefreshListener(() -> mAllNewsFragmentPresenter.fetchListOfNews());
   }
 

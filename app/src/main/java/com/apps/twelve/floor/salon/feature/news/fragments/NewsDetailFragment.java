@@ -50,7 +50,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
     ((StartActivity) getActivity()).setTitleAppBar(R.string.news);
 
     /* turn off scrolling */
-    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    Toolbar mToolbar = getActivity().findViewById(R.id.toolbar);
 
     AppBarLayout.LayoutParams toolbarLayoutParams =
         (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();

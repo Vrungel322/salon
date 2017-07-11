@@ -39,6 +39,10 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
     notifyDataSetChanged();
   }
 
+  public ArrayList<NewsEntity> getAllNewsList() {
+    return mNewsEntities;
+  }
+
   @Override public AllNewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View v;
     switch (viewType) {
