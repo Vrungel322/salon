@@ -23,4 +23,12 @@ import com.arellomobile.mvp.InjectViewState;
   public void setThemeApp(int themeApp) {
     mDataManager.setThemeSelected(themeApp);
   }
+
+  public void showThemeApp(int positionTheme) {
+    getViewState().showThemeApp(positionTheme);
+  }
+
+  public void revertThemeApp() {
+    getViewState().showThemeApp(mDataManager.getThemeSelected());
+  }
 }

@@ -57,5 +57,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @OnClick(R.id.rlTheme) void changeTheme() {
     ThemeDialogFragment themeDialog = new ThemeDialogFragment();
     themeDialog.show(getActivity().getFragmentManager(), "");
+    themeDialog.setCancelable(false);
   }
 }
