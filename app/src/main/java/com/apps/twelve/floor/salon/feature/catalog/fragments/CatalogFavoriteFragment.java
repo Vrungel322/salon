@@ -19,6 +19,7 @@ import com.apps.twelve.floor.salon.feature.catalog.views.ICataloFavoriteFragment
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
+import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -52,7 +53,8 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
     super.onViewCreated(view, savedInstanceState);
 
     mGoodsFavoriteListAdapter = new GoodsFavoriteListAdapter(getContext());
-    mRvCatalogFavorite.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    mRvCatalogFavorite.setLayoutManager(
+        new GridLayoutManager(getContext(), ViewUtil.getRotation(getContext())));
     mRvCatalogFavorite.setAdapter(mGoodsFavoriteListAdapter);
     ItemClickSupport.addTo(mRvCatalogFavorite)
         .setOnItemClickListener((recyclerView, position, v) -> mNavigator.addFragmentBackStack(
