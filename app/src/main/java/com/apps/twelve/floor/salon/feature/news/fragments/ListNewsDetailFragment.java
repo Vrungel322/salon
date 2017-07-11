@@ -26,9 +26,10 @@ public class ListNewsDetailFragment extends BaseFragment {
     super(R.layout.fragment_list_detail_news);
   }
 
-  public static ListNewsDetailFragment newInstance(ArrayList<NewsEntity> listNews) {
+  public static ListNewsDetailFragment newInstance(ArrayList<NewsEntity> listNews, int position) {
     Bundle args = new Bundle();
     args.putParcelableArrayList(Constants.FragmentsArgumentKeys.ALL_NEWS_DETAIL_KEY, listNews);
+    args.putInt(Constants.FragmentsArgumentKeys.POSITION, position);
     ListNewsDetailFragment fragment = new ListNewsDetailFragment();
     fragment.setArguments(args);
     return fragment;
@@ -42,6 +43,7 @@ public class ListNewsDetailFragment extends BaseFragment {
     mViewPagerNews.setAdapter(new NewsPagerAdapter(this.getChildFragmentManager(),
         getArguments().getParcelableArrayList(
             Constants.FragmentsArgumentKeys.ALL_NEWS_DETAIL_KEY)));
+    mViewPagerNews.setCurrentItem(getArguments().getInt(Constants.FragmentsArgumentKeys.POSITION));
   }
 
   @Override public void onDestroyView() {

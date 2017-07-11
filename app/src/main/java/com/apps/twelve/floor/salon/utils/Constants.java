@@ -36,6 +36,7 @@ public final class Constants {
   public class FragmentsArgumentKeys {
     public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";
     public static final String ALL_NEWS_DETAIL_KEY = "ALL_NEWS_DETAIL_KEY";
+    public static final String POSITION = "POSITION";
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
     public static final String GOODS_ENTITY_KEY = "GOODS_ENTITY_KEY";
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
