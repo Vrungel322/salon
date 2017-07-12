@@ -19,7 +19,7 @@
       app:layout_constraintTop_toTopOf="parent"
       >
 
-    <android.support.v7.widget.RecyclerView
+    <com.apps.twelve.floor.salon.utils.custom_views.FabRecyclerView
         android:id="@+id/rvAllNews"
         android:layout_width="0dp"
         android:layout_height="0dp"
