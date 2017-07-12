@@ -4,6 +4,7 @@ import android.content.Context;
 import com.apps.twelve.floor.salon.BuildConfig;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.IgnoreRequestUtils;
 import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -11,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
 import java.io.File;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Named;
 import okhttp3.Cache;
@@ -88,13 +90,11 @@ import timber.log.Timber;
     return chain -> {
       Request request = chain.request();
       Response response = chain.proceed(chain.request());
-      if (request.method().equals("GET") && !request.url()
-          .toString()
-          .equals(Constants.Remote.BASE_URL + "api/v1/categories") && !request.url()
-          .toString()
-          .equals(Constants.Remote.BASE_URL + "api/v1/services") && !request.url()
-          .toString()
-          .equals(Constants.Remote.BASE_URL + "api/v1/masters")) {
+
+      if (IgnoreRequestUtils.ignoreRequests(request, "GET",
+         Constants.Remote.BASE_URL + "api/v1/masters",
+              Constants.Remote.BASE_URL + "api/v1/services",
+              Constants.Remote.BASE_URL + "api/v1/categories")) {
         CacheControl cacheControl = new CacheControl.Builder().maxAge(1, TimeUnit.MINUTES).build();
         response = response.newBuilder()
             .removeHeader("Pragma")
