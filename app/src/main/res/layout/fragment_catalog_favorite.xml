@@ -30,7 +30,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-    <android.support.v7.widget.RecyclerView
+    <com.apps.twelve.floor.salon.utils.custom_views.FabRecyclerView
         android:id="@+id/rvCatalogFavorite"
         android:layout_width="0dp"
         android:layout_height="0dp"

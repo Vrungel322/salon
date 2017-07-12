@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import berlin.volders.badger.BadgeShape;
 import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
@@ -144,11 +143,11 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void hideFloatingButton() {
-    mFabBooking.setVisibility(View.INVISIBLE);
+    mFabBooking.hide();
   }
 
   @Override public void showFloatingButton() {
-    mFabBooking.setVisibility(View.VISIBLE);
+    mFabBooking.show();
   }
 
   @Override public void onBackPressed() {
