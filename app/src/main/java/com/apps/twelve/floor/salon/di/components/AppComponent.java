@@ -37,6 +37,8 @@ import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentP
 import com.apps.twelve.floor.salon.feature.settings.presenters.ThemeDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.MainActivityPresenter;
 import com.apps.twelve.floor.salon.feature.start_point.presenters.StartActivityPresenter;
+import com.apps.twelve.floor.salon.utils.custom_views.FabNestedScroll;
+import com.apps.twelve.floor.salon.utils.custom_views.FabRecyclerView;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.apps.twelve.floor.salon.utils.jobs.NotificationJob;
 import dagger.Component;
@@ -125,4 +127,9 @@ import dagger.Component;
   void inject(NotificationJob notificationJob);
 
   void inject(JobsCreator jobsCreator);
+
+  //custom views
+  void inject(FabNestedScroll scroll);
+
+  void inject(FabRecyclerView view);
 }
