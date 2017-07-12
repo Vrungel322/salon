@@ -21,10 +21,10 @@ import rx.Observable;
 
 public interface SalonApi {
 
-  @GET("api/v1/categories/") Observable<Response<List<CategoryEntity>>> fetchCategory(
+  @GET("api/v1/categories") Observable<Response<List<CategoryEntity>>> fetchCategory(
       @Header("lng") String language);
 
-  @GET("api/v1/services/") Observable<Response<List<ServiceEntity>>> fetchAllServices(
+  @GET("api/v1/services") Observable<Response<List<ServiceEntity>>> fetchAllServices(
       @Header("lng") String language);
 
   @GET("api/v1/categories/{id}/services")

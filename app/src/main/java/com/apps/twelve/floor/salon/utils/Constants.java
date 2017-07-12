@@ -16,8 +16,10 @@ public final class Constants {
     public static final String BOOKING_DETAIL_SERVICE_FRAGMENT = "BookingDetailServiceFragment";
     public static final String MY_BOOK_FRAGMENT = "MyBookFragment";
     public static final String MY_BONUS_FRAGMENT = "MyBonusFragment";
+    public static final String BONUS_HOW_WORKS_FRAGMENT = "BonusHowWorksFragment";
     public static final String OUR_WORK_FRAGMENT = "OurWorkFragment";
     public static final String CONTACTS_FRAGMENT = "ContactsFragment";
+    public static final String CONTACTS_ABOUT_FRAGMENT = "ContactsAboutFragment";
     public static final String ALL_NEWS_FRAGMENT = "AllNewsFragment";
     public static final String CATALOG_FRAGMENT = "CatalogFragment";
     public static final String SUB_BOOKING_FRAGMENT = "SubBookingFragment";

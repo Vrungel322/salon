@@ -39,6 +39,8 @@ import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.CONTACTS_ABOUT_FRAGMENT;
+
 public class StartActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener, IStartActivityView {
 
@@ -66,8 +68,8 @@ public class StartActivity extends BaseActivity
         new Intent(StartActivity.this, BookingActivity.class)));
 
     mNavViewTopPart.getHeaderView(0).setOnClickListener(v -> {
-      mNavigator.addFragmentBackStack(this, R.id.container_main,
-          ContactsAboutFragment.newInstance());
+      mNavigator.addFragmentTagClearBackStackNotCopy(this, R.id.container_main,
+          ContactsAboutFragment.newInstance(), CONTACTS_ABOUT_FRAGMENT);
       mDrawerLayout.closeDrawers();
     });
 

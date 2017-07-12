@@ -14,6 +14,7 @@
   <!--transparent colors-->
   <color name="colorTransparent">#00000000</color>
   <color name="colorTransparentGray">#7be4e4e4</color>
+  <color name="colorTTransparentBlack">#50000000</color>
   <color name="colorTransparentBlack">#80000000</color>
 
   <!--blue theme-->
