@@ -113,6 +113,7 @@
 
   <style name="ThemeDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
     <item name="android:windowNoTitle">true</item>
+    <item name="android:backgroundDimEnabled">false</item>
   </style>
 
 </resources>

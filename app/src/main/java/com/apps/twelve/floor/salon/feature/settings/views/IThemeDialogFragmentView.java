@@ -11,4 +11,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
     extends MvpView {
 
   void showSetThemeDialog(int position);
+
+  void showThemeApp(int positionTheme);
 }

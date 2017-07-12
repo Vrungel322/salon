@@ -2,13 +2,19 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,6 +54,8 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
   @BindView(R.id.radioButtonGray) AppCompatRadioButton mRadioButtonGray;
   @BindView(R.id.radioButtonPurple) AppCompatRadioButton mRadioButtonPurple;
   @BindView(R.id.radioButtonRed) AppCompatRadioButton mRadioButtonRed;
+  @BindView(R.id.textViewOk) TextView mTextViewOk;
+  @BindView(R.id.textViewCancel) TextView mTextViewCancel;
 
   private Unbinder mUnbinder;
 
@@ -82,6 +90,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
     switch (view.getId()) {
       case R.id.radioButtonPink:
         positionTheme = PINK;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonGreen.setChecked(false);
         mRadioButtonYellow.setChecked(false);
@@ -91,6 +100,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonBlue:
         positionTheme = BLUE;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonGreen.setChecked(false);
         mRadioButtonYellow.setChecked(false);
@@ -100,6 +110,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonGreen:
         positionTheme = GREEN;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonYellow.setChecked(false);
@@ -109,6 +120,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonYellow:
         positionTheme = YELLOW;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonGreen.setChecked(false);
@@ -118,6 +130,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonGray:
         positionTheme = GRAY;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonGreen.setChecked(false);
@@ -127,6 +140,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonPurple:
         positionTheme = PURPLE;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonGreen.setChecked(false);
@@ -136,6 +150,7 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
         break;
       case R.id.radioButtonRed:
         positionTheme = RED;
+        mThemeDialogFragmentPresenter.showThemeApp(positionTheme);
         mRadioButtonPink.setChecked(false);
         mRadioButtonBlue.setChecked(false);
         mRadioButtonGreen.setChecked(false);
@@ -146,10 +161,20 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
     }
   }
 
-  private void setThemeApp(int themeApp) {
-    mThemeDialogFragmentPresenter.setThemeApp(themeApp);
-    mNavigator.startActivityClearStack((AppCompatActivity) getActivity(),
-        new Intent(getActivity(), StartActivity.class));
+  private void setPreviewThemeApp(@ColorRes int idColorButton, @ColorRes int idColorActionBar,
+      @ColorRes int idColorStatusBar) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      getActivity().getWindow()
+          .setStatusBarColor(ContextCompat.getColor(getActivity(), idColorStatusBar));
+    }
+    ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setBackgroundDrawable(
+          new ColorDrawable(ContextCompat.getColor(getActivity(), idColorActionBar)));
+    }
+
+    mTextViewOk.setTextColor(ContextCompat.getColor(getActivity(), idColorButton));
+    mTextViewCancel.setTextColor(ContextCompat.getColor(getActivity(), idColorButton));
   }
 
   @Override public void showSetThemeDialog(int position) {
@@ -185,11 +210,46 @@ public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDial
     }
   }
 
+  @Override public void showThemeApp(int positionTheme) {
+    switch (positionTheme) {
+      case PINK:
+        setPreviewThemeApp(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
+        break;
+      case BLUE:
+        setPreviewThemeApp(R.color.colorAccentBlue, R.color.colorPrimaryBlue,
+            R.color.colorPrimaryDarkBlue);
+        break;
+      case GREEN:
+        setPreviewThemeApp(R.color.colorAccentGreen, R.color.colorPrimaryGreen,
+            R.color.colorPrimaryDarkGreen);
+        break;
+      case YELLOW:
+        setPreviewThemeApp(R.color.colorAccentYellow, R.color.colorPrimaryYellow,
+            R.color.colorPrimaryDarkYellow);
+        break;
+      case GRAY:
+        setPreviewThemeApp(R.color.colorAccentGray, R.color.colorPrimaryGray,
+            R.color.colorPrimaryDarkGray);
+        break;
+      case PURPLE:
+        setPreviewThemeApp(R.color.colorAccentPurple, R.color.colorPrimaryPurple,
+            R.color.colorPrimaryDarkPurple);
+        break;
+      case RED:
+        setPreviewThemeApp(R.color.colorAccentRed, R.color.colorPrimaryRed,
+            R.color.colorPrimaryDarkRed);
+        break;
+    }
+  }
+
   @OnClick(R.id.textViewOk) public void onViewClickedOk() {
-    setThemeApp(positionTheme);
+    mThemeDialogFragmentPresenter.setThemeApp(positionTheme);
+    mNavigator.startActivityClearStack((AppCompatActivity) getActivity(),
+        new Intent(getActivity(), StartActivity.class));
   }
 
   @OnClick(R.id.textViewCancel) public void onViewClickedCancel() {
+    mThemeDialogFragmentPresenter.revertThemeApp();
     dismiss();
   }
 }

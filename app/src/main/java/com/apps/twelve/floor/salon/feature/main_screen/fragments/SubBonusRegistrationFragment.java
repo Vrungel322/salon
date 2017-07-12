@@ -14,10 +14,13 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
+import com.apps.twelve.floor.salon.feature.my_bonus.fragments.BonusHowFragment;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.MyBonusFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.BONUS_HOW_WORKS_FRAGMENT;
 
 /**
  * Created by Vrungel on 27.02.2017.
@@ -54,7 +57,8 @@ public class SubBonusRegistrationFragment extends BaseFragment
   }
 
   @OnClick(R.id.ivInfo) public void ivInfoClicked() {
-    showAlertMessage("Info", "Some useful info");
+    mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
+        R.id.container_main, BonusHowFragment.newInstance(), BONUS_HOW_WORKS_FRAGMENT);
   }
 
   @Override public void onResume() {
