@@ -133,4 +133,7 @@ dependencies {
   //animations
   compile 'com.daimajia.easing:library:2.0@aar'
   compile 'com.daimajia.androidanimations:library:2.2@aar'
+
+  // for adjustViewBounds < api 17
+  compile 'com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1'
 }
