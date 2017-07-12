@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -63,6 +65,11 @@ public class ChooseServiceServiceFragment extends BaseFragment
     tvPath.setSelected(true);
     tvPath.setEllipsize(TextUtils.TruncateAt.MARQUEE);
     tvPath.setSingleLine(true);
+    Drawable leftDrawable =
+        AppCompatResources.getDrawable(getActivity(), R.drawable.ic_back_service_24dp);
+    tvPath.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, null, null, null);
+
+    tvPath.setOnClickListener(view1 -> getActivity().onBackPressed());
   }
 
   @Override public void setUpRvCategory() {
