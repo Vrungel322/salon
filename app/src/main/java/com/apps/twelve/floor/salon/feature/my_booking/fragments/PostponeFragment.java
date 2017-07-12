@@ -69,6 +69,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @BindView(R.id.nestedScrollBookingTime) NestedScrollView mNestedScrollBookingTime;
   @BindView(R.id.progressBarBookingTime) ProgressBar mProgressBarBookingTime;
   @BindView(R.id.btnConfirmPostpone) CircularProgressButton mBtnConfirmPostpone;
+  @BindView(R.id.relativeLayoutDay) RelativeLayout mRelativeLayoutDay;
+
   private List<DataServiceEntity> mDays = new ArrayList<>();
   private DatesHorizontalAdapter mDatesHorizontalAdapter;
   private ScheduleAdapter mScheduleAdapter;
@@ -170,6 +172,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
         .setOnItemClickListener((recyclerView, position, v) -> {
           mPostponeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
+          checkArrows();
         });
 
     //Schedule RV (hours)
@@ -210,7 +213,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @Override public void showNotTime() {
     mRelativeLayoutNotTime.setVisibility(View.VISIBLE);
-    mTextViewCurrentDate.setVisibility(View.VISIBLE);
+    mRelativeLayoutDay.setVisibility(View.GONE);
+    mBtnConfirmPostpone.setVisibility(View.GONE);
   }
 
   @Override public void hideProgressBarBookingTime() {
@@ -235,11 +239,26 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     if (mViewPagerDatesOfMonth.getCurrentItem() > 0) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() - 1);
     }
+    checkArrows();
   }
 
   @OnClick(R.id.bNextDay) public void bNextDayClicked() {
     if (mViewPagerDatesOfMonth.getCurrentItem() < mDays.size()) {
       mViewPagerDatesOfMonth.setCurrentItem(mViewPagerDatesOfMonth.getCurrentItem() + 1);
+    }
+    checkArrows();
+  }
+
+  private void checkArrows() {
+    if (mViewPagerDatesOfMonth.getCurrentItem() == mDays.size() - 1) {
+      mImageViewNextDay.setVisibility(View.GONE);
+    } else {
+      mImageViewNextDay.setVisibility(View.VISIBLE);
+    }
+    if (mViewPagerDatesOfMonth.getCurrentItem() == 0) {
+      mImageViewPrevDay.setVisibility(View.GONE);
+    } else {
+      mImageViewPrevDay.setVisibility(View.VISIBLE);
     }
   }
 

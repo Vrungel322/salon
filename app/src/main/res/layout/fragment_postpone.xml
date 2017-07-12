@@ -8,7 +8,7 @@
     android:clickable="true"
     android:orientation="vertical"
     >
-  <com.apps.twelve.floor.salon.utils.custom_views.FabNestedScroll
+  <android.support.v4.widget.NestedScrollView
       android:id="@+id/nestedScrollBookingTime"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -96,7 +96,7 @@
 
       </android.support.constraint.ConstraintLayout>
       <RelativeLayout
-          android:id="@+id/relativeLayout"
+          android:id="@+id/relativeLayoutDay"
           android:layout_width="match_parent"
           android:layout_height="60dp"
           android:layout_margin="16dp"
@@ -154,7 +154,13 @@
             android:layout_height="wrap_content"
             android:background="?colorAccent"
             >
-
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:alpha="0.5"
+              app:srcCompat="@drawable/bonus_pattern"
+              android:scaleType="centerCrop"
+              />
           <TextView
               android:id="@+id/textView7"
               android:layout_width="wrap_content"
@@ -167,6 +173,7 @@
               android:layout_marginStart="8dp"
               android:layout_marginTop="32dp"
               android:gravity="center"
+              android:textSize="18sp"
               android:text="@string/time_empty"
               android:textColor="@color/colorWhite"
               />
@@ -180,9 +187,10 @@
               android:layout_marginLeft="8dp"
               android:layout_marginRight="8dp"
               android:layout_marginStart="8dp"
-              android:layout_marginTop="16dp"
+              android:layout_marginTop="8dp"
               android:gravity="center"
-              android:text="@string/booking_phone"
+              android:textSize="16sp"
+              android:text="@string/time_empty_descr"
               android:textColor="@color/colorWhite"
               />
           <Button
@@ -191,12 +199,16 @@
               android:layout_height="wrap_content"
               android:layout_below="@+id/textView8"
               android:layout_centerHorizontal="true"
-              android:layout_marginBottom="16dp"
+              android:layout_marginBottom="8dp"
               android:layout_marginTop="16dp"
               android:drawableLeft="@drawable/ic_phone_white"
               android:drawablePadding="5dp"
               android:drawableStart="@drawable/ic_phone_white"
               android:text="80996753872"
+              android:textSize="18sp"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:background="@color/colorTTransparentBlack"
               android:textColor="@color/colorWhite"
               />
         </RelativeLayout>
@@ -255,7 +267,7 @@
 
       </LinearLayout>
     </LinearLayout>
-  </com.apps.twelve.floor.salon.utils.custom_views.FabNestedScroll>
+  </android.support.v4.widget.NestedScrollView>
   <ProgressBar
       android:id="@+id/progressBarBookingTime"
       android:layout_width="wrap_content"

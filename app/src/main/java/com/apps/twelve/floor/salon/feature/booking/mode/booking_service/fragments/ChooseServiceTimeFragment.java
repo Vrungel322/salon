@@ -154,8 +154,6 @@ public class ChooseServiceTimeFragment extends BaseFragment
 
   @Override public void showNotTime() {
     mRelativeLayoutNotTime.setVisibility(View.VISIBLE);
-    mTextViewCurrentDate.setVisibility(View.VISIBLE);
-    mImageViewNextDay.setVisibility(View.GONE);
     mRelativeLayoutDay.setVisibility(View.GONE);
   }
 
