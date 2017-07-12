@@ -33,40 +33,44 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   @SuppressWarnings("ConstantConditions") public void getBonusCount() {
     getViewState().startRefreshingView();
-    Subscription subscription =
-        mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()).concatMap(response -> {
-          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
-            return mAuthorizationManager.checkToken(mDataManager.fetchBonusCount());
-          }
-          return Observable.just(response);
-        }).doOnNext(response -> {
-          if (response.code() == RESPONSE_200) {
-            mDataManager.setBonusCount(response.body().getBonusesCount());
-          }
-        })
-        .compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
-          switch (response.code()) {
-            case RESPONSE_200:
-              getViewState().setBonusCount(response.body().getBonusesCount());
-              mRxBus.post(new RxBusHelper.UpdateBonusFromChildren());
-              break;
-            case RESPONSE_UNAUTHORIZED:
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              getViewState().setBonusCount(mDataManager.getBonusCountInt());
-              break;
-            default:
-              showMessageException();
-              getViewState().setBonusCount(mDataManager.getBonusCountInt());
-              break;
-          }
-          getViewState().stopRefreshingView();
-        }, throwable -> {
-          getViewState().setBonusCount(mDataManager.getBonusCountInt());
-          getViewState().stopRefreshingView();
-          Timber.e(throwable);
-          showMessageException(throwable);
-        });
-    addToUnsubscription(subscription);
+    if (mAuthorizationManager.isAuthorized()) {
+      Subscription subscription =
+          mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()).concatMap(response -> {
+            if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+              return mAuthorizationManager.checkToken(mDataManager.fetchBonusCount());
+            }
+            return Observable.just(response);
+          }).doOnNext(response -> {
+            if (response.code() == RESPONSE_200) {
+              mDataManager.setBonusCount(response.body().getBonusesCount());
+            }
+          }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
+            switch (response.code()) {
+              case RESPONSE_200:
+                getViewState().setBonusCount(response.body().getBonusesCount());
+                mRxBus.post(new RxBusHelper.UpdateBonusFromChildren());
+                break;
+              case RESPONSE_UNAUTHORIZED:
+                mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+                getViewState().setBonusCount(mDataManager.getBonusCountInt());
+                break;
+              default:
+                showMessageException();
+                getViewState().setBonusCount(mDataManager.getBonusCountInt());
+                break;
+            }
+            getViewState().stopRefreshingView();
+          }, throwable -> {
+            getViewState().setBonusCount(mDataManager.getBonusCountInt());
+            getViewState().stopRefreshingView();
+            Timber.e(throwable);
+            showMessageException(throwable);
+          });
+      addToUnsubscription(subscription);
+    } else {
+      getViewState().setBonusCount(mDataManager.getBonusCountInt());
+      getViewState().startRefreshingView();
+    }
   }
 
   public void showAuthDialogBooking() {
