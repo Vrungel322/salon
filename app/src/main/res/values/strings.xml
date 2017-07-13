@@ -107,6 +107,7 @@
   <string name="service">Услуга:</string>
   <string name="spare_time">Свободное время на</string>
   <string name="time_empty">Сведения о свободном времени отсутствуют</string>
+  <string name="booking_date_and_time">%1$s в %2$s</string>
   <string name="time_empty_descr">Вы можете записаться, позвонив по телефону:</string>
   <string name="search_service">Поиск услуги</string>
   <string name="title_write_error">Проверьте данные</string>
@@ -137,7 +138,7 @@
   <string name="settings_notifications_night">Отключать звук с %1$d ч. до %2$d ч. </string>
   <string name="settings_notifications_change">Изменить</string>
   <string name="notification_title">Напоминание</string>
-  <string name="notification_text">Услуга "%1$s" %2$s в %3$s</string>
+  <string name="notification_text">Услуга %1$s %2$s в %3$s</string>
   <string name="notification_text_today"> сегодня</string>
   <string name="report_problem_button">Отправить</string>
   <string name="menu_catalog">Каталог</string>

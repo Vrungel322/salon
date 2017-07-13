@@ -40,7 +40,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
     getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
-        mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices(),
+        mContext.getString(R.string.booking_date_and_time,
+            Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
+            mBookingEntity.getServiceTime()), mBookingEntity.getDurationServices(),
         mBookingEntity.getMasterName());
   }
 
