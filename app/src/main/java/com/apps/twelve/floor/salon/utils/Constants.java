@@ -54,6 +54,9 @@ public final class Constants {
     public static final String NOTIFICATION_TYPE = "NOTIFICATION_TYPE";
     public static final String DAILY = "DAILY";
     public static final String HOURLY = "HOURLY";
+    public static final String SERVICE = "SERVICE";
+    public static final String DATE = "DATE";
+    public static final String TIME = "TIME";
   }
 
   public class StatusCode {

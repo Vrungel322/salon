@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
@@ -102,8 +103,13 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
                     mDataServiceEntity.get(dayPosition)
                         .getScheduleEntities()
+                        .get(timePosition).getTimeInSec()) * 1000L - System.currentTimeMillis(),
+                    serviceName, Converters.detailDayFromSeconds(
+                        mDataServiceEntity.get(dayPosition).getStartTime().toString()),
+                    mDataServiceEntity.get(dayPosition)
+                        .getScheduleEntities()
                         .get(timePosition)
-                        .getTimeInSec()) * 1000L - System.currentTimeMillis(), serviceName);
+                        .getTime());
                 getViewState().closeTheFragment();
                 break;
               case RESPONSE_UNAUTHORIZED:

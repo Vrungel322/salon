@@ -16,10 +16,12 @@ import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
 
-import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DATE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICATION_TYPE;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.SERVICE;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.TIME;
 
 /**
  * Created by Alexandra on 17.05.2017.
@@ -54,11 +56,13 @@ public class NotificationJob extends Job {
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
           message = getContext().getString(R.string.notification_text,
-              params.getExtras().getString(SERVICE_NAME, ""), "", "");
+              params.getExtras().getString(SERVICE, ""), "",
+              params.getExtras().getString(TIME, ""));
           break;
         case DAILY:
           message = getContext().getString(R.string.notification_text,
-              params.getExtras().getString(SERVICE_NAME, ""), "", "");
+              params.getExtras().getString(SERVICE, ""), params.getExtras().getString(DATE, ""),
+              params.getExtras().getString(TIME, ""));
           break;
       }
 
