@@ -2,7 +2,9 @@ package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -17,7 +19,9 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -25,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class NotificationSettingsFragment extends BaseFragment
-    implements INotificationSettingsFragmentView, TimePickerDialog.OnTimeSetListener {
+    implements INotificationSettingsFragmentView {
 
   @InjectPresenter NotificationSettingsFragmentPresenter mNotificationSettingsFragmentPresenter;
 
@@ -105,13 +109,31 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @OnClick(R.id.rlHourlyChange) void changeHourly() {
-    TimePickerDialog tpd = TimePickerDialog.newInstance(NotificationSettingsFragment.this,
-        (int) TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()),
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+
+    Calendar calendarDefault = Calendar.getInstance();
+    calendarDefault.set(Calendar.HOUR,
+        (int) TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()));
+    calendarDefault.set(Calendar.MINUTE,
         (int) (TimeUnit.MILLISECONDS.toMinutes(mNotificationSettingsFragmentPresenter.getHours())
             - TimeUnit.HOURS.toMinutes(
-            TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))),
-        true);
-    tpd.show(getActivity().getFragmentManager(), "Timepickerdialog");
+            TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))));
+    Date dateDefault = calendarDefault.getTime();
+
+    new SingleDateAndTimePickerDialog.Builder(getContext()).bottomSheet()
+        .curved()
+        .mainColor(ContextCompat.getColor(getActivity(), value.resourceId))
+        .displayDays(false)
+        .defaultDate(dateDefault)
+        .listener(date -> {
+          Calendar calendar = Calendar.getInstance();
+          calendar.setTime(date);
+          mNotificationSettingsFragmentPresenter.setHours(
+              TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
+                  calendar.get(Calendar.MINUTE)));
+        })
+        .display();
   }
 
   @Override public void setUpSwitchers(boolean hourly, boolean daily) {
@@ -128,11 +150,6 @@ public class NotificationSettingsFragment extends BaseFragment
         getString(R.string.settings_notifications_hourly, TimeUnit.MILLISECONDS.toHours(hours),
             TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
                 TimeUnit.MILLISECONDS.toHours(hours))));
-  }
-
-  @Override public void onTimeSet(TimePickerDialog timePickerDialog, int i, int i1, int i2) {
-    mNotificationSettingsFragmentPresenter.setHours(
-        TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
   }
 
   @Override public void cancelPickDayDialog() {

@@ -28,8 +28,8 @@ android {
     applicationId "com.apps.twelve.floor.salon"
     minSdkVersion 16
     targetSdkVersion 26
-    versionCode 32
-    versionName "1.3.2"
+    versionCode 33
+    versionName "1.3.3"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
     multiDexEnabled true
@@ -115,7 +115,6 @@ dependencies {
 
   //Notifications
   compile 'com.evernote:android-job:1.1.10'
-  compile 'com.wdullaer:materialdatetimepicker:3.2.2'
 
   //expandable RV
   compile 'com.thoughtbot:expandablerecyclerview:1.4'
@@ -136,4 +135,7 @@ dependencies {
 
   // for adjustViewBounds < api 17
   compile 'com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1'
+
+  //TimePicker
+  compile 'com.github.florent37:singledateandtimepicker:1.1.8'
 }
