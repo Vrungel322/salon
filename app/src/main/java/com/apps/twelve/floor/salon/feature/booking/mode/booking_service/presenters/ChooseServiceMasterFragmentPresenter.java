@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceMasterFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.Randomizer;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -51,7 +52,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               if (response.code() == RESPONSE_200) {
                 mMasterEntities = response.body();
                 getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
-                    mBookingEntity.getServiceTime(), mBookingEntity.getDurationServices());
+                    mContext.getString(R.string.booking_date_and_time,
+                        Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
+                        mBookingEntity.getServiceTime()), mBookingEntity.getDurationServices());
                 getViewState().showMasters(response.body());
                 getViewState().hideProgressBar();
               }
