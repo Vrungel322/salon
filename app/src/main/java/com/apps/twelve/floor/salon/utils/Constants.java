@@ -41,6 +41,7 @@ public final class Constants {
     public static final String POSITION = "POSITION";
     public static final String OUR_ENTITY_KEY = "OUR_ENTITY_KEY";
     public static final String GOODS_ENTITY_KEY = "GOODS_ENTITY_KEY";
+    public static final String LAST_BOOKING_ENTITY_KEY = "LAST_BOOKING_ENTITY_KEY";
     public static final String BONUS_REGISTRATION_KEY = "BONUS_REGISTRATION_KEY";
     public static final String SERVICE_NAME = "SERVICE_NAME";
     public static final String MASTER_NAME = "MASTER_NAME";

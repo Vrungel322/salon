@@ -21,6 +21,7 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmen
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHistoryFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHowFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
@@ -62,6 +63,8 @@ import dagger.Component;
   void inject(BookingFragmentPresenter presenter);
 
   void inject(MyBookFragmentPresenter presenter);
+
+  void inject(BookDetailsFragmentPresenter presenter);
 
   void inject(MyBonusFragmentPresenter presenter);
 

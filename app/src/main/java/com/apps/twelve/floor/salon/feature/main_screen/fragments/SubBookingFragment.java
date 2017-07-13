@@ -13,9 +13,11 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.adapters.MyLastBookingAdapter;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBookingView;
+import com.apps.twelve.floor.salon.feature.my_booking.fragments.BookDetailsFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.MyBookFragment;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -61,6 +63,12 @@ public class SubBookingFragment extends BaseFragment implements ISubFragmentBook
         mSubBookingFragmentPresenter.showAlertDialog();
       }
     });
+
+    ItemClickSupport.addTo(mRecyclerViewMyLastBooking)
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+              BookDetailsFragment.newInstance(mMyLastBookingAdapter.getEntity(position)));
+        });
   }
 
   @Override public void showLastBookings(List<LastBookingEntity> lastBookingEntities) {

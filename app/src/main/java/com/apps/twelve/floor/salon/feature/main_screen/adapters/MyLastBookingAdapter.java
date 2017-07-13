@@ -141,6 +141,10 @@ public class MyLastBookingAdapter
     return mLastBookingEntities.size();
   }
 
+  public LastBookingEntity getEntity(int position) {
+    return mLastBookingEntities.get(position);
+  }
+
   @Override public void openPostponeFragment(int position) {
     mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
         PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),

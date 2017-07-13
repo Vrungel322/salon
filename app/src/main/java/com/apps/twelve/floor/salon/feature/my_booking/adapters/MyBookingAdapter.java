@@ -137,6 +137,10 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     return mBookingEntities.size();
   }
 
+  public LastBookingEntity getEntity(int position) {
+    return mBookingEntities.get(position);
+  }
+
   @Override public void openPostponeFragment(int position) {
     mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
         PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
