@@ -12,6 +12,7 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
@@ -56,8 +57,8 @@ public class NotificationJob extends Job {
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
           message = getContext().getString(R.string.notification_text,
-              params.getExtras().getString(SERVICE, ""), "",
-              params.getExtras().getString(TIME, ""));
+              params.getExtras().getString(SERVICE, ""), params.getExtras().getString(TIME, ""),
+              getContext().getString(R.string.notification_text_today));
           break;
         case DAILY:
           message = getContext().getString(R.string.notification_text,
@@ -70,19 +71,25 @@ public class NotificationJob extends Job {
           new Intent(getContext(), StartActivity.class).setAction(
               Long.toString(System.currentTimeMillis())), PendingIntent.FLAG_UPDATE_CURRENT);
 
-      Uri uriSound = Uri.parse(
-          "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
+      NotificationCompat.Builder builder =
+          new NotificationCompat.Builder(getContext()).setContentTitle(
+              getContext().getResources().getString(R.string.notification_title))
+              .setContentText(message)
+              .setAutoCancel(true)
+              .setContentIntent(pendingIntent)
+              .setSmallIcon(R.drawable.ic_create_booking)
+              .setShowWhen(true)
+              .setLocalOnly(true);
 
-      Notification notification = new NotificationCompat.Builder(getContext()).setContentTitle(
-          getContext().getResources().getString(R.string.notification_title))
-          .setContentText(message)
-          .setAutoCancel(true)
-          .setContentIntent(pendingIntent)
-          .setSmallIcon(R.drawable.ic_create_booking)
-          .setShowWhen(true)
-          .setSound(uriSound)
-          .setLocalOnly(true)
-          .build();
+      int currentHour =
+          Converters.timeHoursFromMilliseconds(String.valueOf(System.currentTimeMillis()));
+      if (currentHour < mDataManager.getNightFrom() && currentHour > mDataManager.getNightTill()) {
+        Uri uriSound = Uri.parse(
+            "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
+        builder.setSound(uriSound);
+      }
+
+      Notification notification = builder.build();
 
       NotificationManagerCompat.from(getContext()).notify(new Random().nextInt(), notification);
     }

@@ -238,6 +238,25 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
+  public boolean isNightMode() {
+    return mPref.isNightMode();
+  }
+
+  public void setNightMode(boolean enabled) {
+    mPref.setNightMode(enabled);
+  }
+
+  public int getNightFrom() {
+    return mPref.getNightFrom();
+  }
+
+  public int getNightTill() {
+    return mPref.getNightTill();
+  }
+
+  public void setNightHours(int from, int till) {
+    mPref.setNightHours(from, till);
+  }
   //user
 
   public void setLastPhoneForBooking(String lastPhone) {
