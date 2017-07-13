@@ -38,11 +38,11 @@ public class JobsCreator implements JobCreator {
   public void createNotification(String tag, Long millis, String service, String date,
       String time) {
     if (millis - mDataManager.getNotificationHours() > 0) {
-      createHourly(tag, millis - mDataManager.getNotificationHours(), time, service.toLowerCase());
+      createHourly(tag, millis - mDataManager.getNotificationHours(), service, time);
     }
     if (millis - TimeUnit.DAYS.toMillis(mDataManager.getNotificationDays()) > 0) {
-      createDaily(tag, millis - TimeUnit.DAYS.toMillis(mDataManager.getNotificationDays()), date,
-          time, service.toLowerCase());
+      createDaily(tag, millis - TimeUnit.DAYS.toMillis(mDataManager.getNotificationDays()), service,
+          date, time);
     }
   }
 

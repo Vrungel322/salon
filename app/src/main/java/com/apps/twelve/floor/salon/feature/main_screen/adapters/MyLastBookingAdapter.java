@@ -104,6 +104,8 @@ public class MyLastBookingAdapter
     //for DownTimer
     if (holder.mDownTimer != null) {
       holder.mDownTimer.cancel();
+      holder.mButtonPostpone.setVisibility(View.VISIBLE);
+      holder.mButtonCancel.setVisibility(View.VISIBLE);
     }
     holder.mDownTimer = new CountDownTimer(
         mLastBookingEntities.get(holder.getAdapterPosition()).getServiceTime() * 1000L
