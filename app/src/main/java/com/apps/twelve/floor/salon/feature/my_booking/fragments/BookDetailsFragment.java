@@ -26,6 +26,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Other.SERVER_ANSWER_EMPTY_STRING;
+
 /**
  * Created by Alexandra on 13.07.2017.
  */
@@ -81,11 +83,11 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
 
   private void setUpServiceBlock() {
     mTextViewServiceName.setText(mBookingEntity.getServiceName());
-    Glide.with(getContext()).load(mBookingEntity.getImageUri()).into(mImageViewService);
-    mTextViewServiceDetails.setText("service description");
-    mTextViewServicePrice.setText("1600 грн");
-    if (true) { //if !bonusPrice.equals("---")
-      mTextViewBonusPrice.setText("1200");
+    Glide.with(getContext()).load(mBookingEntity.getServiceImage()).into(mImageViewService);
+    mTextViewServiceDetails.setText(mBookingEntity.getServiceDescription());
+    mTextViewServicePrice.setText(mBookingEntity.getServicePrice());
+    if (!mBookingEntity.getServiceBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+      mTextViewBonusPrice.setText(mBookingEntity.getServiceBonusPrice());
       mImageViewBonusPrice.setVisibility(View.VISIBLE);
     } else {
       mTextViewBonusPrice.setVisibility(View.GONE);
@@ -97,7 +99,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     mTextViewServiceTime.setText(getContext().getString(R.string.booking_date_and_time,
         Converters.dateFromSeconds(String.valueOf(mBookingEntity.getServiceTime())),
         Converters.timeFromSeconds(String.valueOf(mBookingEntity.getServiceTime()))));
-    mTextViewDuration.setText("40 min");
+    mTextViewDuration.setText(mBookingEntity.getServiceDuration());
 
     mDownTimer =
         new CountDownTimer(mBookingEntity.getServiceTime() * 1000L - System.currentTimeMillis(),
@@ -126,15 +128,15 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   private void setUpMasterBlock() {
-    mTextViewMasterName.setText("Master Name");
-    mTextViewAboutMaster.setText("master description");
-    Glide.with(getContext()).load(mBookingEntity.getImageUri()).into(mImageViewMaster);
+    mTextViewMasterName.setText(mBookingEntity.getMasterName());
+    mTextViewAboutMaster.setText(mBookingEntity.getMasterDescription());
+    Glide.with(getContext()).load(mBookingEntity.getMasterPhoto()).into(mImageViewMaster);
   }
 
   @Override public void openPostponeFragment() {
     mNavigator.addFragmentBackStack((StartActivity) getContext(), R.id.container_main,
-        PostponeFragment.newInstance(mBookingEntity.getServiceName(), "Master Name", 2,
-            mBookingEntity.getId()));
+        PostponeFragment.newInstance(mBookingEntity.getServiceName(),
+            mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId()));
   }
 
   @Override public void showConfirmationDialog() {

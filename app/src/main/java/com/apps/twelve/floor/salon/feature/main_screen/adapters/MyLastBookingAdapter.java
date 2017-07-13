@@ -89,7 +89,7 @@ public class MyLastBookingAdapter
       holder.view.setVisibility(View.INVISIBLE);
     }
     Glide.with(holder.mImageViewServicePhoto.getContext())
-        .load(mLastBookingEntities.get(position).getImageUri())
+        .load(mLastBookingEntities.get(position).getServiceImage())
         .centerCrop()
         .placeholder(
             AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
