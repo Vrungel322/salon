@@ -83,10 +83,12 @@ public class NotificationJob extends Job {
 
       int currentHour =
           Converters.timeHoursFromMilliseconds(String.valueOf(System.currentTimeMillis()));
-      if (currentHour < mDataManager.getNightFrom() && currentHour > mDataManager.getNightTill()) {
+
+      if ((currentHour < mDataManager.getNightFrom() && currentHour > mDataManager.getNightTill())
+          || !mDataManager.isNightMode()) {
         Uri uriSound = Uri.parse(
             "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
-        builder.setSound(uriSound);
+        builder.setSound(uriSound).setContentTitle("NOT MUTED");
       }
 
       Notification notification = builder.build();
