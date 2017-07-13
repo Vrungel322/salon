@@ -37,6 +37,20 @@ public final class Converters {
     return "";
   }
 
+  public static int timeHoursFromMilliseconds(String date) {
+    if (!date.equals("")) {
+      String dateResult;
+      SimpleDateFormat formatter = new SimpleDateFormat("HH", mLocale);
+      Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+      long d = Long.valueOf(date);
+      calendar.setTimeInMillis(d);
+      dateResult = formatter.format(calendar.getTime());
+
+      return Integer.parseInt(dateResult);
+    }
+    return 0;
+  }
+
   public static String timeFromSeconds(String date) {
     if (!date.equals("")) {
       String dateResult;

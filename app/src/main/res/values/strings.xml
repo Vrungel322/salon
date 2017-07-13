@@ -39,10 +39,6 @@
   <string name="cancel_booking">Отмена записи</string>
   <string name="confirm_cancel_booking">Подтвердите удаление записи.</string>
   <string name="confirm">Подтвердить</string>
-  <string name="notification_title">Напоминание</string>
-  <string name="notification_text">Ждем Вас %1$s на услугу "%2$s"</string>
-  <string name="notification_hourly">через час</string>
-  <string name="notification_daily">через день</string>
   <string name="booking_days_left">%1$d дн.</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
@@ -135,9 +131,14 @@
   <string name="report_problem_hint">Мой кот меня не любит</string>
   <string name="settings_notifications_title_daily">Дневное уведомление</string>
   <string name="settings_notifications_title_hourly">Часовое уведомление</string>
+  <string name="settings_notifications_title_night">Ночной режим</string>
   <string name="settings_notifications_daily">За %1$d д. до начала услуги</string>
   <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до начала услуги</string>
+  <string name="settings_notifications_night">Отключать звук с %1$d ч. до %2$d ч. </string>
   <string name="settings_notifications_change">Изменить</string>
+  <string name="notification_title">Напоминание</string>
+  <string name="notification_text">Услуга "%1$s" %2$s в %3$s</string>
+  <string name="notification_text_today"> сегодня</string>
   <string name="report_problem_button">Отправить</string>
   <string name="menu_catalog">Каталог</string>
   <string name="choose_staff">Выбор продукции</string>

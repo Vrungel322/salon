@@ -12,14 +12,17 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
 
-import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DATE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICATION_TYPE;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.SERVICE;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.TIME;
 
 /**
  * Created by Alexandra on 17.05.2017.
@@ -54,13 +57,13 @@ public class NotificationJob extends Job {
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
           message = getContext().getString(R.string.notification_text,
-              getContext().getString(R.string.notification_hourly),
-              params.getExtras().getString(SERVICE_NAME, ""));
+              params.getExtras().getString(SERVICE, ""), params.getExtras().getString(TIME, ""),
+              getContext().getString(R.string.notification_text_today));
           break;
         case DAILY:
           message = getContext().getString(R.string.notification_text,
-              getContext().getString(R.string.notification_daily),
-              params.getExtras().getString(SERVICE_NAME, ""));
+              params.getExtras().getString(SERVICE, ""), params.getExtras().getString(DATE, ""),
+              params.getExtras().getString(TIME, ""));
           break;
       }
 
@@ -68,19 +71,27 @@ public class NotificationJob extends Job {
           new Intent(getContext(), StartActivity.class).setAction(
               Long.toString(System.currentTimeMillis())), PendingIntent.FLAG_UPDATE_CURRENT);
 
-      Uri uriSound = Uri.parse(
-          "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
+      NotificationCompat.Builder builder =
+          new NotificationCompat.Builder(getContext()).setContentTitle(
+              getContext().getResources().getString(R.string.notification_title))
+              .setContentText(message)
+              .setAutoCancel(true)
+              .setContentIntent(pendingIntent)
+              .setSmallIcon(R.drawable.ic_create_booking)
+              .setShowWhen(true)
+              .setLocalOnly(true);
 
-      Notification notification = new NotificationCompat.Builder(getContext()).setContentTitle(
-          getContext().getResources().getString(R.string.notification_title))
-          .setContentText(message)
-          .setAutoCancel(true)
-          .setContentIntent(pendingIntent)
-          .setSmallIcon(R.drawable.ic_create_booking)
-          .setShowWhen(true)
-          .setSound(uriSound)
-          .setLocalOnly(true)
-          .build();
+      int currentHour =
+          Converters.timeHoursFromMilliseconds(String.valueOf(System.currentTimeMillis()));
+
+      if ((currentHour < mDataManager.getNightFrom() && currentHour > mDataManager.getNightTill())
+          || !mDataManager.isNightMode()) {
+        Uri uriSound = Uri.parse(
+            "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
+        builder.setSound(uriSound).setContentTitle("NOT MUTED");
+      }
+
+      Notification notification = builder.build();
 
       NotificationManagerCompat.from(getContext()).notify(new Random().nextInt(), notification);
     }

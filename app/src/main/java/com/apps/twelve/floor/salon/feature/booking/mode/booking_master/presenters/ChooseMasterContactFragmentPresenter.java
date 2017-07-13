@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.local.mappers.BookingToBookingServerEntityMapper;
 import com.apps.twelve.floor.salon.data.model.BookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.IChooseMasterContactFragmentView;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
@@ -87,7 +88,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                   mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                   mJobsCreator.createNotification(String.valueOf(response.body().getId()),
                       Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
-                          - System.currentTimeMillis(), mBookingEntity.getServiceName());
+                          - System.currentTimeMillis(), mBookingEntity.getServiceName(),
+                      Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
+                      mBookingEntity.getServiceTime());
                   getViewState().closeBooking();
                   break;
                 case RESPONSE_UNAUTHORIZED:

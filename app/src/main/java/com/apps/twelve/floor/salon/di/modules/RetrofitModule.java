@@ -12,7 +12,6 @@ import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
 import java.io.File;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Named;
 import okhttp3.Cache;
@@ -95,7 +94,7 @@ import timber.log.Timber;
          Constants.Remote.BASE_URL + "api/v1/masters",
               Constants.Remote.BASE_URL + "api/v1/services",
               Constants.Remote.BASE_URL + "api/v1/categories")) {
-        CacheControl cacheControl = new CacheControl.Builder().maxAge(1, TimeUnit.MINUTES).build();
+        CacheControl cacheControl = new CacheControl.Builder().build();
         response = response.newBuilder()
             .removeHeader("Pragma")
             .header("Cache-Control", cacheControl.toString())
