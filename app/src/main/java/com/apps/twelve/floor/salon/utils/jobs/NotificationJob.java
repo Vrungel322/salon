@@ -88,7 +88,6 @@ public class NotificationJob extends Job {
           || !mDataManager.isNightMode()) {
         Uri uriSound = Uri.parse(
             "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
-        builder.setSound(uriSound).setContentTitle("NOT MUTED");
       }
 
       Notification notification = builder.build();

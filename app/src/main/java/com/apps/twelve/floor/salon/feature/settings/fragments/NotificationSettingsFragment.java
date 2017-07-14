@@ -94,7 +94,7 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @OnCheckedChanged(R.id.switchNight) void switchNight(boolean checked) {
-    mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
+    mNotificationSettingsFragmentPresenter.setNightModeNotificationsEnabled(checked);
   }
 
 
