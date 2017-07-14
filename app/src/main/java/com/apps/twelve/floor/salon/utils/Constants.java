@@ -8,6 +8,7 @@ public final class Constants {
   public class Remote {
     private static final String DOMEN = "beauty.api.floor12apps.com";
     public static final String BASE_URL = "https://" + DOMEN + "/";
+    public static final String LOCAL = "ru";
   }
 
   public class FragmentTag {

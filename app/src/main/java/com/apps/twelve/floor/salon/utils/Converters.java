@@ -6,13 +6,15 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Remote.LOCAL;
+
 /**
  * Created by Vrungel on 13.04.2017.
  */
 
 public final class Converters {
 
-  private static Locale mLocale = new Locale("ru"); //java.util.Locale.getDefault();
+  private static Locale mLocale = new Locale(LOCAL); //java.util.Locale.getDefault();
 
   public static String dateNow() {
     String dateResult;

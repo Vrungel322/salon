@@ -39,6 +39,7 @@ public class NotificationSettingsFragment extends BaseFragment
   @BindView(R.id.tvHourly) TextView mTextViewHourly;
 
   private AlertDialog mPickDaysDialog;
+  private SingleDateAndTimePickerDialog.Builder mSingleDateAndTimePickerDialog;
 
   public NotificationSettingsFragment() {
     super(R.layout.fragment_notification_settings);
@@ -58,6 +59,13 @@ public class NotificationSettingsFragment extends BaseFragment
 
     mNotificationSettingsFragmentPresenter.setUpSwitches();
     mNotificationSettingsFragmentPresenter.setUpStrings();
+  }
+
+  @Override public void onDestroyView() {
+    super.onDestroyView();
+    if (mPickDaysDialog != null) {
+      mPickDaysDialog.dismiss();
+    }
   }
 
   @OnCheckedChanged(R.id.switchHourly) void switchHourly(boolean checked) {
@@ -98,7 +106,7 @@ public class NotificationSettingsFragment extends BaseFragment
         FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
 
     mPickDaysDialog = new AlertDialog.Builder(getContext()).setView(layout)
-        .setPositiveButton(R.string.confirm, (dialog, which) -> {
+        .setPositiveButton(R.string.dialog_action_ok, (dialog, which) -> {
           mNotificationSettingsFragmentPresenter.saveDays();
           mNotificationSettingsFragmentPresenter.cancelPickDayDialog();
         })
@@ -106,6 +114,8 @@ public class NotificationSettingsFragment extends BaseFragment
             (dialog, which) -> mNotificationSettingsFragmentPresenter.cancelPickDayDialog())
         .create();
     mPickDaysDialog.show();
+    mPickDaysDialog.setOnCancelListener(
+        dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickDayDialog());
   }
 
   @OnClick(R.id.rlHourlyChange) void changeHourly() {
@@ -120,20 +130,20 @@ public class NotificationSettingsFragment extends BaseFragment
             - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))));
     Date dateDefault = calendarDefault.getTime();
-
-    new SingleDateAndTimePickerDialog.Builder(getContext()).bottomSheet()
-        .curved()
-        .mainColor(ContextCompat.getColor(getActivity(), value.resourceId))
-        .displayDays(false)
-        .defaultDate(dateDefault)
-        .listener(date -> {
-          Calendar calendar = Calendar.getInstance();
-          calendar.setTime(date);
-          mNotificationSettingsFragmentPresenter.setHours(
-              TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
-                  calendar.get(Calendar.MINUTE)));
-        })
-        .display();
+    mSingleDateAndTimePickerDialog =
+        new SingleDateAndTimePickerDialog.Builder(getActivity()).bottomSheet()
+            .curved()
+            .mainColor(ContextCompat.getColor(getActivity(), value.resourceId))
+            .displayDays(false)
+            .defaultDate(dateDefault)
+            .listener(date -> {
+              Calendar calendar = Calendar.getInstance();
+              calendar.setTime(date);
+              mNotificationSettingsFragmentPresenter.setHours(
+                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
+                      calendar.get(Calendar.MINUTE)));
+            });
+    mSingleDateAndTimePickerDialog.display();
   }
 
   @Override public void setUpSwitchers(boolean hourly, boolean daily) {

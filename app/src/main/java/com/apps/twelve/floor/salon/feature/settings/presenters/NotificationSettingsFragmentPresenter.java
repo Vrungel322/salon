@@ -34,7 +34,6 @@ import com.arellomobile.mvp.InjectViewState;
   }
 
   public int getDays() {
-    mDataManager.getNotificationDays();
     return mDataManager.getNotificationDays();
   }
 

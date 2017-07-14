@@ -20,6 +20,8 @@ import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
 
+import static com.apps.twelve.floor.salon.utils.Constants.Remote.LOCAL;
+
 /**
  * Created by Vrungel on 26.01.2017.
  */
@@ -30,7 +32,7 @@ public class DataManager {
   private PreferencesHelper mPref;
   private AuthorizationManager mAuthorizationManager;
 
-  private String mLanguage = "ru"; // = Locale.getDefault().getLanguage();
+  private String mLanguage = LOCAL; // = Locale.getDefault().getLanguage();
 
   public DataManager(RestApi restApi, PreferencesHelper preferencesHelper,
       AuthorizationManager authorizationManager) {
