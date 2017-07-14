@@ -7,6 +7,7 @@ import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import com.apps.twelve.floor.salon.di.scopes.AppScope;
+import com.google.gson.Gson;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -30,7 +31,7 @@ import retrofit2.Retrofit;
     return new DataManager(restApi, preferencesHelper, authorizationManager);
   }
 
-  @Provides @AppScope PreferencesHelper providePreferencesHelper(Context context) {
-    return new PreferencesHelper(context);
+  @Provides @AppScope PreferencesHelper providePreferencesHelper(Context context, Gson gson) {
+    return new PreferencesHelper(context, gson);
   }
 }

@@ -46,6 +46,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
             case RESPONSE_200:
               getViewState().showAllBooking(response.body());
               getViewState().stopRefreshingView();
+              mDataManager.putBooking(response.body());
               break;
             case RESPONSE_UNAUTHORIZED:
               mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());

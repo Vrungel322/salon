@@ -252,6 +252,14 @@ public class DataManager {
     mPref.setNightMode(enabled);
   }
 
+  public void putBooking(List<LastBookingEntity> bookingEntities) {
+    mPref.putBooking(bookingEntities);
+  }
+
+  public List<LastBookingEntity> getBooking() {
+    return mPref.getBooking();
+  }
+
   //user
 
   public void setLastPhoneForBooking(String lastPhone) {

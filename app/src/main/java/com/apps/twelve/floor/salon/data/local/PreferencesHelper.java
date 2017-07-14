@@ -2,6 +2,10 @@ package com.apps.twelve.floor.salon.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.util.List;
 import rx.Observable;
 
 /**
@@ -22,11 +26,14 @@ public class PreferencesHelper {
   private static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
   private static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
   private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
+  private static final String PREF_BOOKING = "PREF_BOOKING";
 
   private final SharedPreferences mPreferences;
+  private Gson mGson;
 
-  public PreferencesHelper(Context context) {
+  public PreferencesHelper(Context context, Gson gson) {
     mPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+    mGson = gson;
   }
 
   public void clear() {
@@ -115,6 +122,19 @@ public class PreferencesHelper {
 
   public void setNightMode(boolean enabled) {
     mPreferences.edit().putBoolean(PREF_NOTIF_NIGHT_MODE, enabled).apply();
+  }
+
+  public void putBooking(List<LastBookingEntity> bookingEntities) {
+    mPreferences.edit().putString(PREF_BOOKING, mGson.toJson(bookingEntities)).apply();
+  }
+
+  public List<LastBookingEntity> getBooking() {
+    String bookingEntities = mPreferences.getString(PREF_BOOKING, null);
+    if (bookingEntities != null) {
+      return mGson.fromJson(bookingEntities, new TypeToken<List<LastBookingEntity>>() {
+      }.getType());
+    }
+    return null;
   }
 
   public void logoutUser() {
