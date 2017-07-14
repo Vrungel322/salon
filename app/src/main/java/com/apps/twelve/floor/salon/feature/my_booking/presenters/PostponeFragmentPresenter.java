@@ -111,8 +111,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                         .getTime());
                 mRxBus.post(new RxBusHelper.UpdateBookingDetails(mDataServiceEntity.get(dayPosition)
                     .getScheduleEntities()
+                    .get(timePosition).getTimeInSec(), mDataServiceEntity.get(dayPosition)
+                    .getScheduleEntities()
                     .get(timePosition)
-                    .getTimeInSec()));
+                    .getId()));
                 getViewState().closeTheFragment();
                 break;
               case RESPONSE_UNAUTHORIZED:
