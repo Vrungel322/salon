@@ -100,11 +100,13 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
           goodsListViewHolder.mTextViewOldPrice.setVisibility(View.VISIBLE);
           goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
           goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.BOLD_ITALIC);
+          goodsListViewHolder.mTextViewShortDescription.setMaxLines(1);
         } else {
           goodsListViewHolder.mImageViewForSale.setVisibility(View.GONE);
           goodsListViewHolder.mTextViewOldPrice.setVisibility(View.GONE);
           goodsListViewHolder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
           goodsListViewHolder.mTextViewPrice.setTypeface(null, Typeface.NORMAL);
+          goodsListViewHolder.mTextViewShortDescription.setMaxLines(2);
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());

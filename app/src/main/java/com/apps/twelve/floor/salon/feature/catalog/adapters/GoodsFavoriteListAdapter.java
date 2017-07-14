@@ -68,11 +68,13 @@ public class GoodsFavoriteListAdapter
       holder.mTextViewOldPrice.setVisibility(View.VISIBLE);
       holder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());
       holder.mTextViewPrice.setTypeface(null, Typeface.BOLD_ITALIC);
+      holder.mTextViewShortDescription.setMaxLines(1);
     } else {
       holder.mImageViewForSale.setVisibility(View.GONE);
       holder.mTextViewOldPrice.setVisibility(View.GONE);
       holder.mTextViewPrice.setText(mGoodsEntities.get(position).getPrice());
       holder.mTextViewPrice.setTypeface(null, Typeface.NORMAL);
+      holder.mTextViewShortDescription.setMaxLines(2);
     }
 
     holder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
