@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
-import com.apps.twelve.floor.salon.utils.Converters;
 import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
@@ -82,10 +81,10 @@ public class NotificationJob extends Job {
               .setShowWhen(true)
               .setLocalOnly(true);
 
-      int currentHour =
-          Converters.timeHoursFromMilliseconds(String.valueOf(System.currentTimeMillis()));
+      long currentHour = System.currentTimeMillis();
 
-      if ((currentHour < mDataManager.getNightFrom() && currentHour > mDataManager.getNightTill())
+      if ((currentHour < mDataManager.getNotificationHoursNightStart() && currentHour > mDataManager
+          .getNotificationHoursNightEnd())
           || !mDataManager.isNightMode()) {
         Uri uriSound = Uri.parse(
             "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);

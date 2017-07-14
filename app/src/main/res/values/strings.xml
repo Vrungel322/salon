@@ -137,6 +137,8 @@
   <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до начала услуги</string>
   <string name="settings_notifications_night">Отключать звук с %1$d ч. до %2$d ч. </string>
   <string name="settings_notifications_change">Изменить</string>
+  <string name="settings_notifications_change_start">Изменить начало</string>
+  <string name="settings_notifications_change_end">Изменить конец</string>
   <string name="notification_title">Напоминание</string>
   <string name="notification_text">Услуга \"%1$s\" %2$s в %3$s</string>
   <string name="notification_text_today">сегодня</string>

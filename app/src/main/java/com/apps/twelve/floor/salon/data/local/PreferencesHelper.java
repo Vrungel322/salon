@@ -17,10 +17,10 @@ public class PreferencesHelper {
   private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
+  private static final String PREF_NOTIF_HOURS_NIGHT_START = "PREF_NOTIF_HOURS_NIGHT_START";
+  private static final String PREF_NOTIF_HOURS_NIGHT_END = "PREF_NOTIF_HOURS_NIGHT_END";
   private static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
   private static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
-  private static final String PREF_NOTIF_NIGHT_FROM = "PREF_NOTIF_NIGHT_FROM";
-  private static final String PREF_NOTIF_NIGHT_TILL = "PREF_NOTIF_NIGHT_TILL";
   private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
 
   private final SharedPreferences mPreferences;
@@ -89,8 +89,24 @@ public class PreferencesHelper {
     return mPreferences.getLong(PREF_NOTIF_HOURS, 3600000);
   }
 
+  public long getNotificationHoursNightStart() {
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_START, 3600000);
+  }
+
+  public long getNotificationHoursNightEnd() {
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_END, 3600000);
+  }
+
   public void setNotificationHours(long millis) {
     mPreferences.edit().putLong(PREF_NOTIF_HOURS, millis).apply();
+  }
+
+  public void setNotificationHoursNightStart(long millis) {
+    mPreferences.edit().putLong(PREF_NOTIF_HOURS_NIGHT_START, millis).apply();
+  }
+
+  public void setNotificationHoursNightEnd(long millis) {
+    mPreferences.edit().putLong(PREF_NOTIF_HOURS_NIGHT_END, millis).apply();
   }
 
   public boolean isNightMode() {
@@ -99,19 +115,6 @@ public class PreferencesHelper {
 
   public void setNightMode(boolean enabled) {
     mPreferences.edit().putBoolean(PREF_NOTIF_NIGHT_MODE, enabled).apply();
-  }
-
-  public int getNightFrom() {
-    return mPreferences.getInt(PREF_NOTIF_NIGHT_FROM, 23);
-  }
-
-  public int getNightTill() {
-    return mPreferences.getInt(PREF_NOTIF_NIGHT_TILL, 7);
-  }
-
-  public void setNightHours(int from, int till) {
-    mPreferences.edit().putInt(PREF_NOTIF_NIGHT_FROM, from).apply();
-    mPreferences.edit().putInt(PREF_NOTIF_NIGHT_TILL, till).apply();
   }
 
   public void logoutUser() {

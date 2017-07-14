@@ -81,20 +81,18 @@ public class DataManager {
 
   public Observable<retrofit2.Response<LastBookingEntity>> checkInService(
       BookingServerEntity bookingServerEntity) {
-    return mRestApi.checkInService(mLanguage,
-        mAuthorizationManager.getToken(), bookingServerEntity);
+    return mRestApi.checkInService(mLanguage, mAuthorizationManager.getToken(),
+        bookingServerEntity);
   }
 
   //bonus
 
   public Observable<Response<BonusEntity>> fetchBonusCount() {
-    return mRestApi.fetchBonusCount(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchBonusCount(mLanguage, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory() {
-    return mRestApi.fetchBonusHistory(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchBonusHistory(mLanguage, mAuthorizationManager.getToken());
   }
 
   public void setBonusCount(int bonusCount) {
@@ -122,18 +120,16 @@ public class DataManager {
   //main screen
 
   public Observable<Response<List<LastBookingEntity>>> fetchLastBooking() {
-    return mRestApi.fetchLastBooking(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchLastBooking(mLanguage, mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
-    return mRestApi.cancelOrder(mLanguage, serviceId,
-        mAuthorizationManager.getToken());
+    return mRestApi.cancelOrder(mLanguage, serviceId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> postponeService(String entryId, int scheduleId) {
-    return mRestApi.postponeService(mLanguage, entryId,
-        mAuthorizationManager.getToken(), scheduleId);
+    return mRestApi.postponeService(mLanguage, entryId, mAuthorizationManager.getToken(),
+        scheduleId);
   }
 
   //ourWorks
@@ -143,25 +139,21 @@ public class DataManager {
   }
 
   public Observable<Response<List<OurWorkEntity>>> fetchListOfWorksAuth() {
-    return mRestApi.fetchListOfWorksAuth(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchListOfWorksAuth(mLanguage, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<PhotoWorksEntity>>> fetchFavoritePhotos() {
-    return mRestApi.fetchFavoritePhotos(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchFavoritePhotos(mLanguage, mAuthorizationManager.getToken());
   }
 
   //like/dislike ourWork photo
 
   public Observable<Response<Void>> addToFavoritePhoto(int photoId) {
-    return mRestApi.addToFavoritePhoto(mLanguage, photoId,
-        mAuthorizationManager.getToken());
+    return mRestApi.addToFavoritePhoto(mLanguage, photoId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoritePhoto(int photoId) {
-    return mRestApi.removeFromFavoritePhoto(mLanguage, photoId,
-        mAuthorizationManager.getToken());
+    return mRestApi.removeFromFavoritePhoto(mLanguage, photoId, mAuthorizationManager.getToken());
   }
 
   //News
@@ -177,13 +169,11 @@ public class DataManager {
   //Goods
 
   public Observable<Response<List<GoodsEntity>>> fetchAllProducts() {
-    return mRestApi.fetchAllProducts(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchAllProducts(mLanguage, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchFavoriteGoods() {
-    return mRestApi.fetchFavoriteGoods(mLanguage,
-        mAuthorizationManager.getToken());
+    return mRestApi.fetchFavoriteGoods(mLanguage, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<List<GoodsEntity>>> fetchGoodsByCatalogId(Integer id) {
@@ -197,13 +187,11 @@ public class DataManager {
   //like/dislike goods
 
   public Observable<Response<Void>> addToFavoriteGoods(int goodsId) {
-    return mRestApi.addToFavoriteGoods(mLanguage, goodsId,
-        mAuthorizationManager.getToken());
+    return mRestApi.addToFavoriteGoods(mLanguage, goodsId, mAuthorizationManager.getToken());
   }
 
   public Observable<Response<Void>> removeFromFavoriteGoods(int goodsId) {
-    return mRestApi.removeFromFavoriteGoods(mLanguage, goodsId,
-        mAuthorizationManager.getToken());
+    return mRestApi.removeFromFavoriteGoods(mLanguage, goodsId, mAuthorizationManager.getToken());
   }
 
   //Notification
@@ -240,6 +228,22 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
+  public void setNotificationHoursNightStart(long millis) {
+    mPref.setNotificationHoursNightStart(millis);
+  }
+
+  public void setNotificationHoursNightEnd(long millis) {
+    mPref.setNotificationHoursNightEnd(millis);
+  }
+
+  public long getNotificationHoursNightStart() {
+    return mPref.getNotificationHoursNightStart();
+  }
+
+  public long getNotificationHoursNightEnd() {
+    return mPref.getNotificationHoursNightEnd();
+  }
+
   public boolean isNightMode() {
     return mPref.isNightMode();
   }
@@ -248,17 +252,6 @@ public class DataManager {
     mPref.setNightMode(enabled);
   }
 
-  public int getNightFrom() {
-    return mPref.getNightFrom();
-  }
-
-  public int getNightTill() {
-    return mPref.getNightTill();
-  }
-
-  public void setNightHours(int from, int till) {
-    mPref.setNightHours(from, till);
-  }
   //user
 
   public void setLastPhoneForBooking(String lastPhone) {

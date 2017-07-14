@@ -16,6 +16,10 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setUpHoursString(long hours);
 
+  void setUpHoursNightStart(long hours);
+
+  void setUpHoursNightEnd(long hours);
+
   void showPickDayDialog();
 
   void cancelPickDayDialog();
