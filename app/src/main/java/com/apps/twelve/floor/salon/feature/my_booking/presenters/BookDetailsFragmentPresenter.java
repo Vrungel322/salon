@@ -32,10 +32,13 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+
+    //RxBus
+    subscribeUpdateTimeInfo();
   }
 
   public void cancelOrder(Integer entityId) {
-    getViewState().showProgressBarCancel();
+    getViewState().showProgressBar();
     Subscription subscription =
         mAuthorizationManager.checkToken(mDataManager.cancelOrder(entityId)).concatMap(response -> {
           if (response.code() == RESPONSE_TOKEN_EXPIRED) {
@@ -43,7 +46,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           }
           return Observable.just(response);
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
-          getViewState().hideProgressBarCancel();
+          getViewState().hideProgressBar();
           switch (response.code()) {
             case RESPONSE_204:
               mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
@@ -60,7 +63,22 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }, throwable -> {
           Timber.e(throwable);
           showMessageException(throwable);
-          getViewState().hideProgressBarCancel();
+          getViewState().hideProgressBar();
+        });
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeUpdateTimeInfo() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBookingDetails.class)
+        .doOnNext(time -> getViewState().showProgressBar())
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(time -> {
+          getViewState().updateTimeInfo(Integer.parseInt(time.serviceTime));
+          getViewState().hideProgressBar();
+        }, throwable -> {
+          getViewState().hideProgressBar();
+          Timber.e(throwable);
+          showMessageException(throwable);
         });
     addToUnsubscription(subscription);
   }
