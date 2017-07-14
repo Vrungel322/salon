@@ -52,7 +52,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.tvMasterName) TextView mTextViewMasterName;
   @BindView(R.id.tvAboutMaster) TextView mTextViewAboutMaster;
   @BindView(R.id.ivMasterImg) CircleImageView mImageViewMaster;
-  @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;
+  @BindView(R.id.pbCancelBooking) ProgressBar mProgressBar;
 
   private LastBookingEntity mBookingEntity;
   private CountDownTimer mDownTimer;
@@ -88,7 +88,6 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     mTextViewServiceName.setText(mBookingEntity.getServiceName());
     Glide.with(getContext()).load(mBookingEntity.getServiceImage()).into(mImageViewService);
     mTextViewServiceDetails.setText(mBookingEntity.getServiceDescription());
-    mTextViewServicePrice.setText(mBookingEntity.getServicePrice());
     if (!mBookingEntity.getServiceBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
       mTextViewBonusPrice.setText(mBookingEntity.getServiceBonusPrice());
       mImageViewBonusPrice.setVisibility(View.VISIBLE);
@@ -116,6 +115,9 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
         Converters.timeFromSeconds(String.valueOf(mBookingEntity.getServiceTime()))));
     mTextViewDuration.setText(mBookingEntity.getServiceDuration());
 
+    if (mDownTimer != null) {
+      mDownTimer.cancel();
+    }
     mDownTimer =
         new CountDownTimer(mBookingEntity.getServiceTime() * 1000L - System.currentTimeMillis(),
             1000) {
@@ -154,6 +156,11 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
             mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId()));
   }
 
+  @Override public void updateTimeInfo(Integer time) {
+    mBookingEntity.setServiceTime(time);
+    setUpTimeBlock();
+  }
+
   @Override public void showConfirmationDialog() {
     mRemoveBookingDialog =
         DialogFactory.createAlertDialogBuilder(getContext(), R.string.cancel_booking,
@@ -176,12 +183,12 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     }
   }
 
-  @Override public void showProgressBarCancel() {
-    mProgressBarCancel.setVisibility(View.VISIBLE);
+  @Override public void showProgressBar() {
+    mProgressBar.setVisibility(View.VISIBLE);
   }
 
-  @Override public void hideProgressBarCancel() {
-    mProgressBarCancel.setVisibility(View.GONE);
+  @Override public void hideProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
   }
 
   @Override public void closeFragment() {

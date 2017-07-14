@@ -29,6 +29,14 @@ public final class RxBusHelper {
   public static class UpdateLastBookingListEvent {
   }
 
+  public static class UpdateBookingDetails {
+    public String serviceTime;
+
+    public UpdateBookingDetails(String serviceTime) {
+      this.serviceTime = serviceTime;
+    }
+  }
+
   public static class UpdateNews {
   }
 
