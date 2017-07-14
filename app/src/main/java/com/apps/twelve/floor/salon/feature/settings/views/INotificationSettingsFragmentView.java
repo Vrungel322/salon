@@ -10,15 +10,13 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface INotificationSettingsFragmentView
     extends MvpView {
-  void setUpSwitchers(boolean hourly, boolean daily);
+  void setUpSwitchers(boolean hourly, boolean daily, boolean night);
 
   void setUpDaysString(int days);
 
   void setUpHoursString(long hours);
 
-  void setUpHoursNightStart(long hours);
-
-  void setUpHoursNightEnd(long hours);
+  void setUpNightHours(long start, long end);
 
   void showPickDayDialog();
 

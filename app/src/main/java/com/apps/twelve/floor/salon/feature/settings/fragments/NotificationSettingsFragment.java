@@ -35,6 +35,7 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @BindView(R.id.switchHourly) android.support.v7.widget.SwitchCompat mSwitchHourly;
   @BindView(R.id.switchDaily) android.support.v7.widget.SwitchCompat mSwitchDaily;
+  @BindView(R.id.switchNight) android.support.v7.widget.SwitchCompat mSwitchNight;
   @BindView(R.id.tvDaily) TextView mTextViewDaily;
   @BindView(R.id.tvHourly) TextView mTextViewHourly;
   @BindView(R.id.tvNight) TextView mTextViewNight;
@@ -92,6 +93,11 @@ public class NotificationSettingsFragment extends BaseFragment
     mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
   }
 
+  @OnCheckedChanged(R.id.switchNight) void switchNight(boolean checked) {
+    mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
+  }
+
+
   @OnClick(R.id.rlHourly) void setHourlyEnabled() {
     boolean checked = !mSwitchHourly.isChecked();
     mNotificationSettingsFragmentPresenter.setHourlyNotificationsEnabled(checked);
@@ -102,6 +108,12 @@ public class NotificationSettingsFragment extends BaseFragment
     boolean checked = !mSwitchDaily.isChecked();
     mNotificationSettingsFragmentPresenter.setDailyNotificationsEnabled(checked);
     mSwitchDaily.setChecked(checked);
+  }
+
+  @OnClick(R.id.rlNight) void setNightEnabled() {
+    boolean checked = !mSwitchNight.isChecked();
+    mNotificationSettingsFragmentPresenter.setNightModeNotificationsEnabled(checked);
+    mSwitchNight.setChecked(checked);
   }
 
   @OnClick(R.id.rlDailyChange) void changeDaily() {
@@ -153,11 +165,11 @@ public class NotificationSettingsFragment extends BaseFragment
             .mainColor(ContextCompat.getColor(getActivity(), value.resourceId))
             .displayDays(false)
             .defaultDate(dateDefault)
-            .listener(date -> {
+            .listener(time -> {
               Calendar calendar = Calendar.getInstance();
-              calendar.setTime(date);
+              calendar.setTime(time);
               mNotificationSettingsFragmentPresenter.setHours(
-                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
+                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR_OF_DAY)) + TimeUnit.MINUTES.toMillis(
                       calendar.get(Calendar.MINUTE)));
             });
     mChangeHourlyTimePickerDialog.display();
@@ -168,7 +180,7 @@ public class NotificationSettingsFragment extends BaseFragment
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
 
     Calendar calendarDefaultStart = Calendar.getInstance();
-    calendarDefaultStart.set(Calendar.HOUR, (int) TimeUnit.MILLISECONDS.toHours(
+    calendarDefaultStart.set(Calendar.HOUR_OF_DAY, (int) TimeUnit.MILLISECONDS.toHours(
         mNotificationSettingsFragmentPresenter.getHoursNightStart()));
     calendarDefaultStart.set(Calendar.MINUTE, (int) (TimeUnit.MILLISECONDS.toMinutes(
         mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
@@ -187,7 +199,7 @@ public class NotificationSettingsFragment extends BaseFragment
               Calendar calendar = Calendar.getInstance();
               calendar.setTime(date);
               mNotificationSettingsFragmentPresenter.setHoursNightStart(
-                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
+                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR_OF_DAY)) + TimeUnit.MINUTES.toMillis(
                       calendar.get(Calendar.MINUTE)));
             });
     mChangeNightStartTimePickerDialog.display();
@@ -198,7 +210,7 @@ public class NotificationSettingsFragment extends BaseFragment
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
 
     Calendar calendarDefaultEnd = Calendar.getInstance();
-    calendarDefaultEnd.set(Calendar.HOUR, (int) TimeUnit.MILLISECONDS.toHours(
+    calendarDefaultEnd.set(Calendar.HOUR_OF_DAY, (int) TimeUnit.MILLISECONDS.toHours(
         mNotificationSettingsFragmentPresenter.getHoursNightEnd()));
     calendarDefaultEnd.set(Calendar.MINUTE, (int) (TimeUnit.MILLISECONDS.toMinutes(
         mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
@@ -216,15 +228,16 @@ public class NotificationSettingsFragment extends BaseFragment
               Calendar calendar = Calendar.getInstance();
               calendar.setTime(date);
               mNotificationSettingsFragmentPresenter.setHoursNightEnd(
-                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR)) + TimeUnit.MINUTES.toMillis(
+                  TimeUnit.HOURS.toMillis(calendar.get(Calendar.HOUR_OF_DAY)) + TimeUnit.MINUTES.toMillis(
                       calendar.get(Calendar.MINUTE)));
             });
     mChangeNightEndTimePickerDialog.display();
   }
 
-  @Override public void setUpSwitchers(boolean hourly, boolean daily) {
+  @Override public void setUpSwitchers(boolean hourly, boolean daily, boolean night) {
     mSwitchHourly.setChecked(hourly);
     mSwitchDaily.setChecked(daily);
+    mSwitchNight.setChecked(night);
   }
 
   @Override public void setUpDaysString(int days) {
@@ -238,14 +251,14 @@ public class NotificationSettingsFragment extends BaseFragment
                 TimeUnit.MILLISECONDS.toHours(hours))));
   }
 
-  @Override public void setUpHoursNightStart(long hours) {
+  @Override public void setUpNightHours(long start, long end) {
     mTextViewNight.setText(
-        getString(R.string.settings_notifications_night, TimeUnit.MILLISECONDS.toHours(hours),
-            TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
-                TimeUnit.MILLISECONDS.toHours(hours))));
+        getString(R.string.settings_notifications_night, getTimeWithZero(TimeUnit.MILLISECONDS.toHours(start)),
+            getTimeWithZero(TimeUnit.MILLISECONDS.toHours(end))));
   }
 
-  @Override public void setUpHoursNightEnd(long hours) {
+  private String getTimeWithZero(long time) {
+    return time > 9 ? String.valueOf(time) : "0" + String.valueOf(time);
   }
 
   @Override public void cancelPickDayDialog() {
