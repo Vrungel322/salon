@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.feature.my_booking.fragments;
 
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -38,6 +40,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.ivServiceImg) CircleImageView mImageViewService;
   @BindView(R.id.tvAboutService) TextView mTextViewServiceDetails;
+  @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
   @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
   @BindView(R.id.tvPriceBonus) TextView mTextViewBonusPrice;
   @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
@@ -92,6 +95,18 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     } else {
       mTextViewBonusPrice.setVisibility(View.GONE);
       mImageViewBonusPrice.setVisibility(View.GONE);
+    }
+
+    if (!mBookingEntity.getServiceNewPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+      mTextViewOldPrice.setText(mBookingEntity.getServicePrice());
+      mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+      mTextViewOldPrice.setVisibility(View.VISIBLE);
+      mTextViewServicePrice.setText(mBookingEntity.getServiceNewPrice());
+      mTextViewServicePrice.setTypeface(null, Typeface.BOLD_ITALIC);
+    } else {
+      mTextViewOldPrice.setVisibility(View.GONE);
+      mTextViewServicePrice.setText(mBookingEntity.getServicePrice());
+      mTextViewServicePrice.setTypeface(null, Typeface.NORMAL);
     }
   }
 

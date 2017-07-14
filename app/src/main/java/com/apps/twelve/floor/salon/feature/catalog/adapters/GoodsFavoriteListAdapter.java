@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -65,8 +64,6 @@ public class GoodsFavoriteListAdapter
     if (mGoodsEntities.get(position).isForSale()) {
       holder.mImageViewForSale.setImageResource(R.drawable.ic_badge_sale_32dp);
       holder.mTextViewOldPrice.setText(mGoodsEntities.get(position).getPrice());
-      holder.mTextViewOldPrice.setTextColor(
-          ContextCompat.getColor(mContext, R.color.colorLightGray));
       holder.mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
       holder.mTextViewOldPrice.setVisibility(View.VISIBLE);
       holder.mTextViewPrice.setText(mGoodsEntities.get(position).getNewPrice());

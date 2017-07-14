@@ -84,7 +84,7 @@
           android:layout_marginRight="8dp"
           android:layout_marginStart="8dp"
           android:layout_marginTop="3dp"
-          android:textColor="?colorAccent"
+          android:textColor="@color/colorLightGray"
           android:textStyle="italic"
           android:visibility="gone"
           tools:text="100$"
