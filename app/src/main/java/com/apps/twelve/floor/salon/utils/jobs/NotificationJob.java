@@ -57,8 +57,9 @@ public class NotificationJob extends Job {
       switch (params.getExtras().getString(NOTIFICATION_TYPE, "")) {
         case HOURLY:
           message = getContext().getString(R.string.notification_text,
-              params.getExtras().getString(SERVICE, ""), params.getExtras().getString(TIME, ""),
-              getContext().getString(R.string.notification_text_today));
+              params.getExtras().getString(SERVICE, ""),
+              getContext().getString(R.string.notification_text_today),
+              params.getExtras().getString(TIME, ""));
           break;
         case DAILY:
           message = getContext().getString(R.string.notification_text,

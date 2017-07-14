@@ -16,6 +16,7 @@ import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -60,6 +61,12 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
     mSwipeRefreshLayout.setOnRefreshListener(() -> mMyBookFragmentPresenter.startRefreshing());
+
+    ItemClickSupport.addTo(mRecyclerViewMyBooks)
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+              BookDetailsFragment.newInstance(mMyBookingAdapter.getEntity(position)));
+        });
   }
 
   @Override public void showAllBooking(List<LastBookingEntity> bookingEntities) {

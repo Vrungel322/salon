@@ -87,7 +87,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
       holder.view.setVisibility(View.INVISIBLE);
     }
     Glide.with(holder.mImageViewServicePhoto.getContext())
-        .load(mBookingEntities.get(position).getImageUri())
+        .load(mBookingEntities.get(position).getServiceImage())
         .centerCrop()
         .placeholder(
             AppCompatResources.getDrawable(mContext, R.drawable.ic_service_placeholder_24dp))
@@ -135,6 +135,10 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   @Override public int getItemCount() {
     return mBookingEntities.size();
+  }
+
+  public LastBookingEntity getEntity(int position) {
+    return mBookingEntities.get(position);
   }
 
   @Override public void openPostponeFragment(int position) {
