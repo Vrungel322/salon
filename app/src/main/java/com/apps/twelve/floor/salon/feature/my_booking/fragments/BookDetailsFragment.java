@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.feature.my_booking.fragments;
 
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -38,6 +40,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.ivServiceImg) CircleImageView mImageViewService;
   @BindView(R.id.tvAboutService) TextView mTextViewServiceDetails;
+  @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
   @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
   @BindView(R.id.tvPriceBonus) TextView mTextViewBonusPrice;
   @BindView(R.id.ivBonusPrice) ImageView mImageViewBonusPrice;
@@ -49,7 +52,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.tvMasterName) TextView mTextViewMasterName;
   @BindView(R.id.tvAboutMaster) TextView mTextViewAboutMaster;
   @BindView(R.id.ivMasterImg) CircleImageView mImageViewMaster;
-  @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;
+  @BindView(R.id.pbCancelBooking) ProgressBar mProgressBar;
 
   private LastBookingEntity mBookingEntity;
   private CountDownTimer mDownTimer;
@@ -85,13 +88,24 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     mTextViewServiceName.setText(mBookingEntity.getServiceName());
     Glide.with(getContext()).load(mBookingEntity.getServiceImage()).into(mImageViewService);
     mTextViewServiceDetails.setText(mBookingEntity.getServiceDescription());
-    mTextViewServicePrice.setText(mBookingEntity.getServicePrice());
     if (!mBookingEntity.getServiceBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
       mTextViewBonusPrice.setText(mBookingEntity.getServiceBonusPrice());
       mImageViewBonusPrice.setVisibility(View.VISIBLE);
     } else {
       mTextViewBonusPrice.setVisibility(View.GONE);
       mImageViewBonusPrice.setVisibility(View.GONE);
+    }
+
+    if (!mBookingEntity.getServiceNewPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
+      mTextViewOldPrice.setText(mBookingEntity.getServicePrice());
+      mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+      mTextViewOldPrice.setVisibility(View.VISIBLE);
+      mTextViewServicePrice.setText(mBookingEntity.getServiceNewPrice());
+      mTextViewServicePrice.setTypeface(null, Typeface.BOLD_ITALIC);
+    } else {
+      mTextViewOldPrice.setVisibility(View.GONE);
+      mTextViewServicePrice.setText(mBookingEntity.getServicePrice());
+      mTextViewServicePrice.setTypeface(null, Typeface.NORMAL);
     }
   }
 
@@ -101,6 +115,9 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
         Converters.timeFromSeconds(String.valueOf(mBookingEntity.getServiceTime()))));
     mTextViewDuration.setText(mBookingEntity.getServiceDuration());
 
+    if (mDownTimer != null) {
+      mDownTimer.cancel();
+    }
     mDownTimer =
         new CountDownTimer(mBookingEntity.getServiceTime() * 1000L - System.currentTimeMillis(),
             1000) {
@@ -139,6 +156,11 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
             mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId()));
   }
 
+  @Override public void updateTimeInfo(Integer time) {
+    mBookingEntity.setServiceTime(time);
+    setUpTimeBlock();
+  }
+
   @Override public void showConfirmationDialog() {
     mRemoveBookingDialog =
         DialogFactory.createAlertDialogBuilder(getContext(), R.string.cancel_booking,
@@ -161,12 +183,12 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     }
   }
 
-  @Override public void showProgressBarCancel() {
-    mProgressBarCancel.setVisibility(View.VISIBLE);
+  @Override public void showProgressBar() {
+    mProgressBar.setVisibility(View.VISIBLE);
   }
 
-  @Override public void hideProgressBarCancel() {
-    mProgressBarCancel.setVisibility(View.GONE);
+  @Override public void hideProgressBar() {
+    mProgressBar.setVisibility(View.GONE);
   }
 
   @Override public void closeFragment() {
