@@ -25,16 +25,14 @@ import com.arellomobile.mvp.InjectViewState;
 
   public void setUpSwitches() {
     getViewState().setUpSwitchers(mDataManager.isHourlyNotificationsEnabled(),
-        mDataManager.isDailyNotificationsEnabled());
+        mDataManager.isDailyNotificationsEnabled(), mDataManager.isNightMode());
   }
 
   public void setUpStrings() {
-    getViewState().setUpDaysString(getDays());
+    getViewState().setUpDaysString(mDataManager.getNotificationDays());
     getViewState().setUpHoursString(getHours());
-  }
-
-  public int getDays() {
-    return mDataManager.getNotificationDays();
+    getViewState().setUpNightHours(mDataManager.getNotificationHoursNightStart(),
+        mDataManager.getNotificationHoursNightEnd());
   }
 
   public long getHours() {
@@ -57,19 +55,23 @@ import com.arellomobile.mvp.InjectViewState;
     mDataManager.setDailyNotificationsEnabled(checked);
   }
 
+  public void setNightModeNotificationsEnabled(boolean checked) {
+    mDataManager.setNightMode(checked);
+  }
+
   public void setHours(long millis) {
     mDataManager.setNotificationHours(millis);
-    getViewState().setUpHoursString(mDataManager.getNotificationHours());
+    getViewState().setUpHoursString(millis);
   }
 
   public void setHoursNightStart(long millis) {
     mDataManager.setNotificationHoursNightStart(millis);
-    getViewState().setUpHoursNightStart(mDataManager.getNotificationHoursNightStart());
+    getViewState().setUpNightHours(millis, mDataManager.getNotificationHoursNightEnd());
   }
 
   public void setHoursNightEnd(long millis) {
     mDataManager.setNotificationHoursNightEnd(millis);
-    getViewState().setUpHoursNightEnd(mDataManager.getNotificationHoursNightEnd());
+    getViewState().setUpNightHours(mDataManager.getNotificationHoursNightStart(), millis);
   }
 
   public int getLastPickedDays() {
