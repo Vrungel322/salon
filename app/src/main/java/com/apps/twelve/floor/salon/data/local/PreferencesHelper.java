@@ -97,11 +97,11 @@ public class PreferencesHelper {
   }
 
   public long getNotificationHoursNightStart() {
-    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_START, 3600000);
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
   }
 
   public long getNotificationHoursNightEnd() {
-    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_END, 3600000);
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
   }
 
   public void setNotificationHours(long millis) {

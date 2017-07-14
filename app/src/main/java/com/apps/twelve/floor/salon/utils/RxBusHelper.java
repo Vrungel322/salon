@@ -31,9 +31,11 @@ public final class RxBusHelper {
 
   public static class UpdateBookingDetails {
     public String serviceTime;
+    public String scheduleId;
 
-    public UpdateBookingDetails(String serviceTime) {
+    public UpdateBookingDetails(String serviceTime, String scheduleId) {
       this.serviceTime = serviceTime;
+      this.scheduleId = scheduleId;
     }
   }
 
