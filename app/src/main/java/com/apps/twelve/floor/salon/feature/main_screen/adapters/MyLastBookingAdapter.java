@@ -156,11 +156,11 @@ public class MyLastBookingAdapter
   @Override public void showConfirmationDialog(int position) {
     mRemoveBookingDialog = DialogFactory.createAlertDialogBuilder(mContext, R.string.cancel_booking,
         R.string.confirm_cancel_booking, R.drawable.ic_report_problem)
-        .setPositiveButton(R.string.confirm, (dialog, which) -> {
+        .setPositiveButton(R.string.yes, (dialog, which) -> {
           mMyLastBookingAdapterPresenter.cancelOrder(mLastBookingEntities.get(position).getId());
           mMyLastBookingAdapterPresenter.cancelAlertDialog();
         })
-        .setNegativeButton(R.string.cancel,
+        .setNegativeButton(R.string.no,
             (dialog, which) -> mMyLastBookingAdapterPresenter.cancelAlertDialog())
         .create();
     mRemoveBookingDialog.show();

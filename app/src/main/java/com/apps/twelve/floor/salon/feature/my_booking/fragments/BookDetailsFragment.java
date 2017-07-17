@@ -165,11 +165,11 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     mRemoveBookingDialog =
         DialogFactory.createAlertDialogBuilder(getContext(), R.string.cancel_booking,
             R.string.confirm_cancel_booking, R.drawable.ic_report_problem)
-            .setPositiveButton(R.string.confirm, (dialog, which) -> {
+            .setPositiveButton(R.string.yes, (dialog, which) -> {
               mBookDetailsFragmentPresenter.cancelOrder(mBookingEntity.getId());
               mBookDetailsFragmentPresenter.cancelAlertDialog();
             })
-            .setNegativeButton(R.string.cancel,
+            .setNegativeButton(R.string.no,
                 (dialog, which) -> mBookDetailsFragmentPresenter.cancelAlertDialog())
             .create();
     mRemoveBookingDialog.show();
