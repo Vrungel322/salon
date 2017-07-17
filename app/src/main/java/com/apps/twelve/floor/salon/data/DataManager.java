@@ -158,10 +158,6 @@ public class DataManager {
 
   //News
 
-  public Observable<Response<NewsEntity>> fetchNewsPreview() {
-    return mRestApi.fetchNewsPreview(mLanguage);
-  }
-
   public Observable<Response<List<NewsEntity>>> fetchAllNews() {
     return mRestApi.fetchAllNews(mLanguage);
   }

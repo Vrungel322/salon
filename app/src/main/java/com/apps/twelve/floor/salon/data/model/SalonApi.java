@@ -71,9 +71,6 @@ public interface SalonApi {
   @GET("api/v1/pages") Observable<Response<List<NewsEntity>>> fetchAllNews(
       @Header("lng") String language);
 
-  @GET("api/v1/pages?last=1") Observable<Response<NewsEntity>> fetchNewsPreview(
-      @Header("lng") String language);
-
   @GET("api/v1/galleries") Observable<Response<List<OurWorkEntity>>> fetchListOfWorks(
       @Header("lng") String language);
 
