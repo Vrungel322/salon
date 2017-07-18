@@ -248,6 +248,7 @@ public class DataManager {
     mPref.setNightMode(enabled);
   }
 
+  //Cache
   public void putBooking(List<LastBookingEntity> bookingEntities) {
     mPref.putBooking(bookingEntities);
   }
