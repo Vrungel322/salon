@@ -129,12 +129,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           .toList()
           .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities),
               Timber::e);
+
+      addToUnsubscription(subscription);
     } else {
-      subscription = Observable.just(mServiceAllEntities)
-          .subscribe(serviceEntities -> getViewState().updateRvAllServices(serviceEntities),
-              Timber::e);
+      getViewState().updateRvAllServices(mServiceAllEntities);
     }
-    addToUnsubscription(subscription);
   }
 
   public void hideLLAllServices() {

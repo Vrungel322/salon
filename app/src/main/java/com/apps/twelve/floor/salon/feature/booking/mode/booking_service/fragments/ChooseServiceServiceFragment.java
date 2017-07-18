@@ -132,6 +132,8 @@ public class ChooseServiceServiceFragment extends BaseFragment
         } else {
           mChooseServiceServiceFragmentPresenter.hideLLAllServices();
           mChooseServiceServiceFragmentPresenter.showLLTreeServices();
+          mChooseServiceServiceFragmentPresenter.filterServices(
+              mEditTextChooseService.getText().toString());
         }
       }
 
