@@ -94,10 +94,6 @@ public class RestApi {
     return api.fetchAllNews(language);
   }
 
-  public Observable<Response<NewsEntity>> fetchNewsPreview(String language) {
-    return api.fetchNewsPreview(language);
-  }
-
   public Observable<Response<List<OurWorkEntity>>> fetchListOfWorks(String language) {
     return api.fetchListOfWorks(language);
   }

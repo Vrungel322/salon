@@ -158,10 +158,6 @@ public class DataManager {
 
   //News
 
-  public Observable<Response<NewsEntity>> fetchNewsPreview() {
-    return mRestApi.fetchNewsPreview(mLanguage);
-  }
-
   public Observable<Response<List<NewsEntity>>> fetchAllNews() {
     return mRestApi.fetchAllNews(mLanguage);
   }
@@ -252,6 +248,7 @@ public class DataManager {
     mPref.setNightMode(enabled);
   }
 
+  //Cache
   public void putBooking(List<LastBookingEntity> bookingEntities) {
     mPref.putBooking(bookingEntities);
   }

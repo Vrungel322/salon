@@ -13,10 +13,12 @@ import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubNewsFragmentView;
 import com.apps.twelve.floor.salon.feature.news.fragments.AllNewsViewFragment;
-import com.apps.twelve.floor.salon.feature.news.fragments.NewsDetailFragment;
+import com.apps.twelve.floor.salon.feature.news.fragments.ListNewsDetailFragment;
 import com.apps.twelve.floor.salon.utils.Constants;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.apps.twelve.floor.salon.utils.Converters.dateFromSeconds;
 
@@ -32,7 +34,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
   @BindView(R.id.tvNewsShortDescription) TextView mTextViewNewsShortDescription;
   @BindView(R.id.tvNewsData) TextView mTextViewNewsData;
 
-  private NewsEntity mNewsEntity;
+  private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
 
   public SubNewsFragment() {
     super(R.layout.fragment_sub_news);
@@ -45,17 +47,21 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
     return fragment;
   }
 
-  @Override public void updateNewsPreview(NewsEntity newsEntity) {
-    mNewsEntity = newsEntity;
-    Glide.with(getContext())
-        .load(newsEntity.getImg())
-        .placeholder(
-            AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
-        .error(AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
-        .dontAnimate()
-        .into(mImageViewNewsPreview);
-    mTextViewNewsShortDescription.setText(newsEntity.getTitle());
-    mTextViewNewsData.setText(dateFromSeconds(newsEntity.getCreatedAt()));
+  @Override public void updateNewsPreview(List<NewsEntity> newsEntities) {
+    mNewsEntities.clear();
+    mNewsEntities.addAll(newsEntities);
+    if (!mNewsEntities.isEmpty()) {
+      NewsEntity mNewsEntity = newsEntities.get(0);
+      Glide.with(getContext())
+          .load(mNewsEntity.getImg())
+          .placeholder(
+              AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
+          .error(AppCompatResources.getDrawable(getContext(), R.drawable.ic_news_placeholder_130dp))
+          .dontAnimate()
+          .into(mImageViewNewsPreview);
+      mTextViewNewsShortDescription.setText(mNewsEntity.getTitle());
+      mTextViewNewsData.setText(dateFromSeconds(mNewsEntity.getCreatedAt()));
+    }
   }
 
   @OnClick(R.id.tvAllNews) public void tvAllNewsClicked() {
@@ -66,6 +72,6 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
 
   @OnClick(R.id.layoutAllNews) public void setLayoutAllNewsClicked() {
     mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
-        NewsDetailFragment.newInstance(mNewsEntity));
+        ListNewsDetailFragment.newInstance(mNewsEntities, 0));
   }
 }

@@ -124,6 +124,12 @@ public class PreferencesHelper {
     mPreferences.edit().putBoolean(PREF_NOTIF_NIGHT_MODE, enabled).apply();
   }
 
+  public void logoutUser() {
+    setBonusCount(0);
+    setLastPhoneForBooking("");
+  }
+
+  //Cache
   public void putBooking(List<LastBookingEntity> bookingEntities) {
     mPreferences.edit().putString(PREF_BOOKING, mGson.toJson(bookingEntities)).apply();
   }
@@ -135,10 +141,5 @@ public class PreferencesHelper {
       }.getType());
     }
     return null;
-  }
-
-  public void logoutUser() {
-    setBonusCount(0);
-    setLastPhoneForBooking("");
   }
 }

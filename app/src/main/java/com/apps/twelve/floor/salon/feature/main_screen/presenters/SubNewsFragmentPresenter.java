@@ -29,7 +29,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   private void fetchNewsEntities() {
-    Subscription subscription = mDataManager.fetchNewsPreview()
+    Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
           if (response.code() == RESPONSE_200) {

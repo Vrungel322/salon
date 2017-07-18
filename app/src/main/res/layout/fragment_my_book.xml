@@ -17,9 +17,9 @@
       >
 
     <com.apps.twelve.floor.salon.utils.custom_views.FabNestedScroll
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nested_scroll_view"
         >
       <android.support.v7.widget.RecyclerView
           android:id="@+id/rvMyBook"
@@ -40,8 +40,9 @@
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
       android:text="@string/list_is_empty"
-      android:textSize="24sp"
       android:textColor="@color/colorLightGray"
+      android:textSize="24sp"
+      android:visibility="gone"
       />
 
 </RelativeLayout>
