@@ -102,16 +102,18 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                 mJobsCreator.cancelJob(entryId);
                 mJobsCreator.createNotification(entryId, Integer.parseInt(
                     mDataServiceEntity.get(dayPosition)
-                        .getScheduleEntities().get(timePosition).getTimeInSec()) * 1000L
-                        - System.currentTimeMillis(), serviceName, Converters.detailDayFromSeconds(
+                        .getScheduleEntities()
+                        .get(timePosition)
+                        .getTimeInSec()) * 1000L - System.currentTimeMillis(), serviceName,
+                    Converters.detailDayFromSeconds(
                         mDataServiceEntity.get(dayPosition).getStartTime().toString()),
                     mDataServiceEntity.get(dayPosition)
                         .getScheduleEntities()
                         .get(timePosition)
                         .getTime());
                 mRxBus.post(new RxBusHelper.UpdateBookingDetails(mDataServiceEntity.get(dayPosition)
-                    .getScheduleEntities()
-                    .get(timePosition).getTimeInSec(), mDataServiceEntity.get(dayPosition)
+                    .getScheduleEntities().get(timePosition).getTimeInSec(),
+                    mDataServiceEntity.get(dayPosition)
                     .getScheduleEntities()
                     .get(timePosition)
                     .getId()));

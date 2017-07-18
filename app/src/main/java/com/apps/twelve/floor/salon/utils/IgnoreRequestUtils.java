@@ -10,7 +10,7 @@ import okhttp3.Request;
 public class IgnoreRequestUtils {
   /**
    * This method forbid to cache some {@param requests}
-   * @param request
+   *
    * @param requestMethod GET POST ...
    * @param requests full links that we do not need to cache
    * @return just bool to control cache. Connected with {@link RetrofitModule#provideCacheInterceptor()}!!!!
