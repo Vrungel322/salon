@@ -9,17 +9,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LastBookingEntity implements Parcelable {
-  @SuppressWarnings({
-      "unchecked"
-  }) public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
-    @Override public LastBookingEntity createFromParcel(Parcel in) {
-      return new LastBookingEntity(in);
-    }
 
-    @Override public LastBookingEntity[] newArray(int size) {
-      return new LastBookingEntity[size];
-    }
-  };
   @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
@@ -29,47 +19,39 @@ public class LastBookingEntity implements Parcelable {
   @SerializedName("master_id") private Integer masterId;
   @SerializedName("schedule") private Integer serviceTime;
   @SerializedName("schedule_id") private Integer scheduleId;
-  @SerializedName("service_title") private String serviceName;
   @SerializedName("service_id") private Integer serviceId;
+  @SerializedName("service_title") private String serviceName;
   @SerializedName("service_image") private String serviceImage;
   @SerializedName("service_text") private String serviceDescription;
   @SerializedName("service_bonus_price") private String serviceBonusPrice;
+  @SerializedName("service_bonus_add") private String serviceBonusAdd;
   @SerializedName("service_price") private String servicePrice;
   @SerializedName("service_new_price") private String serviceNewPrice;
   @SerializedName("service_duration") private String serviceDuration;
 
   public LastBookingEntity(Integer id, String userPhone, String userName, String masterName,
-      String serviceImage, Integer serviceTime, String serviceName, Integer serviceId,
-      Integer masterId) {
+      String masterDescription, String masterPhoto, Integer masterId, Integer serviceTime,
+      Integer scheduleId, Integer serviceId, String serviceName, String serviceImage,
+      String serviceDescription, String serviceBonusPrice, String serviceBonusAdd,
+      String servicePrice, String serviceNewPrice, String serviceDuration) {
     this.id = id;
     this.userPhone = userPhone;
     this.userName = userName;
     this.masterName = masterName;
-    this.serviceImage = serviceImage;
-    this.serviceTime = serviceTime;
-    this.serviceName = serviceName;
-    this.serviceId = serviceId;
+    this.masterDescription = masterDescription;
+    this.masterPhoto = masterPhoto;
     this.masterId = masterId;
-  }
-
-  protected LastBookingEntity(Parcel in) {
-    userPhone = in.readString();
-    userName = in.readString();
-    masterName = in.readString();
-    serviceImage = in.readString();
-    serviceName = in.readString();
-  }
-
-  @Override public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(userPhone);
-    dest.writeString(userName);
-    dest.writeString(masterName);
-    dest.writeString(serviceImage);
-    dest.writeString(serviceName);
-  }
-
-  @Override public int describeContents() {
-    return 0;
+    this.serviceTime = serviceTime;
+    this.scheduleId = scheduleId;
+    this.serviceId = serviceId;
+    this.serviceName = serviceName;
+    this.serviceImage = serviceImage;
+    this.serviceDescription = serviceDescription;
+    this.serviceBonusPrice = serviceBonusPrice;
+    this.serviceBonusAdd = serviceBonusAdd;
+    this.servicePrice = servicePrice;
+    this.serviceNewPrice = serviceNewPrice;
+    this.serviceDuration = serviceDuration;
   }
 
   public Integer getId() {
@@ -104,46 +86,6 @@ public class LastBookingEntity implements Parcelable {
     this.masterName = masterName;
   }
 
-  public String getServiceImage() {
-    return serviceImage;
-  }
-
-  public void setServiceImage(String serviceImage) {
-    this.serviceImage = serviceImage;
-  }
-
-  public Integer getServiceTime() {
-    return serviceTime;
-  }
-
-  public void setServiceTime(Integer serviceTime) {
-    this.serviceTime = serviceTime;
-  }
-
-  public String getServiceName() {
-    return serviceName;
-  }
-
-  public void setServiceName(String serviceName) {
-    this.serviceName = serviceName;
-  }
-
-  public Integer getServiceId() {
-    return serviceId;
-  }
-
-  public void setServiceId(Integer serviceId) {
-    this.serviceId = serviceId;
-  }
-
-  public Integer getMasterId() {
-    return masterId;
-  }
-
-  public void setMasterId(Integer masterId) {
-    this.masterId = masterId;
-  }
-
   public String getMasterDescription() {
     return masterDescription;
   }
@@ -160,12 +102,52 @@ public class LastBookingEntity implements Parcelable {
     this.masterPhoto = masterPhoto;
   }
 
+  public Integer getMasterId() {
+    return masterId;
+  }
+
+  public void setMasterId(Integer masterId) {
+    this.masterId = masterId;
+  }
+
+  public Integer getServiceTime() {
+    return serviceTime;
+  }
+
+  public void setServiceTime(Integer serviceTime) {
+    this.serviceTime = serviceTime;
+  }
+
   public Integer getScheduleId() {
     return scheduleId;
   }
 
   public void setScheduleId(Integer scheduleId) {
     this.scheduleId = scheduleId;
+  }
+
+  public Integer getServiceId() {
+    return serviceId;
+  }
+
+  public void setServiceId(Integer serviceId) {
+    this.serviceId = serviceId;
+  }
+
+  public String getServiceName() {
+    return serviceName;
+  }
+
+  public void setServiceName(String serviceName) {
+    this.serviceName = serviceName;
+  }
+
+  public String getServiceImage() {
+    return serviceImage;
+  }
+
+  public void setServiceImage(String serviceImage) {
+    this.serviceImage = serviceImage;
   }
 
   public String getServiceDescription() {
@@ -182,6 +164,14 @@ public class LastBookingEntity implements Parcelable {
 
   public void setServiceBonusPrice(String serviceBonusPrice) {
     this.serviceBonusPrice = serviceBonusPrice;
+  }
+
+  public String getServiceBonusAdd() {
+    return serviceBonusAdd;
+  }
+
+  public void setServiceBonusAdd(String serviceBonusAdd) {
+    this.serviceBonusAdd = serviceBonusAdd;
   }
 
   public String getServicePrice() {
@@ -207,4 +197,54 @@ public class LastBookingEntity implements Parcelable {
   public void setServiceDuration(String serviceDuration) {
     this.serviceDuration = serviceDuration;
   }
+
+  public static Creator<LastBookingEntity> getCREATOR() {
+    return CREATOR;
+  }
+
+  protected LastBookingEntity(Parcel in) {
+    userPhone = in.readString();
+    userName = in.readString();
+    masterName = in.readString();
+    masterDescription = in.readString();
+    masterPhoto = in.readString();
+    serviceName = in.readString();
+    serviceImage = in.readString();
+    serviceDescription = in.readString();
+    serviceBonusPrice = in.readString();
+    serviceBonusAdd = in.readString();
+    servicePrice = in.readString();
+    serviceNewPrice = in.readString();
+    serviceDuration = in.readString();
+  }
+
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(userPhone);
+    dest.writeString(userName);
+    dest.writeString(masterName);
+    dest.writeString(masterDescription);
+    dest.writeString(masterPhoto);
+    dest.writeString(serviceName);
+    dest.writeString(serviceImage);
+    dest.writeString(serviceDescription);
+    dest.writeString(serviceBonusPrice);
+    dest.writeString(serviceBonusAdd);
+    dest.writeString(servicePrice);
+    dest.writeString(serviceNewPrice);
+    dest.writeString(serviceDuration);
+  }
+
+  @Override public int describeContents() {
+    return 0;
+  }
+
+  public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
+    @Override public LastBookingEntity createFromParcel(Parcel in) {
+      return new LastBookingEntity(in);
+    }
+
+    @Override public LastBookingEntity[] newArray(int size) {
+      return new LastBookingEntity[size];
+    }
+  };
 }
