@@ -73,7 +73,11 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
             MyBonusFragment.newInstance(), Constants.FragmentTag.MY_BONUS_FRAGMENT);
         return true;
       case android.R.id.home:
-        mBookingActivityPresenter.showExitAlertDialog();
+        if (!mNavigator.isEmptyBackStack(this)) {
+          mBookingActivityPresenter.showExitAlertDialog();
+        } else {
+          finish();
+        }
         return true;
       default:
         return super.onOptionsItemSelected(item);

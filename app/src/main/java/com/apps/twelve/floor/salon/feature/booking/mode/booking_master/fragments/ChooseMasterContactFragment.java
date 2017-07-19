@@ -85,7 +85,7 @@ public class ChooseMasterContactFragment extends BaseFragment
     if (show) {
       mTextViewEmptyPhone.setVisibility(View.VISIBLE);
     } else {
-      mTextViewEmptyPhone.setVisibility(View.GONE);
+      mTextViewEmptyPhone.setVisibility(View.INVISIBLE);
     }
   }
 
@@ -93,7 +93,7 @@ public class ChooseMasterContactFragment extends BaseFragment
     if (show) {
       mTextViewEmptyName.setVisibility(View.VISIBLE);
     } else {
-      mTextViewEmptyName.setVisibility(View.GONE);
+      mTextViewEmptyName.setVisibility(View.INVISIBLE);
     }
   }
 
