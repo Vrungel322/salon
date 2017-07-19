@@ -112,6 +112,9 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     mEntityId = getArguments().getInt(ENTITY_ID);
 
     setUpRedSquare(getArguments().getString(SERVICE_NAME), getArguments().getString(MASTER_NAME));
+
+    /* hide prev btn */
+    mImageViewPrevDay.setVisibility(View.GONE);
   }
 
   @OnClick(R.id.btnConfirmPostpone) void confirmPostpone() {
@@ -151,6 +154,11 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
       }
 
       @Override public void onPageSelected(int position) {
+        if (position == 0){
+          mImageViewPrevDay.setVisibility(View.GONE);
+        }else {
+          mImageViewPrevDay.setVisibility(View.VISIBLE);
+        }
         chainViewPagerRecyclerView(position);
         mScheduleAdapter.setTimeSchedule(
             mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
