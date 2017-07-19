@@ -2,11 +2,12 @@ package com.apps.twelve.floor.salon.feature.settings.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.feature.settings.views.IReportProblemFragmentView;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.concurrent.TimeUnit;
-import rx.Observable;
+import javax.inject.Inject;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
@@ -17,6 +18,7 @@ import timber.log.Timber;
 
 @InjectViewState public class ReportProblemFragmentPresenter
     extends BasePresenter<IReportProblemFragmentView> {
+  @Inject DataManager mDataManager;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -27,16 +29,19 @@ import timber.log.Timber;
   }
 
   public void sendProblem(String problem) {
-    Subscription subscription =
-        Observable.just(200).compose(ThreadSchedulers.applySchedulers()).doOnNext(voidResponse -> {
-          if (voidResponse == 200) {
+    Subscription subscription = mDataManager.sendReportProblem(problem)
+        .compose(ThreadSchedulers.applySchedulers())
+        .doOnNext(reportProblemResponseEntityResponse -> {
+          if (reportProblemResponseEntityResponse.code() == 200) {
             getViewState().stopAnimation();
             getViewState().openSnackBarOK();
           } else {
             getViewState().showAlert();
           }
-        }).delay(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).subscribe(response -> {
-          if (response == 200) {
+        })
+        .delay(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+        .subscribe(reportProblemResponseEntityResponse -> {
+          if (reportProblemResponseEntityResponse.code() == 200) {
             getViewState().closeFragment();
           } else {
             getViewState().revertAnimation();

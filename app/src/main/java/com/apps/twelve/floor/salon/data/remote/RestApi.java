@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
+import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
@@ -150,5 +151,10 @@ public class RestApi {
   public Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory(String language,
       String token) {
     return api.fetchBonusHistory(language, token);
+  }
+
+  public Observable<Response<ReportProblemResponseEntity>>  sendReportProblem(String problemBody,
+      String token) {
+    return api.sendReportProblem(problemBody, token);
   }
 }

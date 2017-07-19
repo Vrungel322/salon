@@ -47,7 +47,7 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   }
 
   @OnClick(R.id.btnSendProblem) void sendProblem() {
-    if (mTextProblem.getText().toString().isEmpty()) {
+    if (mTextProblem.getText().toString().length()<=3) {
       showAlertMessage(getString(R.string.dialog_error_title),
           getString(R.string.empty_complaint_error));
     } else {

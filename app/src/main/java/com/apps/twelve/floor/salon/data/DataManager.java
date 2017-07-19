@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
+import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
@@ -255,6 +256,11 @@ public class DataManager {
 
   public List<LastBookingEntity> getBooking() {
     return mPref.getBooking();
+  }
+
+  //Report problen
+  public Observable<Response<ReportProblemResponseEntity>> sendReportProblem(String problemBody){
+    return mRestApi.sendReportProblem(problemBody, mAuthorizationManager.getToken());
   }
 
   //user

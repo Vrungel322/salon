@@ -115,4 +115,8 @@ public interface SalonApi {
   @GET("api/v1/users/me/bonuses_history")
   Observable<Response<List<BonusHistoryEntity>>> fetchBonusHistory(@Header("lng") String language,
       @Header("authorization") String token);
+
+  @POST("api/v1/feedback") @FormUrlEncoded
+  Observable<Response<ReportProblemResponseEntity>> sendReportProblem(
+      @Field("message") String problemBody, @Header("authorization") String token);
 }
