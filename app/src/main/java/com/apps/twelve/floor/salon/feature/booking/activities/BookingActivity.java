@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.booking.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.Gravity;
@@ -22,6 +23,7 @@ import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
+import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -112,6 +114,20 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
         .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
           mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
+          mBookingActivityPresenter.cancelAlertDialog();
+        })
+        .create();
+    mAuthorizationDialog.show();
+    mAuthorizationDialog.setOnCancelListener(
+        dialog -> mBookingActivityPresenter.cancelAlertDialog());
+  }
+
+  @Override public void showNoInternetAlertDialog() {
+    mAuthorizationDialog = DialogFactory.createNoInternetDialogBuilder(this)
+        .setNegativeButton(R.string.dialog_auth_cancel,
+            (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
+        .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
+         mNavigator.startActivity(this, new Intent(Settings.ACTION_WIRELESS_SETTINGS));
           mBookingActivityPresenter.cancelAlertDialog();
         })
         .create();

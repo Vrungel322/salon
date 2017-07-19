@@ -31,7 +31,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     subscribeWrongException();
     subscribeUpdateBonusFromChildren();
     subscribeLogoutUser();
-    subscribeShowDialog();
+    subscribeShowAuthDialog();
+    subscribeShowNoInternetDialog();
     subscribeUnauthorizedUser();
   }
 
@@ -126,10 +127,19 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
-  private void subscribeShowDialog() {
+  private void subscribeShowAuthDialog() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowAuthDialog.class)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(show -> showAlertDialog(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+
+  private void subscribeShowNoInternetDialog() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.NoInternetAlertDialog.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(show -> {
+          getViewState().showNoInternetAlertDialog();
+        }, Timber::e);
     addToUnsubscription(subscription);
   }
 

@@ -23,10 +23,12 @@ import com.apps.twelve.floor.salon.feature.our_works.adapters.ImageWorkViewPager
 import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.views.IWorkDetailsFragmentView;
 import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mzelzoghbi.zgallery.CustomViewPager;
 import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 import java.util.ArrayList;
+import timber.log.Timber;
 
 /**
  * Created by Alexandra on 23.02.2017.
@@ -191,14 +193,19 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
   }
 
   @OnClick(R.id.checkBoxFavorite) public void onCheckFavorite() {
-    if (mAuthorizationManager.isAuthorized()) {
-      if (mCheckBoxFavorite.isChecked()) {
-        mWorkDetailsFragmentPresenter.addFavorite(mPhotoWorksEntity.getId());
+    if (NetworkUtil.isNetworkConnected(getContext())) {
+      if (mAuthorizationManager.isAuthorized()) {
+        if (mCheckBoxFavorite.isChecked()) {
+          mWorkDetailsFragmentPresenter.addFavorite(mPhotoWorksEntity.getId());
+        } else {
+          mWorkDetailsFragmentPresenter.deleteFavorite(mPhotoWorksEntity.getId());
+        }
       } else {
-        mWorkDetailsFragmentPresenter.deleteFavorite(mPhotoWorksEntity.getId());
+        mWorkDetailsFragmentPresenter.showAuthAlertDialog();
+        mCheckBoxFavorite.setChecked(false);
       }
     } else {
-      mWorkDetailsFragmentPresenter.showAlertDialog();
+      mWorkDetailsFragmentPresenter.showNoInternetAlertDialog();
       mCheckBoxFavorite.setChecked(false);
     }
   }

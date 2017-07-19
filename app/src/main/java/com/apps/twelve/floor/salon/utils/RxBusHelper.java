@@ -106,4 +106,7 @@ public final class RxBusHelper {
       this.title = title;
     }
   }
+
+  public static class NoInternetAlertDialog {
+  }
 }

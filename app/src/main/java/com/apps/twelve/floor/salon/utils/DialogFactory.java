@@ -66,4 +66,8 @@ public final class DialogFactory {
     return new AlertDialog.Builder(context).setTitle(context.getString(R.string.dialog_auth_title))
         .setMessage(context.getString(R.string.dialog_auth_message));
   }
+  public static AlertDialog.Builder createNoInternetDialogBuilder(Context context) {
+    return new AlertDialog.Builder(context).setTitle(context.getString(R.string.dialog_no_internet_title))
+        .setMessage(context.getString(R.string.dialog_no_internet_message));
+  }
 }

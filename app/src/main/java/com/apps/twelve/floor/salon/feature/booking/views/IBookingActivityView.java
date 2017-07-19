@@ -24,6 +24,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void cancelAuthAlertDialog();
 
+  void showNoInternetAlertDialog();
+
   void showExitAlertDialog();
 
   void cancelExitAlertDialog();

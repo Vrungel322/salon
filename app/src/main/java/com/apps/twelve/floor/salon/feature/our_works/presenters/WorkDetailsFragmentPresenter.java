@@ -90,7 +90,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
-  public void showAlertDialog() {
+  public void showAuthAlertDialog() {
     mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
+  public void showNoInternetAlertDialog() {
+    mRxBus.post(new RxBusHelper.NoInternetAlertDialog());
   }
 }

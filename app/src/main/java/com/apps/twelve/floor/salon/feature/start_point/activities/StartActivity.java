@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.start_point.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -37,6 +38,7 @@ import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.CONTACTS_ABOUT_FRAGMENT;
 
@@ -269,6 +271,20 @@ public class StartActivity extends BaseActivity
         .create();
     mAuthorizationDialog.show();
     mAuthorizationDialog.setOnCancelListener(dialog -> mStartActivityPresenter.cancelAlertDialog());
+  }
+
+  @Override public void showNoInternetAlertDialog() {
+    mAuthorizationDialog = DialogFactory.createNoInternetDialogBuilder(this)
+        .setNegativeButton(R.string.dialog_auth_cancel,
+            (dialog, which) -> mStartActivityPresenter.cancelAlertDialog())
+        .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
+          mNavigator.startActivity(this, new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+          mStartActivityPresenter.cancelAlertDialog();
+        })
+        .create();
+    mAuthorizationDialog.show();
+    mAuthorizationDialog.setOnCancelListener(
+        dialog -> mStartActivityPresenter.cancelAlertDialog());
   }
 
   @Override public void cancelAlertDialog() {
