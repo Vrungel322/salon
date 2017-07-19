@@ -91,9 +91,9 @@ import timber.log.Timber;
       Response response = chain.proceed(chain.request());
 
       if (IgnoreRequestUtils.ignoreRequests(request, "GET",
-         Constants.Remote.BASE_URL + "api/v1/masters",
-              Constants.Remote.BASE_URL + "api/v1/services",
-              Constants.Remote.BASE_URL + "api/v1/categories")) {
+          Constants.Remote.BASE_URL + "api/v1/masters",
+          Constants.Remote.BASE_URL + "api/v1/services",
+          Constants.Remote.BASE_URL + "api/v1/categories")) {
         CacheControl cacheControl = new CacheControl.Builder().build();
         response = response.newBuilder()
             .removeHeader("Pragma")

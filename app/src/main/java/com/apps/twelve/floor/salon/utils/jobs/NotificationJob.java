@@ -84,8 +84,7 @@ public class NotificationJob extends Job {
       long currentHour = System.currentTimeMillis();
 
       if ((currentHour < mDataManager.getNotificationHoursNightStart() && currentHour > mDataManager
-          .getNotificationHoursNightEnd())
-          || !mDataManager.isNightMode()) {
+          .getNotificationHoursNightEnd()) || !mDataManager.isNightMode()) {
         Uri uriSound = Uri.parse(
             "android.resource://" + getContext().getPackageName() + "/" + R.raw.sound_notification);
         builder.setSound(uriSound);
