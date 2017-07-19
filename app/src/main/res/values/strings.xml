@@ -67,6 +67,7 @@
   <string name="prev_step">Назад</string>
   <string name="empty_name_error">Введите имя</string>
   <string name="empty_phone_error">Введите корректно телефон</string>
+  <string name="empty_complaint_error">Опишите подробней вашу проблему</string>
 
   <string name="your_bonus">Ваши бонусы:</string>
   <string name="history">История</string>

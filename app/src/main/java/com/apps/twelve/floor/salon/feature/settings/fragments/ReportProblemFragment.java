@@ -47,8 +47,13 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   }
 
   @OnClick(R.id.btnSendProblem) void sendProblem() {
-    mBtnSend.startAnimation();
-    mReportProblemFragmentPresenter.sendProblem(mTextProblem.getText().toString());
+    if (mTextProblem.getText().toString().isEmpty()) {
+      showAlertMessage(getString(R.string.dialog_error_title),
+          getString(R.string.empty_complaint_error));
+    } else {
+      mBtnSend.startAnimation();
+      mReportProblemFragmentPresenter.sendProblem(mTextProblem.getText().toString());
+    }
   }
 
   @Override public void onDestroy() {
