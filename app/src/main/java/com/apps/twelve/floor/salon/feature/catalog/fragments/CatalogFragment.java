@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
@@ -33,6 +34,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @InjectPresenter CatalogFragmentPresenter mCatalogFragmentPresenter;
 
   @BindView(R.id.bChooseCategory) Button mButtonChooseCategory;
+  @BindView(R.id.ivResetCategory) ImageView mImageViewResetCategory;
   @BindView(R.id.rvStaff) RecyclerView mRecyclerViewStaff;
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -81,6 +83,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   @OnClick(R.id.bChooseCategory) public void showCategoryDialog() {
     CategoryDialogFragment categoryDialog = new CategoryDialogFragment();
     categoryDialog.show(getActivity().getFragmentManager(), "");
+  }
+
+  @OnClick(R.id.ivResetCategory) public void ivResetCategoryClick() {
+    mCatalogFragmentPresenter.fetchGoodsList();
   }
 
   @Override public void updateGoodsList(List<GoodsEntity> goodsEntities) {

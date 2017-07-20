@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -43,11 +44,11 @@
           android:id="@+id/llChooseCategory"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:layout_marginTop="8dp"
           android:layout_marginEnd="8dp"
           android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
           android:background="@color/colorLLightGray"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
@@ -62,6 +63,16 @@
             android:textColor="@color/colorTransparentBlack"
             />
       </LinearLayout>
+      <ImageView
+          android:id="@+id/ivResetCategory"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:layout_marginRight="8dp"
+          app:layout_constraintBottom_toBottomOf="@+id/llChooseCategory"
+          app:layout_constraintRight_toRightOf="@+id/llChooseCategory"
+          app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+          />
       <com.apps.twelve.floor.salon.utils.custom_views.FabRecyclerView
           android:id="@+id/rvStaff"
           android:layout_width="0dp"

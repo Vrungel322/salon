@@ -80,7 +80,7 @@ public class CategoryDialogFragment extends MvpDialogFragment
   }
 
   @Override public void onDestroyView() {
-    super.onDestroyView();
     mUnbinder.unbind();
+    super.onDestroyView();
   }
 }
