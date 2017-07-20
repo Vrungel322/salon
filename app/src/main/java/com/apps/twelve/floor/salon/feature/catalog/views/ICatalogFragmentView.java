@@ -24,4 +24,6 @@ import java.util.List;
   void setButtonDefaultText();
 
   void startLoginActivity();
+
+  void showServerErrorMsg();
 }

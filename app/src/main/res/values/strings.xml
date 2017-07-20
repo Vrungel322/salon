@@ -187,5 +187,6 @@
   <string name="dialog_no_internet_message">Данная функция доступна только при наличии Интернета.\nПерейти к настройкам сети?</string>
   <string name="dialog_auth_yes">Перейти</string>
   <string name="dialog_auth_cancel">Отмена</string>
+  <string name="server_error">Сервер отдыхает.</string>
 
 </resources>

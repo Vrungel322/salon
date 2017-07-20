@@ -97,4 +97,8 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
     mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
         ThemeUtils.getThemeActionBar(getContext()));
   }
+
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
 }

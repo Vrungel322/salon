@@ -18,6 +18,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_503;
 
 /**
  * Created by Vrungel on 29.03.2017.
@@ -55,6 +56,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
             getViewState().hideProgressBar();
             getViewState().updateRvCategory(response.body());
             mListListCategories.add(response.body());
+          }
+          if (response.code() == RESPONSE_503){
+            getViewState().showServerErrorMsg();
           }
         }, throwable -> {
           Timber.e(throwable);

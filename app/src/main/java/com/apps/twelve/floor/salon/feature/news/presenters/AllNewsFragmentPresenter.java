@@ -10,6 +10,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_503;
 
 /**
  * Created by Vrungel on 24.02.2017.
@@ -34,6 +35,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
             getViewState().addListOfNews(response.body());
+            getViewState().stopRefreshingView();
+          }
+          if (response.code() == RESPONSE_503){
+            getViewState().showServerErrorMsg();
             getViewState().stopRefreshingView();
           }
         }, throwable -> {

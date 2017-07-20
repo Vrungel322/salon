@@ -114,6 +114,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
         ThemeUtils.getThemeActionBar(getContext()));
   }
 
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
+
   @Override public void onDestroyView() {
     super.onDestroyView();
     ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);

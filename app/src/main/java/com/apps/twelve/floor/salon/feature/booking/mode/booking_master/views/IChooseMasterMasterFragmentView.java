@@ -15,4 +15,6 @@ import java.util.List;
   void hideProgressBar();
 
   void setSelectedItem(int position);
+
+  void showServerErrorMsg();
 }

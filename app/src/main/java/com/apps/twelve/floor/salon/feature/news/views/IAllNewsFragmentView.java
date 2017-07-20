@@ -17,4 +17,6 @@ import java.util.List;
   void startRefreshingView();
 
   void stopRefreshingView();
+
+  void showServerErrorMsg();
 }

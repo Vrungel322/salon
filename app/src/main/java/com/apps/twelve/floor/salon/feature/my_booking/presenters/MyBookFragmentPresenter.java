@@ -14,6 +14,7 @@ import timber.log.Timber;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_503;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -52,6 +53,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
               getViewState().stopRefreshingView();
               break;
+            case RESPONSE_503:
+              getViewState().showServerErrorMsg();
+              getViewState().stopRefreshingView();
             default:
               getViewState().stopRefreshingView();
               showMessageException();

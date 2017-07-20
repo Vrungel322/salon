@@ -69,4 +69,8 @@ public class ChooseMasterMasterFragment extends BaseFragment
   @Override public void setSelectedItem(int position) {
     mMastersVerticalAdapter.setSelectedItem(position);
   }
+
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
 }

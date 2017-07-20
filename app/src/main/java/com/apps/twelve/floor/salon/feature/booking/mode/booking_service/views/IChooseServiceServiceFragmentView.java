@@ -48,4 +48,6 @@ import java.util.List;
   void hideTextPath();
 
   void stateCategoriesServices(boolean state);
+
+  void showServerErrorMsg();
 }

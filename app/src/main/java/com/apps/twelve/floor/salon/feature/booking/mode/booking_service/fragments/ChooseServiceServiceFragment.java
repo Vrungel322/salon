@@ -190,6 +190,10 @@ public class ChooseServiceServiceFragment extends BaseFragment
     }
   }
 
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
+
   @Override public void showLLTreeServices() {
     mLinerLayoutTreeItems.setVisibility(View.VISIBLE);
   }

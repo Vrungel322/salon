@@ -19,4 +19,6 @@ import java.util.List;
   void stopRefreshingView();
 
   void startLoginActivity();
+
+  void showServerErrorMsg();
 }

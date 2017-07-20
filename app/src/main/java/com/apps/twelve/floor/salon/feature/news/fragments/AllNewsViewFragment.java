@@ -84,6 +84,10 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
 
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
+
   @Override public void onDestroyView() {
     super.onDestroyView();
     ((StartActivity) getActivity()).setTitleAppBar(R.string.title_activity_start);

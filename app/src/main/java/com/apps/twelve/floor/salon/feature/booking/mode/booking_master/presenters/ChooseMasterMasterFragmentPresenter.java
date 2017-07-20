@@ -17,6 +17,7 @@ import rx.Subscription;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
+import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_503;
 
 @InjectViewState public class ChooseMasterMasterFragmentPresenter
     extends BasePresenter<IChooseMasterMasterFragmentView> {
@@ -42,6 +43,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
             mMasterEntities = response.body();
             getViewState().showMasters(response.body());
             getViewState().hideProgressBar();
+          }
+          if (response.code() == RESPONSE_503){
+            getViewState().showServerErrorMsg();
           }
         }, throwable -> {
           Timber.e(throwable);

@@ -103,4 +103,9 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @Override public void stopRefreshingView() {
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
   }
+
+  @Override public void showServerErrorMsg() {
+    showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+
+  }
 }

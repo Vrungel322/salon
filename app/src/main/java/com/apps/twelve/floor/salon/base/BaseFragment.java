@@ -71,6 +71,21 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
         .show();
   }
 
+  protected void showLongAlertMessage(String title, String message) {
+    TypedValue value = new TypedValue();
+    getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    Alerter.create(getActivity())
+        .setTitle(title)
+        .setText(message)
+        .enableInfiniteDuration(true)
+        .enableSwipeToDismiss()
+        .setBackgroundColor(value.resourceId)
+        .setOnClickListener(view -> {
+
+        })
+        .show();
+  }
+
   protected void showToastMessage(String message) {
     Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
   }

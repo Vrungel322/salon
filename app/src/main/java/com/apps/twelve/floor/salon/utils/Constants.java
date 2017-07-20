@@ -71,6 +71,7 @@ public final class Constants {
     public static final int RESPONSE_204 = 204;
     public static final int RESPONSE_400 = 400;
     public static final int RESPONSE_404 = 404;
+    public static final int RESPONSE_503 = 503;
   }
 
   public class Theme {
