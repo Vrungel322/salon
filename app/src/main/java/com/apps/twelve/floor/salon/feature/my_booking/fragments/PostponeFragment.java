@@ -30,6 +30,7 @@ import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesHorizontalAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesInMonthViewPagerAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.ScheduleAdapter;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
@@ -101,12 +102,14 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     super.onViewCreated(view, savedInstanceState);
 
     /* turn off scrolling */
-    Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+    if (!(getActivity() instanceof BookingListActivity)) {
+      Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
 
-    AppBarLayout.LayoutParams toolbarLayoutParams =
-        (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
-    toolbarLayoutParams.setScrollFlags(0);
-    mToolbar.setLayoutParams(toolbarLayoutParams);
+      AppBarLayout.LayoutParams toolbarLayoutParams =
+          (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
+      toolbarLayoutParams.setScrollFlags(0);
+      mToolbar.setLayoutParams(toolbarLayoutParams);
+    }
 
     /* get booking information */
     mEntityId = getArguments().getInt(ENTITY_ID);
@@ -154,9 +157,9 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
       }
 
       @Override public void onPageSelected(int position) {
-        if (position == 0){
+        if (position == 0) {
           mImageViewPrevDay.setVisibility(View.GONE);
-        }else {
+        } else {
           mImageViewPrevDay.setVisibility(View.VISIBLE);
         }
         chainViewPagerRecyclerView(position);

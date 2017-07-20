@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragments;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -109,8 +111,10 @@ public class ChooseServiceContactFragment extends BaseFragment
     showAlertMessage(getString(R.string.title_write_error), getString(message));
   }
 
-  @Override public void closeBooking() {
+  @Override public void moveToBookingListActivity() {
     mNavigator.finishActivity((AppCompatActivity) getActivity());
+    mNavigator.startActivity((AppCompatActivity) getActivity(),
+        new Intent(getContext(), BookingListActivity.class));
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,

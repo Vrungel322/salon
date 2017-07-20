@@ -28,5 +28,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void showErrorMessage(int message);
 
-  @StateStrategyType(SkipStrategy.class) void closeBooking();
+  @StateStrategyType(SkipStrategy.class) void moveToBookingListActivity();
 }

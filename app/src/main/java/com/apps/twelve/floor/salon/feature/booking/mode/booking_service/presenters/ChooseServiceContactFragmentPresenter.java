@@ -97,7 +97,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                           - System.currentTimeMillis(), mBookingEntity.getServiceName(),
                       Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
                       mBookingEntity.getServiceTime());
-                  getViewState().closeBooking();
+                  getViewState().moveToBookingListActivity();
                   break;
                 case RESPONSE_UNAUTHORIZED:
                   getViewState().revertAnimation();

@@ -12,6 +12,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
@@ -32,6 +33,7 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @BindView(R.id.tvBookEmptyList) TextView mTextViewBookEmptyList;
 
   private MyBookingAdapter mMyBookingAdapter;
+  private boolean fromStartActivity;
 
   public MyBookFragment() {
     super(R.layout.fragment_my_book);
@@ -47,9 +49,19 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    if (getActivity() instanceof StartActivity) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    } else {
+      ((BookingListActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    }
 
-    mMyBookingAdapter = new MyBookingAdapter(getMvpDelegate(), getContext(), mNavigator);
+    if (getActivity() instanceof StartActivity){
+      fromStartActivity = true;
+    }
+    else {
+      fromStartActivity = false;
+    }
+    mMyBookingAdapter = new MyBookingAdapter(getMvpDelegate(), getContext(), mNavigator, fromStartActivity);
     mRecyclerViewMyBooks.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
     mRecyclerViewMyBooks.setNestedScrollingEnabled(false);
@@ -64,8 +76,14 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
     ItemClickSupport.addTo(mRecyclerViewMyBooks)
         .setOnItemClickListener((recyclerView, position, v) -> {
-          mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
-              BookDetailsFragment.newInstance(mMyBookingAdapter.getEntity(position)));
+          if (getActivity() instanceof StartActivity) {
+            mNavigator.addFragmentBackStack((StartActivity) getActivity(), R.id.container_main,
+                BookDetailsFragment.newInstance(mMyBookingAdapter.getEntity(position)));
+          } else {
+            mNavigator.addFragmentBackStack((BookingListActivity) getActivity(),
+                R.id.container_for_list_of_booked_services,
+                BookDetailsFragment.newInstance(mMyBookingAdapter.getEntity(position)));
+          }
         });
   }
 

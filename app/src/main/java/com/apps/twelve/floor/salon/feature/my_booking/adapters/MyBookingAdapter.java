@@ -22,6 +22,7 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.MvpBaseRecyclerAdapter;
 import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.PostponeFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookingAdapterView;
@@ -46,6 +47,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   private final Context mContext;
   private final Navigator mNavigator;
+  private final boolean fromStartActivity;
 
   @InjectPresenter MyBookingAdapterPresenter mMyBookingAdapterPresenter;
 
@@ -53,10 +55,12 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   private AlertDialog mRemoveBookingDialog;
   private ProgressBar mProgressBarCancel;
 
-  public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Navigator navigator) {
+  public MyBookingAdapter(MvpDelegate<?> parentDelegate, Context context, Navigator navigator,
+      boolean fromStartActivity) {
     super(parentDelegate, "MyBookingAdapterPresenter");
     this.mContext = context;
     this.mNavigator = navigator;
+    this.fromStartActivity = fromStartActivity;
   }
 
   public void addListBookingEntity(List<LastBookingEntity> bookingEntities) {
@@ -142,11 +146,20 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public void openPostponeFragment(int position) {
-    mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
-        PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
-            mBookingEntities.get(position).getMasterName(),
-            mBookingEntities.get(position).getMasterId(),
+    if (fromStartActivity) {
+      mNavigator.addFragmentBackStack((StartActivity) mContext, R.id.container_main,
+          PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
+              mBookingEntities.get(position).getMasterName(),
+              mBookingEntities.get(position).getMasterId(),
             /* entity_id */ mBookingEntities.get(position).getId()));
+    } else {
+      mNavigator.addFragmentBackStack((BookingListActivity) mContext,
+          R.id.container_for_list_of_booked_services,
+          PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
+              mBookingEntities.get(position).getMasterName(),
+              mBookingEntities.get(position).getMasterId(),
+            /* entity_id */ mBookingEntities.get(position).getId()));
+    }
   }
 
   @Override public void showConfirmationDialog(int position) {
