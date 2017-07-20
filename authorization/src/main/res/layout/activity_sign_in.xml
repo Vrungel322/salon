@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:background="@color/colorWhite"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".logic.authorization.activities.ModuleSignInActivity">
+
+    <android.support.constraint.Guideline
+      android:id="@+id/line"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="20dp"
+      tools:layout_editor_absoluteX="20dp"
+      tools:layout_editor_absoluteY="81dp" />
+
+    <android.support.constraint.Guideline
+      android:id="@+id/line2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_end="50dp"
+      tools:layout_editor_absoluteX="334dp"
+      tools:layout_editor_absoluteY="81dp" />
+
+    <TextView
+      android:id="@+id/tv_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:text="@string/sign_in_title"
+      android:textColor="@color/colorBlackLight"
+      android:textSize="18sp"
+      app:layout_constraintLeft_toLeftOf="@+id/line"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout
+      android:id="@+id/til_login"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="20dp"
+      app:errorEnabled="true"
+      app:hintEnabled="false"
+      app:layout_constraintHeight_default="wrap"
+      app:layout_constraintLeft_toLeftOf="@+id/line"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_title"
+      app:layout_constraintWidth_default="spread">
+
+      <EditText
+        android:id="@+id/et_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorInputField"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="@string/sign_in_hint"
+        android:inputType="text|textEmailAddress"
+        android:textSize="14sp" />
+
+    </com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout>
+
+    <com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout
+      android:id="@+id/til_password"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="10dp"
+      app:errorEnabled="true"
+      app:hintEnabled="false"
+      app:layout_constraintHeight_default="wrap"
+      app:layout_constraintLeft_toLeftOf="@+id/line"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/til_login"
+      app:layout_constraintWidth_default="spread">
+
+      <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorInputField"
+        android:gravity="center_horizontal|center_vertical"
+        android:hint="@string/sign_in_password"
+        android:inputType="textPassword"
+        android:textSize="14sp" />
+
+    </com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout>
+
+    <TextView
+      android:id="@+id/tv_registration"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="10dp"
+      android:text="@string/sign_in_registration_message"
+      android:textColor="@color/colorBlackLight"
+      android:textSize="14sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/til_password" />
+
+    <TextView
+      android:id="@+id/tv_recovery_password"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="10dp"
+      android:text="@string/sign_in_recovery_message"
+      android:textColor="@color/colorBlackLight"
+      android:textSize="14sp"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/til_password" />
+
+    <RelativeLayout
+      android:id="@+id/container_btn"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="20dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_registration">
+
+      <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorAccent"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_in_button_name"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:finalCornerAngle="50dp"
+        app:initialCornerAngle="0dp"
+        app:spinning_bar_color="@color/colorWhite"
+        app:spinning_bar_padding="10dp"
+        app:spinning_bar_width="2dp" />
+
+    </RelativeLayout>
+
+    <TextView
+      android:id="@+id/text_or"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:text="Или"
+      android:textColor="@color/colorBlackLight"
+      android:textSize="16sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/container_btn" />
+
+    <in.championswimmer.libsocialbuttons.buttons.BtnGoogleplus
+      android:id="@+id/google_login_button"
+      android:layout_width="0dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="15dp"
+      android:textSize="16sp"
+      android:text="Войти с Google+"
+      android:padding="10dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/text_or" />
+
+    <in.championswimmer.libsocialbuttons.buttons.BtnFacebook
+      android:id="@+id/facebook_login_button"
+      android:layout_width="0dp"
+      android:layout_height="50dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="15dp"
+      android:padding="10dp"
+      android:text="Войти с Facebook"
+      android:textSize="16sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/google_login_button" />
+
+
+  </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

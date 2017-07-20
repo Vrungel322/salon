@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorWhite"
+  android:clickable="true"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/tvCurrentFieldText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/colorLightGray"
+    android:textSize="16sp" />
+
+  <TextView
+    android:id="@+id/tvCurrentField"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/tvCurrentFieldText"
+    android:layout_alignStart="@+id/tvCurrentFieldText"
+    android:layout_below="@+id/tvCurrentFieldText"
+    android:layout_marginTop="10dp"
+    android:paddingLeft="5dp"
+    android:paddingStart="5dp"
+    android:textColor="@color/colorBlackLight"
+    android:textSize="16sp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/tvNewFieldText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/tvCurrentField"
+    android:layout_alignStart="@+id/tvCurrentField"
+    android:layout_below="@+id/tvCurrentField"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/colorLightGray"
+    android:textSize="16sp" />
+
+  <EditText
+    android:id="@+id/etNewField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvNewFieldText"
+    android:layout_marginTop="16dp"
+    android:padding="5dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:background="@color/colorInputField"
+    android:ems="10"
+    android:inputType="textPersonName" />
+
+  <TextView
+    android:id="@+id/tvPasswordFieldText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/tvCurrentField"
+    android:layout_alignStart="@+id/tvCurrentField"
+    android:layout_below="@+id/etNewField"
+    android:layout_marginTop="16dp"
+    android:textColor="@color/colorLightGray"
+    android:textSize="16sp"
+    android:text="@string/current_field_password" />
+
+  <EditText
+    android:id="@+id/etPasswordField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvPasswordFieldText"
+    android:layout_marginTop="16dp"
+    android:padding="5dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:background="@color/colorInputField"
+    android:ems="10"
+    android:inputType="textPassword" />
+
+  <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+    android:id="@+id/btnSave"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?colorAccent"
+    android:layout_centerHorizontal="true"
+    app:spinning_bar_padding="10dp"
+    app:spinning_bar_color="@color/colorWhite"
+    app:spinning_bar_width="2dp"
+    app:initialCornerAngle="0dp"
+    app:finalCornerAngle="50dp"
+    android:textSize="14sp"
+    android:text="@string/button_save"
+    android:textColor="@color/colorWhite"
+    android:layout_below="@+id/etPasswordField"
+    android:layout_marginLeft="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="32dp" />
+</RelativeLayout>

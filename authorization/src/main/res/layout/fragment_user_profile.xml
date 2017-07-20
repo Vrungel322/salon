@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorWhite"
+  android:clickable="true">
+
+  <android.support.v4.widget.NestedScrollView
+    android:id="@+id/nested_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <!--top block-->
+      <RelativeLayout
+        android:id="@+id/block_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:visibility="visible">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/ivProfilePhoto"
+          android:layout_width="96dp"
+          android:layout_height="96dp"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="32dp"
+          app:civ_border_color="@color/colorWhite"
+          app:civ_border_width="2dp" />
+
+        <TextView
+          android:id="@+id/btnChangePhoto"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/ivProfilePhoto"
+          android:layout_centerHorizontal="true"
+          android:layout_marginBottom="16dp"
+          android:paddingTop="8dp"
+          android:text="Сменить фото профиля"
+          android:textColor="?colorAccent"
+          android:textSize="16sp" />
+
+        <View
+          android:id="@+id/separatorChangePhoto"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:layout_below="@+id/btnChangePhoto"
+          android:background="@color/colorGrayTransparent" />
+        <!--fullName-->
+        <RelativeLayout
+          android:id="@+id/rlName"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/separatorChangePhoto"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_profile_24dp" />
+
+          <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivName"
+            android:layout_toRightOf="@+id/ivName"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorTvName"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvName"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--email-->
+        <RelativeLayout
+          android:id="@+id/rlEmail"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/rlName"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_email_settings_24dp" />
+
+          <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivEmail"
+            android:layout_toRightOf="@+id/ivEmail"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_alignLeft="@+id/tvEmail"
+            android:layout_alignStart="@+id/tvEmail"
+            android:layout_below="@+id/tvEmail"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--phone-->
+        <RelativeLayout
+          android:id="@+id/rlPhone"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/rlEmail"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_phone_settings_24dp" />
+
+          <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivPhone"
+            android:layout_toRightOf="@+id/ivPhone"
+            android:text="Не указан"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorPhone"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_alignLeft="@+id/tvPhone"
+            android:layout_alignStart="@+id/tvPhone"
+            android:layout_below="@+id/tvPhone"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--gender-->
+        <RelativeLayout
+          android:id="@+id/rlGender"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/rlPhone"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_gender_24dp" />
+          <!-- <TextView
+               android:id="@+id/tvGender"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginLeft="16dp"
+               android:layout_marginRight="8dp"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:layout_toEndOf="@+id/ivGender"
+               android:layout_toRightOf="@+id/ivGender"
+               android:textColor="@color/colorBlack"
+               android:textSize="16sp"
+               android:visibility="invisible"
+               />-->
+          <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ivGender"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivGender"
+            android:layout_toRightOf="@+id/ivGender"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp"
+            tools:text="Male" />
+          <!--<Spinner
+              android:id="@+id/spinnerGender"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignBaseline="@+id/tvGender"
+              android:layout_marginBottom="16dp"
+              android:layout_marginLeft="16dp"
+              android:layout_marginStart="16dp"
+              android:layout_marginTop="16dp"
+              android:layout_toEndOf="@+id/ivGender"
+              android:layout_toRightOf="@+id/ivGender"
+              android:entries="@array/gender"
+              />-->
+          <View
+            android:id="@+id/separatorGender"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvGender"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/rlBirthDate"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/rlGender"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_birth_date_24dp" />
+
+          <TextView
+            android:id="@+id/tvBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ivBirthDate"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivBirthDate"
+            android:layout_toRightOf="@+id/ivBirthDate"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp"
+            tools:text="Укажите дату рождения" />
+
+          <View
+            android:id="@+id/separatorBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvBirthDate"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--password-->
+        <RelativeLayout
+          android:id="@+id/rlPassword"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:layout_below="@+id/rlBirthDate"
+          android:background="?attr/selectableItemBackground"
+          android:clickable="true">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_password_24dp" />
+
+          <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivPassword"
+            android:layout_toRightOf="@+id/ivPassword"
+            android:text="Изменить пароль"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorPassword"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvPassword"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--activity history-->
+        <RelativeLayout
+          android:id="@+id/rlHistoryActivity"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/rlPassword"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivHistoryActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_activity_log_settings_24dp" />
+
+          <TextView
+            android:id="@+id/tvHistoryActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivHistoryActivity"
+            android:layout_toRightOf="@+id/ivHistoryActivity"
+            android:text="История активности"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorHistoryActivity"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvHistoryActivity"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+        <!--delete account-->
+        <RelativeLayout
+          android:id="@+id/rlDeleteAccount"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/rlHistoryActivity"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivDeleteAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_delete_account_settings_24dp" />
+
+          <TextView
+            android:id="@+id/tvDeleteAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivDeleteAccount"
+            android:layout_toRightOf="@+id/ivDeleteAccount"
+            android:text="Удалить аккаунт"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvDeleteAccount"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+      </RelativeLayout>
+
+      <RelativeLayout
+        android:id="@+id/block_final"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/block_top"
+        android:background="@color/colorWhite">
+
+        <View
+          android:id="@+id/separatorFinalSpace"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:background="@color/colorGrayTransparent" />
+        <!--checkbox logout all-->
+        <!--<RelativeLayout
+            android:id="@+id/rlLogoutAll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/separatorFinalSpace"
+            android:background="?attr/selectableItemBackground"
+            >
+          <CheckBox
+              android:id="@+id/cbLogoutAll"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="16dp"
+              android:layout_marginLeft="16dp"
+              android:layout_marginStart="16dp"
+              android:layout_marginTop="16dp"
+              android:text="Выйти со всех устройств"
+              android:textColor="?colorAccent"
+              android:textSize="16sp"
+              />
+          <View
+              android:id="@+id/separatorLogoutAll"
+              android:layout_width="match_parent"
+              android:layout_height="0.25dp"
+              android:layout_alignLeft="@+id/cbLogoutAll"
+              android:layout_alignStart="@+id/cbLogoutAll"
+              android:layout_below="@+id/cbLogoutAll"
+              android:background="@color/colorGrayTransparent"
+              />
+        </RelativeLayout>-->
+        <!--exit-->
+        <RelativeLayout
+          android:id="@+id/rlExit"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/separatorFinalSpace"
+          android:background="?attr/selectableItemBackground">
+
+          <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ivExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_exit_to_app_24dp" />
+
+          <TextView
+            android:id="@+id/tvExit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/ivExit"
+            android:layout_toRightOf="@+id/ivExit"
+            android:text="Выйти"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorExit"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_alignLeft="@+id/tvExit"
+            android:layout_alignStart="@+id/tvExit"
+            android:layout_below="@+id/tvExit"
+            android:background="@color/colorGrayTransparent" />
+        </RelativeLayout>
+      </RelativeLayout>
+    </RelativeLayout>
+  </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

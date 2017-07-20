@@ -1,0 +1,174 @@
+<resources>
+  <string name="app_name">Авторизация</string>
+
+  <string name="auth_email">email</string>
+  <string name="auth_phone">телефон</string>
+  <string name="telephone">телефоном</string>
+
+  <!--sign in-->
+  <string name="sign_in_label">Вход</string>
+  <string name="sign_in_description">(введите email или телефон в формате +380501234455)</string>
+  <string name="sign_in_title">Войти в систему</string>
+  <string name="sign_in_hint">Email или телефон (+380501234455)</string>
+  <string name="sign_in_password">Пароль</string>
+  <string name="sign_in_button_name">Войти</string>
+  <string name="sign_in_registration_message"><u>Зарегистрироваться</u></string>
+  <string name="sign_in_recovery_message"><u>Восстановить пароль</u></string>
+  <string name="login_error">Неверные логин или пароль</string>
+  <string name="login_dialog_message">Авторизация…</string>
+  <string name="sign_in_facebook">facebook</string>
+  <string name="sign_in_google">google</string>
+
+  <!--registration-->
+  <string name="registration_label">Регистрация</string>
+  <string name="registration_your_name">Ваше имя*</string>
+  <string name="registration_your_name_description">Ваше имя или ФИО</string>
+  <string name="registration_phone_number">Номер мобильного телефона</string>
+  <string name="registration_phone_number_description">(формат +380501234455)</string>
+  <string name="registration_phone_number_hint">Телефон (+380501234455)</string>
+  <string name="registration_email">Ваш E-mail*</string>
+  <string name="registration_required_field">(* обязательное поле)</string>
+  <string name="registration_birthday">Ваша дата рождения</string>
+  <string name="registration_gender">Ваш пол</string>
+  <string name="registration_btn_registrate">Зарегистрироваться</string>
+  <string name="registration_dialog_message">Регистрация…</string>
+
+  <!--user profile-->
+  <string name="user_profile_greetings">Добро пожаловать!</string>
+  <string name="user_profile_logout">Выйти</string>
+  <string name="user_profile_label">Профиль</string>
+
+  <!--user edit profile-->
+  <string name="user_edit_profile_label">Редактировать профиль</string>
+  <string name="user_edit_btn_save">Сохранить</string>
+  <string name="user_edit_profile_name_hint">Ваше имя или ФИО</string>
+  <string name="user_edit_profile_email_hint">Email</string>
+  <string name="user_edit_profile_phone_hint">Телефон (+380501234455)</string>
+
+  <!--change passwordError-->
+  <string name="change_password_lable">Изменить пароль</string>
+
+  <!--recovery passwordError-->
+  <string name="recovery_password_label">Восстановить пароль</string>
+
+  <!--Error messages-->
+  <string name="error_required_field">Поле обязательное для заполнения</string>
+  <string name="error_empty_name">Поле имя не должно быть пустым</string>
+  <string name="error_not_regex_field">Неверно введенный логин</string>
+  <string name="error_not_regex_field_email">Неверно введенный email</string>
+  <string name="error_not_regex_field_phone">Неверно введенный телефон</string>
+  <string name="error_password_length">Минимальная длина пароля 6 символов</string>
+  <string name="error_password_empty">Введите пароль</string>
+  <string name="error_password_no_consist">Пароли не совпадают</string>
+  <string name="error_password_is_consist">Пароли не должны совпадать</string>
+  <string name="no_internet_connection">Проверте подключение к интернету</string>
+  <string name="error_invalid_email_or_phone">Пользователь с таким email/телефоном не зарегистрирован</string>
+  <string name="error_user_not_found">Пользователь с таким %s не зарегистрирован</string>
+
+  <!--dialog-->
+  <string name="btn_ok">OK</string>
+  <string name="btn_cancel">Отмена</string>
+  <string name="dialog_title_recovery_password">Восстановление пароля</string>
+  <string name="dialog_title_change_info">Код подтверждения</string>
+  <string name="dialog_message_recovery_password">На ваш %s выслан код подтверждения</string>
+  <string name="dialog_title_change_password">Изменение пароля</string>
+  <string name="dialog_message_change_password">На ваш email было выслано письмо с новым паролем</string>
+  <string name="dialog_title_select_gender">Выберите пол</string>
+  <string name="dialog_title_exit">Выйти</string>
+  <string name="dialog_message_exit">Вы уверены, что хотите выйти?</string>
+  <string name="dialog_title_logout_all">Выйти со всех сеансов</string>
+  <string name="dialog_message_logout_all">Вы уверены, что хотите выйти со всех сеансов?</string>
+
+  <!--facebook-->
+  <string name="facebook_app_id">198627450659129</string>
+  <string name="fb_login_protocol_scheme">fb198627450659129</string>
+
+  <!--google-->
+  <string name="google_client_id">959770495373-l1eft7s2isc2k6ir4gfr1u8u0r174fle.apps.googleusercontent.com</string>
+  <string name="error_title">Ошибка</string>
+
+  <!--gender-->
+  <string-array name="gender">
+    <item>Не указан</item>
+    <item>Мужской</item>
+    <item>Женский</item>
+  </string-array>
+  <string name="gender_unknown">unknown</string>
+  <string name="gender_male">male</string>
+  <string name="gender_female">female</string>
+
+  <string-array name="changing_field">
+    <item>имя</item>
+    <item>логин</item>
+    <item>пароль</item>
+    <item>почту</item>
+    <item>телефон</item>
+  </string-array>
+
+  <!--for settings-->
+  <string name="change_photo">Сменить фото профиля</string>
+  <string name="private_information">Личная информация</string>
+  <string name="additional_settings">Доп. настройки</string>
+  <string name="settings_problem">Сообщить о проблеме</string>
+  <string name="settings_change_theme">Тема приложения</string>
+  <string name="settings_notifications">Настройки уведомлений</string>
+  <string name="clear_history">Очистить историю</string>
+  <string name="exit">Выйти</string>
+  <string name="error_empty_gallery">Список пуст …</string>
+  <string name="change_user_info">Изменить %s</string>
+  <string name="change_password_info">Изменить пароль</string>
+  <string name="current_field_name">Текущее имя:</string>
+  <string name="new_field_name">Новое имя:</string>
+  <string name="current_field_login">Текущий логин:</string>
+  <string name="new_field_login">Новый логин:</string>
+  <string name="current_field_password">Текущий пароль:</string>
+  <string name="new_field_password">Новый пароль:</string>
+  <string name="confirm_field_password">Повторите пароль:</string>
+  <string name="current_field_email">Текущая почта:</string>
+  <string name="new_field_email">Новая почта:</string>
+  <string name="current_field_phone">Текущий телефон:</string>
+  <string name="new_field_phone">Новый телефон:</string>
+  <string name="button_save">Сохранить</string>
+  <string name="delete_account">Удалить аккаунт</string>
+  <string name="settings_notifications_daily">За %1$d д. до начала услуги</string>
+  <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до начала услуги</string>
+  <string name="settings_notifications_change">Изменить</string>
+  <string name="report_problem_button">Отправить</string>
+  <string name="menu_catalog">Каталог</string>
+  <string name="choose_staff">Выбор продукции</string>
+  <string name="choose_category">Выбрать категорию</string>
+  <string name="profile_title">Профиль</string>
+  <string name="error_invalid_picture">Недопустимое изображение</string>
+  <string name="error_title_no_internet_connection">Ошибка соединения</string>
+  <string name="device_info_os_name">"Android "</string>
+
+  <!--Activity history-->
+  <string name="activity_history">История активности</string>
+  <string name="change_email_title">Изменение email</string>
+  <string name="change_email_message">На ваш старый и новый email было выслано письмо</string>
+  <string name="dialog_progress_exit_message">Выход…</string>
+  <string name="dialog_message_sign_in">Авторизация…</string>
+  <string name="error_password">Неверный пароль</string>
+  <string name="dialog_verify_code">Код подтверждения</string>
+  <string name="verify_btn">Подтвердить</string>
+  <string name="dialog_title_delete_account">Удаление профиля</string>
+  <string name="dialog_message_delete_account">На ваш email выслан код подтверждения</string>
+  <string name="default_gender">Не указан</string>
+  <string name="default_phone">Не указан</string>
+  <string name="no_internet_connection_save_changes">Все изменения не будут сохранены</string>
+  <string name="default_birth_day">Укажите дату рождения</string>
+
+  <!--privacy policy-->
+  <string name="privacy_policy">Нажав на кнопку, расположенную ниже, вы соглашаетесь с
+    <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">Условиями использования</a>
+    и <a href="https://medium.com/policy/medium-privacy-policy-f03bf92035c9">Политикой конфиденциальности</a>
+  </string>
+
+  <string name="en_privacy_policy">By creating an account, I accept Medium’s
+    <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">terms of service</a>
+    and <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">privacy policy</a>
+  </string>
+  <string name="error_privacy_policy">Подтвердите, что вы ознакомились c условиями</string>
+
+
+</resources>
