@@ -23,6 +23,8 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.philliphsu.bottomsheetpickers.time.BottomSheetTimePickerDialog;
 import com.philliphsu.bottomsheetpickers.time.grid.GridTimePickerDialog;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -144,7 +146,7 @@ public class NotificationSettingsFragment extends BaseFragment
   @OnClick(R.id.tvNightChangeStart) void changeNightStart() {
     GridTimePickerDialog changeNightStart = new GridTimePickerDialog.Builder(this,
         (int) TimeUnit.MILLISECONDS.toHours(
-            mNotificationSettingsFragmentPresenter.getHoursNightStart()),
+            mNotificationSettingsFragmentPresenter.getHoursNightStart())+3,
         (int) (TimeUnit.MILLISECONDS.toMinutes(
             mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
@@ -156,7 +158,7 @@ public class NotificationSettingsFragment extends BaseFragment
   @OnClick(R.id.tvNightChangeEnd) void changeNightEnd() {
     GridTimePickerDialog changeNightEnd = new GridTimePickerDialog.Builder(this,
         (int) TimeUnit.MILLISECONDS.toHours(
-            mNotificationSettingsFragmentPresenter.getHoursNightEnd()),
+            mNotificationSettingsFragmentPresenter.getHoursNightEnd())+3,
         (int) (TimeUnit.MILLISECONDS.toMinutes(
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
@@ -198,17 +200,17 @@ public class NotificationSettingsFragment extends BaseFragment
     if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHANGE_HOURLY_DIALOG_FRAGMENT)) {
       mNotificationSettingsFragmentPresenter.setHours(
-          TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          TimeUnit.HOURS.toMillis(i-3) + TimeUnit.MINUTES.toMillis(i1));
     }
     if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHANGE_NIGHT_START_DIALOG_FRAGMENT)) {
       mNotificationSettingsFragmentPresenter.setHoursNightStart(
-          TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          TimeUnit.HOURS.toMillis(i-3) + TimeUnit.MINUTES.toMillis(i1));
     }
     if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
         Constants.FragmentTag.CHANGE_NIGHT_END_DIALOG_FRAGMENT)) {
       mNotificationSettingsFragmentPresenter.setHoursNightEnd(
-          TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          TimeUnit.HOURS.toMillis(i-3) + TimeUnit.MINUTES.toMillis(i1));
     }
   }
 }
