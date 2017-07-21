@@ -215,8 +215,32 @@ public class DataManager {
     return mPreferencesHelper.getAdditionalField(key, defaultValue);
   }
 
-  public void setAdditionalField(String key, String defaultValue) {
-    mPreferencesHelper.setAdditionalField(key, defaultValue);
+  public void setAdditionalField(String key, String value) {
+    mPreferencesHelper.setAdditionalField(key, value);
+  }
+
+  public int getAdditionalField(String key, int defaultValue) {
+    return mPreferencesHelper.getAdditionalField(key, defaultValue);
+  }
+
+  public void setAdditionalField(String key, int value) {
+    mPreferencesHelper.setAdditionalField(key, value);
+  }
+
+  public long getAdditionalField(String key, long defaultValue) {
+    return mPreferencesHelper.getAdditionalField(key, defaultValue);
+  }
+
+  public void setAdditionalField(String key, long value) {
+    mPreferencesHelper.setAdditionalField(key, value);
+  }
+
+  public boolean getAdditionalField(String key, boolean defaultValue) {
+    return mPreferencesHelper.getAdditionalField(key, defaultValue);
+  }
+
+  public void setAdditionalField(String key, boolean value) {
+    mPreferencesHelper.setAdditionalField(key, value);
   }
 
   public boolean isExistAdditionalField(String key) {

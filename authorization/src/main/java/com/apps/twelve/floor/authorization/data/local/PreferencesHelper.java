@@ -119,6 +119,30 @@ public class PreferencesHelper {
     mPreferences.edit().putString(key, value).apply();
   }
 
+  public int getAdditionalField(String key, int defaultValue) {
+    return Integer.parseInt(getAdditionalField(key, String.valueOf(defaultValue)));
+  }
+
+  public void setAdditionalField(String key, int value) {
+    setAdditionalField(key, String.valueOf(value));
+  }
+
+  public long getAdditionalField(String key, long defaultValue) {
+    return Long.parseLong(getAdditionalField(key, String.valueOf(defaultValue)));
+  }
+
+  public void setAdditionalField(String key, long value) {
+    setAdditionalField(key, String.valueOf(value));
+  }
+
+  public boolean getAdditionalField(String key, boolean defaultValue) {
+    return Boolean.parseBoolean(getAdditionalField(key, String.valueOf(defaultValue)));
+  }
+
+  public void setAdditionalField(String key, boolean value) {
+    setAdditionalField(key, String.valueOf(value));
+  }
+
   public boolean isExistAdditionalField(String key) {
     return !TextUtils.isEmpty(mPreferences.getString(key, ""));
   }

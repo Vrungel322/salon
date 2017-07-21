@@ -162,6 +162,30 @@ public class AuthorizationManager {
     return mDataManager.getAdditionalField(key, defaultValue);
   }
 
+  public void setAdditionalField(String key, String value) {
+    mDataManager.setAdditionalField(key, value);
+  }
+
+  public void setAdditionalField(String key, int value) {
+    mDataManager.setAdditionalField(key, value);
+  }
+
+  public long getAdditionalField(String key, long defaultValue) {
+    return mDataManager.getAdditionalField(key, defaultValue);
+  }
+
+  public void setAdditionalField(String key, long value) {
+    mDataManager.setAdditionalField(key, value);
+  }
+
+  public boolean getAdditionalField(String key, boolean defaultValue) {
+    return mDataManager.getAdditionalField(key, defaultValue);
+  }
+
+  public void setAdditionalField(String key, boolean value) {
+    mDataManager.setAdditionalField(key, value);
+  }
+
   public Observable<Response<Void>> populateAdditionalField(String key, String value) {
     if (!mDataManager.isExistAdditionalField(key)) {
       return mDataManager.addAdditionalField(key, value).concatMap(response -> {
@@ -179,6 +203,19 @@ public class AuthorizationManager {
       });
     }
   }
+
+  public Observable<Response<Void>> populateAdditionalField(String key, int value) {
+    return populateAdditionalField(key, String.valueOf(value));
+  }
+
+  public Observable<Response<Void>> populateAdditionalField(String key, long value) {
+    return populateAdditionalField(key, String.valueOf(value));
+  }
+
+  public Observable<Response<Void>> populateAdditionalField(String key, boolean value) {
+    return populateAdditionalField(key, String.valueOf(value));
+  }
+
 }
 
 

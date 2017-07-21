@@ -29,7 +29,7 @@ public final class Converters {
     if (!date.equals("")) {
       String dateResult;
       SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", mLocale);
-      Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+      Calendar calendar = Calendar.getInstance(mLocale);
       long d = Long.valueOf(date);
       calendar.setTimeInMillis(d);
       dateResult = formatter.format(calendar.getTime());
