@@ -96,6 +96,9 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mRecyclerViewImages.setLayoutManager(mLayoutManager);
       mRecyclerViewImages.setAdapter(mHorizontalListAdapter);
       mHorizontalListAdapter.notifyDataSetChanged();
+      if (listUrlPhotos.size() <= 1){
+        mRecyclerViewImages.setVisibility(View.GONE);
+      }
 
       int currentPos = 0;
       mHorizontalListAdapter.setSelectedItem(currentPos);
