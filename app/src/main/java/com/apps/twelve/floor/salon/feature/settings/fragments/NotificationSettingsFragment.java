@@ -184,8 +184,8 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @Override public void setUpNightHours(long start, long end) {
     mTextViewNight.setText(getString(R.string.settings_notifications_night,
-        Converters.timeFromMilliseconds(String.valueOf(start)),
-        Converters.timeFromMilliseconds(String.valueOf(end))));
+        Converters.timeFromMilliseconds(getContext(), String.valueOf(start)),
+        Converters.timeFromMilliseconds(getContext(), String.valueOf(end))));
   }
 
   @Override public void cancelPickDayDialog() {

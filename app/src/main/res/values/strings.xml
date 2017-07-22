@@ -1,15 +1,15 @@
 <resources>
-  <string name="app_name">Salon</string>
+  <string name="app_name" translatable="false">Salon</string>
 
   <string name="share_subject">Рекомендую посетить мой любимый салон Шанти</string>
   <string name="share_text">Скачивай мобильное приложение салона "Шанти" и получай бонусы прямо сейчас: https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon </string>
 
-  <string name="dialog_action_ok">OK</string>
+  <string name="dialog_action_ok" translatable="false">OK</string>
   <string name="dialog_error_title">Ошибка</string>
   <string name="title_activity_start">Салон</string>
 
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+  <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
   <string name="action_settings">Settings</string>
 
@@ -24,7 +24,7 @@
   <string name="menu_contacts">Контакты</string>
   <string name="menu_settings">Настройки приложения</string>
   <string name="list_is_empty">Список пуст</string>
-  <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed justo augue. Aenean eros lacus, scelerisque in nisi eget, auctor elementum erat. Suspendisse at mi mauris. In finibus vel urna sed scelerisque. Donec ut tortor rutrum, ullamcorper nunc tristique, placerat arcu. Praesent vitae diam enim. Mauris mi nunc, lacinia quis enim eu, varius auctor lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed egestas bibendum eros vel pulvinar. Sed tempor dui at posuere varius. Ut efficitur mauris vel tincidunt eleifend. Maecenas gravida nec metus et lobortis.</string>
+  <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed justo augue. Aenean eros lacus, scelerisque in nisi eget, auctor elementum erat. Suspendisse at mi mauris. In finibus vel urna sed scelerisque. Donec ut tortor rutrum, ullamcorper nunc tristique, placerat arcu. Praesent vitae diam enim. Mauris mi nunc, lacinia quis enim eu, varius auctor lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed egestas bibendum eros vel pulvinar. Sed tempor dui at posuere varius. Ut efficitur mauris vel tincidunt eleifend. Maecenas gravida nec metus et lobortis.</string>
   <string name="news">Новости</string>
   <string name="catalog">Каталог</string>
   <string name="registration">Вход / Регистрация</string>
@@ -39,22 +39,22 @@
   <string name="cancel_booking">Отмена записи</string>
   <string name="confirm_cancel_booking">Подтвердите удаление записи.</string>
   <string name="confirm">Подтвердить</string>
-  <string name="booking_days_left">%1$d дн.</string>
+  <string name="booking_days_left" translatable="false">%1$d дн.</string>
   <string name="yes">Да</string>
   <string name="no">Нет</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
-  <string name="contacts_phone1">050 109 75 79</string>
-  <string name="contacts_phone2">073 046 52 00</string>
-  <string name="contacts_phone3">097 024 28 50</string>
+  <string name="contacts_phone1" translatable="false">050 109 75 79</string>
+  <string name="contacts_phone2" translatable="false">073 046 52 00</string>
+  <string name="contacts_phone3" translatable="false">097 024 28 50</string>
   <string name="contacts_address">г. Киев\nул. Л. Руденко 6</string>
-  <string name="contacts_map"><u>Карта</u></string>
+  <string name="contacts_map" translatable="false"><u>Карта</u></string>
   <string name="contacts_feedback">Отправляйте свои пожелания\nи коментарии на email:</string>
-  <string name="contacts_email">example@gmail.com</string>
+  <string name="contacts_email" translatable="false">example@gmail.com</string>
   <string name="contacts_schedule">График работы:\nЕждневно с\n9:00 до 22:00</string>
   <string name="contacts_about">О нас</string>
-  <string name="contacts_website"><u>Перейти на веб-сайт</u></string>
+  <string name="contacts_website" translatable="false"><u>Перейти на веб-сайт</u></string>
   <string name="more">Еще</string>
   <string name="contacts_about_text">      Добро пожаловать в Медико-косметологический центр ШАНТИ удобно расположившийся на улице Л.Руденко,6  всего в пяти минутах  от станции метро «Позняки».\n      У нас работают специалисты индустрии красоты  с более чем 10 летним стажем.
 Приятный интерьер, внимательный и дружелюбный персонал МКЦ ШАНТИ, высококлассные специалисты с удовольствием позаботятся о вашей красоте!  ШАНТИ является центром дерматологии и врачебной косметологии.  Консультация врача-дерматолога, диагностика и удаление новообразований, избавление от морщин, лазерная эпиляция, массаж или чистка лица, инъекции, аппаратная косметология, гидроколонотерапия, СПА-процедуры с использованием Альфа-капсулы и многие другие процедуры к вашим услугам на высочайшем уровне.\n
@@ -100,7 +100,7 @@
   <string name="booking_name">Ваше имя</string>
   <string name="booking_name_description">(как к Вам обращаться)</string>
   <string name="booking_phone">Номер мобильного телефона</string>
-  <string name="booking_phone_description">(формат +380501234455)</string>
+  <string name="booking_phone_description" translatable="false">(формат +380501234455)</string>
   <string name="booking_button">ЗАПИСАТЬСЯ</string>
   <string name="name">Имя</string>
   <string name="phone">Телефон</string>
@@ -110,7 +110,7 @@
   <string name="service">Услуга:</string>
   <string name="spare_time">Свободное время на</string>
   <string name="time_empty">Сведения о свободном времени отсутствуют</string>
-  <string name="booking_date_and_time">%1$s в %2$s</string>
+  <string name="booking_date_and_time" translatable="false">%1$s в %2$s</string>
   <string name="time_empty_descr">Вы можете записаться, позвонив по телефону:</string>
   <string name="search_service">Поиск услуги</string>
   <string name="title_write_error">Проверьте данные</string>
@@ -130,9 +130,10 @@
   <string name="additional_settings">Доп. настройки</string>
   <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_change_theme">Тема приложения</string>
+  <string name="settings_change_language">Язык приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="report_problem_description">Опишите Вашу проблему:</string>
-  <string name="report_problem_hint">Мой кот меня не любит</string>
+  <string name="report_problem_hint" translatable="false">Мой кот меня не любит</string>
   <string name="settings_notifications_title_daily">Дневное уведомление</string>
   <string name="settings_notifications_title_hourly">Часовое уведомление</string>
   <string name="settings_notifications_title_night">Ночной режим</string>
@@ -172,6 +173,10 @@
     <item>Фиолетовая</item>
     <item>Красная</item>
   </string-array>
+  <string-array name="dialog_language">
+    <item>Русский</item>
+    <item>Українська</item>
+  </string-array>
 
   <string name="pink">Розовая</string>
   <string name="blue">Синяя</string>
@@ -188,5 +193,6 @@
   <string name="dialog_auth_yes">Перейти</string>
   <string name="dialog_auth_cancel">Отмена</string>
   <string name="server_error">Сервер отдыхает.</string>
+  <string name="dialog_title_select_language">Выберите язык</string>
 
 </resources>

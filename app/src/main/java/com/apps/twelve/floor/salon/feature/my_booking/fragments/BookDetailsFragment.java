@@ -111,8 +111,8 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
 
   private void setUpTimeBlock() {
     mTextViewServiceTime.setText(getContext().getString(R.string.booking_date_and_time,
-        Converters.dateFromSeconds(String.valueOf(mBookingEntity.getServiceTime())),
-        Converters.timeFromSeconds(String.valueOf(mBookingEntity.getServiceTime()))));
+        Converters.dateFromSeconds(getContext(), String.valueOf(mBookingEntity.getServiceTime())),
+        Converters.timeFromSeconds(getContext(), String.valueOf(mBookingEntity.getServiceTime()))));
     mTextViewDuration.setText(mBookingEntity.getServiceDuration());
 
     if (mDownTimer != null) {

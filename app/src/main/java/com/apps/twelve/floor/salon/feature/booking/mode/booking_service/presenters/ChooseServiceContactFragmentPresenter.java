@@ -45,7 +45,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
     super.onFirstViewAttach();
     getViewState().setUpBookingInformation(mBookingEntity.getServiceName(),
         mContext.getString(R.string.booking_date_and_time,
-            Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
+            Converters.detailDayFromSeconds(mContext, mBookingEntity.getRemainTimeInSec()),
             mBookingEntity.getServiceTime()), mBookingEntity.getDurationServices(),
         mBookingEntity.getMasterName());
   }
@@ -95,7 +95,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                   mJobsCreator.createNotification(String.valueOf(response.body().getId()),
                       Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
                           - System.currentTimeMillis(), mBookingEntity.getServiceName(),
-                      Converters.detailDayFromSeconds(mBookingEntity.getRemainTimeInSec()),
+                      Converters.detailDayFromSeconds(mContext,
+                          mBookingEntity.getRemainTimeInSec()),
                       mBookingEntity.getServiceTime());
                   getViewState().moveToBookingListActivity();
                   break;

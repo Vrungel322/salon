@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.utils;
 
+import android.content.Context;
 import android.net.Uri;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -25,10 +27,11 @@ public final class Converters {
     return dateResult;
   }
 
-  public static String timeFromMilliseconds(String date) {
+  public static String timeFromMilliseconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("HH:mm", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(mLocale);
       long d = Long.valueOf(date);
       calendar.setTimeInMillis(d);
@@ -53,10 +56,11 @@ public final class Converters {
     return 0;
   }
 
-  public static String timeFromSeconds(String date) {
+  public static String timeFromSeconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("HH:mm", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("HH:mm", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
       long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
@@ -67,10 +71,11 @@ public final class Converters {
     return "";
   }
 
-  public static String dateFromSeconds(String date) {
+  public static String dateFromSeconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd.MM.yyyy", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
       long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
@@ -81,10 +86,11 @@ public final class Converters {
     return "";
   }
 
-  public static String fullDateWithTimeFromSeconds(String date) {
+  public static String fullDateWithTimeFromSeconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy (HH:mm)", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd.MM.yyyy (HH:mm)", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
       long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
@@ -95,10 +101,11 @@ public final class Converters {
     return "";
   }
 
-  public static String dayFromSeconds(String date) {
+  public static String dayFromSeconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("dd EEE", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd EEE", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
       long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);
@@ -109,10 +116,11 @@ public final class Converters {
     return "";
   }
 
-  public static String detailDayFromSeconds(String date) {
+  public static String detailDayFromSeconds(Context context, String date) {
     if (!date.equals("")) {
       String dateResult;
-      SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM (E)", mLocale);
+      SimpleDateFormat formatter =
+          new SimpleDateFormat("dd MMMM (E)", new Locale(LocaleHelper.getLanguage(context)));
       Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
       long d = Long.valueOf(date) * 1000L;
       calendar.setTimeInMillis(d);

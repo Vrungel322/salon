@@ -19,10 +19,12 @@ import java.util.List;
 public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   private LayoutInflater mLayoutInflater;
   private List<DataServiceEntity> daysInMonth;
+  private final Context mContext;
 
   public DatesInMonthViewPagerAdapter(Context context, List<DataServiceEntity> daysInMonth) {
     mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.daysInMonth = daysInMonth;
+    this.mContext = context;
   }
 
   @Override public int getCount() {
@@ -36,14 +38,15 @@ public class DatesInMonthViewPagerAdapter extends PagerAdapter {
   @Override public Object instantiateItem(ViewGroup container, int position) {
     View itemView = mLayoutInflater.inflate(R.layout.item_day_in_month, container, false);
     final TextView textView = (TextView) itemView.findViewById(R.id.tvDayInMonth);
-    textView.setText(
-        Converters.detailDayFromSeconds(daysInMonth.get(position).getStartTime().toString()));
+    textView.setText(Converters.detailDayFromSeconds(mContext,
+        daysInMonth.get(position).getStartTime().toString()));
     container.addView(itemView);
     return itemView;
   }
 
   public String getEntity(int position) {
-    return Converters.detailDayFromSeconds(daysInMonth.get(position).getStartTime().toString());
+    return Converters.detailDayFromSeconds(mContext,
+        daysInMonth.get(position).getStartTime().toString());
   }
 
   @Override public void destroyItem(ViewGroup container, int position, Object object) {
