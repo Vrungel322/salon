@@ -6,16 +6,16 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import java.util.Locale;
+
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_FILE_NAME;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_LANGUAGE_CODE;
 
 /**
  * Created by alexandersvyatetsky on 21/07/17.
  */
 
 public class LocaleHelper {
-
-  private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
 
   public static Context onAttach(Context context) {
     String lang = getPersistedData(context, Locale.getDefault().getLanguage());
@@ -42,15 +42,17 @@ public class LocaleHelper {
   }
 
   private static String getPersistedData(Context context, String defaultLanguage) {
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-    return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+    SharedPreferences preferences =
+        context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+    return preferences.getString(PREF_LANGUAGE_CODE, defaultLanguage);
   }
 
   private static void persist(Context context, String language) {
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+    SharedPreferences preferences =
+        context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = preferences.edit();
 
-    editor.putString(SELECTED_LANGUAGE, language);
+    editor.putString(PREF_LANGUAGE_CODE, language);
     editor.apply();
   }
 

@@ -18,6 +18,7 @@ public class PreferencesHelper {
 
   private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
+  static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
   private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   private static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
@@ -144,11 +145,17 @@ public class PreferencesHelper {
     return null;
   }
 
+  /*language*/
+
   public String getSelectedLanguage() {
     return mPreferences.getString(PREF_LANGUAGE, "");
   }
 
   public void setSelectedLanguage(String selectedLanguage) {
     mPreferences.edit().putString(PREF_LANGUAGE, selectedLanguage).apply();
+  }
+
+  public String getLanguageCode() {
+    return mPreferences.getString(PREF_LANGUAGE_CODE, "ru");
   }
 }
