@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubBonusRegistrationFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.feature.my_bonus.fragments.BonusHowFragment;
@@ -81,7 +82,7 @@ public class SubBonusRegistrationFragment extends BaseFragment
   @OnClick(R.id.cvBonusRegistration) public void cvBonusRegistrationClicked() {
     if (!mAuthorizationManager.isAuthorized()) {
       mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
-          ThemeUtils.getThemeActionBar(getContext()));
+          ThemeUtils.getThemeActionBar(getContext()), LocaleHelper.getLanguage(getContext()));
     } else {
       mNavigator.addFragmentTagClearBackStackNotCopy((AppCompatActivity) getActivity(),
           R.id.container_main, MyBonusFragment.newInstance(),

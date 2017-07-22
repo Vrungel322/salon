@@ -9,15 +9,15 @@ import com.arellomobile.mvp.InjectViewState;
 import rx.Observable;
 import rx.Subscription;
 
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_DAILY_ENABLED;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_DAYS;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_HOURLY_ENABLED;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_HOURS;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_HOURS_NIGHT_END;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_HOURS_NIGHT_START;
-import static com.apps.twelve.floor.authorization.utils.Constants.Notification.PREF_NOTIF_NIGHT_MODE;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAILY_ENABLED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAYS;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURLY_ENABLED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS_NIGHT_END;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS_NIGHT_START;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_NIGHT_MODE;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 
 /**

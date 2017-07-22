@@ -88,7 +88,11 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
   }
 
   @Override public void setUserGender(String gender) {
-    mTvGender.setText(gender);
+    if (TextUtils.isEmpty(gender)) {
+      mTvGender.setText(getString(R.string.default_gender));
+    } else {
+      mTvGender.setText(gender);
+    }
   }
 
   @Override public void showChangeGenderDialog() {

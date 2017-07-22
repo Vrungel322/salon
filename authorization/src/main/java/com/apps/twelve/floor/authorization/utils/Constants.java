@@ -67,13 +67,8 @@ public final class Constants {
     public static final int DEFAULT_YEAR = 1999;
   }
 
-  public class Notification {
-    public static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
-    public static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
-    public static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
-    public static final String PREF_NOTIF_HOURS_NIGHT_START = "PREF_NOTIF_HOURS_NIGHT_START";
-    public static final String PREF_NOTIF_HOURS_NIGHT_END = "PREF_NOTIF_HOURS_NIGHT_END";
-    public static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
-    public static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
+  public class Language {
+    public static final String UK = "uk";
+    public static final String RU = "ru";
   }
 }

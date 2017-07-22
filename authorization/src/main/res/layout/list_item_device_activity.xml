@@ -3,6 +3,7 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_margin="10dp"
   android:orientation="vertical"
   app:contentPadding="@null">
@@ -16,7 +17,7 @@
       android:id="@+id/device_name_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Имя устройства: "
+      android:text="@string/activity_history_device_name"
       android:textSize="16sp" />
 
     <TextView
@@ -24,7 +25,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_toRightOf="@id/device_name_label"
-      android:text="Meizu  M2 note"
+      tools:text="Meizu  M2 note"
       android:textColor="@color/black"
       android:textSize="16sp" />
 
@@ -34,7 +35,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/device_name"
       android:layout_marginTop="8dp"
-      android:text="ОС: "
+      android:text="@string/activity_history_os"
       android:textSize="16sp" />
 
     <TextView
@@ -44,7 +45,7 @@
       android:layout_below="@id/device_name"
       android:layout_marginTop="8dp"
       android:layout_toRightOf="@id/os_version_label"
-      android:text="Android 5.1"
+      tools:text="Android 5.1"
       android:textColor="@color/black"
       android:textSize="16sp" />
 
@@ -54,7 +55,7 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/os_version_label"
       android:layout_marginTop="8dp"
-      android:text="Активность: "
+      android:text="@string/activity_history_date"
       android:textSize="16sp" />
 
     <TextView
@@ -64,7 +65,7 @@
       android:layout_below="@id/os_version"
       android:layout_marginTop="8dp"
       android:layout_toRightOf="@id/activity_date_label"
-      android:text="16.12.2017 15:55"
+      tools:text="16.12.2017 15:55"
       android:textColor="@color/black"
       android:textSize="16sp" />
 

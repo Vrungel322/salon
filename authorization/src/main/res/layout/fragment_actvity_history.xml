@@ -33,7 +33,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:background="?colorAccent"
-        android:text="Выйти из остальных сеансов"
+        android:text="@string/activity_history_logout_all"
         android:textColor="@color/colorWhite"
         android:visibility="gone" />
 

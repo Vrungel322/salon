@@ -67,7 +67,9 @@ public class AuthorizationManager {
     activity.startActivity(new Intent(activity, ModuleSignInActivity.class));
   }
 
-  public void startSignInActivity(AppCompatActivity activity, @StyleRes int resIdStyle) {
+  public void startSignInActivity(AppCompatActivity activity, @StyleRes int resIdStyle,
+      String language) {
+    mDataManager.setLanguage(language);
     mDataManager.setStyleResId(resIdStyle);
     activity.startActivity(new Intent(activity, ModuleSignInActivity.class));
   }

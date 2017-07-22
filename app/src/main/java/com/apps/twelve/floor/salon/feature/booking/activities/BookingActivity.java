@@ -13,6 +13,7 @@ import berlin.volders.badger.Badger;
 import berlin.volders.badger.CountBadge;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.feature.booking.fragments.BookingFragment;
 import com.apps.twelve.floor.salon.feature.booking.presenters.BookingActivityPresenter;
 import com.apps.twelve.floor.salon.feature.booking.views.IBookingActivityView;
@@ -23,7 +24,6 @@ import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
-import timber.log.Timber;
 
 /**
  * Created by John on 23.03.2017.
@@ -113,7 +113,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
         .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
-          mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext));
+          mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(mContext),
+              LocaleHelper.getLanguage(BookingActivity.this));
           mBookingActivityPresenter.cancelAlertDialog();
         })
         .create();
@@ -127,7 +128,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
         .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> mBookingActivityPresenter.cancelAlertDialog())
         .setPositiveButton(R.string.dialog_auth_yes, (dialog, which) -> {
-         mNavigator.startActivity(this, new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+          mNavigator.startActivity(this, new Intent(Settings.ACTION_WIRELESS_SETTINGS));
           mBookingActivityPresenter.cancelAlertDialog();
         })
         .create();
@@ -166,7 +167,8 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   }
 
   @Override public void startSignInActivity() {
-    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
+    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this),
+        LocaleHelper.getLanguage(BookingActivity.this));
   }
 
   @Override public void showWrongMessage() {
