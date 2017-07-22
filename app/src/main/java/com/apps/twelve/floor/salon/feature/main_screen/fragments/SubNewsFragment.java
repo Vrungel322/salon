@@ -60,7 +60,7 @@ public class SubNewsFragment extends BaseFragment implements ISubNewsFragmentVie
           .dontAnimate()
           .into(mImageViewNewsPreview);
       mTextViewNewsShortDescription.setText(mNewsEntity.getTitle());
-      mTextViewNewsData.setText(dateFromSeconds(mNewsEntity.getCreatedAt()));
+      mTextViewNewsData.setText(dateFromSeconds(getContext(), mNewsEntity.getCreatedAt()));
     }
   }
 

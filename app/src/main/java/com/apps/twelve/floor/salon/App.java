@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.salon;
 
+import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.di.components.AppComponent;
 import com.apps.twelve.floor.salon.di.components.BookingComponent;
 import com.apps.twelve.floor.salon.di.components.DaggerAppComponent;
@@ -15,6 +17,8 @@ import com.evernote.android.job.JobManager;
 import io.fabric.sdk.android.Fabric;
 import shortbread.Shortbread;
 import timber.log.Timber;
+
+import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
 /**
  * Created by Vrungel on 25.01.2017.
@@ -48,6 +52,10 @@ import timber.log.Timber;
 
     //after initialize modules dagger
     JobManager.create(this).addJobCreator(new JobsCreator());
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
   }
 
   public static void initBookingComponent() {

@@ -98,7 +98,7 @@ public class MyLastBookingAdapter
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mLastBookingEntities.get(position).getServiceName());
-    holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(
+    holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(mContext,
         String.valueOf(mLastBookingEntities.get(position).getServiceTime())));
 
     //for DownTimer

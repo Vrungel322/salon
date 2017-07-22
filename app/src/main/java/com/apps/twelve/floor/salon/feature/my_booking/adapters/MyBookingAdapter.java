@@ -100,7 +100,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
         .into(holder.mImageViewServicePhoto);
 
     holder.mTextViewServiceName.setText(mBookingEntities.get(position).getServiceName());
-    holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(
+    holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(mContext,
         String.valueOf(mBookingEntities.get(position).getServiceTime())));
 
     //for DownTimer

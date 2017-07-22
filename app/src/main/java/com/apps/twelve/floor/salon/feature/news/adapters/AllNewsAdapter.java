@@ -70,7 +70,7 @@ public class AllNewsAdapter extends RecyclerView.Adapter<AllNewsAdapter.AllNewsV
     holder.mTextViewItemNewsShortDescription.setText(mNewsEntities.get(position).getTitle());
 
     holder.mTextViewItemNewsData.setText(
-        dateFromSeconds(mNewsEntities.get(position).getCreatedAt()));
+        dateFromSeconds(mContext, mNewsEntities.get(position).getCreatedAt()));
   }
 
   @Override public int getItemCount() {

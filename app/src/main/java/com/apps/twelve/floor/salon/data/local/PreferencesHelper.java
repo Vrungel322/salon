@@ -27,6 +27,7 @@ public class PreferencesHelper {
   private static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
   private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
   private static final String PREF_BOOKING = "PREF_BOOKING";
+  private static final String PREF_LANGUAGE = "PREF_LANGUAGE";
 
   private final SharedPreferences mPreferences;
   private Gson mGson;
@@ -141,5 +142,13 @@ public class PreferencesHelper {
       }.getType());
     }
     return null;
+  }
+
+  public String getSelectedLanguage() {
+    return mPreferences.getString(PREF_LANGUAGE, "");
+  }
+
+  public void setSelectedLanguage(String selectedLanguage) {
+    mPreferences.edit().putString(PREF_LANGUAGE, selectedLanguage).apply();
   }
 }

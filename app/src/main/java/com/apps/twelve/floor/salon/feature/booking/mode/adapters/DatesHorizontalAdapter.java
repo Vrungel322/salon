@@ -45,12 +45,12 @@ public class DatesHorizontalAdapter
   }
 
   @Override public void onBindViewHolder(DatesViewHolder holder, int position) {
-    holder.mTextViewDate.setText(
-        Converters.dayFromSeconds(mWorkStartEndEntityList.get(position).getStartTime().toString()));
-    holder.mTextViewStartTime.setText(Converters.timeFromSeconds(
+    holder.mTextViewDate.setText(Converters.dayFromSeconds(mContext,
         mWorkStartEndEntityList.get(position).getStartTime().toString()));
-    holder.mTextViewEndTime.setText(
-        Converters.timeFromSeconds(mWorkStartEndEntityList.get(position).getEndTime().toString()));
+    holder.mTextViewStartTime.setText(Converters.timeFromSeconds(mContext,
+        mWorkStartEndEntityList.get(position).getStartTime().toString()));
+    holder.mTextViewEndTime.setText(Converters.timeFromSeconds(mContext,
+        mWorkStartEndEntityList.get(position).getEndTime().toString()));
 
     TypedValue value = new TypedValue();
     mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);

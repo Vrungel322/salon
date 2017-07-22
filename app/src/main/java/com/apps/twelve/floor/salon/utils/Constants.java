@@ -84,6 +84,13 @@ public final class Constants {
     public static final int RED = 6;
   }
 
+  public class Language {
+    public static final String UKRAINIAN = "Українська";
+    public static final String RUSSIAN = "Русский";
+    public static final String UK = "uk";
+    public static final String RU = "ru";
+  }
+
   public class Rotation {
     public static final int PORTRAIT = 2;
     public static final int LANDSCAPE = 3;

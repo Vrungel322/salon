@@ -105,7 +105,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                         .getScheduleEntities()
                         .get(timePosition)
                         .getTimeInSec()) * 1000L - System.currentTimeMillis(), serviceName,
-                    Converters.detailDayFromSeconds(
+                    Converters.detailDayFromSeconds(mContext,
                         mDataServiceEntity.get(dayPosition).getStartTime().toString()),
                     mDataServiceEntity.get(dayPosition)
                         .getScheduleEntities()

@@ -277,5 +277,14 @@ public class DataManager {
     mPref.logoutUser();
     mAuthorizationManager.clear();
   }
+
+  //language
+  public String getSelectedLanguage() {
+    return mPref.getSelectedLanguage();
+  }
+
+  public void setSelectedLanguage(String selectedLanguage) {
+    mPref.setSelectedLanguage(selectedLanguage);
+  }
 }
 

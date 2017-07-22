@@ -38,7 +38,6 @@ import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.CONTACTS_ABOUT_FRAGMENT;
 
