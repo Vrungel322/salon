@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.multidex.MultiDexApplication;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.local.LocaleHelper;
@@ -57,6 +58,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
   @Override protected void attachBaseContext(Context base) {
     super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 
   public static void initBookingComponent() {
