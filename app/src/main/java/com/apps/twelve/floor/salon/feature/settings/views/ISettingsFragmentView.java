@@ -14,5 +14,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void openUserProfileFragment();
 
+  void showChangeLanguageDialog();
   void closeChangeLanguageDialog();
 }

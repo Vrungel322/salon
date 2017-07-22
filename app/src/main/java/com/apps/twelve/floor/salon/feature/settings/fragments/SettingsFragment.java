@@ -89,6 +89,10 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   }
 
   @OnClick(R.id.tvLanguage) public void onViewClicked() {
+    mSettingsFragmentPresenter.showChangeLanguageDialog();
+  }
+
+  @Override public void showChangeLanguageDialog() {
     String[] languages = getResources().getStringArray(R.array.dialog_language);
     mSelectedLanguage = languages[mSettingsFragmentPresenter.getLanguagePosition()];
     mChangeLanguageDialog = DialogFactory.createAlertDialogBuilder(getContext(),

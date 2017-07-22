@@ -58,6 +58,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.Language.UKRAINIAN;
     mDataManager.setSelectedLanguage(mSelectedLanguage);
   }
 
+  public void showChangeLanguageDialog() {
+    getViewState().showChangeLanguageDialog();
+  }
+
   public void closeChangeLanguageDialog() {
     getViewState().closeChangeLanguageDialog();
   }
