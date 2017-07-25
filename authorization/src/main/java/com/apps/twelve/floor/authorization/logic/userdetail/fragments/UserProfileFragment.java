@@ -33,7 +33,6 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.TimeZone;
 import timber.log.Timber;
 
 import static android.app.Activity.RESULT_OK;
@@ -88,7 +87,11 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
   }
 
   @Override public void setUserGender(String gender) {
-    mTvGender.setText(gender);
+    if (TextUtils.isEmpty(gender)) {
+      mTvGender.setText(getString(R.string.default_gender));
+    } else {
+      mTvGender.setText(gender);
+    }
   }
 
   @Override public void showChangeGenderDialog() {
@@ -151,15 +154,18 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
   }
 
   @OnClick(R2.id.rlBirthDate) public void showDatePickerDialog() {
+    //setup DatePickerDialog locale
+    Locale locale = getResources().getConfiguration().locale;
+    Locale.setDefault(locale);
+
     Calendar now = DateUtils.parseClientDate(mTvBirthDate.getText().toString());
     DatePickerDialog dpd = DatePickerDialog.newInstance((view, year, monthOfYear, dayOfMonth) -> {
       String date =
-          String.format(Locale.ENGLISH, "%d-%02d-%02d", year, (monthOfYear + 1), dayOfMonth);
+          String.format(Locale.getDefault(), "%d-%02d-%02d", year, (monthOfYear + 1), dayOfMonth);
       mUserProfileFragmentPresenter.saveUserBirthDay(date);
     }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
     dpd.setCancelText(getString(R.string.btn_ok));
     dpd.setOkText(R.string.btn_cancel);
-    dpd.setTimeZone(TimeZone.getTimeZone("ru"));
     dpd.show(getActivity().getFragmentManager(), "Datepickerdialog");
   }
 

@@ -279,4 +279,8 @@ public class DataManager {
   public Observable<String> getObservableUserBirthDay() {
     return Observable.just(mPreferencesHelper.getUserBirthDay());
   }
+
+  public void setLanguage(String language) {
+    mPreferencesHelper.setLanguage(language);
+  }
 }

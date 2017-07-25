@@ -1,7 +1,9 @@
 package com.apps.twelve.floor.authorization.logic.authorization.activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -18,6 +20,7 @@ import com.apps.twelve.floor.authorization.R;
 import com.apps.twelve.floor.authorization.R2;
 import com.apps.twelve.floor.authorization.base.BaseActivity;
 import com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout;
+import com.apps.twelve.floor.authorization.data.local.LocaleHelper;
 import com.apps.twelve.floor.authorization.data.model.UserEntity;
 import com.apps.twelve.floor.authorization.logic.authorization.presenters.ModuleSignInPresenter;
 import com.apps.twelve.floor.authorization.logic.authorization.views.IModuleSignInActivityView;
@@ -29,6 +32,7 @@ import com.apps.twelve.floor.authorization.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Language.RU;
 import static com.apps.twelve.floor.authorization.utils.Constants.Regex.REGEX_EMAIL_OR_PHONE;
 import static com.apps.twelve.floor.authorization.utils.Constants.Regex.REGEX_NOT_EMPTY;
 import static com.basgeekball.awesomevalidation.ValidationStyle.TEXT_INPUT_LAYOUT;
@@ -66,6 +70,16 @@ public class ModuleSignInActivity extends BaseActivity implements IModuleSignInA
 
     mAwesomeValidation.addValidation(ModuleSignInActivity.this, R.id.til_password, REGEX_NOT_EMPTY,
         R.string.error_password_empty);
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {

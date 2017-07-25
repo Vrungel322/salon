@@ -12,6 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.GoodsFavoriteListAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CatalogFavoriteFragmentPresenter;
@@ -89,6 +90,6 @@ public class CatalogFavoriteFragment extends BaseFragment implements ICataloFavo
 
   @Override public void startLoginActivity() {
     mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
-        ThemeUtils.getThemeActionBar(getContext()));
+        ThemeUtils.getThemeActionBar(getContext()), LocaleHelper.getLanguage(getContext()));
   }
 }

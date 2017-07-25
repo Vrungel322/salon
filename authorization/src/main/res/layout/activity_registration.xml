@@ -95,7 +95,7 @@
         android:layout_height="40dp"
         android:background="@color/colorInputField"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Email"
+        android:hint="@string/user_edit_profile_email_hint"
         android:inputType="text|textEmailAddress"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_email_description" />
@@ -145,7 +145,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
-      android:text="Пароль*"
+      android:text="@string/registration_your_password"
       android:textColor="@color/colorBlackLight"
       android:textSize="18sp"
       app:layout_constraintLeft_toLeftOf="@+id/line"
@@ -172,7 +172,7 @@
         android:layout_height="40dp"
         android:background="@color/colorInputField"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Пароль"
+        android:hint="@string/registration_hint_password"
         android:inputType="textPassword"
         android:textSize="14sp" />
 
@@ -183,7 +183,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
-      android:text="Пароль для подтверждения*"
+      android:text="@string/registration_your_confirm_password"
       android:textColor="@color/colorBlackLight"
       android:textSize="18sp"
       app:layout_constraintLeft_toLeftOf="@+id/line"
@@ -210,7 +210,7 @@
         android:layout_height="40dp"
         android:background="@color/colorInputField"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Пароль"
+        android:hint="@string/registration_hint_password"
         android:inputType="textPassword"
         android:textSize="14sp" />
 

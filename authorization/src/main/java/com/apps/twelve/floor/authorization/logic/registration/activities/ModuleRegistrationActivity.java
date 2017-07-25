@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.authorization.logic.registration.activities;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -20,6 +22,7 @@ import com.apps.twelve.floor.authorization.R;
 import com.apps.twelve.floor.authorization.R2;
 import com.apps.twelve.floor.authorization.base.BaseActivity;
 import com.apps.twelve.floor.authorization.base.NoChangeBackgroundTextInputLayout;
+import com.apps.twelve.floor.authorization.data.local.LocaleHelper;
 import com.apps.twelve.floor.authorization.data.model.UserEntity;
 import com.apps.twelve.floor.authorization.logic.registration.presenters.ModuleRegistrationPresenter;
 import com.apps.twelve.floor.authorization.logic.registration.views.IModuleRegistrationActivityView;
@@ -29,6 +32,7 @@ import com.apps.twelve.floor.authorization.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Language.RU;
 import static com.apps.twelve.floor.authorization.utils.Constants.Regex.REGEX_EMAIL;
 import static com.apps.twelve.floor.authorization.utils.Constants.Regex.REGEX_NOT_EMPTY;
 import static com.apps.twelve.floor.authorization.utils.Constants.Regex.REGEX_PASSWORD_LENGTH;
@@ -96,6 +100,16 @@ public class ModuleRegistrationActivity extends BaseActivity
         REGEX_PASSWORD_LENGTH, R.string.error_password_length);
     mAwesomeValidation.addValidation(ModuleRegistrationActivity.this, R.id.til_confirm_password,
         R.id.til_password, R.string.error_password_no_consist);
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 
   @OnClick(R2.id.btn_registration) public void register() {

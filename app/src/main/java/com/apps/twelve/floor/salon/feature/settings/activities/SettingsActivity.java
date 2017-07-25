@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.feature.settings.fragments.SettingsFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
@@ -48,7 +49,8 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   }
 
   @Override public void startSignInActivity() {
-    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this));
+    mAuthorizationManager.startSignInActivity(this, ThemeUtils.getThemeActionBar(this),
+        LocaleHelper.getLanguage(SettingsActivity.this));
   }
 
   @Override public void showWrongMessage() {
