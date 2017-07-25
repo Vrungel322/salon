@@ -65,6 +65,21 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
     Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
   }
 
+  protected void showLongAlertMessage(String title, String message) {
+    TypedValue value = new TypedValue();
+    getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    Alerter.create(this)
+        .setTitle(title)
+        .setText(message)
+        .enableInfiniteDuration(true)
+        .enableSwipeToDismiss()
+        .setBackgroundColor(value.resourceId)
+        .setOnClickListener(view -> {
+
+        })
+        .show();
+  }
+
   public void setTitleAppBar(@StringRes int resId) {
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {

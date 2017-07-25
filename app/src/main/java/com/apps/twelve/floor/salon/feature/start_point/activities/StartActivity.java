@@ -130,7 +130,7 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void showConnectErrorMessage() {
-    showAlertMessage(getString(R.string.error_connection),
+    showLongAlertMessage(getString(R.string.error_connection),
         getString(R.string.сheck_internet_connection));
   }
 
@@ -282,8 +282,12 @@ public class StartActivity extends BaseActivity
         })
         .create();
     mAuthorizationDialog.show();
-    mAuthorizationDialog.setOnCancelListener(
-        dialog -> mStartActivityPresenter.cancelAlertDialog());
+    mAuthorizationDialog.setOnCancelListener(dialog -> mStartActivityPresenter.cancelAlertDialog());
+  }
+
+  @Override public void showNoInternetAlerter() {
+    showLongAlertMessage(getString(R.string.dialog_error_title),
+        getString(R.string.сheck_internet_connection));
   }
 
   @Override public void cancelAlertDialog() {

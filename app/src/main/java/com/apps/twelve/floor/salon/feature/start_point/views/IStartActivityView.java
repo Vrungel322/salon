@@ -43,4 +43,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   @StateStrategyType(SkipStrategy.class) void startSignInActivity();
 
   @StateStrategyType(AddToEndSingleStrategy.class) void showNoInternetAlertDialog();
+
+  void showNoInternetAlerter();
 }
