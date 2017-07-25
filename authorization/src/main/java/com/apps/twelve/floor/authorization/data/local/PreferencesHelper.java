@@ -152,4 +152,8 @@ public class PreferencesHelper {
   public void setLanguage(String language) {
     mPreferences.edit().putString(PREF_LANGUAGE, language).apply();
   }
+
+  public String getLanguage() {
+    return mPreferences.getString(PREF_LANGUAGE, "ru");
+  }
 }

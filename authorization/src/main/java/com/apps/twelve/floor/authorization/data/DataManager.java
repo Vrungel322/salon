@@ -21,8 +21,6 @@ import rx.Observable;
 
 public class DataManager {
 
-  private final static String RU = "ru";
-
   private RestApi mRestApi;
   private PreferencesHelper mPreferencesHelper;
 
@@ -34,23 +32,23 @@ public class DataManager {
   /*Api call*/
 
   public Observable<Response<TokenEntity>> login(CredentialsEntity credentials) {
-    return mRestApi.login(RU/*Locale.getDefault().getLanguage()*/, credentials);
+    return mRestApi.login(mPreferencesHelper.getLanguage(), credentials);
   }
 
   public Observable<Response<TokenEntity>> register(UserEntity user) {
-    return mRestApi.register(RU/*Locale.getDefault().getLanguage()*/, user);
+    return mRestApi.register(mPreferencesHelper.getLanguage(), user);
   }
 
   public Observable<Response<Void>> resetPassword(CredentialsEntity credentialsEntity) {
-    return mRestApi.resetPassword(RU/*Locale.getDefault().getLanguage()*/, credentialsEntity);
+    return mRestApi.resetPassword(mPreferencesHelper.getLanguage(), credentialsEntity);
   }
 
   public Observable<Response<Void>> verifyCode(CredentialsEntity credentialsEntity) {
-    return mRestApi.verifyCode(RU, credentialsEntity);
+    return mRestApi.verifyCode(mPreferencesHelper.getLanguage(), credentialsEntity);
   }
 
   public Observable<Response<Void>> changePassword(CredentialsEntity credentialsEntity) {
-    return mRestApi.changePassword(RU, credentialsEntity);
+    return mRestApi.changePassword(mPreferencesHelper.getLanguage(), credentialsEntity);
   }
 
   public Observable<Response<UserEntity>> getUserProfile() {
@@ -58,8 +56,8 @@ public class DataManager {
   }
 
   public Observable<Response<UserEntity>> updateUserProfile(UserEntity user) {
-    return mRestApi.updateUserProfile(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
-        user);
+    return mRestApi.updateUserProfile(mPreferencesHelper.getToken(),
+        mPreferencesHelper.getLanguage(), user);
   }
 
   public Observable<Response<TokenEntity>> refreshToken() {
@@ -67,7 +65,7 @@ public class DataManager {
   }
 
   public Observable<Response<TokenEntity>> updatePassword(String password, String newPassword) {
-    return mRestApi.updatePassword(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
+    return mRestApi.updatePassword(mPreferencesHelper.getToken(), mPreferencesHelper.getLanguage(),
         password, newPassword);
   }
 
@@ -84,33 +82,33 @@ public class DataManager {
   }
 
   public Observable<Response<Void>> updateEmail1(UserEntity userEntity) {
-    return mRestApi.updateEmail1(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
+    return mRestApi.updateEmail1(mPreferencesHelper.getToken(), mPreferencesHelper.getLanguage(),
         userEntity);
   }
 
   public Observable<Response<Void>> updateEmail2(UserEntity userEntity) {
-    return mRestApi.updateEmail2(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
+    return mRestApi.updateEmail2(mPreferencesHelper.getToken(), mPreferencesHelper.getLanguage(),
         userEntity);
   }
 
   public Observable<Response<Void>> updatePhone1(UserEntity userEntity) {
-    return mRestApi.updatePhone1(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
+    return mRestApi.updatePhone1(mPreferencesHelper.getToken(), mPreferencesHelper.getLanguage(),
         userEntity);
   }
 
   public Observable<Response<Void>> updatePhone2(UserEntity userEntity) {
-    return mRestApi.updatePhone2(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
+    return mRestApi.updatePhone2(mPreferencesHelper.getToken(), mPreferencesHelper.getLanguage(),
         userEntity);
   }
 
   public Observable<Response<Void>> deleteUserProfile1(String password) {
-    return mRestApi.deleteUserProfile1(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
-        password);
+    return mRestApi.deleteUserProfile1(mPreferencesHelper.getToken(),
+        mPreferencesHelper.getLanguage(), password);
   }
 
   public Observable<Response<Void>> deleteUserProfile2(String verifyCode) {
-    return mRestApi.deleteUserProfile2(mPreferencesHelper.getToken(), RU/*Locale.getDefault().getLanguage()*/,
-        verifyCode);
+    return mRestApi.deleteUserProfile2(mPreferencesHelper.getToken(),
+        mPreferencesHelper.getLanguage(), verifyCode);
   }
 
   public Observable<Response<UserEntity>> updateUserPicture(File file) {
@@ -130,11 +128,13 @@ public class DataManager {
   }
 
   public Observable<Response<Void>> addAdditionalField(String key, String value) {
-    return mRestApi.addAdditionalField(mPreferencesHelper.getToken(), RU, key, value);
+    return mRestApi.addAdditionalField(mPreferencesHelper.getToken(),
+        mPreferencesHelper.getLanguage(), key, value);
   }
 
   public Observable<Response<Void>> updateAdditionalField(String key, String value) {
-    return mRestApi.updateAdditionalField(mPreferencesHelper.getToken(), RU, key, value);
+    return mRestApi.updateAdditionalField(mPreferencesHelper.getToken(),
+        mPreferencesHelper.getLanguage(), key, value);
   }
 
   /*SharedPreferences*/
