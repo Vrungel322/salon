@@ -12,6 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.feature.our_works.adapters.OurWorkAdapter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
@@ -95,7 +96,7 @@ public class OurWorkFragment extends BaseFragment implements IOurWorkFragmentVie
 
   @Override public void startLoginActivity() {
     mAuthorizationManager.startSignInActivity((AppCompatActivity) getActivity(),
-        ThemeUtils.getThemeActionBar(getContext()));
+        ThemeUtils.getThemeActionBar(getContext()), LocaleHelper.getLanguage(getContext()));
   }
 
   @Override public void showServerErrorMsg() {

@@ -1,4 +1,4 @@
-package com.apps.twelve.floor.salon.data.local;
+package com.apps.twelve.floor.authorization.data.local;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.content.res.Resources;
 import android.os.Build;
 import java.util.Locale;
 
-import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_FILE_NAME;
-import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_LANGUAGE_CODE;
+import static com.apps.twelve.floor.authorization.data.local.PreferencesHelper.PREF_FILE_NAME;
+import static com.apps.twelve.floor.authorization.data.local.PreferencesHelper.PREF_LANGUAGE;
 
 /**
  * Created by alexandersvyatetsky on 21/07/17.
@@ -44,7 +44,7 @@ public class LocaleHelper {
   private static String getPersistedData(Context context, String defaultLanguage) {
     SharedPreferences preferences =
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
-    return preferences.getString(PREF_LANGUAGE_CODE, defaultLanguage);
+    return preferences.getString(PREF_LANGUAGE, defaultLanguage);
   }
 
   private static void persist(Context context, String language) {
@@ -52,7 +52,7 @@ public class LocaleHelper {
         context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = preferences.edit();
 
-    editor.putString(PREF_LANGUAGE_CODE, language);
+    editor.putString(PREF_LANGUAGE, language);
     editor.apply();
   }
 

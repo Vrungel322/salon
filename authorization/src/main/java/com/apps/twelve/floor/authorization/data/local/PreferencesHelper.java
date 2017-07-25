@@ -15,6 +15,8 @@ public class PreferencesHelper {
   public static final String PREF_FILE_NAME = "com.authorization.floor12";
   //THEME
   public static final String PREF_STYLE_RES_ID = "pref_style_res_id";
+  //LANGUAGE
+  public static final String PREF_LANGUAGE = "pref_language";
   //TOKEN
   private static final String BEARER = "bearer";
   private static final String PREF_TOKEN = "token";
@@ -88,7 +90,7 @@ public class PreferencesHelper {
   }
 
   public String getUserGender() {
-    return mPreferences.getString(PREF_USER_GENDER, mContext.getString(R.string.default_gender));
+    return mPreferences.getString(PREF_USER_GENDER, "");
   }
 
   public void setUserGender(String gender) {
@@ -145,5 +147,9 @@ public class PreferencesHelper {
 
   public boolean isExistAdditionalField(String key) {
     return !TextUtils.isEmpty(mPreferences.getString(key, ""));
+  }
+
+  public void setLanguage(String language) {
+    mPreferences.edit().putString(PREF_LANGUAGE, language).apply();
   }
 }

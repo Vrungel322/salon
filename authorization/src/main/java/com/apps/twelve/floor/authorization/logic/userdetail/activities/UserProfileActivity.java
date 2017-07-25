@@ -15,17 +15,22 @@ package com.apps.twelve.floor.authorization.logic.userdetail.activities;
  * limitations under the License.
  */
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.apps.twelve.floor.authorization.R;
 import com.apps.twelve.floor.authorization.base.BaseActivity;
+import com.apps.twelve.floor.authorization.data.local.LocaleHelper;
 import com.apps.twelve.floor.authorization.logic.authorization.activities.ModuleSignInActivity;
 import com.apps.twelve.floor.authorization.logic.userdetail.fragments.UserProfileFragment;
 import com.apps.twelve.floor.authorization.logic.userdetail.presenters.UserProfileActivityPresenter;
 import com.apps.twelve.floor.authorization.logic.userdetail.views.IUserProfileActivity;
 import com.apps.twelve.floor.authorization.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import static com.apps.twelve.floor.authorization.utils.Constants.Language.RU;
 
 public class UserProfileActivity extends BaseActivity implements IUserProfileActivity {
 
@@ -48,6 +53,16 @@ public class UserProfileActivity extends BaseActivity implements IUserProfileAct
       default:
         return super.onOptionsItemSelected(item);
     }
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 
   @Override public void addUserProfileFragment() {

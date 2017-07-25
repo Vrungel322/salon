@@ -16,12 +16,19 @@
   <string name="sign_in_recovery_message"><u>Восстановить пароль</u></string>
   <string name="login_error">Неверные логин или пароль</string>
   <string name="login_dialog_message">Авторизация…</string>
-  <string name="sign_in_facebook">facebook</string>
-  <string name="sign_in_google">google</string>
+  <string name="sign_in_facebook" translatable="false">facebook</string>
+  <string name="sign_in_google" translatable="false">google</string>
+  <string name="sign_in_or">или</string>
+  <string name="sign_in_with_google">Войти с Google+</string>
+  <string name="sign_in_with_facebook">Войти с Facebook</string>
+
 
   <!--registration-->
   <string name="registration_label">Регистрация</string>
   <string name="registration_your_name">Ваше имя*</string>
+  <string name="registration_your_password">Пароль*</string>
+  <string name="registration_your_confirm_password">Пароль для подтверждения*</string>
+  <string name="registration_hint_password">Пароль</string>
   <string name="registration_your_name_description">Ваше имя или ФИО</string>
   <string name="registration_phone_number">Номер мобильного телефона</string>
   <string name="registration_phone_number_description">(формат +380501234455)</string>
@@ -37,6 +44,7 @@
   <string name="user_profile_greetings">Добро пожаловать!</string>
   <string name="user_profile_logout">Выйти</string>
   <string name="user_profile_label">Профиль</string>
+  <string name="user_profile_name">Имя</string>
 
   <!--user edit profile-->
   <string name="user_edit_profile_label">Редактировать профиль</string>
@@ -50,6 +58,8 @@
 
   <!--recovery passwordError-->
   <string name="recovery_password_label">Восстановить пароль</string>
+  <string name="recovery_password_header">Введите ваш email или телефон</string>
+  <string name="recovery_password_button">Восстановить</string>
 
   <!--Error messages-->
   <string name="error_required_field">Поле обязательное для заполнения</string>
@@ -80,11 +90,11 @@
   <string name="dialog_message_logout_all">Вы уверены, что хотите выйти со всех сеансов?</string>
 
   <!--facebook-->
-  <string name="facebook_app_id">198627450659129</string>
-  <string name="fb_login_protocol_scheme">fb198627450659129</string>
+  <string name="facebook_app_id" translatable="false">198627450659129</string>
+  <string name="fb_login_protocol_scheme" translatable="false">fb198627450659129</string>
 
   <!--google-->
-  <string name="google_client_id">959770495373-l1eft7s2isc2k6ir4gfr1u8u0r174fle.apps.googleusercontent.com</string>
+  <string name="google_client_id" translatable="false">959770495373-l1eft7s2isc2k6ir4gfr1u8u0r174fle.apps.googleusercontent.com</string>
   <string name="error_title">Ошибка</string>
 
   <!--gender-->
@@ -93,9 +103,9 @@
     <item>Мужской</item>
     <item>Женский</item>
   </string-array>
-  <string name="gender_unknown">unknown</string>
-  <string name="gender_male">male</string>
-  <string name="gender_female">female</string>
+  <string name="gender_unknown" translatable="false">unknown</string>
+  <string name="gender_male" translatable="false">male</string>
+  <string name="gender_female" translatable="false">female</string>
 
   <string-array name="changing_field">
     <item>имя</item>
@@ -112,7 +122,6 @@
   <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_change_theme">Тема приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
-  <string name="clear_history">Очистить историю</string>
   <string name="exit">Выйти</string>
   <string name="error_empty_gallery">Список пуст …</string>
   <string name="change_user_info">Изменить %s</string>
@@ -129,18 +138,14 @@
   <string name="current_field_phone">Текущий телефон:</string>
   <string name="new_field_phone">Новый телефон:</string>
   <string name="button_save">Сохранить</string>
-  <string name="delete_account">Удалить аккаунт</string>
   <string name="settings_notifications_daily">За %1$d д. до начала услуги</string>
   <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до начала услуги</string>
   <string name="settings_notifications_change">Изменить</string>
   <string name="report_problem_button">Отправить</string>
-  <string name="menu_catalog">Каталог</string>
-  <string name="choose_staff">Выбор продукции</string>
-  <string name="choose_category">Выбрать категорию</string>
   <string name="profile_title">Профиль</string>
   <string name="error_invalid_picture">Недопустимое изображение</string>
   <string name="error_title_no_internet_connection">Ошибка соединения</string>
-  <string name="device_info_os_name">"Android "</string>
+  <string name="device_info_os_name" translatable="false">"Android "</string>
 
   <!--Activity history-->
   <string name="activity_history">История активности</string>
@@ -157,6 +162,10 @@
   <string name="default_phone">Не указан</string>
   <string name="no_internet_connection_save_changes">Все изменения не будут сохранены</string>
   <string name="default_birth_day">Укажите дату рождения</string>
+  <string name="activity_history_logout_all">Выйти со всех сеансов</string>
+  <string name="activity_history_device_name">Имя устройства: </string>
+  <string name="activity_history_os">ОС: </string>
+  <string name="activity_history_date">Активность: </string>
 
   <!--privacy policy-->
   <string name="privacy_policy">Нажав на кнопку, расположенную ниже, вы соглашаетесь с
@@ -164,11 +173,14 @@
     и <a href="https://medium.com/policy/medium-privacy-policy-f03bf92035c9">Политикой конфиденциальности</a>
   </string>
 
-  <string name="en_privacy_policy">By creating an account, I accept Medium’s
+  <string name="en_privacy_policy" translatable="false">By creating an account, I accept Medium’s
     <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">terms of service</a>
     and <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">privacy policy</a>
   </string>
   <string name="error_privacy_policy">Подтвердите, что вы ознакомились c условиями</string>
 
+  <!--delete account-->
+  <string name="delete_account_current_password">Ваш текущий пароль</string>
+  <string name="delete_account">Удалить аккаунт</string>
 
 </resources>

@@ -18,13 +18,14 @@ public class PreferencesHelper {
 
   private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
-  private static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
-  private static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
-  private static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
-  private static final String PREF_NOTIF_HOURS_NIGHT_START = "PREF_NOTIF_HOURS_NIGHT_START";
-  private static final String PREF_NOTIF_HOURS_NIGHT_END = "PREF_NOTIF_HOURS_NIGHT_END";
-  private static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
-  private static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
+  static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
+  public static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
+  public static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
+  public static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
+  public static final String PREF_NOTIF_HOURS_NIGHT_START = "PREF_NOTIF_HOURS_NIGHT_START";
+  public static final String PREF_NOTIF_HOURS_NIGHT_END = "PREF_NOTIF_HOURS_NIGHT_END";
+  public static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
+  public static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
   private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
   private static final String PREF_BOOKING = "PREF_BOOKING";
   private static final String PREF_LANGUAGE = "PREF_LANGUAGE";
@@ -144,11 +145,17 @@ public class PreferencesHelper {
     return null;
   }
 
+  /*language*/
+
   public String getSelectedLanguage() {
     return mPreferences.getString(PREF_LANGUAGE, "");
   }
 
   public void setSelectedLanguage(String selectedLanguage) {
     mPreferences.edit().putString(PREF_LANGUAGE, selectedLanguage).apply();
+  }
+
+  public String getLanguageCode() {
+    return mPreferences.getString(PREF_LANGUAGE_CODE, "ru");
   }
 }

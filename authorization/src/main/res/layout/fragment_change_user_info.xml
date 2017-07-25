@@ -101,7 +101,7 @@
         android:layout_height="40dp"
         android:background="@color/colorInputField"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Пароль"
+        android:hint="@string/registration_hint_password"
         android:inputType="textPassword"
         android:textSize="14sp" />
 

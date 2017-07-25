@@ -30,7 +30,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="20dp"
-      android:text="Ваш текущий пароль"
+      android:text="@string/delete_account_current_password"
       android:textColor="@color/colorBlackLight"
       android:textSize="18sp"
       app:layout_constraintLeft_toLeftOf="@+id/line"
@@ -57,7 +57,7 @@
         android:layout_height="40dp"
         android:background="@color/colorInputField"
         android:gravity="center_horizontal|center_vertical"
-        android:hint="Пароль"
+        android:hint="@string/registration_hint_password"
         android:inputType="textPassword"
         android:textSize="14sp" />
 
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:background="?colorAccent"
-        android:text="Удалить аккаунт"
+        android:text="@string/delete_account"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
         app:finalCornerAngle="50dp"

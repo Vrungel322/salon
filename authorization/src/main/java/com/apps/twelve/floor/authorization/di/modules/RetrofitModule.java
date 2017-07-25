@@ -3,6 +3,7 @@ package com.apps.twelve.floor.authorization.di.modules;
 import android.content.Context;
 import com.apps.twelve.floor.authorization.BuildConfig;
 import com.apps.twelve.floor.authorization.di.scopes.AppScope;
+import com.apps.twelve.floor.authorization.utils.IgnoreRequestUtils;
 import com.apps.twelve.floor.authorization.utils.NetworkUtil;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -93,9 +94,9 @@ import timber.log.Timber;
     return chain -> {
       Request request = chain.request();
       Response response = chain.proceed(chain.request());
-      // TODO: 6/07/17 trouble with cache
-      if (request.method().equals("GET")) {
-        CacheControl cacheControl = new CacheControl.Builder().maxAge(1, TimeUnit.MINUTES).build();
+
+      if (IgnoreRequestUtils.ignoreRequests(request, "GET", baseUrl + "api/v1/users/me/devices")) {
+        CacheControl cacheControl = new CacheControl.Builder().build();
         response = response.newBuilder()
             .removeHeader("Pragma")
             .header("Cache-Control", cacheControl.toString())
