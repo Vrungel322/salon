@@ -55,13 +55,13 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
       ((BookingListActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
     }
 
-    if (getActivity() instanceof StartActivity){
+    if (getActivity() instanceof StartActivity) {
       fromStartActivity = true;
-    }
-    else {
+    } else {
       fromStartActivity = false;
     }
-    mMyBookingAdapter = new MyBookingAdapter(getMvpDelegate(), getContext(), mNavigator, fromStartActivity);
+    mMyBookingAdapter =
+        new MyBookingAdapter(getMvpDelegate(), getContext(), mNavigator, fromStartActivity);
     mRecyclerViewMyBooks.setLayoutManager(new LinearLayoutManager(getContext()));
     mRecyclerViewMyBooks.setAdapter(mMyBookingAdapter);
     mRecyclerViewMyBooks.setNestedScrollingEnabled(false);
@@ -106,6 +106,5 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
   @Override public void showServerErrorMsg() {
     showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
-
   }
 }

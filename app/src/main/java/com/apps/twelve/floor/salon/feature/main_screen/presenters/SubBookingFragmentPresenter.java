@@ -45,14 +45,17 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
                   return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
                 }
                 return Observable.just(response);
-              }).concatMap(response -> {
-            if (response.code() == RESPONSE_UNAUTHORIZED) {
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              return Observable.empty();
-            } else {
-              return Observable.just(response);
-            }
-          }).doOnNext(response -> mDataManager.putBooking(response.body()))
+              })
+              .concatMap(response -> {
+                if (response.code() == RESPONSE_UNAUTHORIZED) {
+                  mAuthorizationManager.getAuthRxBus()
+                      .post(new AuthRxBusHelper.UnauthorizedEvent());
+                  return Observable.empty();
+                } else {
+                  return Observable.just(response);
+                }
+              })
+              .doOnNext(response -> mDataManager.putBooking(response.body()))
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()

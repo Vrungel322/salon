@@ -62,7 +62,8 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
   protected void showAlertMessage(String title, String message) {
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-    Alerter.create(getActivity()).setDuration(3000)
+    Alerter.create(getActivity())
+        .setDuration(3000)
         .setTitle(title)
         .setText(message)
         .setBackgroundColor(value.resourceId)

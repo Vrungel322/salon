@@ -13,6 +13,7 @@ import timber.log.Timber;
 
 public class NetworkBroadcastReceiver extends BroadcastReceiver {
   @Inject RxBus mRxBus;
+
   @Override public void onReceive(Context context, Intent intent) {
     App.getAppComponent().inject(this);
     Timber.e("NetworkBroadcastReceiver - onReceive");
@@ -20,7 +21,7 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
       //hide
     } else {
       //show
-       mRxBus.post(new RxBusHelper.NoInternetAlerter());
+      mRxBus.post(new RxBusHelper.NoInternetAlerter());
     }
   }
 }

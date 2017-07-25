@@ -51,7 +51,10 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
   protected void showAlertMessage(String title, String message) {
     TypedValue value = new TypedValue();
     getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-    Alerter.create(this).setTitle(title).setText(message).setBackgroundColor(value.resourceId)
+    Alerter.create(this)
+        .setTitle(title)
+        .setText(message)
+        .setBackgroundColor(value.resourceId)
         .setOnClickListener(view -> {
         })
         .show();

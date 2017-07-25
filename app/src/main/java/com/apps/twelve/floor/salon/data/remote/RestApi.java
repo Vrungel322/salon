@@ -153,7 +153,7 @@ public class RestApi {
     return api.fetchBonusHistory(language, token);
   }
 
-  public Observable<Response<ReportProblemResponseEntity>>  sendReportProblem(String problemBody,
+  public Observable<Response<ReportProblemResponseEntity>> sendReportProblem(String problemBody,
       String token) {
     return api.sendReportProblem(problemBody, token);
   }

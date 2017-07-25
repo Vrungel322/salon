@@ -46,7 +46,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
-    }else {
+    } else {
       Fabric.with(this, new Crashlytics());
     }
 

@@ -49,7 +49,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
         .concatMap(reloadCatalogByCategory -> {
           mTitle = reloadCatalogByCategory.title;
           return mDataManager.fetchGoodsByCatalogId(reloadCatalogByCategory.id);
-        }).concatMap(response -> {
+        })
+        .concatMap(response -> {
           if (response.code() == RESPONSE_200) {
             return Observable.just(response.body());
           } else {
@@ -99,8 +100,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
               getViewState().setButtonDefaultText();
               break;
             case RESPONSE_503:
-                getViewState().showServerErrorMsg();
-                getViewState().stopRefreshingView();
+              getViewState().showServerErrorMsg();
+              getViewState().stopRefreshingView();
             default:
               getViewState().stopRefreshingView();
               getViewState().setButtonDefaultText();

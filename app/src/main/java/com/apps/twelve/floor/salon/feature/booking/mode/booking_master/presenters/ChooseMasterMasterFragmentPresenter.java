@@ -44,7 +44,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
             getViewState().showMasters(response.body());
             getViewState().hideProgressBar();
           }
-          if (response.code() == RESPONSE_503){
+          if (response.code() == RESPONSE_503) {
             getViewState().showServerErrorMsg();
           }
         }, throwable -> {

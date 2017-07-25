@@ -101,7 +101,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mRecyclerViewImages.setLayoutManager(mLayoutManager);
       mRecyclerViewImages.setAdapter(mHorizontalListAdapter);
       mHorizontalListAdapter.notifyDataSetChanged();
-      if (listUrlPhotos.size() <= 1){
+      if (listUrlPhotos.size() <= 1) {
         mRecyclerViewImages.setVisibility(View.GONE);
       }
 
@@ -112,17 +112,16 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       //if like
       mCheckBoxFavoriteGoods.setChecked(mGoodsEntity.isFavorite());
       //if new
-      if (mGoodsEntity.isNew()){
+      if (mGoodsEntity.isNew()) {
         mImageViewNew.setVisibility(View.VISIBLE);
       }
       //if sale
-      if (mGoodsEntity.isForSale()){
+      if (mGoodsEntity.isForSale()) {
         mImageViewSale.setVisibility(View.VISIBLE);
         mTextViewOldPrice.setVisibility(View.VISIBLE);
         mTextViewOldPrice.setText(mGoodsEntity.getPrice());
         mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         mTextViewPrice.setText(mGoodsEntity.getNewPrice());
-
       }
       updateImageInfoAndButtons();
     }

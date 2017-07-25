@@ -63,7 +63,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
             getViewState().stopRefreshingView();
             getViewState().addListOfWorks(mOurWorkEntities);
           }
-          if (response.code() == RESPONSE_503){
+          if (response.code() == RESPONSE_503) {
             getViewState().showServerErrorMsg();
             getViewState().stopRefreshingView();
           }

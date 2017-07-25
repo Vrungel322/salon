@@ -37,7 +37,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
             getViewState().addListOfNews(response.body());
             getViewState().stopRefreshingView();
           }
-          if (response.code() == RESPONSE_503){
+          if (response.code() == RESPONSE_503) {
             getViewState().showServerErrorMsg();
             getViewState().stopRefreshingView();
           }
