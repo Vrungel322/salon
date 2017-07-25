@@ -142,6 +142,6 @@
   <string name="yes">Так</string>
   <string name="your_bonus">Ваші бонуси:</string>
   <string name="сheck_internet_connection">Перевірте підключення до інтернету</string>
-  <string name="settings_change_language">Мова приложения</string>
+  <string name="settings_change_language">Мова додатка</string>
   <string name="dialog_title_select_language">Виберіть мову</string>
 </resources>
