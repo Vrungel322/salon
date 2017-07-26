@@ -16,6 +16,7 @@ import butterknife.Unbinder;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.local.LocaleHelper;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.ISettingsFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
@@ -53,7 +54,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
 
   @Override public void openUserProfileFragment() {
     mNavigator.addChildFragmentBackStack(this, R.id.container_info_user,
-        AuthorizationManager.getInstance().openUserProfileFragment(R.id.container_settings));
+        AuthorizationManager.getInstance()
+            .openUserProfileFragment(R.id.container_settings, LocaleHelper.getLanguage(mContext)));
   }
 
   @OnClick(R.id.rlNotifications) void editNotifications() {
