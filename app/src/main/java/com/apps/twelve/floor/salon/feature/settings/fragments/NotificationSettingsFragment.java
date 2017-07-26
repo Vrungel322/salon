@@ -207,10 +207,16 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void setUpHoursString(long hours) {
-    mTextViewHourly.setText(
-        getString(R.string.settings_notifications_hourly, TimeUnit.MILLISECONDS.toHours(hours),
-            TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
-                TimeUnit.MILLISECONDS.toHours(hours))));
+    int hour = (int) TimeUnit.MILLISECONDS.toHours(hours);
+    if (hour >= 1) {
+      mTextViewHourly.setText(getString(R.string.settings_notifications_hourly, hour,
+          TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
+              TimeUnit.MILLISECONDS.toHours(hours))));
+    } else {
+      mTextViewHourly.setText(getString(R.string.settings_notifications_minutely,
+          TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
+              TimeUnit.MILLISECONDS.toHours(hours))));
+    }
   }
 
   @Override public void setUpNightHours(long start, long end) {

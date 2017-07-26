@@ -119,7 +119,8 @@
   <string name="settings_notifications_change_end">Змінити кінець</string>
   <string name="settings_notifications_change_start">Змінити початок</string>
   <string name="settings_notifications_daily">За %1$d д. до початку послуги</string>
-  <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до початку послуги</string>
+  <string name="settings_notifications_hourly">За %1$d год. %2$d хв. до початку послуги</string>
+  <string name="settings_notifications_minutely">За %1$d хв. до начала услуги</string>
   <string name="settings_notifications_night">Відключати звук з %1$s до %2$s</string>
   <string name="settings_notifications_title_daily">Денне повідомлення</string>
   <string name="settings_notifications_title_hourly">Годинне повідомлення</string>
