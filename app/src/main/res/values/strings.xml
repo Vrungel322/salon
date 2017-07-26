@@ -43,6 +43,7 @@
   <string name="yes">Да</string>
   <string name="no">Нет</string>
   <string name="your_last_booking">Ваша последняя запись</string>
+  <string name="user_data">%1$s \n(%2$s),\nбагодарим за запись </string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
