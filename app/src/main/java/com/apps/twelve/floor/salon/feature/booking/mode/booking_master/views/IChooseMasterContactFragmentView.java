@@ -1,9 +1,11 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views;
 
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
+import java.util.List;
 
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IChooseMasterContactFragmentView
     extends MvpView {
@@ -26,7 +28,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setLastPhone(String s);
 
-  void showDoubleCheckinTimeDialog();
+  void showDoubleCheckinTimeDialog(List<LastBookingEntity> lastBookingEntities);
 
   void checkin();
 }

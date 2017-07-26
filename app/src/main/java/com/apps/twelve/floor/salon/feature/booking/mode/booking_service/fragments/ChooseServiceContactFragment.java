@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragmen
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,12 +15,14 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
+import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import timber.log.Timber;
+import java.util.List;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -124,9 +125,17 @@ public class ChooseServiceContactFragment extends BaseFragment
         new Intent(getContext(), BookingListActivity.class));
   }
 
-  @Override public void showDoubleCheckinTimeDialog() {
-    Timber.e("showDoubleCheckinTimeDialog");
-    DialogFactory.createDoubleCheckinTimeDialog(getActivity())
+  @Override public void showDoubleCheckinTimeDialog(List<LastBookingEntity> lastBookingEntities) {
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < lastBookingEntities.size(); i++) {
+      stringBuilder.append("\n"
+          + lastBookingEntities.get(i).getServiceName()
+          + " - "
+          + Converters.fullDateWithTimeFromSeconds(getContext(),
+          lastBookingEntities.get(i).getServiceTime().toString())
+          + "\n");
+    }
+    DialogFactory.createDoubleCheckinTimeDialog(getActivity(), stringBuilder.toString())
         .setNegativeButton(R.string.dialog_auth_cancel,
             (dialog, which) -> dialog.cancel())
         .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {

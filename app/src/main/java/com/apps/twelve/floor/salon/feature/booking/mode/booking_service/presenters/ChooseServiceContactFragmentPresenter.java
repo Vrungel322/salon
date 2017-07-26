@@ -147,7 +147,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
         .toList()
         .subscribe(lastBookingEntities -> {
           if (lastBookingEntities.size()!=0){
-            getViewState().showDoubleCheckinTimeDialog();
+            getViewState().showDoubleCheckinTimeDialog(lastBookingEntities);
           }
           else {
             getViewState().checkin();

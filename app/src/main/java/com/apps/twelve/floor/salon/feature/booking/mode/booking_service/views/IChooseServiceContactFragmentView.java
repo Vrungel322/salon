@@ -1,9 +1,11 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views;
 
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
+import java.util.List;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -30,7 +32,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void moveToBookingListActivity();
 
-  void showDoubleCheckinTimeDialog();
+  void showDoubleCheckinTimeDialog(List<LastBookingEntity> lastBookingEntities);
 
   void checkin();
 }
