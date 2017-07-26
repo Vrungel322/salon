@@ -35,11 +35,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     fetchAllServicesByMasterId();
   }
 
-  @Override public void onDestroy() {
-    super.onDestroy();
-    mBookingEntity.setServiceId("");
-  }
-
   @SuppressWarnings("ConstantConditions") private void fetchAllServicesByMasterId() {
     getViewState().setMasterName(mBookingEntity.getMasterName());
     Subscription subscription =
@@ -82,5 +77,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getViewState().setItemSelected(position);
     mRxBus.post(
         new RxBusHelper.EventForNextStep(Constants.FragmentTag.CHOOSE_MASTER_TIME_FRAGMENT));
+  }
+
+  public void clearLastBookingEntity() {
+    mBookingEntity.setDateId("");
   }
 }

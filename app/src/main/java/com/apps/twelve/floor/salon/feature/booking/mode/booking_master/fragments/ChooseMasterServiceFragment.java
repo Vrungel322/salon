@@ -49,9 +49,10 @@ public class ChooseMasterServiceFragment extends BaseFragment
     mRecyclerViewServices.setAdapter(mServicesAdapter);
 
     ItemClickSupport.addTo(mRecyclerViewServices)
-        .setOnItemClickListener(
-            (recyclerView, position, v) -> mChooseMasterServiceFragmentPresenter.setItemSelected(
-                position));
+        .setOnItemClickListener((recyclerView, position, v) -> {
+          mChooseMasterServiceFragmentPresenter.clearLastBookingEntity();
+          mChooseMasterServiceFragmentPresenter.setItemSelected(position);
+        });
 
     mEditTextChooseService.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {

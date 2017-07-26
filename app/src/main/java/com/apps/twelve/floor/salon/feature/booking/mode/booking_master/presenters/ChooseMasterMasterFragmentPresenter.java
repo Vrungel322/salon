@@ -71,4 +71,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
     mRxBus.post(
         new RxBusHelper.EventForNextStep(Constants.FragmentTag.CHOOSE_MASTER_SERVICE_FRAGMENT));
   }
+
+  public void clearLastBookingEntity() {
+    mBookingEntity.setServiceId("");
+    mBookingEntity.setDateId("");
+  }
 }
