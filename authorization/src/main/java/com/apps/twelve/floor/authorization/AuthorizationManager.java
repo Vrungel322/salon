@@ -122,10 +122,6 @@ public class AuthorizationManager {
     return mDataManager.getUserImage();
   }
 
-  public String getUserGender() {
-    return mDataManager.getUserGender();
-  }
-
   public void saveToken(String token) {
     mDataManager.setToken(token);
   }
@@ -144,10 +140,6 @@ public class AuthorizationManager {
 
   public void saveUserPhoto(String userPhoto) {
     mDataManager.setUserImage(userPhoto);
-  }
-
-  public void saveUserGender(String userGender) {
-    mDataManager.setUserGender(userGender);
   }
 
   public boolean isAuthorized() {

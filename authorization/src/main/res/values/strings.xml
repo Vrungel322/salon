@@ -103,9 +103,9 @@
     <item>Мужской</item>
     <item>Женский</item>
   </string-array>
-  <string name="gender_unknown" translatable="false">unknown</string>
-  <string name="gender_male" translatable="false">male</string>
-  <string name="gender_female" translatable="false">female</string>
+  <string name="gender_unknown">Не указан</string>
+  <string name="gender_male">Мужской</string>
+  <string name="gender_female">Женский</string>
 
   <string-array name="changing_field">
     <item>имя</item>

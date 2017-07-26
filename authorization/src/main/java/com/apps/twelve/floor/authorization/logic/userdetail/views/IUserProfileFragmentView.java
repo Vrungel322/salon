@@ -21,7 +21,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   void setUserPhone(String phone);
 
-  void setUserGender(String gender);
+  void setUserGender(@StringRes int resId);
 
   void closeFragment();
 

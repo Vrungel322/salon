@@ -56,7 +56,7 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
   private Dialog mChangeGenderDialog;
   private Dialog mExitDialog;
   private ProgressDialog mExitProgressDialog;
-  private String mGender;
+  private int mSelectedGenderPosition;
 
   public UserProfileFragment() {
     super(R.layout.fragment_user_profile);
@@ -86,23 +86,18 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
     }
   }
 
-  @Override public void setUserGender(String gender) {
-    if (TextUtils.isEmpty(gender)) {
-      mTvGender.setText(getString(R.string.default_gender));
-    } else {
-      mTvGender.setText(gender);
-    }
+  @Override public void setUserGender(@StringRes int resId) {
+    mTvGender.setText(getString(resId));
   }
 
   @Override public void showChangeGenderDialog() {
     String[] genders = getResources().getStringArray(R.array.gender);
-    mGender = genders[mUserProfileFragmentPresenter.getGenderPosition()];
     mChangeGenderDialog = DialogFactory.createAlertDialogBuilder(getContext(),
         getString(R.string.dialog_title_select_gender))
         .setSingleChoiceItems(genders, mUserProfileFragmentPresenter.getGenderPosition(),
-            (dialog, which) -> mGender = genders[which])
+            (dialog, which) -> mSelectedGenderPosition = which)
         .setPositiveButton(R.string.btn_ok,
-            (dialog, which) -> mUserProfileFragmentPresenter.saveGender(mGender))
+            (dialog, which) -> mUserProfileFragmentPresenter.saveGender(mSelectedGenderPosition))
         .setCancelable(false)
         .create();
     mChangeGenderDialog.setOnCancelListener(

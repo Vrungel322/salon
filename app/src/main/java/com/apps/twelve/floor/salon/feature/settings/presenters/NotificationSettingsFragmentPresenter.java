@@ -44,15 +44,15 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   private boolean isHourlyNotificationsEnabled() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURLY_ENABLED, true);
+    return mDataManager.isHourlyNotificationsEnabled();
   }
 
   private boolean isDailyNotificationsEnabled() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_DAILY_ENABLED, true);
+    return mDataManager.isDailyNotificationsEnabled();
   }
 
   private boolean isNightMode() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_NIGHT_MODE, true);
+    return mDataManager.isNightMode();
   }
 
   public void setUpStrings() {
@@ -62,19 +62,19 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   public long getHours() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS, 3600000);
+    return mDataManager.getNotificationHours();
   }
 
   public int getDays() {
-    return (int) mAuthorizationManager.getAdditionalField(PREF_NOTIF_DAYS, 1);
+    return mDataManager.getNotificationDays();
   }
 
   public long getHoursNightStart() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
+    return mDataManager.getNotificationHoursNightStart();
   }
 
   public long getHoursNightEnd() {
-    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
+    return mDataManager.getNotificationHoursNightEnd();
   }
 
   public void setHourlyNotificationsEnabled(boolean checked) {

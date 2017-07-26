@@ -71,4 +71,10 @@ public final class Constants {
     public static final String UK = "uk";
     public static final String RU = "ru";
   }
+
+  public class Genders {
+    public static final String UNKNOWN = "unknown";
+    public static final String MALE = "male";
+    public static final String FEMALE = "female";
+  }
 }

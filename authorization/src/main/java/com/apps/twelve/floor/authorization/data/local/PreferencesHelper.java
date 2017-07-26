@@ -89,12 +89,12 @@ public class PreferencesHelper {
     mPreferences.edit().putString(PREF_USER_IMAGE, userPhotoUrl).apply();
   }
 
-  public String getUserGender() {
-    return mPreferences.getString(PREF_USER_GENDER, "");
+  public int getUserGenderPosition() {
+    return mPreferences.getInt(PREF_USER_GENDER, 0);
   }
 
-  public void setUserGender(String gender) {
-    mPreferences.edit().putString(PREF_USER_GENDER, gender).apply();
+  public void setUserGenderPosition(int position) {
+    mPreferences.edit().putInt(PREF_USER_GENDER, position).apply();
   }
 
   public String getUserBirthDay() {

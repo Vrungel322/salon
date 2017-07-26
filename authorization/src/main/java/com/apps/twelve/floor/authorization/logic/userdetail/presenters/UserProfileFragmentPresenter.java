@@ -6,7 +6,6 @@ import com.apps.twelve.floor.authorization.App;
 import com.apps.twelve.floor.authorization.R;
 import com.apps.twelve.floor.authorization.base.BasePresenter;
 import com.apps.twelve.floor.authorization.data.DataManager;
-import com.apps.twelve.floor.authorization.data.model.Genders;
 import com.apps.twelve.floor.authorization.data.model.UserEntity;
 import com.apps.twelve.floor.authorization.logic.userdetail.views.IUserProfileFragmentView;
 import com.apps.twelve.floor.authorization.utils.AuthRxBus;
@@ -22,6 +21,9 @@ import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Genders.FEMALE;
+import static com.apps.twelve.floor.authorization.utils.Constants.Genders.MALE;
+import static com.apps.twelve.floor.authorization.utils.Constants.Genders.UNKNOWN;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_CONTENT_ERROR;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
@@ -86,16 +88,22 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
     }
   }
 
-  public void saveGender(String gender) {
+  public void saveGender(int position) {
     UserEntity user = new UserEntity();
-    String[] genders = mContext.getResources().getStringArray(R.array.gender);
 
-    if (gender.equals(genders[0])) {
-      user.setGender(mContext.getString(R.string.gender_unknown));
-    } else if (gender.equals(genders[1])) {
-      user.setGender(mContext.getString(R.string.gender_male));
-    } else if (gender.equals(genders[2])) {
-      user.setGender(mContext.getString(R.string.gender_female));
+    switch (position) {
+      case 0:
+        user.setGender(UNKNOWN);
+        break;
+      case 1:
+        user.setGender(MALE);
+        break;
+      case 2:
+        user.setGender(FEMALE);
+        break;
+      default:
+        user.setGender(UNKNOWN);
+        break;
     }
 
     Subscription subscription =
@@ -106,7 +114,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
           return Observable.just(response);
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
           if (response.isSuccessful()) {
-            mDataManager.setUserGender(gender);
+            mDataManager.setUserGenderPosition(position);
             mAuthRxBus.post(new AuthRxBusHelper.UpdateUserInfo());
             getViewState().closeChangeGenderDialog();
           } else if (response.code() == RESPONSE_UNAUTHORIZED) {
@@ -151,7 +159,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserPhone(s), Timber::e);
     addToUnsubscription(subscription);
-    subscription = mDataManager.getObservableUserGender()
+    subscription = mDataManager.getObservableUserGenderResId()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserGender(s), Timber::e);
     addToUnsubscription(subscription);
@@ -178,7 +186,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
         .subscribe(s -> getViewState().setUserPhone(s), Timber::e);
     addToUnsubscription(subscription);
     subscription = mAuthRxBus.filteredObservable(AuthRxBusHelper.UpdateUserInfo.class)
-        .concatMap(updateUserInfo -> mDataManager.getObservableUserGender())
+        .concatMap(updateUserInfo -> mDataManager.getObservableUserGenderResId())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(s -> getViewState().setUserGender(s), Timber::e);
     addToUnsubscription(subscription);
@@ -211,7 +219,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
   }
 
   public int getGenderPosition() {
-    return Genders.getGenderPosition(mDataManager.getUserGender());
+    return mDataManager.getUserGenderPosition();
   }
 
   public void showChangeGenderDialog() {
