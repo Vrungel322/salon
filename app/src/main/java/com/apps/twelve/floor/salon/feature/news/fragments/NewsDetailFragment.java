@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,7 +69,7 @@ public class NewsDetailFragment extends BaseFragment implements INewsDetailFragm
           .dontAnimate()
           .into(mImageViewPhotoNews);
       mTextViewTitleNews.setText(newsEntity.getTitle());
-      mTextViewDescriptionNews.setText(newsEntity.getText());
+      mTextViewDescriptionNews.setText(Html.fromHtml(newsEntity.getText()));
     }
   }
 
