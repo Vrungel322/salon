@@ -137,4 +137,22 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
       mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
     }
   }
+
+  public void checkIfBookOnSameDate() {
+    Subscription subscription = mDataManager.fetchLastBooking()
+        .compose(ThreadSchedulers.applySchedulers())
+        .flatMap(listResponse -> Observable.from(listResponse.body()))
+        .filter(lastBookingEntity -> lastBookingEntity.getScheduleId()
+            .equals(Integer.parseInt(mBookingEntity.getDateId())))
+        .toList()
+        .subscribe(lastBookingEntities -> {
+          if (lastBookingEntities.size()!=0){
+            getViewState().showDoubleCheckinTimeDialog();
+          }
+          else {
+            getViewState().checkin();
+          }
+        });
+    addToUnsubscription(subscription);
+  }
 }

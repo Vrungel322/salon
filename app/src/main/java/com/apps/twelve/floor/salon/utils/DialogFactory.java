@@ -72,4 +72,9 @@ public final class DialogFactory {
         context.getString(R.string.dialog_no_internet_title))
         .setMessage(context.getString(R.string.dialog_no_internet_message));
   }
+  public static AlertDialog.Builder createDoubleCheckinTimeDialog(Context context) {
+    return new AlertDialog.Builder(context).setTitle(
+        context.getString(R.string.dialog_attention))
+        .setMessage(context.getString(R.string.double_checkin_time));
+  }
 }

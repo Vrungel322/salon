@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.mode.booking_service.fragmen
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,9 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import timber.log.Timber;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -57,7 +60,11 @@ public class ChooseServiceContactFragment extends BaseFragment
   @OnClick(R.id.btn_booking_contact) void animate() {
     mChooseServiceContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseServiceContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
-    mChooseServiceContactFragmentPresenter.sendBookingEntity();
+    checkIfBookOnSameDate();
+  }
+
+  private void checkIfBookOnSameDate() {
+    mChooseServiceContactFragmentPresenter.checkIfBookOnSameDate();
   }
 
   @Override public void onResume() {
@@ -115,6 +122,22 @@ public class ChooseServiceContactFragment extends BaseFragment
     mNavigator.finishActivity((AppCompatActivity) getActivity());
     mNavigator.startActivity((AppCompatActivity) getActivity(),
         new Intent(getContext(), BookingListActivity.class));
+  }
+
+  @Override public void showDoubleCheckinTimeDialog() {
+    Timber.e("showDoubleCheckinTimeDialog");
+    DialogFactory.createDoubleCheckinTimeDialog(getActivity())
+        .setNegativeButton(R.string.dialog_auth_cancel,
+            (dialog, which) -> dialog.cancel())
+        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+          dialog.cancel();
+          mChooseServiceContactFragmentPresenter.sendBookingEntity();
+        })
+        .create().show();
+  }
+
+  @Override public void checkin() {
+    mChooseServiceContactFragmentPresenter.sendBookingEntity();
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,

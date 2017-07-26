@@ -25,4 +25,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   @StateStrategyType(SkipStrategy.class) void moveToBookingListActivity();
 
   void setLastPhone(String s);
+
+  void showDoubleCheckinTimeDialog();
+
+  void checkin();
 }
