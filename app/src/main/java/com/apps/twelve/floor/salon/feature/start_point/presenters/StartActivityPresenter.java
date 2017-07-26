@@ -34,14 +34,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     subscribeShowAuthDialog();
     subscribeShowNoInternetDialog();
     subscribeUnauthorizedUser();
-    subscribeNoInternetAlerter();
-  }
-
-  private void subscribeNoInternetAlerter() {
-    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.NoInternetAlerter.class)
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(show -> getViewState().showNoInternetAlerter(), Timber::e);
-    addToUnsubscription(subscription);
   }
 
   @Override protected void inject() {

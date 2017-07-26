@@ -287,11 +287,6 @@ public class StartActivity extends BaseActivity
     mAuthorizationDialog.setOnCancelListener(dialog -> mStartActivityPresenter.cancelAlertDialog());
   }
 
-  @Override public void showNoInternetAlerter() {
-    showLongAlertMessage(getString(R.string.dialog_error_title),
-        getString(R.string.сheck_internet_connection));
-  }
-
   @Override public void cancelAlertDialog() {
     if (mAuthorizationDialog != null) {
       mAuthorizationDialog.dismiss();
