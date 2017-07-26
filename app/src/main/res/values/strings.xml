@@ -200,4 +200,7 @@
   <string name="server_error">Сервер отдыхает.</string>
   <string name="dialog_title_select_language">Выберите язык</string>
 
+  <string name="thank_you">Спасибо</string>
+  <string name="friend_invited">Ваш друг скажет вам - Спасибо!</string>
+
 </resources>

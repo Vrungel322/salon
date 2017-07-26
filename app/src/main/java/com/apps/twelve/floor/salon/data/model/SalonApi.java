@@ -119,4 +119,8 @@ public interface SalonApi {
   @POST("api/v1/feedback") @FormUrlEncoded
   Observable<Response<ReportProblemResponseEntity>> sendReportProblem(
       @Field("message") String problemBody, @Header("authorization") String token);
+
+  @POST("api/v1/users/me/invited") @FormUrlEncoded Observable<Response<Void>> sendFriendsCode(
+      @Field("invite_code") String friendsCode, @Header("authorization") String token,
+      @Header("lng") String language);
 }

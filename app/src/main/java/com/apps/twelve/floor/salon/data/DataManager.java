@@ -20,6 +20,7 @@ import com.apps.twelve.floor.salon.data.remote.RestApi;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
+import rx.Subscription;
 
 /**
  * Created by Vrungel on 26.01.2017.
@@ -286,6 +287,10 @@ public class DataManager {
 
   public void setSelectedLanguage(String selectedLanguage) {
     mPref.setSelectedLanguage(selectedLanguage);
+  }
+
+  public Observable<Response<Void>> sendFriendsCode(String friendsCode) {
+    return mRestApi.sendFriendsCode(friendsCode,mAuthorizationManager.getToken(),mPref.getLanguageCode());
   }
 }
 

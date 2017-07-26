@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -15,6 +16,7 @@ import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IMyBonusFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -28,7 +30,9 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   @BindView(R.id.tvCountBonus) TextView mTvCountBonus;
   @BindView(R.id.btnHowBonusWorks) Button mButtonHowBonusWorks;
   @BindView(R.id.btnSendCode) Button mButtonSendCode;
+  @BindView(R.id.bSendFriendsCode) Button mButtonSendFriendsCode;
   @BindView(R.id.tvYour) TextView mTextViewYourCode;
+  @BindView(R.id.etFriendsCode) EditText mEditTextFriendsCode;
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
 
   public MyBonusFragment() {
@@ -115,11 +119,28 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     }
   }
 
+  @OnClick(R.id.bSendFriendsCode) void bSendFriendsCodeClicked() {
+    mMyBonusFragmentPresenter.sendFriendsCode(mEditTextFriendsCode.getText().toString());
+  }
+
   @Override public void startRefreshingView() {
     if (!mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
   }
 
   @Override public void stopRefreshingView() {
     if (mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(false);
+  }
+
+  @Override public void showThankYouDialog() {
+    DialogFactory.createAlertDialogBuilder(getContext(), getString(R.string.thank_you))
+        .setMessage(getString(R.string.friend_invited))
+        .setPositiveButton(getString(R.string.btn_ok),
+            (dialogInterface, i) -> dialogInterface.cancel())
+        .create()
+        .show();
+  }
+
+  @Override public void showErrorToast() {
+    showToastMessage(getString(R.string.error_data_not_correct));
   }
 }

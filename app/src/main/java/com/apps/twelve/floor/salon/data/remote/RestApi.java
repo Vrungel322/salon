@@ -157,4 +157,9 @@ public class RestApi {
       String token) {
     return api.sendReportProblem(problemBody, token);
   }
+
+  public Observable<Response<Void>> sendFriendsCode(String friendsCode, String token,
+      String language) {
+    return api.sendFriendsCode(friendsCode, token, language);
+  }
 }
