@@ -10,7 +10,6 @@ import com.apps.twelve.floor.authorization.data.DataManager;
 import com.apps.twelve.floor.authorization.data.model.CredentialsEntity;
 import com.apps.twelve.floor.authorization.data.model.DeviceInfoEntity;
 import com.apps.twelve.floor.authorization.data.model.ErrorContentEntity;
-import com.apps.twelve.floor.authorization.data.model.Genders;
 import com.apps.twelve.floor.authorization.data.model.UserEntity;
 import com.apps.twelve.floor.authorization.logic.authorization.views.IModuleSignInActivityView;
 import com.apps.twelve.floor.authorization.social.SocialLoginManager;
@@ -32,6 +31,8 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Genders.FEMALE;
+import static com.apps.twelve.floor.authorization.utils.Constants.Genders.MALE;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_CONTENT_ERROR;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
 
@@ -180,9 +181,21 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
     mDataManager.setUserEmail(user.getEmail());
     mDataManager.setUserPhone(user.getPhone());
     mDataManager.setUserImage(user.getPicture());
-    mDataManager.setUserGender(Genders.findGenderByKey(user.getGender()));
+    mDataManager.setUserGenderPosition(getGenderPosition(user.getGender()));
     mDataManager.setUserBirthDay(DateUtils.formatServerDate(user.getBirthday()));
     saveAdditionalFields(user.getAdditionalFields());
+  }
+
+  private int getGenderPosition(String gender) {
+    if (gender == null) return 0;
+    switch (gender) {
+      case MALE:
+        return 1;
+      case FEMALE:
+        return 2;
+      default:
+        return 0;
+    }
   }
 
   private void saveAdditionalFields(String additionalFields) {

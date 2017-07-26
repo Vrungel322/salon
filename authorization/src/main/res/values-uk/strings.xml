@@ -131,4 +131,7 @@
     <item>Чоловіча</item>
     <item>Жіноча</item>
   </string-array>
+  <string name="gender_unknown">Не вказано</string>
+  <string name="gender_male">Чоловіча</string>
+  <string name="gender_female">Жіноча</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.authorization.data;
 
 import android.support.annotation.StyleRes;
+import com.apps.twelve.floor.authorization.R;
 import com.apps.twelve.floor.authorization.data.local.PreferencesHelper;
 import com.apps.twelve.floor.authorization.data.model.CredentialsEntity;
 import com.apps.twelve.floor.authorization.data.model.DeviceInfoEntity;
@@ -187,12 +188,12 @@ public class DataManager {
     mPreferencesHelper.setUserImage(userPhotoUrl);
   }
 
-  public String getUserGender() {
-    return mPreferencesHelper.getUserGender();
+  public int getUserGenderPosition() {
+    return mPreferencesHelper.getUserGenderPosition();
   }
 
-  public void setUserGender(String gender) {
-    mPreferencesHelper.setUserGender(gender);
+  public void setUserGenderPosition(int position) {
+    mPreferencesHelper.setUserGenderPosition(position);
   }
 
   public String getUserBirhDay() {
@@ -272,8 +273,23 @@ public class DataManager {
     return Observable.just(mPreferencesHelper.getUserPhone());
   }
 
-  public Observable<String> getObservableUserGender() {
-    return Observable.just(mPreferencesHelper.getUserGender());
+  public Observable<Integer> getObservableUserGenderResId() {
+    int resId;
+    switch (mPreferencesHelper.getUserGenderPosition()) {
+      case 0:
+        resId = R.string.gender_unknown;
+        break;
+      case 1:
+        resId = R.string.gender_male;
+        break;
+      case 2:
+        resId = R.string.gender_female;
+        break;
+      default:
+        resId = R.string.gender_unknown;
+        break;
+    }
+    return Observable.just(resId);
   }
 
   public Observable<String> getObservableUserBirthDay() {
