@@ -195,4 +195,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
         }, Timber::e);
     addToUnsubscription(subscription);
   }
+
+  public void clearLastBookingEntity() {
+    mBookingEntity.setMasterId("");
+    mBookingEntity.setDateId("");
+  }
 }

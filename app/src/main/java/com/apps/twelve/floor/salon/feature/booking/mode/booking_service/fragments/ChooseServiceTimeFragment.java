@@ -110,6 +110,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          mChooseServiceTimeFragmentPresenter.clearLastBookingEntity();
           mChooseServiceTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
           checkArrows();

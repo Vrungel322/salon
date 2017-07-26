@@ -39,11 +39,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     fetchMasters();
   }
 
-  @Override public void onDestroy() {
-    super.onDestroy();
-    mBookingEntity.setMasterId("");
-  }
-
   private void fetchMasters() {
     Subscription subscription =
         mDataManager.fetchMasters(mBookingEntity.getServiceId(), mBookingEntity.getDateId())

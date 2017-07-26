@@ -79,6 +79,7 @@ public class ChooseServiceServiceFragment extends BaseFragment
     mLinearLayoutAllItems.setVisibility(View.GONE);
     ItemClickSupport.addTo(mRecyclerViewCategory)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          mChooseServiceServiceFragmentPresenter.clearLastBookingEntity();
           if (recyclerView.getAdapter() instanceof ServiceCategoryAdapter && mServiceCategoryAdapter
               .getItem(position)
               .hasChildren()) {

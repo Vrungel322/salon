@@ -36,11 +36,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     fetchDaysData();
   }
 
-  @Override public void onDestroy() {
-    super.onDestroy();
-    mBookingEntity.setDateId("");
-  }
-
   @SuppressWarnings("ConstantConditions") private void fetchDaysData() {
     Subscription subscription = mDataManager.fetchDaysData(mBookingEntity.getServiceId())
         .compose(ThreadSchedulers.applySchedulers())
@@ -92,5 +87,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void clearSelectedTime() {
     mBookingEntity.setDateId("");
     getViewState().clearSelectedTime();
+  }
+
+  public void clearLastBookingEntity() {
+    mBookingEntity.setMasterId("");
   }
 }
