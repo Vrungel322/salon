@@ -21,7 +21,7 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver {
       //hide
     } else {
       //show
-      mRxBus.post(new RxBusHelper.NoInternetAlerter());
+      mRxBus.post(new RxBusHelper.NoInternetAlertDialog());
     }
   }
 }
