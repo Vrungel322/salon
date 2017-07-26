@@ -21,6 +21,14 @@ import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
 
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAILY_ENABLED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAYS;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURLY_ENABLED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS_NIGHT_END;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURS_NIGHT_START;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_NIGHT_MODE;
+
 /**
  * Created by Vrungel on 26.01.2017.
  */
@@ -195,7 +203,7 @@ public class DataManager {
   //Notification
 
   public boolean isHourlyNotificationsEnabled() {
-    return mPref.isHourlyNotificationsEnabled();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURLY_ENABLED, true);
   }
 
   public void setHourlyNotificationsEnabled(boolean enabled) {
@@ -203,7 +211,7 @@ public class DataManager {
   }
 
   public boolean isDailyNotificationsEnabled() {
-    return mPref.isDailyNotificationsEnabled();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_DAILY_ENABLED, true);
   }
 
   public void setDailyNotificationsEnabled(boolean enabled) {
@@ -211,7 +219,7 @@ public class DataManager {
   }
 
   public int getNotificationDays() {
-    return mPref.getNotificationDays();
+    return (int) mAuthorizationManager.getAdditionalField(PREF_NOTIF_DAYS, 1);
   }
 
   public void setNotificationDays(int days) {
@@ -219,7 +227,7 @@ public class DataManager {
   }
 
   public long getNotificationHours() {
-    return mPref.getNotificationHours();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS, 3600000);
   }
 
   public void setNotificationHours(long millis) {
@@ -235,15 +243,15 @@ public class DataManager {
   }
 
   public long getNotificationHoursNightStart() {
-    return mPref.getNotificationHoursNightStart();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
   }
 
   public long getNotificationHoursNightEnd() {
-    return mPref.getNotificationHoursNightEnd();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
   }
 
   public boolean isNightMode() {
-    return mPref.isNightMode();
+    return mAuthorizationManager.getAdditionalField(PREF_NOTIF_NIGHT_MODE, true);
   }
 
   public void setNightMode(boolean enabled) {
