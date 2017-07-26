@@ -42,6 +42,7 @@
   <string name="booking_days_left" translatable="false">%1$d дн.</string>
   <string name="yes">Да</string>
   <string name="no">Нет</string>
+  <string name="your_last_booking">Ваша последняя запись</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
