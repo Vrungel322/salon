@@ -60,12 +60,17 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
               .take(2)
               .toList()
               .compose(ThreadSchedulers.applySchedulers())
-              .subscribe(
-                  lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
-                  throwable -> {
-                    Timber.e(throwable);
-                    showMessageException(throwable);
-                  });
+              .subscribe(lastBookingEntities -> {
+                if (lastBookingEntities.size() != 0) {
+                  getViewState().showLastBookings(lastBookingEntities);
+                  mRxBus.post(new RxBusHelper.ShowSubBookingFragment());
+                } else {
+                  mRxBus.post(new RxBusHelper.HideSubBookingFragment());
+                }
+              }, throwable -> {
+                Timber.e(throwable);
+                showMessageException(throwable);
+              });
       addToUnsubscription(subscription);
     }
   }

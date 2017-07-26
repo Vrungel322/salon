@@ -17,4 +17,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void stopRefreshingView();
 
   void startRefreshingView();
+
+  void hideSubBookingFragment();
+
+  void showSubBookingFragment();
 }

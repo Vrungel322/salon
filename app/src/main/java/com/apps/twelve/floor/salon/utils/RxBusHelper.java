@@ -112,4 +112,10 @@ public final class RxBusHelper {
 
   public static class NoInternetAlerter {
   }
+
+  public static class HideSubBookingFragment {
+  }
+
+  public static class ShowSubBookingFragment {
+  }
 }

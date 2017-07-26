@@ -25,6 +25,21 @@ import timber.log.Timber;
     getViewState().startRefreshingView();
     //RxBus
     subscribeStopRefreshMainFragment();
+    subscribeHideSubBookingFragment();
+    subscribeShowSubBookingFragment();
+  }
+
+  private void subscribeHideSubBookingFragment() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.HideSubBookingFragment.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(hideSubBookingFragment -> getViewState().hideSubBookingFragment(), Timber::e);
+    addToUnsubscription(subscription);
+  }
+  private void subscribeShowSubBookingFragment() {
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowSubBookingFragment.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(hideSubBookingFragment -> getViewState().showSubBookingFragment(), Timber::e);
+    addToUnsubscription(subscription);
   }
 
   public void updateBookingAndNews() {
