@@ -74,10 +74,6 @@ public class ChooseServiceTimeFragment extends BaseFragment
     return fragment;
   }
 
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
-  }
-
   @Override public void setUpUi(List<DataServiceEntity> days) {
     //viewPager
     mDays = days;
