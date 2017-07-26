@@ -268,4 +268,28 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getViewState().cancelPickDayDialog();
     mLastPickedDays = getDays();
   }
+
+  public void showPickHourDialog() {
+    getViewState().showPickHourDialog();
+  }
+
+  public void showPickStartNightDialog() {
+    getViewState().showPickStartNightDialog();
+  }
+
+  public void showPickEndNightDialog() {
+    getViewState().showPickEndNightDialog();
+  }
+
+  public void cancelPickHourDialog() {
+    getViewState().cancelPickHourDialog();
+  }
+
+  public void cancelPickStartNightDialog() {
+    getViewState().cancelPickStartNightDialog();
+  }
+
+  public void cancelPickEndNightDialog() {
+    getViewState().cancelPickEndNightDialog();
+  }
 }

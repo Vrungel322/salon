@@ -122,7 +122,8 @@ dependencies {
   compile 'com.thoughtbot:expandablecheckrecyclerview:1.5'
 
   //authorization
-  compile project(':authorization')
+  //  compile project(':authorization')
+  debugCompile project(path: ':authorization', configuration: 'debug')
 
   //multidex
   compile 'com.android.support:multidex:1.0.1'
