@@ -106,6 +106,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
           mNavigator.startActivityClearStack((AppCompatActivity) getActivity(),
               new Intent(getActivity(), StartActivity.class));
         })
+        .setNegativeButton(R.string.btn_cancel,
+            (dialogInterface, i) -> mSettingsFragmentPresenter.closeChangeLanguageDialog())
         .setCancelable(false)
         .create();
     mChangeLanguageDialog.setOnCancelListener(
