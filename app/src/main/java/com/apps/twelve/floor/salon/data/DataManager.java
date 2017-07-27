@@ -306,11 +306,11 @@ public class DataManager {
   }
 
   //db
-  public <T extends RealmObject> Observable<T> saveObjToDb(T object){
-    return mDbHelper.save(object);
+  public <T extends RealmObject> void saveObjToDb(T object){
+     mDbHelper.save(object);
   }
 
-  public <T extends RealmObject> Observable<List<T>> getAll(Class<T> clazz){
+  public <T extends RealmObject> List<T> getAllElementsFromDB(Class<T> clazz){
     return mDbHelper.getAll(clazz);
   }
 }

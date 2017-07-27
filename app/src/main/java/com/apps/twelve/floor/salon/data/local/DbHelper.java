@@ -3,8 +3,8 @@ package com.apps.twelve.floor.salon.data.local;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import java.util.ArrayList;
 import java.util.List;
-import rx.Observable;
 import timber.log.Timber;
 
 /**
@@ -19,24 +19,20 @@ public class DbHelper {
     this.mRealm = realm;
   }
 
-  public <T extends RealmObject> Observable<T> save(T object) {
+  public <T extends RealmObject> void save(T object) {
     Realm realm = mRealm;
-
-    return Observable.just(object)
-        .flatMap(t -> Observable.just(t)
-            .doOnSubscribe(realm::beginTransaction)
-            .doOnUnsubscribe(realm::commitTransaction)
-            .doOnNext(realm::copyToRealmOrUpdate));
+    realm.beginTransaction();
+    realm.copyToRealmOrUpdate(object);
+    realm.commitTransaction();
   }
 
-  public <T extends RealmObject> Observable<List<T>> getAll(Class<T> clazz) {
+  public <T extends RealmObject> List<T> getAll(Class<T> clazz) {
+    List<T> list = new ArrayList<T>();
     Realm realm = mRealm;
-
-    return Observable.just(clazz)
-        .flatMap(t -> Observable.just(t)
-            .doOnSubscribe(realm::beginTransaction)
-            .doOnUnsubscribe(realm::commitTransaction)
-            .map(type -> realm.where(type).findAll()));
+    realm.beginTransaction();
+    list = realm.where(clazz).findAll();
+    realm.commitTransaction();
+    return list;
   }
 
   public <T extends RealmObject> void clearRealmTable(Class<T> clazz) {
