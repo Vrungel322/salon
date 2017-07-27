@@ -141,6 +141,7 @@
   <string name="settings_notifications_title_night">Ночной режим</string>
   <string name="settings_notifications_daily">За %1$d д. до начала услуги</string>
   <string name="settings_notifications_hourly">За %1$d ч. %2$d мин. до начала услуги</string>
+  <string name="settings_notifications_minutely">За %1$d мин. до начала услуги</string>
   <string name="settings_notifications_night">Отключать звук с %1$s до %2$s</string>
   <string name="settings_notifications_change">Изменить</string>
   <string name="settings_notifications_change_start">Изменить начало</string>

@@ -53,7 +53,8 @@ public class AuthorizationManager {
     return instance;
   }
 
-  public UserProfileFragment openUserProfileFragment(@IdRes int resId) {
+  public UserProfileFragment openUserProfileFragment(@IdRes int resId, String language) {
+    mDataManager.setLanguage(language);
     return UserProfileFragment.newInstance(resId);
   }
 

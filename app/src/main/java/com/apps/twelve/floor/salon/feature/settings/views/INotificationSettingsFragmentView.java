@@ -21,4 +21,16 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void showPickDayDialog();
 
   void cancelPickDayDialog();
+
+  void showPickHourDialog();
+
+  void cancelPickHourDialog();
+
+  void showPickStartNightDialog();
+
+  void cancelPickStartNightDialog();
+
+  void showPickEndNightDialog();
+
+  void cancelPickEndNightDialog();
 }

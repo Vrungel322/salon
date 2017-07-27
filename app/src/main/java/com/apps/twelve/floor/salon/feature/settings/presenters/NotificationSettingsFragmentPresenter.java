@@ -8,6 +8,7 @@ import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsF
 import com.arellomobile.mvp.InjectViewState;
 import rx.Observable;
 import rx.Subscription;
+import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
@@ -89,13 +90,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          switch (response.code()) {
-            case RESPONSE_UNAUTHORIZED:
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              break;
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
+            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
           }
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -112,13 +112,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          switch (response.code()) {
-            case RESPONSE_UNAUTHORIZED:
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              break;
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
+            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
           }
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -135,13 +134,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          switch (response.code()) {
-            case RESPONSE_UNAUTHORIZED:
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              break;
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
+            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
           }
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_NIGHT_MODE, checked);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -169,6 +167,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS, millis);
           getViewState().setUpHoursString(millis);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -197,6 +196,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, millis);
           getViewState().setUpNightHours(millis, getHoursNightEnd());
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -224,6 +224,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis);
           getViewState().setUpNightHours(getHoursNightStart(), millis);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -249,13 +250,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          switch (response.code()) {
-            case RESPONSE_UNAUTHORIZED:
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
               mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              break;
           }
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays);
+          Timber.e(throwable);
         });
     addToUnsubscription(subscription);
   }
@@ -267,5 +267,29 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void cancelPickDayDialog() {
     getViewState().cancelPickDayDialog();
     mLastPickedDays = getDays();
+  }
+
+  public void showPickHourDialog() {
+    getViewState().showPickHourDialog();
+  }
+
+  public void showPickStartNightDialog() {
+    getViewState().showPickStartNightDialog();
+  }
+
+  public void showPickEndNightDialog() {
+    getViewState().showPickEndNightDialog();
+  }
+
+  public void cancelPickHourDialog() {
+    getViewState().cancelPickHourDialog();
+  }
+
+  public void cancelPickStartNightDialog() {
+    getViewState().cancelPickStartNightDialog();
+  }
+
+  public void cancelPickEndNightDialog() {
+    getViewState().cancelPickEndNightDialog();
   }
 }
