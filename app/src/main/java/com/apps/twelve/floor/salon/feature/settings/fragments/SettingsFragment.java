@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +23,9 @@ import com.apps.twelve.floor.salon.feature.settings.views.ISettingsFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import static com.apps.twelve.floor.salon.utils.Constants.Remote.PRIVACY_POLICY_URL;
+import static com.apps.twelve.floor.salon.utils.Constants.Remote.TERMS_OF_SERVICE_URL;
 
 public class SettingsFragment extends BaseFragment implements ISettingsFragmentView {
 
@@ -119,5 +123,17 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     if (mChangeLanguageDialog != null) {
       mChangeLanguageDialog.dismiss();
     }
+  }
+
+  @OnClick(R.id.rlTermOfService) public void onRlTermOfServiceClicked() {
+    Intent i = new Intent(Intent.ACTION_VIEW);
+    i.setData(Uri.parse(TERMS_OF_SERVICE_URL));
+    startActivity(i);
+  }
+
+  @OnClick(R.id.rlPrivacyPolicy) public void onRlPrivacyPolicyClicked() {
+    Intent i = new Intent(Intent.ACTION_VIEW);
+    i.setData(Uri.parse(PRIVACY_POLICY_URL));
+    startActivity(i);
   }
 }
