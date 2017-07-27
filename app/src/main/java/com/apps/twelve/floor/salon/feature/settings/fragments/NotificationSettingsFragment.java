@@ -1,12 +1,12 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -18,11 +18,8 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
-import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.philliphsu.bottomsheetpickers.time.BottomSheetTimePickerDialog;
-import com.philliphsu.bottomsheetpickers.time.grid.GridTimePickerDialog;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -30,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class NotificationSettingsFragment extends BaseFragment
-    implements INotificationSettingsFragmentView, BottomSheetTimePickerDialog.OnTimeSetListener {
+    implements INotificationSettingsFragmentView {
 
   @InjectPresenter NotificationSettingsFragmentPresenter mNotificationSettingsFragmentPresenter;
 
@@ -42,6 +39,10 @@ public class NotificationSettingsFragment extends BaseFragment
   @BindView(R.id.tvNight) TextView mTextViewNight;
 
   private AlertDialog mPickDaysDialog;
+
+  private TimePickerDialog mPickHourDialog;
+  private TimePickerDialog mPickStartNightDialog;
+  private TimePickerDialog mPickEndNightDialog;
 
   public NotificationSettingsFragment() {
     super(R.layout.fragment_notification_settings);
@@ -131,38 +132,68 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @OnClick(R.id.rlHourlyChange) void changeHourly() {
-    GridTimePickerDialog changeHourly = new GridTimePickerDialog.Builder(this,
-        (int) TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()),
-        (int) (TimeUnit.MILLISECONDS.toMinutes(mNotificationSettingsFragmentPresenter.getHours())
-            - TimeUnit.HOURS.toMinutes(
-            TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))),
-        true).build();
-    changeHourly.show(getActivity().getSupportFragmentManager(),
-        Constants.FragmentTag.CHANGE_HOURLY_DIALOG_FRAGMENT);
+    mNotificationSettingsFragmentPresenter.showPickHourDialog();
   }
 
   @OnClick(R.id.tvNightChangeStart) void changeNightStart() {
-    GridTimePickerDialog changeNightStart = new GridTimePickerDialog.Builder(this,
-        (int) TimeUnit.MILLISECONDS.toHours(
-            mNotificationSettingsFragmentPresenter.getHoursNightStart()) + 3,
-        (int) (TimeUnit.MILLISECONDS.toMinutes(
-            mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
-            TimeUnit.MILLISECONDS.toHours(
-                mNotificationSettingsFragmentPresenter.getHoursNightStart()))), true).build();
-    changeNightStart.show(getActivity().getSupportFragmentManager(),
-        Constants.FragmentTag.CHANGE_NIGHT_START_DIALOG_FRAGMENT);
+    mNotificationSettingsFragmentPresenter.showPickStartNightDialog();
   }
 
   @OnClick(R.id.tvNightChangeEnd) void changeNightEnd() {
-    GridTimePickerDialog changeNightEnd = new GridTimePickerDialog.Builder(this,
-        (int) TimeUnit.MILLISECONDS.toHours(
-            mNotificationSettingsFragmentPresenter.getHoursNightEnd()) + 3,
+    mNotificationSettingsFragmentPresenter.showPickEndNightDialog();
+  }
+
+  @Override public void showPickHourDialog() {
+    mPickHourDialog = new TimePickerDialog(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        (timePicker, i, i1) -> {
+          mNotificationSettingsFragmentPresenter.setHours(
+              TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          mNotificationSettingsFragmentPresenter.cancelPickHourDialog();
+        }, (int) TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()),
+        (int) (TimeUnit.MILLISECONDS.toMinutes(mNotificationSettingsFragmentPresenter.getHours())
+            - TimeUnit.HOURS.toMinutes(
+            TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))),
+        true);
+    mPickHourDialog.setOnCancelListener(
+        dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickHourDialog());
+    mPickHourDialog.show();
+  }
+
+  @Override public void showPickStartNightDialog() {
+    mPickStartNightDialog = new TimePickerDialog(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        (timePicker, i, i1) -> {
+          mNotificationSettingsFragmentPresenter.setHoursNightStart(
+              TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          mNotificationSettingsFragmentPresenter.cancelPickStartNightDialog();
+        }, (int) TimeUnit.MILLISECONDS.toHours(
+        mNotificationSettingsFragmentPresenter.getHoursNightStart()),
+        (int) (TimeUnit.MILLISECONDS.toMinutes(
+            mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
+            TimeUnit.MILLISECONDS.toHours(
+                mNotificationSettingsFragmentPresenter.getHoursNightStart()))), true);
+    mPickStartNightDialog.setOnCancelListener(
+        dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickStartNightDialog());
+    mPickStartNightDialog.show();
+  }
+
+  @Override public void showPickEndNightDialog() {
+    mPickEndNightDialog = new TimePickerDialog(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        (timePicker, i, i1) -> {
+          mNotificationSettingsFragmentPresenter.setHoursNightEnd(
+              TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+          mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog();
+        }, (int) TimeUnit.MILLISECONDS.toHours(
+        mNotificationSettingsFragmentPresenter.getHoursNightEnd()),
         (int) (TimeUnit.MILLISECONDS.toMinutes(
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
-                mNotificationSettingsFragmentPresenter.getHoursNightEnd()))), true).build();
-    changeNightEnd.show(getActivity().getSupportFragmentManager(),
-        Constants.FragmentTag.CHANGE_NIGHT_END_DIALOG_FRAGMENT);
+                mNotificationSettingsFragmentPresenter.getHoursNightEnd()))), true);
+    mPickStartNightDialog.setOnCancelListener(
+        dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog());
+    mPickEndNightDialog.show();
   }
 
   @Override public void setUpSwitchers(boolean hourly, boolean daily, boolean night) {
@@ -176,10 +207,16 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void setUpHoursString(long hours) {
-    mTextViewHourly.setText(
-        getString(R.string.settings_notifications_hourly, TimeUnit.MILLISECONDS.toHours(hours),
-            TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
-                TimeUnit.MILLISECONDS.toHours(hours))));
+    int hour = (int) TimeUnit.MILLISECONDS.toHours(hours);
+    if (hour >= 1) {
+      mTextViewHourly.setText(getString(R.string.settings_notifications_hourly, hour,
+          TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
+              TimeUnit.MILLISECONDS.toHours(hours))));
+    } else {
+      mTextViewHourly.setText(getString(R.string.settings_notifications_minutely,
+          TimeUnit.MILLISECONDS.toMinutes(hours) - TimeUnit.HOURS.toMinutes(
+              TimeUnit.MILLISECONDS.toHours(hours))));
+    }
   }
 
   @Override public void setUpNightHours(long start, long end) {
@@ -194,21 +231,21 @@ public class NotificationSettingsFragment extends BaseFragment
     }
   }
 
-  @Override public void onTimeSet(ViewGroup viewGroup, int i, int i1) {
-    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
-        Constants.FragmentTag.CHANGE_HOURLY_DIALOG_FRAGMENT)) {
-      mNotificationSettingsFragmentPresenter.setHours(
-          TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
+  @Override public void cancelPickHourDialog() {
+    if (mPickHourDialog != null) {
+      mPickHourDialog.dismiss();
     }
-    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
-        Constants.FragmentTag.CHANGE_NIGHT_START_DIALOG_FRAGMENT)) {
-      mNotificationSettingsFragmentPresenter.setHoursNightStart(
-          TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
+  }
+
+  @Override public void cancelPickStartNightDialog() {
+    if (mPickStartNightDialog != null) {
+      mPickStartNightDialog.dismiss();
     }
-    if (mNavigator.isFragmentTag((AppCompatActivity) getActivity(),
-        Constants.FragmentTag.CHANGE_NIGHT_END_DIALOG_FRAGMENT)) {
-      mNotificationSettingsFragmentPresenter.setHoursNightEnd(
-          TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
+  }
+
+  @Override public void cancelPickEndNightDialog() {
+    if (mPickEndNightDialog != null) {
+      mPickEndNightDialog.dismiss();
     }
   }
 }
