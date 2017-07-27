@@ -10,6 +10,8 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.ArrayList;
+import java.util.List;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -24,6 +26,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
  */
 
 @InjectViewState public class CatalogFragmentPresenter extends BasePresenter<ICatalogFragmentView> {
+
+  private ArrayList<GoodsEntity> mGoodsEntities = new ArrayList<>();
 
   private String mTitle;
 
@@ -75,6 +79,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   }
 
   @SuppressWarnings("ConstantConditions") public void fetchGoodsList() {
+
+    getViewState().updateGoodsList(mDataManager.getAllElementsFromDB(GoodsEntity.class));
     getViewState().startRefreshingView();
     Subscription subscription =
         mAuthorizationManager.checkToken(mDataManager.fetchAllProducts()).concatMap(response -> {
@@ -90,6 +96,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                       new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "",
                           "", 0, "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0,
                           null, false, false, false));
+              cacheGoodsEntity(response.body());
+
               getViewState().updateGoodsList(response.body());
               getViewState().stopRefreshingView();
               getViewState().setButtonDefaultText();
@@ -115,6 +123,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
           showMessageException(throwable);
         });
     addToUnsubscription(subscription);
+  }
+
+  private void cacheGoodsEntity(List<GoodsEntity> body) {
+    //cache GoodsEntity
+    for (int i = 0; i < body.size(); i++) {
+      mDataManager.saveObjToDb(body.get(i));
+    }
+    Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(GoodsEntity.class).size()));
   }
 
   private void subscribeGoodsList() {

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.GoodsDetailContent;
 import com.bumptech.glide.Glide;
+import io.realm.RealmList;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +21,9 @@ import java.util.ArrayList;
 public class ImageGoodsViewPagerAdapter extends PagerAdapter {
   private Context mContext;
   private LayoutInflater mLayoutInflater;
-  private ArrayList<GoodsDetailContent> mPhotoStaff;
+  private RealmList<GoodsDetailContent> mPhotoStaff;
 
-  public ImageGoodsViewPagerAdapter(Context context, ArrayList<GoodsDetailContent> photoStaff) {
+  public ImageGoodsViewPagerAdapter(Context context, RealmList<GoodsDetailContent> photoStaff) {
     this.mContext = context;
     mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoStaff = photoStaff;
