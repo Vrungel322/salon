@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.data;
 
 import com.apps.twelve.floor.authorization.AuthorizationManager;
+import com.apps.twelve.floor.salon.data.local.DbHelper;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.data.model.BonusHistoryEntity;
@@ -17,10 +18,10 @@ import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import io.realm.RealmObject;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
-import rx.Subscription;
 
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAILY_ENABLED;
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAYS;
@@ -36,15 +37,17 @@ import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTI
 
 public class DataManager {
 
+  private DbHelper mDbHelper;
   private RestApi mRestApi;
   private PreferencesHelper mPref;
   private AuthorizationManager mAuthorizationManager;
 
   public DataManager(RestApi restApi, PreferencesHelper preferencesHelper,
-      AuthorizationManager authorizationManager) {
+      AuthorizationManager authorizationManager, DbHelper dbHelper) {
     this.mRestApi = restApi;
     this.mPref = preferencesHelper;
     this.mAuthorizationManager = authorizationManager;
+    this.mDbHelper = dbHelper;
   }
 
   //checkin service.
@@ -298,7 +301,17 @@ public class DataManager {
   }
 
   public Observable<Response<Void>> sendFriendsCode(String friendsCode) {
-    return mRestApi.sendFriendsCode(friendsCode,mAuthorizationManager.getToken(),mPref.getLanguageCode());
+    return mRestApi.sendFriendsCode(friendsCode, mAuthorizationManager.getToken(),
+        mPref.getLanguageCode());
+  }
+
+  //db
+  public <T extends RealmObject> Observable<T> saveObjToDb(T object){
+    return mDbHelper.save(object);
+  }
+
+  public <T extends RealmObject> Observable<List<T>> getAll(Class<T> clazz){
+    return mDbHelper.getAll(clazz);
   }
 }
 
