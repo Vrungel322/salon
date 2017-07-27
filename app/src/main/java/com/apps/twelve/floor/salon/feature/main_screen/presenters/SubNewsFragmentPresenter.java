@@ -9,6 +9,7 @@ import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
 import java.util.ArrayList;
+import java.util.List;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -19,8 +20,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
  */
 
 @InjectViewState public class SubNewsFragmentPresenter extends BasePresenter<ISubNewsFragmentView> {
-
-  private ArrayList<NewsEntity> mNewsEntities = new ArrayList<>();
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -38,13 +37,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getViewState().updateNewsPreview(mDataManager.getAllElementsFromDB(NewsEntity.class));
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
-        .doOnNext(listResponse -> mNewsEntities.addAll(listResponse.body()))
         .subscribe(response -> {
-          //cache NewsEntities
-          for (int i = 0; i < mNewsEntities.size(); i++) {
-            mDataManager.saveObjToDb(mNewsEntities.get(i));
-          }
-          Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(NewsEntity.class).size()));
+          cacheNewsEntity(response.body());
 
           if (response.code() == RESPONSE_200) {
             getViewState().updateNewsPreview(response.body());
@@ -56,6 +50,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           showMessageException(throwable);
         });
     addToUnsubscription(subscription);
+  }
+
+  private void cacheNewsEntity(List<NewsEntity> body) {
+    //cache NewsEntities
+    for (int i = 0; i < body.size(); i++) {
+      mDataManager.saveObjToDb(body.get(i));
+    }
+    Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(NewsEntity.class).size()));
   }
 
   private void subscribeUpdateNews() {

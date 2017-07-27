@@ -27,7 +27,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
 
 @InjectViewState public class CatalogFragmentPresenter extends BasePresenter<ICatalogFragmentView> {
 
-  private ArrayList<GoodsEntity> mGoodsEntities = new ArrayList<>();
 
   private String mTitle;
 
