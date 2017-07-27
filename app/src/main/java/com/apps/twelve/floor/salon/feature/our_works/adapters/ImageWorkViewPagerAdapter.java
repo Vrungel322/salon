@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.bumptech.glide.Glide;
+import io.realm.RealmList;
 import java.util.List;
 
 /**
@@ -21,9 +22,9 @@ public class ImageWorkViewPagerAdapter extends PagerAdapter {
 
   private Context mContext;
   private LayoutInflater mLayoutInflater;
-  private List<PhotoWorksEntity> mPhotoWorks;
+  private RealmList<PhotoWorksEntity> mPhotoWorks;
 
-  public ImageWorkViewPagerAdapter(Context context, List<PhotoWorksEntity> photoWorks) {
+  public ImageWorkViewPagerAdapter(Context context, RealmList<PhotoWorksEntity> photoWorks) {
     this.mContext = context;
     mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     this.mPhotoWorks = photoWorks;

@@ -3,6 +3,9 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,16 +13,9 @@ import java.util.List;
  * Created by Vrungel on 22.02.2017.
  */
 
-public class OurWorkEntity implements Parcelable {
-  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
-    @Override public OurWorkEntity createFromParcel(Parcel in) {
-      return new OurWorkEntity(in);
-    }
+public class OurWorkEntity extends RealmObject implements Parcelable {
 
-    @Override public OurWorkEntity[] newArray(int size) {
-      return new OurWorkEntity[size];
-    }
-  };
+  @PrimaryKey
   @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("description") private String mShortDescription;
@@ -27,10 +23,13 @@ public class OurWorkEntity implements Parcelable {
   @SerializedName("service_id") private int serviceId;
   @SerializedName("image") private String mImageURL;
   @SerializedName("photos_count") private int mImageCount;
-  @SerializedName("photos") private List<PhotoWorksEntity> mListPhotoWorks;
+  @SerializedName("photos") private RealmList<PhotoWorksEntity> mListPhotoWorks;
+
+  public OurWorkEntity() {
+  }
 
   public OurWorkEntity(String imageURL, int imageCount, String title,
-      List<PhotoWorksEntity> listPhotoWorks) {
+      RealmList<PhotoWorksEntity> listPhotoWorks) {
     mImageURL = imageURL;
     mImageCount = imageCount;
     mTitle = title;
@@ -45,23 +44,17 @@ public class OurWorkEntity implements Parcelable {
     serviceId = in.readInt();
     mImageURL = in.readString();
     mImageCount = in.readInt();
-    mListPhotoWorks = in.createTypedArrayList(PhotoWorksEntity.CREATOR);
   }
 
-  @Override public void writeToParcel(Parcel dest, int flags) {
-    dest.writeInt(id);
-    dest.writeString(mTitle);
-    dest.writeString(mShortDescription);
-    dest.writeInt(masterId);
-    dest.writeInt(serviceId);
-    dest.writeString(mImageURL);
-    dest.writeInt(mImageCount);
-    dest.writeTypedList(mListPhotoWorks);
-  }
+  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
+    @Override public OurWorkEntity createFromParcel(Parcel in) {
+      return new OurWorkEntity(in);
+    }
 
-  @Override public int describeContents() {
-    return 0;
-  }
+    @Override public OurWorkEntity[] newArray(int size) {
+      return new OurWorkEntity[size];
+    }
+  };
 
   public int getId() {
     return id;
@@ -119,11 +112,25 @@ public class OurWorkEntity implements Parcelable {
     mImageCount = imageCount;
   }
 
-  public List<PhotoWorksEntity> getListPhotoWorks() {
+  public RealmList<PhotoWorksEntity> getListPhotoWorks() {
     return mListPhotoWorks;
   }
 
-  public void setListPhotoWorks(ArrayList<PhotoWorksEntity> listPhotoWorks) {
+  public void setListPhotoWorks(RealmList<PhotoWorksEntity> listPhotoWorks) {
     mListPhotoWorks = listPhotoWorks;
+  }
+
+  @Override public int describeContents() {
+    return 0;
+  }
+
+  @Override public void writeToParcel(Parcel parcel, int i) {
+    parcel.writeInt(id);
+    parcel.writeString(mTitle);
+    parcel.writeString(mShortDescription);
+    parcel.writeInt(masterId);
+    parcel.writeInt(serviceId);
+    parcel.writeString(mImageURL);
+    parcel.writeInt(mImageCount);
   }
 }

@@ -3,17 +3,23 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by John on 09.03.2017.
  */
 
-public class PhotoWorksEntity implements Parcelable {
+public class PhotoWorksEntity extends RealmObject implements Parcelable {
+  @PrimaryKey
   @SerializedName("id") private int id;
   //@SerializedName("gallery_id") private int galleryId;
   @SerializedName("image") private String mUrlPhoto;
   @SerializedName("description") private String mDescriptionPhoto;
   @SerializedName("favorite") private boolean mFavorite;
+
+  public PhotoWorksEntity() {
+  }
 
   public PhotoWorksEntity(int id, String urlPhoto, String descriptionPhoto, boolean favorite) {
     this.id = id;
