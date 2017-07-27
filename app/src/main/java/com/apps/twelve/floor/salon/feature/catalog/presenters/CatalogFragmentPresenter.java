@@ -95,7 +95,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                       new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "",
                           "", 0, "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0,
                           null, false, false, false));
-              cacheGoodsEntity(response.body());
+              cacheEntities(response.body());
 
               getViewState().updateGoodsList(response.body());
               getViewState().stopRefreshingView();
@@ -122,14 +122,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
           showMessageException(throwable);
         });
     addToUnsubscription(subscription);
-  }
-
-  private void cacheGoodsEntity(List<GoodsEntity> body) {
-    //cache GoodsEntity
-    for (int i = 0; i < body.size(); i++) {
-      mDataManager.saveObjToDb(body.get(i));
-    }
-    Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(GoodsEntity.class).size()));
   }
 
   private void subscribeGoodsList() {

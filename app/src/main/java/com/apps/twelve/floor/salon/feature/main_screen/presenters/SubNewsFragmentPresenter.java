@@ -38,7 +38,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          cacheNewsEntity(response.body());
+          cacheEntities(response.body());
 
           if (response.code() == RESPONSE_200) {
             getViewState().updateNewsPreview(response.body());
@@ -50,14 +50,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           showMessageException(throwable);
         });
     addToUnsubscription(subscription);
-  }
-
-  private void cacheNewsEntity(List<NewsEntity> body) {
-    //cache NewsEntities
-    for (int i = 0; i < body.size(); i++) {
-      mDataManager.saveObjToDb(body.get(i));
-    }
-    Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(NewsEntity.class).size()));
   }
 
   private void subscribeUpdateNews() {
