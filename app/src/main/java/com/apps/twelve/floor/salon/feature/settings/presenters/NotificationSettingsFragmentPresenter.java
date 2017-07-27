@@ -5,7 +5,9 @@ import com.apps.twelve.floor.authorization.utils.ThreadSchedulers;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
+import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
+import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -29,6 +31,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     extends BasePresenter<INotificationSettingsFragmentView> {
 
   private int mLastPickedDays;
+  @Inject JobsCreator mJobsCreator;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -158,6 +161,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
+              mJobsCreator.updateNotifications();
               getViewState().setUpHoursString(millis);
               break;
             case RESPONSE_UNAUTHORIZED:
@@ -166,6 +170,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           }
         }, throwable -> {
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS, millis);
+          mJobsCreator.updateNotifications();
           getViewState().setUpHoursString(millis);
           Timber.e(throwable);
         });
@@ -250,10 +255,16 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          if (response.code() == RESPONSE_UNAUTHORIZED) {
+          switch (response.code()) {
+            case RESPONSE_200:
+              mJobsCreator.updateNotifications();
+              break;
+            case RESPONSE_UNAUTHORIZED:
               mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              break;
           }
         }, throwable -> {
+          mJobsCreator.updateNotifications();
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays);
           Timber.e(throwable);
         });

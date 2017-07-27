@@ -9,6 +9,8 @@ public final class Constants {
     private static final String DOMEN = "beauty.api.floor12apps.com";
     public static final String BASE_URL = "https://" + DOMEN + "/";
     public static final String LOCAL = "ru";
+    public static final String TERMS_OF_SERVICE_URL = "http://floor12apps.com/terms_of_service";
+    public static final String PRIVACY_POLICY_URL = "http://floor12apps.com/privacy_policy";
   }
 
   public class FragmentTag {

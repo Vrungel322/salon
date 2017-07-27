@@ -154,6 +154,10 @@
   <string name="choose_staff">Выбор продукции</string>
   <string name="choose_category">Выбрать категорию</string>
   <string name="sent_message">Сообщение отправлено</string>
+  <string name="settings_terms_and_policy">Условия и политика</string>
+  <string name="settings_terms_of_service">Условия использования</string>
+  <string name="settings_privacy_policy">Политика конфиденциальности</string>
+
 
   <string-array name="changing_field">
     <item>имя</item>

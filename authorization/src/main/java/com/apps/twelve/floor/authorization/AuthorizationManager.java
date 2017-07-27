@@ -182,20 +182,11 @@ public class AuthorizationManager {
   }
 
   public Observable<Response<Void>> populateAdditionalField(String key, String value) {
+    mDataManager.setAdditionalField(key, value);
     if (!mDataManager.isExistAdditionalField(key)) {
-      return mDataManager.addAdditionalField(key, value).concatMap(response -> {
-        if (response.isSuccessful()) {
-          mDataManager.setAdditionalField(key, value);
-        }
-        return Observable.just(response);
-      });
+      return mDataManager.addAdditionalField(key, value);
     } else {
-      return mDataManager.updateAdditionalField(key, value).concatMap(response -> {
-        if (response.isSuccessful()) {
-          mDataManager.setAdditionalField(key, value);
-        }
-        return Observable.just(response);
-      });
+      return mDataManager.updateAdditionalField(key, value);
     }
   }
 

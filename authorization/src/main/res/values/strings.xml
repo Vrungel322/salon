@@ -169,8 +169,8 @@
 
   <!--privacy policy-->
   <string name="privacy_policy">Нажав на кнопку, расположенную ниже, вы соглашаетесь с
-    <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">Условиями использования</a>
-    и <a href="https://medium.com/policy/medium-privacy-policy-f03bf92035c9">Политикой конфиденциальности</a>
+    <a href="http://floor12apps.com/terms_of_service">Условиями использования</a>
+    и <a href="http://floor12apps.com/privacy_policy">Политикой конфиденциальности</a>
   </string>
 
   <string name="en_privacy_policy" translatable="false">By creating an account, I accept Medium’s

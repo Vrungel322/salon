@@ -1,173 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorLLightGray"
-    android:clickable="true"
-    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorLLightGray"
+  android:clickable="true">
 
   <android.support.v4.widget.NestedScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
       <RelativeLayout
-          android:id="@+id/container_info_user"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          >
+        android:id="@+id/container_info_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
       </RelativeLayout>
       <!--additional settings-->
       <TextView
-          android:id="@+id/tvAdditionalSettings"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/container_info_user"
-          android:layout_marginBottom="16dp"
-          android:layout_marginLeft="16dp"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="16dp"
-          android:text="@string/additional_settings"
-          android:textColor="@color/colorLightGray"
-          android:textSize="18sp"
-          />
+        android:id="@+id/tvAdditionalSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/container_info_user"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/additional_settings"
+        android:textColor="@color/colorLightGray"
+        android:textSize="18sp" />
+
       <RelativeLayout
-          android:id="@+id/block_additional_settings"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true"
-          android:layout_below="@+id/tvAdditionalSettings"
-          android:background="@color/colorWhite"
-          android:layout_marginBottom="64dp"
-          >
+        android:id="@+id/block_additional_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvAdditionalSettings"
+        android:background="@color/colorWhite">
+
         <View
-            android:id="@+id/separatorAdditionalSettings"
-            android:layout_width="match_parent"
-            android:layout_height="0.25dp"
-            android:background="@color/colorTransparentGray"
-            />
+          android:id="@+id/separatorAdditionalSettings"
+        android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:background="@color/colorTransparentGray" />
         <!--notifications-->
         <RelativeLayout
-            android:id="@+id/rlNotifications"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/separatorAdditionalSettings"
-            android:background="?attr/selectableItemBackground"
-            >
+          android:id="@+id/rlNotifications"
+          android:layout_width="match_parent"
+        android:layout_height="match_parent"
+          android:layout_below="@id/separatorAdditionalSettings"
+          android:background="?attr/selectableItemBackground">
+
           <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivNotifications"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentEnd="true"
-              android:layout_alignParentRight="true"
-              android:layout_marginEnd="8dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_date_next_24dp"
-              />
+            android:id="@+id/ivNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_date_next_24dp" />
+
           <TextView
-              android:id="@+id/tvNotifications"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginEnd="8dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:text="@string/settings_notifications"
-              android:textColor="@color/colorGray"
-              android:textSize="16sp"
-              />
+            android:id="@+id/tvNotifications"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_notifications"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
           <View
-              android:id="@+id/separatorNotifications"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_below="@+id/tvNotifications"
-              android:background="@color/colorTransparentGray"
-              />
-        </RelativeLayout>
+            android:id="@+id/separatorNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvNotifications"
+            android:background="@color/colorTransparentGray" />
+      </RelativeLayout>
         <!--problems-->
         <RelativeLayout
-            android:id="@+id/rlProblem"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rlNotifications"
-            android:background="?attr/selectableItemBackground"
-            >
+          android:id="@+id/rlProblem"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/rlNotifications"
+          android:background="?attr/selectableItemBackground">
+
           <android.support.v7.widget.AppCompatImageView
-              android:id="@+id/ivProblem"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentEnd="true"
-              android:layout_alignParentRight="true"
-              android:layout_marginEnd="8dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginTop="14dp"
-              app:srcCompat="@drawable/ic_date_next_24dp"
-              />
+            android:id="@+id/ivProblem"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/ic_date_next_24dp" />
+
           <TextView
-              android:id="@+id/tvProblem"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginEnd="8dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:text="@string/settings_problem"
-              android:textColor="@color/colorGray"
-              android:textSize="16sp"
-              />
+            android:id="@+id/tvProblem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+          android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+            android:text="@string/settings_problem"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
           <View
-              android:id="@+id/separatorProblem"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_below="@+id/tvProblem"
-              android:background="@color/colorTransparentGray"
-              />
+            android:id="@+id/separatorProblem"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvProblem"
+            android:background="@color/colorTransparentGray" />
         </RelativeLayout>
         <!--change theme-->
-        <RelativeLayout
-            android:id="@+id/rlTheme"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/rlProblem"
-            android:background="?attr/selectableItemBackground"
-            >
-          <TextView
-              android:id="@+id/tvTheme"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="16dp"
-              android:layout_marginEnd="8dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="8dp"
-              android:layout_marginStart="16dp"
-              android:layout_marginTop="16dp"
-              android:text="@string/settings_change_theme"
-              android:textColor="@color/colorGray"
-              android:textSize="16sp"
-              />
-          <View
-              android:id="@+id/separatorTheme"
-              android:layout_width="match_parent"
-              android:layout_height="0.25dp"
-              android:layout_below="@+id/tvTheme"
-              android:background="@color/colorTransparentGray"
-              />
-        </RelativeLayout>
+      <RelativeLayout
+        android:id="@+id/rlTheme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rlProblem"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+          android:id="@+id/tvTheme"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:text="@string/settings_change_theme"
+          android:textColor="@color/colorGray"
+          android:textSize="16sp" />
+
+        <View
+          android:id="@+id/separatorTheme"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:layout_below="@+id/tvTheme"
+          android:background="@color/colorTransparentGray" />
+      </RelativeLayout>
         <!--change language-->
         <RelativeLayout
           android:id="@+id/rlLanguage"
@@ -195,6 +186,97 @@
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
             android:layout_below="@+id/tvLanguage"
+            android:background="@color/colorTransparentGray" />
+      </RelativeLayout>
+      </RelativeLayout>
+
+      <!--terms and policy-->
+      <TextView
+        android:id="@+id/tvTermsAndPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/block_additional_settings"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_terms_and_policy"
+        android:textColor="@color/colorLightGray"
+        android:textSize="18sp" />
+
+      <RelativeLayout
+        android:id="@+id/block_privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvTermsAndPolicy"
+        android:layout_marginBottom="64dp"
+        android:background="@color/colorWhite">
+
+        <View
+          android:id="@+id/separatorSettingPrivacyPolicy"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:background="@color/colorTransparentGray" />
+        <!--term of service-->
+        <RelativeLayout
+          android:id="@+id/rlTermOfService"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/separatorSettingPrivacyPolicy"
+          android:background="?attr/selectableItemBackground">
+
+          <TextView
+            android:id="@+id/tvTermOfService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_terms_of_service"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorTermOfService"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvTermOfService"
+            android:background="@color/colorTransparentGray" />
+        </RelativeLayout>
+        <!--privacy policy-->
+        <RelativeLayout
+          android:id="@+id/rlPrivacyPolicy"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/rlTermOfService"
+          android:background="?attr/selectableItemBackground">
+
+          <TextView
+            android:id="@+id/tvPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_privacy_policy"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvPrivacyPolicy"
             android:background="@color/colorTransparentGray" />
         </RelativeLayout>
       </RelativeLayout>

@@ -105,8 +105,8 @@
   <string name="user_profile_logout">Вийти</string>
   <!--privacy policy-->
   <string name="privacy_policy">Натиснувши на кнопку, розташовану нижче, ви погоджуєтеся з
-    <a href="https://medium.com/policy/medium-terms-of-service-9db0094a1e0f">Умовами користування</a>
-    і <a href="https://medium.com/policy/medium-privacy-policy-f03bf92035c9">Політикою конфіденційності</a>
+    <a href="http://floor12apps.com/terms_of_service">Умовами користування</a>
+    і <a href="http://floor12apps.com/privacy_policy">Політикою конфіденційності</a>
   </string>
   <string name="activity_history_date">"Активність: "</string>
   <string name="activity_history_device_name">"Ім'я пристрою: "</string>

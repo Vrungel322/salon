@@ -145,4 +145,7 @@
   <string name="сheck_internet_connection">Перевірте підключення до інтернету</string>
   <string name="settings_change_language">Мова додатка</string>
   <string name="dialog_title_select_language">Виберіть мову</string>
+  <string name="settings_terms_and_policy">Умови та політика</string>
+  <string name="settings_terms_of_service">Умови використання</string>
+  <string name="settings_privacy_policy">Політика конфіденційності</string>
 </resources>
