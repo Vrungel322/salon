@@ -8,7 +8,6 @@ import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBooking
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import java.util.ArrayList;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -23,7 +22,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
 @InjectViewState public class SubBookingFragmentPresenter
     extends BasePresenter<ISubFragmentBookingView> {
 
-  private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
+  //private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -42,6 +41,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
 
   @SuppressWarnings("ConstantConditions") private void fetchBookingEntities() {
 
+    //getViewState().showLastBookings(mDataManager.getAllElementsFromDB(LastBookingEntity.class));
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription =
           mAuthorizationManager.checkToken(mDataManager.fetchLastBooking())
@@ -62,18 +62,18 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
               })
               .doOnNext(response -> {
                 mDataManager.putBooking(response.body());
-                mLastBookingEntities.addAll(response.body());
+                //mLastBookingEntities.addAll(response.body());
               })
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()
               .compose(ThreadSchedulers.applySchedulers())
               .subscribe(lastBookingEntities -> {
-                //cache LastBookingEntities
-                for (int i = 0; i < mLastBookingEntities.size(); i++) {
-                  mDataManager.saveObjToDb(mLastBookingEntities.get(i));
-                }
-                Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(LastBookingEntity.class).size()));
+                ////cache LastBookingEntities
+                //for (int i = 0; i < mLastBookingEntities.size(); i++) {
+                //  mDataManager.saveObjToDb(mLastBookingEntities.get(i));
+                //}
+                //Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(LastBookingEntity.class).size()));
                 if (lastBookingEntities.size() != 0) {
                   getViewState().showLastBookings(lastBookingEntities);
                   mRxBus.post(new RxBusHelper.ShowSubBookingFragment());
