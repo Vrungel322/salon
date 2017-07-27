@@ -4,8 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class NewsEntity implements Parcelable {
+public class NewsEntity extends RealmObject implements Parcelable {
 
   public static final Creator<NewsEntity> CREATOR = new Creator<NewsEntity>() {
     @Override public NewsEntity createFromParcel(Parcel in) {
@@ -16,6 +18,7 @@ public class NewsEntity implements Parcelable {
       return new NewsEntity[size];
     }
   };
+  @PrimaryKey
   @SerializedName("id") @Expose private Integer id;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;

@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.feature.news.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.feature.news.views.IAllNewsFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -29,6 +30,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   }
 
   public void fetchListOfNews() {
+    getViewState().addListOfNews(mDataManager.getAllElementsFromDB(NewsEntity.class));
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
