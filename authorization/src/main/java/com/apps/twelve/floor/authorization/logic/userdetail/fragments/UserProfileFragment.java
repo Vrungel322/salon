@@ -159,8 +159,8 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
           String.format(Locale.getDefault(), "%d-%02d-%02d", year, (monthOfYear + 1), dayOfMonth);
       mUserProfileFragmentPresenter.saveUserBirthDay(date);
     }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-    dpd.setCancelText(getString(R.string.btn_ok));
-    dpd.setOkText(R.string.btn_cancel);
+    dpd.setCancelText(R.string.btn_cancel);
+    dpd.setOkText(R.string.btn_ok);
     dpd.show(getActivity().getFragmentManager(), "Datepickerdialog");
   }
 
