@@ -109,10 +109,9 @@
 
   <string-array name="changing_field">
     <item>имя</item>
-    <item>логин</item>
-    <item>пароль</item>
-    <item>почту</item>
+    <item>email</item>
     <item>телефон</item>
+    <item>пароль</item>
   </string-array>
 
   <!--for settings-->
