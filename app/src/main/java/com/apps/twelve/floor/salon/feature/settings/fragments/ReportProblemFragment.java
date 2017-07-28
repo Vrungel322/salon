@@ -16,6 +16,7 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.presenters.ReportProblemFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.IReportProblemFragmentView;
+import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 /**
@@ -62,6 +63,7 @@ public class ReportProblemFragment extends BaseFragment implements IReportProble
   }
 
   @Override public void closeFragment() {
+    ViewUtil.hideKeyboard(getActivity());
     getActivity().onBackPressed();
   }
 
