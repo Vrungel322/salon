@@ -7,18 +7,23 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingDetailActivity;
 import com.evernote.android.job.Job;
+import java.util.List;
 import java.util.Random;
 import javax.inject.Inject;
 
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DATE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.LAST_BOOKING_ENTITY;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.LAST_BOOKING_ENTITY_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICATION_TYPE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.SERVICE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.TIME;
@@ -67,9 +72,23 @@ public class NotificationJob extends Job {
           break;
       }
 
-      PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0,
-          new Intent(getContext(), StartActivity.class).setAction(
-              Long.toString(System.currentTimeMillis())), PendingIntent.FLAG_UPDATE_CURRENT);
+      int lastBookingEntityId = params.getExtras().getInt(LAST_BOOKING_ENTITY_ID, -1);
+      List<LastBookingEntity> bookingEntities = mDataManager.getBooking();
+
+      LastBookingEntity lastBookingEntity = null;
+      for (LastBookingEntity bookingEntity : bookingEntities) {
+        if (lastBookingEntityId == bookingEntity.getId()) {
+          lastBookingEntity = bookingEntity;
+        }
+      }
+
+      TaskStackBuilder stackBuilder = TaskStackBuilder.create(getContext());
+      Intent intent = new Intent(getContext(), BookingDetailActivity.class);
+      intent.putExtra(LAST_BOOKING_ENTITY, lastBookingEntity);
+      stackBuilder.addNextIntentWithParentStack(intent);
+
+      PendingIntent pendingIntent =
+          stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
       NotificationCompat.Builder builder =
           new NotificationCompat.Builder(getContext()).setContentTitle(

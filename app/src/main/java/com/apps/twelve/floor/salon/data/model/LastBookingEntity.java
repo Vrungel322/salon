@@ -203,11 +203,14 @@ public class LastBookingEntity implements Parcelable {
   }
 
   protected LastBookingEntity(Parcel in) {
+    id = in.readInt();
     userPhone = in.readString();
     userName = in.readString();
     masterName = in.readString();
     masterDescription = in.readString();
     masterPhoto = in.readString();
+    masterId = in.readInt();
+    serviceTime = in.readInt();
     serviceName = in.readString();
     serviceImage = in.readString();
     serviceDescription = in.readString();
@@ -219,11 +222,14 @@ public class LastBookingEntity implements Parcelable {
   }
 
   @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeInt(id);
     dest.writeString(userPhone);
     dest.writeString(userName);
     dest.writeString(masterName);
     dest.writeString(masterDescription);
     dest.writeString(masterPhoto);
+    dest.writeInt(masterId);
+    dest.writeInt(serviceTime);
     dest.writeString(serviceName);
     dest.writeString(serviceImage);
     dest.writeString(serviceDescription);

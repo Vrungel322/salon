@@ -60,6 +60,8 @@ public final class Constants {
   }
 
   public class Notifications {
+    public static final String LAST_BOOKING_ENTITY_ID = "LAST_BOOKING_ENTITY_ID";
+    public static final String LAST_BOOKING_ENTITY = "LAST_BOOKING_ENTITY";
     public static final String NOTIFICATION_TYPE = "NOTIFICATION_TYPE";
     public static final String DAILY = "DAILY";
     public static final String HOURLY = "HOURLY";
