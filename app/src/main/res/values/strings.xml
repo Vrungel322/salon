@@ -158,15 +158,6 @@
   <string name="settings_terms_of_service">Условия использования</string>
   <string name="settings_privacy_policy">Политика конфиденциальности</string>
 
-
-  <string-array name="changing_field">
-    <item>имя</item>
-    <item>логин</item>
-    <item>пароль</item>
-    <item>почту</item>
-    <item>телефон</item>
-  </string-array>
-
   <string name="dialog_title_select_theme">Выберите тему</string>
   <string name="error_connection">Ошибка соеденения</string>
   <string name="сheck_internet_connection">Проверте подключение к интернету</string>

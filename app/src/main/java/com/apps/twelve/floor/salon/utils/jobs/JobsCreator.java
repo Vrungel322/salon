@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DATE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.HOURLY;
+import static com.apps.twelve.floor.salon.utils.Constants.Notifications.LAST_BOOKING_ENTITY_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.NOTIFICATION_TYPE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.SERVICE;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.TIME;
@@ -51,6 +52,7 @@ public class JobsCreator implements JobCreator {
 
   private void createHourly(String tag, Long millis, String service, String time) {
     PersistableBundleCompat bundle = new PersistableBundleCompat();
+    bundle.putInt(LAST_BOOKING_ENTITY_ID, Integer.parseInt(tag));
     bundle.putString(NOTIFICATION_TYPE, HOURLY);
     bundle.putString(SERVICE, service);
     bundle.putString(TIME, time);
@@ -64,6 +66,7 @@ public class JobsCreator implements JobCreator {
 
   private void createDaily(String tag, Long millis, String service, String date, String time) {
     PersistableBundleCompat bundle = new PersistableBundleCompat();
+    bundle.putInt(LAST_BOOKING_ENTITY_ID, Integer.parseInt(tag));
     bundle.putString(NOTIFICATION_TYPE, DAILY);
     bundle.putString(SERVICE, service);
     bundle.putString(DATE, date);

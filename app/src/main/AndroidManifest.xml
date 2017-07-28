@@ -85,6 +85,13 @@
           android:name="android.support.PARENT_ACTIVITY"
           android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity"/>
     </activity>
+    <activity
+      android:name=".feature.my_booking.activities.BookingDetailActivity"
+      android:parentActivityName=".feature.start_point.activities.StartActivity">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity" />
+    </activity>
     <receiver
         android:name=".utils.NetworkBroadcastReceiver"
         android:enabled="true"

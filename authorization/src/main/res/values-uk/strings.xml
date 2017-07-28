@@ -125,6 +125,13 @@
   <string name="telephone">телефоном</string>
   <string name="user_profile_name">Ім\'я</string>
   <string name="verify_btn">Підтвердити</string>
+
+  <string-array name="changing_field">
+    <item>"ім'я"</item>
+    <item>email</item>
+    <item>телефон</item>
+    <item>пароль</item>
+  </string-array>
   <!--gender-->
   <string-array name="gender">
     <item>Не вказано</item>
