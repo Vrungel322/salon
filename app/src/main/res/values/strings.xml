@@ -43,7 +43,7 @@
   <string name="yes">Да</string>
   <string name="no">Нет</string>
   <string name="your_last_booking">Ваша последняя запись</string>
-  <string name="user_data">%1$s \n(%2$s),\nбагодарим за запись </string>
+  <string name="user_data">%1$s \n(%2$s),\nблагодарим за запись </string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
@@ -162,16 +162,7 @@
   <string name="error_connection">Ошибка соеденения</string>
   <string name="сheck_internet_connection">Проверте подключение к интернету</string>
   <string name="wrong">Что-то пошло не так!</string>
-  <string-array name="dialog_theme">
-    <item>Розовая</item>
-    <item>Синяя</item>
-    <item>Зеленая</item>
-    <item>Желтая</item>
-    <item>Серая</item>
-    <item>Фиолетовая</item>
-    <item>Красная</item>
-  </string-array>
-  <string-array name="dialog_language">
+  <string-array name="dialog_language" translatable="false">
     <item>Русский</item>
     <item>Українська</item>
   </string-array>

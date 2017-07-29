@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">Авторизация</string>
+  <string name="module_name">Авторизация</string>
 
   <string name="auth_email">email</string>
   <string name="auth_phone">телефон</string>

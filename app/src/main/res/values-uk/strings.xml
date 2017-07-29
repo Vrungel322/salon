@@ -148,4 +148,13 @@
   <string name="settings_terms_and_policy">Умови та політика</string>
   <string name="settings_terms_of_service">Умови використання</string>
   <string name="settings_privacy_policy">Політика конфіденційності</string>
+
+  <string name="your_last_booking">Ваша остання запис</string>
+  <string name="user_data">%1$s \n(%2$s),\nдякуємо за запис </string>
+  <string name="dialog_attention">Попередження</string>
+  <string name="double_checkin_time">Ви намагаєтеся записатися на вже зайняте Вами час. Продовжити?</string>
+  <string name="dialog_yes">Так</string>
+  <string name="thank_you">Дякуємо</string>
+  <string name="friend_invited">Ваш друг скаже вам - Дякую!</string>
+  <string name="send_code">Надіслати код</string>
 </resources>

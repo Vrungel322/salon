@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Авторизація</string>
+  <string name="module_name">Авторизація</string>
   <string name="activity_history">Історія активності</string>
   <string name="additional_settings">Дот. настройки</string>
   <string name="auth_email">email</string>

@@ -30,8 +30,8 @@ android {
     applicationId "com.apps.twelve.floor.salon"
     minSdkVersion 16
     targetSdkVersion 26
-    versionCode 39
-    versionName "1.3.9"
+    versionCode 40
+    versionName '1.4.0'
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
     multiDexEnabled true
@@ -42,15 +42,14 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-
   lintOptions {
     abortOnError false
   }
+  productFlavors {}
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   //Android support
   compile 'com.android.support:support-v4:25.3.1'
   compile 'com.android.support:recyclerview-v7:25.3.1'
@@ -59,87 +58,64 @@ dependencies {
   compile 'com.android.support:design:25.3.1'
   compile 'com.android.support:gridlayout-v7:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
   //GSON
   compile 'com.google.code.gson:gson:2.8.1'
-
   //Butterknife
   compile 'com.jakewharton:butterknife:8.6.0'
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
-
   //Retrofit2
   compile 'com.squareup.retrofit2:retrofit:2.3.0'
   compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-  compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
   compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
-
   //Alerter
   compile 'com.tapadoo.android:alerter:1.0.9'
-
   //A badge for any drawable
-  compile "berlin.volders:badger:0.2.1"
-
+  compile 'berlin.volders:badger:0.2.1'
   //shortbread
   compile 'com.github.matthiasrobbers:shortbread:1.0.1'
   annotationProcessor 'com.github.matthiasrobbers:shortbread-compiler:1.0.1'
-
   //RxJava, RxAndroid
   compile 'io.reactivex:rxjava:1.3.0'
   compile 'io.reactivex:rxandroid:1.2.1'
-
   //Dagger2
   compile 'com.google.dagger:dagger:2.11'
   provided 'org.glassfish:javax.annotation:10.0-b28'
   annotationProcessor "com.google.dagger:dagger-compiler:2.11"
-
   //Moxy
   compile 'com.arello-mobile:moxy:1.5.3'
   compile 'com.arello-mobile:moxy-app-compat:1.5.3'
   compile 'com.arello-mobile:moxy-android:1.5.3'
   annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.3'
-
   //Timber
   compile 'com.jakewharton.timber:timber:4.5.1'
-
   //ZGallery
   compile 'com.github.mzelzoghbi:zgallery:0.3'
-
   //Image cropper
   compile 'com.theartofdev.edmodo:android-image-cropper:2.4.6'
   compile 'de.hdodenhof:circleimageview:2.1.0'
-
   //CircularProgressButton
   compile 'br.com.simplepass:loading-button-android:1.7.2'
-
   //crashlitics
   compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
     transitive = true;
   }
-
   //Notifications
   compile 'com.evernote:android-job:1.1.10'
-
   //expandable RV
   compile 'com.thoughtbot:expandablerecyclerview:1.4'
   compile 'com.thoughtbot:expandablecheckrecyclerview:1.5'
-
   //authorization
-  //  compile project(':authorization')
-  debugCompile project(path: ':authorization', configuration: 'debug')
-
+  compile project(':authorization')
   //multidex
   compile 'com.android.support:multidex:1.0.1'
-
   //Glide
   compile 'com.github.bumptech.glide:glide:3.8.0'
-
   //animations
   compile 'com.daimajia.easing:library:2.0@aar'
   compile 'com.daimajia.androidanimations:library:2.2@aar'
-
   // for adjustViewBounds < api 17
   compile 'com.inthecheesefactory.thecheeselibrary:adjustable-imageview:1.0.1'
-
   //TimePicker
   compile('com.philliphsu:bottomsheetpickers:2.4.1') {
     exclude group: 'com.android.support', module: 'appcompat-v7'
