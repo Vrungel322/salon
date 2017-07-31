@@ -26,7 +26,7 @@ public class PreferencesHelper {
   public static final String PREF_NOTIF_HOURS_NIGHT_END = "PREF_NOTIF_HOURS_NIGHT_END";
   public static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
   public static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
-  private static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
+  public static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
   private static final String PREF_BOOKING = "PREF_BOOKING";
   private static final String PREF_LANGUAGE = "PREF_LANGUAGE";
 

@@ -37,6 +37,26 @@ public class DbHelper {
     return list;
   }
 
+  public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
+
+    Realm realm = Realm.getDefaultInstance();
+    RealmQuery<T> query = realm.where(clazz).equalTo("id", id);
+
+    T t;
+    try {
+      t = clazz.newInstance();
+    } catch (InstantiationException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    }
+
+    realm.beginTransaction();
+    t = query.findFirst();
+    realm.commitTransaction();
+    return t;
+  }
+
   public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
       String value) {
 

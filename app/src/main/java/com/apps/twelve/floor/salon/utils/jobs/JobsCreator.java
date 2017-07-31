@@ -80,7 +80,8 @@ public class JobsCreator implements JobCreator {
   }
 
   public void updateNotifications() {
-    List<LastBookingEntity> bookingEntities = mDataManager.getBooking();
+    List<LastBookingEntity> bookingEntities =
+        mDataManager.getAllElementsFromDB(LastBookingEntity.class);
     for (LastBookingEntity bookingEntity : bookingEntities) {
       cancelJob(String.valueOf(bookingEntity.getId()));
       createNotification(String.valueOf(bookingEntity.getId()),

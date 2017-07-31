@@ -20,6 +20,7 @@ import com.apps.twelve.floor.authorization.utils.AuthRxBus;
 import javax.inject.Inject;
 import retrofit2.Response;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
@@ -182,11 +183,24 @@ public class AuthorizationManager {
   }
 
   public Observable<Response<Void>> populateAdditionalField(String key, String value) {
-    mDataManager.setAdditionalField(key, value);
     if (!mDataManager.isExistAdditionalField(key)) {
-      return mDataManager.addAdditionalField(key, value);
+      return mDataManager.addAdditionalField(key, value)
+          .observeOn(Schedulers.io())
+          .concatMap(response -> {
+            if (response.isSuccessful()) {
+              mDataManager.setAdditionalField(key, value);
+            }
+            return Observable.just(response);
+          });
     } else {
-      return mDataManager.updateAdditionalField(key, value);
+      return mDataManager.updateAdditionalField(key, value)
+          .observeOn(Schedulers.io())
+          .concatMap(response -> {
+            if (response.isSuccessful()) {
+              mDataManager.setAdditionalField(key, value);
+            }
+            return Observable.just(response);
+          });
     }
   }
 
@@ -201,7 +215,6 @@ public class AuthorizationManager {
   public Observable<Response<Void>> populateAdditionalField(String key, boolean value) {
     return populateAdditionalField(key, String.valueOf(value));
   }
-
 }
 
 
