@@ -21,7 +21,8 @@ public class DbHelper {
   }
 
   public <T extends RealmObject> void save(T object) {
-    Realm realm = mRealm;
+
+    Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
     realm.copyToRealmOrUpdate(object);
     realm.commitTransaction();
@@ -29,7 +30,7 @@ public class DbHelper {
 
   public <T extends RealmObject> List<T> getAll(Class<T> clazz) {
     List<T> list = new ArrayList<T>();
-    Realm realm = mRealm;
+    Realm realm = Realm.getDefaultInstance();
     realm.beginTransaction();
     list = realm.where(clazz).findAll();
     realm.commitTransaction();
@@ -59,7 +60,7 @@ public class DbHelper {
   public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
       String value) {
 
-    Realm realm = mRealm;
+    Realm realm = Realm.getDefaultInstance();
     RealmQuery<T> query = realm.where(clazz).equalTo(field, value);
 
     List<T> list = new ArrayList<T>();
@@ -70,7 +71,7 @@ public class DbHelper {
   }
 
   public <T extends RealmObject> void clearRealmTable(Class<T> clazz) {
-    RealmResults<T> results = mRealm.where(clazz).findAll();
+    RealmResults<T> results = Realm.getDefaultInstance().where(clazz).findAll();
 
     // All changes to data must happen in a transaction
     mRealm.beginTransaction();
