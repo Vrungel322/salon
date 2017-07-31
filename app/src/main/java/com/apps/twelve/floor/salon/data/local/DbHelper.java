@@ -31,7 +31,7 @@ public class DbHelper {
     List<T> list = new ArrayList<T>();
     Realm realm = mRealm;
     realm.beginTransaction();
-    list = realm.where(clazz).findAllAsync();
+    list = realm.where(clazz).findAll();
     realm.commitTransaction();
     return list;
   }
@@ -44,7 +44,7 @@ public class DbHelper {
 
     List<T> list = new ArrayList<T>();
     realm.beginTransaction();
-    list = query.findAllAsync();
+    list = query.findAll();
     realm.commitTransaction();
     return list;
   }
