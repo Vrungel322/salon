@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.data.local;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,20 @@ public class DbHelper {
     List<T> list = new ArrayList<T>();
     Realm realm = mRealm;
     realm.beginTransaction();
-    list = realm.where(clazz).findAll();
+    list = realm.where(clazz).findAllAsync();
+    realm.commitTransaction();
+    return list;
+  }
+
+  public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
+      String value) {
+
+    Realm realm = mRealm;
+    RealmQuery<T> query = realm.where(clazz).equalTo(field, value);
+
+    List<T> list = new ArrayList<T>();
+    realm.beginTransaction();
+    list = query.findAllAsync();
     realm.commitTransaction();
     return list;
   }

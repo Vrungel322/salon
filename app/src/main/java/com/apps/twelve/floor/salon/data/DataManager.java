@@ -313,5 +313,10 @@ public class DataManager {
   public <T extends RealmObject> List<T> getAllElementsFromDB(Class<T> clazz){
     return mDbHelper.getAll(clazz);
   }
+
+  public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
+      String value){
+    return mDbHelper.getElementsFromDBByQuery(clazz,field,value);
+  }
 }
 
