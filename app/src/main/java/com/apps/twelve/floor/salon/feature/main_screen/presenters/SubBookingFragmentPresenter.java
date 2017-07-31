@@ -62,18 +62,13 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
               })
               .doOnNext(response -> {
                 mDataManager.putBooking(response.body());
-                //mLastBookingEntities.addAll(response.body());
               })
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()
               .compose(ThreadSchedulers.applySchedulers())
               .subscribe(lastBookingEntities -> {
-                ////cache LastBookingEntities
-                //for (int i = 0; i < mLastBookingEntities.size(); i++) {
-                //  mDataManager.saveObjToDb(mLastBookingEntities.get(i));
-                //}
-                //Timber.e(String.valueOf(mDataManager.getAllElementsFromDB(LastBookingEntity.class).size()));
+                cacheEntities(lastBookingEntities);
                 if (lastBookingEntities.size() != 0) {
                   getViewState().showLastBookings(lastBookingEntities);
                   mRxBus.post(new RxBusHelper.ShowSubBookingFragment());
