@@ -93,10 +93,16 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          if (response.code() == RESPONSE_UNAUTHORIZED) {
+          switch (response.code()) {
+            case RESPONSE_200:
+              mJobsCreator.updateNotifications();
+              break;
+            case RESPONSE_UNAUTHORIZED:
             mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              break;
           }
         }, throwable -> {
+          mJobsCreator.updateNotifications();
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked);
           Timber.e(throwable);
         });
@@ -115,10 +121,16 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         })
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
-          if (response.code() == RESPONSE_UNAUTHORIZED) {
-            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+          switch (response.code()) {
+            case RESPONSE_200:
+              mJobsCreator.updateNotifications();
+              break;
+            case RESPONSE_UNAUTHORIZED:
+              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              break;
           }
         }, throwable -> {
+          mJobsCreator.updateNotifications();
           mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked);
           Timber.e(throwable);
         });

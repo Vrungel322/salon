@@ -318,5 +318,9 @@ public class DataManager {
       String value){
     return mDbHelper.getElementsFromDBByQuery(clazz,field,value);
   }
+
+  public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
+    return mDbHelper.getElementById(clazz, id);
+  }
 }
 

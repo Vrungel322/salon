@@ -14,8 +14,8 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingDetailActivity;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.evernote.android.job.Job;
-import java.util.List;
 import java.util.Random;
 import javax.inject.Inject;
 
@@ -72,23 +72,22 @@ public class NotificationJob extends Job {
           break;
       }
 
-      int lastBookingEntityId = params.getExtras().getInt(LAST_BOOKING_ENTITY_ID, -1);
-      List<LastBookingEntity> bookingEntities = mDataManager.getBooking();
+      LastBookingEntity bookingEntity = mDataManager.getElementById(LastBookingEntity.class,
+          params.getExtras().getInt(LAST_BOOKING_ENTITY_ID, -1));
 
-      LastBookingEntity lastBookingEntity = null;
-      for (LastBookingEntity bookingEntity : bookingEntities) {
-        if (lastBookingEntityId == bookingEntity.getId()) {
-          lastBookingEntity = bookingEntity;
-        }
+      PendingIntent pendingIntent;
+      if (bookingEntity != null) {
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(getContext());
+        Intent intent = new Intent(getContext(), BookingDetailActivity.class);
+        intent.putExtra(LAST_BOOKING_ENTITY, bookingEntity);
+        stackBuilder.addNextIntentWithParentStack(intent);
+
+        pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+      } else {
+        pendingIntent = PendingIntent.getActivity(getContext(), 0,
+            new Intent(getContext(), StartActivity.class).setAction(
+                Long.toString(System.currentTimeMillis())), PendingIntent.FLAG_UPDATE_CURRENT);
       }
-
-      TaskStackBuilder stackBuilder = TaskStackBuilder.create(getContext());
-      Intent intent = new Intent(getContext(), BookingDetailActivity.class);
-      intent.putExtra(LAST_BOOKING_ENTITY, lastBookingEntity);
-      stackBuilder.addNextIntentWithParentStack(intent);
-
-      PendingIntent pendingIntent =
-          stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
       NotificationCompat.Builder builder =
           new NotificationCompat.Builder(getContext()).setContentTitle(
