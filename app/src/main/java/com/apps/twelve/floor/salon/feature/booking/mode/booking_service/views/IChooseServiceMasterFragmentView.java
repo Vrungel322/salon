@@ -21,4 +21,6 @@ import java.util.List;
   void setSelectedItem(int position);
 
   void setUpRedSquare(String serviceName, String serviceTime, String serviceDuration);
+
+  void setSelectedItem(String masterId);
 }

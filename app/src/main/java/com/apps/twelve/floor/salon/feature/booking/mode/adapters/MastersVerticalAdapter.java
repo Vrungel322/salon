@@ -44,6 +44,7 @@ public class MastersVerticalAdapter
   public void addListMasterEntity(List<MasterEntity> masterEntities) {
     mMasterEntities.clear();
     mMasterEntities.add(null);
+    //masterEntities.add(new MasterEntity("", "", "", "", ""));
     mMasterEntities.addAll(masterEntities);
     notifyDataSetChanged();
   }
@@ -105,6 +106,12 @@ public class MastersVerticalAdapter
 
   @Override public int getItemCount() {
     return mMasterEntities.size();
+  }
+
+  public void setSelectedItem(String masterId) {
+    for (int i = 1; i < mMasterEntities.size(); i++) {
+      if (mMasterEntities.get(i).getMasterId().equals(masterId)) setSelectedItem(i);
+    }
   }
 
   static class MastersViewHolder extends RecyclerView.ViewHolder {

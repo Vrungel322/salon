@@ -52,6 +52,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                             mBookingEntity.getRemainTimeInSec()), mBookingEntity.getServiceTime()),
                     mBookingEntity.getDurationServices());
                 getViewState().showMasters(response.body());
+                getViewState().setSelectedItem(mBookingEntity.getMasterId());
                 getViewState().hideProgressBar();
               }
             }, throwable -> {

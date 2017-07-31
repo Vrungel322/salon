@@ -85,4 +85,10 @@ public class ChooseServiceMasterFragment extends BaseFragment
     mTextViewServiceTime.setText(serviceTime);
     mTextViewServiceDuration.setText(serviceDuration);
   }
+
+  @Override public void setSelectedItem(String masterId) {
+    if (!masterId.isEmpty()){
+      mMastersVerticalAdapter.setSelectedItem(masterId);
+    }
+  }
 }
