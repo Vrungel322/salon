@@ -39,10 +39,10 @@ public class DbHelper {
 
   public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
 
-    Realm realm = mRealm;
+    Realm realm = Realm.getDefaultInstance();
     RealmQuery<T> query = realm.where(clazz).equalTo("id", id);
 
-    T t = null;
+    T t;
     try {
       t = clazz.newInstance();
     } catch (InstantiationException e) {
