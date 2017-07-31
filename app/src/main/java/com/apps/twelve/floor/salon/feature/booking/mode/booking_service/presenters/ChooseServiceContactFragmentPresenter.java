@@ -13,6 +13,8 @@ import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.apps.twelve.floor.salon.utils.ViewUtil;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 import rx.Observable;
@@ -22,6 +24,7 @@ import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_LAST_PHONE_FOR_BOOKING;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_200;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_400;
 import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_404;
@@ -90,7 +93,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             .subscribe(response -> {
               switch (response.code()) {
                 case RESPONSE_200:
-                  mDataManager.setLastPhoneForBooking(mBookingEntity.getUserPhone());
                   mRxBus.post(new RxBusHelper.UpdateLastBookingListEvent());
                   mJobsCreator.createNotification(String.valueOf(response.body().getId()),
                       Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
@@ -123,6 +125,27 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
               showMessageException(throwable);
             });
         addToUnsubscription(subscription);
+        subscription = mAuthorizationManager.checkToken(
+            mAuthorizationManager.populateAdditionalField(PREF_LAST_PHONE_FOR_BOOKING,
+                mBookingEntity.getUserPhone())).concatMap(response -> {
+          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+            return mAuthorizationManager.checkToken(
+                mAuthorizationManager.populateAdditionalField(PREF_LAST_PHONE_FOR_BOOKING,
+                    mBookingEntity.getUserPhone()));
+          }
+          return Observable.just(response);
+        }).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
+            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+          }
+        }, throwable -> {
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mDataManager.setLastPhoneForBooking(mBookingEntity.getUserPhone());
+          }
+          Timber.e(throwable);
+        });
+        addToUnsubscription(subscription);
       } else {
         if (!ViewUtil.checkPhone(mBookingEntity.getUserPhone())) {
           getViewState().showEmptyPhoneError(true);
@@ -146,10 +169,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             .equals(Integer.parseInt(mBookingEntity.getDateId())))
         .toList()
         .subscribe(lastBookingEntities -> {
-          if (lastBookingEntities.size()!=0){
+          if (lastBookingEntities.size() != 0) {
             getViewState().showDoubleCheckinTimeDialog(lastBookingEntities);
-          }
-          else {
+          } else {
             getViewState().checkin();
           }
         });

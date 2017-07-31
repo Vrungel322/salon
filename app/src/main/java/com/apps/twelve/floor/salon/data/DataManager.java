@@ -23,6 +23,7 @@ import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
 
+import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_LAST_PHONE_FOR_BOOKING;
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAILY_ENABLED;
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_DAYS;
 import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTIF_HOURLY_ENABLED;
@@ -283,7 +284,8 @@ public class DataManager {
   }
 
   public String getLastPhoneForBooking() {
-    return mPref.getLastPhoneForBooking();
+    return mAuthorizationManager.getAdditionalField(PREF_LAST_PHONE_FOR_BOOKING,
+        mPref.getLastPhoneForBooking());
   }
 
   public void logoutUser() {
@@ -306,17 +308,17 @@ public class DataManager {
   }
 
   //db
-  public <T extends RealmObject> void saveObjToDb(T object){
-     mDbHelper.save(object);
+  public <T extends RealmObject> void saveObjToDb(T object) {
+    mDbHelper.save(object);
   }
 
-  public <T extends RealmObject> List<T> getAllElementsFromDB(Class<T> clazz){
+  public <T extends RealmObject> List<T> getAllElementsFromDB(Class<T> clazz) {
     return mDbHelper.getAll(clazz);
   }
 
   public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
-      String value){
-    return mDbHelper.getElementsFromDBByQuery(clazz,field,value);
+      String value) {
+    return mDbHelper.getElementsFromDBByQuery(clazz, field, value);
   }
 
   public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {

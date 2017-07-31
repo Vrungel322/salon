@@ -1,15 +1,17 @@
 package com.apps.twelve.floor.salon.feature.settings.presenters;
 
 import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
-import com.apps.twelve.floor.authorization.utils.ThreadSchedulers;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
 import com.apps.twelve.floor.salon.utils.jobs.JobsCreator;
 import com.arellomobile.mvp.InjectViewState;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import javax.inject.Inject;
 import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
@@ -90,20 +92,22 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
               mJobsCreator.updateNotifications();
               break;
             case RESPONSE_UNAUTHORIZED:
-            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
               break;
           }
         }, throwable -> {
-          mJobsCreator.updateNotifications();
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mJobsCreator.updateNotifications();
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -118,8 +122,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -130,8 +133,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          mJobsCreator.updateNotifications();
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mJobsCreator.updateNotifications();
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -146,14 +152,16 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           if (response.code() == RESPONSE_UNAUTHORIZED) {
             mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
           }
         }, throwable -> {
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_NIGHT_MODE, checked);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_NIGHT_MODE, checked);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -168,8 +176,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS, millis));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -181,9 +188,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS, millis);
-          mJobsCreator.updateNotifications();
-          getViewState().setUpHoursString(millis);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS, millis);
+            mJobsCreator.updateNotifications();
+            getViewState().setUpHoursString(millis);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -199,8 +209,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                     millis));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -211,8 +220,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, millis);
-          getViewState().setUpNightHours(millis, getHoursNightEnd());
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, millis);
+            getViewState().setUpNightHours(millis, getHoursNightEnd());
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -227,8 +239,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -239,8 +250,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis);
-          getViewState().setUpNightHours(getHoursNightStart(), millis);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis);
+            getViewState().setUpNightHours(getHoursNightStart(), millis);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
@@ -264,8 +278,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays));
           }
           return Observable.just(response);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
+        }).subscribeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -276,8 +289,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               break;
           }
         }, throwable -> {
-          mJobsCreator.updateNotifications();
-          mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays);
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mJobsCreator.updateNotifications();
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays);
+          }
           Timber.e(throwable);
         });
     addToUnsubscription(subscription);
