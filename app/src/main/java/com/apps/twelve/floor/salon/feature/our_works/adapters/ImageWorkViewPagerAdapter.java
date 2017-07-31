@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.bumptech.glide.Glide;
 import io.realm.RealmList;
-import java.util.List;
 
 /**
  * Created by John on 07.03.2017.

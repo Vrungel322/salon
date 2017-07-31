@@ -12,7 +12,6 @@ import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.GoodsDetailContent;
 import com.bumptech.glide.Glide;
 import io.realm.RealmList;
-import java.util.ArrayList;
 
 /**
  * Created by Vrungel on 18.05.2017.

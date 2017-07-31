@@ -10,8 +10,6 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
-import java.util.ArrayList;
-import java.util.List;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -26,7 +24,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
  */
 
 @InjectViewState public class CatalogFragmentPresenter extends BasePresenter<ICatalogFragmentView> {
-
 
   private String mTitle;
 

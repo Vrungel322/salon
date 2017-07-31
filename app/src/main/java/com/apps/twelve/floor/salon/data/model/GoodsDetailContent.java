@@ -9,8 +9,7 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class GoodsDetailContent extends RealmObject {
-  @PrimaryKey
-  @SerializedName("id") private int id;
+  @PrimaryKey @SerializedName("id") private int id;
   @SerializedName("product_id") private int mProductId;
   @SerializedName("image") private String mUrlPhoto;
 

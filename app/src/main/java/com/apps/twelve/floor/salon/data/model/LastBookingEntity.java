@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -13,8 +12,7 @@ import io.realm.annotations.RealmClass;
 
 public class LastBookingEntity extends RealmObject implements Parcelable {
 
-  @PrimaryKey
-  @SerializedName("id") private Integer id;
+  @PrimaryKey @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
   @SerializedName("master") private String masterName;

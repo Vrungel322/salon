@@ -87,7 +87,8 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   private void setUpUserData() {
-    mTextViewUserNameUserPhone.setText(getString(R.string.user_data, mBookingEntity.getUserName(), mBookingEntity.getUserPhone()));
+    mTextViewUserNameUserPhone.setText(
+        getString(R.string.user_data, mBookingEntity.getUserName(), mBookingEntity.getUserPhone()));
   }
 
   private void setUpServiceBlock() {

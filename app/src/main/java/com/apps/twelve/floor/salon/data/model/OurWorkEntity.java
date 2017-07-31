@@ -6,8 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Vrungel on 22.02.2017.
@@ -15,8 +13,7 @@ import java.util.List;
 
 public class OurWorkEntity extends RealmObject implements Parcelable {
 
-  @PrimaryKey
-  @SerializedName("id") private int id;
+  @PrimaryKey @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("description") private String mShortDescription;
   @SerializedName("master_id") private int masterId;

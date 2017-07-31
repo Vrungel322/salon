@@ -87,7 +87,7 @@ public class ChooseServiceMasterFragment extends BaseFragment
   }
 
   @Override public void setSelectedItem(String masterId) {
-    if (!masterId.isEmpty()){
+    if (!masterId.isEmpty()) {
       mMastersVerticalAdapter.setSelectedItem(masterId);
     }
   }

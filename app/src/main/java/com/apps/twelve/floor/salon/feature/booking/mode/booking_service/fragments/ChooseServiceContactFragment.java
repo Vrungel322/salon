@@ -136,13 +136,13 @@ public class ChooseServiceContactFragment extends BaseFragment
           + "\n");
     }
     DialogFactory.createDoubleCheckinTimeDialog(getActivity(), stringBuilder.toString())
-        .setNegativeButton(R.string.dialog_auth_cancel,
-            (dialog, which) -> dialog.cancel())
+        .setNegativeButton(R.string.dialog_auth_cancel, (dialog, which) -> dialog.cancel())
         .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
           dialog.cancel();
           mChooseServiceContactFragmentPresenter.sendBookingEntity();
         })
-        .create().show();
+        .create()
+        .show();
   }
 
   @Override public void checkin() {

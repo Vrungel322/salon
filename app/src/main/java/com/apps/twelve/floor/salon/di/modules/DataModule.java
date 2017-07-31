@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
-import javax.inject.Singleton;
 import retrofit2.Retrofit;
 
 /**
@@ -39,7 +38,8 @@ import retrofit2.Retrofit;
   }
 
   @Provides @AppScope DataManager provideDataManager(RestApi restApi,
-      PreferencesHelper preferencesHelper, AuthorizationManager authorizationManager,DbHelper dbHelper) {
+      PreferencesHelper preferencesHelper, AuthorizationManager authorizationManager,
+      DbHelper dbHelper) {
     return new DataManager(restApi, preferencesHelper, authorizationManager, dbHelper);
   }
 

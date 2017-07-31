@@ -11,8 +11,7 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class PhotoWorksEntity extends RealmObject implements Parcelable {
-  @PrimaryKey
-  @SerializedName("id") private int id;
+  @PrimaryKey @SerializedName("id") private int id;
   //@SerializedName("gallery_id") private int galleryId;
   @SerializedName("image") private String mUrlPhoto;
   @SerializedName("description") private String mDescriptionPhoto;

@@ -18,8 +18,7 @@ public class NewsEntity extends RealmObject implements Parcelable {
       return new NewsEntity[size];
     }
   };
-  @PrimaryKey
-  @SerializedName("id") @Expose private Integer id;
+  @PrimaryKey @SerializedName("id") @Expose private Integer id;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;
   @SerializedName("img") @Expose private String img;

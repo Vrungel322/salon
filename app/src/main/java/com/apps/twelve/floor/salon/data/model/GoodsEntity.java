@@ -6,15 +6,13 @@ import com.google.gson.annotations.SerializedName;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
-import java.util.ArrayList;
 
 /**
  * Created by Vrungel on 18.05.2017.
  */
 
 public class GoodsEntity extends RealmObject implements Parcelable {
-  @PrimaryKey
-  @SerializedName("id") private int id;
+  @PrimaryKey @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("text") private String mShortDescription;
   @SerializedName("price") private String mPrice;

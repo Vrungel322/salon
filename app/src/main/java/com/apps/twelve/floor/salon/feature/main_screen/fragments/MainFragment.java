@@ -75,6 +75,5 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
 
   @Override public void showSubBookingFragment() {
     mFrameLayoutFragmentContainerBooking.setVisibility(View.VISIBLE);
-
   }
 }

@@ -35,6 +35,7 @@ import timber.log.Timber;
         .subscribe(hideSubBookingFragment -> getViewState().hideSubBookingFragment(), Timber::e);
     addToUnsubscription(subscription);
   }
+
   private void subscribeShowSubBookingFragment() {
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowSubBookingFragment.class)
         .compose(ThreadSchedulers.applySchedulers())

@@ -86,10 +86,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     Subscription subscription = mDataManager.sendFriendsCode(friendsCode)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(voidResponse -> {
-          if (voidResponse.code() == Constants.StatusCode.RESPONSE_200){
+          if (voidResponse.code() == Constants.StatusCode.RESPONSE_200) {
             getViewState().showThankYouDialog();
           }
-          if (voidResponse.code() != Constants.StatusCode.RESPONSE_200){
+          if (voidResponse.code() != Constants.StatusCode.RESPONSE_200) {
             getViewState().showErrorToast();
           }
         }, this::showMessageException);

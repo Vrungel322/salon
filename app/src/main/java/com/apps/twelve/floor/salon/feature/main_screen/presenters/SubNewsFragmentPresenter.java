@@ -48,7 +48,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
           Timber.e(throwable);
           mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
           showMessageException(throwable);
-        }); addToUnsubscription(subscription);
+        });
+    addToUnsubscription(subscription);
   }
 
   private void subscribeUpdateNews() {

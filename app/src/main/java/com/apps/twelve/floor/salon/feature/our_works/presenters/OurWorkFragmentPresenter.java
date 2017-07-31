@@ -4,7 +4,6 @@ import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
@@ -85,7 +84,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
     getViewState().startRefreshingView();
     Subscription subscription = Observable.zip(fetchListOfWorksAuth(), fetchFavoritePhotos(),
         (ourWorkEntities, photoWorksEntities) -> {
-          RealmList<PhotoWorksEntity>realmList = new RealmList<PhotoWorksEntity>();
+          RealmList<PhotoWorksEntity> realmList = new RealmList<PhotoWorksEntity>();
           realmList.addAll(photoWorksEntities);
           mOurWorkEntities.add(0,
               new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp),
