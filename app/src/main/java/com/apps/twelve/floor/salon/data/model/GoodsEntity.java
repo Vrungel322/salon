@@ -3,13 +3,17 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import java.util.ArrayList;
 
 /**
  * Created by Vrungel on 18.05.2017.
  */
 
-public class GoodsEntity implements Parcelable {
+public class GoodsEntity extends RealmObject implements Parcelable {
+  @PrimaryKey
   @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("text") private String mShortDescription;
@@ -21,14 +25,17 @@ public class GoodsEntity implements Parcelable {
   @SerializedName("updated_at") private String mUpdateDate;
   @SerializedName("image") private String mImageURL;
   @SerializedName("images_count") private int mImgCount;
-  @SerializedName("images") private ArrayList<GoodsDetailContent> mGoodsDetailContents;
+  @SerializedName("images") private RealmList<GoodsDetailContent> mGoodsDetailContents;
   @SerializedName("favorite") private boolean mFavorite;
   @SerializedName("is_new") private boolean mIsNew;
   @SerializedName("for_sale") private boolean mIsForSale;
 
+  public GoodsEntity() {
+  }
+
   public GoodsEntity(int id, String title, String shortDescription, String price, String newPrice,
       String bonusPrice, int categoryId, String createDate, String updateDate, String imageURL,
-      int imgCount, ArrayList<GoodsDetailContent> goodsDetailContents, boolean favorite,
+      int imgCount, RealmList<GoodsDetailContent> goodsDetailContents, boolean favorite,
       boolean isNew, boolean isForSale) {
     this.id = id;
     mTitle = title;
@@ -135,11 +142,11 @@ public class GoodsEntity implements Parcelable {
     mImgCount = imgCount;
   }
 
-  public ArrayList<GoodsDetailContent> getGoodsDetailContents() {
+  public RealmList<GoodsDetailContent> getGoodsDetailContents() {
     return mGoodsDetailContents;
   }
 
-  public void setGoodsDetailContents(ArrayList<GoodsDetailContent> goodsDetailContents) {
+  public void setGoodsDetailContents(RealmList<GoodsDetailContent> goodsDetailContents) {
     mGoodsDetailContents = goodsDetailContents;
   }
 

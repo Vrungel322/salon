@@ -57,7 +57,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
             getViewState().updateRvCategory(response.body());
             mListListCategories.add(response.body());
           }
-          if (response.code() == RESPONSE_503){
+          if (response.code() == RESPONSE_503) {
             getViewState().showServerErrorMsg();
           }
         }, throwable -> {
@@ -194,5 +194,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
           }
         }, Timber::e);
     addToUnsubscription(subscription);
+  }
+
+  public void clearLastBookingEntity() {
+    mBookingEntity.setMasterId("");
+    mBookingEntity.setDateId("");
   }
 }

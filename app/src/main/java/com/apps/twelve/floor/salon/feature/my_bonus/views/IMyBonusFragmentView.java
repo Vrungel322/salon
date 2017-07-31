@@ -16,4 +16,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void startRefreshingView();
 
   void stopRefreshingView();
+
+  void showThankYouDialog();
+
+  void showErrorToast();
 }

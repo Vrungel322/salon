@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubFragmentBookingView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -21,6 +22,8 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
 @InjectViewState public class SubBookingFragmentPresenter
     extends BasePresenter<ISubFragmentBookingView> {
 
+  //private ArrayList<LastBookingEntity> mLastBookingEntities = new ArrayList<>();
+
   @Override protected void inject() {
     App.getAppComponent().inject(this);
   }
@@ -37,6 +40,8 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
   }
 
   @SuppressWarnings("ConstantConditions") private void fetchBookingEntities() {
+
+    //getViewState().showLastBookings(mDataManager.getAllElementsFromDB(LastBookingEntity.class));
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription =
           mAuthorizationManager.checkToken(mDataManager.fetchLastBooking())
@@ -45,24 +50,35 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
                   return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
                 }
                 return Observable.just(response);
-              }).concatMap(response -> {
-            if (response.code() == RESPONSE_UNAUTHORIZED) {
-              mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-              return Observable.empty();
-            } else {
-              return Observable.just(response);
-            }
-          }).doOnNext(response -> mDataManager.putBooking(response.body()))
+              })
+              .concatMap(response -> {
+                if (response.code() == RESPONSE_UNAUTHORIZED) {
+                  mAuthorizationManager.getAuthRxBus()
+                      .post(new AuthRxBusHelper.UnauthorizedEvent());
+                  return Observable.empty();
+                } else {
+                  return Observable.just(response);
+                }
+              })
+              .doOnNext(response -> {
+                mDataManager.putBooking(response.body());
+              })
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()
               .compose(ThreadSchedulers.applySchedulers())
-              .subscribe(
-                  lastBookingEntities -> getViewState().showLastBookings(lastBookingEntities),
-                  throwable -> {
-                    Timber.e(throwable);
-                    showMessageException(throwable);
-                  });
+              .subscribe(lastBookingEntities -> {
+                cacheEntities(lastBookingEntities);
+                if (lastBookingEntities.size() != 0) {
+                  getViewState().showLastBookings(lastBookingEntities);
+                  mRxBus.post(new RxBusHelper.ShowSubBookingFragment());
+                } else {
+                  mRxBus.post(new RxBusHelper.HideSubBookingFragment());
+                }
+              }, throwable -> {
+                Timber.e(throwable);
+                showMessageException(throwable);
+              });
       addToUnsubscription(subscription);
     }
   }

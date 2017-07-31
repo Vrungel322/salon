@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.catalog.fragments;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,6 +43,9 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
   @BindView(R.id.recyclerViewImages) RecyclerView mRecyclerViewImages;
   @BindView(R.id.bPrevStaffImg) ImageButton mImageButtonPrevious;
   @BindView(R.id.bNextStaffImg) ImageButton mImageButtonNext;
+  @BindView(R.id.ivNew) ImageView mImageViewNew;
+  @BindView(R.id.ivSale) ImageView mImageViewSale;
+  @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
   @BindView(R.id.tvPrice) TextView mTextViewPrice;
   @BindView(R.id.checkBoxFavoriteGoods) AppCompatCheckBox mCheckBoxFavoriteGoods;
 
@@ -96,13 +101,28 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
       mRecyclerViewImages.setLayoutManager(mLayoutManager);
       mRecyclerViewImages.setAdapter(mHorizontalListAdapter);
       mHorizontalListAdapter.notifyDataSetChanged();
+      if (listUrlPhotos.size() <= 1) {
+        mRecyclerViewImages.setVisibility(View.GONE);
+      }
 
       int currentPos = 0;
       mHorizontalListAdapter.setSelectedItem(currentPos);
       mViewPagerImages.setCurrentItem(currentPos);
 
+      //if like
       mCheckBoxFavoriteGoods.setChecked(mGoodsEntity.isFavorite());
-
+      //if new
+      if (mGoodsEntity.isNew()) {
+        mImageViewNew.setVisibility(View.VISIBLE);
+      }
+      //if sale
+      if (mGoodsEntity.isForSale()) {
+        mImageViewSale.setVisibility(View.VISIBLE);
+        mTextViewOldPrice.setVisibility(View.VISIBLE);
+        mTextViewOldPrice.setText(mGoodsEntity.getPrice());
+        mTextViewOldPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        mTextViewPrice.setText(mGoodsEntity.getNewPrice());
+      }
       updateImageInfoAndButtons();
     }
 

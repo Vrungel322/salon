@@ -109,4 +109,13 @@ public final class RxBusHelper {
 
   public static class NoInternetAlertDialog {
   }
+
+  public static class NoInternetAlerter {
+  }
+
+  public static class HideSubBookingFragment {
+  }
+
+  public static class ShowSubBookingFragment {
+  }
 }

@@ -4,6 +4,7 @@ import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IMyBonusFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -79,5 +80,19 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   public void showAuthDialog() {
     mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
+
+  public void sendFriendsCode(String friendsCode) {
+    Subscription subscription = mDataManager.sendFriendsCode(friendsCode)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(voidResponse -> {
+          if (voidResponse.code() == Constants.StatusCode.RESPONSE_200){
+            getViewState().showThankYouDialog();
+          }
+          if (voidResponse.code() != Constants.StatusCode.RESPONSE_200){
+            getViewState().showErrorToast();
+          }
+        }, this::showMessageException);
+    addToUnsubscription(subscription);
   }
 }

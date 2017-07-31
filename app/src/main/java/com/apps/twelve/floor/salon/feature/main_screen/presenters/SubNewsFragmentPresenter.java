@@ -2,10 +2,14 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubNewsFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.ArrayList;
+import java.util.List;
 import rx.Subscription;
 import timber.log.Timber;
 
@@ -29,9 +33,13 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   private void fetchNewsEntities() {
+
+    getViewState().updateNewsPreview(mDataManager.getAllElementsFromDB(NewsEntity.class));
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
+          cacheEntities(response.body());
+
           if (response.code() == RESPONSE_200) {
             getViewState().updateNewsPreview(response.body());
             mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());

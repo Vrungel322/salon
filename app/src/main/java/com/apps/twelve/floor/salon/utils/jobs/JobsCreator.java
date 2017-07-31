@@ -56,7 +56,9 @@ public class JobsCreator implements JobCreator {
     bundle.putString(NOTIFICATION_TYPE, HOURLY);
     bundle.putString(SERVICE, service);
     bundle.putString(TIME, time);
-    new JobRequest.Builder(tag).setExact(millis).setRequiresCharging(false).setExtras(bundle)
+    new JobRequest.Builder(tag).setExact(millis)
+        .setRequiresCharging(false)
+        .setExtras(bundle)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();
@@ -69,7 +71,9 @@ public class JobsCreator implements JobCreator {
     bundle.putString(SERVICE, service);
     bundle.putString(DATE, date);
     bundle.putString(TIME, time);
-    new JobRequest.Builder(tag).setExact(millis).setRequiresCharging(false).setExtras(bundle)
+    new JobRequest.Builder(tag).setExact(millis)
+        .setRequiresCharging(false)
+        .setExtras(bundle)
         .setRequiredNetworkType(JobRequest.NetworkType.ANY)
         .build()
         .schedule();

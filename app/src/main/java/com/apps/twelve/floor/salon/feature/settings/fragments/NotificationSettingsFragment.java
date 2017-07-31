@@ -165,10 +165,10 @@ public class NotificationSettingsFragment extends BaseFragment
         new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightStart(
-              TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+              TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
           mNotificationSettingsFragmentPresenter.cancelPickStartNightDialog();
         }, (int) TimeUnit.MILLISECONDS.toHours(
-        mNotificationSettingsFragmentPresenter.getHoursNightStart()),
+        mNotificationSettingsFragmentPresenter.getHoursNightStart()) + 3,
         (int) (TimeUnit.MILLISECONDS.toMinutes(
             mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
@@ -183,10 +183,10 @@ public class NotificationSettingsFragment extends BaseFragment
         new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightEnd(
-              TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
+              TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
           mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog();
         }, (int) TimeUnit.MILLISECONDS.toHours(
-        mNotificationSettingsFragmentPresenter.getHoursNightEnd()),
+        mNotificationSettingsFragmentPresenter.getHoursNightEnd()) + 3,
         (int) (TimeUnit.MILLISECONDS.toMinutes(
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(

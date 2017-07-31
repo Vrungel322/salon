@@ -51,6 +51,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.bCancel) Button mButtonCancel;
   @BindView(R.id.tvMasterName) TextView mTextViewMasterName;
   @BindView(R.id.tvAboutMaster) TextView mTextViewAboutMaster;
+  @BindView(R.id.tvUserNameUserPhone) TextView mTextViewUserNameUserPhone;
   @BindView(R.id.ivMasterImg) CircleImageView mImageViewMaster;
   @BindView(R.id.pbCancelBooking) ProgressBar mProgressBar;
 
@@ -79,9 +80,14 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
     setUpServiceBlock();
     setUpTimeBlock();
     setUpMasterBlock();
+    setUpUserData();
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+  }
+
+  private void setUpUserData() {
+    mTextViewUserNameUserPhone.setText(getString(R.string.user_data, mBookingEntity.getUserName(), mBookingEntity.getUserPhone()));
   }
 
   private void setUpServiceBlock() {

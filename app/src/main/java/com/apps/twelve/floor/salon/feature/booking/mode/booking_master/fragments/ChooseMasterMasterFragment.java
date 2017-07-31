@@ -49,6 +49,7 @@ public class ChooseMasterMasterFragment extends BaseFragment
     mRecyclerViewMasters.setFocusable(false);
     ItemClickSupport.addTo(mRecyclerViewMasters)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          mChooseMasterMasterFragmentPresenter.clearLastBookingEntity();
           if (position == 0) {
             mChooseMasterMasterFragmentPresenter.setAnyMasterSelected();
           } else {

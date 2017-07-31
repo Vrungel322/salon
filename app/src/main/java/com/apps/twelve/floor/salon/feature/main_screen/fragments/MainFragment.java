@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.FrameLayout;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
@@ -23,6 +24,7 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
   @InjectPresenter MainFragmentPresenter mMainFragmentPresenter;
 
   @BindView(R.id.swipeRefreshMainFragment) SwipeRefreshLayout mSwipeRefreshMainFragment;
+  @BindView(R.id.subFragmentContainerBooking) FrameLayout mFrameLayoutFragmentContainerBooking;
 
   public MainFragment() {
     super(R.layout.fragment_main);
@@ -65,5 +67,14 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
 
   @Override public void startRefreshingView() {
     if (!mSwipeRefreshMainFragment.isRefreshing()) mSwipeRefreshMainFragment.setRefreshing(true);
+  }
+
+  @Override public void hideSubBookingFragment() {
+    mFrameLayoutFragmentContainerBooking.setVisibility(View.GONE);
+  }
+
+  @Override public void showSubBookingFragment() {
+    mFrameLayoutFragmentContainerBooking.setVisibility(View.VISIBLE);
+
   }
 }

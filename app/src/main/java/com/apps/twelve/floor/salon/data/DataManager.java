@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.data;
 
 import com.apps.twelve.floor.authorization.AuthorizationManager;
+import com.apps.twelve.floor.salon.data.local.DbHelper;
 import com.apps.twelve.floor.salon.data.local.PreferencesHelper;
 import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.data.model.BonusHistoryEntity;
@@ -17,6 +18,7 @@ import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
+import io.realm.RealmObject;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -35,15 +37,17 @@ import static com.apps.twelve.floor.salon.data.local.PreferencesHelper.PREF_NOTI
 
 public class DataManager {
 
+  private DbHelper mDbHelper;
   private RestApi mRestApi;
   private PreferencesHelper mPref;
   private AuthorizationManager mAuthorizationManager;
 
   public DataManager(RestApi restApi, PreferencesHelper preferencesHelper,
-      AuthorizationManager authorizationManager) {
+      AuthorizationManager authorizationManager, DbHelper dbHelper) {
     this.mRestApi = restApi;
     this.mPref = preferencesHelper;
     this.mAuthorizationManager = authorizationManager;
+    this.mDbHelper = dbHelper;
   }
 
   //checkin service.
@@ -294,6 +298,20 @@ public class DataManager {
 
   public void setSelectedLanguage(String selectedLanguage) {
     mPref.setSelectedLanguage(selectedLanguage);
+  }
+
+  public Observable<Response<Void>> sendFriendsCode(String friendsCode) {
+    return mRestApi.sendFriendsCode(friendsCode, mAuthorizationManager.getToken(),
+        mPref.getLanguageCode());
+  }
+
+  //db
+  public <T extends RealmObject> void saveObjToDb(T object){
+     mDbHelper.save(object);
+  }
+
+  public <T extends RealmObject> List<T> getAllElementsFromDB(Class<T> clazz){
+    return mDbHelper.getAll(clazz);
   }
 }
 

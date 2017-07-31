@@ -10,6 +10,8 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.ArrayList;
+import java.util.List;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -24,6 +26,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
  */
 
 @InjectViewState public class CatalogFragmentPresenter extends BasePresenter<ICatalogFragmentView> {
+
 
   private String mTitle;
 
@@ -49,7 +52,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
         .concatMap(reloadCatalogByCategory -> {
           mTitle = reloadCatalogByCategory.title;
           return mDataManager.fetchGoodsByCatalogId(reloadCatalogByCategory.id);
-        }).concatMap(response -> {
+        })
+        .concatMap(response -> {
           if (response.code() == RESPONSE_200) {
             return Observable.just(response.body());
           } else {
@@ -74,6 +78,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   }
 
   @SuppressWarnings("ConstantConditions") public void fetchGoodsList() {
+
+    getViewState().updateGoodsList(mDataManager.getAllElementsFromDB(GoodsEntity.class));
     getViewState().startRefreshingView();
     Subscription subscription =
         mAuthorizationManager.checkToken(mDataManager.fetchAllProducts()).concatMap(response -> {
@@ -89,6 +95,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                       new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "",
                           "", 0, "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0,
                           null, false, false, false));
+              cacheEntities(response.body());
+
               getViewState().updateGoodsList(response.body());
               getViewState().stopRefreshingView();
               getViewState().setButtonDefaultText();
@@ -99,8 +107,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
               getViewState().setButtonDefaultText();
               break;
             case RESPONSE_503:
-                getViewState().showServerErrorMsg();
-                getViewState().stopRefreshingView();
+              getViewState().showServerErrorMsg();
+              getViewState().stopRefreshingView();
             default:
               getViewState().stopRefreshingView();
               getViewState().setButtonDefaultText();

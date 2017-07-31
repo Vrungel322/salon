@@ -74,10 +74,6 @@ public class ChooseServiceTimeFragment extends BaseFragment
     return fragment;
   }
 
-  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
-  }
-
   @Override public void setUpUi(List<DataServiceEntity> days) {
     //viewPager
     mDays = days;
@@ -110,6 +106,7 @@ public class ChooseServiceTimeFragment extends BaseFragment
     chainViewPagerRecyclerView(mViewPagerDatesOfMonth.getCurrentItem());
     ItemClickSupport.addTo(mRecyclerViewHorizontalDates)
         .setOnItemClickListener((recyclerView, position, v) -> {
+          mChooseServiceTimeFragmentPresenter.clearLastBookingEntity();
           mChooseServiceTimeFragmentPresenter.setSelectedDay(position);
           mViewPagerDatesOfMonth.setCurrentItem(position);
           checkArrows();

@@ -92,6 +92,14 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value="com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity" />
     </activity>
+    <receiver
+        android:name=".utils.NetworkBroadcastReceiver"
+        android:enabled="true"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+      </intent-filter>
+    </receiver>
   </application>
 
 </manifest>

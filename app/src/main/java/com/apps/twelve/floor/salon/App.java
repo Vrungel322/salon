@@ -41,12 +41,13 @@ import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
   @Override public void onCreate() {
     super.onCreate();
-    Fabric.with(this, new Crashlytics());
     Shortbread.create(this);
     AuthorizationManager.init(this, Constants.Remote.BASE_URL);
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
+    } else {
+      Fabric.with(this, new Crashlytics());
     }
 
     sAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();

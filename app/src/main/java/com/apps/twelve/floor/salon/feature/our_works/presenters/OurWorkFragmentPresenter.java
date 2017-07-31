@@ -4,6 +4,7 @@ import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.feature.our_works.views.IOurWorkFragmentView;
@@ -11,6 +12,7 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import io.realm.RealmList;
 import java.util.ArrayList;
 import java.util.List;
 import rx.Observable;
@@ -50,6 +52,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   }
 
   @SuppressWarnings("ConstantConditions") private void fetchListOfWorks() {
+    getViewState().addListOfWorks(mDataManager.getAllElementsFromDB(OurWorkEntity.class));
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = mDataManager.fetchListOfWorks()
@@ -60,10 +63,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                 new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0,
                     mContext.getString(R.string.menu_favourite), null));
             mOurWorkEntities.addAll(response.body());
+            cacheEntities(mOurWorkEntities);
             getViewState().stopRefreshingView();
             getViewState().addListOfWorks(mOurWorkEntities);
           }
-          if (response.code() == RESPONSE_503){
+          if (response.code() == RESPONSE_503) {
             getViewState().showServerErrorMsg();
             getViewState().stopRefreshingView();
           }
@@ -76,17 +80,21 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   }
 
   private void fetchListOfFavoriteWorks() {
+    getViewState().addListOfWorks(mDataManager.getAllElementsFromDB(OurWorkEntity.class));
     mOurWorkEntities.clear();
     getViewState().startRefreshingView();
     Subscription subscription = Observable.zip(fetchListOfWorksAuth(), fetchFavoritePhotos(),
         (ourWorkEntities, photoWorksEntities) -> {
+          RealmList<PhotoWorksEntity>realmList = new RealmList<PhotoWorksEntity>();
+          realmList.addAll(photoWorksEntities);
           mOurWorkEntities.add(0,
               new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp),
                   photoWorksEntities.size(), mContext.getString(R.string.menu_favourite),
-                  photoWorksEntities));
+                  realmList));
           mOurWorkEntities.addAll(ourWorkEntities);
           return mOurWorkEntities;
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {
+      cacheEntities(ourWorkEntities);
       getViewState().stopRefreshingView();
       getViewState().addListOfWorks(ourWorkEntities);
     }, throwable -> {

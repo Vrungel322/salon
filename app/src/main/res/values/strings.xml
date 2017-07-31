@@ -42,6 +42,8 @@
   <string name="booking_days_left" translatable="false">%1$d дн.</string>
   <string name="yes">Да</string>
   <string name="no">Нет</string>
+  <string name="your_last_booking">Ваша последняя запись</string>
+  <string name="user_data">%1$s \n(%2$s),\nблагодарим за запись </string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
@@ -160,16 +162,7 @@
   <string name="error_connection">Ошибка соеденения</string>
   <string name="сheck_internet_connection">Проверте подключение к интернету</string>
   <string name="wrong">Что-то пошло не так!</string>
-  <string-array name="dialog_theme">
-    <item>Розовая</item>
-    <item>Синяя</item>
-    <item>Зеленая</item>
-    <item>Желтая</item>
-    <item>Серая</item>
-    <item>Фиолетовая</item>
-    <item>Красная</item>
-  </string-array>
-  <string-array name="dialog_language">
+  <string-array name="dialog_language" translatable="false">
     <item>Русский</item>
     <item>Українська</item>
   </string-array>
@@ -183,11 +176,19 @@
   <string name="red">Красная</string>
 
   <string name="dialog_auth_title">Предупреждение</string>
+  <string name="dialog_attention">Предупреждение</string>
   <string name="dialog_no_internet_title">Предупреждение</string>
   <string name="dialog_auth_message">Данная функция доступна только для зарегистрированных пользователей.\nПерейти на экран авторизации?</string>
   <string name="dialog_no_internet_message">Данная функция доступна только при наличии Интернета.\nПерейти к настройкам сети?</string>
+  <string name="double_checkin_time">Вы пытаетесь записаться на уже занятое Вами время. Продолжить?</string>
   <string name="dialog_auth_yes">Перейти</string>
+  <string name="dialog_yes">Да</string>
   <string name="dialog_auth_cancel">Отмена</string>
   <string name="server_error">Сервер отдыхает.</string>
   <string name="dialog_title_select_language">Выберите язык</string>
+
+  <string name="thank_you">Спасибо</string>
+  <string name="friend_invited">Ваш друг скажет вам - Спасибо!</string>
+  <string name="send_code">Отправить код</string>
+
 </resources>

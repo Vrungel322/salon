@@ -92,8 +92,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                       Integer.parseInt(mBookingEntity.getRemainTimeInSec()) * 1000L
                           - System.currentTimeMillis(), mBookingEntity.getServiceName(),
                       Converters.detailDayFromSeconds(mContext,
-                          mBookingEntity.getRemainTimeInSec()),
-                      mBookingEntity.getServiceTime());
+                          mBookingEntity.getRemainTimeInSec()), mBookingEntity.getServiceTime());
                   getViewState().moveToBookingListActivity();
                   break;
                 case RESPONSE_UNAUTHORIZED:
@@ -133,5 +132,23 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
     } else {
       mRxBus.post(new RxBusHelper.ShowAuthDialogBooking());
     }
+  }
+
+  public void checkIfBookOnSameDate() {
+    Subscription subscription = mDataManager.fetchLastBooking()
+        .compose(ThreadSchedulers.applySchedulers())
+        .flatMap(listResponse -> Observable.from(listResponse.body()))
+        .filter(lastBookingEntity -> lastBookingEntity.getScheduleId()
+            .equals(Integer.parseInt(mBookingEntity.getDateId())))
+        .toList()
+        .subscribe(lastBookingEntities -> {
+          if (lastBookingEntities.size()!=0){
+            getViewState().showDoubleCheckinTimeDialog(lastBookingEntities);
+          }
+          else {
+            getViewState().checkin();
+          }
+        });
+    addToUnsubscription(subscription);
   }
 }

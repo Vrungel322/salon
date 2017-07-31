@@ -3,13 +3,17 @@ package com.apps.twelve.floor.salon.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Vrungel on 28.02.2017.
  */
 
-public class LastBookingEntity implements Parcelable {
+public class LastBookingEntity extends RealmObject implements Parcelable {
 
+  @PrimaryKey
   @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
@@ -28,6 +32,9 @@ public class LastBookingEntity implements Parcelable {
   @SerializedName("service_price") private String servicePrice;
   @SerializedName("service_new_price") private String serviceNewPrice;
   @SerializedName("service_duration") private String serviceDuration;
+
+  public LastBookingEntity() {
+  }
 
   public LastBookingEntity(Integer id, String userPhone, String userName, String masterName,
       String masterDescription, String masterPhoto, Integer masterId, Integer serviceTime,

@@ -104,7 +104,7 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
   }
 
   @Override public void showConnectErrorMessage() {
-    showAlertMessage(getString(R.string.error_connection),
+    showLongAlertMessage(getString(R.string.error_connection),
         getString(R.string.сheck_internet_connection));
   }
 

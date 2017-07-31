@@ -28,7 +28,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.mzelzoghbi.zgallery.CustomViewPager;
 import com.mzelzoghbi.zgallery.adapters.HorizontalListAdapters;
 import java.util.ArrayList;
-import timber.log.Timber;
 
 /**
  * Created by Alexandra on 23.02.2017.

@@ -92,6 +92,17 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     } else {
       holder.mImageViewServiceBadgeSale.setVisibility(View.GONE);
     }
+
+    if (this.selectedItem == position) {
+      TypedValue value = new TypedValue();
+      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+      holder.mConstraintLayoutParent.setBackgroundColor(
+          ContextCompat.getColor(holder.itemView.getContext(), value.resourceId));
+      holder.mConstraintLayoutParent.getBackground().setAlpha(30);
+    } else {
+      holder.mConstraintLayoutParent.setBackgroundColor(
+          ContextCompat.getColor(holder.itemView.getContext(), R.color.colorWhite));
+    }
   }
 
   @Override public int getItemCount() {

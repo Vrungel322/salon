@@ -26,7 +26,7 @@ public class BookingDetailActivity extends BaseActivity implements IBookingDetai
     super.onCreate(savedInstanceState);
   }
 
-  @Override public void addBookDetailFragment() {
+  @Override public void addBookingDetailFragment() {
     LastBookingEntity bookingEntity = getIntent().getExtras().getParcelable(LAST_BOOKING_ENTITY);
     if (bookingEntity != null) {
       mNavigator.addFragment(BookingDetailActivity.this, R.id.container,

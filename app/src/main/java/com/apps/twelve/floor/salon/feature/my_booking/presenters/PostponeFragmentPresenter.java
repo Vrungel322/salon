@@ -112,8 +112,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
                         .get(timePosition)
                         .getTime());
                 mRxBus.post(new RxBusHelper.UpdateBookingDetails(mDataServiceEntity.get(dayPosition)
-                    .getScheduleEntities().get(timePosition).getTimeInSec(),
-                    mDataServiceEntity.get(dayPosition)
+                    .getScheduleEntities()
+                    .get(timePosition)
+                    .getTimeInSec(), mDataServiceEntity.get(dayPosition)
                     .getScheduleEntities()
                     .get(timePosition)
                     .getId()));
@@ -143,7 +144,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
       addToUnsubscription(subscription);
     } else {
       getViewState().showErrorMessage(R.string.error_empty_date);
-      Subscription subscription = Observable.just(true).delay(1, TimeUnit.SECONDS)
+      Subscription subscription = Observable.just(true)
+          .delay(1, TimeUnit.SECONDS)
           .compose(ThreadSchedulers.applySchedulers())
           .subscribe(o -> getViewState().revertAnimation(), Timber::e);
       addToUnsubscription(subscription);

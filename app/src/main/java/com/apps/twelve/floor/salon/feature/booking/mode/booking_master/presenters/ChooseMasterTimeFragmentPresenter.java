@@ -32,11 +32,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getTimeMaster();
   }
 
-  @Override public void onDestroy() {
-    super.onDestroy();
-    mBookingEntity.setDateId("");
-  }
-
   @SuppressWarnings("ConstantConditions") private void getTimeMaster() {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(mBookingEntity.getMasterId())
         .compose(ThreadSchedulers.applySchedulers())

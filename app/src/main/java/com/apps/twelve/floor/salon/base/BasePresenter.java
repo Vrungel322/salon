@@ -4,15 +4,19 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.data.DataManager;
+import com.apps.twelve.floor.salon.data.model.GoodsEntity;
 import com.apps.twelve.floor.salon.utils.RxBus;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
+import io.realm.RealmObject;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.List;
 import javax.inject.Inject;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 25.01.2017.
@@ -50,6 +54,13 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
       } else {
         mRxBus.post(new RxBusHelper.MessageWrongException());
       }
+    }
+  }
+
+  protected <T extends RealmObject> void cacheEntities(List<T> body) {
+    //cache Entities
+    for (int i = 0; i < body.size(); i++) {
+      mDataManager.saveObjToDb(body.get(i));
     }
   }
 

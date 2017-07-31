@@ -39,11 +39,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     fetchMasters();
   }
 
-  @Override public void onDestroy() {
-    super.onDestroy();
-    mBookingEntity.setMasterId("");
-  }
-
   private void fetchMasters() {
     Subscription subscription =
         mDataManager.fetchMasters(mBookingEntity.getServiceId(), mBookingEntity.getDateId())
@@ -54,8 +49,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 getViewState().setUpRedSquare(mBookingEntity.getServiceName(),
                     mContext.getString(R.string.booking_date_and_time,
                         Converters.detailDayFromSeconds(mContext,
-                            mBookingEntity.getRemainTimeInSec()),
-                        mBookingEntity.getServiceTime()), mBookingEntity.getDurationServices());
+                            mBookingEntity.getRemainTimeInSec()), mBookingEntity.getServiceTime()),
+                    mBookingEntity.getDurationServices());
                 getViewState().showMasters(response.body());
                 getViewState().hideProgressBar();
               }

@@ -15,10 +15,14 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.presenters.ChooseServiceContactFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.booking.mode.booking_service.views.IChooseServiceContactFragmentView;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
+import com.apps.twelve.floor.salon.utils.Converters;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import java.util.List;
 
 /**
  * Created by Alexandra on 28.03.2017.
@@ -57,7 +61,11 @@ public class ChooseServiceContactFragment extends BaseFragment
   @OnClick(R.id.btn_booking_contact) void animate() {
     mChooseServiceContactFragmentPresenter.setPersonName(mEditTextName.getText().toString());
     mChooseServiceContactFragmentPresenter.setPersonPhone(mEditTextPhone.getText().toString());
-    mChooseServiceContactFragmentPresenter.sendBookingEntity();
+    checkIfBookOnSameDate();
+  }
+
+  private void checkIfBookOnSameDate() {
+    mChooseServiceContactFragmentPresenter.checkIfBookOnSameDate();
   }
 
   @Override public void onResume() {
@@ -115,6 +123,30 @@ public class ChooseServiceContactFragment extends BaseFragment
     mNavigator.finishActivity((AppCompatActivity) getActivity());
     mNavigator.startActivity((AppCompatActivity) getActivity(),
         new Intent(getContext(), BookingListActivity.class));
+  }
+
+  @Override public void showDoubleCheckinTimeDialog(List<LastBookingEntity> lastBookingEntities) {
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < lastBookingEntities.size(); i++) {
+      stringBuilder.append("\n"
+          + lastBookingEntities.get(i).getServiceName()
+          + " - "
+          + Converters.fullDateWithTimeFromSeconds(getContext(),
+          lastBookingEntities.get(i).getServiceTime().toString())
+          + "\n");
+    }
+    DialogFactory.createDoubleCheckinTimeDialog(getActivity(), stringBuilder.toString())
+        .setNegativeButton(R.string.dialog_auth_cancel,
+            (dialog, which) -> dialog.cancel())
+        .setPositiveButton(R.string.dialog_yes, (dialog, which) -> {
+          dialog.cancel();
+          mChooseServiceContactFragmentPresenter.sendBookingEntity();
+        })
+        .create().show();
+  }
+
+  @Override public void checkin() {
+    mChooseServiceContactFragmentPresenter.sendBookingEntity();
   }
 
   @Override public void setUpBookingInformation(String serviceName, String serviceTime,
