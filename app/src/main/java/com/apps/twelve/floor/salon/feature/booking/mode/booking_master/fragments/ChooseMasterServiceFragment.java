@@ -19,6 +19,7 @@ import com.apps.twelve.floor.salon.feature.booking.mode.booking_master.views.ICh
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
+import timber.log.Timber;
 
 public class ChooseMasterServiceFragment extends BaseFragment
     implements IChooseMasterServiceFragmentView {
@@ -72,8 +73,11 @@ public class ChooseMasterServiceFragment extends BaseFragment
     });
   }
 
-  @Override public void updateRvServices(List<ServiceEntity> serviceEntities) {
+  @Override public void updateRvServices(List<ServiceEntity> serviceEntities, String serviceId) {
     mServicesAdapter.setServiceEntity(serviceEntities);
+    if (!serviceId.isEmpty()){
+      mServicesAdapter.setSelectedItem(serviceId);
+    }
   }
 
   @Override public void setItemSelected(int position) {

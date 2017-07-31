@@ -10,7 +10,7 @@ import java.util.List;
     extends MvpView {
   void setUpRvServices();
 
-  void updateRvServices(List<ServiceEntity> serviceEntities);
+  void updateRvServices(List<ServiceEntity> serviceEntities, String serviceId);
 
   void setItemSelected(int position);
 

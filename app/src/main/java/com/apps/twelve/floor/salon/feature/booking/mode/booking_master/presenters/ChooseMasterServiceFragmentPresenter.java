@@ -43,7 +43,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
             .subscribe(response -> {
               if (response.code() == RESPONSE_200) {
                 getViewState().hideProgressBar();
-                getViewState().updateRvServices(response.body());
+                getViewState().updateRvServices(response.body(),mBookingEntity.getServiceId());
                 mServiceEntities.clear();
                 mServiceEntities.addAll(response.body());
               }
@@ -60,11 +60,13 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
       subscription = Observable.from(mServiceEntities)
           .filter(serviceEntity -> serviceEntity.getTitle().toLowerCase().contains(s.trim()))
           .toList()
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities),
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities,
+              mBookingEntity.getServiceId()),
               Timber::e);
     } else {
       subscription = Observable.just(mServiceEntities)
-          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities),
+          .subscribe(serviceEntities -> getViewState().updateRvServices(serviceEntities,
+              mBookingEntity.getServiceId()),
               Timber::e);
     }
     addToUnsubscription(subscription);

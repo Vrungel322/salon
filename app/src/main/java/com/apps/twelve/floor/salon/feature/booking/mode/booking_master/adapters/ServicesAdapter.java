@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
+import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.Other.SERVER_ANSWER_EMPTY_STRING;
 
@@ -112,6 +113,14 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
   public void setSelectedItem(int position) {
     this.selectedItem = position;
     this.notifyDataSetChanged();
+  }
+
+  public void setSelectedItem(String serviceId) {
+    for (int i = 0; i < mServiceEntities.size(); i++) {
+      if (String.valueOf(mServiceEntities.get(i).getServiceId()).equals(serviceId)) {
+        setSelectedItem(i);
+      }
+    }
   }
 
   static class ServiceViewHolder extends RecyclerView.ViewHolder {
