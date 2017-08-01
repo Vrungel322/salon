@@ -25,4 +25,9 @@
     <item name="android:visibility">gone</item>
   </style>
 
+  <style name="error" parent="@android:style/TextAppearance">
+    <item name="android:textColor">@color/colorRed</item> <!--apply the color you wat here -->
+    <item name="android:textSize">12sp</item>
+  </style>
+
 </resources>

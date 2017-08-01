@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,14 +79,19 @@ public class RecoveryPasswordFragment extends BaseFragment implements IRecoveryP
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
+    View view = super.onCreateView(inflater, container, savedInstanceState);
     mAwesomeValidation = new AwesomeValidation(TEXT_INPUT_LAYOUT);
 
-    mAwesomeValidation.addValidation(getActivity(), R.id.til_email_or_phone, REGEX_EMAIL_OR_PHONE,
-        R.string.error_not_regex_field);
-    return super.onCreateView(inflater, container, savedInstanceState);
+    mAwesomeValidation.addValidation(mTilEmailOrPhone, REGEX_EMAIL_OR_PHONE,
+        getString(R.string.error_not_regex_field));
+    return view;
   }
 
   @OnClick(R2.id.btn_recovery) public void recoveryPassword() {
+    if (TextUtils.isEmpty(mLogin.getText().toString())) {
+      mTilEmailOrPhone.setError(getString(R.string.error_empty_name));
+      return;
+    }
     if (mAwesomeValidation.validate()) {
       mBtnRecovery.startAnimation();
       mPresenter.resetPassword(mLogin.getText().toString());

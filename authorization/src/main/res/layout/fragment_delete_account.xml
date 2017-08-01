@@ -49,6 +49,7 @@
       app:layout_constraintLeft_toLeftOf="@+id/line"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tv_email_or_phone"
+      app:errorTextAppearance="@style/error"
       app:layout_constraintWidth_default="spread">
 
       <EditText

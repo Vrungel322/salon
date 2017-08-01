@@ -24,7 +24,7 @@ public final class Constants {
     public static final String REGEX_PHONE_NOT_EMPTY = "^[+][0-9]{12}$";
     public static final String REGEX_OR_CONDITION = "|";
     public static final String REGEX_EMAIL_OR_PHONE =
-        "[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+|^\\+?\\d{12}$";
+        "[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+|^[+][0-9]{12}$";
     public static final String REGEX_PASSWORD_LENGTH = "^[a-zA-Z0-9]{6,}$";
     public static final String REGEX_NOT_EMPTY = "^(?=\\s*\\S).*$";
     public static final String REGEX_NOT_EQUAL = "^(?!%s$).*$";
