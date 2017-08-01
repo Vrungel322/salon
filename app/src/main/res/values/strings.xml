@@ -190,5 +190,6 @@
   <string name="thank_you">Спасибо</string>
   <string name="friend_invited">Ваш друг скажет вам - Спасибо!</string>
   <string name="send_code">Отправить код</string>
+  <string name="send_to">Отправить приглашение</string>
 
 </resources>

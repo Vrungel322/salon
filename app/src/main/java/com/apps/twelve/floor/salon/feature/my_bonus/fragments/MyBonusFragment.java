@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -67,9 +68,16 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
       }
     });
 
+    mMyBonusFragmentPresenter.setUserId();
+    mTextViewYourCode.setText("007");
     mButtonSendCode.setOnClickListener(c -> {
       if (mAuthorizationManager.isAuthorized()) {
         showToastMessage("Send");
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, mTextViewYourCode.getText().toString());
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
       } else {
         if (getActivity() instanceof StartActivity) {
           mMyBonusFragmentPresenter.showAuthDialogBooking();
@@ -79,7 +87,6 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
       }
     });
 
-    mTextViewYourCode.setText("007");
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
