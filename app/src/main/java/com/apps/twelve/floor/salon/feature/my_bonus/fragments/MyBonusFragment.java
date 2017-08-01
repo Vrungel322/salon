@@ -69,13 +69,12 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     });
 
     mMyBonusFragmentPresenter.setUserId();
-    mTextViewYourCode.setText("007");
     mButtonSendCode.setOnClickListener(c -> {
       if (mAuthorizationManager.isAuthorized()) {
-        showToastMessage("Send");
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, mTextViewYourCode.getText().toString());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.bonus_share_msg_text,
+            mTextViewYourCode.getText().toString()));
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
       } else {
@@ -86,7 +85,6 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
         }
       }
     });
-
 
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
@@ -149,5 +147,9 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
 
   @Override public void showErrorToast() {
     showToastMessage(getString(R.string.error_data_not_correct));
+  }
+
+  @Override public void setTvCodeToShare(String userId) {
+    mTextViewYourCode.setText(userId);
   }
 }

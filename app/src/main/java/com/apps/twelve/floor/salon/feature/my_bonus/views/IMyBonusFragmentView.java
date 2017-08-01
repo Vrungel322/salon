@@ -20,4 +20,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
   void showThankYouDialog();
 
   void showErrorToast();
+
+  void setTvCodeToShare(String userId);
 }

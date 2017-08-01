@@ -95,4 +95,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }, this::showMessageException);
     addToUnsubscription(subscription);
   }
+
+  public void setUserId() {
+    getViewState().setTvCodeToShare(mAuthorizationManager.getUserId());
+  }
 }
