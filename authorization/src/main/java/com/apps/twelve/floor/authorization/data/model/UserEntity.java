@@ -16,7 +16,7 @@ public class UserEntity {
   @SerializedName("password") @Expose private String password;
   @SerializedName("updated_at") @Expose private String updatedAt;
   @SerializedName("created_at") @Expose private String createdAt;
-  @SerializedName("id") @Expose private Long id;
+  @SerializedName("id") @Expose private String id;
   @SerializedName("provider_id") @Expose private String providerId;
   @SerializedName("provider") @Expose private String provider;
   @SerializedName("gender") @Expose private String gender;
@@ -39,12 +39,6 @@ public class UserEntity {
     this.fullName = fullName;
     this.email = email;
     this.phone = phone;
-  }
-
-  public UserEntity(Long id, String fullName, String email) {
-    this.id = id;
-    this.fullName = fullName;
-    this.email = email;
   }
 
   public String getFullName() {
@@ -135,11 +129,11 @@ public class UserEntity {
     this.createdAt = createdAt;
   }
 
-  public Long getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(String id) {
     this.id = id;
   }
 

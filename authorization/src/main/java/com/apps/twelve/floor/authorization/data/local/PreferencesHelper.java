@@ -49,12 +49,12 @@ public class PreferencesHelper {
     mPreferences.edit().putString(PREF_TOKEN, BEARER + " " + token).apply();
   }
 
-  public long getUserId() {
-    return mPreferences.getLong(PREF_USER_ID, -1);
+  public String getUserId() {
+    return mPreferences.getString(PREF_USER_ID, "");
   }
 
-  public void setUserId(long userId) {
-    mPreferences.edit().putLong(PREF_USER_ID, userId).apply();
+  public void setUserId(String userId) {
+    mPreferences.edit().putString(PREF_USER_ID, userId).apply();
   }
 
   public String getUserName() {

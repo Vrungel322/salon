@@ -26,6 +26,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_CONTENT_ERROR;
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_SUCCESS;
 
 /**
  * Created by Alexander Svyatetsky on 22.04.2017.
@@ -58,21 +59,24 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
     Subscription subscription = mDataManager.register(userEntity)
         .compose(ThreadSchedulers.applySchedulers())
         .concatMap(response -> {
-          if (response.isSuccessful()) {
-            getViewState().stopAnimation();
-            mDataManager.setToken(response.body().getToken());
+          switch (response.code()) {
+            case RESPONSE_SUCCESS:
+              getViewState().stopAnimation();
+              mDataManager.setToken(response.body().getToken());
+              return Observable.just(response);
+            case RESPONSE_CONTENT_ERROR:
+              handleError(response.errorBody());
+              return Observable.error(new Exception("Response content error"));
           }
           return Observable.just(response);
         })
         .delay(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+        .concatMap(response -> mDataManager.getUserProfile())
         .subscribe(response -> {
           if (response.isSuccessful()) {
-            saveUser(userEntity);
+            saveUser(response.body());
             mAuthRxBus.post(new AuthRxBusHelper.CloseActivityEvent());
             getViewState().finishActivity();
-          } else if (response.code() == RESPONSE_CONTENT_ERROR) {
-            getViewState().revertAnimation();
-            handleError(response.errorBody());
           }
         }, throwable -> {
           getViewState().revertAnimation();
@@ -83,6 +87,7 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
   }
 
   private void saveUser(UserEntity user) {
+    mDataManager.setUserId(user.getId());
     mDataManager.setUserName(user.getFullName());
     mDataManager.setUserEmail(user.getEmail());
     mDataManager.setUserPhone(user.getPhone());
