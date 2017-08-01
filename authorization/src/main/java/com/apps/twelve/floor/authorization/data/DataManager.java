@@ -148,11 +148,11 @@ public class DataManager {
     mPreferencesHelper.setToken(token);
   }
 
-  public long getUserId() {
+  public String getUserId() {
     return mPreferencesHelper.getUserId();
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(String userId) {
     mPreferencesHelper.setUserId(userId);
   }
 
