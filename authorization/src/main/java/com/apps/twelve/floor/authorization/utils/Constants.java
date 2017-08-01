@@ -11,6 +11,7 @@ public final class Constants {
 
   public class Remote {
     public static final String BASE_URL = "https://jwt.floor12apps.com/";
+    public static final int RESPONSE_SUCCESS = 200;
     public static final int RESPONSE_CONTENT_ERROR = 400;
     public static final int RESPONSE_UNAUTHORIZED = 401;
     public static final int RESPONSE_TOKEN_EXPIRED = 403;

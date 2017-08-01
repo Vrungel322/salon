@@ -108,6 +108,10 @@ public class AuthorizationManager {
     return mDataManager.getToken();
   }
 
+  public String getUserId() {
+    return mDataManager.getUserId();
+  }
+
   public String getUserName() {
     return mDataManager.getUserName();
   }
@@ -126,6 +130,10 @@ public class AuthorizationManager {
 
   public void saveToken(String token) {
     mDataManager.setToken(token);
+  }
+
+  public void saveUserId(String userId) {
+    mDataManager.setUserId(userId);
   }
 
   public void saveUserName(String userName) {
