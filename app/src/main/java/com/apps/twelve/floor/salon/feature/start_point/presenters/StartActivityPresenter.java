@@ -173,4 +173,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void cancelAlertDialog() {
     getViewState().cancelAlertDialog();
   }
+
+  public void updateBonus() {
+    mRxBus.post(new RxBusHelper.UpdateBonusSwipe());
+  }
 }
