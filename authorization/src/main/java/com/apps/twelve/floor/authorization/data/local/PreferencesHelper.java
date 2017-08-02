@@ -3,7 +3,6 @@ package com.apps.twelve.floor.authorization.data.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.StyleRes;
-import android.text.TextUtils;
 import com.apps.twelve.floor.authorization.R;
 
 /**
@@ -146,7 +145,7 @@ public class PreferencesHelper {
   }
 
   public boolean isExistAdditionalField(String key) {
-    return !TextUtils.isEmpty(mPreferences.getString(key, ""));
+    return mPreferences.contains(key);
   }
 
   public void setLanguage(String language) {

@@ -15,6 +15,7 @@ public final class Constants {
     public static final int RESPONSE_CONTENT_ERROR = 400;
     public static final int RESPONSE_UNAUTHORIZED = 401;
     public static final int RESPONSE_TOKEN_EXPIRED = 403;
+    public static final int RESPONSE_NOT_FOUND = 404;
   }
 
   public class Regex {

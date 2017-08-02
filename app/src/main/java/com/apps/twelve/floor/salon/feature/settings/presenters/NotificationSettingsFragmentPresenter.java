@@ -92,7 +92,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURLY_ENABLED, checked));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -122,7 +122,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -152,7 +152,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           if (response.code() == RESPONSE_UNAUTHORIZED) {
             mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
@@ -176,7 +176,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS, millis));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -209,7 +209,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                     millis));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -239,7 +239,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
@@ -278,7 +278,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
                 mAuthorizationManager.populateAdditionalField(PREF_NOTIF_DAYS, mLastPickedDays));
           }
           return Observable.just(response);
-        }).subscribeOn(AndroidSchedulers.mainThread())
+        }).observeOn(AndroidSchedulers.mainThread())
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:

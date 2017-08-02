@@ -191,7 +191,7 @@ public class NotificationSettingsFragment extends BaseFragment
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
                 mNotificationSettingsFragmentPresenter.getHoursNightEnd()))), true);
-    mPickStartNightDialog.setOnCancelListener(
+    mPickEndNightDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog());
     mPickEndNightDialog.show();
   }
