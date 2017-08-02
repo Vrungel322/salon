@@ -157,4 +157,8 @@
   <string name="thank_you">Дякуємо</string>
   <string name="friend_invited">Ваш друг скаже вам - Дякую!</string>
   <string name="send_code">Надіслати код</string>
+
+  <string name="booking_network_disconnect">"Відсутнє інтернет з'єднання"</string>
+  <string name="booking_network_disconnect_message">Ви можете записатися, зателефонував по наступним телефонам:</string>
+  <string name="booking_network_disconnect_phones"><u>+380441234455</u></string>
 </resources>

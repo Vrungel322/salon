@@ -191,4 +191,8 @@
   <string name="friend_invited">Ваш друг скажет вам - Спасибо!</string>
   <string name="send_code">Отправить код</string>
 
+  <string name="booking_network_disconnect">Отсутствует интернет соединение</string>
+  <string name="booking_network_disconnect_message">Вы можете записаться, позвонив по следующим телефонам:</string>
+  <string name="booking_network_disconnect_phones"><u>+380441234455</u>></string>
+
 </resources>
