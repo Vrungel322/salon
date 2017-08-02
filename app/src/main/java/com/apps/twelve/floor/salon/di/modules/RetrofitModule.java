@@ -96,7 +96,8 @@ import timber.log.Timber;
           Constants.Remote.BASE_URL + "api/v1/categories",
           //all below cache to realm
           Constants.Remote.BASE_URL + "api/v1/pages", Constants.Remote.BASE_URL + "api/v1/products",
-          Constants.Remote.BASE_URL + "api/v1/galleries")) {
+          Constants.Remote.BASE_URL + "api/v1/galleries",
+          Constants.Remote.BASE_URL + "api/v1/users/me/bonuses_history")) {
         CacheControl cacheControl = new CacheControl.Builder().build();
         response = response.newBuilder()
             .removeHeader("Pragma")
