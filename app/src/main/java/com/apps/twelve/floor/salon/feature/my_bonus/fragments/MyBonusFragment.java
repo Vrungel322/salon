@@ -125,7 +125,11 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   }
 
   @OnClick(R.id.bSendFriendsCode) void bSendFriendsCodeClicked() {
-    mMyBonusFragmentPresenter.sendFriendsCode(mEditTextFriendsCode.getText().toString());
+    if (mTextViewYourCode.getText().toString().equals(mEditTextFriendsCode.getText().toString())){
+      showToastMessage(getString(R.string.cannon_invite_yourself));
+    }else {
+      mMyBonusFragmentPresenter.sendFriendsCode(mEditTextFriendsCode.getText().toString());
+    }
   }
 
   @Override public void startRefreshingView() {
