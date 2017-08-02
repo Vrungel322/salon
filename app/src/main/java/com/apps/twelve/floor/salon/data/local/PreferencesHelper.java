@@ -16,7 +16,7 @@ public class PreferencesHelper {
 
   public static final String PREF_FILE_NAME = "com.salon.Salon";
 
-  private static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
+  public static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
   static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
   public static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
@@ -27,8 +27,8 @@ public class PreferencesHelper {
   public static final String PREF_NOTIF_DAYS = "PREF_NOTIF_DAYS";
   public static final String PREF_NOTIF_NIGHT_MODE = "PREF_NOTIF_NIGHT_MODE";
   public static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
-  private static final String PREF_BOOKING = "PREF_BOOKING";
-  private static final String PREF_LANGUAGE = "PREF_LANGUAGE";
+  public static final String PREF_BOOKING = "PREF_BOOKING";
+  public static final String PREF_LANGUAGE = "PREF_LANGUAGE";
 
   private final SharedPreferences mPreferences;
   private Gson mGson;
@@ -132,8 +132,8 @@ public class PreferencesHelper {
   }
 
   //Cache
-  public void putBooking(List<LastBookingEntity> bookingEntities) {
-    mPreferences.edit().putString(PREF_BOOKING, mGson.toJson(bookingEntities)).apply();
+  public <T> void putEntityToSHP(String key, T t) {
+    mPreferences.edit().putString(key, mGson.toJson(t)).apply();
   }
 
   public List<LastBookingEntity> getBooking() {
@@ -157,5 +157,10 @@ public class PreferencesHelper {
 
   public String getLanguageCode() {
     return mPreferences.getString(PREF_LANGUAGE_CODE, "ru");
+  }
+
+  public String getStringEntity(String bonus) {
+
+    return mPreferences.getString(bonus, "");
   }
 }

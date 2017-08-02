@@ -35,8 +35,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   @SuppressWarnings("ConstantConditions") public void getBonusCount() {
 
-    getViewState().setBonusCount(
-        mDataManager.getAllElementsFromDB(BonusEntity.class).get(0).getBonusesCount());
+    //getViewState().setBonusCount(
+    //    mDataManager.getAllElementsFromDB(BonusEntity.class).get(0).getBonusesCount());
     getViewState().startRefreshingView();
     if (mAuthorizationManager.isAuthorized()) {
       Subscription subscription =

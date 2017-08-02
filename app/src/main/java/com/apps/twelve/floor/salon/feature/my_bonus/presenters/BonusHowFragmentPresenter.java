@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.my_bonus.presenters;
 
+import android.text.Html;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IBonusHowFragmentView;
@@ -25,9 +26,11 @@ import rx.Subscription;
   }
 
   private void fetchString() {
+    getViewState().showStringBody(mDataManager.getStringEntity(Constants.RemoteText.BONUS));
     Subscription subscription = mDataManager.fetchString(Constants.RemoteText.BONUS)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(remoteStringEntity -> {
+          mDataManager.storeStringEntity(Constants.RemoteText.BONUS,remoteStringEntity.getText());
           getViewState().showStringBody(remoteStringEntity.getText());
         });
     addToUnsubscription(subscription);

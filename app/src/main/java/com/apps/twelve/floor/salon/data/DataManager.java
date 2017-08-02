@@ -266,7 +266,7 @@ public class DataManager {
 
   //Cache
   public void putBooking(List<LastBookingEntity> bookingEntities) {
-    mPref.putBooking(bookingEntities);
+    mPref.putEntityToSHP(PreferencesHelper.PREF_BOOKING, bookingEntities);
   }
 
   public List<LastBookingEntity> getBooking() {
@@ -329,6 +329,14 @@ public class DataManager {
   //remote strings
   public Observable<RemoteStringEntity> fetchString(String remoteStringType) {
     return mRestApi.fetchString(remoteStringType, mPref.getLanguageCode());
+  }
+
+  public void storeStringEntity(String bonus, String text) {
+    mPref.putEntityToSHP(bonus, text);
+  }
+
+  public String getStringEntity(String bonus) {
+    return mPref.getStringEntity(bonus);
   }
 }
 
