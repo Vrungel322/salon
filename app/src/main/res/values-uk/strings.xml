@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="action_settings">Налаштування</string>
-  <string name="additional_settings">Дот. налаштування</string>
+  <string name="additional_settings">Додаткові налаштування</string>
   <string name="all_books">Всі записи</string>
   <string name="all_news">ВСІ НОВИНИ</string>
   <string name="any_master">Будь-який Фахiвець</string>
