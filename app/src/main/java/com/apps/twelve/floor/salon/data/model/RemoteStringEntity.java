@@ -10,8 +10,7 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class RemoteStringEntity extends RealmObject {
-  @PrimaryKey
-  @SerializedName("id") @Expose private String id;
+  @PrimaryKey @SerializedName("id") @Expose private String id;
   @SerializedName("text") @Expose private String text;
 
   public RemoteStringEntity() {

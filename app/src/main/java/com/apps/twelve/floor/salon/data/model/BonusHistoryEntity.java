@@ -10,8 +10,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class BonusHistoryEntity extends RealmObject {
 
-  @PrimaryKey
-  @SerializedName("id") private Integer id;
+  @PrimaryKey @SerializedName("id") private Integer id;
   @SerializedName("user_id") private Integer userId;
   @SerializedName("bonus_type") private String bonusType;
   @SerializedName("bonus_description") private String bonusDescription;

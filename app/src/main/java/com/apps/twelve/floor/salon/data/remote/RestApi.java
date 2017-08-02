@@ -167,5 +167,4 @@ public class RestApi {
   public Observable<RemoteStringEntity> fetchString(String remoteStringType, String language) {
     return api.fetchString(remoteStringType, language);
   }
-
 }

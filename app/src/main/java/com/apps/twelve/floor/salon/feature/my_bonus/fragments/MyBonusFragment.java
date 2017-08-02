@@ -73,8 +73,9 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
       if (mAuthorizationManager.isAuthorized()) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.bonus_share_msg_text,
-            mTextViewYourCode.getText().toString()));
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+            getResources().getString(R.string.bonus_share_msg_text,
+                mTextViewYourCode.getText().toString()));
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
       } else {
@@ -125,9 +126,9 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
   }
 
   @OnClick(R.id.bSendFriendsCode) void bSendFriendsCodeClicked() {
-    if (mTextViewYourCode.getText().toString().equals(mEditTextFriendsCode.getText().toString())){
+    if (mTextViewYourCode.getText().toString().equals(mEditTextFriendsCode.getText().toString())) {
       showToastMessage(getString(R.string.cannon_invite_yourself));
-    }else {
+    } else {
       mMyBonusFragmentPresenter.sendFriendsCode(mEditTextFriendsCode.getText().toString());
     }
   }

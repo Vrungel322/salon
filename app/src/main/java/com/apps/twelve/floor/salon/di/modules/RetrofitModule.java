@@ -99,8 +99,7 @@ import timber.log.Timber;
           Constants.Remote.BASE_URL + "api/v1/galleries",
           Constants.Remote.BASE_URL + "api/v1/users/me/bonuses_history",
           Constants.Remote.BASE_URL + "api/v1/users/me/bonuses",
-          Constants.Remote.BASE_URL + "api/v1/texts"
-      )) {
+          Constants.Remote.BASE_URL + "api/v1/texts")) {
         CacheControl cacheControl = new CacheControl.Builder().build();
         response = response.newBuilder()
             .removeHeader("Pragma")

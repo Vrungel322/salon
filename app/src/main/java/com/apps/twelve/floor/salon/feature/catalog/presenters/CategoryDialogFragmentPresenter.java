@@ -59,6 +59,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   public void postToShowResetBtn() {
-    mRxBus.post(new RxBusHelper.ShowResetBtn() );
+    mRxBus.post(new RxBusHelper.ShowResetBtn());
   }
 }

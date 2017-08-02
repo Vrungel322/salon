@@ -61,10 +61,10 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
       mDataManager.saveObjToDb(body.get(i));
     }
   }
+
   protected <T extends RealmObject> void cacheEntity(T body) {
     //cache Entities
-      mDataManager.saveObjToDb(body);
-
+    mDataManager.saveObjToDb(body);
   }
 
   protected void showMessageException() {

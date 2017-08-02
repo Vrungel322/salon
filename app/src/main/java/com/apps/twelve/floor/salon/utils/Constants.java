@@ -105,7 +105,7 @@ public final class Constants {
     public static final String SERVER_ANSWER_EMPTY_STRING = "---";
   }
 
-  public class RemoteText{
+  public class RemoteText {
     public static final String BONUS = "bonus";
   }
 }

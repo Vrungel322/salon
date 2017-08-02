@@ -3,7 +3,6 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
-import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
