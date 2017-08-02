@@ -27,7 +27,6 @@
           android:layout_height="150dp"
           android:layout_alignParentTop="true"
           android:background="?colorAccent"
-          android:scaleType="centerCrop"
           card_view:srcCompat="@drawable/ic_user_female"
           />
 
