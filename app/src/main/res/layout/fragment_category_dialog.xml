@@ -4,17 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+  <TextView
+      android:id="@+id/textView11"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp"
+      android:text="@string/choose_category_dialog"
+      android:textColor="@color/colorGray"
+      android:textSize="20sp"
+      />
   <android.support.v7.widget.RecyclerView
       android:id="@+id/rvCategories"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="4dp"
-      android:layout_marginLeft="4dp"
-      android:layout_marginRight="4dp"
-      android:layout_marginTop="4dp"
+      android:layout_below="@+id/textView11"
       android:layout_alignParentLeft="true"
       android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
       >
   </android.support.v7.widget.RecyclerView>
   <ProgressBar

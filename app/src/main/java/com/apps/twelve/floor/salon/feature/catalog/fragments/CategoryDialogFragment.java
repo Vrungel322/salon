@@ -1,7 +1,10 @@
 package com.apps.twelve.floor.salon.feature.catalog.fragments;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +47,10 @@ public class CategoryDialogFragment extends MvpDialogFragment
     final View fragmentView = inflater.inflate(R.layout.fragment_category_dialog, container, false);
     mUnbinder = ButterKnife.bind(this, fragmentView);
     return fragmentView;
+  }
+
+  @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
+    return new Dialog(getActivity(), R.style.ThemeDialog_Catalog);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

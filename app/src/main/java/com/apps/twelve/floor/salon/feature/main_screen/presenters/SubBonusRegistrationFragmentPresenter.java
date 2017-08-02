@@ -53,9 +53,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   @SuppressWarnings("ConstantConditions") private void subscribeUpdateBonusSwipe() {
-
-    getViewState().setBonusCount(String.valueOf(
-        mDataManager.getAllElementsFromDB(BonusEntity.class).get(0).getBonusesCount()));
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusSwipe.class)
         .concatMap(
             updateBonusSwipe -> mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()))
