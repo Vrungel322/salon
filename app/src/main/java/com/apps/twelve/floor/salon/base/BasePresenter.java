@@ -61,6 +61,11 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
       mDataManager.saveObjToDb(body.get(i));
     }
   }
+  protected <T extends RealmObject> void cacheEntity(T body) {
+    //cache Entities
+      mDataManager.saveObjToDb(body);
+
+  }
 
   protected void showMessageException() {
     mRxBus.post(new RxBusHelper.MessageWrongException());

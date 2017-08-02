@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.main_screen.presenters;
 import com.apps.twelve.floor.authorization.utils.AuthRxBusHelper;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
+import com.apps.twelve.floor.salon.data.model.BonusEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.views.ISubBonusRegestrationFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -52,6 +53,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   @SuppressWarnings("ConstantConditions") private void subscribeUpdateBonusSwipe() {
+
+    getViewState().setBonusCount(String.valueOf(
+        mDataManager.getAllElementsFromDB(BonusEntity.class).get(0).getBonusesCount()));
     Subscription subscription = mRxBus.filteredObservable(RxBusHelper.UpdateBonusSwipe.class)
         .concatMap(
             updateBonusSwipe -> mAuthorizationManager.checkToken(mDataManager.fetchBonusCount()))
@@ -70,6 +74,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
+              response.body().setId(0);
+              cacheEntity(response.body());
               getViewState().setBonusCount(String.valueOf(response.body().getBonusesCount()));
               mRxBus.post(new RxBusHelper.UpdateBonusFromChildren());
               break;
