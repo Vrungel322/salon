@@ -3,7 +3,10 @@ package com.apps.twelve.floor.salon.feature.my_bonus.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.views.IBonusHowFragmentView;
+import com.apps.twelve.floor.salon.utils.Constants;
+import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import rx.Subscription;
 
 /**
  * Created by Alexandra on 29.05.2017.
@@ -18,5 +21,15 @@ import com.arellomobile.mvp.InjectViewState;
 
   @Override protected void onFirstViewAttach() {
     super.onFirstViewAttach();
+    fetchString();
+  }
+
+  private void fetchString() {
+    Subscription subscription = mDataManager.fetchString(Constants.RemoteText.BONUS)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(remoteStringEntity -> {
+          getViewState().showStringBody(remoteStringEntity.getText());
+        });
+    addToUnsubscription(subscription);
   }
 }

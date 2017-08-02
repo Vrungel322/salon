@@ -2,7 +2,10 @@ package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.View;
+import android.widget.TextView;
+import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
@@ -18,6 +21,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class BonusHowFragment extends BaseFragment implements IBonusHowFragmentView {
 
   @InjectPresenter BonusHowFragmentPresenter mBonusHowFragmentPresenter;
+  @BindView(R.id.tvBody) TextView mTextViewBody;
 
   public BonusHowFragment() {
     super(R.layout.fragment_bonus_how_works);
@@ -40,6 +44,10 @@ public class BonusHowFragment extends BaseFragment implements IBonusHowFragmentV
     if (getActivity() instanceof BookingActivity) {
       ((BookingActivity) getActivity()).setTitleAppBar(R.string.bonus);
     }
+  }
+
+  @Override public void showStringBody(String text) {
+    mTextViewBody.setText(Html.fromHtml(text));
   }
 
   @Override public void onDestroyView() {

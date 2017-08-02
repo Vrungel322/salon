@@ -104,4 +104,8 @@ public final class Constants {
     public static final String MASTER_MALE_PLACEHOLDER = "male";
     public static final String SERVER_ANSWER_EMPTY_STRING = "---";
   }
+
+  public class RemoteText{
+    public static final String BONUS = "bonus";
+  }
 }

@@ -14,6 +14,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
+import com.apps.twelve.floor.salon.data.model.RemoteStringEntity;
 import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
@@ -323,6 +324,11 @@ public class DataManager {
 
   public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
     return mDbHelper.getElementById(clazz, id);
+  }
+
+  //remote strings
+  public Observable<RemoteStringEntity> fetchString(String remoteStringType) {
+    return mRestApi.fetchString(remoteStringType, mPref.getLanguageCode());
   }
 }
 

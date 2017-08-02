@@ -11,4 +11,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBonusHowFragmentView
     extends MvpView {
 
+  void showStringBody(String text);
 }

@@ -11,6 +11,7 @@ import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
+import com.apps.twelve.floor.salon.data.model.RemoteStringEntity;
 import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
@@ -162,4 +163,9 @@ public class RestApi {
       String language) {
     return api.sendFriendsCode(friendsCode, token, language);
   }
+
+  public Observable<RemoteStringEntity> fetchString(String remoteStringType, String language) {
+    return api.fetchString(remoteStringType, language);
+  }
+
 }

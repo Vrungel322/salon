@@ -123,4 +123,7 @@ public interface SalonApi {
   @POST("api/v1/users/me/invited") @FormUrlEncoded Observable<Response<Void>> sendFriendsCode(
       @Field("invite_code") String friendsCode, @Header("authorization") String token,
       @Header("lng") String language);
+
+  @GET("api/v1/texts/{string}") Observable<RemoteStringEntity> fetchString(
+      @Path("string") String remoteStringType, @Header("lng") String language);
 }
