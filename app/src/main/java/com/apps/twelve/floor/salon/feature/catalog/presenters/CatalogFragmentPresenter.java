@@ -37,6 +37,17 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
     //RxBus
     subscribeGoodsList();
     subscribeReloadListByCategory();
+    subscribeShowResetBtn();
+  }
+
+  private void subscribeShowResetBtn() {
+
+    Subscription subscription = mRxBus.filteredObservable(RxBusHelper.ShowResetBtn.class)
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(showResetBtn -> {
+          getViewState().showResetBtn();
+        });
+    addToUnsubscription(subscription);
   }
 
   public void showAlertDialog() {

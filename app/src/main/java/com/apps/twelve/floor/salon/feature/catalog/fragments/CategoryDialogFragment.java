@@ -62,7 +62,7 @@ public class CategoryDialogFragment extends MvpDialogFragment
     mRecyclerViewCategories.setAdapter(mAdapter);
 
     mAdapter.setChildClickListener((v, checked, group, childIndex) -> {
-      Timber.e(String.valueOf(((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId()));
+      mCategoryDialogFragmentPresenter.postToShowResetBtn();
 
       mCategoryDialogFragmentPresenter.postEventToReloadList(
           ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),

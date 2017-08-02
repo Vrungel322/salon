@@ -26,4 +26,6 @@ import java.util.List;
   void startLoginActivity();
 
   void showServerErrorMsg();
+
+  void showResetBtn();
 }

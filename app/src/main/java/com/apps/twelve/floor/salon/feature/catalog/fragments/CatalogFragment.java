@@ -87,6 +87,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
   }
 
   @OnClick(R.id.ivResetCategory) public void ivResetCategoryClick() {
+    mImageViewResetCategory.setVisibility(View.GONE);
     mCatalogFragmentPresenter.fetchGoodsList();
   }
 
@@ -117,6 +118,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogFragmentVie
 
   @Override public void showServerErrorMsg() {
     showLongAlertMessage(getString(R.string.dialog_error_title), getString(R.string.server_error));
+  }
+
+  @Override public void showResetBtn() {
+    mImageViewResetCategory.setVisibility(View.VISIBLE);
   }
 
   @Override public void onDestroyView() {

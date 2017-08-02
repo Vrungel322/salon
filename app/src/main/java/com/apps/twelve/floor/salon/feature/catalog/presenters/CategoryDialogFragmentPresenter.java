@@ -57,4 +57,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   public void postEventToReloadList(Integer id, String title) {
     mRxBus.post(new RxBusHelper.ReloadCatalogByCategory(id, title));
   }
+
+  public void postToShowResetBtn() {
+    mRxBus.post(new RxBusHelper.ShowResetBtn() );
+  }
 }

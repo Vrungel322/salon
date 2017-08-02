@@ -118,4 +118,7 @@ public final class RxBusHelper {
 
   public static class ShowSubBookingFragment {
   }
+
+  public static class ShowResetBtn {
+  }
 }
