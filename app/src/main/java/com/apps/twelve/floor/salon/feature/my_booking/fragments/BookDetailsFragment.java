@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IBookDetailsFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
@@ -158,14 +160,23 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   @Override public void openPostponeFragment() {
-    mNavigator.addFragmentBackStack((StartActivity) getContext(), R.id.container_main,
-        PostponeFragment.newInstance(mBookingEntity.getServiceName(),
-            mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId(),
-            String.valueOf(mBookingEntity.getScheduleId())));
+    if (getActivity() instanceof StartActivity) {
+      mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_main,
+          PostponeFragment.newInstance(mBookingEntity.getServiceName(),
+              mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId(),
+              String.valueOf(mBookingEntity.getScheduleId())));
+    } else if (getActivity() instanceof BookingListActivity) {
+      mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(),
+          R.id.container_for_list_of_booked_services,
+          PostponeFragment.newInstance(mBookingEntity.getServiceName(),
+              mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId(),
+              String.valueOf(mBookingEntity.getScheduleId())));
+    }
   }
 
-  @Override public void updateTimeInfo(Integer time) {
+  @Override public void updateTimeInfo(Integer time, Integer schedulerId) {
     mBookingEntity.setServiceTime(time);
+    mBookingEntity.setScheduleId(schedulerId);
     setUpTimeBlock();
   }
 

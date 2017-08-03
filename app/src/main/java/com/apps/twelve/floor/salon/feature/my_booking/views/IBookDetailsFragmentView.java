@@ -24,5 +24,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
   @StateStrategyType(SkipStrategy.class) void openPostponeFragment();
 
-  void updateTimeInfo(Integer time);
+  void updateTimeInfo(Integer time, Integer scheduleId);
 }

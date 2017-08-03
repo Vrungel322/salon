@@ -106,7 +106,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
     /* turn off scrolling */
     if (!(getActivity() instanceof BookingListActivity)) {
-      Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+      Toolbar mToolbar = getActivity().findViewById(R.id.toolbar);
 
       AppBarLayout.LayoutParams toolbarLayoutParams =
           (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
