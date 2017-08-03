@@ -165,14 +165,16 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
           PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
               mBookingEntities.get(position).getMasterName(),
               mBookingEntities.get(position).getMasterId(),
-            /* entity_id */ mBookingEntities.get(position).getId()));
+            /* entity_id */ mBookingEntities.get(position).getId(),
+              String.valueOf(mBookingEntities.get(position).getScheduleId())));
     } else {
       mNavigator.addFragmentBackStack((BookingListActivity) mContext,
           R.id.container_for_list_of_booked_services,
           PostponeFragment.newInstance(mBookingEntities.get(position).getServiceName(),
               mBookingEntities.get(position).getMasterName(),
               mBookingEntities.get(position).getMasterId(),
-            /* entity_id */ mBookingEntities.get(position).getId()));
+            /* entity_id */ mBookingEntities.get(position).getId(),
+              String.valueOf(mBookingEntities.get(position).getScheduleId())));
     }
   }
 

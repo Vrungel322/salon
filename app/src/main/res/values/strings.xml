@@ -129,7 +129,7 @@
   <!--for settings-->
   <string name="change_photo">Сменить фото профиля</string>
   <string name="private_information">Личная информация</string>
-  <string name="additional_settings">Доп. настройки</string>
+  <string name="additional_settings">Дополнительные настройки</string>
   <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_change_theme">Тема приложения</string>
   <string name="settings_change_language">Язык приложения</string>
@@ -194,5 +194,9 @@
   <string name="send_to">Отправить приглашение</string>
   <string name="bonus_share_msg_text">Введите код %1$s для получение бонуса</string>
   <string name="cannon_invite_yourself">Ксожалению вы не можете пригласить себя :)</string>
+
+  <string name="booking_network_disconnect">Отсутствует интернет соединение</string>
+  <string name="booking_network_disconnect_message">Вы можете записаться, позвонив по следующим телефонам:</string>
+  <string name="booking_network_disconnect_phones"><u>+380441234455</u>></string>
 
 </resources>
