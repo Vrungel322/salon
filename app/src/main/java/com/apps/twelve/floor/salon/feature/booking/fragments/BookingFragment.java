@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.booking.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 public class BookingFragment extends BaseFragment implements IBookingFragmentView {
 
   @InjectPresenter BookingFragmentPresenter mBookingFragmentPresenter;
-  @BindView(R.id.clChooseMaser) RelativeLayout clChooseMaser;
-  @BindView(R.id.clChooseService) RelativeLayout clChooseService;
+  @BindView(R.id.cvChooseMaster) CardView cvChooseMaser;
+  @BindView(R.id.cvChooseService) CardView cvChooseService;
   @BindView(R.id.rlNetworkDisconnection) RelativeLayout rlNetworkDisconnection;
   Unbinder unbinder;
 
@@ -54,8 +55,8 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     if (!NetworkUtil.isNetworkConnected(getContext())) {
-      clChooseMaser.setVisibility(View.GONE);
-      clChooseService.setVisibility(View.GONE);
+      cvChooseMaser.setVisibility(View.GONE);
+      cvChooseService.setVisibility(View.GONE);
       rlNetworkDisconnection.setVisibility(View.VISIBLE);
     }
   }
