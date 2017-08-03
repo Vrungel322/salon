@@ -1,15 +1,11 @@
 package com.apps.twelve.floor.salon.feature.my_booking.adapters;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -45,6 +42,8 @@ import java.util.concurrent.TimeUnit;
 public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.MyBookingViewHolder>
     implements IMyBookingAdapterView {
 
+  private static final int COLORED_LAYOUT_RED = 1;
+  private static final int NOT_COLORED_LAYOUT = 0;
   private final Context mContext;
   private final Navigator mNavigator;
   private final boolean fromStartActivity;
@@ -70,26 +69,31 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public MyBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MyBookingViewHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_booking, parent, false));
+    if (viewType == COLORED_LAYOUT_RED) {
+      return new MyBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking_colored_red, parent, false));
+    } else {
+      return new MyBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking, parent, false));
+    }
   }
 
   @Override public void onBindViewHolder(MyBookingViewHolder holder, int position) {
-    if (position == 0) {
-      TypedValue value = new TypedValue();
-      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-      holder.mConstraintLayoutBooking.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(), value.resourceId));
-      holder.mConstraintLayoutBooking.getBackground().setAlpha(30);
-      holder.view.setVisibility(View.VISIBLE);
-    } else {
-      int[] attrs = new int[] { R.attr.selectableItemBackground };
-      TypedArray ta = mContext.obtainStyledAttributes(attrs);
-      Drawable drawableFromTheme = ta.getDrawable(0);
-      ta.recycle();
-      holder.mConstraintLayoutBooking.setBackground(drawableFromTheme);
-      holder.view.setVisibility(View.INVISIBLE);
-    }
+    //if (position == 0) {
+    //  TypedValue value = new TypedValue();
+    //  mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    //  holder.mConstraintLayoutBooking.setBackgroundColor(
+    //      ContextCompat.getColor(holder.mConstraintLayoutBooking.getContext(), value.resourceId));
+    //  holder.mConstraintLayoutBooking.getBackground().setAlpha(30);
+    //  holder.view.setVisibility(View.VISIBLE);
+    //} else {
+    //  int[] attrs = new int[] { R.attr.selectableItemBackground };
+    //  TypedArray ta = mContext.obtainStyledAttributes(attrs);
+    //  Drawable drawableFromTheme = ta.getDrawable(0);
+    //  ta.recycle();
+    //  holder.mConstraintLayoutBooking.setBackground(drawableFromTheme);
+    //  holder.view.setVisibility(View.INVISIBLE);
+    //}
     Glide.with(holder.mImageViewServicePhoto.getContext())
         .load(mBookingEntities.get(position).getServiceImage())
         .centerCrop()
@@ -135,6 +139,16 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
       mMyBookingAdapterPresenter.showConfirmationDialog(position);
       mProgressBarCancel = holder.mProgressBarCancel;
     });
+  }
+
+  @Override public int getItemViewType(int position) {
+    if (Converters.timeHoursFromMilliseconds(String.valueOf(TimeUnit.HOURS.toHours(
+        mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())))
+        < 4) {
+      return COLORED_LAYOUT_RED;
+    } else {
+      return NOT_COLORED_LAYOUT;
+    }
   }
 
   @Override public int getItemCount() {
