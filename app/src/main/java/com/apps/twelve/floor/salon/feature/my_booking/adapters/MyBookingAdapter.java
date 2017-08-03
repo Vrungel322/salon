@@ -42,8 +42,8 @@ import timber.log.Timber;
 public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.MyBookingViewHolder>
     implements IMyBookingAdapterView {
 
-  private static final int COLORED_LAYOUT_RED = 1;
-  private static final int NOT_COLORED_LAYOUT = 0;
+  public static final int COLORED_LAYOUT_RED = 1;
+  public static final int NOT_COLORED_LAYOUT = 0;
   private final Context mContext;
   private final Navigator mNavigator;
   private final boolean fromStartActivity;
