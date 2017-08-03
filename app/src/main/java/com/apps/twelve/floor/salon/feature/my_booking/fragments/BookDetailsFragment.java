@@ -87,7 +87,8 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   private void setUpUserData() {
-    mTextViewUserNameUserPhone.setText(getString(R.string.user_data, mBookingEntity.getUserName(), mBookingEntity.getUserPhone()));
+    mTextViewUserNameUserPhone.setText(
+        getString(R.string.user_data, mBookingEntity.getUserName(), mBookingEntity.getUserPhone()));
   }
 
   private void setUpServiceBlock() {
@@ -159,7 +160,8 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @Override public void openPostponeFragment() {
     mNavigator.addFragmentBackStack((StartActivity) getContext(), R.id.container_main,
         PostponeFragment.newInstance(mBookingEntity.getServiceName(),
-            mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId()));
+            mBookingEntity.getMasterName(), mBookingEntity.getMasterId(), mBookingEntity.getId(),
+            String.valueOf(mBookingEntity.getScheduleId())));
   }
 
   @Override public void updateTimeInfo(Integer time) {

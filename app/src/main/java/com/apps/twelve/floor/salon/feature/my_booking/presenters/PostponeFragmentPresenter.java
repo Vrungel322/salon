@@ -37,9 +37,11 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
   private List<DataServiceEntity> mDataServiceEntity;
   private int dayPosition;
   private int timePosition = -1;
+  private int selectedDayPosition = -1;
+  private int selectedTimePosition = -1;
 
-  public PostponeFragmentPresenter(String masterId) {
-    getAvailableTime(masterId);
+  public PostponeFragmentPresenter(String masterId, String schedulerId) {
+    getAvailableTime(masterId, schedulerId);
   }
 
   @Override protected void inject() {
@@ -51,7 +53,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
     mRxBus.post(new RxBusHelper.HideFloatingButton());
   }
 
-  @SuppressWarnings("ConstantConditions") private void getAvailableTime(String masterId) {
+  @SuppressWarnings("ConstantConditions")
+  private void getAvailableTime(String masterId, String schedulerId) {
     Subscription subscription = mDataManager.fetchDaysDataWithMasterId(masterId)
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(response -> {
@@ -59,7 +62,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             mDataServiceEntity = response.body();
             getViewState().hideProgressBarBookingTime();
             if (!response.body().isEmpty()) {
-              getViewState().setUpUi(response.body());
+              setSelectedDayAndTimePosition(schedulerId);
+              getViewState().setUpUi(mDataServiceEntity);
+              getViewState().setViewPagerCurrentItem(selectedDayPosition);
+              setSelectedTime(selectedTimePosition);
               setDateToTv();
               getViewState().showTimeBooking();
             } else {
@@ -73,8 +79,34 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
     addToUnsubscription(subscription);
   }
 
+  private void setSelectedDayAndTimePosition(String schedulerId) {
+    for (int i = 0; i < mDataServiceEntity.size(); i++) {
+      List<DataServiceEntity.ScheduleEntity> scheduleEntities =
+          mDataServiceEntity.get(i).getScheduleEntities();
+      if (scheduleEntities != null) {
+        for (int j = 0; j < scheduleEntities.size(); j++) {
+          if (scheduleEntities.get(j).getId().equals(schedulerId)) {
+            scheduleEntities.get(j).setStatus(true);
+            selectedDayPosition = i;
+            selectedTimePosition = j;
+            dayPosition = selectedDayPosition;
+            break;
+          }
+        }
+      }
+    }
+  }
+
   public void saveNewTime(String entryId, String serviceName) {
-    if (timePosition != -1) {
+    if (dayPosition == selectedDayPosition && timePosition == selectedTimePosition
+        || timePosition == -1) {
+      getViewState().showErrorMessage(R.string.error_empty_date);
+      Subscription subscription = Observable.just(true)
+          .delay(1, TimeUnit.SECONDS)
+          .compose(ThreadSchedulers.applySchedulers())
+          .subscribe(o -> getViewState().revertAnimation(), Timber::e);
+      addToUnsubscription(subscription);
+    } else {
       Subscription subscription = mAuthorizationManager.checkToken(
           mDataManager.postponeService(entryId, Integer.parseInt(
               mDataServiceEntity.get(dayPosition).getScheduleEntities().get(timePosition).getId())))
@@ -141,13 +173,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             Timber.e(throwable);
             showMessageException(throwable);
           });
-      addToUnsubscription(subscription);
-    } else {
-      getViewState().showErrorMessage(R.string.error_empty_date);
-      Subscription subscription = Observable.just(true)
-          .delay(1, TimeUnit.SECONDS)
-          .compose(ThreadSchedulers.applySchedulers())
-          .subscribe(o -> getViewState().revertAnimation(), Timber::e);
       addToUnsubscription(subscription);
     }
   }

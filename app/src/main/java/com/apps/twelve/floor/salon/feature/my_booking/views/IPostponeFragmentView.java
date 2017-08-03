@@ -25,6 +25,8 @@ import java.util.List;
 
   void setTextToDayTv();
 
+  void setViewPagerCurrentItem(int position);
+
   void showTimeBooking();
 
   void showNotTime();

@@ -55,6 +55,7 @@ public final class Constants {
     public static final String MASTER_NAME = "MASTER_NAME";
     public static final String MASTER_ID = "MASTER_ID";
     public static final String ENTITY_ID = "ENTITY_ID";
+    public static final String SCHEDULER_ID = "SCHEDULER_ID";
     public static final String CHANGING_FIELD = "CHANGING_FIELD";
     public static final String CHANGING_FIELD_VALUE = "CHANGING_FIELD_VALUE";
   }
