@@ -150,7 +150,8 @@ public class MyLastBookingAdapter
         PostponeFragment.newInstance(mLastBookingEntities.get(position).getServiceName(),
             mLastBookingEntities.get(position).getMasterName(),
             mLastBookingEntities.get(position).getServiceId(),
-            /* entity_id */ mLastBookingEntities.get(position).getId()));
+            /* entity_id */ mLastBookingEntities.get(position).getId(),
+            String.valueOf(mLastBookingEntities.get(position).getScheduleId())));
   }
 
   @Override public void showConfirmationDialog(int position) {

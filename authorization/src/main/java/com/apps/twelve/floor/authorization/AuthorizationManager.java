@@ -22,6 +22,7 @@ import retrofit2.Response;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 
+import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_NOT_FOUND;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_TOKEN_EXPIRED;
 import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONSE_UNAUTHORIZED;
 
@@ -191,25 +192,22 @@ public class AuthorizationManager {
   }
 
   public Observable<Response<Void>> populateAdditionalField(String key, String value) {
-    if (!mDataManager.isExistAdditionalField(key)) {
-      return mDataManager.addAdditionalField(key, value)
-          .observeOn(Schedulers.io())
-          .concatMap(response -> {
-            if (response.isSuccessful()) {
-              mDataManager.setAdditionalField(key, value);
-            }
-            return Observable.just(response);
-          });
-    } else {
-      return mDataManager.updateAdditionalField(key, value)
-          .observeOn(Schedulers.io())
-          .concatMap(response -> {
-            if (response.isSuccessful()) {
-              mDataManager.setAdditionalField(key, value);
-            }
-            return Observable.just(response);
-          });
-    }
+    return mDataManager.updateAdditionalField(key, value)
+        .subscribeOn(Schedulers.io())
+        .concatMap(response -> {
+          if (response.isSuccessful()) {
+            mDataManager.setAdditionalField(key, value);
+          } else if (response.code() == RESPONSE_NOT_FOUND) {
+            mDataManager.setAdditionalField(key, value);
+            return mDataManager.addAdditionalField(key, value).concatMap(secondResponse -> {
+              if (secondResponse.isSuccessful()) {
+                mDataManager.setAdditionalField(key, value);
+              }
+              return Observable.just(secondResponse);
+            });
+          }
+          return Observable.just(response);
+        });
   }
 
   public Observable<Response<Void>> populateAdditionalField(String key, int value) {

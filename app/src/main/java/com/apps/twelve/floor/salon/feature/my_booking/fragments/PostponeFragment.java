@@ -42,6 +42,7 @@ import java.util.List;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.ENTITY_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.MASTER_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.MASTER_NAME;
+import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SCHEDULER_ID;
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentsArgumentKeys.SERVICE_NAME;
 
 /**
@@ -83,19 +84,21 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   }
 
   public static PostponeFragment newInstance(String serviceName, String masterName,
-      Integer masterId, Integer entityId) {
+      Integer masterId, Integer entityId, String schedulerId) {
     Bundle args = new Bundle();
     args.putString(SERVICE_NAME, serviceName);
     args.putString(MASTER_NAME, masterName);
     args.putInt(MASTER_ID, masterId);
     args.putInt(ENTITY_ID, entityId);
+    args.putString(SCHEDULER_ID, schedulerId);
     PostponeFragment fragment = new PostponeFragment();
     fragment.setArguments(args);
     return fragment;
   }
 
   @ProvidePresenter PostponeFragmentPresenter providePostponeFragmentPresenter() {
-    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(MASTER_ID)));
+    return new PostponeFragmentPresenter(String.valueOf(getArguments().getInt(MASTER_ID)),
+        getArguments().getString(SCHEDULER_ID));
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -103,7 +106,7 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
     /* turn off scrolling */
     if (!(getActivity() instanceof BookingListActivity)) {
-      Toolbar mToolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+      Toolbar mToolbar = getActivity().findViewById(R.id.toolbar);
 
       AppBarLayout.LayoutParams toolbarLayoutParams =
           (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
@@ -216,6 +219,10 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   @Override public void setTextToDayTv() {
     mTextViewDateInText.setText(
         mDatesInMonthViewPagerAdapter.getEntity(mViewPagerDatesOfMonth.getCurrentItem()));
+  }
+
+  @Override public void setViewPagerCurrentItem(int position) {
+    mViewPagerDatesOfMonth.setCurrentItem(position);
   }
 
   @Override public void showTimeBooking() {

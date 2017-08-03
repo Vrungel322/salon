@@ -73,7 +73,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         .doOnNext(time -> getViewState().showProgressBar())
         .compose(ThreadSchedulers.applySchedulers())
         .subscribe(time -> {
-          getViewState().updateTimeInfo(Integer.parseInt(time.serviceTime));
+          getViewState().updateTimeInfo(Integer.parseInt(time.serviceTime),
+              Integer.parseInt(time.scheduleId));
           getViewState().hideProgressBar();
         }, throwable -> {
           getViewState().hideProgressBar();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="action_settings">Налаштування</string>
-  <string name="additional_settings">Дот. налаштування</string>
+  <string name="additional_settings">Додаткові налаштування</string>
   <string name="all_books">Всі записи</string>
   <string name="all_news">ВСІ НОВИНИ</string>
   <string name="any_master">Будь-який Фахiвець</string>
@@ -157,4 +157,8 @@
   <string name="thank_you">Дякуємо</string>
   <string name="friend_invited">Ваш друг скаже вам - Дякую!</string>
   <string name="send_code">Надіслати код</string>
+
+  <string name="booking_network_disconnect">"Відсутнє інтернет з'єднання"</string>
+  <string name="booking_network_disconnect_message">Ви можете записатися, зателефонував по наступним телефонам:</string>
+  <string name="booking_network_disconnect_phones"><u>+380441234455</u></string>
 </resources>
