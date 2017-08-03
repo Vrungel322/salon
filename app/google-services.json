@@ -1,0 +1,206 @@
+{
+  "project_info": {
+    "project_number": "658479279652",
+    "project_id": "authorization-170107"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658479279652:android:98323e83c1c1563f",
+        "android_client_info": {
+          "package_name": "com.apps.twelve.floor.salon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658479279652-bc8mim3m3v9koghivj0uo5r2gvqf7uif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.salon",
+            "certificate_hash": "67206f46683ac89e12229dfed78ef8e8e0000ff6"
+          }
+        },
+        {
+          "client_id": "658479279652-3m7efoouossngvdnh6blpf010vtdck26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.salon",
+            "certificate_hash": "850f56b76d288c08c45e30460e63184f1f13e997"
+          }
+        },
+        {
+          "client_id": "658479279652-i36ivq6v50cct1gc8upq5202k1m3h8mi.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "658479279652-l1c8tbsiubaf2vv8dqh68jngndvhhpbt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.salon",
+            "certificate_hash": "8c1ee52eab92345bc1b5b0a1240ead53a187a0a9"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp73A3HK8gqNf_5_l9vCBKol1hWrk0ZTw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658479279652:android:be9d15a2e5a09747",
+        "android_client_info": {
+          "package_name": "com.apps.twelve.floor.authorization"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658479279652-0nji7lcfr14q87ek6u5bimkl98fgi1r1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.authorization",
+            "certificate_hash": "850f56b76d288c08c45e30460e63184f1f13e997"
+          }
+        },
+        {
+          "client_id": "658479279652-d9ms0de635k8s7gd3olopf6gfn7fbg7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.authorization",
+            "certificate_hash": "8c1ee52eab92345bc1b5b0a1240ead53a187a0a9"
+          }
+        },
+        {
+          "client_id": "658479279652-5n0me9325cc5lctp27k556h62vahhuc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.authorization",
+            "certificate_hash": "7d9512cdd9a94c6ce3399635964ea36bd17bd28f"
+          }
+        },
+        {
+          "client_id": "658479279652-i36ivq6v50cct1gc8upq5202k1m3h8mi.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "658479279652-i3eubemrhkashnk5d1jd49r7g2kej9ah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.authorization",
+            "certificate_hash": "0505161cb10df6424540e7d29efb3b06cb7bbe08"
+          }
+        },
+        {
+          "client_id": "658479279652-l6i0085akvuihmg1fj2ikl1iehbk9nm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.twelve.floor.authorization",
+            "certificate_hash": "67206f46683ac89e12229dfed78ef8e8e0000ff6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp73A3HK8gqNf_5_l9vCBKol1hWrk0ZTw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658479279652:android:612c2f00eb692733",
+        "android_client_info": {
+          "package_name": "by.frandesa.spokesman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658479279652-5mohb3mkinjhn6k5nlfgkejbckdhtp73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.frandesa.spokesman",
+            "certificate_hash": "0505161cb10df6424540e7d29efb3b06cb7bbe08"
+          }
+        },
+        {
+          "client_id": "658479279652-b95u8fva7n82fla7o9k457vo6p8gm2ue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.frandesa.spokesman",
+            "certificate_hash": "850f56b76d288c08c45e30460e63184f1f13e997"
+          }
+        },
+        {
+          "client_id": "658479279652-34upcsq1ton4jdoilf617frphodqk4js.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.frandesa.spokesman",
+            "certificate_hash": "e945e1bb16cb0bf1e89f42a97c2ebde52be6c55f"
+          }
+        },
+        {
+          "client_id": "658479279652-i36ivq6v50cct1gc8upq5202k1m3h8mi.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "658479279652-tsnpu6jiekl0bb9sq1u5i21ki7bv2nse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.frandesa.spokesman",
+            "certificate_hash": "e1f48c37ffe82e3f8be2fbc229991f652b386711"
+          }
+        },
+        {
+          "client_id": "658479279652-d5epm5ohoirui69025bt5ai7ilcaagbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "by.frandesa.spokesman",
+            "certificate_hash": "4bfd843dd4a51f7283c7e94468ac9b66b5ab5475"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp73A3HK8gqNf_5_l9vCBKol1hWrk0ZTw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -58,6 +58,8 @@ dependencies {
   compile 'com.android.support:design:25.3.1'
   compile 'com.android.support:gridlayout-v7:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  //Firebase messaging
+  compile 'com.google.firebase:firebase-messaging:11.0.1'
   //GSON
   compile 'com.google.code.gson:gson:2.8.1'
   //Butterknife
