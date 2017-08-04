@@ -98,6 +98,8 @@ public class UserProfileFragment extends BaseFragment implements IUserProfileFra
             (dialog, which) -> mSelectedGenderPosition = which)
         .setPositiveButton(R.string.btn_ok,
             (dialog, which) -> mUserProfileFragmentPresenter.saveGender(mSelectedGenderPosition))
+        .setNegativeButton(R.string.btn_cancel,
+            (dialogInterface, i) -> mUserProfileFragmentPresenter.closeChangeGenderDialog())
         .setCancelable(false)
         .create();
     mChangeGenderDialog.setOnCancelListener(
