@@ -153,7 +153,7 @@
   <string name="menu_catalog">Каталог</string>
   <string name="choose_staff">Выбор продукции</string>
   <string name="choose_category">Выбрать категорию</string>
-  <string name="choose_category_dialog">Выберете категорию</string>
+  <string name="choose_category_dialog">Выберисте категорию</string>
   <string name="sent_message">Сообщение отправлено</string>
   <string name="settings_terms_and_policy">Условия и политика</string>
   <string name="settings_terms_of_service">Условия использования</string>
