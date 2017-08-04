@@ -5,6 +5,7 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
+import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -75,5 +76,9 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   public void postToShowResetBtn() {
     mRxBus.post(new RxBusHelper.ShowResetBtn());
+  }
+
+  public void postEventToReloadListLocally(Integer id, String title) {
+    mRxBus.post(new RxBusHelper.ReloadCatalogByCategoryLocally(id, title));
   }
 }
