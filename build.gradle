@@ -30,6 +30,10 @@ buildscript {
   }
 }
 
+ext {
+  //for ShP migration
+  versionSharedPreferences = 1
+}
 allprojects {
   repositories {
     jcenter()

@@ -2,6 +2,7 @@ package com.apps.twelve.floor.salon.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.apps.twelve.floor.salon.BuildConfig;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,6 +17,7 @@ public class PreferencesHelper {
 
   public static final String PREF_FILE_NAME = "com.salon.Salon";
 
+  private static final String PREF_VERSION = "PREF_VERSION";
   public static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
   static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
@@ -36,11 +38,43 @@ public class PreferencesHelper {
   public PreferencesHelper(Context context, Gson gson) {
     mPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     mGson = gson;
+
+    //for ShP migration
+    int oldVersion = getVersion();
+    if (oldVersion < BuildConfig.VERSION_SHARED_PREFERENCES) {
+      onUpgrade();
+      setVersion(BuildConfig.VERSION_SHARED_PREFERENCES);
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////
+  // ShPref Migration
+  ///////////////////////////////////////////////////////////////////////////
+  public int getVersion() {
+    int version = BuildConfig.VERSION_SHARED_PREFERENCES;
+    if (!mPreferences.contains(PREF_VERSION)) {
+      setVersion(version);
+    } else {
+      version = mPreferences.getInt(PREF_VERSION, BuildConfig.VERSION_SHARED_PREFERENCES);
+    }
+    return version;
+  }
+
+  protected void setVersion(int version) {
+    mPreferences.edit().putInt(PREF_VERSION, version).apply();
+  }
+
+  public void onUpgrade() {
+    clear();
   }
 
   public void clear() {
     mPreferences.edit().clear().apply();
   }
+
+  ///////////////////////////////////////////////////////////////////////////
+  // theme
+  ///////////////////////////////////////////////////////////////////////////
 
   public void setThemeSelected(int themeSelected) {
     mPreferences.edit().putInt(PREF_THEME_SELECTED, themeSelected).apply();
@@ -49,6 +83,10 @@ public class PreferencesHelper {
   public int getThemeSelected() {
     return mPreferences.getInt(PREF_THEME_SELECTED, 0);
   }
+
+  ///////////////////////////////////////////////////////////////////////////
+  // Bonus
+  ///////////////////////////////////////////////////////////////////////////
 
   public int getBonusCountInt() {
     return mPreferences.getInt(PREF_BONUS_COUNT, 0);
@@ -62,6 +100,10 @@ public class PreferencesHelper {
     mPreferences.edit().putInt(PREF_BONUS_COUNT, bonusCount).apply();
   }
 
+  ///////////////////////////////////////////////////////////////////////////
+  // Phone
+  ///////////////////////////////////////////////////////////////////////////
+
   public void setLastPhoneForBooking(String lastPhone) {
     mPreferences.edit().putString(PREF_LAST_PHONE_FOR_BOOKING, lastPhone).apply();
   }
@@ -69,6 +111,10 @@ public class PreferencesHelper {
   public String getLastPhoneForBooking() {
     return mPreferences.getString(PREF_LAST_PHONE_FOR_BOOKING, "");
   }
+
+  ///////////////////////////////////////////////////////////////////////////
+  // notifications
+  ///////////////////////////////////////////////////////////////////////////
 
   public boolean isHourlyNotificationsEnabled() {
     return mPreferences.getBoolean(PREF_NOTIF_HOURLY_ENABLED, true);
@@ -126,17 +172,25 @@ public class PreferencesHelper {
     mPreferences.edit().putBoolean(PREF_NOTIF_NIGHT_MODE, enabled).apply();
   }
 
+  ///////////////////////////////////////////////////////////////////////////
+  // logout
+  ///////////////////////////////////////////////////////////////////////////
+
   public void logoutUser() {
     setBonusCount(0);
     setLastPhoneForBooking("");
+    clear();
   }
 
-  //Cache
+  ///////////////////////////////////////////////////////////////////////////
+  // Cache in ShP
+  ///////////////////////////////////////////////////////////////////////////
+
   public <T> void putEntityToSHP(String key, T t) {
     mPreferences.edit().putString(key, mGson.toJson(t)).apply();
   }
 
-  public List<LastBookingEntity> getBooking() {
+  @Deprecated public List<LastBookingEntity> getBooking() {
     String bookingEntities = mPreferences.getString(PREF_BOOKING, null);
     if (bookingEntities != null) {
       return mGson.fromJson(bookingEntities, new TypeToken<List<LastBookingEntity>>() {
@@ -145,7 +199,9 @@ public class PreferencesHelper {
     return null;
   }
 
-  /*language*/
+  ///////////////////////////////////////////////////////////////////////////
+  // language
+  ///////////////////////////////////////////////////////////////////////////
 
   public String getSelectedLanguage() {
     return mPreferences.getString(PREF_LANGUAGE, "");

@@ -35,6 +35,10 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
     multiDexEnabled true
+
+    //for ShP migration
+    buildConfigField "int", "VERSION_SHARED_PREFERENCES",
+        "$rootProject.ext.versionSharedPreferences"
   }
   buildTypes {
     release {

@@ -269,6 +269,7 @@ public class DataManager {
     mPref.putEntityToSHP(PreferencesHelper.PREF_BOOKING, bookingEntities);
   }
 
+  @Deprecated
   public List<LastBookingEntity> getBooking() {
     return mPref.getBooking();
   }
