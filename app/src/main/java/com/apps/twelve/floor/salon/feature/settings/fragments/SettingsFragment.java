@@ -136,4 +136,9 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     i.setData(Uri.parse(PRIVACY_POLICY_URL));
     startActivity(i);
   }
+
+  @OnClick(R.id.rlAboutApplication) public void showAboutAppDialog() {
+    AboutApplicationDialog aboutApplicationDialog = new AboutApplicationDialog();
+    aboutApplicationDialog.show(getActivity().getFragmentManager(), "");
+  }
 }

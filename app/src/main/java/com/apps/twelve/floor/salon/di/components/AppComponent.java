@@ -32,7 +32,9 @@ import com.apps.twelve.floor.salon.feature.news.presenters.DetailNewsFragmentPre
 import com.apps.twelve.floor.salon.feature.news.presenters.ListNewsDetailPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.OurWorkFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.our_works.presenters.WorkDetailsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.settings.fragments.AboutApplicationDialog;
 import com.apps.twelve.floor.salon.feature.settings.fragments.ThemeDialogFragment;
+import com.apps.twelve.floor.salon.feature.settings.presenters.AboutApplicationDialogPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.ReportProblemFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
@@ -119,6 +121,8 @@ import dagger.Component;
 
   void inject(BookingDetailActivityPresenter presenter);
 
+  void inject(AboutApplicationDialogPresenter aboutApplicationDialogPresenter);
+
   //activities
   void inject(BaseActivity activity);
 
@@ -127,6 +131,8 @@ import dagger.Component;
 
   //dialog fragment
   void inject(ThemeDialogFragment fragment);
+
+  void inject(AboutApplicationDialog aboutApplicationDialog);
 
   //adapters
   void inject(MyLastBookingAdapterPresenter presenter);

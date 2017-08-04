@@ -198,5 +198,8 @@
   <string name="booking_network_disconnect">Отсутствует интернет соединение</string>
   <string name="booking_network_disconnect_message">Вы можете записаться, позвонив по следующим телефонам:</string>
   <string name="booking_network_disconnect_phones"><u>+380441234455</u>></string>
+  <string name="developed_by_floor12apps">Разработано в <a href="http://floor12apps.com/">floor12apps</a></string>
+  <string name="settings_about_application">О приложении</string>
+  <string name="version">Версия %1$s</string>
 
 </resources>
