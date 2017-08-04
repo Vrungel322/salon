@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.catalog.presenters;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
+import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
@@ -32,25 +33,39 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
   }
 
   @SuppressWarnings("ConstantConditions") private void fetchCategories() {
+    ArrayList<GoodsCategoryEntity> goodsCategoryEntities = new ArrayList<>();
+    goodsCategoryEntities.addAll(mDataManager.getAllElementsFromDB(GoodsCategoryEntity.class));
+    for (int i = 0; i < goodsCategoryEntities.size(); i++) {
+      mGenres.add(new Genre(goodsCategoryEntities.get(i).getTitle(),
+          goodsCategoryEntities.get(i).getChildren()));
+    }
+    getViewState().fillCategories(mGenres);
     mGenres.clear();
     getViewState().startProgressBar();
-    Subscription subscription = mDataManager.fetchCategories().concatMap(response -> {
-      if (response.code() == RESPONSE_200) {
-        return Observable.from(response.body());
-      } else {
-        return Observable.error(new Exception("Not response 200"));
-      }
-    }).concatMap(goodsCategoryEntity -> {
-      mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
-      return Observable.just(mGenres);
-    }).compose(ThreadSchedulers.applySchedulers()).subscribe(genres -> {
-      getViewState().stopProgressBar();
-      getViewState().fillCategories(genres);
-    }, throwable -> {
-      showMessageException(throwable);
-      getViewState().stopProgressBar();
-      Timber.e(throwable);
-    });
+    Subscription subscription = mDataManager.fetchCategories()
+        .concatMap(response -> {
+          if (response.code() == RESPONSE_200) {
+            return Observable.from(response.body());
+          } else {
+            return Observable.error(new Exception("Not response 200"));
+          }
+        })
+        .toList()
+        .doOnNext(this::cacheEntities)
+        .concatMap(Observable::from)
+        .concatMap(goodsCategoryEntity -> {
+          mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
+          return Observable.just(mGenres);
+        })
+        .compose(ThreadSchedulers.applySchedulers())
+        .subscribe(genres -> {
+          getViewState().stopProgressBar();
+          getViewState().fillCategories(genres);
+        }, throwable -> {
+          showMessageException(throwable);
+          getViewState().stopProgressBar();
+          Timber.e(throwable);
+        });
     addToUnsubscription(subscription);
   }
 
