@@ -164,4 +164,5 @@
 
   <string name="developed_by_floor12apps">Розроблено в <a href="http://floor12apps.com/">floor12apps</a></string>
   <string name="version">Версія %1$s</string>
+  <string name="cannon_invite_yourself">На жаль Ви не можете відправити код сам собі</string>
 </resources>

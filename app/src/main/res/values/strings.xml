@@ -193,7 +193,7 @@
   <string name="send_code">Отправить код</string>
   <string name="send_to">Отправить приглашение</string>
   <string name="bonus_share_msg_text">Введите код %1$s для получение бонуса</string>
-  <string name="cannon_invite_yourself">Ксожалению вы не можете пригласить себя :)</string>
+  <string name="cannon_invite_yourself">К сожалению Вы не можете отправить код сам себе</string>
 
   <string name="booking_network_disconnect">Отсутствует интернет соединение</string>
   <string name="booking_network_disconnect_message">Вы можете записаться, позвонив по следующим телефонам:</string>
