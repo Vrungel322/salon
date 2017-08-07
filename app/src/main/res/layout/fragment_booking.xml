@@ -8,20 +8,17 @@
     android:fillViewport="true"
     >
 
-  <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@color/colorLLightGray"
       android:clickable="true"
-      android:orientation="vertical"
-      android:weightSum="2"
       >
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvChooseMaster"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+      android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         >
       <RelativeLayout
@@ -76,9 +73,8 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cvChooseService"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+      android:layout_height="wrap_content"
         android:layout_below="@id/cvChooseMaster"
-        android:layout_weight="1"
         app:cardUseCompatPadding="true"
         >
       <RelativeLayout
@@ -138,6 +134,7 @@
         android:layout_marginTop="16dp"
         android:background="?colorAccent"
         android:padding="16dp"
+      android:layout_centerVertical="true"
         android:visibility="gone"
         >
 
@@ -174,9 +171,9 @@
           android:text="@string/booking_network_disconnect_phones"
           android:textColor="@color/colorWhite"
           android:textColorLink="@color/colorWhite"
-          android:textSize="16sp"
+        android:textSize="18sp"
           />
     </RelativeLayout>
 
-  </android.support.v7.widget.LinearLayoutCompat>
+  </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
