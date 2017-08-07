@@ -62,7 +62,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                 new OurWorkEntity(Converters.getUrl(R.drawable.ic_favorite_our_work_32dp), 0,
                     mContext.getString(R.string.menu_favourite), null));
             mOurWorkEntities.addAll(response.body());
-            cacheEntities(mOurWorkEntities);
+            cacheEntities(mOurWorkEntities,OurWorkEntity.class);
             getViewState().stopRefreshingView();
             getViewState().addListOfWorks(mOurWorkEntities);
           }
@@ -93,7 +93,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
           mOurWorkEntities.addAll(ourWorkEntities);
           return mOurWorkEntities;
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(ourWorkEntities -> {
-      cacheEntities(ourWorkEntities);
+      cacheEntities(ourWorkEntities,OurWorkEntity.class);
       getViewState().stopRefreshingView();
       getViewState().addListOfWorks(ourWorkEntities);
     }, throwable -> {

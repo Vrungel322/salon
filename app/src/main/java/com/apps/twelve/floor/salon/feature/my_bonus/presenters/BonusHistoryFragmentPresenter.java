@@ -52,7 +52,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
         }).compose(ThreadSchedulers.applySchedulers()).subscribe(response -> {
           switch (response.code()) {
             case RESPONSE_200:
-              cacheEntities(response.body());
+              cacheEntities(response.body(),BonusHistoryEntity.class);
               getViewState().addBonusHistoryList(response.body());
               getViewState().stopRefreshingView();
               break;

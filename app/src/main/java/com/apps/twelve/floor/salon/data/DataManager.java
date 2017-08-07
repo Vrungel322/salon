@@ -269,8 +269,7 @@ public class DataManager {
     mPref.putEntityToSHP(PreferencesHelper.PREF_BOOKING, bookingEntities);
   }
 
-  @Deprecated
-  public List<LastBookingEntity> getBooking() {
+  @Deprecated public List<LastBookingEntity> getBooking() {
     return mPref.getBooking();
   }
 
@@ -325,6 +324,10 @@ public class DataManager {
 
   public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
     return mDbHelper.getElementById(clazz, id);
+  }
+
+  public <T extends RealmObject> void dropRealmTable(Class<T> clazz) {
+    mDbHelper.dropRealmTable(clazz);
   }
 
   //remote strings

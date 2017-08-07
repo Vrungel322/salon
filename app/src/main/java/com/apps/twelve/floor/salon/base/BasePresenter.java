@@ -59,10 +59,13 @@ public abstract class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
     }
   }
 
-  protected <T extends RealmObject> void cacheEntities(List<T> body) {
+  protected <T extends RealmObject> void cacheEntities(List<T> body, Class<T> clazz) {
     //cache Entities
-    for (int i = 0; i < body.size(); i++) {
-      mDataManager.saveObjToDb(body.get(i));
+    if (body != null) {
+      mDataManager.dropRealmTable(clazz);
+      for (int i = 0; i < body.size(); i++) {
+        mDataManager.saveObjToDb(body.get(i));
+      }
     }
   }
 

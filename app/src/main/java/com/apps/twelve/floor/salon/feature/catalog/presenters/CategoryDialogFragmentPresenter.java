@@ -5,7 +5,6 @@ import com.apps.twelve.floor.salon.base.BasePresenter;
 import com.apps.twelve.floor.salon.data.model.category.Genre;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
-import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
@@ -43,30 +42,25 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     getViewState().fillCategories(mGenres);
     mGenres.clear();
     getViewState().startProgressBar();
-    Subscription subscription = mDataManager.fetchCategories()
-        .concatMap(response -> {
-          if (response.code() == RESPONSE_200) {
-            return Observable.from(response.body());
-          } else {
-            return Observable.error(new Exception("Not response 200"));
-          }
-        })
-        .toList()
-        .doOnNext(this::cacheEntities)
-        .concatMap(Observable::from)
-        .concatMap(goodsCategoryEntity -> {
-          mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
-          return Observable.just(mGenres);
-        })
-        .compose(ThreadSchedulers.applySchedulers())
-        .subscribe(genres -> {
-          getViewState().stopProgressBar();
-          getViewState().fillCategories(genres);
-        }, throwable -> {
-          showMessageException(throwable);
-          getViewState().stopProgressBar();
-          Timber.e(throwable);
-        });
+    Subscription subscription = mDataManager.fetchCategories().concatMap(response -> {
+      if (response.code() == RESPONSE_200) {
+        return Observable.from(response.body());
+      } else {
+        return Observable.error(new Exception("Not response 200"));
+      }
+    }).toList().doOnNext(goodsCategoryEntities1 -> {
+      cacheEntities(goodsCategoryEntities1, GoodsCategoryEntity.class);
+    }).concatMap(Observable::from).concatMap(goodsCategoryEntity -> {
+      mGenres.add(new Genre(goodsCategoryEntity.getTitle(), goodsCategoryEntity.getChildren()));
+      return Observable.just(mGenres);
+    }).compose(ThreadSchedulers.applySchedulers()).subscribe(genres -> {
+      getViewState().stopProgressBar();
+      getViewState().fillCategories(genres);
+    }, throwable -> {
+      showMessageException(throwable);
+      getViewState().stopProgressBar();
+      Timber.e(throwable);
+    });
     addToUnsubscription(subscription);
   }
 

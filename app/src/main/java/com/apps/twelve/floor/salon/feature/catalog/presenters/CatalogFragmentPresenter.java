@@ -136,7 +136,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                       new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "",
                           "", 0, "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0,
                           null, false, false, false));
-              cacheEntities(response.body());
+              cacheEntities(response.body(),GoodsEntity.class);
 
               getViewState().updateGoodsList(response.body());
               getViewState().stopRefreshingView();

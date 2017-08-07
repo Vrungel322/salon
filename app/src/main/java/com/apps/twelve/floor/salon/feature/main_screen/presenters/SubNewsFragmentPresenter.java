@@ -36,11 +36,12 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     Subscription subscription = mDataManager.fetchAllNews()
         .compose(ThreadSchedulers.applySchedulers())
         .concatMap(listResponse -> {
-          cacheEntities(listResponse.body());
+          cacheEntities(listResponse.body(),NewsEntity.class);
           return Observable.just(listResponse);
         })
         .subscribe(response -> {
           if (response.code() == RESPONSE_200) {
+            cacheEntities(response.body(),NewsEntity.class);
             getViewState().updateNewsPreview(response.body());
             mRxBus.post(new RxBusHelper.StopRefreshNewsMainFragment());
           }

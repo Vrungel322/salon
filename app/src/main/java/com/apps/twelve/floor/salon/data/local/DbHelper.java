@@ -76,7 +76,7 @@ public class DbHelper {
     return list;
   }
 
-  public <T extends RealmObject> void clearRealmTable(Class<T> clazz) {
+  public <T extends RealmObject> void dropRealmTable(Class<T> clazz) {
     RealmResults<T> results = Realm.getInstance(mConfiguration).where(clazz).findAll();
 
     // All changes to data must happen in a transaction
