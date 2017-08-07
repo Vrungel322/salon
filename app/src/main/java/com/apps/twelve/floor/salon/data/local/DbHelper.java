@@ -38,7 +38,7 @@ public class DbHelper {
     List<T> list = new ArrayList<T>();
     Realm realm = Realm.getInstance(mConfiguration);
     realm.beginTransaction();
-    list = realm.where(clazz).findAllAsync();
+    list = realm.where(clazz).findAll();
     realm.commitTransaction();
     return list;
   }
@@ -71,13 +71,13 @@ public class DbHelper {
 
     List<T> list = new ArrayList<T>();
     realm.beginTransaction();
-    list = query.findAllAsync();
+    list = query.findAll();
     realm.commitTransaction();
     return list;
   }
 
   public <T extends RealmObject> void clearRealmTable(Class<T> clazz) {
-    RealmResults<T> results = Realm.getInstance(mConfiguration).where(clazz).findAllAsync();
+    RealmResults<T> results = Realm.getInstance(mConfiguration).where(clazz).findAll();
 
     // All changes to data must happen in a transaction
     Realm.getInstance(mConfiguration).beginTransaction();

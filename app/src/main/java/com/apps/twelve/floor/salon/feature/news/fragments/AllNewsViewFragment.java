@@ -21,6 +21,7 @@ import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 24.02.2017.
@@ -69,7 +70,8 @@ public class AllNewsViewFragment extends BaseFragment implements IAllNewsFragmen
 
   @Override public void addListOfNews(List<NewsEntity> newsEntities) {
     mAllNewsAdapter.addListNewsEntity(newsEntities);
-    if (!newsEntities.isEmpty()) {
+    Timber.e(String.valueOf(newsEntities.size()));
+    if (newsEntities.size() != 0) {
       mTextViewNewsEmptyList.setVisibility(View.GONE);
     } else {
       mTextViewNewsEmptyList.setVisibility(View.VISIBLE);
