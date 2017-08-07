@@ -23,6 +23,7 @@ import java.util.List;
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
   private List<DataServiceEntity.ScheduleEntity> mTimes = new ArrayList<>();
   private int selectedItem = -1;
+  private int mSelectedTime = -1;
 
   private Context mContext;
 
@@ -32,6 +33,14 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
   public void setTimeSchedule(List<DataServiceEntity.ScheduleEntity> times) {
     selectedItem = -1;
+    mTimes.clear();
+    mTimes.addAll(times);
+    notifyDataSetChanged();
+  }
+
+  public void setTimeSchedule(List<DataServiceEntity.ScheduleEntity> times, int selectedTime) {
+    selectedItem = -1;
+    mSelectedTime = selectedTime;
     mTimes.clear();
     mTimes.addAll(times);
     notifyDataSetChanged();
@@ -59,6 +68,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         holder.mTextViewTime.setTextColor(
             ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorGray));
       }
+    } else if (this.mSelectedTime == position) {
+      holder.mLinearLayoutParent.setBackground(
+          ContextCompat.getDrawable(holder.mLinearLayoutParent.getContext(),
+              R.drawable.selected_item_background));
+      holder.mTextViewTime.setTextColor(
+          ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorGray));
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(),

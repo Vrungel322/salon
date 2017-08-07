@@ -26,6 +26,7 @@ public class DatesHorizontalAdapter
   private List<DataServiceEntity> mWorkStartEndEntityList = new ArrayList<>();
 
   private int selectedItem = -1;
+  private int mSelectedDay = -1;
   private Context mContext;
 
   public DatesHorizontalAdapter(Context context) {
@@ -35,6 +36,14 @@ public class DatesHorizontalAdapter
   public void addListWorkStartEndEntity(List<DataServiceEntity> workStartEndEntities) {
     mWorkStartEndEntityList.clear();
     mWorkStartEndEntityList.addAll(workStartEndEntities);
+    notifyDataSetChanged();
+  }
+
+  public void addListWorkStartEndEntity(List<DataServiceEntity> workStartEndEntities,
+      int selectedDay) {
+    mWorkStartEndEntityList.clear();
+    mWorkStartEndEntityList.addAll(workStartEndEntities);
+    mSelectedDay = selectedDay;
     notifyDataSetChanged();
   }
 
@@ -66,6 +75,18 @@ public class DatesHorizontalAdapter
           ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorWhite));
       holder.mTextViewEndTime.setTextColor(
           ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorWhite));
+    } else if (this.mSelectedDay == position) {
+      holder.mLinearLayoutParent.setBackground(
+          ContextCompat.getDrawable(holder.mLinearLayoutParent.getContext(),
+              R.drawable.selected_item_background));
+      holder.mViewLine.setBackgroundColor(
+          ContextCompat.getColor(holder.mViewLine.getContext(), value.resourceId));
+      holder.mTextViewDate.setTextColor(
+          ContextCompat.getColor(holder.mTextViewDate.getContext(), R.color.colorGray));
+      holder.mTextViewStartTime.setTextColor(
+          ContextCompat.getColor(holder.mTextViewStartTime.getContext(), R.color.colorGray));
+      holder.mTextViewEndTime.setTextColor(
+          ContextCompat.getColor(holder.mTextViewEndTime.getContext(), R.color.colorGray));
     } else {
       holder.mLinearLayoutParent.setBackgroundColor(
           ContextCompat.getColor(holder.mLinearLayoutParent.getContext(), R.color.colorWhite));

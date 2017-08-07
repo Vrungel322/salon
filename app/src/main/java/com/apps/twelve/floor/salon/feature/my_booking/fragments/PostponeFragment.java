@@ -79,6 +79,9 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
   private DatesInMonthViewPagerAdapter mDatesInMonthViewPagerAdapter;
   private Integer mEntityId;
 
+  private int mSelectedTimePosition = -1;
+  private int mSelectedDayPosition = -1;
+
   public PostponeFragment() {
     super(R.layout.fragment_postpone);
   }
@@ -148,9 +151,12 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     showAlertMessage(getString(R.string.title_write_error), getString(message));
   }
 
-  @Override public void setUpUi(List<DataServiceEntity> days) {
+  @Override public void setUpUi(List<DataServiceEntity> days, int selectedDayPosition,
+      int selectedTimePosition) {
     //viewPager
     mDays = days;
+    mSelectedTimePosition = selectedTimePosition;
+    mSelectedDayPosition = selectedDayPosition;
     mDatesInMonthViewPagerAdapter = new DatesInMonthViewPagerAdapter(getContext(), days);
     mViewPagerDatesOfMonth.setAdapter(mDatesInMonthViewPagerAdapter);
     mViewPagerDatesOfMonth.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -166,8 +172,15 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
           mImageViewPrevDay.setVisibility(View.VISIBLE);
         }
         chainViewPagerRecyclerView(position);
-        mScheduleAdapter.setTimeSchedule(
-            mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+        if (selectedDayPosition == position) {
+          mScheduleAdapter.setTimeSchedule(
+              mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities(),
+              mSelectedTimePosition);
+        } else {
+          mScheduleAdapter.setTimeSchedule(
+              mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities(), -1);
+        }
+
         mPostponeFragmentPresenter.setDateToTv();
       }
 
@@ -198,9 +211,10 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
         .setOnItemClickListener(
             (recyclerView, position, v) -> mPostponeFragmentPresenter.setSelectedTime(position));
 
-    mDatesHorizontalAdapter.addListWorkStartEndEntity(mDays);
+    mDatesHorizontalAdapter.addListWorkStartEndEntity(mDays, mSelectedDayPosition);
     mScheduleAdapter.setTimeSchedule(
-        mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities());
+        mDays.get(mViewPagerDatesOfMonth.getCurrentItem()).getScheduleEntities(),
+        mSelectedTimePosition);
   }
 
   private void chainViewPagerRecyclerView(int currentItem) {
@@ -251,6 +265,10 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
 
   @Override public void timeIsNotAvailable() {
     showToastMessage(R.string.error_time_not_available);
+  }
+
+  @Override public void timeAlreadyPicked() {
+    showToastMessage(R.string.error_time_already_picked);
   }
 
   @OnClick(R.id.bPrevDay) public void bPrevDayClicked() {

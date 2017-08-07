@@ -63,9 +63,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
             getViewState().hideProgressBarBookingTime();
             if (!response.body().isEmpty()) {
               setSelectedDayAndTimePosition(schedulerId);
-              getViewState().setUpUi(mDataServiceEntity);
+              getViewState().setUpUi(mDataServiceEntity, selectedDayPosition, selectedTimePosition);
               getViewState().setViewPagerCurrentItem(selectedDayPosition);
-              setSelectedTime(selectedTimePosition);
               setDateToTv();
               getViewState().showTimeBooking();
             } else {
@@ -86,7 +85,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
       if (scheduleEntities != null) {
         for (int j = 0; j < scheduleEntities.size(); j++) {
           if (scheduleEntities.get(j).getId().equals(schedulerId)) {
-            scheduleEntities.get(j).setStatus(true);
             selectedDayPosition = i;
             selectedTimePosition = j;
             dayPosition = selectedDayPosition;
@@ -181,6 +179,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_40
     if (mDataServiceEntity.get(dayPosition).getScheduleEntities().get(position).getStatus()) {
       getViewState().setSelectedTime(position);
       timePosition = position;
+    } else if (selectedDayPosition == dayPosition && selectedTimePosition == position) {
+      getViewState().timeAlreadyPicked();
     } else {
       getViewState().timeIsNotAvailable();
     }

@@ -17,8 +17,6 @@ import java.util.List;
 
   void revertAnimation();
 
-  void setUpUi(List<DataServiceEntity> days);
-
   void setSelectedTime(int position);
 
   void setSelectedDay(int position);
@@ -38,4 +36,9 @@ import java.util.List;
   void setUpRedSquare(String serviceName, String masterName);
 
   void timeIsNotAvailable();
+
+  void setUpUi(List<DataServiceEntity> mDataServiceEntity, int selectedDayPosition,
+      int selectedTimePosition);
+
+  void timeAlreadyPicked();
 }
