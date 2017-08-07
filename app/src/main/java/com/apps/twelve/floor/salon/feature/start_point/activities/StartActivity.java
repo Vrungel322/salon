@@ -131,8 +131,8 @@ public class StartActivity extends BaseActivity
   }
 
   @Override public void showConnectErrorMessage() {
-    showLongAlertMessage(getString(R.string.error_connection),
-        getString(R.string.сheck_internet_connection));
+    //showLongAlertMessage(getString(R.string.error_connection),
+    //    getString(R.string.сheck_internet_connection));
   }
 
   @Override public void showWrongMessage() {
