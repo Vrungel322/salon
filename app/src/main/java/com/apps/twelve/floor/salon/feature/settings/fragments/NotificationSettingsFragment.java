@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -145,7 +146,7 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @Override public void showPickHourDialog() {
     mPickHourDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHours(
               TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
@@ -155,6 +156,10 @@ public class NotificationSettingsFragment extends BaseFragment
             - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))),
         true);
+    mPickHourDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
+        (DialogInterface.OnClickListener) null);
+    mPickHourDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
+        (DialogInterface.OnClickListener) null);
     mPickHourDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickHourDialog());
     mPickHourDialog.show();
@@ -162,7 +167,7 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @Override public void showPickStartNightDialog() {
     mPickStartNightDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightStart(
               TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
@@ -173,6 +178,10 @@ public class NotificationSettingsFragment extends BaseFragment
             mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
                 mNotificationSettingsFragmentPresenter.getHoursNightStart()))), true);
+    mPickStartNightDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
+        (DialogInterface.OnClickListener) null);
+    mPickStartNightDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
+        (DialogInterface.OnClickListener) null);
     mPickStartNightDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickStartNightDialog());
     mPickStartNightDialog.show();
@@ -180,7 +189,7 @@ public class NotificationSettingsFragment extends BaseFragment
 
   @Override public void showPickEndNightDialog() {
     mPickEndNightDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth),
+        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightEnd(
               TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
@@ -191,6 +200,10 @@ public class NotificationSettingsFragment extends BaseFragment
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
                 mNotificationSettingsFragmentPresenter.getHoursNightEnd()))), true);
+    mPickEndNightDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
+        (DialogInterface.OnClickListener) null);
+    mPickEndNightDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
+        (DialogInterface.OnClickListener) null);
     mPickEndNightDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog());
     mPickEndNightDialog.show();
