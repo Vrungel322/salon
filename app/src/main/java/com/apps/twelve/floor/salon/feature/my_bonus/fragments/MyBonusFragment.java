@@ -150,8 +150,8 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
         .show();
   }
 
-  @Override public void showErrorToast() {
-    showToastMessage(getString(R.string.error_data_not_correct));
+  @Override public void showErrorToast(String msg) {
+    showToastMessage(msg);
   }
 
   @Override public void setTvCodeToShare(String userId) {

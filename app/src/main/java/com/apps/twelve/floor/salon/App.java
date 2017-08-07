@@ -16,6 +16,7 @@ import com.arellomobile.mvp.RegisterMoxyReflectorPackages;
 import com.crashlytics.android.Crashlytics;
 import com.evernote.android.job.JobManager;
 import io.fabric.sdk.android.Fabric;
+import io.realm.Realm;
 import shortbread.Shortbread;
 import timber.log.Timber;
 
@@ -43,6 +44,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
     super.onCreate();
     Shortbread.create(this);
     AuthorizationManager.init(this, Constants.Remote.BASE_URL);
+    Realm.init(this);
 
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());

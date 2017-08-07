@@ -121,4 +121,13 @@ public final class RxBusHelper {
 
   public static class ShowResetBtn {
   }
+
+  public static class ReloadCatalogByCategoryLocally {
+    public Integer id;
+    public String title;
+    public ReloadCatalogByCategoryLocally(Integer id, String title) {
+      this.id = id;
+      this.title = title;
+    }
+  }
 }

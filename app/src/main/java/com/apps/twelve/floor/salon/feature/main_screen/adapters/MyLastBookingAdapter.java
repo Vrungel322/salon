@@ -24,6 +24,7 @@ import com.apps.twelve.floor.salon.base.Navigator;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
+import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.PostponeFragment;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.Converters;
@@ -67,27 +68,32 @@ public class MyLastBookingAdapter
   }
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MyLastBookingAdapter.MyLastBookingViewHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_booking, parent, false));
+    if (viewType == MyBookingAdapter.COLORED_LAYOUT_RED) {
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking_colored_red, parent, false));
+    } else {
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking, parent, false));
+    }
   }
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
-    if (position == 0) {
-      TypedValue value = new TypedValue();
-      mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-      holder.mConstraintLayoutLastBooking.setBackgroundColor(
-          ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
-              value.resourceId));
-      holder.mConstraintLayoutLastBooking.getBackground().setAlpha(30);
-      holder.view.setVisibility(View.VISIBLE);
-    } else {
-      int[] attrs = new int[] { R.attr.selectableItemBackground };
-      TypedArray ta = mContext.obtainStyledAttributes(attrs);
-      Drawable drawableFromTheme = ta.getDrawable(0);
-      ta.recycle();
-      holder.mConstraintLayoutLastBooking.setBackground(drawableFromTheme);
-      holder.view.setVisibility(View.INVISIBLE);
-    }
+    //if (position == 0) {
+    //  TypedValue value = new TypedValue();
+    //  mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+    //  holder.mConstraintLayoutLastBooking.setBackgroundColor(
+    //      ContextCompat.getColor(holder.mConstraintLayoutLastBooking.getContext(),
+    //          value.resourceId));
+    //  holder.mConstraintLayoutLastBooking.getBackground().setAlpha(30);
+    //  holder.view.setVisibility(View.VISIBLE);
+    //} else {
+    //  int[] attrs = new int[] { R.attr.selectableItemBackground };
+    //  TypedArray ta = mContext.obtainStyledAttributes(attrs);
+    //  Drawable drawableFromTheme = ta.getDrawable(0);
+    //  ta.recycle();
+    //  holder.mConstraintLayoutLastBooking.setBackground(drawableFromTheme);
+    //  holder.view.setVisibility(View.INVISIBLE);
+    //}
     Glide.with(holder.mImageViewServicePhoto.getContext())
         .load(mLastBookingEntities.get(position).getServiceImage())
         .centerCrop()
@@ -135,6 +141,16 @@ public class MyLastBookingAdapter
       mMyLastBookingAdapterPresenter.showConfirmationDialog(position);
       mProgressBarCancel = holder.mProgressBarCancel;
     });
+  }
+
+  @Override public int getItemViewType(int position) {
+    if (Converters.timeHoursFromMilliseconds(String.valueOf(TimeUnit.HOURS.toHours(
+        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())))
+        < 4) {
+      return MyBookingAdapter.COLORED_LAYOUT_RED;
+    } else {
+      return MyBookingAdapter.NOT_COLORED_LAYOUT;
+    }
   }
 
   @Override public int getItemCount() {

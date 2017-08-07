@@ -16,6 +16,7 @@
   <color name="colorTransparentGray">#7be4e4e4</color>
   <color name="colorTTransparentBlack">#50000000</color>
   <color name="colorTransparentBlack">#80000000</color>
+  <color name="colorTransparentRed">#1eff4081</color>
 
   <!--blue theme-->
   <color name="colorPrimaryBlue">#67b3f1</color>

@@ -163,9 +163,11 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
 
   @OnClick(R.id.textViewMore) public void onClick() {
     if (mTextViewDescriptionWork.getMaxLines() == 3) {
+      mTextViewMore.setText(getString(R.string.hide));
       mTextViewDescriptionWork.setMaxLines(Integer.MAX_VALUE);
       mTextViewDescriptionWork.setEllipsize(null);
     } else {
+      mTextViewMore.setText(getString(R.string.more));
       mTextViewDescriptionWork.setMaxLines(3);
       mTextViewDescriptionWork.setEllipsize(TextUtils.TruncateAt.END);
     }

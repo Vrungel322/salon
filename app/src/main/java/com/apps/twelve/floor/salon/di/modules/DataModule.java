@@ -28,13 +28,8 @@ import retrofit2.Retrofit;
     return new RestApi(api);
   }
 
-  @Provides @AppScope Realm provideRealm(Context context) {
-    Realm.init(context);
-    return Realm.getDefaultInstance();
-  }
-
-  @Provides @AppScope DbHelper provideDbHelper(Realm realm) {
-    return new DbHelper(realm);
+  @Provides @AppScope DbHelper provideDbHelper() {
+    return new DbHelper();
   }
 
   @Provides @AppScope DataManager provideDataManager(RestApi restApi,

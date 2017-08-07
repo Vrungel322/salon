@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.data.local;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -14,15 +15,20 @@ import timber.log.Timber;
 
 public class DbHelper {
 
-  private Realm mRealm;
+  private final RealmConfiguration mConfiguration;
 
-  public DbHelper(Realm realm) {
-    this.mRealm = realm;
+  public DbHelper() {
+    mConfiguration = new RealmConfiguration.Builder().name("sample.realm")
+        //new version
+        .schemaVersion(2)
+        .migration(new RealmMigrations())
+        .build();
+    Realm.setDefaultConfiguration(mConfiguration);
   }
 
   public <T extends RealmObject> void save(T object) {
 
-    Realm realm = Realm.getDefaultInstance();
+    Realm realm = Realm.getInstance(mConfiguration);
     realm.beginTransaction();
     realm.copyToRealmOrUpdate(object);
     realm.commitTransaction();
@@ -30,7 +36,7 @@ public class DbHelper {
 
   public <T extends RealmObject> List<T> getAll(Class<T> clazz) {
     List<T> list = new ArrayList<T>();
-    Realm realm = Realm.getDefaultInstance();
+    Realm realm = Realm.getInstance(mConfiguration);
     realm.beginTransaction();
     list = realm.where(clazz).findAll();
     realm.commitTransaction();
@@ -39,7 +45,7 @@ public class DbHelper {
 
   public <T extends RealmObject> T getElementById(Class<T> clazz, int id) {
 
-    Realm realm = Realm.getDefaultInstance();
+    Realm realm = Realm.getInstance(mConfiguration);
     RealmQuery<T> query = realm.where(clazz).equalTo("id", id);
 
     T t;
@@ -60,7 +66,7 @@ public class DbHelper {
   public <T extends RealmObject> List<T> getElementsFromDBByQuery(Class<T> clazz, String field,
       String value) {
 
-    Realm realm = Realm.getDefaultInstance();
+    Realm realm = Realm.getInstance(mConfiguration);
     RealmQuery<T> query = realm.where(clazz).equalTo(field, value);
 
     List<T> list = new ArrayList<T>();
@@ -71,16 +77,16 @@ public class DbHelper {
   }
 
   public <T extends RealmObject> void clearRealmTable(Class<T> clazz) {
-    RealmResults<T> results = Realm.getDefaultInstance().where(clazz).findAll();
+    RealmResults<T> results = Realm.getInstance(mConfiguration).where(clazz).findAll();
 
     // All changes to data must happen in a transaction
-    mRealm.beginTransaction();
+    Realm.getInstance(mConfiguration).beginTransaction();
 
     // Delete all matches
     results.deleteAllFromRealm();
 
-    mRealm.commitTransaction();
-    mRealm.close();
+    Realm.getInstance(mConfiguration).commitTransaction();
+    Realm.getInstance(mConfiguration).close();
     Timber.e("clearRealm " + clazz.toString());
   }
 }

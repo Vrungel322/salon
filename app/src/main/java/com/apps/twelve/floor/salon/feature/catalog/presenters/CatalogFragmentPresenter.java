@@ -10,6 +10,7 @@ import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.RxBusHelper;
 import com.apps.twelve.floor.salon.utils.ThreadSchedulers;
 import com.arellomobile.mvp.InjectViewState;
+import java.util.ArrayList;
 import rx.Observable;
 import rx.Subscription;
 import timber.log.Timber;
@@ -37,6 +38,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
     //RxBus
     subscribeGoodsList();
     subscribeReloadListByCategory();
+    subscribeReloadListByCategoryLocally();
     subscribeShowResetBtn();
   }
 
@@ -52,6 +54,37 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
 
   public void showAlertDialog() {
     mRxBus.post(new RxBusHelper.ShowAuthDialog());
+  }
+
+  private void subscribeReloadListByCategoryLocally() {
+    final Integer[] id = new Integer[1];
+    Subscription subscription =
+        mRxBus.filteredObservable(RxBusHelper.ReloadCatalogByCategoryLocally.class)
+            .compose(ThreadSchedulers.applySchedulers())
+            .concatMap(reloadCatalogByCategoryLocally -> {
+              id[0] = reloadCatalogByCategoryLocally.id;
+              //return Observable.just(mDataManager.getAllElementsFromDB(GoodsEntity.class));
+              return Observable.just(new ArrayList<>(mDataManager.getAllElementsFromDB(GoodsEntity.class)));
+            })
+            .concatMap(goodsEntities -> {
+              ArrayList<GoodsEntity> entities = new ArrayList<GoodsEntity>();
+              for (int i = 0; i < goodsEntities.size(); i++) {
+                if (String.valueOf(goodsEntities.get(i).getCategoryId())
+                    .equals(String.valueOf(id[0]))) {
+                  entities.add(goodsEntities.get(i));
+                }
+              }
+              return Observable.just(entities);
+            })
+
+            .subscribe(goodsEntities -> {
+              goodsEntities.add(0,
+                  new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "", "", 0,
+                      "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0, null,
+                      false, false, false));
+              getViewState().updateGoodsList(goodsEntities);
+            });
+    addToUnsubscription(subscription);
   }
 
   private void subscribeReloadListByCategory() {

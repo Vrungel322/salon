@@ -19,9 +19,11 @@ import com.apps.twelve.floor.salon.data.model.category.GoodsSubCategoryEntity;
 import com.apps.twelve.floor.salon.feature.catalog.adapters.CategoryAdapter;
 import com.apps.twelve.floor.salon.feature.catalog.presenters.CategoryDialogFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.catalog.views.ICategoryDialogFragmentView;
+import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.arellomobile.mvp.MvpDialogFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
+import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.05.2017.
@@ -68,9 +70,16 @@ public class CategoryDialogFragment extends MvpDialogFragment
     mAdapter.setChildClickListener((v, checked, group, childIndex) -> {
       mCategoryDialogFragmentPresenter.postToShowResetBtn();
 
-      mCategoryDialogFragmentPresenter.postEventToReloadList(
-          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
-          ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
+      if (NetworkUtil.isNetworkConnected(getActivity())){
+        mCategoryDialogFragmentPresenter.postEventToReloadList(
+            ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
+            ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
+      }
+      else {
+        mCategoryDialogFragmentPresenter.postEventToReloadListLocally(
+            ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
+            ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
+      }
       this.dismiss();
     });
   }
