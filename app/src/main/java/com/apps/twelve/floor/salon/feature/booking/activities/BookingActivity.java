@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.feature.booking.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
@@ -24,6 +26,8 @@ import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import shortbread.Shortcut;
+
+import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
 /**
  * Created by John on 23.03.2017.
@@ -206,5 +210,15 @@ public class BookingActivity extends BaseActivity implements IBookingActivityVie
     }
 
     super.onBackPressed();
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 }

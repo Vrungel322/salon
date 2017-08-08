@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.feature.start_point.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -41,6 +43,7 @@ import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import static com.apps.twelve.floor.salon.utils.Constants.FragmentTag.CONTACTS_ABOUT_FRAGMENT;
+import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
 public class StartActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener, IStartActivityView {
@@ -301,5 +304,15 @@ public class StartActivity extends BaseActivity
   @Override public void onDestroy() {
     super.onDestroy();
     cancelAlertDialog();
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 }

@@ -1,7 +1,6 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -156,10 +155,6 @@ public class NotificationSettingsFragment extends BaseFragment
             - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(mNotificationSettingsFragmentPresenter.getHours()))),
         true);
-    mPickHourDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
-        (DialogInterface.OnClickListener) null);
-    mPickHourDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
-        (DialogInterface.OnClickListener) null);
     mPickHourDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickHourDialog());
     mPickHourDialog.show();
@@ -178,10 +173,6 @@ public class NotificationSettingsFragment extends BaseFragment
             mNotificationSettingsFragmentPresenter.getHoursNightStart()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
                 mNotificationSettingsFragmentPresenter.getHoursNightStart()))), true);
-    mPickStartNightDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
-        (DialogInterface.OnClickListener) null);
-    mPickStartNightDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
-        (DialogInterface.OnClickListener) null);
     mPickStartNightDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickStartNightDialog());
     mPickStartNightDialog.show();
@@ -200,10 +191,6 @@ public class NotificationSettingsFragment extends BaseFragment
             mNotificationSettingsFragmentPresenter.getHoursNightEnd()) - TimeUnit.HOURS.toMinutes(
             TimeUnit.MILLISECONDS.toHours(
                 mNotificationSettingsFragmentPresenter.getHoursNightEnd()))), true);
-    mPickEndNightDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.btn_ok),
-        (DialogInterface.OnClickListener) null);
-    mPickEndNightDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.btn_cancel),
-        (DialogInterface.OnClickListener) null);
     mPickEndNightDialog.setOnCancelListener(
         dialogInterface -> mNotificationSettingsFragmentPresenter.cancelPickEndNightDialog());
     mPickEndNightDialog.show();
