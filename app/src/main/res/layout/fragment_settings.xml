@@ -188,35 +188,6 @@
             android:layout_below="@+id/tvLanguage"
             android:background="@color/colorTransparentGray" />
       </RelativeLayout>
-        <!--about app-->
-        <RelativeLayout
-          android:id="@+id/rlAboutApplication"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_below="@id/rlLanguage"
-          android:background="?attr/selectableItemBackground">
-
-          <TextView
-            android:id="@+id/tvAboutApplication"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_about_application"
-            android:textColor="@color/colorGray"
-            android:textSize="16sp" />
-
-          <View
-            android:id="@+id/separatorAboutApplication"
-            android:layout_width="match_parent"
-            android:layout_height="0.25dp"
-            android:layout_below="@+id/tvAboutApplication"
-            android:background="@color/colorTransparentGray" />
-        </RelativeLayout>
       </RelativeLayout>
 
       <!--terms and policy-->
@@ -242,7 +213,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvTermsAndPolicy"
-        android:layout_marginBottom="64dp"
         android:background="@color/colorWhite">
 
         <View
@@ -309,6 +279,98 @@
             android:background="@color/colorTransparentGray" />
         </RelativeLayout>
       </RelativeLayout>
+      <!--information-->
+      <TextView
+        android:id="@+id/tvInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/block_privacy_policy"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_information"
+        android:textColor="@color/colorLightGray"
+        android:textSize="18sp" />
+
+
+      <RelativeLayout
+        android:id="@+id/tvInformationBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvInformation"
+        android:layout_marginBottom="64dp"
+        android:background="@color/colorWhite">
+
+        <View
+          android:id="@+id/separatorSettingInformation"
+          android:layout_width="match_parent"
+          android:layout_height="0.25dp"
+          android:background="@color/colorTransparentGray" />
+        <!--partners-->
+        <RelativeLayout
+          android:id="@+id/rlPartners"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="?attr/selectableItemBackground">
+
+          <TextView
+            android:id="@+id/tvPartners"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_our_partners"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorPartners"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvPartners"
+            android:background="@color/colorTransparentGray" />
+        </RelativeLayout>
+        <!--about app-->
+        <RelativeLayout
+          android:id="@+id/rlAboutApplication"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/rlPartners"
+          android:background="?attr/selectableItemBackground">
+
+          <TextView
+            android:id="@+id/tvAboutApplication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/settings_about_application"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
+          <View
+            android:id="@+id/separatorAboutApplication"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/tvAboutApplication"
+            android:background="@color/colorTransparentGray" />
+        </RelativeLayout>
+      </RelativeLayout>
+
+
     </RelativeLayout>
   </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

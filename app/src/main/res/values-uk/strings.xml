@@ -171,4 +171,6 @@
   <string name="bonus_share_msg_text">Введіть код %1$s для отримання бонусу</string>
   <string name="settings_about_application">Про додаток</string>
   <string name="error_time_already_picked">Вказаний час вже зайнятий Вами!</string>
+  <string name="settings_information">Інформація</string>
+  <string name="settings_our_partners">Наші партнери</string>
 </resources>
