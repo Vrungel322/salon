@@ -30,6 +30,7 @@ import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesHorizontalAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.DatesInMonthViewPagerAdapter;
 import com.apps.twelve.floor.salon.feature.booking.mode.adapters.ScheduleAdapter;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingDetailActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IPostponeFragmentView;
@@ -108,7 +109,8 @@ public class PostponeFragment extends BaseFragment implements IPostponeFragmentV
     super.onViewCreated(view, savedInstanceState);
 
     /* turn off scrolling */
-    if (!(getActivity() instanceof BookingListActivity)) {
+    if (!(getActivity() instanceof BookingListActivity)
+        && !(getActivity() instanceof BookingDetailActivity)) {
       Toolbar mToolbar = getActivity().findViewById(R.id.toolbar);
 
       AppBarLayout.LayoutParams toolbarLayoutParams =

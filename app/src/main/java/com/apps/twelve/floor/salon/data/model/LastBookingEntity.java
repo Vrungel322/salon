@@ -215,6 +215,7 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
     masterDescription = in.readString();
     masterPhoto = in.readString();
     masterId = in.readInt();
+    scheduleId = in.readInt();
     serviceTime = in.readInt();
     serviceName = in.readString();
     serviceImage = in.readString();
@@ -234,6 +235,7 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
     dest.writeString(masterDescription);
     dest.writeString(masterPhoto);
     dest.writeInt(masterId);
+    dest.writeInt(scheduleId);
     dest.writeInt(serviceTime);
     dest.writeString(serviceName);
     dest.writeString(serviceImage);

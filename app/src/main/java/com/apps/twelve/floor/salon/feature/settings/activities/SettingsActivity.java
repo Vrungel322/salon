@@ -1,6 +1,8 @@
 package com.apps.twelve.floor.salon.feature.settings.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.apps.twelve.floor.salon.R;
@@ -12,6 +14,8 @@ import com.apps.twelve.floor.salon.feature.settings.views.ISettingsActivityView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ThemeUtils;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import static com.apps.twelve.floor.salon.utils.Constants.Language.RU;
 
 public class SettingsActivity extends BaseActivity implements ISettingsActivityView {
 
@@ -56,5 +60,15 @@ public class SettingsActivity extends BaseActivity implements ISettingsActivityV
   @Override public void showWrongMessage() {
     showAlertMessage(getResources().getString(R.string.dialog_error_title),
         getResources().getString(R.string.wrong));
+  }
+
+  @Override protected void attachBaseContext(Context base) {
+    super.attachBaseContext(LocaleHelper.onAttach(base, RU));
+  }
+
+  @Override public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    LocaleHelper.onAttach(getBaseContext());
+    //update locale and resources, configuration on each config change
   }
 }
