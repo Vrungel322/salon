@@ -7,10 +7,17 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import java.util.List;
 
 /**
- * Created by Vrungel on 21.02.2017.
+ * Created by Vrungel on 08.08.2017.
  */
 
-@StateStrategyType(AddToEndSingleStrategy.class) public interface IMyBookFragmentView
+@StateStrategyType(AddToEndSingleStrategy.class) public interface IActiveBookingFragmentView
     extends MvpView {
+  void showAllBooking(List<LastBookingEntity> bookingEntities);
+
+  void startRefreshingView();
+
+  void stopRefreshingView();
+
+  void showServerErrorMsg();
 
 }
