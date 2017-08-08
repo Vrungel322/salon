@@ -8,8 +8,10 @@ import android.view.View;
 import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
+import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.adapters.ListsPagerAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookFragmentView;
+import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -33,6 +35,13 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+
+    if (getActivity() instanceof StartActivity) {
+      ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    } else {
+      ((BookingListActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    }
 
     mViewPagerLists.setAdapter(new ListsPagerAdapter(this.getChildFragmentManager()));
     mTabLayout.setupWithViewPager(mViewPagerLists);

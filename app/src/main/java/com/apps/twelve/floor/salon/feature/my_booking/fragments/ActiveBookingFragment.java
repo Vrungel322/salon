@@ -49,11 +49,11 @@ public class ActiveBookingFragment extends BaseFragment implements IActiveBookin
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    if (getActivity() instanceof StartActivity) {
-      ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
-    } else {
-      ((BookingListActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
-    }
+    //if (getActivity() instanceof StartActivity) {
+    //  ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    //} else {
+    //  ((BookingListActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
+    //}
 
     if (getActivity() instanceof StartActivity) {
       fromStartActivity = true;
