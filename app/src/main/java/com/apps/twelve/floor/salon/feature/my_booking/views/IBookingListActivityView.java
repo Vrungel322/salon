@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.my_booking.views;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 /**
@@ -10,5 +11,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  */
 @StateStrategyType(AddToEndSingleStrategy.class) public interface IBookingListActivityView
     extends MvpView {
-  void showMyBookFragment(LastBookingEntity lastBookingEntity);
+  @StateStrategyType(SkipStrategy.class) void showMyBookFragment(
+      LastBookingEntity lastBookingEntity);
 }
