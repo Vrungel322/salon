@@ -68,13 +68,19 @@ public class MyLastBookingAdapter
   }
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    if (viewType == MyBookingAdapter.COLORED_LAYOUT_GRAY) {
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking_colored_gray, parent, false));
+    }
     if (viewType == MyBookingAdapter.COLORED_LAYOUT_RED) {
       return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
           .inflate(R.layout.item_my_booking_colored_red, parent, false));
-    } else {
+    }
+    if (viewType == MyBookingAdapter.NOT_COLORED_LAYOUT) {
       return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
           .inflate(R.layout.item_my_booking, parent, false));
     }
+    return null;
   }
 
   @Override public void onBindViewHolder(MyLastBookingViewHolder holder, int position) {
@@ -144,12 +150,16 @@ public class MyLastBookingAdapter
   }
 
   @Override public int getItemViewType(int position) {
-    if (Converters.timeHoursFromMilliseconds(String.valueOf(TimeUnit.HOURS.toHours(
-        mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())))
-        < 4) {
-      return MyBookingAdapter.COLORED_LAYOUT_RED;
+    if (mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
+        < 1000) {
+      return MyBookingAdapter.COLORED_LAYOUT_GRAY;
     } else {
-      return MyBookingAdapter.NOT_COLORED_LAYOUT;
+      if (mLastBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
+          < 4 * 60 * 60 * 1000) {
+        return MyBookingAdapter.COLORED_LAYOUT_RED;
+      } else {
+        return MyBookingAdapter.NOT_COLORED_LAYOUT;
+      }
     }
   }
 

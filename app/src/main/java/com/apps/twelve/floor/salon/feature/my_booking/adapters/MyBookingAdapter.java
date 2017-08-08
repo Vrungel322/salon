@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 28.02.2017.
@@ -44,6 +43,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
 
   public static final int COLORED_LAYOUT_RED = 1;
   public static final int NOT_COLORED_LAYOUT = 0;
+  public static final int COLORED_LAYOUT_GRAY = 2;
   private final Context mContext;
   private final Navigator mNavigator;
   private final boolean fromStartActivity;
@@ -69,13 +69,19 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public MyBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    if (viewType == COLORED_LAYOUT_GRAY) {
+      return new MyBookingViewHolder(LayoutInflater.from(parent.getContext())
+          .inflate(R.layout.item_my_booking_colored_gray, parent, false));
+    }
     if (viewType == COLORED_LAYOUT_RED) {
       return new MyBookingViewHolder(LayoutInflater.from(parent.getContext())
           .inflate(R.layout.item_my_booking_colored_red, parent, false));
-    } else {
+    }
+    if (viewType == NOT_COLORED_LAYOUT) {
       return new MyBookingViewHolder(LayoutInflater.from(parent.getContext())
           .inflate(R.layout.item_my_booking, parent, false));
     }
+    return null;
   }
 
   @Override public void onBindViewHolder(MyBookingViewHolder holder, int position) {
@@ -142,12 +148,16 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public int getItemViewType(int position) {
-    if (Converters.timeHoursFromMilliseconds(String.valueOf(TimeUnit.HOURS.toHours(
-        mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis())))
-        < 4) {
-      return COLORED_LAYOUT_RED;
+    if (mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
+        < 1000) {
+      return COLORED_LAYOUT_GRAY;
     } else {
-      return NOT_COLORED_LAYOUT;
+      if (mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
+          < 4 * 60 * 60 * 1000) {
+        return COLORED_LAYOUT_RED;
+      } else {
+        return NOT_COLORED_LAYOUT;
+      }
     }
   }
 
