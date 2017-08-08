@@ -3,6 +3,7 @@ package com.apps.twelve.floor.salon.feature.my_booking.activities;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.data.local.LocaleHelper;
@@ -27,6 +28,7 @@ public class BookingDetailActivity extends BaseActivity implements IBookingDetai
   @Override protected void onCreate(Bundle savedInstanceState) {
     setTheme(ThemeUtils.getThemeActionBar(getBaseContext()));
     setContentView(R.layout.activity_booking_detail);
+    setTitle(getString(R.string.title_activity_start));
     super.onCreate(savedInstanceState);
   }
 
@@ -35,6 +37,16 @@ public class BookingDetailActivity extends BaseActivity implements IBookingDetai
     if (bookingEntity != null) {
       mNavigator.addFragment(BookingDetailActivity.this, R.id.container,
           BookDetailsFragment.newInstance(bookingEntity));
+    }
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
     }
   }
 
