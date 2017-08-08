@@ -141,4 +141,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     AboutApplicationDialog aboutApplicationDialog = new AboutApplicationDialog();
     aboutApplicationDialog.show(getActivity().getFragmentManager(), "");
   }
+
+  @OnClick(R.id.rlPartners) public void showPartners() {
+    showToastMessage("Наши партнеры");
+  }
 }

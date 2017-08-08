@@ -203,5 +203,7 @@
   <string name="version">Версия %1$s</string>
   <string name="hide">Свернуть</string>
   <string name="error_time_already_picked">Указанное время уже занято Вами!</string>
+  <string name="settings_information">Информация</string>
+  <string name="settings_our_partners">Наши партнеры</string>
 
 </resources>
