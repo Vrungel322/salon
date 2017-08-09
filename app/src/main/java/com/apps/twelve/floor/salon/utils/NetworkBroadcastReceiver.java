@@ -13,14 +13,20 @@ import timber.log.Timber;
 
 public class NetworkBroadcastReceiver extends BroadcastReceiver {
   @Inject RxBus mRxBus;
+  private static boolean isNetworkChangeState = false;
+
+  public NetworkBroadcastReceiver() {
+    App.getAppComponent().inject(this);
+  }
 
   @Override public void onReceive(Context context, Intent intent) {
-    App.getAppComponent().inject(this);
-    Timber.e("NetworkBroadcastReceiver - onReceive");
+    Timber.d("NetworkBroadcastReceiver - onReceive");
     if (NetworkUtil.isNetworkConnected(context)) {
       //hide
-    } else {
+      isNetworkChangeState = false;
+    } else if (!isNetworkChangeState) {
       //show
+      isNetworkChangeState = true;
       mRxBus.post(new RxBusHelper.NoInternetAlertDialog());
     }
   }
