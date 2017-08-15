@@ -21,10 +21,11 @@ import com.apps.twelve.floor.salon.feature.main_screen.presenters.SubNewsFragmen
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHistoryFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.BonusHowFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_bonus.presenters.MyBonusFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.ActiveMyBookFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookDetailsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookingDetailActivityPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookingListActivityPresenter;
-import com.apps.twelve.floor.salon.feature.my_booking.presenters.ActiveMyBookFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.HistoryBookingFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.PostponeFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.news.presenters.AllNewsFragmentPresenter;
@@ -122,6 +123,8 @@ import dagger.Component;
   void inject(BookingDetailActivityPresenter presenter);
 
   void inject(AboutApplicationDialogPresenter aboutApplicationDialogPresenter);
+
+  void inject(HistoryBookingFragmentPresenter aboutApplicationDialogPresenter);
 
   //activities
   void inject(BaseActivity activity);

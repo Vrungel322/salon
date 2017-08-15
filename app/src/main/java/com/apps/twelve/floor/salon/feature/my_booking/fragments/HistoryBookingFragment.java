@@ -14,20 +14,20 @@ import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
-import com.apps.twelve.floor.salon.feature.my_booking.presenters.ActiveMyBookFragmentPresenter;
-import com.apps.twelve.floor.salon.feature.my_booking.views.IActiveBookingFragmentView;
+import com.apps.twelve.floor.salon.feature.my_booking.presenters.HistoryBookingFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.my_booking.views.IHistoryBookingFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
 /**
- * Created by Vrungel on 08.08.2017.
+ * Created by Vrungel on 15.08.2017.
  */
 
-public class ActiveBookingFragment extends BaseFragment implements IActiveBookingFragmentView {
+public class HistoryBookingFragment extends BaseFragment implements IHistoryBookingFragmentView {
 
-  @InjectPresenter ActiveMyBookFragmentPresenter mActiveMyBookFragmentPresenter;
+  @InjectPresenter HistoryBookingFragmentPresenter mHistoryBookingFragmentPresenter;
   @BindView(R.id.srlRefreshLayout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.rvMyBook) RecyclerView mRecyclerViewMyBooks;
   @BindView(R.id.tvBookEmptyList) TextView mTextViewBookEmptyList;
@@ -35,15 +35,15 @@ public class ActiveBookingFragment extends BaseFragment implements IActiveBookin
   private MyBookingAdapter mMyBookingAdapter;
   private boolean fromStartActivity;
 
-  public ActiveBookingFragment() {
-    super(R.layout.fragment_book_active);
-  }
-
-  public static ActiveBookingFragment newInstance() {
+  public static HistoryBookingFragment newInstance() {
     Bundle args = new Bundle();
-    ActiveBookingFragment fragment = new ActiveBookingFragment();
+    HistoryBookingFragment fragment = new HistoryBookingFragment();
     fragment.setArguments(args);
     return fragment;
+  }
+
+  public HistoryBookingFragment() {
+    super(R.layout.fragment_book_history);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -72,7 +72,8 @@ public class ActiveBookingFragment extends BaseFragment implements IActiveBookin
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
-    mSwipeRefreshLayout.setOnRefreshListener(() -> mActiveMyBookFragmentPresenter.startRefreshing());
+    mSwipeRefreshLayout.setOnRefreshListener(
+        () -> mHistoryBookingFragmentPresenter.startRefreshing());
 
     ItemClickSupport.addTo(mRecyclerViewMyBooks)
         .setOnItemClickListener((recyclerView, position, v) -> {
