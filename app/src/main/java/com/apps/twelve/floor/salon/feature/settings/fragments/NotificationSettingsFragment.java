@@ -19,6 +19,7 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.INotificationSettingsFragmentView;
 import com.apps.twelve.floor.salon.utils.Converters;
+import com.apps.twelve.floor.salon.utils.custom_views.TimePickerDialogFixedNougatSpinner;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.concurrent.TimeUnit;
 
@@ -144,8 +145,8 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void showPickHourDialog() {
-    mPickHourDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
+    mPickHourDialog = new TimePickerDialogFixedNougatSpinner(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHours(
               TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(i1));
@@ -161,8 +162,8 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void showPickStartNightDialog() {
-    mPickStartNightDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
+    mPickStartNightDialog = new TimePickerDialogFixedNougatSpinner(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightStart(
               TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
@@ -179,8 +180,8 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void showPickEndNightDialog() {
-    mPickEndNightDialog = new TimePickerDialog(
-        new ContextThemeWrapper(getContext(), R.style.TimePickerDialogTheme),
+    mPickEndNightDialog = new TimePickerDialogFixedNougatSpinner(
+        new ContextThemeWrapper(getContext(), android.R.style.Theme_Holo_Light_Dialog),
         (timePicker, i, i1) -> {
           mNotificationSettingsFragmentPresenter.setHoursNightEnd(
               TimeUnit.HOURS.toMillis(i - 3) + TimeUnit.MINUTES.toMillis(i1));
