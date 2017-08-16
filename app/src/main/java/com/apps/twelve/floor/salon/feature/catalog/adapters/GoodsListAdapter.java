@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,8 +111,8 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
-        goodsListViewHolder.mTextViewShortDescription.setText(
-            mGoodsEntities.get(position).getShortDescription());
+        goodsListViewHolder.mTextViewShortDescription.setText(Html.fromHtml(
+            mGoodsEntities.get(position).getShortDescription()));
         if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
           goodsListViewHolder.mTextViewPriceBonus.setVisibility(View.GONE);
           goodsListViewHolder.mImageViewBonusPrice.setVisibility(View.GONE);
