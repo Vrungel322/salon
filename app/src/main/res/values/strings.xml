@@ -135,7 +135,7 @@
   <string name="settings_change_language">Язык приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="report_problem_description">Опишите Вашу проблему:</string>
-  <string name="report_problem_hint" translatable="false">Мой кот меня не любит</string>
+  <string name="report_problem_hint">Описание вашей проблемы</string>
   <string name="settings_notifications_title_daily">Дневное уведомление</string>
   <string name="settings_notifications_title_hourly">Часовое уведомление</string>
   <string name="settings_notifications_title_night">Ночной режим</string>
