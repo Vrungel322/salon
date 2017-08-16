@@ -174,4 +174,5 @@
   <string name="settings_information">Інформація</string>
   <string name="settings_our_partners">Наші партнери</string>
   <string name="hide">Згорнути</string>
+  <string name="report_problem_hint">Опис вашої проблеми</string>
 </resources>

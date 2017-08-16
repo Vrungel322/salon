@@ -33,6 +33,8 @@ public class GoogleLoginHiddenActivity extends AppCompatActivity
   public static final String EXTRA_CLIENT_ID = "EXTRA_CLIENT_ID";
   private static final int RC_SIGN_IN = 1000;
 
+  private GoogleApiClient mGoogleApiClient;
+
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
@@ -43,11 +45,11 @@ public class GoogleLoginHiddenActivity extends AppCompatActivity
             .requestEmail()
             .build();
 
-    GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this)
+    mGoogleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this)
         .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
         .build();
 
-    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
     startActivityForResult(signInIntent, RC_SIGN_IN);
   }
 
@@ -79,6 +81,7 @@ public class GoogleLoginHiddenActivity extends AppCompatActivity
       profile.firstName = acct.getGivenName();
       profile.lastName = acct.getFamilyName();
       user.profile = profile;
+      Auth.GoogleSignInApi.signOut(mGoogleApiClient);
       SocialLoginManager.getInstance(this).onLoginSuccess(user);
     } else {
       Throwable throwable = new Throwable(result.getStatus().getStatusMessage());
