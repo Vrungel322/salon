@@ -209,5 +209,7 @@
   <string name="confirmed_booking">Подтвержденная запись</string>
   <string name="missed_booking">Пропущеная запись</string>
   <string name="done_booking">Выполнено</string>
+  <string name="call_admin">Позвонить администратору</string>
+  <string name="admin_phone">+380689647569</string>
 
 </resources>

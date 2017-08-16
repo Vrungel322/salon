@@ -376,6 +376,23 @@
             tools:text="master description"
             />
       </android.support.constraint.ConstraintLayout>
+      <TextView
+          android:id="@+id/textView12"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/call_admin"
+          android:layout_below="@+id/clMaster"
+          android:layout_centerHorizontal="true"
+          />
+      <TextView
+          android:id="@+id/textView13"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/admin_phone"
+          android:autoLink="phone"
+          android:layout_below="@+id/textView12"
+          android:layout_centerHorizontal="true"
+          />
     </RelativeLayout>
   </com.apps.twelve.floor.salon.utils.custom_views.FabNestedScroll>
 </RelativeLayout>
