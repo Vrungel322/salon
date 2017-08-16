@@ -60,9 +60,9 @@ import static com.apps.twelve.floor.authorization.utils.Constants.Remote.RESPONS
                   return Observable.just(response);
                 }
               })
-              .doOnNext(response -> {
-                mDataManager.putBooking(response.body());
-              })
+              //.doOnNext(response -> {
+              //  mDataManager.putBooking(response.body());
+              //})
               .concatMap(response -> Observable.from(response.body()))
               .take(2)
               .toList()
