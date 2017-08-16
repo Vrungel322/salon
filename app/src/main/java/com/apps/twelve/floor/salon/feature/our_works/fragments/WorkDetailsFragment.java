@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -82,7 +83,7 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
     if (ourWorkEntity != null) {
       //some TV (title and gallery description)
       mTextViewTitleWork.setText(ourWorkEntity.getTitle());
-      mTextViewDescriptionWork.setText(ourWorkEntity.getShortDescription());
+      mTextViewDescriptionWork.setText(Html.fromHtml(ourWorkEntity.getShortDescription()));
 
       // pager adapter
       mViewPagerAdapter =

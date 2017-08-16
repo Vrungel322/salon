@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -83,7 +84,7 @@ public class GoodsDetailsFragment extends BaseFragment implements IStaffDetailsF
     if (mGoodsEntity != null) {
       //some TV (title and gallery description)
       mTextViewTitle.setText(mGoodsEntity.getTitle());
-      mTextViewDescription.setText(mGoodsEntity.getShortDescription());
+      mTextViewDescription.setText(Html.fromHtml(mGoodsEntity.getShortDescription()));
       mTextViewPrice.setText(mGoodsEntity.getPrice());
 
       // pager adapter
