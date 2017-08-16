@@ -6,7 +6,7 @@ import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
@@ -78,9 +78,13 @@ public class RestApi {
     return api.checkInService(language, token, bookingServerEntity);
   }
 
-  public Observable<Response<List<LastBookingEntity>>> fetchLastBooking(String language,
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBooking(String languageCode,
       String token) {
-    return api.fetchLastBooking(language, token);
+    return api.fetchLastBooking(languageCode, token);
+  }
+
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory(String languageCode, String token) {
+    return api.fetchLastBookingHistory(languageCode, token, "done,missed",1);
   }
 
   public Observable<Response<Void>> cancelOrder(String language, Integer serviceId, String token) {
@@ -167,4 +171,5 @@ public class RestApi {
   public Observable<RemoteStringEntity> fetchString(String remoteStringType, String language) {
     return api.fetchString(remoteStringType, language);
   }
+
 }

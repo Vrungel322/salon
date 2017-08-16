@@ -12,7 +12,7 @@ import com.apps.twelve.floor.authorization.AuthorizationManager;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingDetailActivity;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.evernote.android.job.Job;

@@ -3,7 +3,7 @@ package com.apps.twelve.floor.salon.utils.jobs;
 import android.content.Context;
 import com.apps.twelve.floor.salon.App;
 import com.apps.twelve.floor.salon.data.DataManager;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobCreator;

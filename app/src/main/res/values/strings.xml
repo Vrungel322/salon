@@ -205,5 +205,9 @@
   <string name="error_time_already_picked">Указанное время уже занято Вами!</string>
   <string name="settings_information">Информация</string>
   <string name="settings_our_partners">Наши партнеры</string>
+  <string name="new_booking">Новая запись</string>
+  <string name="confirmed_booking">Подтвержденная запись</string>
+  <string name="missed_booking">Пропущеная запись</string>
+  <string name="done_booking">Выполнено</string>
 
 </resources>

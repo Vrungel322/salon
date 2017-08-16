@@ -17,12 +17,13 @@ import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.MvpBaseRecyclerAdapter;
 import com.apps.twelve.floor.salon.base.Navigator;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.activities.BookingListActivity;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.PostponeFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.MyBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IMyBookingAdapterView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.MvpDelegate;
@@ -113,6 +114,20 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     holder.mTextViewServiceTime.setText(Converters.fullDateWithTimeFromSeconds(mContext,
         String.valueOf(mBookingEntities.get(position).getServiceTime())));
 
+    //for Status
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)){
+      holder.mTextViewStatus.setText(R.string.new_booking);
+    }
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)){
+      holder.mTextViewStatus.setText(R.string.confirmed_booking);
+    }
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)){
+      holder.mTextViewStatus.setText(R.string.missed_booking);
+    }
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)){
+      holder.mTextViewStatus.setText(R.string.done_booking);
+    }
+
     //for DownTimer
     if (holder.mDownTimer != null) {
       holder.mDownTimer.cancel();
@@ -148,16 +163,17 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
   }
 
   @Override public int getItemViewType(int position) {
+    //missed
     if (mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
         < 1000) {
       return COLORED_LAYOUT_GRAY;
+    }
+    //active
+    if (mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
+        < 4 * 60 * 60 * 1000) {
+      return COLORED_LAYOUT_RED;
     } else {
-      if (mBookingEntities.get(position).getServiceTime() * 1000L - System.currentTimeMillis()
-          < 4 * 60 * 60 * 1000) {
-        return COLORED_LAYOUT_RED;
-      } else {
-        return NOT_COLORED_LAYOUT;
-      }
+      return NOT_COLORED_LAYOUT;
     }
   }
 
@@ -224,6 +240,7 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
     @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
     @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;
+    @BindView(R.id.tvStatus) TextView mTextViewStatus;
     @BindView(R.id.bPostpone) Button mButtonPostpone;
     @BindView(R.id.bCancel) Button mButtonCancel;
     @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;

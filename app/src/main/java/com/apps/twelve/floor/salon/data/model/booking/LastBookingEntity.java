@@ -1,8 +1,9 @@
-package com.apps.twelve.floor.salon.data.model;
+package com.apps.twelve.floor.salon.data.model.booking;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -15,6 +16,8 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
   @PrimaryKey @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
+  @SerializedName("status") private String status;
+  @SerializedName("status_history") private RealmList<StatusHistory> statusHistory = null;
   @SerializedName("master") private String masterName;
   @SerializedName("master_description") private String masterDescription;
   @SerializedName("master_photo") private String masterPhoto;
@@ -34,14 +37,17 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
   public LastBookingEntity() {
   }
 
-  public LastBookingEntity(Integer id, String userPhone, String userName, String masterName,
-      String masterDescription, String masterPhoto, Integer masterId, Integer serviceTime,
-      Integer scheduleId, Integer serviceId, String serviceName, String serviceImage,
-      String serviceDescription, String serviceBonusPrice, String serviceBonusAdd,
-      String servicePrice, String serviceNewPrice, String serviceDuration) {
+  public LastBookingEntity(Integer id, String userPhone, String userName, String status,
+      RealmList<StatusHistory> statusHistory, String masterName, String masterDescription,
+      String masterPhoto, Integer masterId, Integer serviceTime, Integer scheduleId,
+      Integer serviceId, String serviceName, String serviceImage, String serviceDescription,
+      String serviceBonusPrice, String serviceBonusAdd, String servicePrice, String serviceNewPrice,
+      String serviceDuration) {
     this.id = id;
     this.userPhone = userPhone;
     this.userName = userName;
+    this.status = status;
+    this.statusHistory = statusHistory;
     this.masterName = masterName;
     this.masterDescription = masterDescription;
     this.masterPhoto = masterPhoto;
@@ -81,6 +87,22 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
 
   public void setUserName(String userName) {
     this.userName = userName;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+  public RealmList<StatusHistory> getStatusHistory() {
+    return statusHistory;
+  }
+
+  public void setStatusHistory(RealmList<StatusHistory> statusHistory) {
+    this.statusHistory = statusHistory;
   }
 
   public String getMasterName() {
@@ -208,15 +230,12 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
   }
 
   protected LastBookingEntity(Parcel in) {
-    id = in.readInt();
     userPhone = in.readString();
     userName = in.readString();
+    status = in.readString();
     masterName = in.readString();
     masterDescription = in.readString();
     masterPhoto = in.readString();
-    masterId = in.readInt();
-    scheduleId = in.readInt();
-    serviceTime = in.readInt();
     serviceName = in.readString();
     serviceImage = in.readString();
     serviceDescription = in.readString();
@@ -228,15 +247,12 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
   }
 
   @Override public void writeToParcel(Parcel dest, int flags) {
-    dest.writeInt(id);
     dest.writeString(userPhone);
     dest.writeString(userName);
+    dest.writeString(status);
     dest.writeString(masterName);
     dest.writeString(masterDescription);
     dest.writeString(masterPhoto);
-    dest.writeInt(masterId);
-    dest.writeInt(scheduleId);
-    dest.writeInt(serviceTime);
     dest.writeString(serviceName);
     dest.writeString(serviceImage);
     dest.writeString(serviceDescription);

@@ -26,9 +26,9 @@ public class ListsPagerAdapter extends FragmentStatePagerAdapter {
 
   @Override public CharSequence getPageTitle(int position) {
     if (position == 0) {
-      return ("ActiveBookingFragment");
+      return ("Активные записи");
     } else {
-      return ("HistoryBookingFragment");
+      return ("История");
     }
   }
 

@@ -3,7 +3,7 @@ package com.apps.twelve.floor.salon.data.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.apps.twelve.floor.salon.BuildConfig;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.List;

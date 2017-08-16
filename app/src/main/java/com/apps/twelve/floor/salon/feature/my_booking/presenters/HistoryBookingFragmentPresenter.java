@@ -34,7 +34,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
   private void fetchBookingEntities() {
     getViewState().startRefreshingView();
     Subscription subscription =
-        mAuthorizationManager.checkToken(mDataManager.fetchLastBooking()).concatMap(response -> {
+        mAuthorizationManager.checkToken(mDataManager.fetchLastBookingHistory()).concatMap(response -> {
           if (response.code() == RESPONSE_TOKEN_EXPIRED) {
             return mAuthorizationManager.checkToken(mDataManager.fetchLastBooking());
           }

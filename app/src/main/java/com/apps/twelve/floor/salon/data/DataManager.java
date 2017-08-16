@@ -9,7 +9,7 @@ import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
@@ -132,6 +132,10 @@ public class DataManager {
 
   public Observable<Response<List<LastBookingEntity>>> fetchLastBooking() {
     return mRestApi.fetchLastBooking(mPref.getLanguageCode(), mAuthorizationManager.getToken());
+  }
+
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory() {
+    return mRestApi.fetchLastBookingHistory(mPref.getLanguageCode(), mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
@@ -342,5 +346,6 @@ public class DataManager {
   public String getStringEntity(String bonus) {
     return mPref.getStringEntity(bonus);
   }
+
 }
 

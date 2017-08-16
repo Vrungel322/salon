@@ -42,6 +42,14 @@ public final class Constants {
     public static final String CHOOSE_SERVICE_TIME_FRAGMENT = "ChooseServiceTimeFragment";
     public static final String CHOOSE_SERVICE_CONTACT_FRAGMENT = "ChooseServiceContactFragment";
   }
+  
+  public class StatusBooking{
+
+    public static final String NEW = "new";
+    public static final String CONFIRMED = "confirmed";
+    public static final String MISSED = "missed";
+    public static final String DONE = "done";
+  }
 
   public class FragmentsArgumentKeys {
     public static final String NEWS_DETAIL_KEY = "NEWS_DETAIL_KEY";

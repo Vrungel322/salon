@@ -1,15 +1,11 @@
 package com.apps.twelve.floor.salon.feature.main_screen.adapters;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +17,13 @@ import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.MvpBaseRecyclerAdapter;
 import com.apps.twelve.floor.salon.base.Navigator;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.main_screen.presenters.MyLastBookingAdapterPresenter;
 import com.apps.twelve.floor.salon.feature.main_screen.views.IMyLastBookingAdapterView;
 import com.apps.twelve.floor.salon.feature.my_booking.adapters.MyBookingAdapter;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.PostponeFragment;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
+import com.apps.twelve.floor.salon.utils.Constants;
 import com.apps.twelve.floor.salon.utils.Converters;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.MvpDelegate;
@@ -100,6 +97,20 @@ public class MyLastBookingAdapter
     //  holder.mConstraintLayoutLastBooking.setBackground(drawableFromTheme);
     //  holder.view.setVisibility(View.INVISIBLE);
     //}
+
+    //for Status
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)){
+      holder.mTextViewStatus.setText(R.string.new_booking);
+    }
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)){
+      holder.mTextViewStatus.setText(R.string.confirmed_booking);
+    }
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)){
+      holder.mTextViewStatus.setText(R.string.missed_booking);
+    }
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)){
+      holder.mTextViewStatus.setText(R.string.done_booking);
+    }
     Glide.with(holder.mImageViewServicePhoto.getContext())
         .load(mLastBookingEntities.get(position).getServiceImage())
         .centerCrop()
@@ -216,6 +227,7 @@ public class MyLastBookingAdapter
     @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
     @BindView(R.id.tvServiceTime) TextView mTextViewServiceTime;
     @BindView(R.id.tvRemainTime) TextView mTextViewRemainTime;
+    @BindView(R.id.tvStatus) TextView mTextViewStatus;
     @BindView(R.id.bPostpone) Button mButtonPostpone;
     @BindView(R.id.bCancel) Button mButtonCancel;
     @BindView(R.id.pbCancelBooking) ProgressBar mProgressBarCancel;

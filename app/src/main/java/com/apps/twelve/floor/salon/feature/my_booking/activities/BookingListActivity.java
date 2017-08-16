@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseActivity;
 import com.apps.twelve.floor.salon.data.local.LocaleHelper;
-import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.feature.my_booking.fragments.BookDetailsFragment;
 import com.apps.twelve.floor.salon.feature.my_booking.presenters.BookingListActivityPresenter;
 import com.apps.twelve.floor.salon.feature.my_booking.views.IBookingListActivityView;

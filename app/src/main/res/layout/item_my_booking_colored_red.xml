@@ -144,5 +144,17 @@
       android:layout_marginRight="8dp"
       app:layout_constraintRight_toRightOf="parent"
       />
+  <TextView
+      android:id="@+id/tvStatus"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginTop="16dp"
+      android:text="TextView"
+      app:layout_constraintBottom_toTopOf="@+id/bPostpone"
+      app:layout_constraintLeft_toRightOf="@+id/ivServicePhoto"
+      app:layout_constraintTop_toBottomOf="@+id/tvServiceTime"
+      />
 
 </android.support.constraint.ConstraintLayout>

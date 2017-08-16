@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.data.model;
 
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import java.util.List;
 import retrofit2.Response;
@@ -59,6 +60,11 @@ public interface SalonApi {
 
   @GET("api/v1/users/entries") Observable<Response<List<LastBookingEntity>>> fetchLastBooking(
       @Header("lng") String language, @Header("authorization") String token);
+
+  @GET("api/v1/users/entries")
+  Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory(
+      @Header("lng") String language, @Header("authorization") String token,
+      @Query("status") String collectionOfStatus, @Query("scheduleFrom") int fromTimeSec);
 
   @DELETE("api/v1/entry/{id}") Observable<Response<Void>> cancelOrder(
       @Header("lng") String language, @Path("id") String serviceId,
