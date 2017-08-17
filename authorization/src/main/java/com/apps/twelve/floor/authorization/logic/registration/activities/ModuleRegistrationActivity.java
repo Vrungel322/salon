@@ -127,6 +127,7 @@ public class ModuleRegistrationActivity extends BaseActivity
       presenter.register(new UserEntity(mEtName.getText().toString(), mEtEmail.getText().toString(),
           mEtPhone.getText().toString(), mEtPassword.getText().toString()));
     }
+    ActionUtils.hideKeyboard(this);
   }
 
   @OnClick(R2.id.root_layout) public void onRootLayoutClick(View v) {

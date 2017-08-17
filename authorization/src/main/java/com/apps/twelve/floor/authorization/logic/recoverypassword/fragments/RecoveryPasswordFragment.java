@@ -89,7 +89,7 @@ public class RecoveryPasswordFragment extends BaseFragment implements IRecoveryP
 
   @OnClick(R2.id.btn_recovery) public void recoveryPassword() {
     if (TextUtils.isEmpty(mLogin.getText().toString())) {
-      mTilEmailOrPhone.setError(getString(R.string.error_empty_name));
+      mTilEmailOrPhone.setError(getString(R.string.error_required_field));
       return;
     }
     if (mAwesomeValidation.validate()) {
@@ -124,7 +124,7 @@ public class RecoveryPasswordFragment extends BaseFragment implements IRecoveryP
   }
 
   @Override public void showRecoveryPasswordFragment(CredentialsEntity credentialsEntity) {
-    mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.fragment_container,
+    mNavigator.replaceFragment((AppCompatActivity) getActivity(), R.id.fragment_container,
         RecoveryChangePasswordFragment.newInstance(credentialsEntity));
   }
 
