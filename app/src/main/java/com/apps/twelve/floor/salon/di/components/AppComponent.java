@@ -37,6 +37,8 @@ import com.apps.twelve.floor.salon.feature.settings.fragments.AboutApplicationDi
 import com.apps.twelve.floor.salon.feature.settings.fragments.ThemeDialogFragment;
 import com.apps.twelve.floor.salon.feature.settings.presenters.AboutApplicationDialogPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.NotificationSettingsFragmentPresenter;
+import com.apps.twelve.floor.salon.feature.settings.presenters.PartnersAdapterPresenter;
+import com.apps.twelve.floor.salon.feature.settings.presenters.PartnersFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.ReportProblemFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsActivityPresenter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.SettingsFragmentPresenter;
@@ -125,6 +127,10 @@ import dagger.Component;
   void inject(AboutApplicationDialogPresenter aboutApplicationDialogPresenter);
 
   void inject(HistoryBookingFragmentPresenter aboutApplicationDialogPresenter);
+
+  void inject(PartnersFragmentPresenter partnersFragmentPresenter);
+
+  void inject(PartnersAdapterPresenter partnersAdapterPresenter);
 
   //activities
   void inject(BaseActivity activity);
