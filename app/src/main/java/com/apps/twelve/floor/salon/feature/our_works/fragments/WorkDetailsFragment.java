@@ -83,8 +83,9 @@ public class WorkDetailsFragment extends BaseFragment implements IWorkDetailsFra
     if (ourWorkEntity != null) {
       //some TV (title and gallery description)
       mTextViewTitleWork.setText(ourWorkEntity.getTitle());
-      mTextViewDescriptionWork.setText(Html.fromHtml(ourWorkEntity.getShortDescription()));
-
+      if (ourWorkEntity.getShortDescription() != null) {
+        mTextViewDescriptionWork.setText(Html.fromHtml(ourWorkEntity.getShortDescription()));
+      }
       // pager adapter
       mViewPagerAdapter =
           new ImageWorkViewPagerAdapter(getContext(), ourWorkEntity.getListPhotoWorks());
