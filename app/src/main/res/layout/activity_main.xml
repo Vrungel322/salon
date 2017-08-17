@@ -11,8 +11,8 @@
     >
   <ImageView
       android:id="@+id/ivSplash"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
       android:layout_centerHorizontal="true"
       android:background="@drawable/splash"
       android:scaleType="centerCrop"
@@ -29,7 +29,7 @@
       android:layout_marginLeft="8dp"
       android:layout_marginRight="8dp"
       android:layout_marginTop="8dp"
-      android:text="Beauty Salon"
+    android:text="@string/salon_name"
       android:textSize="32sp"
       android:textColor="@color/colorWhite"
       app:layout_constraintBottom_toBottomOf="@+id/ivSplash"
