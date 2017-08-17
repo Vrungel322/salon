@@ -78,6 +78,11 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
     themeDialog.setCancelable(false);
   }
 
+  @OnClick(R.id.rlPartners) public void showPartners() {
+    mNavigator.addFragmentBackStack((AppCompatActivity) getActivity(), R.id.container_settings,
+        PartnersFragment.newInstance());
+  }
+
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // TODO: inflate a fragment view
@@ -140,9 +145,5 @@ public class SettingsFragment extends BaseFragment implements ISettingsFragmentV
   @OnClick(R.id.rlAboutApplication) public void showAboutAppDialog() {
     AboutApplicationDialog aboutApplicationDialog = new AboutApplicationDialog();
     aboutApplicationDialog.show(getActivity().getFragmentManager(), "");
-  }
-
-  @OnClick(R.id.rlPartners) public void showPartners() {
-    showToastMessage("Наши партнеры");
   }
 }

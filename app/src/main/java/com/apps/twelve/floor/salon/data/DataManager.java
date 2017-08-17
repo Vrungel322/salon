@@ -13,6 +13,7 @@ import com.apps.twelve.floor.salon.data.model.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
+import com.apps.twelve.floor.salon.data.model.PartnerEntity;
 import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.RemoteStringEntity;
 import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
@@ -20,6 +21,7 @@ import com.apps.twelve.floor.salon.data.model.ServiceEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import io.realm.RealmObject;
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Response;
 import rx.Observable;
@@ -341,6 +343,33 @@ public class DataManager {
 
   public String getStringEntity(String bonus) {
     return mPref.getStringEntity(bonus);
+  }
+
+  //mock
+  public Observable<List<PartnerEntity>> fetchListOfPartners() {
+    ArrayList<PartnerEntity> partnerEntities = new ArrayList<>();
+
+    ArrayList<String> addresses = new ArrayList<>();
+    addresses.add("620 Eighth Avenue New York, NY 10018");
+
+    ArrayList<String> phones = new ArrayList<>();
+    phones.add("+380551234455");
+    phones.add("+380551234456");
+
+    ArrayList<String> emails = new ArrayList<>();
+    emails.add("floor12@gmail.com");
+
+    ArrayList<String> links = new ArrayList<>();
+    links.add("https://www.floor12apps.com");
+    links.add("https://www.floor12apps.com");
+
+    partnerEntities.add(new PartnerEntity("1", "Партнер1", addresses, phones, emails, links));
+    partnerEntities.add(new PartnerEntity("2", "Партнер2", addresses, phones, emails, links));
+    partnerEntities.add(new PartnerEntity("3", "Партнер3", addresses, phones, emails, links));
+    partnerEntities.add(new PartnerEntity("4", "Партнер4", addresses, phones, emails, links));
+    partnerEntities.add(new PartnerEntity("5", "Партнер5", addresses, phones, emails, links));
+
+    return Observable.just(partnerEntities);
   }
 }
 
