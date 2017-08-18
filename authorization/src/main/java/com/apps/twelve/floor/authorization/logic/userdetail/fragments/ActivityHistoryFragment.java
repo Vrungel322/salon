@@ -141,7 +141,7 @@ public class ActivityHistoryFragment extends BaseFragment implements IActivityHi
   }
 
   @Override public void onDestroy() {
-    setTitleAppBar(R.string.profile_title);
+    setTitleAppBar(R.string.menu_settings);
     super.onDestroy();
   }
 

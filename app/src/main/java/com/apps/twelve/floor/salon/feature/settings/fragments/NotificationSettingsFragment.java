@@ -66,6 +66,7 @@ public class NotificationSettingsFragment extends BaseFragment
   }
 
   @Override public void onDestroyView() {
+    ((SettingsActivity) getActivity()).setTitleAppBar(R.string.menu_settings);
     super.onDestroyView();
     if (mPickDaysDialog != null) {
       mPickDaysDialog.dismiss();

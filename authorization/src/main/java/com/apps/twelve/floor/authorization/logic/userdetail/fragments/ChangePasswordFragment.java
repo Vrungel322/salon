@@ -162,7 +162,7 @@ public class ChangePasswordFragment extends BaseFragment implements IChangePassw
   }
 
   @Override public void onDestroy() {
-    setTitleAppBar(R.string.profile_title);
+    setTitleAppBar(R.string.menu_settings);
     if (mDialog != null) {
       mDialog.dismiss();
     }

@@ -120,6 +120,7 @@
   <string name="additional_settings">Доп. настройки</string>
   <string name="settings_problem">Сообщить о проблеме</string>
   <string name="settings_change_theme">Тема приложения</string>
+  <string name="menu_settings">Настройки приложения</string>
   <string name="settings_notifications">Настройки уведомлений</string>
   <string name="exit">Выйти</string>
   <string name="error_empty_gallery">Список пуст …</string>

@@ -205,7 +205,7 @@ public class DeleteAccountFragment extends BaseFragment implements IDeleteAccoun
   }
 
   @Override public void onDestroy() {
-    setTitleAppBar(R.string.profile_title);
+    setTitleAppBar(R.string.menu_settings);
     super.onDestroy();
   }
 

@@ -9,6 +9,7 @@ import butterknife.BindView;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.PartnerEntity;
+import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.adapters.PartnersAdapter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.PartnersFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.IPartnersFragment;
@@ -39,6 +40,9 @@ public class PartnersFragment extends BaseFragment implements IPartnersFragment 
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    ((SettingsActivity) getActivity()).setTitleAppBar(R.string.settings_our_partners);
+
     mPartnersAdapter = new PartnersAdapter(getMvpDelegate(), getContext());
     mRvPartners.setLayoutManager(new LinearLayoutManager(getContext()));
     mRvPartners.setAdapter(mPartnersAdapter);
@@ -48,5 +52,10 @@ public class PartnersFragment extends BaseFragment implements IPartnersFragment 
 
   @Override public void showPartners(List<PartnerEntity> partnerEntityList) {
     mPartnersAdapter.addPartners(partnerEntityList);
+  }
+
+  @Override public void onDestroyView() {
+    ((SettingsActivity) getActivity()).setTitleAppBar(R.string.menu_settings);
+    super.onDestroyView();
   }
 }
