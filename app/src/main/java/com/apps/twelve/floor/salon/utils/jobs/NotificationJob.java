@@ -18,6 +18,7 @@ import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.evernote.android.job.Job;
 import java.util.Random;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DAILY;
 import static com.apps.twelve.floor.salon.utils.Constants.Notifications.DATE;
@@ -83,6 +84,10 @@ public class NotificationJob extends Job {
         stackBuilder.addNextIntentWithParentStack(intent);
 
         pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //test
+
+        Timber.e(bookingEntity.getServiceTime() + "");
       } else {
         pendingIntent = PendingIntent.getActivity(getContext(), 0,
             new Intent(getContext(), StartActivity.class).setAction(

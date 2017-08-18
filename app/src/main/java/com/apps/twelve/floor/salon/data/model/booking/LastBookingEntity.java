@@ -225,51 +225,60 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
     this.serviceDuration = serviceDuration;
   }
 
-  public static Creator<LastBookingEntity> getCREATOR() {
-    return CREATOR;
-  }
-
-  protected LastBookingEntity(Parcel in) {
-    userPhone = in.readString();
-    userName = in.readString();
-    status = in.readString();
-    masterName = in.readString();
-    masterDescription = in.readString();
-    masterPhoto = in.readString();
-    serviceName = in.readString();
-    serviceImage = in.readString();
-    serviceDescription = in.readString();
-    serviceBonusPrice = in.readString();
-    serviceBonusAdd = in.readString();
-    servicePrice = in.readString();
-    serviceNewPrice = in.readString();
-    serviceDuration = in.readString();
-  }
-
-  @Override public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(userPhone);
-    dest.writeString(userName);
-    dest.writeString(status);
-    dest.writeString(masterName);
-    dest.writeString(masterDescription);
-    dest.writeString(masterPhoto);
-    dest.writeString(serviceName);
-    dest.writeString(serviceImage);
-    dest.writeString(serviceDescription);
-    dest.writeString(serviceBonusPrice);
-    dest.writeString(serviceBonusAdd);
-    dest.writeString(servicePrice);
-    dest.writeString(serviceNewPrice);
-    dest.writeString(serviceDuration);
-  }
-
   @Override public int describeContents() {
     return 0;
   }
 
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeValue(this.id);
+    dest.writeString(this.userPhone);
+    dest.writeString(this.userName);
+    dest.writeString(this.status);
+    dest.writeList(this.statusHistory);
+    dest.writeString(this.masterName);
+    dest.writeString(this.masterDescription);
+    dest.writeString(this.masterPhoto);
+    dest.writeValue(this.masterId);
+    dest.writeValue(this.serviceTime);
+    dest.writeValue(this.scheduleId);
+    dest.writeValue(this.serviceId);
+    dest.writeString(this.serviceName);
+    dest.writeString(this.serviceImage);
+    dest.writeString(this.serviceDescription);
+    dest.writeString(this.serviceBonusPrice);
+    dest.writeString(this.serviceBonusAdd);
+    dest.writeString(this.servicePrice);
+    dest.writeString(this.serviceNewPrice);
+    dest.writeString(this.serviceDuration);
+  }
+
+  protected LastBookingEntity(Parcel in) {
+    this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.userPhone = in.readString();
+    this.userName = in.readString();
+    this.status = in.readString();
+    this.statusHistory = new RealmList<>();
+    in.readList(this.statusHistory, StatusHistory.class.getClassLoader());
+    this.masterName = in.readString();
+    this.masterDescription = in.readString();
+    this.masterPhoto = in.readString();
+    this.masterId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceTime = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.scheduleId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceName = in.readString();
+    this.serviceImage = in.readString();
+    this.serviceDescription = in.readString();
+    this.serviceBonusPrice = in.readString();
+    this.serviceBonusAdd = in.readString();
+    this.servicePrice = in.readString();
+    this.serviceNewPrice = in.readString();
+    this.serviceDuration = in.readString();
+  }
+
   public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
-    @Override public LastBookingEntity createFromParcel(Parcel in) {
-      return new LastBookingEntity(in);
+    @Override public LastBookingEntity createFromParcel(Parcel source) {
+      return new LastBookingEntity(source);
     }
 
     @Override public LastBookingEntity[] newArray(int size) {
