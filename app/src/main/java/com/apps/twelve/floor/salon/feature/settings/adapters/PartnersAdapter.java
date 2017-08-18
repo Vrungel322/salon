@@ -1,6 +1,6 @@
 package com.apps.twelve.floor.salon.feature.settings.adapters;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -32,12 +32,12 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
 
   @InjectPresenter PartnersAdapterPresenter mPresenter;
 
-  private Activity mActivity;
+  private Context mContext;
   private ArrayList<PartnerEntity> mPartnerEntities = new ArrayList<PartnerEntity>();
 
-  public PartnersAdapter(MvpDelegate<?> parentDelegate, Activity activity) {
+  public PartnersAdapter(MvpDelegate<?> parentDelegate, Context context) {
     super(parentDelegate, "PartnersAdapter ");
-    this.mActivity = activity;
+    this.mContext = context;
   }
 
   public void addPartners(List<PartnerEntity> partnerEntities) {
@@ -76,8 +76,8 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
             .inflate(R.layout.contact_text, contactPlaceholder, false);
 
         TypedValue value = new TypedValue();
-        mActivity.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
-        tvTmpView.setLinkTextColor(ContextCompat.getColor(mActivity, value.resourceId));
+        mContext.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+        tvTmpView.setLinkTextColor(ContextCompat.getColor(mContext, value.resourceId));
 
         tvTmpView.setPaintFlags(tvTmpView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvTmpView.setText(data.get(i));

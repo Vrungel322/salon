@@ -39,7 +39,7 @@ public class PartnersFragment extends BaseFragment implements IPartnersFragment 
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    mPartnersAdapter = new PartnersAdapter(getMvpDelegate(), getActivity());
+    mPartnersAdapter = new PartnersAdapter(getMvpDelegate(), getContext());
     mRvPartners.setLayoutManager(new LinearLayoutManager(getContext()));
     mRvPartners.setAdapter(mPartnersAdapter);
     mRvPartners.setNestedScrollingEnabled(false);
