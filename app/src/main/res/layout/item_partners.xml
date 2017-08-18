@@ -15,10 +15,10 @@
 
     <TextView
       android:id="@+id/tv_name"
-      android:textSize="20sp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="5dp" />
+      android:layout_marginBottom="5dp"
+      android:textSize="20sp" />
 
     <!-- addresses -->
     <LinearLayout
@@ -39,26 +39,11 @@
         card_view:srcCompat="@drawable/ic_location" />
 
       <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/ll_addresses"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical">
-
-        <View
-          android:id="@+id/v_address_divider"
-          android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="5dp"
-          android:layout_marginTop="5dp"
-          android:background="@color/colorGray" />
-
-        <LinearLayout
-          android:id="@+id/ll_addresses"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <!-- add text views in code-->
-        </LinearLayout>
+        <!-- add text views in code-->
       </LinearLayout>
     </LinearLayout>
 
@@ -67,6 +52,7 @@
       android:id="@+id/ll_phones_container"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
       android:orientation="horizontal">
 
       <ImageView
@@ -80,27 +66,13 @@
         android:layout_marginTop="5dp"
         card_view:srcCompat="@drawable/ic_phone" />
 
+
       <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/ll_phones"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical">
-
-        <View
-          android:id="@+id/v_phoness_divider"
-          android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="5dp"
-          android:layout_marginTop="5dp"
-          android:background="@color/colorGray" />
-
-        <LinearLayout
-          android:id="@+id/ll_phones"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <!-- add text views in code-->
-        </LinearLayout>
+        <!-- add text views in code-->
       </LinearLayout>
     </LinearLayout>
 
@@ -109,6 +81,7 @@
       android:id="@+id/ll_emails_container"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
       android:orientation="horizontal">
 
       <ImageView
@@ -123,26 +96,11 @@
         card_view:srcCompat="@drawable/ic_email" />
 
       <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/ll_emails"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical">
-
-        <View
-          android:id="@+id/v_emails_divider"
-          android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="5dp"
-          android:layout_marginTop="5dp"
-          android:background="@color/colorGray" />
-
-        <LinearLayout
-          android:id="@+id/ll_emails"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <!-- add text views in code-->
-        </LinearLayout>
+        <!-- add text views in code-->
       </LinearLayout>
     </LinearLayout>
 
@@ -151,6 +109,7 @@
       android:id="@+id/ll_websites_container"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
       android:orientation="horizontal">
 
       <ImageView
@@ -165,26 +124,11 @@
         card_view:srcCompat="@drawable/ic_website" />
 
       <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/ll_websites"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical">
-
-        <View
-          android:id="@+id/v_websites_divider"
-          android:layout_width="match_parent"
-          android:layout_height="1dp"
-          android:layout_marginBottom="5dp"
-          android:layout_marginTop="5dp"
-          android:background="@color/colorGray" />
-
-        <LinearLayout
-          android:id="@+id/ll_websites"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <!-- add text views in code-->
-        </LinearLayout>
+        <!-- add text views in code-->
       </LinearLayout>
     </LinearLayout>
   </LinearLayout>

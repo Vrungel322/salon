@@ -1,8 +1,11 @@
 package com.apps.twelve.floor.salon.feature.settings.adapters;
 
-import android.content.Context;
+import android.app.Activity;
+import android.graphics.Paint;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.util.Linkify;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +32,12 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
 
   @InjectPresenter PartnersAdapterPresenter mPresenter;
 
-  private Context mContext;
+  private Activity mActivity;
   private ArrayList<PartnerEntity> mPartnerEntities = new ArrayList<PartnerEntity>();
 
-  public PartnersAdapter(MvpDelegate<?> parentDelegate, Context context) {
+  public PartnersAdapter(MvpDelegate<?> parentDelegate, Activity activity) {
     super(parentDelegate, "PartnersAdapter ");
-    this.mContext = context;
+    this.mActivity = activity;
   }
 
   public void addPartners(List<PartnerEntity> partnerEntities) {
@@ -50,31 +53,37 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
 
   @Override public void onBindViewHolder(PartnersViewHolder holder, int position) {
     holder.tvName.setText(mPartnerEntities.get(position).getName());
-    setContextAndVisibility(holder.llAddresses, holder.vAddressDivider, holder.llAddressContainer,
+    setContextAndVisibility(holder.llAddresses, holder.llAddressContainer,
         mPartnerEntities.get(position).getAddresses());
-    setContextAndVisibility(holder.llPhones, holder.vPhonessDivider, holder.llPhonesContainer,
+    setContextAndVisibility(holder.llPhones, holder.llPhonesContainer,
         mPartnerEntities.get(position).getPhones());
-    setContextAndVisibility(holder.llEmails, holder.vEmailsDivider, holder.llEmailsContainer,
+    setContextAndVisibility(holder.llEmails, holder.llEmailsContainer,
         mPartnerEntities.get(position).getEmails());
-    setContextAndVisibility(holder.llWebsites, holder.vWebsitesDivider, holder.llWebsitesContainer,
+    setContextAndVisibility(holder.llWebsites, holder.llWebsitesContainer,
         mPartnerEntities.get(position).getWebSites());
   }
 
-  private void setContextAndVisibility(LinearLayout contactPlaceholder, View divider,
+  private void setContextAndVisibility(LinearLayout contactPlaceholder,
       LinearLayout contactContainer, List<String> data) {
     if (data.size() == 0) {
-      divider.setVisibility(View.GONE);
       contactContainer.setVisibility(View.GONE);
     } else {
-      divider.setVisibility(View.VISIBLE);
       contactContainer.setVisibility(View.VISIBLE);
       contactPlaceholder.removeAllViews();
       TextView tvTmpView = null;
       for (int i = 0; i < data.size(); i++) {
         tvTmpView = (TextView) LayoutInflater.from(contactPlaceholder.getContext())
             .inflate(R.layout.contact_text, contactPlaceholder, false);
+
+        TypedValue value = new TypedValue();
+        mActivity.getTheme().resolveAttribute(R.attr.colorAccent, value, true);
+        tvTmpView.setLinkTextColor(ContextCompat.getColor(mActivity, value.resourceId));
+
+        tvTmpView.setPaintFlags(tvTmpView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         tvTmpView.setText(data.get(i));
+
         Linkify.addLinks(tvTmpView, Linkify.ALL);
+
         contactPlaceholder.addView(tvTmpView);
       }
     }
@@ -87,18 +96,14 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
   public class PartnersViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_name) TextView tvName;
-    @BindView(R.id.ll_addresses) LinearLayout llAddresses;
-    @BindView(R.id.ll_phones) LinearLayout llPhones;
-    @BindView(R.id.ll_emails) LinearLayout llEmails;
-    @BindView(R.id.ll_websites) LinearLayout llWebsites;
-    @BindView(R.id.v_address_divider) View vAddressDivider;
     @BindView(R.id.ll_address_container) LinearLayout llAddressContainer;
-    @BindView(R.id.v_phoness_divider) View vPhonessDivider;
+    @BindView(R.id.ll_addresses) LinearLayout llAddresses;
     @BindView(R.id.ll_phones_container) LinearLayout llPhonesContainer;
-    @BindView(R.id.v_emails_divider) View vEmailsDivider;
+    @BindView(R.id.ll_phones) LinearLayout llPhones;
     @BindView(R.id.ll_emails_container) LinearLayout llEmailsContainer;
-    @BindView(R.id.v_websites_divider) View vWebsitesDivider;
+    @BindView(R.id.ll_emails) LinearLayout llEmails;
     @BindView(R.id.ll_websites_container) LinearLayout llWebsitesContainer;
+    @BindView(R.id.ll_websites) LinearLayout llWebsites;
 
     public PartnersViewHolder(View itemView) {
       super(itemView);
