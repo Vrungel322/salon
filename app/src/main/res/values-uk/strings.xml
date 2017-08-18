@@ -176,4 +176,11 @@
   <string name="settings_our_partners">Наші партнери</string>
   <string name="hide">Згорнути</string>
   <string name="report_problem_hint">Опис вашої проблеми</string>
+
+  <string name="new_booking">Новий запис</string>
+  <string name="confirmed_booking">Підтверджена запис</string>
+  <string name="missed_booking">Пропущена запис</string>
+  <string name="done_booking">Виконано</string>
+  <string name="call_admin">Зателефонувати адміністратору</string>
+  <string name="admin_phone">+380689647569</string>
 </resources>
