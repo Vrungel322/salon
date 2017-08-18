@@ -68,8 +68,14 @@ public class StartActivity extends BaseActivity
     super.onCreate(savedInstanceState);
     setUpUI();
 
-    mFabBooking.setOnClickListener(v -> mNavigator.startActivity(StartActivity.this,
-        new Intent(StartActivity.this, BookingActivity.class)));
+    mFabBooking.setOnClickListener(v -> {
+      if (mAuthorizationManager.isAuthorized()) {
+        mNavigator.startActivity(StartActivity.this,
+            new Intent(StartActivity.this, BookingActivity.class));
+      } else {
+        mStartActivityPresenter.showAlertDialog();
+      }
+    });
 
     mNavViewTopPart.getHeaderView(0).setOnClickListener(v -> {
       mNavigator.addFragmentTagClearBackStackNotCopy(this, R.id.container_main,
@@ -200,8 +206,12 @@ public class StartActivity extends BaseActivity
         mNavigator.clearBackStack(this);
         break;
       case R.id.nav_booking:
-        mNavigator.startActivity(StartActivity.this,
-            new Intent(StartActivity.this, BookingActivity.class));
+        if (mAuthorizationManager.isAuthorized()) {
+          mNavigator.startActivity(StartActivity.this,
+              new Intent(StartActivity.this, BookingActivity.class));
+        } else {
+          mStartActivityPresenter.showAlertDialog();
+        }
         break;
       case R.id.nav_my_book:
         if (mAuthorizationManager.isAuthorized()) {
