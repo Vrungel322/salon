@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.feature.booking.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +35,9 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   @BindView(R.id.cvChooseMaster) CardView cvChooseMaser;
   @BindView(R.id.cvChooseService) CardView cvChooseService;
   @BindView(R.id.rlNetworkDisconnection) RelativeLayout rlNetworkDisconnection;
+  @BindView(R.id.buttonBookingPhone) Button mButtonBookingPhone;
   Unbinder unbinder;
+
 
   public BookingFragment() {
     super(R.layout.fragment_booking);
@@ -71,6 +76,12 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
     mNavigator.addFragmentTagBackStack((AppCompatActivity) getActivity(), R.id.container_booking,
         BookingDetailMasterFragment.newInstance(),
         Constants.FragmentTag.BOOKING_DETAIL_MASTER_FRAGMENT);
+  }
+
+  @OnClick(R.id.buttonBookingPhone) public void onViewClicked() {
+    Intent intent = new Intent(Intent.ACTION_DIAL);
+    intent.setData(Uri.parse("tel:" + mButtonBookingPhone.getText()));
+    startActivity(intent);
   }
 
   @Override public void onDestroyView() {
