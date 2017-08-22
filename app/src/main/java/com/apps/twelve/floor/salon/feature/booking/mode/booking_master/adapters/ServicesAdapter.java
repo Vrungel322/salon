@@ -1,6 +1,7 @@
 package com.apps.twelve.floor.salon.feature.booking.mode.booking_master.adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.content.res.AppCompatResources;
@@ -15,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.bumptech.glide.Glide;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.util.ArrayList;
@@ -69,7 +71,18 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         .into(holder.mImageViewServiceImg);
 
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());
-    holder.mTextViewAboutService.setText(mServiceEntities.get(position).getDescription());
+    holder.mTextViewAboutService.setText(mContext.getText(R.string.detail));
+    holder.mTextViewAboutService.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+    holder.mTextViewAboutService.setOnClickListener(view -> {
+
+      DialogFactory.createAlertDialogBuilder(mContext,mServiceEntities.get(position).getTitle())
+          .setMessage(
+              mServiceEntities.get(position).getDescription())
+          .setNegativeButton(R.string.dialog_auth_cancel,
+              (dialogInterface, i) -> dialogInterface.cancel())
+          .create()
+          .show();
+    });
     holder.mTextViewServicePrice.setText(mServiceEntities.get(position).getPrice());
     holder.mTextViewSServiceDuration.setText(mServiceEntities.get(position).getTime());
 
