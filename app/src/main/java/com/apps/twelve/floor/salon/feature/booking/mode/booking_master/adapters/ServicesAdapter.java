@@ -78,7 +78,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
       DialogFactory.createAlertDialogBuilder(mContext,mServiceEntities.get(position).getTitle())
           .setMessage(
               mServiceEntities.get(position).getDescription())
-          .setNegativeButton(R.string.dialog_auth_cancel,
+          .setNegativeButton(R.string.dialog_cancel,
               (dialogInterface, i) -> dialogInterface.cancel())
           .create()
           .show();
