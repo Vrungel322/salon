@@ -65,7 +65,7 @@
       android:layout_marginRight="24dp"
       android:background="?attr/selectableItemBackground"
       android:padding="3dp"
-      android:text="@string/dialog_action_ok"
+      android:text="@string/dialog_action_close"
       android:textColor="?colorAccent"
       android:textSize="16sp" />
   </RelativeLayout>
