@@ -214,5 +214,6 @@
   <string name="call_admin">Позвонить администратору</string>
   <string name="admin_phone">+380689647569</string>
   <string name="dialog_action_close">ЗАКРЫТЬ</string>
+  <string name="dialog_cancel">Закрыть</string>
 
 </resources>
