@@ -6,6 +6,7 @@ import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
+import com.apps.twelve.floor.salon.data.model.PartnerEntity;
 import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
@@ -172,4 +173,7 @@ public class RestApi {
     return api.fetchString(remoteStringType, language);
   }
 
+  public Observable<List<PartnerEntity>> fetchListOfPartners(String languageCode) {
+    return api.fetchListOfPartners(languageCode);
+  }
 }

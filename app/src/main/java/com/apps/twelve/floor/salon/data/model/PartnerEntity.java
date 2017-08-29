@@ -1,27 +1,25 @@
 package com.apps.twelve.floor.salon.data.model;
 
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by alexandersvyatetsky on 16/08/17.
  */
 
 public class PartnerEntity {
-  private String id;
-  private String name;
-  private List<String> addresses;
-  private List<String> phones;
-  private List<String> emails;
-  private List<String> webSites;
+  @SerializedName("id") private String id;
+  @SerializedName("title") private String title;
+  @SerializedName("logo") private String image;
+  @SerializedName("url") private String partnersPage;
 
-  public PartnerEntity(String id, String name, List<String> addresses, List<String> phones,
-      List<String> emails, List<String> webSites) {
+  public PartnerEntity() {
+  }
+
+  public PartnerEntity(String id, String title, String image, String partnersPage) {
     this.id = id;
-    this.name = name;
-    this.addresses = addresses;
-    this.phones = phones;
-    this.emails = emails;
-    this.webSites = webSites;
+    this.title = title;
+    this.image = image;
+    this.partnersPage = partnersPage;
   }
 
   public String getId() {
@@ -32,43 +30,27 @@ public class PartnerEntity {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public List<String> getAddresses() {
-    return addresses;
+  public String getImage() {
+    return image;
   }
 
-  public void setAddresses(List<String> addresses) {
-    this.addresses = addresses;
+  public void setImage(String image) {
+    this.image = image;
   }
 
-  public List<String> getPhones() {
-    return phones;
+  public String getPartnersPage() {
+    return partnersPage;
   }
 
-  public void setPhones(List<String> phones) {
-    this.phones = phones;
-  }
-
-  public List<String> getEmails() {
-    return emails;
-  }
-
-  public void setEmails(List<String> emails) {
-    this.emails = emails;
-  }
-
-  public List<String> getWebSites() {
-    return webSites;
-  }
-
-  public void setWebSites(List<String> webSites) {
-    this.webSites = webSites;
+  public void setPartnersPage(String partnersPage) {
+    this.partnersPage = partnersPage;
   }
 }

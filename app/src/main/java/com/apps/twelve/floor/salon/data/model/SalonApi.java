@@ -132,4 +132,7 @@ public interface SalonApi {
 
   @GET("api/v1/texts/{string}") Observable<RemoteStringEntity> fetchString(
       @Path("string") String remoteStringType, @Header("lng") String language);
+
+  @GET("api/v1/partners") Observable<List<PartnerEntity>> fetchListOfPartners(
+      @Header("lng") String language);
 }
