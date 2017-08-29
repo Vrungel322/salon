@@ -63,6 +63,10 @@ public class PartnersAdapter extends MvpBaseRecyclerAdapter<PartnersAdapter.Part
     return mPartnerEntities.size();
   }
 
+  public PartnerEntity getItem(int index){
+    return mPartnerEntities.get(index);
+  }
+
   public class PartnersViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tvPartnerName) TextView tvName;

@@ -1,5 +1,7 @@
 package com.apps.twelve.floor.salon.feature.settings.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +15,7 @@ import com.apps.twelve.floor.salon.feature.settings.activities.SettingsActivity;
 import com.apps.twelve.floor.salon.feature.settings.adapters.PartnersAdapter;
 import com.apps.twelve.floor.salon.feature.settings.presenters.PartnersFragmentPresenter;
 import com.apps.twelve.floor.salon.feature.settings.views.IPartnersFragment;
+import com.apps.twelve.floor.salon.utils.ItemClickSupport;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.List;
 
@@ -48,6 +51,11 @@ public class PartnersFragment extends BaseFragment implements IPartnersFragment 
     mRvPartners.setAdapter(mPartnersAdapter);
     mRvPartners.setNestedScrollingEnabled(false);
     mRvPartners.setFocusable(false);
+    ItemClickSupport.addTo(mRvPartners).setOnItemClickListener((recyclerView, position, v) -> {
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+          Uri.parse(mPartnersAdapter.getItem(position).getPartnersPage()));
+      startActivity(browserIntent);
+    });
   }
 
   @Override public void showPartners(List<PartnerEntity> partnerEntityList) {
