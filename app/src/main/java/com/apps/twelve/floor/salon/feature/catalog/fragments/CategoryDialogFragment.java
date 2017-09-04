@@ -23,7 +23,6 @@ import com.apps.twelve.floor.salon.utils.NetworkUtil;
 import com.arellomobile.mvp.MvpDialogFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import java.util.ArrayList;
-import timber.log.Timber;
 
 /**
  * Created by Vrungel on 29.05.2017.
@@ -70,12 +69,11 @@ public class CategoryDialogFragment extends MvpDialogFragment
     mAdapter.setChildClickListener((v, checked, group, childIndex) -> {
       mCategoryDialogFragmentPresenter.postToShowResetBtn();
 
-      if (NetworkUtil.isNetworkConnected(getActivity())){
+      if (NetworkUtil.isNetworkConnected(getActivity())) {
         mCategoryDialogFragmentPresenter.postEventToReloadList(
             ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
             ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());
-      }
-      else {
+      } else {
         mCategoryDialogFragmentPresenter.postEventToReloadListLocally(
             ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getId(),
             ((GoodsSubCategoryEntity) group.getItems().get(childIndex)).getTitle());

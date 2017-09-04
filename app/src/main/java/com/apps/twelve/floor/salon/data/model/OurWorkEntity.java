@@ -13,6 +13,15 @@ import io.realm.annotations.PrimaryKey;
 
 public class OurWorkEntity extends RealmObject implements Parcelable {
 
+  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
+    @Override public OurWorkEntity createFromParcel(Parcel in) {
+      return new OurWorkEntity(in);
+    }
+
+    @Override public OurWorkEntity[] newArray(int size) {
+      return new OurWorkEntity[size];
+    }
+  };
   @PrimaryKey @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("description") private String mShortDescription;
@@ -42,16 +51,6 @@ public class OurWorkEntity extends RealmObject implements Parcelable {
     mImageURL = in.readString();
     mImageCount = in.readInt();
   }
-
-  public static final Creator<OurWorkEntity> CREATOR = new Creator<OurWorkEntity>() {
-    @Override public OurWorkEntity createFromParcel(Parcel in) {
-      return new OurWorkEntity(in);
-    }
-
-    @Override public OurWorkEntity[] newArray(int size) {
-      return new OurWorkEntity[size];
-    }
-  };
 
   public int getId() {
     return id;

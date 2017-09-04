@@ -13,6 +13,15 @@ import io.realm.annotations.PrimaryKey;
 
 public class LastBookingEntity extends RealmObject implements Parcelable {
 
+  public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
+    @Override public LastBookingEntity createFromParcel(Parcel source) {
+      return new LastBookingEntity(source);
+    }
+
+    @Override public LastBookingEntity[] newArray(int size) {
+      return new LastBookingEntity[size];
+    }
+  };
   @PrimaryKey @SerializedName("id") private Integer id;
   @SerializedName("phone") private String userPhone;
   @SerializedName("name") private String userName;
@@ -63,6 +72,30 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
     this.servicePrice = servicePrice;
     this.serviceNewPrice = serviceNewPrice;
     this.serviceDuration = serviceDuration;
+  }
+
+  protected LastBookingEntity(Parcel in) {
+    this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.userPhone = in.readString();
+    this.userName = in.readString();
+    this.status = in.readString();
+    this.statusHistory = new RealmList<>();
+    in.readList(this.statusHistory, StatusHistory.class.getClassLoader());
+    this.masterName = in.readString();
+    this.masterDescription = in.readString();
+    this.masterPhoto = in.readString();
+    this.masterId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceTime = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.scheduleId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceId = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.serviceName = in.readString();
+    this.serviceImage = in.readString();
+    this.serviceDescription = in.readString();
+    this.serviceBonusPrice = in.readString();
+    this.serviceBonusAdd = in.readString();
+    this.servicePrice = in.readString();
+    this.serviceNewPrice = in.readString();
+    this.serviceDuration = in.readString();
   }
 
   public Integer getId() {
@@ -251,38 +284,4 @@ public class LastBookingEntity extends RealmObject implements Parcelable {
     dest.writeString(this.serviceNewPrice);
     dest.writeString(this.serviceDuration);
   }
-
-  protected LastBookingEntity(Parcel in) {
-    this.id = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.userPhone = in.readString();
-    this.userName = in.readString();
-    this.status = in.readString();
-    this.statusHistory = new RealmList<>();
-    in.readList(this.statusHistory, StatusHistory.class.getClassLoader());
-    this.masterName = in.readString();
-    this.masterDescription = in.readString();
-    this.masterPhoto = in.readString();
-    this.masterId = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.serviceTime = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.scheduleId = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.serviceId = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.serviceName = in.readString();
-    this.serviceImage = in.readString();
-    this.serviceDescription = in.readString();
-    this.serviceBonusPrice = in.readString();
-    this.serviceBonusAdd = in.readString();
-    this.servicePrice = in.readString();
-    this.serviceNewPrice = in.readString();
-    this.serviceDuration = in.readString();
-  }
-
-  public static final Creator<LastBookingEntity> CREATOR = new Creator<LastBookingEntity>() {
-    @Override public LastBookingEntity createFromParcel(Parcel source) {
-      return new LastBookingEntity(source);
-    }
-
-    @Override public LastBookingEntity[] newArray(int size) {
-      return new LastBookingEntity[size];
-    }
-  };
 }

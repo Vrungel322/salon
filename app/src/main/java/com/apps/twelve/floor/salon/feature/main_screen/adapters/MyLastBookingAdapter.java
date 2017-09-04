@@ -66,16 +66,19 @@ public class MyLastBookingAdapter
 
   @Override public MyLastBookingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == MyBookingAdapter.COLORED_LAYOUT_GRAY) {
-      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.item_my_booking_colored_gray, parent, false));
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.item_my_booking_colored_gray, parent, false));
     }
     if (viewType == MyBookingAdapter.COLORED_LAYOUT_RED) {
-      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.item_my_booking_colored_red, parent, false));
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.item_my_booking_colored_red, parent, false));
     }
     if (viewType == MyBookingAdapter.NOT_COLORED_LAYOUT) {
-      return new MyLastBookingAdapter.MyLastBookingViewHolder(LayoutInflater.from(parent.getContext())
-          .inflate(R.layout.item_my_booking, parent, false));
+      return new MyLastBookingAdapter.MyLastBookingViewHolder(
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.item_my_booking, parent, false));
     }
     return null;
   }
@@ -99,16 +102,16 @@ public class MyLastBookingAdapter
     //}
 
     //for Status
-    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)){
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)) {
       holder.mTextViewStatus.setText(R.string.new_booking);
     }
-    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)){
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)) {
       holder.mTextViewStatus.setText(R.string.confirmed_booking);
     }
-    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)){
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)) {
       holder.mTextViewStatus.setText(R.string.missed_booking);
     }
-    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)){
+    if (mLastBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)) {
       holder.mTextViewStatus.setText(R.string.done_booking);
     }
     Glide.with(holder.mImageViewServicePhoto.getContext())

@@ -17,9 +17,9 @@ import java.util.List;
  */
 
 public class DatesInMonthViewPagerAdapter extends PagerAdapter {
+  private final Context mContext;
   private LayoutInflater mLayoutInflater;
   private List<DataServiceEntity> daysInMonth;
-  private final Context mContext;
 
   public DatesInMonthViewPagerAdapter(Context context, List<DataServiceEntity> daysInMonth) {
     mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -26,12 +26,11 @@ import javax.inject.Inject;
 
 public abstract class BaseFragment extends MvpAppCompatFragment {
 
+  private final int mLayoutId;
   @Inject protected Context mContext;
   @Inject protected Navigator mNavigator;
   @Inject protected AuthorizationManager mAuthorizationManager;
-
   private Unbinder mUnbinder;
-  private final int mLayoutId;
 
   public BaseFragment(int mLayoutId) {
     this.mLayoutId = mLayoutId;

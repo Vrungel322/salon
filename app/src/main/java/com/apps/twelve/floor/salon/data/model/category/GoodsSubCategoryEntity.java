@@ -12,8 +12,17 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class GoodsSubCategoryEntity extends RealmObject implements Parcelable {
-  @PrimaryKey
-  @SerializedName("id") @Expose private Integer id;
+  public static final Creator<GoodsSubCategoryEntity> CREATOR =
+      new Creator<GoodsSubCategoryEntity>() {
+        @Override public GoodsSubCategoryEntity createFromParcel(Parcel in) {
+          return new GoodsSubCategoryEntity(in);
+        }
+
+        @Override public GoodsSubCategoryEntity[] newArray(int size) {
+          return new GoodsSubCategoryEntity[size];
+        }
+      };
+  @PrimaryKey @SerializedName("id") @Expose private Integer id;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;
 
@@ -24,6 +33,15 @@ public class GoodsSubCategoryEntity extends RealmObject implements Parcelable {
     this.id = id;
     this.title = title;
     this.text = text;
+  }
+
+  protected GoodsSubCategoryEntity(Parcel in) {
+    title = in.readString();
+    text = in.readString();
+  }
+
+  public static Creator<GoodsSubCategoryEntity> getCREATOR() {
+    return CREATOR;
   }
 
   public Integer getId() {
@@ -49,26 +67,6 @@ public class GoodsSubCategoryEntity extends RealmObject implements Parcelable {
   public void setText(String text) {
     this.text = text;
   }
-
-  public static Creator<GoodsSubCategoryEntity> getCREATOR() {
-    return CREATOR;
-  }
-
-  protected GoodsSubCategoryEntity(Parcel in) {
-    title = in.readString();
-    text = in.readString();
-  }
-
-  public static final Creator<GoodsSubCategoryEntity> CREATOR =
-      new Creator<GoodsSubCategoryEntity>() {
-        @Override public GoodsSubCategoryEntity createFromParcel(Parcel in) {
-          return new GoodsSubCategoryEntity(in);
-        }
-
-        @Override public GoodsSubCategoryEntity[] newArray(int size) {
-          return new GoodsSubCategoryEntity[size];
-        }
-      };
 
   @Override public int describeContents() {
     return 0;

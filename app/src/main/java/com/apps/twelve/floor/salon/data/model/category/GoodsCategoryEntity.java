@@ -12,8 +12,7 @@ import java.util.List;
  */
 
 public class GoodsCategoryEntity extends RealmObject {
-  @PrimaryKey
-  @SerializedName("id") @Expose private Integer id;
+  @PrimaryKey @SerializedName("id") @Expose private Integer id;
   @SerializedName("title") @Expose private String title;
   @SerializedName("text") @Expose private String text;
   @SerializedName("children") @Expose private RealmList<GoodsSubCategoryEntity> children = null;

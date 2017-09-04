@@ -20,9 +20,7 @@ public class DbHelper {
   public DbHelper() {
     mConfiguration = new RealmConfiguration.Builder().name("sample.realm")
         //new version
-        .schemaVersion(2)
-        .migration(new RealmMigrations())
-        .build();
+        .schemaVersion(2).migration(new RealmMigrations()).build();
     Realm.setDefaultConfiguration(mConfiguration);
   }
 

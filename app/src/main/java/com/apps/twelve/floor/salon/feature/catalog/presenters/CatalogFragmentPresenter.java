@@ -64,7 +64,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
             .concatMap(reloadCatalogByCategoryLocally -> {
               id[0] = reloadCatalogByCategoryLocally.id;
               //return Observable.just(mDataManager.getAllElementsFromDB(GoodsEntity.class));
-              return Observable.just(new ArrayList<>(mDataManager.getAllElementsFromDB(GoodsEntity.class)));
+              return Observable.just(
+                  new ArrayList<>(mDataManager.getAllElementsFromDB(GoodsEntity.class)));
             })
             .concatMap(goodsEntities -> {
               ArrayList<GoodsEntity> entities = new ArrayList<GoodsEntity>();
@@ -136,7 +137,7 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_50
                       new GoodsEntity(0, mContext.getString(R.string.menu_favourite), "", "", "",
                           "", 0, "", "", Converters.getUrl(R.drawable.ic_favorite_catalog_32dp), 0,
                           null, false, false, false));
-              cacheEntities(response.body(),GoodsEntity.class);
+              cacheEntities(response.body(), GoodsEntity.class);
 
               getViewState().updateGoodsList(response.body());
               getViewState().stopRefreshingView();

@@ -11,7 +11,6 @@ import com.apps.twelve.floor.salon.di.scopes.AppScope;
 import com.google.gson.Gson;
 import dagger.Module;
 import dagger.Provides;
-import io.realm.Realm;
 import retrofit2.Retrofit;
 
 /**

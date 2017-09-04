@@ -62,6 +62,23 @@ public class TimePickerDialogFixedNougatSpinner extends TimePickerDialog {
     fixSpinner(context, hourOfDay, minute, is24HourView);
   }
 
+  private static Field findField(Class objectClass, Class fieldClass, String expectedName) {
+    try {
+      Field field = objectClass.getDeclaredField(expectedName);
+      field.setAccessible(true);
+      return field;
+    } catch (NoSuchFieldException e) {
+    } // ignore
+    // search for it if it wasn't found under the expected ivar name
+    for (Field searchField : objectClass.getDeclaredFields()) {
+      if (searchField.getType() == fieldClass) {
+        searchField.setAccessible(true);
+        return searchField;
+      }
+    }
+    return null;
+  }
+
   private void fixSpinner(Context context, int hourOfDay, int minute, boolean is24HourView) {
     if (Build.VERSION.SDK_INT
         >= Build.VERSION_CODES.LOLLIPOP) { // android:timePickerMode spinner and clock began in Lollipop
@@ -115,22 +132,5 @@ public class TimePickerDialogFixedNougatSpinner extends TimePickerDialog {
         throw new RuntimeException(e);
       }
     }
-  }
-
-  private static Field findField(Class objectClass, Class fieldClass, String expectedName) {
-    try {
-      Field field = objectClass.getDeclaredField(expectedName);
-      field.setAccessible(true);
-      return field;
-    } catch (NoSuchFieldException e) {
-    } // ignore
-    // search for it if it wasn't found under the expected ivar name
-    for (Field searchField : objectClass.getDeclaredFields()) {
-      if (searchField.getType() == fieldClass) {
-        searchField.setAccessible(true);
-        return searchField;
-      }
-    }
-    return null;
   }
 }

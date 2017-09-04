@@ -38,7 +38,6 @@ public class BookingFragment extends BaseFragment implements IBookingFragmentVie
   @BindView(R.id.buttonBookingPhone) Button mButtonBookingPhone;
   Unbinder unbinder;
 
-
   public BookingFragment() {
     super(R.layout.fragment_booking);
   }

@@ -1,12 +1,9 @@
 package com.apps.twelve.floor.salon.data.local;
 
-import com.apps.twelve.floor.salon.data.model.category.GoodsSubCategoryEntity;
 import io.realm.DynamicRealm;
-import io.realm.RealmList;
 import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
-import javax.inject.Inject;
 
 /**
  * Created by Vrungel on 03.08.2017.
@@ -26,7 +23,6 @@ public class RealmMigrations implements RealmMigration {
       userSchema.addField("id", Integer.class);
       userSchema.addField("title", String.class);
       userSchema.addField("text", String.class);
-
 
       //schema.create("GoodsCategoryEntity");
       final RealmObjectSchema userSchema1 = schema.create("GoodsCategoryEntity");
