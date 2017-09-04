@@ -35,15 +35,15 @@ public class HistoryBookingFragment extends BaseFragment implements IHistoryBook
   private MyBookingAdapter mMyBookingAdapter;
   private boolean fromStartActivity;
 
+  public HistoryBookingFragment() {
+    super(R.layout.fragment_book_history);
+  }
+
   public static HistoryBookingFragment newInstance() {
     Bundle args = new Bundle();
     HistoryBookingFragment fragment = new HistoryBookingFragment();
     fragment.setArguments(args);
     return fragment;
-  }
-
-  public HistoryBookingFragment() {
-    super(R.layout.fragment_book_history);
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

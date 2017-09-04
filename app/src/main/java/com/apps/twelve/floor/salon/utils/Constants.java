@@ -6,11 +6,11 @@ package com.apps.twelve.floor.salon.utils;
 
 public final class Constants {
   public class Remote {
-    private static final String DOMEN = "beauty.api.floor12apps.com";
-    public static final String BASE_URL = "https://" + DOMEN + "/";
     public static final String LOCAL = "ru";
     public static final String TERMS_OF_SERVICE_URL = "http://floor12apps.com/terms_of_service";
     public static final String PRIVACY_POLICY_URL = "http://floor12apps.com/privacy_policy";
+    private static final String DOMEN = "beauty.api.floor12apps.com";
+    public static final String BASE_URL = "https://" + DOMEN + "/";
   }
 
   public class FragmentTag {
@@ -42,8 +42,8 @@ public final class Constants {
     public static final String CHOOSE_SERVICE_TIME_FRAGMENT = "ChooseServiceTimeFragment";
     public static final String CHOOSE_SERVICE_CONTACT_FRAGMENT = "ChooseServiceContactFragment";
   }
-  
-  public class StatusBooking{
+
+  public class StatusBooking {
 
     public static final String NEW = "new";
     public static final String CONFIRMED = "confirmed";

@@ -9,7 +9,6 @@ import com.apps.twelve.floor.salon.data.model.BookingServerEntity;
 import com.apps.twelve.floor.salon.data.model.CategoryEntity;
 import com.apps.twelve.floor.salon.data.model.DataServiceEntity;
 import com.apps.twelve.floor.salon.data.model.GoodsEntity;
-import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.MasterEntity;
 import com.apps.twelve.floor.salon.data.model.NewsEntity;
 import com.apps.twelve.floor.salon.data.model.OurWorkEntity;
@@ -18,6 +17,7 @@ import com.apps.twelve.floor.salon.data.model.PhotoWorksEntity;
 import com.apps.twelve.floor.salon.data.model.RemoteStringEntity;
 import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import com.apps.twelve.floor.salon.data.remote.RestApi;
 import io.realm.RealmObject;
@@ -122,12 +122,12 @@ public class DataManager {
 
   //theme
 
-  public void setThemeSelected(int themeSelected) {
-    mPref.setThemeSelected(themeSelected);
-  }
-
   public int getThemeSelected() {
     return mPref.getThemeSelected();
+  }
+
+  public void setThemeSelected(int themeSelected) {
+    mPref.setThemeSelected(themeSelected);
   }
 
   //main screen
@@ -137,7 +137,8 @@ public class DataManager {
   }
 
   public Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory() {
-    return mRestApi.fetchLastBookingHistory(mPref.getLanguageCode(), mAuthorizationManager.getToken());
+    return mRestApi.fetchLastBookingHistory(mPref.getLanguageCode(),
+        mAuthorizationManager.getToken());
   }
 
   public Observable<retrofit2.Response<Void>> cancelOrder(Integer serviceId) {
@@ -251,20 +252,20 @@ public class DataManager {
     mPref.setNotificationHours(millis);
   }
 
-  public void setNotificationHoursNightStart(long millis) {
-    mPref.setNotificationHoursNightStart(millis);
-  }
-
-  public void setNotificationHoursNightEnd(long millis) {
-    mPref.setNotificationHoursNightEnd(millis);
-  }
-
   public long getNotificationHoursNightStart() {
     return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
   }
 
+  public void setNotificationHoursNightStart(long millis) {
+    mPref.setNotificationHoursNightStart(millis);
+  }
+
   public long getNotificationHoursNightEnd() {
     return mAuthorizationManager.getAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
+  }
+
+  public void setNotificationHoursNightEnd(long millis) {
+    mPref.setNotificationHoursNightEnd(millis);
   }
 
   public boolean isNightMode() {
@@ -276,8 +277,7 @@ public class DataManager {
   }
 
   //Cache
-  @Deprecated
-  public void putBooking(List<LastBookingEntity> bookingEntities) {
+  @Deprecated public void putBooking(List<LastBookingEntity> bookingEntities) {
     mPref.putEntityToSHP(PreferencesHelper.PREF_BOOKING, bookingEntities);
   }
 
@@ -292,13 +292,13 @@ public class DataManager {
 
   //user
 
-  public void setLastPhoneForBooking(String lastPhone) {
-    mPref.setLastPhoneForBooking(lastPhone);
-  }
-
   public String getLastPhoneForBooking() {
     return mAuthorizationManager.getAdditionalField(PREF_LAST_PHONE_FOR_BOOKING,
         mPref.getLastPhoneForBooking());
+  }
+
+  public void setLastPhoneForBooking(String lastPhone) {
+    mPref.setLastPhoneForBooking(lastPhone);
   }
 
   public void logoutUser() {

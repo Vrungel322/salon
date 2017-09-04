@@ -16,6 +16,7 @@ import com.apps.twelve.floor.salon.data.model.RemoteStringEntity;
 import com.apps.twelve.floor.salon.data.model.ReportProblemResponseEntity;
 import com.apps.twelve.floor.salon.data.model.SalonApi;
 import com.apps.twelve.floor.salon.data.model.ServiceEntity;
+import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
 import com.apps.twelve.floor.salon.data.model.category.GoodsCategoryEntity;
 import java.util.List;
 import retrofit2.Response;
@@ -84,8 +85,9 @@ public class RestApi {
     return api.fetchLastBooking(languageCode, token);
   }
 
-  public Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory(String languageCode, String token) {
-    return api.fetchLastBookingHistory(languageCode, token, "done,missed",1);
+  public Observable<Response<List<LastBookingEntity>>> fetchLastBookingHistory(String languageCode,
+      String token) {
+    return api.fetchLastBookingHistory(languageCode, token, "done,missed", 1);
   }
 
   public Observable<Response<Void>> cancelOrder(String language, Integer serviceId, String token) {

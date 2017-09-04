@@ -12,8 +12,8 @@ import timber.log.Timber;
  */
 
 public class NetworkBroadcastReceiver extends BroadcastReceiver {
-  @Inject RxBus mRxBus;
   private static boolean isNetworkChangeState = false;
+  @Inject RxBus mRxBus;
 
   public NetworkBroadcastReceiver() {
     App.getAppComponent().inject(this);

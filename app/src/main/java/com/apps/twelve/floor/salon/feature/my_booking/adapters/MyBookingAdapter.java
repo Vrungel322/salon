@@ -115,16 +115,16 @@ public class MyBookingAdapter extends MvpBaseRecyclerAdapter<MyBookingAdapter.My
         String.valueOf(mBookingEntities.get(position).getServiceTime())));
 
     //for Status
-    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)){
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.NEW)) {
       holder.mTextViewStatus.setText(R.string.new_booking);
     }
-    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)){
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.CONFIRMED)) {
       holder.mTextViewStatus.setText(R.string.confirmed_booking);
     }
-    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)){
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.MISSED)) {
       holder.mTextViewStatus.setText(R.string.missed_booking);
     }
-    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)){
+    if (mBookingEntities.get(position).getStatus().equals(Constants.StatusBooking.DONE)) {
       holder.mTextViewStatus.setText(R.string.done_booking);
     }
 

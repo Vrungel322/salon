@@ -43,10 +43,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.Theme.YELLOW;
 
 public class ThemeDialogFragment extends MvpDialogFragment implements IThemeDialogFragmentView {
 
-  @InjectPresenter ThemeDialogFragmentPresenter mThemeDialogFragmentPresenter;
-
   @Inject protected Navigator mNavigator;
-
+  @InjectPresenter ThemeDialogFragmentPresenter mThemeDialogFragmentPresenter;
   @BindView(R.id.radioButtonPink) AppCompatRadioButton mRadioButtonPink;
   @BindView(R.id.radioButtonBlue) AppCompatRadioButton mRadioButtonBlue;
   @BindView(R.id.radioButtonGreen) AppCompatRadioButton mRadioButtonGreen;

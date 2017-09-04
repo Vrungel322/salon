@@ -16,11 +16,8 @@ import rx.Observable;
 public class PreferencesHelper {
 
   public static final String PREF_FILE_NAME = "com.salon.Salon";
-
-  private static final String PREF_VERSION = "PREF_VERSION";
   public static final String PREF_BONUS_COUNT = "PREF_BONUS_COUNT";
   public static final String PREF_THEME_SELECTED = "PREF_THEME_SELECTED";
-  static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
   public static final String PREF_NOTIF_HOURLY_ENABLED = "PREF_NOTIF_HOURLY_ENABLED";
   public static final String PREF_NOTIF_DAILY_ENABLED = "PREF_NOTIF_DAILY_ENABLED";
   public static final String PREF_NOTIF_HOURS = "PREF_NOTIF_HOURS";
@@ -31,7 +28,8 @@ public class PreferencesHelper {
   public static final String PREF_LAST_PHONE_FOR_BOOKING = "PREF_LAST_PHONE_FOR_BOOKING";
   public static final String PREF_BOOKING = "PREF_BOOKING";
   public static final String PREF_LANGUAGE = "PREF_LANGUAGE";
-
+  static final String PREF_LANGUAGE_CODE = "PREF_LANGUAGE_CODE";
+  private static final String PREF_VERSION = "PREF_VERSION";
   private final SharedPreferences mPreferences;
   private Gson mGson;
 
@@ -76,12 +74,12 @@ public class PreferencesHelper {
   // theme
   ///////////////////////////////////////////////////////////////////////////
 
-  public void setThemeSelected(int themeSelected) {
-    mPreferences.edit().putInt(PREF_THEME_SELECTED, themeSelected).apply();
-  }
-
   public int getThemeSelected() {
     return mPreferences.getInt(PREF_THEME_SELECTED, 0);
+  }
+
+  public void setThemeSelected(int themeSelected) {
+    mPreferences.edit().putInt(PREF_THEME_SELECTED, themeSelected).apply();
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -104,12 +102,12 @@ public class PreferencesHelper {
   // Phone
   ///////////////////////////////////////////////////////////////////////////
 
-  public void setLastPhoneForBooking(String lastPhone) {
-    mPreferences.edit().putString(PREF_LAST_PHONE_FOR_BOOKING, lastPhone).apply();
-  }
-
   public String getLastPhoneForBooking() {
     return mPreferences.getString(PREF_LAST_PHONE_FOR_BOOKING, "");
+  }
+
+  public void setLastPhoneForBooking(String lastPhone) {
+    mPreferences.edit().putString(PREF_LAST_PHONE_FOR_BOOKING, lastPhone).apply();
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -144,20 +142,20 @@ public class PreferencesHelper {
     return mPreferences.getLong(PREF_NOTIF_HOURS, 3600000);
   }
 
-  public long getNotificationHoursNightStart() {
-    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
-  }
-
-  public long getNotificationHoursNightEnd() {
-    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
-  }
-
   public void setNotificationHours(long millis) {
     mPreferences.edit().putLong(PREF_NOTIF_HOURS, millis).apply();
   }
 
+  public long getNotificationHoursNightStart() {
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_START, 82800000);
+  }
+
   public void setNotificationHoursNightStart(long millis) {
     mPreferences.edit().putLong(PREF_NOTIF_HOURS_NIGHT_START, millis).apply();
+  }
+
+  public long getNotificationHoursNightEnd() {
+    return mPreferences.getLong(PREF_NOTIF_HOURS_NIGHT_END, 25200000);
   }
 
   public void setNotificationHoursNightEnd(long millis) {

@@ -72,7 +72,8 @@ public class ActiveBookingFragment extends BaseFragment implements IActiveBookin
     TypedValue value = new TypedValue();
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
-    mSwipeRefreshLayout.setOnRefreshListener(() -> mActiveMyBookFragmentPresenter.startRefreshing());
+    mSwipeRefreshLayout.setOnRefreshListener(
+        () -> mActiveMyBookFragmentPresenter.startRefreshing());
 
     ItemClickSupport.addTo(mRecyclerViewMyBooks)
         .setOnItemClickListener((recyclerView, position, v) -> {

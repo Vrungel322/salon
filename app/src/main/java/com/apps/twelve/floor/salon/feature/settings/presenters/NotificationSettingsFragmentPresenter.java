@@ -32,8 +32,8 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 @InjectViewState public class NotificationSettingsFragmentPresenter
     extends BasePresenter<INotificationSettingsFragmentView> {
 
-  private int mLastPickedDays;
   @Inject JobsCreator mJobsCreator;
+  private int mLastPickedDays;
 
   @Override protected void inject() {
     App.getAppComponent().inject(this);
@@ -51,36 +51,6 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
 
   private boolean isHourlyNotificationsEnabled() {
     return mDataManager.isHourlyNotificationsEnabled();
-  }
-
-  private boolean isDailyNotificationsEnabled() {
-    return mDataManager.isDailyNotificationsEnabled();
-  }
-
-  private boolean isNightMode() {
-    return mDataManager.isNightMode();
-  }
-
-  public void setUpStrings() {
-    getViewState().setUpDaysString(getDays());
-    getViewState().setUpHoursString(getHours());
-    getViewState().setUpNightHours(getHoursNightStart(), getHoursNightEnd());
-  }
-
-  public long getHours() {
-    return mDataManager.getNotificationHours();
-  }
-
-  public int getDays() {
-    return mDataManager.getNotificationDays();
-  }
-
-  public long getHoursNightStart() {
-    return mDataManager.getNotificationHoursNightStart();
-  }
-
-  public long getHoursNightEnd() {
-    return mDataManager.getNotificationHoursNightEnd();
   }
 
   public void setHourlyNotificationsEnabled(boolean checked) {
@@ -113,6 +83,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
+  private boolean isDailyNotificationsEnabled() {
+    return mDataManager.isDailyNotificationsEnabled();
+  }
+
   public void setDailyNotificationsEnabled(boolean checked) {
     Subscription subscription = mAuthorizationManager.checkToken(
         mAuthorizationManager.populateAdditionalField(PREF_NOTIF_DAILY_ENABLED, checked))
@@ -143,28 +117,18 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
-  public void setNightModeNotificationsEnabled(boolean checked) {
-    Subscription subscription = mAuthorizationManager.checkToken(
-        mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked))
-        .concatMap(response -> {
-          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
-            return mAuthorizationManager.checkToken(
-                mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked));
-          }
-          return Observable.just(response);
-        }).observeOn(AndroidSchedulers.mainThread())
-        .subscribe(response -> {
-          if (response.code() == RESPONSE_UNAUTHORIZED) {
-            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
-          }
-        }, throwable -> {
-          if (throwable instanceof SocketTimeoutException
-              || throwable instanceof UnknownHostException) {
-            mAuthorizationManager.setAdditionalField(PREF_NOTIF_NIGHT_MODE, checked);
-          }
-          Timber.e(throwable);
-        });
-    addToUnsubscription(subscription);
+  private boolean isNightMode() {
+    return mDataManager.isNightMode();
+  }
+
+  public void setUpStrings() {
+    getViewState().setUpDaysString(getDays());
+    getViewState().setUpHoursString(getHours());
+    getViewState().setUpNightHours(getHoursNightStart(), getHoursNightEnd());
+  }
+
+  public long getHours() {
+    return mDataManager.getNotificationHours();
   }
 
   public void setHours(long millis) {
@@ -199,6 +163,14 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
+  public int getDays() {
+    return mDataManager.getNotificationDays();
+  }
+
+  public long getHoursNightStart() {
+    return mDataManager.getNotificationHoursNightStart();
+  }
+
   public void setHoursNightStart(long millis) {
     Subscription subscription = mAuthorizationManager.checkToken(
         mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS_NIGHT_START, millis))
@@ -230,6 +202,10 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
     addToUnsubscription(subscription);
   }
 
+  public long getHoursNightEnd() {
+    return mDataManager.getNotificationHoursNightEnd();
+  }
+
   public void setHoursNightEnd(long millis) {
     Subscription subscription = mAuthorizationManager.checkToken(
         mAuthorizationManager.populateAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis))
@@ -254,6 +230,31 @@ import static com.apps.twelve.floor.salon.utils.Constants.StatusCode.RESPONSE_20
               || throwable instanceof UnknownHostException) {
             mAuthorizationManager.setAdditionalField(PREF_NOTIF_HOURS_NIGHT_END, millis);
             getViewState().setUpNightHours(getHoursNightStart(), millis);
+          }
+          Timber.e(throwable);
+        });
+    addToUnsubscription(subscription);
+  }
+
+  public void setNightModeNotificationsEnabled(boolean checked) {
+    Subscription subscription = mAuthorizationManager.checkToken(
+        mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked))
+        .concatMap(response -> {
+          if (response.code() == RESPONSE_TOKEN_EXPIRED) {
+            return mAuthorizationManager.checkToken(
+                mAuthorizationManager.populateAdditionalField(PREF_NOTIF_NIGHT_MODE, checked));
+          }
+          return Observable.just(response);
+        })
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(response -> {
+          if (response.code() == RESPONSE_UNAUTHORIZED) {
+            mAuthorizationManager.getAuthRxBus().post(new AuthRxBusHelper.UnauthorizedEvent());
+          }
+        }, throwable -> {
+          if (throwable instanceof SocketTimeoutException
+              || throwable instanceof UnknownHostException) {
+            mAuthorizationManager.setAdditionalField(PREF_NOTIF_NIGHT_MODE, checked);
           }
           Timber.e(throwable);
         });

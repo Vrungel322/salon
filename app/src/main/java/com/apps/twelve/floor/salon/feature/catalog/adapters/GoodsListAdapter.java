@@ -111,8 +111,8 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         goodsListViewHolder.mTextViewGoodsName.setText(mGoodsEntities.get(position).getTitle());
-        goodsListViewHolder.mTextViewShortDescription.setText(Html.fromHtml(
-            mGoodsEntities.get(position).getShortDescription()));
+        goodsListViewHolder.mTextViewShortDescription.setText(
+            Html.fromHtml(mGoodsEntities.get(position).getShortDescription()));
         if (mGoodsEntities.get(position).getBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
           goodsListViewHolder.mTextViewPriceBonus.setVisibility(View.GONE);
           goodsListViewHolder.mImageViewBonusPrice.setVisibility(View.GONE);

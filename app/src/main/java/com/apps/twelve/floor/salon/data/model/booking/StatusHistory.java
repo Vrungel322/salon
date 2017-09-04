@@ -13,9 +13,28 @@ import io.realm.annotations.PrimaryKey;
 
 public class StatusHistory extends RealmObject implements Parcelable {
 
+  public static final Parcelable.Creator<StatusHistory> CREATOR =
+      new Parcelable.Creator<StatusHistory>() {
+        @Override public StatusHistory createFromParcel(Parcel source) {
+          return new StatusHistory(source);
+        }
+
+        @Override public StatusHistory[] newArray(int size) {
+          return new StatusHistory[size];
+        }
+      };
   @PrimaryKey private Integer id;
   @SerializedName("status") @Expose private String status;
   @SerializedName("updated_at") @Expose private String updatedAt;
+
+  public StatusHistory() {
+  }
+
+  protected StatusHistory(Parcel in) {
+    this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+    this.status = in.readString();
+    this.updatedAt = in.readString();
+  }
 
   public String getStatus() {
     return status;
@@ -42,24 +61,4 @@ public class StatusHistory extends RealmObject implements Parcelable {
     dest.writeString(this.status);
     dest.writeString(this.updatedAt);
   }
-
-  public StatusHistory() {
-  }
-
-  protected StatusHistory(Parcel in) {
-    this.id = (Integer) in.readValue(Integer.class.getClassLoader());
-    this.status = in.readString();
-    this.updatedAt = in.readString();
-  }
-
-  public static final Parcelable.Creator<StatusHistory> CREATOR =
-      new Parcelable.Creator<StatusHistory>() {
-        @Override public StatusHistory createFromParcel(Parcel source) {
-          return new StatusHistory(source);
-        }
-
-        @Override public StatusHistory[] newArray(int size) {
-          return new StatusHistory[size];
-        }
-      };
 }

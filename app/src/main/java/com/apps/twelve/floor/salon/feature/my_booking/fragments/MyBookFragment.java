@@ -36,7 +36,6 @@ public class MyBookFragment extends BaseFragment implements IMyBookFragmentView 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-
     if (getActivity() instanceof StartActivity) {
       ((StartActivity) getActivity()).setTitleAppBar(R.string.menu_my_booking);
     } else {

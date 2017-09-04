@@ -12,6 +12,15 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class GoodsEntity extends RealmObject implements Parcelable {
+  public static final Creator<GoodsEntity> CREATOR = new Creator<GoodsEntity>() {
+    @Override public GoodsEntity createFromParcel(Parcel in) {
+      return new GoodsEntity(in);
+    }
+
+    @Override public GoodsEntity[] newArray(int size) {
+      return new GoodsEntity[size];
+    }
+  };
   @PrimaryKey @SerializedName("id") private int id;
   @SerializedName("title") private String mTitle;
   @SerializedName("text") private String mShortDescription;
@@ -50,6 +59,27 @@ public class GoodsEntity extends RealmObject implements Parcelable {
     mFavorite = favorite;
     mIsNew = isNew;
     mIsForSale = isForSale;
+  }
+
+  protected GoodsEntity(Parcel in) {
+    id = in.readInt();
+    mTitle = in.readString();
+    mShortDescription = in.readString();
+    mPrice = in.readString();
+    mNewPrice = in.readString();
+    mBonusPrice = in.readString();
+    mCategoryId = in.readInt();
+    mCreateDate = in.readString();
+    mUpdateDate = in.readString();
+    mImageURL = in.readString();
+    mImgCount = in.readInt();
+    mFavorite = in.readByte() != 0;
+    mIsNew = in.readByte() != 0;
+    mIsForSale = in.readByte() != 0;
+  }
+
+  public static Creator<GoodsEntity> getCREATOR() {
+    return CREATOR;
   }
 
   public int getId() {
@@ -172,27 +202,6 @@ public class GoodsEntity extends RealmObject implements Parcelable {
     mIsForSale = forSale;
   }
 
-  public static Creator<GoodsEntity> getCREATOR() {
-    return CREATOR;
-  }
-
-  protected GoodsEntity(Parcel in) {
-    id = in.readInt();
-    mTitle = in.readString();
-    mShortDescription = in.readString();
-    mPrice = in.readString();
-    mNewPrice = in.readString();
-    mBonusPrice = in.readString();
-    mCategoryId = in.readInt();
-    mCreateDate = in.readString();
-    mUpdateDate = in.readString();
-    mImageURL = in.readString();
-    mImgCount = in.readInt();
-    mFavorite = in.readByte() != 0;
-    mIsNew = in.readByte() != 0;
-    mIsForSale = in.readByte() != 0;
-  }
-
   @Override public void writeToParcel(Parcel dest, int flags) {
     dest.writeInt(id);
     dest.writeString(mTitle);
@@ -213,14 +222,4 @@ public class GoodsEntity extends RealmObject implements Parcelable {
   @Override public int describeContents() {
     return 0;
   }
-
-  public static final Creator<GoodsEntity> CREATOR = new Creator<GoodsEntity>() {
-    @Override public GoodsEntity createFromParcel(Parcel in) {
-      return new GoodsEntity(in);
-    }
-
-    @Override public GoodsEntity[] newArray(int size) {
-      return new GoodsEntity[size];
-    }
-  };
 }

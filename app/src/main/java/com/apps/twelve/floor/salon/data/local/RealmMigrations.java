@@ -1,8 +1,6 @@
 package com.apps.twelve.floor.salon.data.local;
 
-import com.apps.twelve.floor.salon.data.model.category.GoodsSubCategoryEntity;
 import io.realm.DynamicRealm;
-import io.realm.RealmList;
 import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
