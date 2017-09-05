@@ -45,7 +45,7 @@
   <string name="yes">Да</string>
   <string name="no">Нет</string>
   <string name="your_last_booking">Ваша последняя запись</string>
-  <string name="user_data">%1$s \n(%2$s),\nблагодарим за запись </string>
+  <string name="user_data">%1$s \n(%2$s)</string>
 
   <string name="contacts_salon_name">Beauty Salon \"Шанти\"</string>
   <string name="contacts_phone_text">Контактный телефон</string>
@@ -216,5 +216,7 @@
   <string name="admin_phone">+380689647569</string>
   <string name="dialog_action_close">ЗАКРЫТЬ</string>
   <string name="dialog_cancel">Закрыть</string>
+  <string name="booking_detail_call_administrator">Позвонить администратору:</string>
+  <string name="booking_detail_client">Клиент:</string>
 
 </resources>

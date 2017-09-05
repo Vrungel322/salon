@@ -1,19 +1,26 @@
 package com.apps.twelve.floor.salon.feature.my_booking.fragments;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.data.model.booking.LastBookingEntity;
@@ -42,7 +49,6 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
 
   @BindView(R.id.tvServiceName) TextView mTextViewServiceName;
   @BindView(R.id.ivServiceImg) CircleImageView mImageViewService;
-  @BindView(R.id.tvAboutService) TextView mTextViewServiceDetails;
   @BindView(R.id.tvOldPrice) TextView mTextViewOldPrice;
   @BindView(R.id.tvServicePrice) TextView mTextViewServicePrice;
   @BindView(R.id.tvPriceBonus) TextView mTextViewBonusPrice;
@@ -57,6 +63,7 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @BindView(R.id.tvUserNameUserPhone) TextView mTextViewUserNameUserPhone;
   @BindView(R.id.ivMasterImg) CircleImageView mImageViewMaster;
   @BindView(R.id.pbCancelBooking) ProgressBar mProgressBar;
+  Unbinder unbinder;
 
   private LastBookingEntity mBookingEntity;
   private CountDownTimer mDownTimer;
@@ -95,9 +102,12 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   private void setUpServiceBlock() {
+    getActivity().findViewById(R.id.fab_booking).setVisibility(View.GONE);
     mTextViewServiceName.setText(mBookingEntity.getServiceName());
-    Glide.with(getContext()).load(mBookingEntity.getServiceImage()).into(mImageViewService);
-    mTextViewServiceDetails.setText(mBookingEntity.getServiceDescription());
+    Glide.with(getContext())
+        .load(mBookingEntity.getServiceImage())
+        .placeholder(R.drawable.ic_service_placeholder_24dp)
+        .into(mImageViewService);
     if (!mBookingEntity.getServiceBonusPrice().equals(SERVER_ANSWER_EMPTY_STRING)) {
       mTextViewBonusPrice.setText(mBookingEntity.getServiceBonusPrice());
       mImageViewBonusPrice.setVisibility(View.VISIBLE);
@@ -157,7 +167,10 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   private void setUpMasterBlock() {
     mTextViewMasterName.setText(mBookingEntity.getMasterName());
     mTextViewAboutMaster.setText(mBookingEntity.getMasterDescription());
-    Glide.with(getContext()).load(mBookingEntity.getMasterPhoto()).into(mImageViewMaster);
+    Glide.with(getContext())
+        .load(mBookingEntity.getMasterPhoto())
+        .placeholder(R.drawable.ic_master_male_24dp)
+        .into(mImageViewMaster);
   }
 
   @Override public void openPostponeFragment() {
@@ -223,5 +236,20 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   @Override public void onDestroyView() {
     mDownTimer.cancel();
     super.onDestroyView();
+    unbinder.unbind();
+  }
+
+  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
+    // TODO: inflate a fragment view
+    View rootView = super.onCreateView(inflater, container, savedInstanceState);
+    unbinder = ButterKnife.bind(this, rootView);
+    return rootView;
+  }
+
+  @OnClick(R.id.btn_call_administrator) public void callAdministrator() {
+    Uri number = Uri.parse("tel:" + getString(R.string.admin_phone));
+    Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+    startActivity(callIntent);
   }
 }
