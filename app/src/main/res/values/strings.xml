@@ -3,8 +3,8 @@
   <string name="salon_name">ШАНТИ</string>
   <string name="salon_type">Медико-косметологический центр</string>
 
-  <string name="share_subject">Рекомендую посетить мой любимый салон Шанти</string>
-  <string name="share_text">Скачивай мобильное приложение салона "Шанти" и получай бонусы прямо сейчас: https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon </string>
+  <string name="share_subject">Шанти</string>
+  <string name="share_text">Приглашаю скачать приложение Салон Шанти https://play.google.com/store/apps/details?id=com.apps.twelve.floor.salon и получить приятный  </string>
 
   <string name="dialog_action_ok" translatable="false">OK</string>
   <string name="dialog_error_title">Ошибка</string>
