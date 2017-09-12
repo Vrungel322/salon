@@ -71,18 +71,22 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         .into(holder.mImageViewServiceImg);
 
     holder.mTextViewServiceName.setText(mServiceEntities.get(position).getTitle());
-    holder.mTextViewAboutService.setText(mContext.getText(R.string.detail));
-    holder.mTextViewAboutService.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-    holder.mTextViewAboutService.setOnClickListener(view -> {
+    if (mServiceEntities.get(position).getDescription().length() > 18) {
+      holder.mTextViewAboutService.setText(mContext.getText(R.string.detail));
+      holder.mTextViewAboutService.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-      DialogFactory.createAlertDialogBuilder(mContext,mServiceEntities.get(position).getTitle())
-          .setMessage(
-              mServiceEntities.get(position).getDescription())
-          .setNegativeButton(R.string.dialog_cancel,
-              (dialogInterface, i) -> dialogInterface.cancel())
-          .create()
-          .show();
-    });
+      holder.mTextViewAboutService.setOnClickListener(view -> {
+
+        DialogFactory.createAlertDialogBuilder(mContext, mServiceEntities.get(position).getTitle())
+            .setMessage(mServiceEntities.get(position).getDescription())
+            .setNegativeButton(R.string.dialog_cancel,
+                (dialogInterface, i) -> dialogInterface.cancel())
+            .create()
+            .show();
+      });
+    } else {
+      holder.mTextViewAboutService.setText(mServiceEntities.get(position).getDescription());
+    }
     holder.mTextViewServicePrice.setText(mServiceEntities.get(position).getPrice());
     holder.mTextViewSServiceDuration.setText(mServiceEntities.get(position).getTime());
 
