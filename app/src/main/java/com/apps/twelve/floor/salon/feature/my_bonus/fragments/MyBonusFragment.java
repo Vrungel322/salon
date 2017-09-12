@@ -1,5 +1,6 @@
 package com.apps.twelve.floor.salon.feature.my_bonus.fragments;
 
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import com.apps.twelve.floor.salon.R;
 import com.apps.twelve.floor.salon.base.BaseFragment;
 import com.apps.twelve.floor.salon.feature.booking.activities.BookingActivity;
@@ -19,6 +21,8 @@ import com.apps.twelve.floor.salon.feature.my_bonus.views.IMyBonusFragmentView;
 import com.apps.twelve.floor.salon.feature.start_point.activities.StartActivity;
 import com.apps.twelve.floor.salon.utils.DialogFactory;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by Vrungel on 21.02.2017.
@@ -91,6 +95,13 @@ public class MyBonusFragment extends BaseFragment implements IMyBonusFragmentVie
     getActivity().getTheme().resolveAttribute(R.attr.colorAccent, value, true);
     mSwipeRefreshLayout.setColorSchemeResources(value.resourceId);
     mSwipeRefreshLayout.setOnRefreshListener(() -> mMyBonusFragmentPresenter.getBonusCount());
+  }
+
+  @OnLongClick(R.id.tvYour) boolean copyToClipBoardBonusCount(){
+    ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(CLIPBOARD_SERVICE);
+    clipboard.setText(mTextViewYourCode.getText().toString());
+    showToastMessage(mTextViewYourCode.getText().toString());
+    return true;
   }
 
   @Override public void onDestroyView() {
