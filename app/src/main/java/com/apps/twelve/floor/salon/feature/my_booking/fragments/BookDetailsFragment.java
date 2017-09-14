@@ -102,7 +102,9 @@ public class BookDetailsFragment extends BaseFragment implements IBookDetailsFra
   }
 
   private void setUpServiceBlock() {
-    getActivity().findViewById(R.id.fab_booking).setVisibility(View.GONE);
+    if (getActivity() instanceof StartActivity){
+      getActivity().findViewById(R.id.fab_booking).setVisibility(View.GONE);
+    }
     mTextViewServiceName.setText(mBookingEntity.getServiceName());
     Glide.with(getContext())
         .load(mBookingEntity.getServiceImage())
